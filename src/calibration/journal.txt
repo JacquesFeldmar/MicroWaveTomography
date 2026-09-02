@@ -1,0 +1,16 @@
+2026-08-21 23:10:36 | --- nouvelle session d'assistant ---
+2026-08-21 23:10:36 | etape 1 (etat) : affiche
+2026-08-21 23:10:36 | etape 2 (SOL) : ecrit sol_courante.npz
+2026-08-21 23:10:36 | etape 3 (verification) : faite
+2026-08-21 23:10:36 | etape 4 (plan) : fait
+2026-08-21 23:10:36 | etape 5 (fond) : ecrit fond.npz
+2026-08-21 23:10:36 | --- session terminee ---
+2026-08-22 12:29:48 | --- nouvelle session d'assistant ---
+2026-08-22 12:29:53 | etape 1 (etat) : affiche
+2026-08-22 12:30:15 | --- nouvelle session d'assistant ---
+2026-08-22 12:30:17 | etape 1 (etat) : affiche
+2026-08-22 12:31:11 | etape 2 (SOL) : ecrit sol_courante.npz
+2026-08-22 12:31:31 | etape 3 (verification) : faite
+2026-08-22 12:32:28 | etape 4 (plan) : fait
+2026-08-22 12:32:44 | etape 5 (fond) : ecrit fond.npz
+2026-08-22 12:32:44 | --- session terminee ---
