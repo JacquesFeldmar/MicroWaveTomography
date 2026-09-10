@@ -47,6 +47,33 @@ python verifier_doc.py
 projets** : un changement fait pour l'un peut casser l'autre sans que rien ne le
 signale.
 
+## Cloner et pousser : le compte GitHub
+
+Ce dépôt appartient au compte **`JacquesFeldmar`**. Sur un poste dont la
+configuration git globale impose un autre compte pour github.com (par exemple
+`jfeldmar-pulsheart`), `git push` échoue avec :
+
+```
+remote: Permission to JacquesFeldmar/MicroWaveTomography.git denied to jfeldmar-pulsheart.
+```
+
+La correction se fait **dans le dépôt seulement**, sans toucher aux autres :
+
+```
+git config --local credential.https://github.com.username JacquesFeldmar
+```
+
+Cette ligne vit dans `.git/config`, qu'un clone ne transporte pas : **la relancer
+dans chaque nouveau clone**. Pour cloner avec le bon compte dès le départ :
+
+```
+git -c credential.https://github.com.username=JacquesFeldmar clone https://github.com/JacquesFeldmar/MicroWaveTomography.git
+cd MicroWaveTomography
+git config --local credential.https://github.com.username JacquesFeldmar
+```
+
+Pour vérifier sans rien envoyer : `git push --dry-run`.
+
 ## Données
 
 `calibration/`, `mesures/` et `qualification/` sont créés dans le dossier de chaque
