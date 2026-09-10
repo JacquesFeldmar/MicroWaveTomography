@@ -1,0 +1,525 @@
+% ---------------------------------------------------------------
+% Corps du guide de mise en oeuvre de la phase 1.
+% Partage par guide_phase1.tex (document autonome) et par
+% cours_theorie.tex (annexe). Ne pas dupliquer : editer ici.
+%
+% Le document appelant doit fournir :
+%   packages : enumitem, float, longtable, booktabs, graphicx, array,
+%              textcomp
+%   environnements : attention, critere
+%   macros : \eps  (= \varepsilon_r)
+%   graphicspath incluant figures/
+% ---------------------------------------------------------------
+
+%=======================================================================
+\section{Avant de commencer}
+%=======================================================================
+
+\subsection{Ce que ce guide suppose}
+
+Il suppose que vous savez : lire un schéma bloc, utiliser un multimètre,
+installer un logiciel sous Windows, écrire ou modifier un script Python simple,
+et visser un connecteur. Il ne suppose \emph{aucune} connaissance en
+hyperfréquences. Chaque notion nécessaire est introduite là où elle sert.
+
+\subsection{Sécurité}
+
+Les puissances mises en jeu sont de l'ordre du milliwatt --- mille fois moins
+qu'un téléphone portable. \textbf{Il n'y a aucun risque d'exposition.} Les deux
+vrais risques sont matériels :
+
+\begin{itemize}[nosep]
+\item \textbf{Les décharges électrostatiques} détruisent les circuits
+      hyperfréquences. Portez un bracelet antistatique relié à la terre, ou à
+      défaut touchez une masse métallique avant chaque manipulation.
+\item \textbf{Les alimentations inversées} détruisent instantanément un VCO.
+      Vérifiez chaque tension au multimètre \emph{avant} de connecter la carte.
+\end{itemize}
+
+\subsection{Ne pas serrer les connecteurs à la main}
+
+Un connecteur SMA se serre à $0{,}5$~N$\cdot$m, avec une clé dynamométrique.
+Trop serré, il se déforme et la mesure dérive ; pas assez, le contact est
+intermittent et \emph{tout} le reste devient incompréhensible. Une clé
+dynamométrique SMA coûte une trentaine d'euros ; c'est le meilleur achat du
+projet.
+
+%=======================================================================
+\section{Objectif et critères de réussite}
+%=======================================================================
+
+La phase 1 doit répondre à deux questions, et à elles seules. Tout ce qui n'y
+contribue pas est hors périmètre.
+
+\begin{critere}
+\textbf{Q1 --- Linéarité.} La rampe balaie-t-elle $6{,}0$ à $8{,}0$~GHz en
+$100\,\mu$s avec une non-linéarité inférieure à $0{,}1\,\%$ ?\\[1mm]
+\textbf{Q2 --- Mesure complexe.} Peut-on en tirer un coefficient de réflexion
+$\Gamma(f)$ \emph{calibré}, dont l'amplitude et la phase concordent avec celles
+mesurées par le LiteVNA sur la même cible ?
+\end{critere}
+
+\subsection{D'où vient le seuil de $0{,}1\,\%$}
+
+L'épaisseur se déduit d'un \emph{écart} de retards. Une erreur relative sur la
+pente de la rampe se reporte donc directement en erreur relative sur
+l'épaisseur.
+
+\begin{center}
+\includegraphics[width=\textwidth]{fig_p1_critere.png}
+\end{center}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Non-linéarité & $d = 1$~mm & $3$~mm & $5$~mm \\
+\midrule
+$1\,\%$ & $0{,}010$~mm & $0{,}030$~mm & $0{,}050$~mm \\
+$\mathbf{0{,}1\,\%}$ & $0{,}001$~mm & $0{,}003$~mm & $\mathbf{0{,}005}$~mm \\
+$0{,}01\,\%$ & $0{,}0001$~mm & $0{,}0003$~mm & $0{,}0005$~mm \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+À $0{,}1\,\%$, le biais introduit vaut $0{,}005$~mm sur une couche de $5$~mm,
+soit vingt fois moins que l'objectif de $0{,}1$~mm. C'est confortable, et c'est
+ce qu'atteint couramment une boucle asservie.
+
+\subsection{Ce que la phase 1 ne fait pas}
+
+Elle ne cherche ni la compacité, ni la vitesse de balayage, ni l'intégration
+mécanique, ni la conformité réglementaire. Le montage sera encombrant, alimenté
+par plusieurs blocs de laboratoire, et posé sur une table. C'est voulu.
+
+%=======================================================================
+\section{Principe : pourquoi ce montage, et pourquoi il est simple}
+%=======================================================================
+
+\subsection{Le principe en une phrase}
+
+On émet un signal dont la fréquence monte linéairement, on le mélange avec
+l'écho qui revient, et la \emph{différence} de fréquence obtenue est
+proportionnelle à la distance de la cible. Un aller-retour de $150$~mm donne
+$20$~kHz : une fréquence audible.
+
+\begin{attention}
+C'est le point qui rend cette phase abordable : bien que le signal émis soit à
+$8$~GHz, \textbf{tout ce que l'on mesure est de l'audio}. Un ordinateur muni
+d'une carte son convient. Aucun oscilloscope rapide, aucun analyseur de spectre
+hyperfréquence n'est indispensable.
+\end{attention}
+
+\subsection{Pas besoin de démodulateur IQ}
+
+Un radar de ce type est souvent décrit avec un démodulateur en quadrature, qui
+livre deux voies dites I et Q. C'est nécessaire lorsqu'il faut distinguer une
+cible en avant d'une cible en arrière. Ici, toutes les cibles sont à des
+distances positives : \textbf{un simple mélangeur suffit}, et la phase de la
+réflexion --- dont nous avons besoin --- est intégralement préservée dans le
+signal audio. Cela économise le composant le plus cher et le plus difficile à
+trouver au-dessus de $6$~GHz.
+
+\subsection{Architecture}
+
+\begin{center}
+\includegraphics[width=\textwidth]{fig_p1_banc.png}
+\end{center}
+
+Le signal parcourt le chemin suivant. La \textbf{boucle à rampe} commande la
+tension de réglage d'un \textbf{oscillateur} qui produit le balayage
+$6$--$8$~GHz. Un \textbf{diviseur} en prélève une part qui servira de
+référence ; le reste est amplifié et émis. L'écho reçu est amplifié par un
+\textbf{amplificateur faible bruit} puis \textbf{mélangé} à la référence. Il en
+sort un signal audio, filtré puis numérisé.
+
+Les repères TP1 à TP5 sont des points de test : chacun s'obtient en dévissant
+un câble SMA et en y branchant l'instrument de mesure.
+
+%=======================================================================
+\section{Nomenclature}
+%=======================================================================
+
+\begin{attention}
+Les références ci-dessous sont des \emph{candidats}, cohérents avec le besoin au
+moment de la rédaction. Les catalogues évoluent, et certaines cartes
+d'évaluation sont fabriquées en petites séries. \textbf{L'étape~0 du projet est
+de vérifier disponibilité, référence exacte de commande et prix} sur
+\texttt{mouser.fr} avant tout achat. Ne commandez jamais un composant sans avoir
+ouvert sa fiche technique et vérifié sa plage de fréquence.
+\end{attention}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.6cm}%
+                  >{\raggedright\arraybackslash}p{5.4cm}%
+                  >{\raggedright\arraybackslash}p{4.0cm}c}
+\toprule
+Fonction & Exigence & Candidat & Ordre de prix \\
+\midrule
+\endfirsthead
+\toprule
+Fonction & Exigence & Candidat & Ordre de prix \\
+\midrule
+\endhead
+Boucle à rampe & synthétiseur fractionnaire jusqu'à $13$~GHz, générateur de
+  rampe matériel & \textbf{EVAL-ADF4159} (version à VCO externe) & $300$--$500$~\texteuro \\[1mm]
+Oscillateur & couvre $6{,}0$--$8{,}0$~GHz, sortie SMA, bruit de phase
+  $< -95$~dBc/Hz à $100$~kHz & carte d'évaluation \textbf{HMC586LC4B}
+  ($4$--$8$~GHz) & $200$--$400$~\texteuro \\[1mm]
+Diviseur & $2$ voies, $0{,}5$--$8{,}5$~GHz, SMA & \textbf{ZX10-2-852+}
+  (Mini-Circuits) & $60$--$100$~\texteuro \\[1mm]
+Amplificateur d'émission & couvre $6$--$8$~GHz, gain $\sim 15$~dB, SMA
+  & \textbf{ZX60-83W+} ($50$~MHz--$8$~GHz) & $100$--$150$~\texteuro \\[1mm]
+Amplificateur faible bruit & couvre $6$--$8$~GHz, facteur de bruit $< 3$~dB
+  & \emph{à choisir dans la même famille} & $100$--$200$~\texteuro \\[1mm]
+Mélangeur & double équilibré, RF et OL couvrant $6$--$8$~GHz, FI continue à
+  $1$~MHz & \emph{connectorisé SMA, niveau OL $+7$ à $+13$~dBm}
+  & $100$--$200$~\texteuro \\[1mm]
+Bande de base & filtre passe-bas $\sim 100$~kHz + amplificateur à gain réglable
+  & module audio ou carte à monter & $50$--$150$~\texteuro \\[1mm]
+Numériseur & $\ge 500$~kSa/s, $16$~bits, entrée différentielle
+  & interface audio ou carte d'acquisition & $150$--$400$~\texteuro \\[1mm]
+Antennes ($\times 2$) & couvrent $6$--$8$~GHz, faible encombrement
+  & cornet ou antenne UWB à connecteur SMA & $100$--$300$~\texteuro \\[1mm]
+Ligne à retard & $3$~m de câble coaxial faible perte, SMA
+  & \emph{indispensable au test de linéarité} & $50$--$100$~\texteuro \\[1mm]
+Câbles et accessoires & câbles SMA courts, adaptateurs, charges $50\,\Omega$,
+  atténuateurs $3$ et $10$~dB & & $200$--$400$~\texteuro \\[1mm]
+Alimentations & $2$ à $3$ voies de laboratoire, $0$--$15$~V, limitation en
+  courant & & $200$--$400$~\texteuro \\[1mm]
+Clé dynamométrique SMA & $0{,}5$~N$\cdot$m & & $30$--$60$~\texteuro \\
+\midrule
+\multicolumn{3}{l}{\textbf{Total indicatif}} & $\mathbf{1{,}6}$--$\mathbf{3{,}5}$~\textbf{k\texteuro} \\
+\bottomrule
+\end{longtable}
+
+\subsection{Instruments de mesure}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{>{\raggedright\arraybackslash}p{4.6cm}%
+                >{\raggedright\arraybackslash}p{9.4cm}}
+\toprule
+Instrument & Nécessité \\
+\midrule
+Multimètre & \textbf{indispensable} --- vérification des alimentations \\
+Carte son ou acquisition & \textbf{indispensable} --- c'est l'instrument
+  principal, le signal utile étant audio \\
+LiteVNA (déjà possédé) & \textbf{très utile} jusqu'à $6{,}3$~GHz : vérification
+  des câbles, du diviseur, des antennes, et référence de comparaison pour Q2 \\
+Analyseur de spectre à $8$~GHz & \emph{souhaitable, non indispensable} ---
+  le test de linéarité (§\ref{sec:testA}) s'en passe entièrement. À emprunter
+  ou louer pour une journée si possible \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{attention}
+Le LiteVNA s'arrête à $6{,}3$~GHz et ne peut donc pas observer directement le
+haut de la rampe. Ce n'est pas gênant : le test décisif convertit le balayage
+en un signal audio, et se mesure sans aucun instrument hyperfréquence.
+\end{attention}
+
+%=======================================================================
+\section{Sous-système A --- la source de rampe}
+\label{sec:testA}
+%=======================================================================
+
+C'est le c\oe ur du projet et le seul véritable risque. Consacrez-lui la moitié
+du temps.
+
+\subsection{Rôle}
+
+Produire un signal dont la fréquence monte de $6{,}0$ à $8{,}0$~GHz en
+$100\,\mu$s, de façon aussi linéaire que possible, et recommencer $5\,000$ fois
+par seconde.
+
+\subsection{Pourquoi il faut une boucle asservie}
+
+Un oscillateur commandé en tension possède une caractéristique
+tension--fréquence \emph{fortement courbe} : appliquer une rampe de tension
+donne une rampe de fréquence tordue, avec plusieurs pour-cent d'erreur. Les
+réalisations amateur procèdent ainsi et se contentent de $100$~MHz d'excursion,
+où la courbure reste tolérable. Sur $2$~GHz, c'est impossible.
+
+La boucle à verrouillage de phase résout cela en \emph{asservissant} la
+fréquence : elle la compare en permanence à une référence à quartz et corrige.
+La linéarité ne dépend plus de l'oscillateur mais de la référence, stable à
+quelques parties par million.
+
+\subsection{Documentation à rassembler}
+
+\begin{enumerate}[nosep]
+\item La fiche technique de l'ADF4159 --- comprendre les registres de rampe
+      (déviation, pas, durée).
+\item Le guide utilisateur de la carte d'évaluation --- brochage,
+      alimentations, connecteur de programmation.
+\item Le logiciel \textbf{ADIsimPLL} du fabricant, gratuit. Il calcule le filtre
+      de boucle et \emph{simule la rampe}.
+\item La fiche technique du VCO --- plage de fréquence, sensibilité de réglage
+      (MHz/V), plage de tension admissible.
+\end{enumerate}
+
+\subsection{Installation}
+
+\begin{enumerate}
+\item Alimentez la carte PLL seule, sans le VCO. Vérifiez chaque tension au
+      multimètre.
+\item Installez le logiciel de contrôle. Vérifiez la communication : un
+      registre lu doit renvoyer ce qui y a été écrit.
+\item \textbf{Concevez le filtre de boucle avec ADIsimPLL}, en saisissant la
+      sensibilité réelle du VCO. Le logiciel fournit les valeurs des composants.
+      C'est la seule étape qui demande de la méthode ; le logiciel fait le
+      calcul.
+\item Connectez le VCO. Vérifiez d'abord qu'il oscille en lui appliquant une
+      tension de réglage fixe.
+\end{enumerate}
+
+\subsection{Test A1 --- le balayage existe-t-il ?}
+
+\textbf{Montage :} sortie du VCO (TP2) vers un analyseur de spectre, en mode
+mémoire de maximum. Si vous n'avez pas d'analyseur, passez directement au test
+A2, qui est plus important.
+
+\textbf{Attendu :} un plateau plat entre $6{,}0$ et $8{,}0$~GHz.
+
+\begin{center}
+\includegraphics[width=\textwidth]{fig_p1_tests.png}
+\end{center}
+
+\begin{critere}
+Plateau présent sur toute la plage, plat à $\pm 3$~dB, sans trou ni raie
+parasite plus de $20$~dB au-dessus du plateau.
+\end{critere}
+
+\subsection{Test A2 --- la linéarité, sans instrument hyperfréquence}
+
+C'est \textbf{le test décisif de toute la phase 1}. Son élégance tient à ce
+qu'il n'exige rien d'autre que le montage lui-même.
+
+\textbf{Principe.} On envoie la rampe dans un long câble et on mélange la sortie
+du câble avec la rampe d'origine. Le câble introduit un retard connu, donc une
+fréquence de battement connue. \emph{Si la rampe est parfaitement linéaire, ce
+battement est une raie pure.} Toute non-linéarité l'élargit. La largeur de la
+raie mesure donc directement la linéarité --- et cette raie est à $280$~kHz,
+c'est-à-dire dans la bande d'une carte son.
+
+\textbf{Montage :}
+\begin{enumerate}[nosep]
+\item Sortie VCO $\to$ diviseur.
+\item Voie 1 du diviseur $\to$ \textbf{3~m de câble} $\to$ entrée RF du
+      mélangeur.
+\item Voie 2 du diviseur $\to$ entrée OL du mélangeur.
+\item Sortie FI du mélangeur $\to$ filtre $\to$ numériseur.
+\end{enumerate}
+
+Aucune antenne, aucun amplificateur : uniquement le diviseur, le câble et le
+mélangeur.
+
+\textbf{Traitement :} enregistrez $100$ rampes, appliquez à chacune une
+transformée de Fourier, et mesurez la largeur de la raie à $-6$~dB.
+
+\begin{critere}
+La raie de battement se situe à $280 \pm 10$~kHz et sa largeur à $-6$~dB est
+inférieure à $\mathbf{3}$~\textbf{kHz}, soit $1\,\%$ de sa fréquence.\\[1mm]
+\emph{Justification :} pour un retard fixe, l'élargissement relatif de la raie
+est égal à la non-linéarité relative de la rampe. Une raie large de $1\,\%$
+correspond donc à $1\,\%$ de non-linéarité --- déjà acceptable pour
+$0{,}03$~mm de biais. Viser $0{,}3$~kHz ($0{,}1\,\%$) pour la marge complète.
+\end{critere}
+
+Si la raie est large de plusieurs dizaines de kilohertz, la boucle n'asservit
+pas correctement : reprenez le filtre de boucle dans ADIsimPLL, en réduisant la
+bande passante de boucle.
+
+%=======================================================================
+\section{Sous-système B --- la voie d'émission}
+%=======================================================================
+
+\textbf{Rôle.} Prélever une part du signal pour la référence, amplifier le
+reste et l'émettre.
+
+\textbf{Test B1 --- le diviseur.} Mesurable au LiteVNA jusqu'à $6{,}3$~GHz :
+$-3{,}5$~dB environ sur chaque voie, isolation meilleure que $18$~dB entre
+voies. Un écart franc signale un connecteur mal serré.
+
+\textbf{Test B2 --- l'amplificateur.} Alimentez-le, injectez un signal connu,
+mesurez le gain. Vérifiez le courant consommé : conforme à la fiche technique à
+$\pm 20\,\%$.
+
+\begin{attention}
+Ne branchez \textbf{jamais} un amplificateur sans charge à sa sortie : une
+sortie ouverte peut le détruire. Une charge $50\,\Omega$ vissée est la position
+de repos.
+\end{attention}
+
+%=======================================================================
+\section{Sous-système C --- la voie de réception}
+%=======================================================================
+
+\textbf{Rôle.} Amplifier l'écho, puis le mélanger à la référence.
+
+\textbf{Test C1 --- l'amplificateur faible bruit.} Même procédure que B2.
+
+\textbf{Test C2 --- le mélangeur.} Injectez deux signaux de fréquences voisines
+sur RF et OL, vérifiez que la sortie FI porte bien leur différence.
+
+\begin{attention}
+Un mélangeur exige un niveau de référence \emph{précis} sur son entrée OL
+(typiquement $+7$ à $+13$~dBm). Trop faible, il ne fonctionne pas ; trop fort,
+il sature. C'est le rôle des atténuateurs de la nomenclature : ajustez le
+niveau avec un atténuateur de $3$ ou $10$~dB plutôt qu'en modifiant le montage.
+\end{attention}
+
+%=======================================================================
+\section{Sous-système D --- bande de base et numérisation}
+%=======================================================================
+
+\textbf{Rôle.} Filtrer et amplifier le signal audio, puis le numériser en
+synchronisme avec la rampe.
+
+\textbf{La synchronisation est le point délicat.} Chaque enregistrement doit
+commencer au début d'une rampe, sinon les rampes successives ne peuvent pas être
+moyennées. La carte PLL fournit un signal indiquant le début de rampe :
+utilisez-le comme déclenchement du numériseur.
+
+\textbf{Test D1.} Injectez une sinusoïde connue de $20$~kHz à l'entrée. Vérifiez
+que la transformée de Fourier la restitue à la bonne fréquence et à la bonne
+amplitude, et que le plancher de bruit descend de $3$~dB chaque fois que l'on
+double le nombre de moyennes --- preuve que le moyennage est cohérent.
+
+%=======================================================================
+\section{Intégration progressive}
+%=======================================================================
+
+N'assemblez jamais tout d'un coup. À chaque étape, un seul élément nouveau.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{clp{7.4cm}}
+\toprule
+Étape & Ajout & Vérification \\
+\midrule
+1 & PLL + VCO & test A1 et A2 \\
+2 & + diviseur, câble de $3$~m & test A2 complet, raie à $280$~kHz \\
+3 & + bande de base et numériseur & test D1, moyennage cohérent \\
+4 & + amplificateur d'émission & niveau à TP3 conforme \\
+5 & + LNA & gain total mesuré \\
+6 & + antennes & premier écho réel \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%=======================================================================
+\section{Plan de test système}
+%=======================================================================
+
+\subsection{Test S1 --- justesse de l'échelle des distances}
+
+\textbf{Montage :} antennes face à une plaque métallique, à $100$, $200$ puis
+$300$~mm mesurés au réglet.
+
+\textbf{Attendu :} un pic unique dont la position croît linéairement avec la
+distance réelle (panneau C de la figure des tests).
+
+\begin{critere}
+Écart entre distance mesurée et distance réelle inférieur à $2\,\%$, et
+\emph{constant} en pourcentage. Un écart constant en pourcentage est une erreur
+de pente de rampe, corrigible par le calcul ; un écart variable révèle une
+non-linéarité résiduelle.
+\end{critere}
+
+\subsection{Test S2 --- calibration}
+
+Appliquez la même procédure que celle déjà en service sur le LiteVNA
+(\texttt{calibration.py}) : mesurez un court-circuit, un circuit ouvert et
+une charge au plan de référence, résolvez les trois termes d'erreur, puis
+vérifiez que la charge, une fois corrigée, tombe sous le plancher.
+
+\begin{critere}
+Après correction, la réflexion résiduelle de la charge est inférieure à
+$-30$~dB.
+\end{critere}
+
+\subsection{Test S3 --- comparaison au LiteVNA (le test final)}
+
+C'est celui qui répond à Q2. Choisissez une cible stable : d'abord une plaque
+métallique à $150$~mm, puis une lame de \textbf{PMMA} (plexiglas,
+$\eps = 2{,}6$) posée sur un bloc de polystyrène expansé, rien derrière. Une
+lame libre dans l'air a deux interfaces de coefficients égaux au signe près :
+ses deux échos ont donc la même amplitude, ce qui en fait la cible la plus
+facile qui soit. Une épaisseur de $50$~mm convient ; mesurez-la au pied à
+coulisse en cinq points, et demandez du PMMA \emph{coulé}, dont la tolérance
+d'épaisseur est bien meilleure que celle de l'extrudé.
+
+\begin{enumerate}[nosep]
+\item Mesurez $\Gamma(f)$ avec le LiteVNA calibré, sur $6{,}0$--$6{,}3$~GHz
+      (le haut de sa plage).
+\item Mesurez la même cible avec le banc FMCW, calibré, sur la même
+      sous-bande.
+\item Superposez amplitude et phase.
+\end{enumerate}
+
+\begin{critere}
+Sur la sous-bande commune $6{,}0$--$6{,}3$~GHz, l'écart entre les deux mesures
+est inférieur à $\mathbf{1}$~\textbf{dB} en amplitude et $\mathbf{5^\circ}$ en
+phase, après retrait d'un retard et d'un gain complexe constants.
+\end{critere}
+
+\begin{attention}
+Ce test est le plus important du guide. Il ne vérifie pas une performance : il
+vérifie que le banc mesure \emph{la même grandeur physique} qu'un instrument de
+métrologie déjà calibré. Tant qu'il n'est pas passé, aucun résultat du banc
+n'est exploitable.
+\end{attention}
+
+%=======================================================================
+\section{Décision de fin de phase}
+%=======================================================================
+
+\begin{table}[H]
+\centering
+\begin{tabular}{>{\raggedright\arraybackslash}p{5.0cm}%
+                >{\raggedright\arraybackslash}p{9.4cm}}
+\toprule
+Résultat & Conclusion \\
+\midrule
+A2 $< 0{,}3$~kHz, S3 conforme & \textbf{Risque levé.} Engager la phase 2
+  (prototype intégré) \\[1mm]
+A2 entre $0{,}3$ et $3$~kHz, S3 conforme & \textbf{Risque levé avec réserve.}
+  Utilisable ; améliorer la boucle en phase 2 \\[1mm]
+A2 $> 3$~kHz malgré plusieurs filtres de boucle & \textbf{Reconsidérer.}
+  Essayer une excursion réduite ($6$--$7$~GHz), ou une architecture à rampe
+  numérique \\[1mm]
+S3 non conforme, A2 conforme & Le problème est dans la réception ou la
+  calibration, non dans la rampe. Reprendre les tests C et S2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{attention}
+Une phase 1 qui conclut « non » en trois mois et quelques milliers d'euros est
+un \emph{succès} : elle évite une phase 2 d'un an. Le seul mauvais résultat est
+un résultat ambigu, faute d'avoir suivi les critères chiffrés.
+\end{attention}
+
+%=======================================================================
+\section{Pièges les plus fréquents}
+%=======================================================================
+
+\begin{enumerate}
+\item \textbf{Confondre plage de l'oscillateur et excursion balayée.} Un VCO
+      « $4$--$8$~GHz » ne garantit pas que la boucle balaie $2$~GHz d'un trait.
+      C'est précisément ce que teste A2.
+\item \textbf{Câble déplacé entre deux mesures.} Toute flexion change la phase
+      et ruine la calibration. Fixez les câbles avec du ruban adhésif.
+\item \textbf{Niveau OL incorrect.} Cause la plus fréquente d'un mélangeur qui
+      « ne marche pas ».
+\item \textbf{Absence de déclenchement.} Sans signal de début de rampe, le
+      moyennage détruit le signal au lieu de l'améliorer. Symptôme : le niveau
+      \emph{baisse} quand on moyenne.
+\item \textbf{Antennes trop proches.} À moins de $80$~mm, l'écho d'antenne et
+      celui de la cible se confondent. Travaillez d'abord à $150$--$300$~mm ;
+      la mesure à $20$~mm relève de la phase 2.
+\item \textbf{Vouloir tout mesurer d'un coup.} Le tableau d'intégration
+      progressive existe pour cela : un seul élément nouveau à la fois.
+\end{enumerate}

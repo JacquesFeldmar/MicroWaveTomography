@@ -1,0 +1,23 @@
+# ---------------------------------------------------------------- Python
+__pycache__/
+*.pyc
+
+# ---------------------------------------------------------------- donnees
+# Produites par les programmes, propres a chaque projet et a chaque banc :
+# des cables et des antennes differents donnent une calibration differente.
+**/calibration/
+**/mesures/
+**/qualification/
+**/captures/
+
+# ---------------------------------------------------------------- genere
+# Se reconstruit depuis les sources versionnees.
+cartilage/docs/ecrans/film_live/
+cartilage/docs/tutoriel/
+*.aux
+*.log
+*.out
+*.toc
+
+# ---------------------------------------------------------------- tiers
+outils/
