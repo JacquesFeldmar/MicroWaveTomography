@@ -12,6 +12,7 @@
 \usepackage{float}
 \usepackage{longtable}
 \usepackage{caption}
+\usepackage{upquote}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,patterns}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
@@ -48,7 +49,7 @@ Ces notes fixent les quatre choix de départ du projet de tomographie, mené en
 parallèle du projet cartilage avec le même LiteVNA ($1{,}4$--$6{,}3$~GHz). On
 mesure à la fois en réflexion ($S_{11}$) et en transmission ($S_{21}$), avec deux
 antennes face à face déplacées ensemble par une table XY pilotée par GRBL ;
-l'objet reste fixe. Le premier fantôme est un cube de bois de $40$~mm de côté.
+l'objet reste fixe. Le premier fantôme est un cube de bois de $30$~mm de côté.
 Les trois familles de reconstruction --- rétroprojection, méthode de Born,
 inversion itérative --- sont développées sur une acquisition commune. La
 spécification de la table en découle : ce n'est pas la finesse du pas qui la
@@ -111,13 +112,13 @@ bande~\cite{amineh2011}.
   \filldraw[fill=blue!15, draw=blue!60!black]
         (-0.25,-3.9) -- (0.25,-3.9) -- (0.9,-3.0) -- (-0.9,-3.0) -- cycle;
   % plaque de polystyrène et son support fixe
-  \fill[pattern=dots, pattern color=gray!70] (-4.4,-0.4) rectangle (4.6,-0.75);
-  \draw[gray] (-4.4,-0.4) rectangle (4.6,-0.75);
-  \draw[gray!70, line width=1.5pt] (4.6,-0.575) -- (5.4,-0.575) -- (5.4,-3.5);
+  \fill[pattern=dots, pattern color=gray!70] (-4.4,-0.3) rectangle (4.6,-0.65);
+  \draw[gray] (-4.4,-0.3) rectangle (4.6,-0.65);
+  \draw[gray!70, line width=1.5pt] (4.6,-0.475) -- (5.4,-0.475) -- (5.4,-3.5);
   % cube
-  \filldraw[fill=brown!35, draw=brown!60!black] (-0.4,-0.4) rectangle (0.4,0.4);
+  \filldraw[fill=brown!35, draw=brown!60!black] (-0.3,-0.3) rectangle (0.3,0.3);
   % cotes
-  \draw[gray, very thin] (0.9,3.0) -- (1.9,3.0) (0.4,0) -- (1.9,0)
+  \draw[gray, very thin] (0.9,3.0) -- (1.9,3.0) (0.3,0) -- (1.9,0)
         (0.9,-3.0) -- (1.9,-3.0);
   \draw[<->] (1.7,3.0) -- (1.7,0) node[midway, right] {$R \approx 150$~mm};
   \draw[<->] (1.7,0) -- (1.7,-3.0) node[pos=0.72, right] {$R$};
@@ -126,8 +127,8 @@ bande~\cite{amineh2011}.
   \node[anchor=west] at (-0.1,-4.35) {port 2 : reçoit la transmission ($S_{21}$)};
   \node[align=center, font=\footnotesize] at (-3.2,1.7)
         {étrier en C\\porté par la table XY};
-  \node[anchor=east, font=\footnotesize] at (-0.5,0.25) {cube de bois, 40~mm};
-  \node[font=\footnotesize] at (3.4,-1.05) {plaque de polystyrène};
+  \node[anchor=east, font=\footnotesize] at (-0.4,0.2) {cube de bois, 30~mm};
+  \node[font=\footnotesize] at (3.4,-0.95) {plaque de polystyrène};
   \node[anchor=west, font=\footnotesize] at (5.5,-2.6) {support fixe};
   % balayage
   \draw[<->, very thick, red!70!black] (-4.6,4.75) -- (-2.0,4.75)
@@ -146,64 +147,152 @@ projet cartilage.
 \end{implication}
 
 %=======================================================================
-\section{Le fantôme : un cube en bois de 40 mm}
+\section{Le fantôme : un cube en bois de 30 mm}
 \label{sec:fantome}
 %=======================================================================
 
-Le premier fantôme est un cube de bois de $40$~mm de côté. \textbf{C'est un bon
-choix, précisément parce que son contraste est faible} : la méthode de Born y
-reste valable, donc les trois reconstructions du \S\ref{sec:reconstructions}
-devraient donner le même résultat. Si elles concordent, la chaîne est validée.
+Le premier fantôme est un cube de bois de $30$~mm de côté, taillé dans un bois
+léger et sec --- épicéa, sapin, pin ou peuplier ---, droit de fil et sans nœud.
+\textbf{Son intérêt est son faible contraste} : tant que la permittivité du bois
+reste sous $2{,}1$ (\S\ref{sec:born}), la méthode de Born y est valable sur toute
+la bande, donc les trois reconstructions du
+\S\ref{sec:reconstructions} devraient donner le même résultat. Si elles
+concordent, la chaîne est validée.
 
-Pour une épaisseur $L = 40$~mm et une longueur d'onde $\lambda$ dans l'air :
+\subsection{Le critère de validité de Born}
+\label{sec:born}
+
+L'approximation de Born du premier ordre remplace le champ à l'intérieur de
+l'objet par le champ incident. Elle reste valable tant
+que~\cite{slaney1984}, \cite[éq.~24]{amineh2011}
 \[
-  \Gamma = \frac{1-\sqrt{\eps}}{1+\sqrt{\eps}}, \qquad
-  \Delta\tau = \frac{(\sqrt{\eps}-1)\,L}{c}, \qquad
-  \Delta\varphi = 360^\circ\,\frac{(\sqrt{\eps}-1)\,L}{\lambda}.
+  (n-1)\,a < \frac{\lambda_{\min}}{4}, \qquad n = \sqrt{\eps},
 \]
+où $a$ est le \textbf{rayon de la sphère qui englobe l'objet} et
+$\lambda_{\min}$ la longueur d'onde à la plus haute fréquence, soit
+$\lambda_{\min}/4 = 11{,}9$~mm à $6{,}3$~GHz. Pour un cube de côté $L$, cette
+sphère a pour rayon la demi-diagonale $a = L\sqrt{3}/2$, et non la
+demi-épaisseur $L/2$ : le critère est donc plus sévère qu'un simple déphasage à
+travers le cube. Au-delà, la détection reste bonne mais la forme se
+dégrade~\cite{amineh2011}.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{lcccc}
+\begin{tabular}{lccc}
 \toprule
-$\eps$ du bois & écho de la face & retard à travers 40~mm
-  & phase à $6{,}3$~GHz & phase à $1{,}4$~GHz \\
+ & $L = 40$~mm & {\boldmath $L = 30$}~\textbf{mm} & $L = 20$~mm \\
 \midrule
-$1{,}5$ (très sec) & $-19{,}9$~dB & $30$~ps & $68^\circ$ & $15^\circ$ \\
-$\mathbf{2{,}0}$ & $\mathbf{-15{,}3}$~\textbf{dB} & $\mathbf{55}$~\textbf{ps}
-  & $\mathbf{125^\circ}$ & $\mathbf{28^\circ}$ \\
-$3{,}0$ (humide) & $-11{,}4$~dB & $98$~ps & $222^\circ$ & $49^\circ$ \\
+rayon englobant $a$ & $34{,}6$~mm & $26{,}0$~mm & $17{,}3$~mm \\
+Born valable sur toute la bande si & $\eps < 1{,}80$
+  & {\boldmath $\eps < 2{,}13$} & $\eps < 2{,}85$ \\
+$(n-1)\,a$ pour $\eps = 2$ & $14{,}3$~mm : non & $10{,}8$~mm : oui
+  & $7{,}2$~mm : oui \\
+signal diffusé, relatif & $+7{,}5$~dB & référence & $-10{,}6$~dB \\
+côté / résolution latérale & $2{,}4$ & $1{,}8$ & $1{,}2$ \\
 \bottomrule
 \end{tabular}
-\caption{Ce que voit le LiteVNA d'un cube de bois de $40$~mm.}
+\caption{Choix de la taille du cube. Résolution latérale de $16{,}8$~mm pour une
+course de $300$~mm (\S\ref{sec:course}) ; signal diffusé proportionnel au volume,
+tant que l'objet reste petit devant la longueur d'onde.}
+\label{tab:taille}
+\end{table}
+
+\paragraph{Pourquoi 30 mm.}
+\begin{itemize}
+\item \textbf{40~mm sort du domaine de Born} dès $\eps = 2$ : le critère n'y
+      tient plus qu'en dessous de $5{,}2$~GHz.
+\item \textbf{30~mm y reste sur toute la bande} jusqu'à $\eps = 2{,}13$, avec
+      $10\,\%$ de marge à $\eps = 2$. Les bois légers et secs se situent de
+      l'ordre de $1{,}5$ à $2$ --- un ordre de grandeur seulement, qui dépend de
+      la densité, de l'humidité et du sens du fil, d'où la mesure du
+      \S\ref{sec:mesure_eps}.
+\item \textbf{20~mm offre plus de marge, mais diffuse environ $10$~dB de moins},
+      alors que la limite du banc est justement le résidu de soustraction de la
+      scène vide (\S\ref{sec:dimensionnement}). À $1{,}2$ fois la résolution
+      latérale, il n'apparaît plus que comme un point. Deux cubes de $20$~mm
+      serviront plus tard à mesurer la résolution latérale du banc, en faisant
+      varier leur écart.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccccl}
+\toprule
+$\eps$ du bois & écho de la face & $(n-1)\,a$ & Born valable jusqu'à & \\
+\midrule
+$1{,}5$ & $-19{,}9$~dB & $5{,}8$~mm & $12{,}8$~GHz & toute la bande \\
+$\mathbf{2{,}0}$ & $-15{,}3$~dB & $10{,}8$~mm & $7{,}0$~GHz & toute la bande \\
+$2{,}5$ & $-13{,}0$~dB & $15{,}1$~mm & $5{,}0$~GHz & haut de bande exclu \\
+$3{,}0$ & $-11{,}4$~dB & $19{,}0$~mm & $3{,}9$~GHz & moitié haute exclue \\
+\bottomrule
+\end{tabular}
+\caption{Cube de $30$~mm ($a = 26{,}0$~mm) : validité de Born selon la
+permittivité du bois, avec $f_{\max} = c/\bigl(4\,(n-1)\,a\bigr)$.}
 \label{tab:bois}
 \end{table}
 
-\paragraph{L'humidité compte.}
-L'approximation de Born suppose un déphasage à travers l'objet inférieur à
-$180^\circ$~\cite{kak1988}. À $\eps = 3$, on atteint $222^\circ$ en haut de bande
-et Born décroche. Il faut donc un bois sec, droit de fil et sans nœud ; il est
-aussi anisotrope, sa permittivité dépendant du sens du fil.
+La permittivité du bois décide donc de la validité de Born. Il faut la mesurer
+avant d'interpréter les images ; si elle dépasse $2{,}1$, on limite la
+reconstruction de Born à la bande où le critère tient. L'inversion itérative n'a
+pas cette limite.
 
-\paragraph{Le cube sera flou.}
-$40$~mm valent $0{,}84\,\lambda$ à $6{,}3$~GHz. Le long de l'axe des antennes, la
+\subsection{Le cube sera flou}
+
+$30$~mm valent $0{,}63\,\lambda$ à $6{,}3$~GHz. Le long de l'axe des antennes, la
 résolution vaut $c/2B = 30{,}6$~mm, ou $52$~mm avec une fenêtre de Hann : autant
-que le cube lui-même. Latéralement, elle vaut $15$ à $17$~mm
+que le cube lui-même. Les plans de reconstruction de la méthode de Born devant
+être espacés d'au moins cette résolution~\cite{amineh2011}, le cube tiendra dans
+un seul plan. Latéralement, la résolution vaut $15$ à $17$~mm
 (\S\ref{sec:course}). On verra une tache de la bonne taille, pas des arêtes
 nettes.
 
-\paragraph{Il mesure lui-même sa permittivité.}
-L'épaisseur étant connue, le retard en transmission donne directement
-\[
-  \eps = \left(1 + \frac{c\,\Delta\tau}{L}\right)^2, \qquad
-  \frac{\mathrm{d}\eps}{\mathrm{d}\Delta\tau} = \frac{2\sqrt{\eps}\,c}{L},
-\]
-soit $0{,}02$ sur $\eps$ par picoseconde d'erreur, autour de $\eps = 2$.
+\subsection{Mesurer la permittivité sur une planche}
+\label{sec:mesure_eps}
 
-\paragraph{La suite.}
-Percer le cube et remplir le trou d'eau ($\eps \simeq 78$, environ $20$~mm de
-diamètre) donnera un contraste fort. Born y échoue, et c'est là que l'inversion
-itérative montrera ce qu'elle apporte.
+\textbf{Le cube ne permet pas de mesurer sa propre permittivité.} La relation
+$\eps = (1 + c\,\Delta\tau/L)^2$ suppose que l'onde traverse l'objet comme une
+onde plane. Or, à mi-chemin entre deux antennes distantes de $d_1 + d_2$, la
+première zone de Fresnel a pour rayon
+\[
+  r_1 = \sqrt{\lambda\,\frac{d_1\,d_2}{d_1 + d_2}},
+\]
+soit $59{,}7$~mm à $6{,}3$~GHz et $126{,}7$~mm à $1{,}4$~GHz pour
+$d_1 = d_2 = 150$~mm. L'essentiel de l'onde contourne un cube de $30$~mm, et le
+retard mesuré est bien plus faible que celui que prédit la relation.
+
+On mesure donc la permittivité sur une \textbf{planche du même bois} :
+
+\begin{enumerate}
+\item \textbf{La planche} mesure environ $300 \times 300$~mm pour $30$~mm
+      d'épaisseur. Elle dépasse le diamètre de la première zone de Fresnel
+      ($253$~mm à $1{,}4$~GHz) : l'onde la traverse bien comme une onde plane.
+\item \textbf{La mesure} se fait avec l'outil du projet cartilage, en mode
+      inverse : l'épaisseur est connue, la permittivité est cherchée. On la lance
+      depuis le dossier \texttt{cartilage/}, avec la calibration et le fond de ce
+      banc :
+\begin{verbatim}
+python radar.py --mesure --nom bois30 --epaisseur 30.0 `
+                --substrat air --fond fond
+\end{verbatim}
+\item \textbf{Le contrôle} se fait sur le banc de tomographie : la même planche,
+      placée entre les deux antennes, retarde la transmission de $41{,}5$~ps à
+      $\eps = 2$. Une erreur de $1$~ps ne fait que $0{,}03$ sur $\eps$ : c'est une
+      mesure indépendante de la précédente.
+\item \textbf{Le cube est taillé dans cette même planche}, ce qui garantit la même
+      densité, la même humidité et le même sens du fil. Le bois étant anisotrope,
+      on oriente le fil du cube par rapport à la polarisation des antennes comme
+      celui de la planche l'était pendant la mesure.
+\item \textbf{Cube et planche sont conservés ensemble, au sec} : l'humidité fait
+      monter $\eps$.
+\end{enumerate}
+
+\subsection{La suite}
+
+Percer le cube et remplir le trou d'eau ($\eps \simeq 78$) donnera un contraste
+fort. Dans un cube de $30$~mm, le trou ne peut guère dépasser $10$ à $12$~mm de
+diamètre : on détectera l'inclusion sans en voir la forme, puisqu'elle est sous
+le plancher de résolution latérale de $11{,}9$~mm. Born y échoue, et c'est là que
+l'inversion itérative montrera ce qu'elle apporte.
 
 %=======================================================================
 \section{Les trois reconstructions}
@@ -489,10 +578,11 @@ transmitted signals \fg{}, \emph{IEEE Transactions on Antennas and
 Propagation}, vol.~59, n\textsuperscript{o}~12, p.~4777--4789, 2011,
 \url{https://doi.org/10.1109/TAP.2011.2165496}.
 
-\bibitem{kak1988}
-A.~C.~Kak et M.~Slaney, \emph{Principles of Computerized Tomographic Imaging},
-IEEE Press, 1988, chapitre~6 : \og Tomographic imaging with diffracting
-sources \fg{}.
+\bibitem{slaney1984}
+M.~Slaney, A.~C.~Kak et L.~E.~Larsen, \og Limitations of imaging with
+first-order diffraction tomography \fg{}, \emph{IEEE Transactions on Microwave
+Theory and Techniques}, vol.~32, n\textsuperscript{o}~8, p.~860--874, 1984,
+\url{https://doi.org/10.1109/TMTT.1984.1132783}.
 
 \bibitem{grbl}
 Grbl v1.1, documentation de l'interface,
