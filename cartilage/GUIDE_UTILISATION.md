@@ -269,6 +269,12 @@ Une plaque métallique à **deux** distances connues donne deux nombres :
 > confondre « à 200 mm » et « de 200 mm » donne exactement une pente double. C'est
 > arrivé, et cela a faussé une campagne entière.
 
+**Au-delà de 5 % d'écart sur la pente, `--plan` refuse d'écrire.** Le plan en place
+est conservé, le programme se termine avec le code 1, et il indique la commande à
+relancer. Le refus protège aussi contre un fichier plus ancien : si `plan.npz`
+contient une pente hors tolérance, `radar.py` l'écarte en le signalant et reprend la
+valeur par défaut (702 mm), et `--etat` l'affiche `ECARTE`.
+
 ### 2.6 Faut-il un kit d'étalons caractérisé ?
 
 Biais résultant sur une couche de 1 à 5 mm, simulation de la chaîne complète :
@@ -599,6 +605,7 @@ python qualification.py --centre-phase --nom essai --simu
 | **Verdict `--verifier` INSUFFISANT** | serrage des connecteurs, puis la charge 50 Ω |
 | **Conditionnement > 50** | deux étalons trop semblables → l'un est mal vissé |
 | **Distances toutes décalées** | refais `calibration.py --plan 100 200` |
+| **`--plan` : REFUSE**, ou **`--etat` : ECARTE** | les distances ne sont pas celles annoncées (« à » confondu avec « de ») : replace la plaque, refais `--plan 100 200` |
 
 ---
 

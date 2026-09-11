@@ -51,6 +51,12 @@ POINTS_DEFAUT = 201            # 101 points echantillonnent trop peu la rampe de
 # MESUREE le 21/08/2026 (plaque metallique a 100 puis 200 mm).
 # A refaire apres tout changement d'antenne ou de cable : calibration.py --plan
 PLAN_ANTENNE_MM = 702.0
+# Ecart de pente au-dela duquel une mesure du plan est REFUSEE. Une pente
+# fausse n'est jamais une erreur de plan : ce sont les distances annoncees qui
+# sont fausses, et l'offset qu'on en tirerait decalerait toutes les mesures.
+# Le 22/08/2026, une pente de -21,9 enregistree sans refus a place le plan a
+# 1748 mm : toutes les distances decalees d'un metre.
+PENTE_TOLERANCE = 0.05
 
 # ---------------------------------------------------------------- dossiers
 _ICI = os.path.dirname(os.path.abspath(__file__))
@@ -60,14 +66,28 @@ DOSSIER_QUAL = os.path.join(_ICI, "qualification")
 
 
 def plan_antenne():
-    """Valeur mesuree si calibration/plan.npz existe, sinon la constante."""
+    """Valeur mesuree si calibration/plan.npz existe, sinon la constante.
+
+    Un fichier dont la pente sort de PENTE_TOLERANCE est ecarte, avec un
+    avertissement : calibration.py --plan refuse de l'ecrire, il date donc
+    d'avant ce refus ou n'a pas ete produit par le programme.
+    """
     ch = os.path.join(DOSSIER_CAL, "plan.npz")
-    if os.path.exists(ch):
-        try:
-            return float(np.load(ch)["plan_mm"])
-        except Exception:
-            pass
-    return PLAN_ANTENNE_MM
+    if not os.path.exists(ch):
+        return PLAN_ANTENNE_MM
+    try:
+        z = np.load(ch)
+        plan = float(z["plan_mm"])
+        pente = float(z["pente"]) if "pente" in z else 1.0
+    except Exception:
+        return PLAN_ANTENNE_MM
+    if abs(pente - 1.0) > PENTE_TOLERANCE:
+        print(f"  [plan] ECARTE : {ch} donne une pente de {pente:.3f} "
+              f"(plan {plan:.1f} mm).")
+        print(f"         Valeur par defaut utilisee : {PLAN_ANTENNE_MM:.0f} mm."
+              "  Refais : python calibration.py --plan 100 200")
+        return PLAN_ANTENNE_MM
+    return plan
 
 
 # ======================================================================

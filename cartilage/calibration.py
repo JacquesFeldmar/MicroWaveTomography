@@ -26,6 +26,8 @@ DEUX CORRECTIONS, ET ELLES SONT DISTINCTES
         l'OFFSET  -- constant, c'est la position du plan de l'antenne.
      Un offset qui change entre les deux positions signale une erreur
      d'echelle, ou que les distances ne sont pas celles que l'on croit.
+     Une pente a plus de 5 % de 1 est REFUSEE : rien n'est ecrit, le plan
+     precedent reste en place.
 
 UTILISATION
     python calibration.py --sol                  # les trois etalons
@@ -219,19 +221,30 @@ def mode_plan(args):
     print(f"  Offsets .... {off[0]:+.1f} et {off[1]:+.1f} mm")
     print(f"  Plan de l'antenne : {plan:.1f} mm")
     ecart = abs(off[0] - off[1])
-    if abs(pente - 1.0) > 0.05:
-        print(f"\n  ATTENTION : pente a {pente:.3f}. Un ecart de plus de 5 %")
+    if ecart > 10:
+        print(f"\n  ATTENTION : offsets incoherents ({ecart:.0f} mm d'ecart).")
+    ch = os.path.join(DOSSIER_CAL, "plan.npz")
+    if abs(pente - 1.0) > noyau.PENTE_TOLERANCE:
+        print(f"\n  REFUSE : pente a {pente:.3f}. Un ecart de plus de "
+              f"{100 * noyau.PENTE_TOLERANCE:.0f} %")
         print("  n'est PAS une erreur de plan de reference. Verifie que les")
         print("  deux distances sont bien celles que tu crois -- confondre")
         print("  'a 200 mm' et 'de 200 mm' donne exactement une pente double.")
-    if ecart > 10:
-        print(f"\n  ATTENTION : offsets incoherents ({ecart:.0f} mm d'ecart).")
+        print()
+        if os.path.exists(ch):
+            print(f"  RIEN N'EST ECRIT. Le plan en place est conserve : {ch}")
+        else:
+            print("  RIEN N'EST ECRIT. radar.py garde la valeur par defaut, "
+                  f"{noyau.PLAN_ANTENNE_MM:.0f} mm.")
+        print(f"  Replace la plaque et relance : python calibration.py "
+              f"--plan {d1:.0f} {d2:.0f}")
+        return False
     os.makedirs(DOSSIER_CAL, exist_ok=True)
-    ch = os.path.join(DOSSIER_CAL, "plan.npz")
     np.savez_compressed(ch, plan_mm=plan, pente=pente,
                         distances=np.array([d1, d2]), pics=np.array(pics))
     print(f"\n  Ecrit : {ch}")
     print("  radar.py l'utilisera automatiquement.")
+    return True
 
 
 def mode_etat():
@@ -250,8 +263,13 @@ def mode_etat():
     pl = os.path.join(DOSSIER_CAL, "plan.npz")
     if os.path.exists(pl):
         z = np.load(pl)
-        print(f"  Plan d'antenne ... OK   {float(z['plan_mm']):.1f} mm "
-              f"(pente {float(z['pente']):.3f})")
+        pente = float(z["pente"])
+        if abs(pente - 1.0) > noyau.PENTE_TOLERANCE:
+            print(f"  Plan d'antenne ... ECARTE {float(z['plan_mm']):.1f} mm "
+                  f"(pente {pente:.3f}) -> --plan 100 200")
+        else:
+            print(f"  Plan d'antenne ... OK   {float(z['plan_mm']):.1f} mm "
+                  f"(pente {pente:.3f})")
     else:
         print(f"  Plan d'antenne ... ABSENT -> --plan 100 200 "
               f"(valeur par defaut {noyau.PLAN_ANTENNE_MM:.0f} mm)")
@@ -352,6 +370,7 @@ def mode_guide(args, p):
         mode_verifier(args)
         _journal("etape 3 (verification) : faite")
 
+    plan_refuse = False
     if _etape(4, total, "PLAN DE REFERENCE",
               ["la calibration place l'origine des distances au bout du cable,",
                "pas au plan rayonnant de l'antenne. La plaque metallique, vue a",
@@ -364,8 +383,11 @@ def mode_guide(args, p):
                "  deplacement de 200 mm. Confondre les deux double la pente",
                "  mesuree, et c'est deja arrive."]):
         args.plan = [100.0, 200.0]
-        mode_plan(args)
-        _journal("etape 4 (plan) : fait")
+        if mode_plan(args):
+            _journal("etape 4 (plan) : fait")
+        else:
+            plan_refuse = True
+            _journal("etape 4 (plan) : REFUSE, pente hors tolerance")
 
     if _etape(5, total, "FOND D'ANTENNE",
               ["la reflexion propre de l'antenne est ADDITIVE et absente du",
@@ -394,10 +416,16 @@ def mode_guide(args, p):
     print("=" * 74)
     mode_etat()
     print()
-    print("  Le banc est pret. Mesure d'une plaque de PMMA de 12 mm :")
-    print()
-    print("      python radar.py --mesure --nom pmma12 --fond fond \\")
-    print("             --milieu pmma --substrat air --max-ep 20")
+    if plan_refuse:
+        print("  Le banc N'EST PAS pret : le plan de reference a ete REFUSE a")
+        print("  l'etape 4. Replace la plaque a 100 puis 200 mm, et relance :")
+        print()
+        print("      python calibration.py --plan 100 200")
+    else:
+        print("  Le banc est pret. Mesure d'une plaque de PMMA de 12 mm :")
+        print()
+        print("      python radar.py --mesure --nom pmma12 --fond fond \\")
+        print("             --milieu pmma --substrat air --max-ep 20")
     print()
     print("  Journal de la session : calibration/journal.txt")
     _journal("--- session terminee ---")
@@ -437,7 +465,9 @@ def main():
     if args.verifier:
         return mode_verifier(args)
     if args.plan:
-        return mode_plan(args)
+        if not mode_plan(args):
+            sys.exit(1)
+        return
     if args.rejouer:
         ch = os.path.join(DOSSIER_CAL, f"{args.nom}.npz")
         if not os.path.exists(ch):
