@@ -1,0 +1,502 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,patterns}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Mêmes encadrés que le document de théorie du projet cartilage
+\newsavebox{\implbox}
+\newenvironment{implication}%
+  {\par\medskip\begin{lrbox}{\implbox}\begin{minipage}{0.95\textwidth}%
+   \textbf{Lien avec la pratique.}\itshape\ }%
+  {\end{minipage}\end{lrbox}\noindent\fbox{\usebox{\implbox}}\par\medskip}
+
+\newsavebox{\critbox}
+\newenvironment{critere}%
+  {\par\medskip\begin{lrbox}{\critbox}\begin{minipage}{0.95\textwidth}%
+   \textbf{Critère de réussite.}\ }%
+  {\end{minipage}\end{lrbox}\noindent\fbox{\usebox{\critbox}}\par\medskip}
+
+\newcommand{\eps}{\varepsilon_r}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\jj}{\mathrm{j}}
+
+\title{\bfseries Tomographie micro-onde sur fantôme\\[2mm]
+       \large Cadrage du banc : mesures, fantôme, reconstructions\\
+       et spécification de la table XY}
+\author{Notes de travail --- projet LiteVNA}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Ces notes fixent les quatre choix de départ du projet de tomographie, mené en
+parallèle du projet cartilage avec le même LiteVNA ($1{,}4$--$6{,}3$~GHz). On
+mesure à la fois en réflexion ($S_{11}$) et en transmission ($S_{21}$), avec deux
+antennes face à face déplacées ensemble par une table XY pilotée par GRBL ;
+l'objet reste fixe. Le premier fantôme est un cube de bois de $40$~mm de côté.
+Les trois familles de reconstruction --- rétroprojection, méthode de Born,
+inversion itérative --- sont développées sur une acquisition commune. La
+spécification de la table en découle : ce n'est pas la finesse du pas qui la
+dimensionne, mais la soustraction de la scène vide, qui exige une répétabilité
+de position de l'ordre de $0{,}1$~mm.
+\end{abstract}
+
+\tableofcontents
+\bigskip\hrule\bigskip
+
+%=======================================================================
+\section{Réflexion et transmission : les deux}
+\label{sec:mesures}
+%=======================================================================
+
+Une image formée par une seule antenne déplacée devant l'objet, en réflexion ---
+l'analogue du mode~B de l'échographie --- relève déjà de la tomographie en
+réflexion. Mais la configuration la plus riche utilise deux antennes, et le
+LiteVNA la mesure nativement :
+
+\begin{itemize}
+\item \textbf{l'antenne du port~1 émet et reçoit son écho} : c'est $S_{11}$, la
+      réflexion ;
+\item \textbf{l'antenne du port~2, en face, reçoit ce qui traverse} : c'est
+      $S_{21}$, la transmission ;
+\item les deux sont mesurés \textbf{dans le même balayage}. Le LiteVNA ne mesure
+      ni $S_{22}$ ni $S_{12}$ : le port~2 ne fait que recevoir.
+\end{itemize}
+
+\paragraph{Pourquoi les deux se complètent.}
+Dans l'approximation de Born, une mesure faite avec une onde incidente de
+direction $\hat{\imath}$ et reçue dans la direction $\hat{s}$ renseigne la
+composante de Fourier spatiale du contraste de permittivité au vecteur
+\[
+  \mathbf{K} = k\,(\hat{s} - \hat{\imath}), \qquad k = \frac{2\pi f}{c}.
+\]
+En réflexion ($\hat{s} = -\hat{\imath}$), $|\mathbf{K}| = 2k$ : ce sont les
+hautes fréquences spatiales, c'est-à-dire les \textbf{interfaces} --- les faces
+et les arêtes du cube. En transmission à faible angle
+($\hat{s} \simeq \hat{\imath}$), $|\mathbf{K}|$ reste petit : ce sont les basses
+fréquences spatiales, c'est-à-dire la \textbf{permittivité moyenne} traversée.
+Une antenne seule ne remplit que la première partie de ce domaine.
+
+C'est la configuration de l'holographie micro-onde en champ proche : deux
+antennes face à face, balayées ensemble dans deux plans parallèles de part et
+d'autre de l'objet, qui enregistrent réflexion et transmission sur une large
+bande~\cite{amineh2011}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth, font=\small]
+  % axe des antennes
+  \draw[dash dot, gray] (0,3.0) -- (0,-3.0);
+  % étrier en C
+  \draw[line width=2.2pt, gray!70] (-0.25,3.9) -- (-5.2,3.9) -- (-5.2,-3.9)
+        -- (-0.25,-3.9);
+  % antennes, ouverture tournée vers l'objet
+  \filldraw[fill=blue!15, draw=blue!60!black]
+        (-0.25,3.9) -- (0.25,3.9) -- (0.9,3.0) -- (-0.9,3.0) -- cycle;
+  \filldraw[fill=blue!15, draw=blue!60!black]
+        (-0.25,-3.9) -- (0.25,-3.9) -- (0.9,-3.0) -- (-0.9,-3.0) -- cycle;
+  % plaque de polystyrène et son support fixe
+  \fill[pattern=dots, pattern color=gray!70] (-4.4,-0.4) rectangle (4.6,-0.75);
+  \draw[gray] (-4.4,-0.4) rectangle (4.6,-0.75);
+  \draw[gray!70, line width=1.5pt] (4.6,-0.575) -- (5.4,-0.575) -- (5.4,-3.5);
+  % cube
+  \filldraw[fill=brown!35, draw=brown!60!black] (-0.4,-0.4) rectangle (0.4,0.4);
+  % cotes
+  \draw[gray, very thin] (0.9,3.0) -- (1.9,3.0) (0.4,0) -- (1.9,0)
+        (0.9,-3.0) -- (1.9,-3.0);
+  \draw[<->] (1.7,3.0) -- (1.7,0) node[midway, right] {$R \approx 150$~mm};
+  \draw[<->] (1.7,0) -- (1.7,-3.0) node[pos=0.72, right] {$R$};
+  % étiquettes
+  \node[anchor=west] at (-0.1,4.35) {port 1 : émet et reçoit l'écho ($S_{11}$)};
+  \node[anchor=west] at (-0.1,-4.35) {port 2 : reçoit la transmission ($S_{21}$)};
+  \node[align=center, font=\footnotesize] at (-3.2,1.7)
+        {étrier en C\\porté par la table XY};
+  \node[anchor=east, font=\footnotesize] at (-0.5,0.25) {cube de bois, 40~mm};
+  \node[font=\footnotesize] at (3.4,-1.05) {plaque de polystyrène};
+  \node[anchor=west, font=\footnotesize] at (5.5,-2.6) {support fixe};
+  % balayage
+  \draw[<->, very thick, red!70!black] (-4.6,4.75) -- (-2.0,4.75)
+        node[midway, above] {balayage X, et Y hors du plan};
+\end{tikzpicture}
+\caption{Configuration retenue, vue de côté. Les deux antennes, solidaires,
+balayent ensemble ; le cube reste fixe sur une plaque de polystyrène
+($\eps \simeq 1{,}02$) tenue hors de la zone balayée.}
+\label{fig:config}
+\end{figure}
+
+\begin{implication}
+\texttt{commun/instrument.py} ne rend aujourd'hui que $S_{11}$. Il faudra y
+exposer $S_{21}$, que l'instrument fournit déjà, sans changer ce que voit le
+projet cartilage.
+\end{implication}
+
+%=======================================================================
+\section{Le fantôme : un cube en bois de 40 mm}
+\label{sec:fantome}
+%=======================================================================
+
+Le premier fantôme est un cube de bois de $40$~mm de côté. \textbf{C'est un bon
+choix, précisément parce que son contraste est faible} : la méthode de Born y
+reste valable, donc les trois reconstructions du \S\ref{sec:reconstructions}
+devraient donner le même résultat. Si elles concordent, la chaîne est validée.
+
+Pour une épaisseur $L = 40$~mm et une longueur d'onde $\lambda$ dans l'air :
+\[
+  \Gamma = \frac{1-\sqrt{\eps}}{1+\sqrt{\eps}}, \qquad
+  \Delta\tau = \frac{(\sqrt{\eps}-1)\,L}{c}, \qquad
+  \Delta\varphi = 360^\circ\,\frac{(\sqrt{\eps}-1)\,L}{\lambda}.
+\]
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+$\eps$ du bois & écho de la face & retard à travers 40~mm
+  & phase à $6{,}3$~GHz & phase à $1{,}4$~GHz \\
+\midrule
+$1{,}5$ (très sec) & $-19{,}9$~dB & $30$~ps & $68^\circ$ & $15^\circ$ \\
+$\mathbf{2{,}0}$ & $\mathbf{-15{,}3}$~\textbf{dB} & $\mathbf{55}$~\textbf{ps}
+  & $\mathbf{125^\circ}$ & $\mathbf{28^\circ}$ \\
+$3{,}0$ (humide) & $-11{,}4$~dB & $98$~ps & $222^\circ$ & $49^\circ$ \\
+\bottomrule
+\end{tabular}
+\caption{Ce que voit le LiteVNA d'un cube de bois de $40$~mm.}
+\label{tab:bois}
+\end{table}
+
+\paragraph{L'humidité compte.}
+L'approximation de Born suppose un déphasage à travers l'objet inférieur à
+$180^\circ$~\cite{kak1988}. À $\eps = 3$, on atteint $222^\circ$ en haut de bande
+et Born décroche. Il faut donc un bois sec, droit de fil et sans nœud ; il est
+aussi anisotrope, sa permittivité dépendant du sens du fil.
+
+\paragraph{Le cube sera flou.}
+$40$~mm valent $0{,}84\,\lambda$ à $6{,}3$~GHz. Le long de l'axe des antennes, la
+résolution vaut $c/2B = 30{,}6$~mm, ou $52$~mm avec une fenêtre de Hann : autant
+que le cube lui-même. Latéralement, elle vaut $15$ à $17$~mm
+(\S\ref{sec:course}). On verra une tache de la bonne taille, pas des arêtes
+nettes.
+
+\paragraph{Il mesure lui-même sa permittivité.}
+L'épaisseur étant connue, le retard en transmission donne directement
+\[
+  \eps = \left(1 + \frac{c\,\Delta\tau}{L}\right)^2, \qquad
+  \frac{\mathrm{d}\eps}{\mathrm{d}\Delta\tau} = \frac{2\sqrt{\eps}\,c}{L},
+\]
+soit $0{,}02$ sur $\eps$ par picoseconde d'erreur, autour de $\eps = 2$.
+
+\paragraph{La suite.}
+Percer le cube et remplir le trou d'eau ($\eps \simeq 78$, environ $20$~mm de
+diamètre) donnera un contraste fort. Born y échoue, et c'est là que l'inversion
+itérative montrera ce qu'elle apporte.
+
+%=======================================================================
+\section{Les trois reconstructions}
+\label{sec:reconstructions}
+%=======================================================================
+
+Les trois familles sont développées :
+
+\begin{description}[style=nextline, leftmargin=1.2em]
+\item[Rétroprojection (sommation cohérente)]
+  Pour chaque point de l'image, on additionne les mesures corrigées du retard
+  entre les antennes et ce point. Elle ne demande que les positions et la bande,
+  aucun modèle du milieu : c'est la première à écrire, elle valide la géométrie.
+\item[Méthode de Born (holographie, tomographie par diffraction)]
+  Elle linéarise la relation entre le contraste de permittivité et le champ
+  diffusé, et l'inverse dans le domaine de Fourier. Elle est quantitative tant
+  que le contraste reste faible (\S\ref{sec:fantome}).
+\item[Inversion itérative]
+  Elle résout le problème non linéaire, par exemple par la méthode de Born
+  itérative distordue ou par Gauss--Newton, en partant de la solution de Born.
+  C'est la seule valable à fort contraste, la plus coûteuse, et la plus
+  exigeante sur l'étalonnage.
+\end{description}
+
+Les trois peuvent partager \textbf{une seule acquisition}, à condition qu'elle
+contienne, pour chaque position :
+
+\begin{itemize}
+\item $S_{11}$ et $S_{21}$ complexes sur toute la bande, enregistrés
+      \textbf{bruts} ;
+\item \textbf{le même balayage sans l'objet}, aux mêmes positions : Born et
+      l'inversion itérative ont besoin de ce champ incident ;
+\item les positions réellement atteintes.
+\end{itemize}
+
+%=======================================================================
+\section{Spécification de la table XY}
+\label{sec:table}
+%=======================================================================
+
+\subsection{Hypothèses}
+
+\begin{itemize}
+\item Les deux antennes sont face à face sur un \textbf{étrier rigide en C},
+      porté par le chariot (figure~\ref{fig:config}).
+\item Le cube est fixe entre elles, sur une plaque de polystyrène expansé.
+\item Environ $R = 150$~mm entre chaque antenne et le centre du cube, au-delà du
+      champ lointain d'une antenne de $50$~mm ($2D^2/\lambda = 105$~mm à
+      $6{,}3$~GHz).
+\item Bande $1{,}4$--$6{,}3$~GHz, donc $\lambda = 47{,}6$~mm en haut de bande.
+\item Table XY à moteurs NEMA~17, commandée par GRBL.
+\end{itemize}
+
+\subsection{Ce qui dimensionne la table}
+\label{sec:dimensionnement}
+
+Une erreur de position $\delta$ le long de l'axe des antennes déphase la mesure
+de
+\[
+  \delta\varphi_R = \frac{4\pi\,\delta}{\lambda} = 15{,}1^\circ/\text{mm}
+  \quad\text{en réflexion}, \qquad
+  \delta\varphi_T = \frac{2\pi\,\delta}{\lambda} = 7{,}6^\circ/\text{mm}
+  \quad\text{en transmission}.
+\]
+
+Pour la \emph{focalisation} de l'image, c'est peu : une erreur de phase
+quadratique moyenne de $22{,}5^\circ$ ne coûte que $0{,}67$~dB de gain, et
+correspond à $1{,}5$~mm en réflexion. \textbf{Ce qui dimensionne la table, c'est
+la soustraction de la scène vide.} Un écho parasite $B$ --- le bâti, le support
+--- retranché avec une erreur de phase $\delta\varphi$ laisse un résidu
+$|B|\,|1-\ee^{\jj\delta\varphi}| \simeq |B|\,\delta\varphi$. Pour garder ce résidu
+sous $3\,\%$, la même cible que pour le projet cartilage, il faut
+\[
+  \delta \le \frac{0{,}03\,\lambda}{4\pi} = 0{,}11~\text{mm en réflexion},
+  \qquad
+  \delta \le \frac{0{,}03\,\lambda}{2\pi} = 0{,}23~\text{mm en transmission}.
+\]
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+\toprule
+erreur de & \multicolumn{2}{c}{erreur de phase} & résidu de soustraction \\
+\cmidrule(lr){2-3}
+position & réflexion & transmission & en réflexion \\
+\midrule
+$0{,}05$~mm & $0{,}76^\circ$ & $0{,}38^\circ$ & $1{,}3\,\%$ \\
+$0{,}10$~mm & $1{,}51^\circ$ & $0{,}76^\circ$ & $2{,}6\,\%$ \\
+$0{,}25$~mm & $3{,}78^\circ$ & $1{,}89^\circ$ & $6{,}6\,\%$ \\
+$0{,}50$~mm & $7{,}57^\circ$ & $3{,}78^\circ$ & $13{,}2\,\%$ \\
+$1{,}00$~mm & $15{,}1^\circ$ & $7{,}57^\circ$ & $26{,}4\,\%$ \\
+$2{,}00$~mm & $30{,}3^\circ$ & $15{,}1^\circ$ & $52{,}8\,\%$ \\
+\bottomrule
+\end{tabular}
+\caption{Effet d'une erreur de position à $6{,}3$~GHz.}
+\label{tab:phase}
+\end{table}
+
+\subsection{Spécification}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.3cm}
+                  >{\raggedright\arraybackslash}p{5.0cm}
+                  >{\raggedright\arraybackslash}p{6.3cm}}
+\caption{Spécification de la table XY.}\label{tab:spec}\\
+\toprule
+Grandeur & Spécification & Pourquoi \\
+\midrule
+\endfirsthead
+\toprule
+Grandeur & Spécification & Pourquoi \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\textbf{Course utile \mbox{X × Y}} & $\ge 300 \times 300$~mm ; $400 \times 400$~mm si
+  possible & résolution latérale à $6{,}3$~GHz : $16{,}8$~mm avec $300$~mm de
+  course, $14{,}9$~mm avec $400$ (\S\ref{sec:course}) \\
+\addlinespace
+\textbf{Pas de balayage} & $10$~mm & $\le \lambda/4 = 11{,}9$~mm : pas de lobes de
+  réseau, quel que soit l'angle \\
+\addlinespace
+\textbf{Répétabilité}, même sens d'approche & $\le \pm 0{,}05$~mm visé,
+  $\pm 0{,}1$~mm au maximum & soustraction de la scène vide à $3\,\%$
+  (\S\ref{sec:dimensionnement}) \\
+\addlinespace
+\textbf{Jeu à l'inversion} & $\le 0{,}05$~mm, \textbf{ou toujours approcher
+  dans le même sens} & un balayage en serpentin inverse le sens une ligne sur
+  deux \\
+\addlinespace
+\textbf{Exactitude sur la course} & $\le \pm 0{,}25$~mm, après étalonnage des
+  pas/mm (\texttt{\$100}, \texttt{\$101}) & fidélité géométrique de l'image ;
+  $3{,}8^\circ$ au pire, négligeable \\
+\addlinespace
+\textbf{Équerrage X/Y} & $\le 0{,}1^\circ$, soit $0{,}5$~mm sur $300$~mm &
+  distorsion de l'image \\
+\addlinespace
+\textbf{Planéité} le long de l'axe des antennes & $\le \pm 0{,}2$~mm sur toute
+  la course & répétable, donc retirée par la scène vide \\
+\addlinespace
+\textbf{Rigidité de l'étrier} : mouvement relatif des deux antennes &
+  $\le 0{,}1$~mm, accélérations comprises & le champ incident en $S_{21}$ doit
+  rester identique à chaque position ($0{,}76^\circ$) \\
+\addlinespace
+\textbf{Stabilisation} après l'arrêt & $< 0{,}05$~mm avant le balayage, en
+  $\le 0{,}5$~s & $0{,}05$~mm de mouvement pendant les $0{,}25$~s d'un balayage
+  valent $0{,}76^\circ$ \\
+\addlinespace
+\textbf{Résolution de commande} & $\le 0{,}05$~mm & facile : courroie GT2 à
+  $20$~dents au $1/16$ de pas, $0{,}0125$~mm \\
+\addlinespace
+\textbf{Vitesse, accélération} & $\sim 3000$~mm/min (\texttt{\$110},
+  \texttt{\$111}) ; $200$ à $500$~mm/s² (\texttt{\$120}, \texttt{\$121}) & pas
+  critiques ; rester modéré pour ne pas faire osciller l'étrier \\
+\addlinespace
+\textbf{Prise d'origine} & fins de course, \texttt{\$22=1}, répétabilité
+  $\le 0{,}05$~mm ; nouvelle prise d'origine en fin de campagne, écart
+  $\le 0{,}1$~mm & GRBL fonctionne en boucle ouverte : c'est le seul moyen de
+  détecter des pas perdus \\
+\addlinespace
+\textbf{Moteurs à l'arrêt} & \textbf{toujours alimentés} (\texttt{\$1=255}) &
+  un moteur coupé retombe sur le pas entier le plus proche, jusqu'à
+  $\pm 0{,}1$~mm sur GT2 ; si la vibration de maintien gêne, prendre des
+  pilotes TMC2209 \\
+\addlinespace
+\textbf{Câbles coaxiaux} & phase stable à la flexion, $\le \pm 2^\circ$ à
+  $6{,}3$~GHz sur le mouvement réel ; chaîne porte-câbles, rayon de courbure
+  $\ge 10\times$ le diamètre & $2^\circ$ équivalent à $0{,}13$~mm en réflexion.
+  \textbf{C'est le prix de déplacer les antennes plutôt que l'objet} : les
+  câbles comptent autant que la mécanique \\
+\addlinespace
+\textbf{Environnement} & aucun métal du bâti dans les faisceaux ; support du
+  cube en polystyrène ($\eps \simeq 1{,}02$) & échos parasites \\
+\end{longtable}
+
+\subsection{Course et résolution latérale}
+\label{sec:course}
+
+Avec une course $L$ vue à la distance $R$, l'ouverture angulaire totale $\theta$
+et la résolution latérale en réflexion valent
+\[
+  \tan\frac{\theta}{2} = \frac{L}{2R}, \qquad
+  \delta x = \frac{\lambda}{4\sin(\theta/2)} \;\ge\; \frac{\lambda}{4}
+  = 11{,}9~\text{mm}.
+\]
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+\toprule
+course $L$ & demi-angle $\theta/2$ & $\delta x$ à $6{,}3$~GHz & \\
+\midrule
+$200$~mm & $33{,}7^\circ$ & $21{,}4$~mm & \\
+$\mathbf{300}$~\textbf{mm} & $\mathbf{45{,}0^\circ}$ & $\mathbf{16{,}8}$~\textbf{mm}
+  & minimum retenu \\
+$400$~mm & $53{,}1^\circ$ & $14{,}9$~mm & si possible \\
+$600$~mm & $63{,}4^\circ$ & $13{,}3$~mm & peu de gain \\
+\bottomrule
+\end{tabular}
+\caption{Résolution latérale selon la course, pour $R = 150$~mm.}
+\label{tab:course}
+\end{table}
+
+Au-delà de $400$~mm, le gain est faible, et l'antenne doit encore voir le cube à
+$45$--$53^\circ$ hors de son axe : son diagramme de rayonnement borne l'ouverture
+réellement utile. Le pas de $10$~mm reste sous $\lambda/4$ même dans ce cas ;
+$\lambda/(4\sin 45^\circ) = 16{,}8$~mm suffirait si l'on se limitait à
+$\pm 45^\circ$.
+
+\subsection{Matériel : ordres de grandeur}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcc}
+\toprule
+transmission & répétabilité & jeu \\
+\midrule
+courroie GT2 & $0{,}05$ à $0{,}1$~mm & $0{,}1$ à $0{,}3$~mm selon la tension \\
+vis trapézoïdale T8, écrou anti-jeu & $0{,}02$ à $0{,}05$~mm & --- \\
+vis à billes SFU1204 & environ $0{,}01$~mm & --- \\
+\bottomrule
+\end{tabular}
+\caption{Ordres de grandeur, à confirmer par le test T1.}
+\label{tab:materiel}
+\end{table}
+
+La courroie suffit si l'on approche toujours chaque point dans le même sens.
+
+\subsection{Déroulement d'un balayage}
+
+\paragraph{Arrêt, mesure, marche.}
+Jamais de mouvement pendant un balayage. Pour chaque position : envoyer
+\texttt{G90 G0 X\ldots{} Y\ldots}, puis \texttt{G4 P0.5}. GRBL vide son tampon de
+mouvements avant d'exécuter la temporisation, et ne répond \texttt{ok} au
+\texttt{G4} qu'une fois le mouvement fini et la pause écoulée~\cite{grbl} : on
+lance alors le balayage du LiteVNA. L'autre solution est d'interroger
+\texttt{?} jusqu'à l'état \texttt{<Idle>}.
+
+\paragraph{Durée.}
+$31 \times 31 = 961$ positions à environ $2$~s chacune (déplacement, $0{,}5$~s
+d'attente, quatre balayages moyennés), plus les retours de ligne : \textbf{environ
+$35$~minutes}, et le double avec la scène vide.
+
+\paragraph{Dérive.}
+Sur une telle durée, il faut suivre la dérive du LiteVNA : revenir sur un point de
+référence au début de chaque ligne et corriger les mesures de la ligne par ce
+point.
+
+\subsection{Tests de réception}
+
+\begin{enumerate}[label=\textbf{T\arabic*}]
+\item \textbf{Répétabilité et jeu.} Un comparateur au $1/100$~mm, $30$ approches
+      du même point dans le même sens, puis dans les deux sens.
+\item \textbf{Exactitude.} Un réglet ou un pied à coulisse sur toute la course :
+      on règle les pas/mm, puis on vérifie l'exactitude.
+\item \textbf{Stabilisation.} Le VNA comme capteur de vibration : une plaque
+      métallique fixe, des balayages enchaînés juste après l'arrêt ; le temps que
+      met la phase à se stabiliser donne l'attente nécessaire.
+\item \textbf{Réception du banc.} Deux balayages complets de la scène vide,
+      soustraits position par position.
+\end{enumerate}
+
+\begin{critere}
+Au test T4, le résidu de soustraction reste sous $3\,\%$ à chaque position. Ce
+seul test couvre à la fois la mécanique, les câbles et la dérive de
+l'instrument.
+\end{critere}
+
+\subsection{Limite : un seul angle de vue}
+
+Un balayage plan ne regarde le cube que dans une seule direction. Le long de l'axe
+des antennes, la résolution ne vient que de la bande passante, soit $30$ à
+$52$~mm, autant que le cube. Pour ajouter des angles de vue plus tard, la voie~Z
+de GRBL peut piloter un plateau tournant, réglé en pas par degré, sans changer de
+contrôleur.
+
+%=======================================================================
+\begin{thebibliography}{9}
+%=======================================================================
+\bibitem{amineh2011}
+R.~K.~Amineh, M.~Ravan, A.~Khalatpour et N.~K.~Nikolova,
+\og Three-dimensional near-field microwave holography using reflected and
+transmitted signals \fg{}, \emph{IEEE Transactions on Antennas and
+Propagation}, vol.~59, n\textsuperscript{o}~12, p.~4777--4789, 2011,
+\url{https://doi.org/10.1109/TAP.2011.2165496}.
+
+\bibitem{kak1988}
+A.~C.~Kak et M.~Slaney, \emph{Principles of Computerized Tomographic Imaging},
+IEEE Press, 1988, chapitre~6 : \og Tomographic imaging with diffracting
+sources \fg{}.
+
+\bibitem{grbl}
+Grbl v1.1, documentation de l'interface,
+\url{https://github.com/gnea/grbl/wiki/Grbl-v1.1-Interface}.
+\end{thebibliography}
+
+\end{document}
