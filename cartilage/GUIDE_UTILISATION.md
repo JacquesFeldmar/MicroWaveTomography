@@ -269,6 +269,28 @@ Une plaque métallique à **deux** distances connues donne deux nombres :
 > confondre « à 200 mm » et « de 200 mm » donne exactement une pente double. C'est
 > arrivé, et cela a faussé une campagne entière.
 
+**La plaque doit couvrir la première zone de Fresnel.** Elle ne se comporte en
+miroir que si son côté dépasse √(2 λ d), où λ est la longueur d'onde au **bas**
+de la bande — 214 mm à 1,4 GHz — et d la distance :
+
+| Distance de la plaque | Côté minimal |
+|---|---|
+| 100 mm | 207 mm |
+| 200 mm | 293 mm |
+| 300 mm | 358 mm |
+| 600 mm | 507 mm |
+| 1200 mm | 717 mm |
+
+Les 300 × 300 mm valent donc jusqu'à environ 210 mm, ce qui couvre la séquence
+`--plan 100 200`. **Au-delà, il faut une plaque plus grande** : `--plan` annonce
+la taille requise avant la mesure.
+
+Une plaque trop petite tronque le bas de la bande, et d'autant plus qu'elle est
+loin. La distance apparente en est biaisée, et l'écho décroît plus vite que les
+6 dB par doublement de distance d'un miroir — c'est d'ailleurs le contrôle le
+plus simple : si l'amplitude chute de 12 dB quand la distance double, la plaque
+est trop petite.
+
 **Au-delà de 5 % d'écart sur la pente, `--plan` refuse d'écrire.** Le plan en place
 est conservé, le programme se termine avec le code 1, et il indique la commande à
 relancer. Le refus protège aussi contre un fichier plus ancien : si `plan.npz`

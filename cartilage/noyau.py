@@ -33,7 +33,8 @@ if _RACINE not in sys.path:
     sys.path.insert(0, _RACINE)
 
 from commun.physique import (c, eps0, MILIEUX, milieu,  # noqa: E402,F401
-                             indice, profil_distance, resolution_mm)
+                             indice, profil_distance, resolution_mm,
+                             cote_plaque_mm)
 from commun.instrument import (PORT_VNA, balayage,  # noqa: E402,F401
                                acquiert, enregistre, relit, ouvrir_reel,
                                ReseauSimule as _Reseau)

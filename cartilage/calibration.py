@@ -190,8 +190,12 @@ def mode_plan(args):
     print(f"  PLAN DE REFERENCE -- plaque metallique a {d1:.0f} puis "
           f"{d2:.0f} mm")
     print("=" * 74)
+    cote = noyau.cote_plaque_mm(max(d1, d2), args.start * 1e9)
     print("  Mesure les distances au reglet DEPUIS LA FACE DE L'ANTENNE.")
-    print("  Plaque d'au moins 300 x 300 mm, rien d'autre dans l'axe.\n")
+    print(f"  Plaque d'au moins {cote:.0f} x {cote:.0f} mm a "
+          f"{max(d1, d2):.0f} mm")
+    print("  (premiere zone de Fresnel au bas de la bande).")
+    print("  Rien d'autre dans l'axe.\n")
 
     vna = noyau.ouvrir_vna(
         args.start, args.stop, args.points,
@@ -377,6 +381,8 @@ def mode_guide(args, p):
                "deux distances connues, fait le report."],
               ["Visse l'ANTENNE au bout du cable.",
                "Prepare une PLAQUE METALLIQUE d'au moins 300 x 300 mm.",
+               "  Cette taille vaut jusqu'a ~200 mm de distance ; au-dela,",
+               "  il en faut une plus grande (voir le guide, 2.5).",
                "Tu la placeras a DEUX distances, mesurees au reglet DEPUIS LA",
                "  FACE DE L'ANTENNE : d'abord 100 mm, puis 200 mm.",
                "ATTENTION : 200 mm est une position ABSOLUE, pas un",

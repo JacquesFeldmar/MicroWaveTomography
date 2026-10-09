@@ -78,3 +78,19 @@ def resolution_mm(freqs, fenetre="hann"):
     """Largeur du lobe principal : k.c/(2B), k = 1,7 pour Hann."""
     k = 1.7 if fenetre == "hann" else 2.3
     return k * c / (2 * (freqs[-1] - freqs[0])) * 1e3
+
+
+def cote_plaque_mm(distance_mm, f_min_hz):
+    """Cote minimale d'une plaque de reference, en mm.
+
+    Une plaque ne se comporte en miroir que si elle couvre la premiere zone
+    de Fresnel, de rayon sqrt(lambda.d/2) en reflexion monostatique, d'ou la
+    cote sqrt(2.lambda.d). Elle grandit avec la distance ET avec la longueur
+    d'onde : c'est le BAS de la bande qui dimensionne la plaque.
+
+    Trop petite, la plaque tronque le bas de la bande, et d'autant plus
+    qu'elle est loin : la distance apparente en est biaisee, et l'echo
+    decroit plus vite que les 6 dB par doublement de distance d'un miroir.
+    """
+    lam_mm = c / f_min_hz * 1e3
+    return float(np.sqrt(2.0 * lam_mm * distance_mm))
