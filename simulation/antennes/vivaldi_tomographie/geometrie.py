@@ -232,6 +232,18 @@ def percages_mm():
     return [(-x, TROU_Z, TROU_DIAMETRE), (x, TROU_Z, TROU_DIAMETRE)]
 
 
+def detail_mini_mm():
+    """Le plus petit detail VOULU du dessin, en mm.
+
+    Ce n'est pas une mesure sur le dessin rasterise : un demi-disque a des
+    tranches arbitrairement fines pres de son sommet, et un panneau additionne
+    les cartes qu'il porte. C'est la cote de conception la plus fine, celle
+    qu'il faut annoncer au fabricant pour qu'il ne grave ni trop fin ni trop
+    large.
+    """
+    return min(FENTE, LARGEUR_LIGNE)
+
+
 def controles_fabrication():
     d = cotes()
     return (f"   - largeur de la carte : {2*d['demi_x']:.2f} mm\n"

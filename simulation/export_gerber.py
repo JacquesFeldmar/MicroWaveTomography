@@ -125,8 +125,11 @@ A COCHER SUR LE FORMULAIRE
   Layers ...................... 2
   Material .................... FR-4, TG130 ou TG150
   Thickness ................... {epaisseur:.1f} mm
-  Min track/spacing ........... 6/6 mil (largement suffisant ici : {mini})
-  Min hole size ............... {min_trou}
+  Min track/spacing ........... 6/6 mil, l'option par defaut
+                                (le plus petit detail du dessin fait
+                                 {piste:.2f} mm, soit {pistemil:.0f} mil)
+  Min hole size ............... 0.3 mm, l'option par defaut
+                                (le plus petit trou fait {min_trou})
   Solder mask ................. n'importe quelle couleur (voir plus bas)
   Silkscreen .................. None
   Edge connector .............. No
@@ -200,7 +203,8 @@ def carte_antenne(nom):
         epaisseur=d.get("h", 1.6),
         F_Cu=c["F_Cu"], B_Cu=c["B_Cu"], Edge_Cuts=c["Edge_Cuts"],
         trous=list(getattr(ant, "percages_mm", lambda: [])()),
-        controles=controles, panneau="", feed="")
+        controles=controles, panneau="", feed="",
+        detail=getattr(ant, "detail_mini_mm", lambda: float("nan"))())
 
 
 # --------------------------------------------------- le panneau des losanges
@@ -269,6 +273,7 @@ def carte_panneau_losanges():
         epaisseur=dp["h"],
         F_Cu=f_cu, B_Cu=b_cu,
         Edge_Cuts=[exterieur, interieur], trous=trous,
+        detail=min(petit.detail_mini_mm(), grand.detail_mini_mm()),
         panneau="  (panneau client : DEUX cartes, un seul dessin)",
         feed=("\nLes DEUX bords d'alimentation sont en bas du panneau, sur le "
               "bord\nexterieur : ils sortent fraises, pas casses. Les deux "
@@ -326,11 +331,12 @@ def exporte(carte, dossier):
     ecrits = ecrit_jeu(carte, dossier)
     larg, haut = etendue(carte)
     mini = min(d for _, _, d in carte["trous"]) if carte["trous"] else None
+    piste = carte["detail"]
     texte = NOTICE.format(
         nom=carte["nom"], description=carte["description"],
         largeur=larg, hauteur=haut, epaisseur=carte["epaisseur"],
         panneau=carte["panneau"], feed=carte["feed"],
-        mini="aucune piste en dessous de 1,5 mm",
+        piste=piste, pistemil=piste / 0.0254,
         min_trou=(f"{mini:.1f} mm" if mini else "aucun percage"),
         fichiers="\n".join("   " + os.path.basename(c) for c in ecrits),
         controles=carte["controles"])

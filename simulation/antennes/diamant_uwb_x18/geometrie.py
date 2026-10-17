@@ -77,6 +77,10 @@ def contours_mm():
     return _regle().contours_mm()
 
 
+def detail_mini_mm():
+    return _regle().detail_mini_mm()
+
+
 def controles_fabrication():
     d = _regle().cotes()
     return (_base.controles_fabrication()

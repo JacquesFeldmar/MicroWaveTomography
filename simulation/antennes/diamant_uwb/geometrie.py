@@ -105,6 +105,15 @@ def contours_mm():
     }
 
 
+def detail_mini_mm():
+    """Le plus petit detail voulu : l'etranglement de la ligne, 2 x 0,60 mm
+    a l'echelle 1. C'est lui qui adapte le losange, et c'est la cote que le
+    fabricant doit respecter."""
+    d = cotes()
+    som = np.abs(d["sommets"][:, 0])
+    return float(2 * som[som > 0].min())
+
+
 def controles_fabrication():
     """Les deux cotes a verifier dans KiCad apres l'import."""
     d = cotes()

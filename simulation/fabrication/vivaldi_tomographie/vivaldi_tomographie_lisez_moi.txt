@@ -11,8 +11,11 @@ A COCHER SUR LE FORMULAIRE
   Layers ...................... 2
   Material .................... FR-4, TG130 ou TG150
   Thickness ................... 1.6 mm
-  Min track/spacing ........... 6/6 mil (largement suffisant ici : aucune piste en dessous de 1,5 mm)
-  Min hole size ............... 3.0 mm
+  Min track/spacing ........... 6/6 mil, l'option par defaut
+                                (le plus petit detail du dessin fait
+                                 0.80 mm, soit 31 mil)
+  Min hole size ............... 0.3 mm, l'option par defaut
+                                (le plus petit trou fait 3.0 mm)
   Solder mask ................. n'importe quelle couleur (voir plus bas)
   Silkscreen .................. None
   Edge connector .............. No
