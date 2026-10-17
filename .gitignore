@@ -9,6 +9,9 @@ __pycache__/
 **/mesures/
 **/qualification/
 **/captures/
+**/resultats/
+# Depaquetage de controle des Gerbers : se refait avec verifie_gerber.py.
+simulation/fabrication/*/relu/
 
 # ---------------------------------------------------------------- genere
 # Se reconstruit depuis les sources versionnees.
@@ -18,6 +21,9 @@ cartilage/docs/tutoriel/
 *.log
 *.out
 *.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
 
 # ---------------------------------------------------------------- tiers
 outils/

@@ -1,0 +1,5 @@
+# Fichiers de fabrication : ce sont EXACTEMENT les octets deposes chez le
+# fabricant. Git ne doit y toucher ni les fins de ligne ni rien d'autre, et
+# ne doit pas essayer de les fusionner.
+simulation/fabrication/**  -text -diff
+*.zip   binary

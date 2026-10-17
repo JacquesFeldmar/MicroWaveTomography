@@ -1,0 +1,76 @@
+Commande PCBWay -- vivaldi_tomographie
+
+Vivaldi antipodale sur FR4, conception du projet
+
+A COCHER SUR LE FORMULAIRE
+--------------------------
+  Board Type .................. Single pieces
+  Different Design ............ 1
+  Size ........................ 143.1 x 280.6 mm
+  Quantity .................... 5
+  Layers ...................... 2
+  Material .................... FR-4, TG130 ou TG150
+  Thickness ................... 1.6 mm
+  Min track/spacing ........... 6/6 mil (largement suffisant ici : aucune piste en dessous de 1,5 mm)
+  Min hole size ............... 3.0 mm
+  Solder mask ................. n'importe quelle couleur (voir plus bas)
+  Silkscreen .................. None
+  Edge connector .............. No
+  Surface finish .............. ENIG (or) ou Immersion silver (argent)
+  Copper weight ............... 1 oz
+  Gold fingers ................ No
+  Castellated holes ........... No
+  Remove product No. .......... Yes
+
+LE VERNIS : OUVERT SUR TOUT LE CUIVRE
+-------------------------------------
+Les deux couches de vernis fournies ne sont pas celles d'une carte ordinaire :
+elles reprennent exactement les formes du cuivre. Le vernis est donc RETIRE
+partout ou il y a du cuivre, et ne subsiste que sur le FR4 nu -- les fentes.
+
+Pourquoi : la simulation suppose du cuivre nu. Le vernis sur le cuivre n'a
+aucun effet radio -- le champ tangentiel y est nul -- mais il faut pouvoir
+souder le connecteur n'importe ou sur la tranche, et il faut que la finition
+protege toute la surface.
+
+Ce qui reste de vernis, dans les fentes, deplace la frequence de moins de 1 %
+-- vingt micrometres contre 1,6 mm de substrat. C'est dix fois moins que la
+tolerance du FR4 lui-meme sur sa permittivite. On aurait pu demander « pas de
+vernis du tout » et coller encore mieux a la simulation, mais ce n'est pas une
+option sure du formulaire, et le risque de blocage de la commande est plus
+couteux que ce 1 %.
+
+La couleur du vernis est donc indifferente. La finition, non : ENIG est le
+choix robuste ; sa couche de nickel est legerement plus dissipative en
+hyperfrequence que l'argent chimique, ce qui se discute sur la ligne
+d'alimentation et nulle part ailleurs. L'argent chimique est meilleur en radio
+et se ternit en quelques mois a l'air libre.
+
+LE CONNECTEUR
+-------------
+Aucune empreinte de connecteur n'est posee : le SMA est un modele BORD DE
+CARTE (edge-launch), qui se sertit sur la tranche et se soude d'un cote sur le
+ruban, de l'autre sur la masse. C'est ce que suppose la simulation, dont le
+port se trouve exactement dans le plan de cette tranche.
+
+
+FICHIERS
+--------
+   vivaldi_tomographie.GTL
+   vivaldi_tomographie.GBL
+   vivaldi_tomographie.GTS
+   vivaldi_tomographie.GBS
+   vivaldi_tomographie.GKO
+   vivaldi_tomographie-NPTH.DRL
+
+CONTROLE AVANT COMMANDE
+-----------------------
+Ouvrir le ZIP dans un visualiseur Gerber (gerbv, ou celui de PCBWay apres
+depot) et mesurer :
+   - largeur de la carte : 143.07 mm
+   - longueur de la carte : 280.60 mm
+   - ouverture de la bouche, entre les deux bords interieurs du cuivre : 107.07 mm
+   - largeur de la ligne d'alimentation : 3.00 mm (c'est elle qui fixe les 50 ohms)
+   - largeur du cuivre restant a la bouche, de chaque cote : 18.00 mm
+
+Si ces cotes ne sont pas retrouvees, ce ne sont pas les fichiers simules.

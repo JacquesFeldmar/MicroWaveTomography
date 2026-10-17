@@ -1,0 +1,16 @@
+G04 contour de decoupe*
+%TF.GenerationSoftware,MicroWaveTomography,export_gerber.py,1.0*%
+%TF.FileFunction,Profile,NP*%
+%TF.Part,Single*%
+%FSLAX46Y46*%
+%MOMM*%
+%LPD*%
+%ADD10C,0.100000*%
+D10*
+G01*
+X-71534368Y0D02*
+X71534368Y0D01*
+X71534368Y280603102D01*
+X-71534368Y280603102D01*
+X-71534368Y0D01*
+M02*

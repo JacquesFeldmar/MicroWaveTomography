@@ -1,0 +1,32 @@
+Fabrication chez PCBWay -- diamant_uwb_x18
+
+monopole planaire en losange, conception publiee, losange a l'echelle 1.8 sur FR4 de 1.6 mm
+
+Carte : 57.60 x 72.00 mm, FR4, 2 couches, cuivre 35 um (1 oz),
+finition ENIG de preference a l'etamage : le HASL laisse un relief de
+plusieurs dizaines de micrometres sur les bords rayonnants, qui sont
+justement ce que la simulation suppose nets.
+
+Dans KiCad
+----------
+1. Nouveau projet, ouvrir l'editeur de circuit imprime.
+2. Fichier > Importer > Graphiques... pour chacun des DXF :
+       diamant_uwb_x18_F_Cu.dxf                 -> couche F.Cu
+       diamant_uwb_x18_B_Cu.dxf                 -> couche B.Cu
+       diamant_uwb_x18_Edge_Cuts.dxf            -> couche Edge.Cuts
+   Unites : millimetres, echelle 1, origine (0, 0).
+3. Les polylignes importees sont des CONTOURS. Les convertir en zones
+   pleines : selectionner le contour, clic droit > Creer a partir de la
+   selection > Zone. Sans cela, seul le trait serait grave.
+4. Poser l'empreinte du connecteur SMA bord de carte a l'endroit indique
+   par la fiche de l'antenne, pin central sur F.Cu, masse sur B.Cu.
+5. Fichier > Fabrication > Gerbers, plus le fichier de percage.
+
+Controle avant commande
+-----------------------
+Mesurer dans KiCad :
+   - largeur du losange a son maximum : 52.20 mm
+   - du bord inferieur au sommet du losange : 61.20 mm
+   - largeur de la ligne d'alimentation : 3.10 mm (elle NE suit PAS l'echelle : c'est elle qui fait les 50 ohms sur 1.6 mm de FR4)
+Si ces cotes ne sont pas retrouvees, l'import s'est fait a une autre echelle
+et la carte ne correspondrait plus a la simulation.
