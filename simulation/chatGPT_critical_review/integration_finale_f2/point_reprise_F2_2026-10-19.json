@@ -1,0 +1,168 @@
+{
+    "schema":  "reprise_campagne_F2_v1",
+    "utc":  "2026-10-19T17:30:24.0478866Z",
+    "session_native":  18488,
+    "orchestration":  {
+                          "analyse":  null,
+                          "archive_index_sha256":  "f7ecf85ae985fbfb3ff685d483366111c241182563704b6733f1eb96ce4fca06",
+                          "echec_numerique":  false,
+                          "echec_technique":  false,
+                          "etat":  "en_cours",
+                          "queues":  {
+                                         "losanges":  {
+                                                          "etapes":  [
+                                                                         {
+                                                                             "commande":  [
+                                                                                              "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+                                                                                              "-B",
+                                                                                              "-X",
+                                                                                              "utf8",
+                                                                                              "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\calcule_maille_controlee.py",
+                                                                                              "--antenne",
+                                                                                              "diamant_uwb",
+                                                                                              "--niveau",
+                                                                                              "base",
+                                                                                              "--duree-ns",
+                                                                                              "12",
+                                                                                              "--fils",
+                                                                                              "10",
+                                                                                              "--base",
+                                                                                              "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_maille_controlee_v2"
+                                                                                          ],
+                                                                             "debut_utc":  "2026-10-19T17:21:30.216760+00:00",
+                                                                             "profil":  "diamant_uwb/base_12ns",
+                                                                             "retour_natif":  null,
+                                                                             "type":  "calcul"
+                                                                         }
+                                                                     ],
+                                                          "etat":  "en_cours",
+                                                          "retour_natif":  null
+                                                      },
+                                         "vivaldi":  {
+                                                         "etapes":  [
+                                                                        {
+                                                                            "commande":  [
+                                                                                             "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+                                                                                             "-B",
+                                                                                             "-X",
+                                                                                             "utf8",
+                                                                                             "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\calcule_maille_controlee.py",
+                                                                                             "--antenne",
+                                                                                             "vivaldi_tomographie",
+                                                                                             "--niveau",
+                                                                                             "base",
+                                                                                             "--duree-ns",
+                                                                                             "12",
+                                                                                             "--fils",
+                                                                                             "10",
+                                                                                             "--base",
+                                                                                             "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_maille_controlee_v2"
+                                                                                         ],
+                                                                            "debut_utc":  "2026-10-19T17:21:30.224146+00:00",
+                                                                            "profil":  "vivaldi_tomographie/base_12ns",
+                                                                            "retour_natif":  null,
+                                                                            "type":  "calcul"
+                                                                        }
+                                                                    ],
+                                                         "etat":  "en_cours",
+                                                         "retour_natif":  null
+                                                     }
+                                     },
+                          "schema":  "etat_orchestration_f2_v1",
+                          "tous_reussis":  false,
+                          "utc":  "2026-10-19T17:21:30.224146+00:00"
+                      },
+    "calculs_actifs":  [
+                           {
+                               "antenne":  "diamant_uwb",
+                               "profil":  "base_12ns",
+                               "etat":  "calcul_en_cours",
+                               "moteur":  "maillage_controle_v2",
+                               "cellules_Yee":  3005640,
+                               "dt_s":  1.8091917271563098E-13,
+                               "n_pas":  66329,
+                               "source10":  {
+                                                "antennes/diamant_uwb/geometrie.py":  "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+                                                "antennes/diamant_uwb_x18/geometrie.py":  "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+                                                "antennes/dipole_reference/geometrie.py":  "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+                                                "antennes/uwb_surveyor/geometrie.py":  "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+                                                "antennes/vivaldi_tomographie/geometrie.py":  "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+                                                "fdtd.py":  "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+                                                "banc.py":  "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+                                                "materiaux.py":  "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+                                                "connectique.py":  "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+                                                "fdtd_maille_controlee.py":  "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1"
+                                            }
+                           },
+                           {
+                               "antenne":  "vivaldi_tomographie",
+                               "profil":  "base_12ns",
+                               "etat":  "calcul_en_cours",
+                               "moteur":  "maillage_controle_v2",
+                               "cellules_Yee":  9548352,
+                               "dt_s":  1.8091917271563098E-13,
+                               "n_pas":  66329,
+                               "source10":  {
+                                                "antennes/diamant_uwb/geometrie.py":  "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+                                                "antennes/diamant_uwb_x18/geometrie.py":  "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+                                                "antennes/dipole_reference/geometrie.py":  "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+                                                "antennes/uwb_surveyor/geometrie.py":  "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+                                                "antennes/vivaldi_tomographie/geometrie.py":  "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+                                                "fdtd.py":  "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+                                                "banc.py":  "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+                                                "materiaux.py":  "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+                                                "connectique.py":  "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+                                                "fdtd_maille_controlee.py":  "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1"
+                                            }
+                           }
+                       ],
+    "processus":  [
+                      {
+                          "ProcessId":  14796,
+                          "ParentProcessId":  9752,
+                          "CreationDate":  "\/Date(1792430489874)\/",
+                          "CommandLine":  "\"C:\\Users\\jfeld\\anaconda3\\envs\\ph\\python.exe\" -B -X utf8 -u simulation/chatGPT_critical_review/integration_finale_f2/lance_campagne_journalisee.py"
+                      },
+                      {
+                          "ProcessId":  28980,
+                          "ParentProcessId":  14796,
+                          "CreationDate":  "\/Date(1792430489935)\/",
+                          "CommandLine":  "C:\\Users\\jfeld\\anaconda3\\envs\\ph\\python.exe -B -X utf8 -u C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\orchestre_f2.py --executer --base C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_maille_controlee_v2"
+                      },
+                      {
+                          "ProcessId":  32692,
+                          "ParentProcessId":  28980,
+                          "CreationDate":  "\/Date(1792430490223)\/",
+                          "CommandLine":  "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe -B -X utf8 C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\calcule_maille_controlee.py --antenne diamant_uwb --niveau base --duree-ns 12 --fils 10 --base C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_maille_controlee_v2"
+                      },
+                      {
+                          "ProcessId":  62616,
+                          "ParentProcessId":  28980,
+                          "CreationDate":  "\/Date(1792430490229)\/",
+                          "CommandLine":  "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe -B -X utf8 C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\calcule_maille_controlee.py --antenne vivaldi_tomographie --niveau base --duree-ns 12 --fils 10 --base C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_maille_controlee_v2"
+                      }
+                  ],
+    "sources18_sha256":  {
+                             "antennes/diamant_uwb/geometrie.py":  "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+                             "qualifie_pcbway.py":  "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+                             "raffine_qualification_pcbway.py":  "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+                             "banc.py":  "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+                             "antennes/dipole_reference/geometrie.py":  "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+                             "antennes/uwb_surveyor/geometrie.py":  "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+                             "qualification_adaptative.py":  "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+                             "donnees.py":  "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+                             "calcule_maille_controlee.py":  "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316",
+                             "materiaux.py":  "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+                             "connectique.py":  "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+                             "export_gerber.py":  "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+                             "antennes/vivaldi_tomographie/geometrie.py":  "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+                             "traitement.py":  "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+                             "fdtd_maille_controlee.py":  "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+                             "fdtd.py":  "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+                             "antennes/diamant_uwb_x18/geometrie.py":  "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+                             "fenetre_sondes.py":  "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78"
+                         },
+    "sources18_inchangees":  true,
+    "qualification_globale_effectuee":  false,
+    "consigne":  "Suivre la session native et la preuve fin_orchestration.json ; ne pas relancer les profils existants. PDF reel et livraison seulement apres AP PASS et relecture."
+}

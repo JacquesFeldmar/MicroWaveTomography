@@ -1,0 +1,70 @@
+test_aucune_entree_plan_vide_et_chemin_duplique_refuses (test_compare_s11.ComparaisonS11.test_aucune_entree_plan_vide_et_chemin_duplique_refuses) ... ok
+test_decalage_frequence_minime_est_refuse_sans_creer_sortie (test_compare_s11.ComparaisonS11.test_decalage_frequence_minime_est_refuse_sans_creer_sortie) ... ok
+test_dispersion_un_seul_fichier_non_estimee_et_bandes_disjointes (test_compare_s11.ComparaisonS11.test_dispersion_un_seul_fichier_non_estimee_et_bandes_disjointes) ... ok
+test_dossier_non_vide_est_preserve (test_compare_s11.ComparaisonS11.test_dossier_non_vide_est_preserve) ... ok
+test_grilles_non_uniforme_et_nulle_refusees (test_compare_s11.ComparaisonS11.test_grilles_non_uniforme_et_nulle_refusees) ... ok
+test_impedance_reference_autre_que_50_refusee (test_compare_s11.ComparaisonS11.test_impedance_reference_autre_que_50_refusee) ... ok
+test_phase_connue_repetitions_csv_sha_et_rendu_reel (test_compare_s11.ComparaisonS11.test_phase_connue_repetitions_csv_sha_et_rendu_reel) ... ok
+test_zero_phase_indefinie_et_circuit_ouvert (test_compare_s11.ComparaisonS11.test_zero_phase_indefinie_et_circuit_ouvert) ... ok
+test_cout_grille_reelle_et_absence_symetrie_fictive (test_fdtd_reprise.Maillages.test_cout_grille_reelle_et_absence_symetrie_fictive) ... ok
+test_fond_et_toutes_cibles_identiques_faces_exactes (test_fdtd_reprise.Maillages.test_fond_et_toutes_cibles_identiques_faces_exactes) ... ok
+test_materiau_inchange_quand_bande_acquisition_change (test_fdtd_reprise.Maillages.test_materiau_inchange_quand_bande_acquisition_change) ... ok
+test_parametres_substrat_et_port_actifs (test_fdtd_reprise.Maillages.test_parametres_substrat_et_port_actifs) ... ok
+test_pas_de_troncature_silencieuse_ni_ecrasement (test_fdtd_reprise.Maillages.test_pas_de_troncature_silencieuse_ni_ecrasement) ... ok
+test_resolution_finale_substrat_et_gradation (test_fdtd_reprise.Maillages.test_resolution_finale_substrat_et_gradation) ... ok
+test_reference_exacte_et_passivite_large_bande (test_fdtd_reprise.Materiaux.test_reference_exacte_et_passivite_large_bande) ... ok
+test_complete_12_vers_12_reproduit_s11_arrondi (test_fenetre_sondes.Fenetres.test_complete_12_vers_12_reproduit_s11_arrondi) ... ok
+test_prefixe_8ns_conserve_demi_pas_et_n_plus_un (test_fenetre_sondes.Fenetres.test_prefixe_8ns_conserve_demi_pas_et_n_plus_un) ... ERROR
+test_refuse_archive_alteree_et_pulse_tronque (test_fenetre_sondes.Fenetres.test_refuse_archive_alteree_et_pulse_tronque) ... ok
+test_refuse_ecrasement_et_source_alteree (test_fenetre_sondes.Fenetres.test_refuse_ecrasement_et_source_alteree) ... ok
+test_refuse_nombre_lignes_faux_meme_si_hash_actualise (test_fenetre_sondes.Fenetres.test_refuse_nombre_lignes_faux_meme_si_hash_actualise) ... ok
+test_adopte_sans_lancement_et_attend_trois_preuves (test_poursuit_campagne_pcbway.Poursuite.test_adopte_sans_lancement_et_attend_trois_preuves) ... ok
+test_adoption_explicite_pid_et_sources_exiges (test_poursuit_campagne_pcbway.Poursuite.test_adoption_explicite_pid_et_sources_exiges) ... ok
+test_cache_valide_reutilise_sans_processus (test_poursuit_campagne_pcbway.Poursuite.test_cache_valide_reutilise_sans_processus) ... ok
+test_cwd_autre_projet_refuse_et_dossier_partiel_refuse (test_poursuit_campagne_pcbway.Poursuite.test_cwd_autre_projet_refuse_et_dossier_partiel_refuse) ... ok
+test_delais_non_finis_refuses (test_poursuit_campagne_pcbway.Poursuite.test_delais_non_finis_refuses) ... ok
+test_deux_voies_et_commandes_derivees_comparaison_apres_neuf (test_poursuit_campagne_pcbway.Poursuite.test_deux_voies_et_commandes_derivees_comparaison_apres_neuf) ... ok
+test_exit_nonzero_refuse_meme_si_preuves_existent (test_poursuit_campagne_pcbway.Poursuite.test_exit_nonzero_refuse_meme_si_preuves_existent) ... ok
+test_indicateurs_tolerent_quantification_touchstone_pas_alteration (test_poursuit_campagne_pcbway.Poursuite.test_indicateurs_tolerent_quantification_touchstone_pas_alteration) ... ok
+test_preuves_completes_ne_liberent_pas_worker_avant_exit (test_poursuit_campagne_pcbway.Poursuite.test_preuves_completes_ne_liberent_pas_worker_avant_exit) ... ok
+test_verrou_os_empeche_double_pipeline_et_reprise_normale (test_poursuit_campagne_pcbway.Poursuite.test_verrou_os_empeche_double_pipeline_et_reprise_normale) ... ok
+test_watchdog_inactivite_et_limite_globale_sans_kill (test_poursuit_campagne_pcbway.Poursuite.test_watchdog_inactivite_et_limite_globale_sans_kill) ... ok
+test_worker_echec_stoppe_nouveaux_lancements (test_poursuit_campagne_pcbway.Poursuite.test_worker_echec_stoppe_nouveaux_lancements) ... ok
+test_archives_completes_et_fenetre_sont_lisibles (test_qualification_pcbway.ArchivesQualification.test_archives_completes_et_fenetre_sont_lisibles) ... ok
+test_cache_n_ignore_pas_un_s11_altere (test_qualification_pcbway.ArchivesQualification.test_cache_n_ignore_pas_un_s11_altere) ... ok
+test_chemin_sha_hors_archive_est_refuse (test_qualification_pcbway.ArchivesQualification.test_chemin_sha_hors_archive_est_refuse) ... ok
+test_comparer_refuse_un_autre_environnement (test_qualification_pcbway.ArchivesQualification.test_comparer_refuse_un_autre_environnement) ... ok
+test_comparer_selectionne_fin12_et_relecture_est_sans_ecriture (test_qualification_pcbway.ArchivesQualification.test_comparer_selectionne_fin12_et_relecture_est_sans_ecriture) ... ok
+test_duree_ne_se_deduit_pas_du_nom_du_dossier (test_qualification_pcbway.ArchivesQualification.test_duree_ne_se_deduit_pas_du_nom_du_dossier) ... ok
+test_geometrie_courante_differente_est_refusee (test_qualification_pcbway.ArchivesQualification.test_geometrie_courante_differente_est_refusee) ... ok
+test_integrite_s11_et_suppression_entree_sha (test_qualification_pcbway.ArchivesQualification.test_integrite_s11_et_suppression_entree_sha) ... ok
+test_montage_q_et_signature_incoherents_refuses (test_qualification_pcbway.ArchivesQualification.test_montage_q_et_signature_incoherents_refuses) ... ok
+test_niveau_ne_se_deduit_pas_du_nom_du_dossier (test_qualification_pcbway.ArchivesQualification.test_niveau_ne_se_deduit_pas_du_nom_du_dossier) ... ok
+test_relecture_refuse_csv_livre_altere (test_qualification_pcbway.ArchivesQualification.test_relecture_refuse_csv_livre_altere) ... ok
+test_source_moteur_courante_differente_est_refusee (test_qualification_pcbway.ArchivesQualification.test_source_moteur_courante_differente_est_refusee) ... ok
+test_sources_archivees_alterees_refusees (test_qualification_pcbway.ArchivesQualification.test_sources_archivees_alterees_refusees) ... ok
+test_critere_db_est_effectivement_decisif (test_qualification_pcbway.Criteres.test_critere_db_est_effectivement_decisif) ... ok
+test_delta_complexe_porte_aussi_sur_minima_profonds (test_qualification_pcbway.Criteres.test_delta_complexe_porte_aussi_sur_minima_profonds) ... ok
+test_grilles_differentes_refusees (test_qualification_pcbway.Criteres.test_grilles_differentes_refusees) ... ok
+test_identiques_passent_et_phase_est_diagnostique (test_qualification_pcbway.Criteres.test_identiques_passent_et_phase_est_diagnostique) ... ok
+test_indicateurs_segments_et_bande_utile (test_qualification_pcbway.Criteres.test_indicateurs_segments_et_bande_utile) ... ok
+test_indicateurs_zero_restent_serialisables (test_qualification_pcbway.Criteres.test_indicateurs_zero_restent_serialisables) ... ok
+test_limites_spatiale_et_temporelle_sont_distinctes (test_qualification_pcbway.Criteres.test_limites_spatiale_et_temporelle_sont_distinctes) ... ok
+test_masque_db_vide_ne_qualifie_pas_silencieusement (test_qualification_pcbway.Criteres.test_masque_db_vide_ne_qualifie_pas_silencieusement) ... ok
+test_rms_ne_se_confond_pas_avec_maximum (test_qualification_pcbway.Criteres.test_rms_ne_se_confond_pas_avec_maximum) ... ok
+
+======================================================================
+ERROR: test_prefixe_8ns_conserve_demi_pas_et_n_plus_un (test_fenetre_sondes.Fenetres.test_prefixe_8ns_conserve_demi_pas_et_n_plus_un)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Jacques\liteVNA\MicroWaveTomography\simulation\tests\test_fenetre_sondes.py", line 118, in test_prefixe_8ns_conserve_demi_pas_et_n_plus_un
+    Q.charge_calcul(out)
+    ~~~~~~~~~~~~~~~^^^^^
+  File "C:\Jacques\liteVNA\MicroWaveTomography\simulation\qualifie_pcbway.py", line 164, in charge_calcul
+    raise ValueError("geometrie de qualification incoherente")
+ValueError: geometrie de qualification incoherente
+
+----------------------------------------------------------------------
+Ran 54 tests in 28.940s
+
+FAILED (errors=1)

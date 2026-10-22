@@ -1,0 +1,6 @@
+Premier lancement sans solveur : echec de duree de vie de l'objet C++ CSX.
+Le prototype rendait CSX sans conserver le proprietaire fdtd. Au retour de
+construit, fdtd etait detruit et detruisait CSX : RuntimeError 'wrapped C++
+object of type ContinuousStructure has been deleted' a resume_maillage.
+Correction du prototype uniquement : renvoyer et garder fdtd avec CSX.
+Aucun fichier de grille/rapport n'avait ete ecrit, aucun Run/calibrage lance.

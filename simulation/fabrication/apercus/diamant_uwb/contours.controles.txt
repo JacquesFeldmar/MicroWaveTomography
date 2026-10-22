@@ -1,0 +1,20 @@
+OK  contour ferme et simple
+OK  F_Cu : polygones simples et non degeneres
+OK  F_Cu : 0 mm2 hors contour (calcul exact)
+OK  F_Cu : marge hors bord SMA 1.500 mm (minimum 0.25)
+OK  F_Cu : 3 ilots conducteurs (signal + deux masses SMA attendus)
+OK  B_Cu : polygones simples et non degeneres
+OK  B_Cu : 0 mm2 hors contour (calcul exact)
+OK  B_Cu : marge hors bord SMA 0.400 mm (minimum 0.25)
+OK  PTH 1 : dans le substrat
+OK  PTH 1/F_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 1/B_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 2 : dans le substrat
+OK  PTH 2/F_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 2/B_Cu : anneau cuivre >= 0.15 mm
+OK  carte : 32.00 x 40.00 mm, surface 12.8 cm2
+OK  F_Cu : 4.4 cm2 de cuivre, 0.00 mm2 hors de la carte
+OK  F_Cu : tranche la plus pauvre 1.20 mm de cuivre, a y = -4.0 mm
+OK  B_Cu : 3.8 cm2 de cuivre, 0.00 mm2 hors de la carte
+OK  B_Cu : tranche la plus pauvre 5.00 mm de cuivre, a y = -4.6 mm
+OK  recouvrement des deux cuivres : au plus 3.00 mm par tranche (limite inf mm, hors les 6.5 mm d'implantation SMA)

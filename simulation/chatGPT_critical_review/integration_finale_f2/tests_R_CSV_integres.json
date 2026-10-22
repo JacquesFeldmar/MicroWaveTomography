@@ -1,0 +1,9 @@
+{
+  "schema": "verification_apres_integration_controles_F2_v1",
+  "tests": 25,
+  "echecs": 0,
+  "erreurs": 0,
+  "reussi": true,
+  "n34_exact": true,
+  "aucun_Run": true
+}

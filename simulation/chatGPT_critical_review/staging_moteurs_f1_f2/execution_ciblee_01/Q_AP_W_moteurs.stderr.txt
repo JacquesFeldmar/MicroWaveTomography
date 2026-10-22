@@ -1,0 +1,22 @@
+test_F1_et_F2_source10_integralement_relus (test_moteurs_qualification.ArchivesMoteurs.test_F1_et_F2_source10_integralement_relus) ... ok
+test_F1_sans_tags_refuse_fichier_F2_meme_non_declare (test_moteurs_qualification.ArchivesMoteurs.test_F1_sans_tags_refuse_fichier_F2_meme_non_declare) ... ok
+test_F2_source_absente_ou_inventaire_incomplet_refuse (test_moteurs_qualification.ArchivesMoteurs.test_F2_source_absente_ou_inventaire_incomplet_refuse) ... ok
+test_F2_source_tamper_meme_si_archives_SHA_recalcules_refuse (test_moteurs_qualification.ArchivesMoteurs.test_F2_source_tamper_meme_si_archives_SHA_recalcules_refuse) ... ok
+test_W_prefixe_F2_vrai_CalcPort_preserve_sources_et_tag (test_moteurs_qualification.ArchivesMoteurs.test_W_prefixe_F2_vrai_CalcPort_preserve_sources_et_tag) ... ok
+test_W_refuse_tags_avant_toute_ecriture (test_moteurs_qualification.ArchivesMoteurs.test_W_refuse_tags_avant_toute_ecriture) ... ok
+test_cache_F1_refuse_F2_et_inverse_avant_tout_lance (test_moteurs_qualification.ArchivesMoteurs.test_cache_F1_refuse_F2_et_inverse_avant_tout_lance) ... ok
+test_catalogue_F2_doit_conserver_les_neuf_originaux (test_moteurs_qualification.ArchivesMoteurs.test_catalogue_F2_doit_conserver_les_neuf_originaux) ... ok
+test_cout_F2_route_estime_sans_lance (test_moteurs_qualification.ArchivesMoteurs.test_cout_F2_route_estime_sans_lance) ... ok
+test_nouvel_appel_F2_route_lance_et_qualification_tag (test_moteurs_qualification.ArchivesMoteurs.test_nouvel_appel_F2_route_lance_et_qualification_tag) ... ok
+test_axes_zeros_signes_distincts_et_dtype_refuses (test_moteurs_qualification.CampagnesMoteurs.test_axes_zeros_signes_distincts_et_dtype_refuses) ... ok
+test_mix_entre_antennes_refuse_avant_sorties (test_moteurs_qualification.CampagnesMoteurs.test_mix_entre_antennes_refuse_avant_sorties) ... ok
+test_paire_temporelle_preliminaire_axes_differents_refusee (test_moteurs_qualification.CampagnesMoteurs.test_paire_temporelle_preliminaire_axes_differents_refusee) ... ok
+test_trois_F1_bilan_reste_sans_tag (test_moteurs_qualification.CampagnesMoteurs.test_trois_F1_bilan_reste_sans_tag) ... ok
+test_trois_F2_bilan_tag_unique (test_moteurs_qualification.CampagnesMoteurs.test_trois_F2_bilan_tag_unique) ... ok
+test_absence_seule_est_F1_double_tag_seul_est_F2 (test_moteurs_qualification.Identites.test_absence_seule_est_F1_double_tag_seul_est_F2) ... ok
+test_nom_de_module_arbitraire_jamais_importe (test_moteurs_qualification.Identites.test_nom_de_module_arbitraire_jamais_importe) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 9.356s
+
+OK

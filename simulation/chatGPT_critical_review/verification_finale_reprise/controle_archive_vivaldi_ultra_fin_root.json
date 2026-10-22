@@ -1,0 +1,15 @@
+{
+  "schema": "controle_root_archive_vivaldi_ultra_fin_v1",
+  "utc": "2026-10-19T09:22:57.566699+00:00",
+  "archive": "controle_vivaldi_ultra_fin_preuves.zip",
+  "archive_sha256": "c5bc829374747412995f8c9b0667b27b725eb67f453809f1b6078933b1125b9a",
+  "membres_plats": 55,
+  "crc_valide": true,
+  "manifest_sha256": "8a13eb558c99023afe65636dd9463e61c764087eb253dbb9f1fa2b656b44643c",
+  "manifest_integral_verifie": true,
+  "51_sources_identiques_octet_par_octet": true,
+  "195_fichiers_profils_fermes_reverifies": true,
+  "17_sources_gelees_reverifiees": true,
+  "aucun_profil_grand_actif_ouvert": true,
+  "qualification_globale_effectuee": false
+}

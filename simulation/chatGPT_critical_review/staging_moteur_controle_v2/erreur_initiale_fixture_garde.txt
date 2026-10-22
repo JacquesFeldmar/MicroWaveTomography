@@ -1,0 +1,6 @@
+Premier lancement des8 tests de garde : erreurs de fixture avant le faux Run.
+Le montage/antenne fictifs etaient intentionnellement hors geometres reels,
+mais politique_maillage n'avait pas ete isole et refusait le NOM fictif.
+Le test isole maintenant aussi cette metadonnee, comme le constructeur mocke.
+Le vrai lance et tous ses controles temporels restent executes sans patch.
+Aucune modification du moteur ni aucun Run natif n'a corrige cette fixture.

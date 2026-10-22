@@ -1,0 +1,22 @@
+--- simulation/PROTOCOLE_MESURE_PCBWAY.md.avant
++++ simulation/PROTOCOLE_MESURE_PCBWAY.md.apres
+@@ -23,13 +23,17 @@
+ 1. Laisser le VNA et le câble se stabiliser selon leur documentation. Régler 1,000–6,300 GHz et 213 points ; noter version du micrologiciel, puissance, moyennage et réglages de vitesse. Désactiver le lissage et le fenêtrage temporel pour le fichier de comparaison principal.
+ 2. Réaliser SOL avec des étalons OPEN, SHORT et LOAD à interface **SMA femelle standard**, compatibles avec le connecteur mâle au bout du câble et la bande de mesure. Tout adaptateur de liaison inclus dans la chaîne calibrée doit rester en place et identique pour mesurer la carte : le retirer ou le remplacer impose une nouvelle calibration dans la configuration retenue, sans supposer que le plan précédent est conservé. Enregistrer le jeu de calibration et ses références. Rebrancher une charge de contrôle et sauvegarder sa mesure pour documenter la qualité de calibration dans la bande.
+ 3. Installer la carte sur un support peu diélectrique, éloignée des conducteurs, de la table et de l'opérateur. Documenter les distances, l'orientation et le trajet du câble par des photos. Le calcul est en espace libre ; le support et le câble réels peuvent perturber l'antenne.
+-4. Sauvegarder S11 complexe en Touchstone RI, 50 Ω, avec fréquences explicites. Ne pas remplacer le fichier brut par une image ou un CSV de module seul.
++4. Sauvegarder S11 complexe en Touchstone RI, 50 Ω, avec fréquences explicites. Ne pas remplacer le fichier original par une image ou un CSV de module seul.
+ 5. Faire trois cycles de déconnexion/reconnexion d'une même carte sans changer le montage. Déplacer ensuite le câble et le support de façon documentée et répéter une acquisition : cette variation évalue leur influence. Si elle domine l'écart attendu, améliorer le montage avant d'interpréter le diélectrique.
+ 6. Mesurer plusieurs exemplaires de chaque dessin lorsque disponibles. Refaire la vérification de calibration en fin de série et lors d'un changement de câble ou de bande.
+ 
+ Chaque acquisition conserve sa calibration. Un changement de calibration, de bande, de câble ou de montage constitue une nouvelle série.
+ 
+-Avec le pilote USB du projet, `commun/instrument.py` acquiert des données brutes et `commun/sol.py` applique la correction. La calibration affichée à l'écran du VNA ne doit pas être supposée présente dans ces données USB. Conserver séparément acquisition brute, étalons/coefficient de correction et S11 corrigé ; le fichier comparé à la simulation est le **S11 corrigé**. Une mesure exportée par un autre logiciel doit préciser son état de correction afin d'éviter une absence ou une double application de SOL.
++La chaîne `commun/instrument.py` / `commun/sol.py` est conçue pour une acquisition brute suivie d'une correction SOL en Python. Le pilote `NanoVNAv2` installé (scikit-rf 1.12.0) ne règle ni ne vérifie explicitement le registre de mode USB `0x26` ; son emploi ne prouve donc pas à lui seul que les données sont brutes. Identifier et consigner le firmware, le mode USB effectif et la calibration appliquée avant de constituer la série de référence. L'affichage du VNA ne suffit pas à déterminer l'état de correction du flux USB.
++
++Le [manuel LiteVNA](https://nanovna.com/wp-content/uploads/2021/11/LiteVNA_User-Guide.pdf), table `rawSamplesMode`, décrit un mode 3 avec correction interne ; son paragraphe FIFO conserve une affirmation contradictoire sur l'absence de correction. Le pilote distinct `from Maurice/plexiglas/progs/litevna.py` sélectionne et relit le mode brut/interne, mais son fonctionnement sur le firmware réel n'a pas été contrôlé pendant cette reprise. Les essais logiciels sur doubles ne remplacent pas ce contrôle au banc.
++
++Pour la voie brute, conserver séparément acquisitions, étalons/coefficient de correction et S11 corrigé. Pour une voie déjà corrigée en interne, conserver cet état et sa calibration sans appliquer une deuxième SOL. Dans les deux cas, le fichier comparé à la simulation est le **S11 corrigé une seule fois** ; un état de correction inconnu ne permet pas de conclure à l'accord simulation/mesure.
+ 
+ ## Fichiers à conserver
+ 

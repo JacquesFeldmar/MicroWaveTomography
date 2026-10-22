@@ -1,0 +1,23 @@
+{
+  "utc": "2026-10-19T14:37:22.866087+00:00",
+  "nombre_fichiers": 16,
+  "sha256": {
+    "execution.json": "e38b8b94a0677d0ade3fc1b891dcf07f2d2c46346ab23cca6b968c99be81b729",
+    "execution.stderr.txt": "aefef9055e888bb3f758dd5b0ce04bf89e16da339dc360c5b5e26dc4ef44060a",
+    "execution.stdout.txt": "60d78eafd93ba61119dfd2568c15bf03242dc8ff2c65f1db2dfd029b135ac2fc",
+    "execution_02.json": "a8c35e8bc3c7323709b2b8023f0cdbd3fff407e88f78f17f5752b1064fbefdec",
+    "execution_02.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "execution_02.stdout.txt": "c41b6de3f150ec65b0e1dd7e3dcca5c5afd77b2276f281b00a10e78187d33c6e",
+    "fdtd_maille_controlee_2375.py": "237510b3702694abb4336b895eb8394015265cfbc18d92e8c1cf86d2eb5b0f84",
+    "historique_01/execution.json": "e38b8b94a0677d0ade3fc1b891dcf07f2d2c46346ab23cca6b968c99be81b729",
+    "historique_01/execution.stderr.txt": "aefef9055e888bb3f758dd5b0ce04bf89e16da339dc360c5b5e26dc4ef44060a",
+    "historique_01/execution.stdout.txt": "60d78eafd93ba61119dfd2568c15bf03242dc8ff2c65f1db2dfd029b135ac2fc",
+    "historique_01/verifie_integration.py": "c31b2abf736d5f64ad4b4318757e5d41fc013fc5dc93c06d03e0490326bc5fbf",
+    "index_origines.json": "2b29b4ef120df9c1a3004ba6b37cc5b757ef3178f48c753f24c36bd89a035cb0",
+    "NOTICE.txt": "6d7a317f4d93e92f45de18f55bac5f7cd4c824ffcdc44433716e9c4bb5d29b37",
+    "preuve_native_f2_grilles_2375.json": "566c1a6fb0f41de77869e4eeb737b7d8d940004538fa00591e62ba71b4af295c",
+    "rapport_integration.json": "7c1dee7a96096986ba9a48b13b11ecbcc94ed79571ac21fa1999009414afbc87",
+    "verifie_integration.py": "ecf12b23de1a225a875c36e76f038eabefe182243c8bd59a4443d6d4b1d8ff45"
+  },
+  "exclusion": "index_sha256.json seulement"
+}

@@ -1,0 +1,88 @@
+OK  contour ferme et simple
+OK  contour ferme et simple
+OK  F_Cu : polygones simples et non degeneres
+OK  F_Cu : 0 mm2 hors contour (calcul exact)
+OK  B_Cu : polygones simples et non degeneres
+OK  B_Cu : 0 mm2 hors contour (calcul exact)
+OK  NPTH 1 : sur bord de pontet autorise
+OK  NPTH 1/F_Cu : cuivre a 11.216 mm (minimum 0.25)
+OK  NPTH 1/B_Cu : cuivre a 2.976 mm (minimum 0.25)
+OK  NPTH 2 : sur bord de pontet autorise
+OK  NPTH 2/F_Cu : cuivre a 13.986 mm (minimum 0.25)
+OK  NPTH 2/B_Cu : cuivre a 2.107 mm (minimum 0.25)
+OK  NPTH 3 : dans le substrat
+OK  NPTH 3/F_Cu : cuivre a 11.500 mm (minimum 0.25)
+OK  NPTH 3/B_Cu : cuivre a 3.517 mm (minimum 0.25)
+OK  NPTH 4 : dans le substrat
+OK  NPTH 4/F_Cu : cuivre a 13.926 mm (minimum 0.25)
+OK  NPTH 4/B_Cu : cuivre a 2.465 mm (minimum 0.25)
+OK  NPTH 5 : dans le substrat
+OK  NPTH 5/F_Cu : cuivre a 10.912 mm (minimum 0.25)
+OK  NPTH 5/B_Cu : cuivre a 4.108 mm (minimum 0.25)
+OK  NPTH 6 : dans le substrat
+OK  NPTH 6/F_Cu : cuivre a 13.338 mm (minimum 0.25)
+OK  NPTH 6/B_Cu : cuivre a 2.824 mm (minimum 0.25)
+OK  NPTH 7 : sur bord de pontet autorise
+OK  NPTH 7/F_Cu : cuivre a 10.324 mm (minimum 0.25)
+OK  NPTH 7/B_Cu : cuivre a 4.720 mm (minimum 0.25)
+OK  NPTH 8 : sur bord de pontet autorise
+OK  NPTH 8/F_Cu : cuivre a 12.750 mm (minimum 0.25)
+OK  NPTH 8/B_Cu : cuivre a 3.232 mm (minimum 0.25)
+OK  NPTH 9 : sur bord de pontet autorise
+OK  NPTH 9/F_Cu : cuivre a 2.089 mm (minimum 0.25)
+OK  NPTH 9/B_Cu : cuivre a 13.352 mm (minimum 0.25)
+OK  NPTH 10 : sur bord de pontet autorise
+OK  NPTH 10/F_Cu : cuivre a 4.625 mm (minimum 0.25)
+OK  NPTH 10/B_Cu : cuivre a 11.108 mm (minimum 0.25)
+OK  NPTH 11 : dans le substrat
+OK  NPTH 11/F_Cu : cuivre a 1.503 mm (minimum 0.25)
+OK  NPTH 11/B_Cu : cuivre a 13.997 mm (minimum 0.25)
+OK  NPTH 12 : dans le substrat
+OK  NPTH 12/F_Cu : cuivre a 4.310 mm (minimum 0.25)
+OK  NPTH 12/B_Cu : cuivre a 11.803 mm (minimum 0.25)
+OK  NPTH 13 : dans le substrat
+OK  NPTH 13/F_Cu : cuivre a 1.200 mm (minimum 0.25)
+OK  NPTH 13/B_Cu : cuivre a 14.658 mm (minimum 0.25)
+OK  NPTH 14 : dans le substrat
+OK  NPTH 14/F_Cu : cuivre a 4.200 mm (minimum 0.25)
+OK  NPTH 14/B_Cu : cuivre a 12.498 mm (minimum 0.25)
+OK  NPTH 15 : sur bord de pontet autorise
+OK  NPTH 15/F_Cu : cuivre a 1.503 mm (minimum 0.25)
+OK  NPTH 15/B_Cu : cuivre a 15.350 mm (minimum 0.25)
+OK  NPTH 16 : sur bord de pontet autorise
+OK  NPTH 16/F_Cu : cuivre a 4.310 mm (minimum 0.25)
+OK  NPTH 16/B_Cu : cuivre a 13.207 mm (minimum 0.25)
+OK  PTH 1 : dans le substrat
+OK  PTH 1/F_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 1/B_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 2 : dans le substrat
+OK  PTH 2/F_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 2/B_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 3 : dans le substrat
+OK  PTH 3/F_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 3/B_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 4 : dans le substrat
+OK  PTH 4/F_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 4/B_Cu : anneau cuivre >= 0.15 mm
+OK  carte : 92.60 x 72.00 mm, surface 66.7 cm2
+OK  F_Cu : 17.5 cm2 de cuivre, 0.00 mm2 hors de la carte
+OK  F_Cu : tranche la plus pauvre 4.20 mm de cuivre, a y = 16.0 mm
+OK  B_Cu : 16.1 cm2 de cuivre, 0.00 mm2 hors de la carte
+OK  B_Cu : tranche la plus pauvre 3.80 mm de cuivre, a y = 28.0 mm
+OK  recouvrement des deux cuivres : au plus 14.00 mm par tranche (limite inf mm, hors les 0 mm d'implantation SMA)
+OK  percage 1 : diam 0.60 mm en (32.0, 10.0)
+OK  percage 2 : diam 0.60 mm en (35.0, 10.0)
+OK  percage 3 : diam 0.60 mm en (32.0, 11.0)
+OK  percage 4 : diam 0.60 mm en (35.0, 11.0)
+OK  percage 5 : diam 0.60 mm en (32.0, 12.0)
+OK  percage 6 : diam 0.60 mm en (35.0, 12.0)
+OK  percage 7 : diam 0.60 mm en (32.0, 13.0)
+OK  percage 8 : diam 0.60 mm en (35.0, 13.0)
+OK  percage 9 : diam 0.60 mm en (32.0, 27.0)
+OK  percage 10 : diam 0.60 mm en (35.0, 27.0)
+OK  percage 11 : diam 0.60 mm en (32.0, 28.0)
+OK  percage 12 : diam 0.60 mm en (35.0, 28.0)
+OK  percage 13 : diam 0.60 mm en (32.0, 29.0)
+OK  percage 14 : diam 0.60 mm en (35.0, 29.0)
+OK  percage 15 : diam 0.60 mm en (32.0, 30.0)
+OK  percage 16 : diam 0.60 mm en (35.0, 30.0)

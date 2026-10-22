@@ -1,0 +1,13 @@
+{
+  "commande": [
+    "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+    "-B",
+    "-X",
+    "utf8",
+    "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\contrelecture_globale_F2_2026-10-22\\controle_croise.py"
+  ],
+  "code_execution_controle": 0,
+  "qualification_globale_attendue": false,
+  "stdout_sha256": "4080bd041299bcd808f2663a37dbbd511814d5315f27c12b34d6994d625a83f7",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

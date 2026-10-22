@@ -1,189 +1,120 @@
-# fabrication — les deux commandes PCBWay
+# Les deux articles PCBWay
 
-Deux articles, deux dépôts séparés sur le site. Chaque dossier contient **un
-ZIP prêt à déposer tel quel** et une notice qui donne les options à cocher.
+Révision physique du 18 octobre 2026 : **deux articles distincts**, à déposer séparément. Le premier contient les deux losanges sur un panneau client ; le second contient la Vivaldi seule. La quantité proposée est de **5 panneaux**, donnant 5 petits et 5 grands losanges après séparation, et de **5 Vivaldi**.
+
+| Article | ZIP à déposer | Dimensions nominales de découpe | Contenu d'une pièce commandée |
+|---|---|---|---|
+| 1 | [panneau_losanges_pcbway.zip](panneau_losanges/panneau_losanges_pcbway.zip) | 92,600 × 72,000 mm | Un panneau avec deux conceptions différentes |
+| 2 | [vivaldi_tomographie_pcbway.zip](vivaldi_tomographie/vivaldi_tomographie_pcbway.zip) | 143,668736 × 280,903102 mm | Une Vivaldi |
+
+Les cotes correspondent à la **ligne médiane du GKO**. La largeur du trait de dessin, 0,100 mm, ne s'ajoute pas aux dimensions de la carte. Pour un formulaire limité au dixième, saisir 92,6 × 72,0 et 143,7 × 280,9 mm ; le contour Gerber porte la découpe nominale précise.
+
+Les coordonnées source de la Vivaldi donnent 143,668735 × 280,9031025 mm ; leur arrondi au format Gerber donne les dimensions de la table. Cet écart inférieur à 0,000002 mm est sans portée pour les tolérances de fabrication. Les valeurs source et relues sont conservées dans l'[inventaire de la livraison courante](inventaire_livraison_courante.json).
+
+Ces jeux décrivent la géométrie actuelle et son contrat de fabrication. Les courbes historiques, obtenues avant le changement de matériau, l'ajout de l'empreinte SMA et les autres corrections, ne qualifient pas ces fichiers.
+
+## Statut de qualification au 22 octobre 2026
+
+Deux contrôles différents, deux verdicts différents, et **aucun ne remplace l'autre**. Les deux fichiers sont conservés côte à côte dans `resultats/pcbway_maille_controlee_v2/`.
+
+| Question posée | Fichier | Verdict |
+|---|---|---|
+| `S11` est-il prédit **point par point** ? | `qualification_globale.json` | **Non.** Le contrôle spatial échoue pour les trois antennes ; le contrôle temporel et la passivité passent. |
+| Les niveaux de maillage s'accordent-ils sur **ce que l'antenne fait** ? | `qualification_grandeurs_decision.json` | **Oui**, pour les trois antennes. |
+
+**Ce qui est établi**, sur 1,4–6,0 GHz, et qui ne dépend pas du maillage :
+
+| Antenne | Puissance réfléchie moyenne | Part de bande sous −6 dB | Étendue entre niveaux |
+|---|---:|---:|---|
+| Grand losange | **−11,96 dB** | **100 %** | 0,13 dB · 0,00 pt |
+| Vivaldi | **−12,76 dB** | **100 %** | 0,08 dB · 0,00 pt |
+| Petit losange | −7,17 dB | 78,9 % | 0,13 dB · 0,54 pt |
+
+**Ce qui n'est pas établi** : que `S11` soit prédit à mieux que l'écart ponctuel conservé dans `qualification_globale.json`. Le [diagnostic du 22 octobre](../chatGPT_critical_review/convergence_grandeurs_decision_2026-10-22/note.md) montre qu'un maillage plus fin ne le rendra pas vrai : la suite des écarts remonte sur ses deux derniers paliers et atteint son plus mauvais écart au maillage le plus fin, parce que les grilles ne sont pas emboîtées et qu'une cellule proche du port y grossit d'un facteur 1,69. La courbe mesurée pourra s'écarter d'autant — avant même de compter le connecteur réel, la tolérance du FR4 sur sa permittivité et la finition du cuivre, tous hors modèle.
+
+**À ne pas confondre** : le petit losange **n'est pas une antenne de travail dans cette bande**. C'est la conception publiée pour 2,5–13,5 GHz, livrée comme étalon du modèle électromagnétique. La commande porte donc sur deux antennes utilisables et un témoin de validation.
 
 ```powershell
-conda activate ph
-python export_gerber.py --tout          # réécrit les deux jeux depuis la géométrie
-python verifie_gerber.py fabrication\panneau_losanges\panneau_losanges_pcbway.zip `
-                         fabrication\vivaldi_tomographie\vivaldi_tomographie_pcbway.zip
+python -B -Xutf8 qualifie_grandeurs_decision.py --campagne resultats/pcbway_maille_controlee_v2
+python -B -Xutf8 verifie_coherence_livraison.py --campagne resultats/pcbway_maille_controlee_v2
+python -B -Xutf8 -m pytest -q -p no:cacheprovider test_qualifie_grandeurs_decision.py test_verifie_coherence_livraison.py
 ```
 
-| | À déposer | Carte |
+**Le dernier contrôle à passer avant de déposer** est `verifie_coherence_livraison.py`. Ni le vérificateur de Gerbers ni la qualification ne répondent à la question « ce que je dépose est-il ce qui a été simulé ? » : le premier compare le ZIP à la géométrie *courante*, la seconde qualifie des profils calculés à une date donnée. Il suffirait d'avoir retouché un `geometrie.py` entre les deux pour que les deux contrôles passent séparément en décrivant deux cartes différentes. L'outil ferme la chaîne en neuf maillons et constate aujourd'hui que **les 18 sources gelées avec la campagne sont identiques à l'arbre de travail**.
+
+## Options de commande
+
+| Champ du formulaire | Article 1 : panneau | Article 2 : Vivaldi |
 |---|---|---|
-| **Article 1** | `panneau_losanges/panneau_losanges_pcbway.zip` | 92,60 × 72,00 mm |
-| **Article 2** | `vivaldi_tomographie/vivaldi_tomographie_pcbway.zip` | 143,07 × 280,60 mm |
+| Board type | **Panel by Customer** | **Single pieces** |
+| Different design in panel | **2** | 1 |
+| Quantity | **5 panneaux complets** | 5 cartes |
+| Break-away rail / ajout de rails | No : découpe fournie | No |
+| X-out allowance | Not Accept : demander les panneaux complets sans antenne rebutée | Sans objet |
+| Layers | 2 | 2 |
+| Material / FR4-TG | **Shengyi S1000H, TG150**, sans substitution silencieuse | Idem |
+| Thickness | **1,6 mm nominal** ; faire préciser diélectrique et épaisseur finie séparément | Idem |
+| Finished copper | **1 oz**, 35 µm nominal par face | Idem |
+| Surface finish | **Immersion gold (ENIG)** | Idem |
+| Solder mask | **None**, aucune résine sur les deux faces ni dans les fentes | Idem |
+| Silkscreen / UV printing | **None** | Idem |
+| Min track/spacing | 6/6 mil | 6/6 mil |
+| Min hole size | Option **0,3 mm ↑** : plus petit trou réel 0,457 mm | Idem |
+| Via process | Vias not covered ; pas de remplissage | Idem |
+| Gold fingers, edge plating, castellated holes, bevelling | No | No |
+| Remove product No. / marquages ajoutés | Yes ; aucun marquage sur cuivre ou FR4 de l'antenne | Idem |
+| Assembly / pochoir | Non demandé : PCB nus | Idem |
 
-Options communes aux deux : **FR-4, 2 couches, 1,6 mm, cuivre 1 oz, 5 pièces,
-finition ENIG, pas de sérigraphie**, et la couleur de vernis est indifférente
-— voir plus bas.
+Le [formulaire PCBWay](https://www.pcbway.com/QuickOrderOnline.aspx), consulté le 18 octobre 2026, propose les options S1000H TG150, masque None et sérigraphie None. L'[aide sur les panneaux clients](https://www.pcbway.com/helpcenter/panel_issues/Confirm_the_panel_way_of_the_boards.html) s'applique au panneau à pontets fourni. Déclarer les **deux conceptions** même si elles partagent une seule plaque ; conserver la confirmation du prix et de la quantité de panneaux livrés.
 
-## Article 1 — le panneau des deux losanges
+Le champ « Edge connector » du formulaire concerne ici les doigts de contact et traitements de bord : laisser **No**. Le connecteur SMA se soude sur les surfaces planes de l'empreinte déjà dessinée. Il ne demande ni métallisation de tranche ni chanfrein.
 
-Deux monopôles planaires en losange sur une même plaque, reliés par deux
-pontets sécables de 3 mm percés d'amorces de rupture.
+Copier les [instructions techniques en anglais](instructions_pcbway_anglais.txt) dans la demande de fabrication ou les joindre comme consignes. Elles sont préparées pour la revue CAM ; aucun envoi ni commande n'a été effectué par ces scripts.
 
-| | |
+## Géométries et perçages
+
+| Élément | Définition actuelle |
 |---|---|
-| Petit losange, 32 × 40 mm | la **conception publiée** (Singhal 2013 / MathWorks), cotes inchangées |
-| Grand losange, 57,6 × 72 mm | le même losange à l'échelle 1,8, pour la bande du LiteVNA |
-| Fraisage de séparation | 3,00 mm de large, deux pontets de 3,0 mm, seize trous de 0,6 mm |
+| Petit losange | Carte 32 × 40 mm, radiateur dérivé de la référence publiée ; interface SMA ajoutée |
+| Grand losange | Carte 57,6 × 72 mm ; échelle 1,8 du radiateur, épaisseur 1,6 mm et ligne nominale 3,1 mm |
+| Séparation du panneau | Fraisage 3,0 mm, deux pontets de 3,0 mm ; pas de rainure en V |
+| NPTH panneau | 16 amorces de rupture, diamètre 0,600 mm |
+| PTH panneau | 4 vias de masse, diamètre fini demandé 0,457 mm : deux par antenne |
+| Vivaldi | Cuivres conservés hors implantation SMA ; substrat agrandi de 0,300 mm aux côtés et à la bouche |
+| NPTH Vivaldi | 2 trous de fixation de 3,000 mm |
+| PTH Vivaldi | 2 vias de masse de diamètre fini demandé 0,457 mm |
 
-**Pourquoi un panneau.** PCBWay facture le nombre de *dessins*, pas le nombre
-de cartes : deux losanges sur une plaque, c'est un dessin, donc un article.
+Les deux bords d'alimentation des losanges sont sur le bord extérieur inférieur du panneau. Après séparation, **araser les restes de pontets jusqu'aux contours rectangulaires nominaux**, sans entamer le cuivre, avant la comparaison aux simulations des antennes individuelles. La simulation d'une antenne séparée ne décrit pas le panneau intact.
 
-**Pourquoi des pontets et pas une rainure en V.** Une rainure doit traverser le
-panneau de bord à bord, et les deux cartes n'ont pas la même hauteur. Les
-pontets, eux, tombent sur le côté, à 4 mm du cuivre le plus proche. Et surtout
-**les deux bords d'alimentation sont sur le bord extérieur du panneau** : ils
-sortent fraisés, pas cassés. C'est sur eux que se sertit le SMA, et c'est le
-plan où se trouve le port de la simulation.
+Le cuivre arrive volontairement au bord inférieur pour le SMA. Hors de ce bord, la marge nominale est notamment de 0,400 mm pour la masse du petit losange, 0,720 mm pour celle du grand et 0,300 mm aux côtés et à la bouche de la Vivaldi. Le contrôle géométrique exige au moins 0,250 mm hors alimentation. Les [capacités PCBWay](https://www.pcbway.com/capabilities.html) et la revue CAM doivent être confrontées aux tolérances réellement acceptées ; ne pas laisser déplacer le cuivre pour résoudre une alerte automatique.
 
-**Ce qui ne suit pas l'échelle sur le grand losange**, et c'est une décision,
-pas un oubli :
+## Matériau, connecteur et comparaison future
 
-| | |
-|---|---|
-| L'épaisseur reste 1,6 mm | 2,88 mm n'est pas une épaisseur de catalogue, et deux épaisseurs ne tiennent pas sur un même panneau |
-| La ligne reste 3,1 mm de large | les 50 Ω d'un microruban tiennent au rapport largeur/épaisseur. À 5,58 mm sur 1,6 mm de FR4, la ligne ferait 28 Ω, et ses 18 mm agiraient en transformateur quart d'onde vers 2,5 GHz — en plein dans la bande visée. |
+Le matériau demandé est le **stratifié S1000H**. S1000HB désigne le préimprégné associé dans la [fiche officielle conservée](../references/S1000H_fiche_PCBWay.pdf), et ne constitue pas une autre référence de stratifié à substituer. La fiche donne à 1 GHz des valeurs typiques Dk = 4,6 et Df = 0,011, sur un échantillon de 1,6 mm de construction 8 × 7628. Le modèle Debye nominal est construit à partir de ce point ; ce n'est pas une identification large bande du lot commandé.
 
-Conséquence : le grand losange **n'est plus l'homothétique exact** de la
-conception publiée, et sa bande n'est pas celle de l'article divisée par 1,8.
-C'est pour cela qu'il est simulé à part.
+L'épaisseur du diélectrique est `h = 1,6 mm` dans le modèle. Faire documenter séparément **épaisseur diélectrique, cuivre et finition**, puis mesurer l'épaisseur finie à réception. La seule valeur « Thickness 1.6 » ne garantit pas que le diélectrique livré fasse exactement 1,6 mm. La comparaison expérimentale doit utiliser les dimensions et tolérances connues du lot.
 
-**Une cote serrée, à ne pas corriger** : la masse semi-circulaire du petit
-losange arrive à **0,40 mm du bord de carte** — rayon 15,6 mm sur une carte de
-32 mm, c'est la cote publiée. PCBWay accepte 0,3 mm de cuivre au bord fraisé,
-donc cela passe, mais sans marge. S'ils le signalent, la réponse est : ne pas
-reculer la masse, c'est elle qu'on veut comparer à l'article. Le grand losange,
-lui, a 0,72 mm. Les deux bords de rupture, eux, sont à 2,9 mm du cuivre le plus
-proche au minimum.
+Le connecteur retenu est une **SMA femelle bord de carte Cinch/Johnson 142-0701-851**, standard, non RP-SMA. Les trois antennes ont la même implantation : pad signal 2,286 × 5,080 mm, deux pattes de masse dessus reliées au plan de masse dessous par deux vias. Les connecteurs sont à commander séparément et à souder après les contrôles de réception. La [vérification détaillée de l'implantation](VERIFICATION_EMPREINTE_SMA.md) distingue les cotes du catalogue et l'adaptation de ligne du projet.
 
-### Ce que la simulation dit
+Le port de simulation est idéal et référencé au bord du PCB. Le boîtier SMA, sa broche, le PTFE et la soudure ne sont pas modélisés intégralement. Une calibration SOL au raccord coaxial du SMA et le plan de port au bord du PCB sont deux plans distincts ; conserver la calibration et documenter la transition selon le protocole de mesure du projet.
 
-| | Simulé | Attendu |
-|---|---|---|
-| Petit losange (×1) | −10 dB de **2,30 à 13,60 GHz**, 85 % de couverture | 2,5–13,5 GHz publiés |
-| Grand losange (×1,8 sur 1,6 mm) | −10 dB de **1,27 à 6,00 GHz**, 87 % de couverture | prédiction 1,39–7,50 GHz |
+## Contenu des ZIP et preuves de transfert
 
-Le premier est l'**étalon du modèle électromagnétique** : il retrouve la bande
-publiée à 0,2 GHz près aux deux bouts. C'est lui qui donne du poids au second,
-dont personne n'a publié le résultat. Les 6,00 GHz du grand losange sont la
-borne de la simulation, pas celle de l'antenne.
+Chaque ZIP courant contient **9 fichiers** : les cinq Gerbers `.GTL`, `.GBL`, `.GTS`, `.GBS`, `.GKO`, les deux Excellon `-NPTH.DRL` et `-PTH.DRL`, une notice et un manifeste JSON. Les GTS/GBS sont ouverts sur toute l'enveloppe ; ils accompagnent l'exigence de masque None. Les fichiers Excellon déclarent séparément `TYPE=NON_PLATED` et `TYPE=PLATED`. Les diamètres PTH sont les diamètres finis après métallisation.
 
-## Article 2 — la Vivaldi antipodale
+Le manifeste contient les coordonnées exportées, leur empreinte SHA-256, les empreintes des sources, le modèle de matériau, le connecteur et les empreintes de tous les fichiers utiles. L'empreinte du ZIP lui-même est dans le fichier `.zip.sha256` voisin, afin d'éviter une auto-référence impossible.
 
-Antenne à onde progressive, à fente exponentielle, conçue ici pour la
-tomographie : directive sans l'être trop, continue en fréquence.
+Depuis `simulation`, dans l'environnement `ph` :
 
-| | |
-|---|---|
-| Carte | 143,07 × 280,60 mm, FR4 1,6 mm |
-| Ouverture de la bouche | 107,07 mm entre les deux bords intérieurs du cuivre |
-| Ailes de cuivre à la bouche | 18 mm de chaque côté |
-| Ligne d'alimentation | 3,00 mm — c'est elle qui fait les 50 Ω |
-| Masse à l'alimentation | 40 mm de large |
-| Transition / évasement | 100 mm / 160,6 mm |
-| Perçages | deux trous de 3,0 mm, à 60 mm du ruban, pour la fixer |
+```powershell
+python -B -Xutf8 export_gerber.py --tout
+python -B -Xutf8 verifie_gerber.py fabrication/panneau_losanges/panneau_losanges_pcbway.zip fabrication/vivaldi_tomographie/vivaldi_tomographie_pcbway.zip
+python -B -Xutf8 apercu.py --panneau losanges --antenne vivaldi_tomographie --sortie fabrication/apercus
+python -B -Xutf8 -m pytest -q -p no:cacheprovider test_fabrication.py
+```
 
-**Elle n'a aucune référence publiée**, contrairement au losange. Ses cotes de
-départ sont des règles de l'art — ouverture ≥ λ/2, longueur ≥ λ à la fréquence
-basse — et le reste a été réglé sur le `|S11|` simulé, avec `regle.py`.
+Le vérificateur relit chaque fichier avec gerbonara et compare les **surfaces complètes** des cuivres, les ouvertures de masque, les lignes médianes des contours fermés et chaque position, diamètre et métallisation de perçage à la source courante. Un simple accord de dimensions extérieures ne suffit pas. Ses rapports JSON, SVG et PNG sont dans `verification/` de chaque article. L'aperçu des sources complète cette lecture indépendante avec les marges, anneaux de vias et contrôles de topologie. Il écrit aussi les résultats détaillés dans `contours.controles.txt`.
 
-### Ce que la simulation dit, et ce qu'elle ne dit pas
+Conserver le ZIP effectivement envoyé, son SHA-256, les réponses CAM et les données du lot. Toute modification de géométrie, matériau ou connectique demande de régénérer les fichiers et de réévaluer les simulations correspondantes. Les DXF sont destinés à l'inspection ou à l'édition, et ne remplacent pas ces ZIP.
 
-Vingt-et-un essais, consignés dans
-[`../antennes/vivaldi_tomographie/fiche.md`](../antennes/vivaldi_tomographie/fiche.md).
-Sur 1,4–6,0 GHz :
-
-| | |
-|---|---|
-| sous −10 dB | **71,4 %** de la bande |
-| sous −6 dB | **94,1 %** de la bande |
-| `\|S11\|` moyen | **−10,6 dB** |
-| seule zone au-dessus de −6 dB | **5,45 – 5,85 GHz** |
-
-La coupure basse est **sous 1,0 GHz**, c'est-à-dire sous la borne de la
-simulation et non au-dessus de la bande visée.
-
-Ce qui a fait le résultat n'était pas ce qu'on attendait : ni le taux
-d'évasement, ni l'ouverture de la bouche, ni la longueur de l'évasement
-n'améliorent quoi que ce soit — **agrandir la carte la dégrade**. Le seul
-levier est la longueur de la **transition** micro-ruban / fente, et elle
-s'achète sur l'évasement : la carte livrée fait la même taille que la première,
-pour 2,4 dB de mieux en moyenne.
-
-**Le défaut qui reste est localisé et chiffré, pas caché** : 400 MHz vers
-5,6 GHz, soit 8 % de la bande utile, à son extrémité haute — là où la
-pénétration dans les tissus est de toute façon la plus faible. Les deux
-remèdes classiques — dentelures sur les ailes, substrat trapézoïdal — sont à
-l'entrée 9 du `BACKLOG.md`, avec ce qui les ferait revenir. Aucun n'est tenté
-ici : **la prochaine itération doit partir d'une mesure.**
-
-**La Vivaldi est dispersive par construction**, et c'est à retenir pour la
-mesure de distance : le rayonnement ne part pas d'un point fixe mais de
-l'endroit où la fente vaut environ λ/2, lequel se déplace avec la fréquence.
-Son retard n'est donc pas constant. Pour la tomographie, où l'image est
-reconstruite par inversion, ce n'est pas un défaut ; pour lire une distance sur
-un pic, ç'en serait un.
-
-## Le vernis épargne, et pourquoi il est ouvert sur tout le cuivre
-
-Les couches `.GTS` et `.GBS` ne sont pas celles d'une carte ordinaire :
-**elles reprennent exactement les formes du cuivre**. Le vernis est donc retiré
-partout où il y a du cuivre, et ne subsiste que sur le FR4 nu — les fentes.
-
-Deux raisons. La simulation suppose du cuivre nu ; et le connecteur SMA doit
-pouvoir se souder n'importe où sur la tranche, ce qui exige du cuivre
-accessible et une finition qui le protège.
-
-Ce qui reste de vernis, dans les fentes, déplace la fréquence de **moins de
-1 %** — vingt micromètres contre 1,6 mm de substrat, soit dix fois moins que la
-tolérance du FR4 sur sa permittivité. On aurait pu demander « pas de vernis du
-tout », ce qui collerait encore mieux à la simulation, mais ce n'est pas une
-option sûre du formulaire PCBWay : voir l'entrée 8 du `BACKLOG.md`.
-
-La **couleur** du vernis est donc indifférente. La **finition**, non : ENIG est
-le choix robuste. Sa couche de nickel est un peu plus dissipative en
-hyperfréquence que l'argent chimique, ce qui se discute sur les 20 mm de ligne
-d'alimentation et nulle part ailleurs ; l'argent chimique est meilleur en radio
-et se ternit en quelques mois à l'air libre.
-
-## Le connecteur n'est pas sur la carte
-
-Aucune empreinte de connecteur n'est posée, et c'est volontaire : le SMA est un
-modèle **bord de carte** (*edge-launch*), qui se sertit sur la tranche et se
-soude d'un côté sur le ruban, de l'autre sur la masse. C'est exactement ce que
-suppose la simulation, dont le port localisé occupe le plan de cette tranche.
-
-| Antenne | Où se sertit le SMA |
-|---|---|
-| Losanges | bord inférieur, centré sur la ligne de 3,1 mm |
-| Vivaldi | bord inférieur, centré sur la ligne de 3,0 mm |
-
-## Trois contrôles, et aucun ne fait confiance au précédent
-
-| | |
-|---|---|
-| `apercu.py` | dessine les contours et mesure le cuivre par tranche. Il attrape ce qu'aucune relecture de code n'attrape : un conducteur qui se pince jusqu'à disparaître, un cuivre hors carte, un recouvrement des deux faces trop large. |
-| `export_gerber.py` | écrit le RS-274X et l'Excellon directement depuis la géométrie simulée. Pas d'étape KiCad — c'était le seul endroit où les cotes fabriquées pouvaient diverger de celles qui ont été simulées. |
-| `verifie_gerber.py` | relit le ZIP avec `gerbonara`, qui n'est pas de nous, compare les encombrements et produit un rendu SVG. |
-
-Les encombrements relus se recoupent avec la géométrie simulée :
-
-| | Gerber relu | Géométrie simulée |
-|---|---|---|
-| Vivaldi, cuivre dessus | 73,03 × 279,14 mm | ligne en x = −1,50 → aile en x = +71,53 |
-| Vivaldi, cuivre dessous | 143,07 × 279,14 mm | masse pleine, toute la largeur |
-| Panneau, cuivre dessus | 88,40 × 61,20 mm | les deux losanges posés à 0 et 35 mm |
-
-## À faire en recevant les cartes
-
-1. Mesurer `|S11|` de chaque antenne **seule**, au LiteVNA calibré SOL, au
-   plan exact de la tranche.
-2. Le comparer à `resultats/<antenne>/s11_antenne_seule.png`.
-
-C'est ce qui ferme la boucle. Le losange publié dit déjà que le modèle
-électromagnétique est juste ; la mesure dira si la **fabrication** l'est, et
-c'est la seule chose que la simulation ne peut pas savoir.
+La suite pratique est dans [Contrôles à réception](CONTROLE_RECEPTION.md).

@@ -1,0 +1,97 @@
+Audit en lecture seule - traitement, modele analytique, import et CLI
+Date : 18 octobre 2026
+
+Execution : python -B test_traitement.py, depuis simulation/
+Resultat : code retour 0 ; 20 controles OK.
+Aucun calcul openEMS, aucune production de figures, aucun cache Python.
+Les sondes complementaires ci-dessous utilisent numpy et unittest.mock, des
+tableaux en memoire et, pour mode_fdtd, l'extraction AST de cette seule fonction
+avec tous les appels de simulation, ecriture et figures remplaces en memoire.
+
+1. Grille non uniforme acceptee, distance fausse
+Sources : donnees.py:54-74 ; run.py:70-76 ; traitement.py:31-44.
+Sonde : f=np.geomspace(1e9,6e9,201), s=exp(-4j*pi*f*0.5/C).
+charge_dossier avec background.csv nul et plate_50cm.csv=s, lecteurs simules.
+Acquisition reconstruit uniquement les bornes et N comme mode_mesures.
+Resultat : import accepte ; maximum du profil a 40.45706678233831 cm,
+pour une verite de 50 cm. Aucun controle d'uniformite ne rejette cette grille.
+
+2. Un trajet physique devient deux pics dans le bilan
+Sources : traitement.py:63-80 et 118-134.
+Sonde : ModeleAntenne(a2=0), simule(f,50,echos_fixes=()), puis bilan.
+Resultat : pics [(69.999140334058 cm, -6.068410753917551 dB),
+                 (77.0823947048151 cm, -37.56783060446148 dB)].
+Le second maximum est un lobe secondaire de la reponse fenetree ; il est
+pourtant etiquete pic_lointain. Aucun seuil de proeminence, bruit ou validation
+de seconde branche physique n'est present. Le test mono-trajet utilise
+combien=1 et ne detecte pas cette confusion.
+
+3. Les sorties du simulateur ne se reimportent pas avec les defauts du lecteur
+Sources : run.py:108-109,132 ; donnees.py:51-52,64-72.
+Sonde : charge_dossier voit antenne_seule.s1p et plaque_50cm.s1p avec tableaux
+valides via lecteurs simules.
+Resultat : FileNotFoundError aucun fichier « background » dans virtual.
+Le lecteur attend background et plate_...cm ; l'export produit antenne_seule
+et plaque_...cm. Le lecteur accepte des motifs parametrables en Python,
+mais mode_mesures n'expose pas ces motifs a la CLI.
+
+4. Antenne sans point adapte a -10 dB : crash du compte rendu CLI
+Sources : run.py:121-124.
+Sonde : mode_fdtd(args,False) avec lance simule renvoyant S11=0.9+0j a chaque
+frequence ; ecrit_s1p et figure_s11 simules sans ecriture.
+Resultat : ValueError zero-size array to reduction operation minimum which
+has no identity. La liste sous est vide ; sous.min() est appele sans garde.
+
+5. Limites quantitatives du modele analytique confirmees
+Sources : modele.py:56-64,80-97,100-120 ; run.py:62-64.
+Reglages par defaut, cible a 50 cm :
+  max |S11_fond| = 0.501184463359354
+  max |S11_plaque| = 1.9168931710619181.
+L'echo heuristique en 1/(2*x_m) n'est donc pas une reponse S passive normalisee.
+Les niveaux absolus de ce modele ne valident pas l'amplitude experimentale.
+Avec/sans echo fixe (0.05,95cm), difference maximale entre residus :
+2.482534153247273e-16 ; cet echo s'annule au fond pres du seul arrondi.
+Il ne simule pas un parasite qui change lors de l'ajout/deplacement de cible.
+
+6. derive_ns est un retard de phase variable, pas directement le retard groupe
+Sources : modele.py:56-64 ; test_traitement.py:88,100-108.
+tau(f)=tau1+derive*(f-f_c)/B implique tau_g=tau(f)+f*derive/B.
+A f_c=3.5GHz et B=5GHz, derive=-0.25ns : tau_g(f_c)=0.4921ns,
+contre tau1=0.6671ns. Offset calcule de pic : 14.752748239860622cm,
+contre 19.999140334057998cm sans derive. La dispersion change donc le decalage
+constant de ~5.25cm, tout en laissant cet ecart constant entre distances cible.
+Le titre de test « elargit l'echo mais ne le deplace pas » est trop large ;
+le test verifie seulement l'invariance de l'ecart avec la distance.
+
+7. Le sens de derive dit experimental ne correspond pas au tableau embarque
+Sources : test_traitement.py:117-119 ; banc.py:118-122.
+Test imprime « sens des mesures (ecart qui diminue) » et impose fin<debut.
+Ecarts du tableau MESURES_9_OCT : proches 19.91/19.61/20.42cm ;
+lointains 25.88/26.32/26.57cm. Aucune diminution globale du debut a la fin.
+
+8. Robustesse des imports et statistiques de bruit
+Sonde Touchstone en memoire :
+  # Hz S RI R 50
+  1000000000 .1 .2 ! measurement
+Resultat lit_s1p : ValueError could not convert string to float: '!'.
+Sources donnees.py:28-44 : le lecteur ne retire pas les commentaires en ligne.
+Sonde bruit : comparaison simule(...bruit_db=-40)[1]-simule(...)[1]
+a 50/60/70cm : bruits identiques a 1.31e-16 pres (germe par defaut zero).
+La CLI fournit un fond sans bruit, puis le meme tirage de bruit a chaque
+position ; ce n'est pas un modele d'acquisitions independantes fond/cible.
+Source modele.py:100-120 et run.py:62-64.
+Sonde poids nuls : pente_ponderee(f,zeros,zeros) renvoie tau/decalage NaN.
+Source traitement.py:107-109 : aucune garde sur la puissance du residu.
+
+9. Point a croiser avec l'audit FDTD
+README.md:189-194 impose fdtd.serie avec maillage et duree communs.
+run.py:106 et130 appelle pourtant F.lance pour chaque cible, puis le fond,
+sans x_domaine ni n_pas communs. Cet ecart doit etre traite avant de faire
+confiance au mode FDTD public avec soustraction de fond.
+
+Conclusion locale : les equations IFFT, la Hann symetrique, les conventions
+de phase et le facteur aller-retour concordent avec faisabilite_openems.tex.
+La chaine analytique est comprehensible et executable. Cela suffit pour une
+reprise du developpement, avec corrections et tests. Cela ne suffit pas pour
+une validation quantitative de l'antenne experimentale : les S11 bruts de
+fond/cibles et leurs metadonnees de calibration restent necessaires.

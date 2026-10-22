@@ -1,0 +1,195 @@
+{
+  "schema": "qa_builder_pdf_F1_F2_synthetique_v1",
+  "reussi": true,
+  "script_sha256": "20d47c624020d7d4a459cd50ae70b6f6e13987a138434a3c6d3ce0c18b2fe731",
+  "builder_sha256": "d567a97344969fec0f98a98d2c1bd691573405351c4f816734713beac257bb48",
+  "racine_TEMP": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb",
+  "aucun_Run": true,
+  "aucune_qualification_reelle": true,
+  "aucune_creation_pdf_final": true,
+  "controles": [
+    {
+      "controle": "F1 historique et F2 explicite acceptes",
+      "reussi": true
+    },
+    {
+      "controle": "tag du bilan refuse : None",
+      "reussi": true
+    },
+    {
+      "controle": "tag du bilan refuse : 'fdtd'",
+      "reussi": true
+    },
+    {
+      "controle": "tag du bilan refuse : 'inconnu'",
+      "reussi": true
+    },
+    {
+      "controle": "tags de calcul F2 sans tag global refuses",
+      "reussi": true
+    },
+    {
+      "controle": "sourceF2 absente",
+      "reussi": true
+    },
+    {
+      "controle": "catalogue incoherent",
+      "reussi": true
+    },
+    {
+      "controle": "normales incoherentes",
+      "reussi": true
+    },
+    {
+      "controle": "PMLdifferent",
+      "reussi": true
+    },
+    {
+      "controle": "rendu refuse sans PASS global",
+      "reussi": true
+    },
+    {
+      "controle": "charge_dossier absent refuse",
+      "reussi": true
+    },
+    {
+      "controle": "charge_dossier globalFalse refuse",
+      "reussi": true
+    }
+  ],
+  "rendus": [
+    {
+      "fixture": "F1",
+      "resultat": {
+        "pdf": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\FIXTURE_SYNTHETIQUE_F1_NON_LIVRABLE.pdf",
+        "pages": 7,
+        "octets": 441248,
+        "sha256": "1cb8baad6a82087e17e1d598ad197a6baf1df134efc4af28212fff3e9056d80e",
+        "fixture_test": true
+      },
+      "pdf_sha256": "1cb8baad6a82087e17e1d598ad197a6baf1df134efc4af28212fff3e9056d80e",
+      "nombre_profils": 9,
+      "rendu_toutes_pages": true,
+      "pages_png": [
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F1-1.png",
+          "sha256": "4ce4b14829c7841c2d57079306e21757cc31f37c5f0e0ae97804691c67342c35"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F1-2.png",
+          "sha256": "c05dcc4bf0a51bfa98dea7a16c4d571818b1a67c01b7fc7eb197260255a1c981"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F1-3.png",
+          "sha256": "a89e5425c22225c4295028527905ebca58efe8616ad5d09c683515b893bc8f0b"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F1-4.png",
+          "sha256": "3a138576a8032b60d822c80c9ebc50246c08691289f3c7d9a597f8babfb30365"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F1-5.png",
+          "sha256": "6364e07d557c3ac1b87c6bd9acaf353d6aa8d77e296c89b51c8a59abcb47d5dd"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F1-6.png",
+          "sha256": "e560ded0ca4fbb49c788d4331a7d8fce746232bbea9906aaa91e8cb0219f8beb"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F1-7.png",
+          "sha256": "de65207f44615f7a3b9288b96a8d578525f4199d5ad88568a438a630663d35ac"
+        }
+      ],
+      "controle_texte_et_limites_page": true
+    },
+    {
+      "fixture": "F2",
+      "resultat": {
+        "pdf": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\FIXTURE_SYNTHETIQUE_F2_NON_LIVRABLE.pdf",
+        "pages": 9,
+        "octets": 500752,
+        "sha256": "a4b0433df5d5bf3b88e15ec5bfb02174c5666ad58817c42279606b78aa12722e",
+        "fixture_test": true
+      },
+      "pdf_sha256": "a4b0433df5d5bf3b88e15ec5bfb02174c5666ad58817c42279606b78aa12722e",
+      "nombre_profils": 15,
+      "rendu_toutes_pages": true,
+      "pages_png": [
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F2-1.png",
+          "sha256": "3e0133aee512704aef39cf02a51ccf794dc553de2dce502afd27a37d488b3839"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F2-2.png",
+          "sha256": "25c82673a9587dc3e4ff4b4c15c8f451fe279dfbf79ac2322c61c00f4c9d45d5"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F2-3.png",
+          "sha256": "e35ad7659d41e86a0c22a859dc5a198ffacf8999ddf17440738c4517439f410a"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F2-4.png",
+          "sha256": "ab93ae380a4044e02cbd4e31ab242a327466ee0d3a3e389c7c05f12483ec60fb"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F2-5.png",
+          "sha256": "5d849c9c83464631dc89a9b01b105632a52fb62623f3acc7e0f3a2ded20a7183"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F2-6.png",
+          "sha256": "994dbfa34ff3d2467b7a948bd755e8c4cb53bce5ef48fa5f86d6e8fe4b2fecbd"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F2-7.png",
+          "sha256": "3b8e01d5e09995d5bd475b0ad09fb5dead3fdbda2c8d700fbe39a826d25671dc"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F2-8.png",
+          "sha256": "e65459ce49dc8c0997c8860370a11e411500f252f81eb511bfec4c021ad932f1"
+        },
+        {
+          "chemin": "C:\\Users\\jfeld\\AppData\\Local\\Temp\\mwt_qa_pdf_f1_f2_peq_3wzb\\page_FIXTURE_F2-9.png",
+          "sha256": "8a2563936daf66c7ad9179e63b514778eae75589c462b1a1e493d278806a64ed"
+        }
+      ],
+      "controle_texte_et_limites_page": true
+    }
+  ],
+  "inspection_visuelle_a_faire": true,
+  "sources_root_inchangees": true,
+  "sources_root_sha256": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "apercu.py": "dd11516b5b159d36ee3a224f567f6a0d6c986cf783b7c56a7a3b2c84b4b3a5c3",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316",
+    "compare_s11.py": "8c49e7608c672a75b86ff6a42552d45f5b37e8b88b015eb30db53acf439ee711",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "export_dxf.py": "aa4910d44cb00b180135cb7710379ba41fa52fc81c3f3517bbd5e76cbab50659",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "figures.py": "326f3af3c7ee256e3254462d602beb7e1c09b5f3eaceda8c67c28e7f468826a7",
+    "livre_pcbway.py": "ed7638e1e9ad77b930200f485596fcc5fb711bd128b1a49c2eef4edebde0c740",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "modele.py": "1802913350fa14c51df39ae61a2667b880e05ed6f5a7b3abaf72079b34f82a7e",
+    "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "raffine_qualification_plus_pcbway.py": "15fe2ef41de4c4c3c4da0954dc2396fa652f3b75ba18d0f373824a4aab39d3c3",
+    "run.py": "5acc2a8285aabbcfdbe586fbedbd26bb76f143f44bf59ccf707b8bdc63e2dfc9",
+    "test_donnees.py": "264c22b0b23eb0af1f0af07b96580858b8075e708eb329be3f7e92fbda11ff9f",
+    "test_fabrication.py": "dc5cd0f28f453daf5a36c626968ab0c226f60ffc6bbcb34fa90296dffb382333",
+    "test_livre_pcbway.py": "84c8454bc8e0ddd52baf5bb0eaa80f8c98b3bc8b7cdce61b0221190008cd1af3",
+    "test_run.py": "e028a59d63bc2d0c3db3cd83fa262dcf6e8ab5558714af90ae7f2a98aad92fb7",
+    "test_traitement.py": "ac58e12809bcab4a483db4b7082682a76739486335eb2e9a9d6ef677673c8528",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "verifie_gerber.py": "def8f7273428352591a3a98cec2ce8b224ce1758b82f4beb070fa7debd46db40"
+  }
+}

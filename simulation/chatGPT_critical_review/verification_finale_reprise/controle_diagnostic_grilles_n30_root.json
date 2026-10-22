@@ -1,0 +1,39 @@
+{
+  "schema": "controle_diagnostic_grilles_n30_root_v1",
+  "date_utc": "2026-10-19T02:33:11.673856+00:00",
+  "archive": "chatGPT_critical_review/verification_finale_reprise/diagnostic_grilles_n30_preuves.zip",
+  "archive_sha256": "f6f0faadab879e4c471e189f7555efeb54e09167f1fef2ad46f333c2e6185ecb",
+  "manifest_sha256": "cbd7568a4a0e9a93830e1359dbbc68f6105a0aa973938510ac618812b20d12b1",
+  "membres": 8,
+  "crc_valide": true,
+  "sha256_tous_membres_valide": true,
+  "sources_exactes_validees": 5,
+  "sources_gelees_inchangees": 17,
+  "cellule_y_verification_independante": [
+    {
+      "profil": "extreme_fin_12ns",
+      "axe": "y",
+      "position_mm": -35.975,
+      "bornes_mm": [
+        -36.0,
+        -35.95061728395065
+      ],
+      "largeur_mm": 0.04938271604935096,
+      "maillage_npz_sha256": "3599174dcca35b4b4a5d266614f1b9a2ee8a79204125caa7374dab502f2180fc"
+    },
+    {
+      "profil": "n30_12ns",
+      "axe": "y",
+      "position_mm": -35.975,
+      "bornes_mm": [
+        -36.0,
+        -35.916666666666586
+      ],
+      "largeur_mm": 0.08333333333341386,
+      "maillage_npz_sha256": "dbe7f9219e503949ba72d7b2e4c4cf81dfaf90c0a8e9341fa2051a2adb38ad8d"
+    }
+  ],
+  "rapport_largeurs": 1.6875000000027158,
+  "profils_actifs_lus": false,
+  "nouvelle_qualification_effectuee": false
+}

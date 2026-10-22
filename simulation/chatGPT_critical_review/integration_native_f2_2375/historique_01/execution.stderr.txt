@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Jacques\liteVNA\MicroWaveTomography\simulation\chatGPT_critical_review\integration_native_f2_2375\verifie_integration.py", line 228, in <module>
+    main()
+    ~~~~^^
+  File "C:\Jacques\liteVNA\MicroWaveTomography\simulation\chatGPT_critical_review\integration_native_f2_2375\verifie_integration.py", line 163, in main
+    assert asdict(montage) == q["montage"] == m["montage"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,11 @@
+--- a/simulation/donnees.py
++++ b/simulation/donnees.py
+@@ -61,6 +61,8 @@
+                 valeurs.append([float(x) for x in colonnes])
+             except ValueError as exc:
+                 entete = [re.sub(r"[^a-z]", "", x.lower()) for x in colonnes]
++                if [x.strip().lower() for x in colonnes[1:]] == ["s11_real", "s11_imag"]:
++                    entete[1:] = ["real", "imag"]
+                 if not valeurs and entete[0] in ("f", "freq", "frequency", "frequence", "freqhz", "frequencyhz", "frequencehz") and entete[1] in ("re", "real", "reel") and entete[2] in ("im", "imag", "imaginaire"):
+                     continue
+                 raise ValueError(f"{chemin}:{numero} : ligne CSV non numerique") from exc

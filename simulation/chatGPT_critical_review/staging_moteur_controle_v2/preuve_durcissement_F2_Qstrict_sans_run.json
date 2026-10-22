@@ -1,0 +1,165 @@
+{
+  "schema": "F2_garde_Qstrict_delta_sans_run_v1",
+  "utc": "2026-10-19T14:37:57.430689+00:00",
+  "F2_historique_sha256": "237510b3702694abb4336b895eb8394015265cfbc18d92e8c1cf86d2eb5b0f84",
+  "F2_final_sha256": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+  "preuve_native_historique_sha256": "566c1a6fb0f41de77869e4eeb737b7d8d940004538fa00591e62ba71b4af295c",
+  "fonctions_identiques": {
+    "antennes_disponibles": {
+      "source_byte_exacte": true,
+      "sha256": "96e1bbf1d60ae182666bbd644f1bca39554f871761d316cf673969cb0f638e50"
+    },
+    "charge_antenne": {
+      "source_byte_exacte": true,
+      "sha256": "fb4f47d8006a2172dddfacb588ae0c6c4f14713f38f763b6c52c4d04d40f158f"
+    },
+    "marge_air": {
+      "source_byte_exacte": true,
+      "sha256": "dbd73f53abe8553068ec415d0eb3e6ded346ffd71525e4538eaf0a7bbeffc2aa"
+    },
+    "_uniques": {
+      "source_byte_exacte": true,
+      "sha256": "b12ce9e81a7886940d6666f117f14d49f21039fd4ce56142f9d6ce9f14701526"
+    },
+    "_fusionne": {
+      "source_byte_exacte": true,
+      "sha256": "95a3d74c14461da47175ab1439cb8f96e6b224ccda7eedd1e5825d87652f3f55"
+    },
+    "_gradue": {
+      "source_byte_exacte": true,
+      "sha256": "4a6cf32e8766488fb39c22f8deff34eb50372d3efd70a4ebff45dd71400665d1"
+    },
+    "_proprietes_matiere": {
+      "source_byte_exacte": true,
+      "sha256": "c79e8cf46ebda690db6a15c568e836100e69b85735c268c806e3f54214116f8f"
+    },
+    "verifie_emprise": {
+      "source_byte_exacte": true,
+      "sha256": "63b5c702904a99bba9716b8c4bca87ac59fde7f1781e9cc9cd32e1ead1e5bd6f"
+    },
+    "resume_maillage": {
+      "source_byte_exacte": true,
+      "sha256": "0188129759d3be199b58a08b2bbeff907938794650836ff06f7a5b660b525b6d"
+    },
+    "verifie_maillage": {
+      "source_byte_exacte": true,
+      "sha256": "e058d03f23527f4d596b5762693f79cff44af36ea70fb5b5119033a15cc715d0"
+    },
+    "_configuration_base": {
+      "source_byte_exacte": true,
+      "sha256": "c31b016af9ee588a5b8339db0bfe6c560c45d06066fad2cfbf0758f4c3087fd5"
+    },
+    "_reglages_controles": {
+      "source_byte_exacte": true,
+      "sha256": "5d1d7c8a6eb6b5eba5b1290f0cb9f09359ef5d58a4c6f78e6e199c0cf0cee4cd"
+    },
+    "_unique_controle": {
+      "source_byte_exacte": true,
+      "sha256": "ddffc1460bd74c5efe85d9eb900cd386c17b37be6c356c505240c6ab4115416b"
+    },
+    "_ligne_exacte": {
+      "source_byte_exacte": true,
+      "sha256": "884539bd75aed80311adc4e57afcfafaf3b10a352fb7d5d90f4cf542059468b3"
+    },
+    "_largeur_locale": {
+      "source_byte_exacte": true,
+      "sha256": "070cf525c82f91200645e3cb6a694777816149598c7d2c2419a45c3ee1d1a2e5"
+    },
+    "_subdivisions_controle": {
+      "source_byte_exacte": true,
+      "sha256": "7166bc21d3d763f63768cb87f1258d7eca0165ec28384ee9c9792c66f0c9bb47"
+    },
+    "_gradue_plancher": {
+      "source_byte_exacte": true,
+      "sha256": "4c17dc91e96fd42f303bd1ea2514227c4809c074de1ed07fd03d5d7eaedf70cd"
+    },
+    "_aretes_rectilignes": {
+      "source_byte_exacte": true,
+      "sha256": "73c8185980322093f801307634c37d51ac54fc8142f5ea2d9e96310ece832bea"
+    },
+    "_applique_grille_controlee": {
+      "source_byte_exacte": true,
+      "sha256": "80202946ca7eccd683c924e44edced11f920f0b002eaef254e4628b5398cbc82"
+    },
+    "_boite_primitives": {
+      "source_byte_exacte": true,
+      "sha256": "7406c8e5e2687f44658ab421792e9f84f0a962d0d39ddd9675dad24646c8d4a1"
+    },
+    "_verifie_non_grossissement": {
+      "source_byte_exacte": true,
+      "sha256": "a900bd75a581672f8c14a189e7aa7109f1ae4ae7d0fb4c624ba0e6f8266315a6"
+    },
+    "politique_maillage": {
+      "source_byte_exacte": true,
+      "sha256": "238cc07bc0b64626f3a40011c7bbf0057318737e74c9638f21bcb528c25320fd"
+    },
+    "construit": {
+      "source_byte_exacte": true,
+      "sha256": "b0cb7bab45b0c6458027ac45390a2bb727c2d03d56071410308bce71ce655eee"
+    },
+    "estime_cout": {
+      "source_byte_exacte": true,
+      "sha256": "30e18ca7778b7d66b90fd77b8bc6a0be4f5dc78104b74962732e54f01da226e7"
+    },
+    "_sha256": {
+      "source_byte_exacte": true,
+      "sha256": "84e01be0e86954cf25b4c38183532ee883ca09c235ea55c6a36a9d0a4d14e299"
+    },
+    "_sources": {
+      "source_byte_exacte": true,
+      "sha256": "41cffeaf28291c8382e6b5ed4e663bc1d83465d0e679bb03ae2a0588456470e5"
+    },
+    "_sauve_manifeste": {
+      "source_byte_exacte": true,
+      "sha256": "2cc67b1eb8ff7ae06c4f5147b1a0991479bae9af30c555b4522e45758eda20dd"
+    },
+    "_jsonable": {
+      "source_byte_exacte": true,
+      "sha256": "5970d76c68e6240f47f8b316981d9ef611b2817a46a5268322153c2ba81cfc9e"
+    },
+    "_calibre_dt": {
+      "source_byte_exacte": true,
+      "sha256": "0391ae8dee5ed7197da1f7f8b83bc7c97100be1503c2cf62adf94560cb64e5a9"
+    },
+    "serie": {
+      "source_byte_exacte": true,
+      "sha256": "d446def004ec921aef6b53fc2b1de52f60052eedc948a685590cbff32d6ccd81"
+    },
+    "ecrit_s1p": {
+      "source_byte_exacte": true,
+      "sha256": "60e5bc0f4e7c14ea8627d959ec684ce8a6756b308955de22ad4634a4ccd86bd4"
+    }
+  },
+  "durations_AST_numerique_identique": true,
+  "module_AST_sauf_lance_identique": true,
+  "sources17_conformes": {
+    "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+    "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+    "raffine_qualification_plus_pcbway.py": "15fe2ef41de4c4c3c4da0954dc2396fa652f3b75ba18d0f373824a4aab39d3c3"
+  },
+  "tolerance_indices": 2e-06,
+  "tests_garde": {
+    "nombre": 9,
+    "statut": "OK",
+    "aucun_solveur_natif": true,
+    "source_sha256": "9d122d6d32299bae1e92b130adad6ad23898fa560abe2456e58d9734ccee6db6",
+    "journal_sha256": "2625616e0c62b4846f719b8cf9284711af880794845f435c63618e6255f4677e"
+  },
+  "aucun_Run_reel": true,
+  "aucune_nouvelle_grille": true,
+  "qualification_officielle": false
+}

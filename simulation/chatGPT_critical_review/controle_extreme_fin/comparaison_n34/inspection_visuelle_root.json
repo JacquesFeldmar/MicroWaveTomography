@@ -1,0 +1,13 @@
+{
+  "schema": "inspection_root_figures_n34_v1",
+  "utc": "2026-10-19T13:55:34.826541+00:00",
+  "figures_inspectees": {
+    "comparaison_spatial.png": "a1028a72e559da7621cf1df327d54704db5334116971dfa916514e97b1873ec4",
+    "comparaison_temporel.png": "43ce25d22730de8db5ebf51f0cf7ca79ae5ac165b2d1e3de33babb2726531847"
+  },
+  "textes_legendes_lisibles": true,
+  "courbes_ecarts_complets_non_tronques": true,
+  "seuil_p95_distingue_du_seuil_point_par_point": true,
+  "refus_spatial_et_succes_temporel_affiches": true,
+  "qualification_globale_non_acquise": true
+}

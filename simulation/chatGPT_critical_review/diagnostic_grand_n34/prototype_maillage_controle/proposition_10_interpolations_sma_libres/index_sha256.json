@@ -1,0 +1,23 @@
+{
+  "usage": "proposition10 grilles seules, aucunequalification",
+  "fichiers_sha256": {
+    "construit_prototype_exact.py": "6bcefc15238f1989948a43253a9e3cbb4660b260fe9b5cf54fdf314e82595252",
+    "diamant_uwb_base_GRILLE_SEULE.npz": "4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439",
+    "diamant_uwb_fin_GRILLE_SEULE.npz": "9c18c73bad6f77892073cf010b14e7f2d851340a06617b6bcfe70be7c879554f",
+    "diamant_uwb_x18_base_GRILLE_SEULE.npz": "d91a7ddf69b9ab047a67d5bd24782e65bca9c9d64c7c40b51f7849dcc2fa3357",
+    "diamant_uwb_x18_fin_GRILLE_SEULE.npz": "566a0c748d7f7227700f01e57408d73156860d7be1a1c09e388fe67ed5641ef5",
+    "NOTE_RESULTATS.txt": "047a8e58881d1db9006f9a7400afe8d5a95993262a41d277512ace53156a7bd6",
+    "rapport_prototype.json": "9bd21116cda1a1f291cea3eada70d95c01c83e0aa4c9b80904ca05739b5075f2",
+    "verification10_integrale.json": "75d48ae2171a56070abbc31881db4820993cf674e34db143658662d0d5192821",
+    "verification_geometrique_et_cfl.json": "62c8839ac042d15c53d7e293928cb98e90130450d75ec3532e29ac445fb4f2ea",
+    "verifie10_exact.py": "efda1eb79b82e210e2ea83fe27eca44ecc72d271c13b09a493915c0534973f18",
+    "verifie_propositions_commun_exact.py": "a6e3b3b89a6b349757f7a5c0c41a8e54df03eaa58807bd0c669a83ffe3680999",
+    "vivaldi_tomographie_base_GRILLE_SEULE.npz": "0f389011526db23a6586f8461737d05f1b95de3cb26aa26f7b04f1fa48601c29",
+    "vivaldi_tomographie_fin_GRILLE_SEULE.npz": "dfb0246d813dc95717b9c8a965494f417e75508f6c4eaffb21ad726a292a3097"
+  },
+  "restauration_sources": {
+    "construit_prototype_exact.py": "../construit_prototype.py",
+    "verifie10_exact.py": "../verifie10.py",
+    "verifie_propositions_commun_exact.py": "../verifie_propositions.py"
+  }
+}

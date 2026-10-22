@@ -1,0 +1,65 @@
+{
+  "valeurs_initiales_exactes": true,
+  "spatial_initial": {
+    "valeurs": {
+      "maximum_complexe": 0.0942647817337662,
+      "rms_complexe": 0.04179304240011919,
+      "percentile95_db": 2.5985376033433263,
+      "percentile95_phase_deg": 21.960737985384156
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.05,
+      "rms_complexe": 0.02,
+      "percentile95_db": 1.0
+    },
+    "reussi": false,
+    "points_masque_db": 184,
+    "masque_db": "deux modules >= -20 dB ; max/RMS sur tous les points"
+  },
+  "temporel_initial": {
+    "valeurs": {
+      "maximum_complexe": 0.03172385741729312,
+      "rms_complexe": 0.008299422325135537,
+      "percentile95_db": 0.5811223209935332,
+      "percentile95_phase_deg": 4.123582236199453
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.015,
+      "rms_complexe": 0.005,
+      "percentile95_db": 0.5
+    },
+    "reussi": false,
+    "points_masque_db": 191,
+    "masque_db": "deux modules >= -20 dB ; max/RMS sur tous les points"
+  },
+  "fichiers_profils_et_sources": {
+    "nombre_fichiers_profils": 85,
+    "profils_sha256_avant_apres_identiques": true,
+    "sources_16_avant_apres_identiques": true
+  },
+  "Q_charge_calcul_avant_confirmation": 0,
+  "appel_CLI_defaut": {
+    "code_sortie": 3,
+    "aucun_fichier_cree": true,
+    "manquants": [
+      {
+        "profil": "tres_fin_12ns",
+        "motif": "manifeste absent"
+      },
+      {
+        "profil": "tres_fin_16ns",
+        "motif": "calcul non termine",
+        "etat": "calcul_en_cours"
+      },
+      {
+        "profil": "coordination",
+        "motif": "sortie zero de la queue 20307 non confirmee"
+      }
+    ]
+  },
+  "sources_outils_sha256": {
+    "analyse_vivaldi.py": "3dce54db99c768a48b479e845e1ad9ea52ba1e6f4d2cc6c6231beaf2c947c5f8",
+    "preuve_initiale_vivaldi.py": "0245eb1f9f31f7a8f1bac906b9db6c0f6fa7bfe06cdd00f1a11147ca33e915e9"
+  },
+  "note": "Preuve attendue des echecs de convergence initiaux, pas une sortie 0 de la file globale initiale."
+}

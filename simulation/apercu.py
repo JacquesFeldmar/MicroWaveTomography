@@ -20,6 +20,7 @@ de pointes fines se plaindrait de chaque sommet de losange.
 """
 import argparse
 import os
+from pathlib import Path as Chemin
 
 import numpy as np
 import matplotlib
@@ -57,7 +58,69 @@ def _masque(polylignes, xs, ys, evide=False):
     return dedans.reshape(gy.shape)
 
 
-def controle(contours, percages=(), recouvrement_max=float("inf")):
+def controle_exact(contours, percages=(), vias=(), percages_bord_autorises=False,
+                   marge_bord_mm=None, composantes_dessus=None):
+    """Exact polygon checks; raster profiles below are only visual heuristics.
+
+    NPTH breakaway holes may straddle a routed panel edge by design. This
+    exception must be explicit. PTH vias must have copper annuli on both faces.
+    """
+    from shapely.geometry import LineString, Point, Polygon
+    from shapely.ops import unary_union
+    rapport = []
+    bord = None
+    for poly in contours["Edge_Cuts"]:
+        p = Polygon(poly)
+        rapport.append((p.is_valid and p.area > 0, "contour ferme et simple"))
+        if not p.is_valid:
+            return rapport
+        bord = p if bord is None else bord.symmetric_difference(p)
+    cuivres = {}
+    y_alimentation = min(y for poly in contours["Edge_Cuts"] for _, y in poly)
+    bords_hors_alimentation = unary_union([
+        LineString([a, b]) for poly in contours["Edge_Cuts"]
+        for a, b in zip(poly, list(poly[1:]) + [poly[0]])
+        if not (abs(a[1]-y_alimentation) < 1e-9 and abs(b[1]-y_alimentation) < 1e-9)])
+    for couche in ("F_Cu", "B_Cu"):
+        polys = [Polygon(p) for p in contours.get(couche, [])]
+        valides = all(p.is_valid and p.area > 0 for p in polys)
+        rapport.append((valides, f"{couche} : polygones simples et non degeneres"))
+        if not valides:
+            continue
+        cuivre = cuivres[couche] = unary_union(polys)
+        dehors = cuivre.difference(bord).area
+        rapport.append((dehors < 1e-6, f"{couche} : {dehors:.6g} mm2 hors contour (calcul exact)"))
+        if marge_bord_mm is not None:
+            marge = cuivre.distance(bords_hors_alimentation)
+            rapport.append((marge >= marge_bord_mm-1e-6,
+                            f"{couche} : marge hors bord SMA {marge:.3f} mm (minimum {marge_bord_mm:g})"))
+        if couche == "F_Cu" and composantes_dessus is not None:
+            nombre = 1 if cuivre.geom_type == "Polygon" else len(cuivre.geoms)
+            rapport.append((nombre == composantes_dessus,
+                            f"{couche} : {nombre} ilots conducteurs (signal + deux masses SMA attendus)"))
+    for i, (x, y, diam) in enumerate(percages):
+        trou = Point(x, y).buffer(diam/2, quad_segs=32)
+        dedans = bord.buffer(1e-6).covers(trou)
+        rapport.append((dedans or percages_bord_autorises,
+                        f"NPTH {i+1} : {'dans le substrat' if dedans else 'sur bord de pontet autorise' if percages_bord_autorises else 'hors substrat'}"))
+        for couche, cuivre in cuivres.items():
+            marge = trou.distance(cuivre)
+            rapport.append((marge >= 0.25 - 1e-6,
+                            f"NPTH {i+1}/{couche} : cuivre a {marge:.3f} mm (minimum 0.25)"))
+    for i, (x, y, diam) in enumerate(vias):
+        trou = Point(x, y).buffer(diam/2, quad_segs=32)
+        rapport.append((bord.buffer(1e-6).covers(trou), f"PTH {i+1} : dans le substrat"))
+        for couche, cuivre in cuivres.items():
+            # Minimum annulus 0.15 mm, checked at the contour source.
+            annulaire = Point(x, y).buffer(diam/2 + 0.15, quad_segs=32)
+            rapport.append((cuivre.buffer(1e-6).covers(annulaire),
+                            f"PTH {i+1}/{couche} : anneau cuivre >= 0.15 mm"))
+    return rapport
+
+
+def controle(contours, percages=(), recouvrement_max=float("inf"), vias=(),
+             percages_bord_autorises=False, zone_alimentation_mm=0,
+             marge_bord_mm=None, composantes_dessus=None):
     """Rend (rapport, profils). Le rapport est une liste de (ok, texte)."""
     pts = np.array([p for polys in contours.values() for poly in polys
                     for p in poly], dtype=float)
@@ -67,7 +130,9 @@ def controle(contours, percages=(), recouvrement_max=float("inf")):
     ys = np.arange(y0 - PAS, y1 + PAS, PAS)
 
     bord = _masque(contours["Edge_Cuts"], xs, ys, evide=True)
-    rapport, profils, cuivres = [], {}, {}
+    rapport = controle_exact(contours, percages, vias, percages_bord_autorises,
+                             marge_bord_mm, composantes_dessus)
+    profils, cuivres = {}, {}
     rapport.append((True, f"carte : {x1-x0:.2f} x {y1-y0:.2f} mm, "
                           f"surface {(x1-x0)*(y1-y0)/100:.1f} cm2"))
 
@@ -99,11 +164,13 @@ def controle(contours, percages=(), recouvrement_max=float("inf")):
     if "F_Cu" in cuivres and "B_Cu" in cuivres:
         rec = np.logical_and(cuivres["F_Cu"], cuivres["B_Cu"])
         profils["recouvrement"] = rec.sum(axis=1) * PAS
-        pire = profils["recouvrement"].max()
+        domaine = ys >= y0 + zone_alimentation_mm
+        pire = profils["recouvrement"][domaine].max(initial=0)
         rapport.append((pire <= recouvrement_max,
                         f"recouvrement des deux cuivres : au plus "
                         f"{pire:.2f} mm par tranche "
-                        f"(limite retenue {recouvrement_max:.2f} mm)"))
+                        f"(limite {recouvrement_max:.2f} mm, hors les "
+                        f"{zone_alimentation_mm:g} mm d'implantation SMA)"))
 
     for k, (hx, hy, diam) in enumerate(percages):
         dans = (x0 <= hx <= x1) and (y0 <= hy <= y1)
@@ -147,10 +214,17 @@ def dessine(nom, contours, percages, chemin, rapport):
     bx.legend(fontsize=8)
     bx.grid(alpha=0.3)
 
-    fig.suptitle("\n".join(("OK  " if ok else "!!  ") + t
-                           for ok, t in rapport), fontsize=8, y=0.995,
+    detail = Chemin(chemin[0]).with_suffix(".controles.txt")
+    detail.write_text("\n".join(("OK  " if ok else "ECHEC  ") + t
+                                for ok, t in rapport) + "\n", encoding="utf-8")
+    echecs = [t for ok, t in rapport if not ok]
+    resumes = [t for _, t in rapport if t.startswith("carte :") or
+               "marge hors bord SMA" in t or "recouvrement des deux" in t]
+    textes = [f"{sum(ok for ok, _ in rapport)}/{len(rapport)} controles reussis; "
+              f"rapport complet : {detail.name}"] + (echecs[:5] if echecs else resumes[:5])
+    fig.suptitle("\n".join(textes), fontsize=8, y=0.995,
                  ha="left", x=0.01)
-    fig.tight_layout(rect=(0, 0, 1, 0.88))
+    fig.tight_layout(rect=(0, 0, 1, 0.86))
     fig.savefig(chemin[0], dpi=130)
     plt.close(fig)
     return chemin[0]
@@ -163,12 +237,16 @@ def une(nom, sortie):
         return True
     contours = ant.contours_mm()
     percages = getattr(ant, "percages_mm", lambda: [])()
+    vias = getattr(ant, "vias_mm", lambda: [])()
     rapport, profils = controle(
         contours, percages,
-        getattr(ant, "RECOUVREMENT_MAX_MM", float("inf")))
+        getattr(ant, "RECOUVREMENT_MAX_MM", float("inf")), vias=vias,
+        zone_alimentation_mm=6.5 if getattr(ant, "AVEC_SMA", False) else 0,
+        marge_bord_mm=0.25,
+        composantes_dessus=3 if getattr(ant, "AVEC_SMA", False) else None)
     dossier = os.path.join(sortie, nom)
     os.makedirs(dossier, exist_ok=True)
-    png = dessine(ant.NOM, contours, percages,
+    png = dessine(ant.NOM, contours, list(percages) + list(vias),
                   (os.path.join(dossier, "contours.png"), profils), rapport)
     print(f"\n  {nom}")
     for ok, texte in rapport:
@@ -182,10 +260,11 @@ def un_panneau(quoi, sortie):
     import export_gerber as G
     assemble = {"losanges": G.carte_panneau_losanges}[quoi]()
     carte = {k: assemble[k] for k in ("F_Cu", "B_Cu", "Edge_Cuts")}
-    rapport, profils = controle(carte, assemble["trous"])
+    rapport, profils = controle(carte, assemble["trous"],
+                                vias=assemble.get("vias", []), percages_bord_autorises=True)
     dossier = os.path.join(sortie, assemble["nom"])
     os.makedirs(dossier, exist_ok=True)
-    png = dessine(assemble["nom"], carte, assemble["trous"],
+    png = dessine(assemble["nom"], carte, assemble["trous"] + assemble.get("vias", []),
                   (os.path.join(dossier, "contours.png"), profils), rapport)
     print(f"\n  {assemble['nom']}")
     for ok, texte in rapport:

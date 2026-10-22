@@ -1,0 +1,92 @@
+PREUVES FABRICATION ? Audit du 18 octobre 2026
+Lecture seule des sources/livrables. Unique ?criture de cette branche: simulation/chatGPT_critical_review/preuves_fabrication.txt. Python -B; aucun export ni verifie() r?el ex?cut?. Les appels testant verifie() ci-dessous remplacent toutes ses ?critures et extractions par op?rations en m?moire.
+Environnement Python: 3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:16:45) [MSC v.1942 64 bit (AMD64)]
+gerbonara: 1.6.3
+
+CONSTATS ET INTERPR?TATION
+1. Les deux ZIP sont coh?rents avec la g?om?trie Python ACTUELLE pour les contours de cuivre, le masque et le contour carte. CRC et identit?s octets valides. Chaque archive contient 5 Gerber (GTL,GBL,GTS,GBS,GKO), 1 DRL, 1 notice, soit 7 membres. Pas 6 Gerber. Aucun d?faut de format Gerber emp?chant la lecture par gerbonara d?tect?.
+2. D?faut v?rificateur: verifie_gerber.py:7-14 annonce comparaison g?om?trie/surface/trous qui n?est pas impl?ment?e dans verifie(); compare() existe aux lignes88-109 mais la CLI112-119 ne l?appelle jamais. ATTENDU26-30 inutilis?. Le script ne r?clame pas toutes les couches. Test en m?moire: une pile sans AUCUNE couche graphique mais avec DRL donne ok=True. Il s?agit d?une preuve de contr?le insuffisant, pas de Gerber actuels erron?s.
+3. D?faut contr?le NPTH: LayerStack d?tecte la m?tallisation comme inconnue (o.plated=None). verifie_gerber.py:69 transforme None en False par bool() et affiche ainsi ? tort une v?rification non-m?tallis?e. L?intention NPTH est dans nom de fichier et notice; faire confirmer CAM et employer une annotation reconnue avant commande finale. Ne pas conclure que les trous seraient n?cessairement m?tallis?s.
+4. D?faut SVG: les deux *_rendu.svg sont autoferm?s sans aucun ?l?ment graphique. verifie_gerber.py:83 appelle LayerStack.to_svg() sans couleurs. Dans gerbonara1.6.3, cette m?thode cr?e defaultdict(lambda:black), puis appelle colors.get() qui renvoie None pour les cl?s absentes, donc toutes les couches sont ignor?es. Un rendu en m?moire avec dictionnaire de couleurs explicite contient des primitives. Aucune image de preuve tierce exploitable n??tait livr?e.
+5. D?faut livrables DXF Vivaldi: les 3 DXF correspondent ? une ancienne version. Longueur279.1375mm contre280.6031025mm actuelle; masse ancienne pleine largeur143.0688mm contre cuivre bas actuel91.534368mm de largeur; jusqu??55mm d??cart de sommets. Les DXF des deux losanges concordent ? leur arrondi0.00005mm pr?s. Ne pas reprendre les DXF Vivaldi existants pour reconstruire la carte actuelle.
+6. D?faut documentation: fabrication/README.md:175-178 annonce anciens encombrements Vivaldi (hauteur279.14mm, largeur dessous143.07mm) qui contredisent les Gerber actuels (hauteur280.603102mm, largeur dessous91.534368mm). La modification LARGEUR_MASSE=40mm est effective dans code et ZIP.
+7. D?faut instructions commande: export_gerber.py:121 impose Board Type=Single pieces m?me pour panneau client; le texte panneau:277 ajoute seulement une parenth?se. PCBWay demande explicitement Panel by Customer pour tab-routes. La valeur Different Design=1:122 et affirmation deux losanges=un seul dessin:217-224/277 ne sont pas justifi?es: il y a 2 cartes aux dimensions et cuivres distincts; d?clarer 2 variantes dans devis ou demander classement explicite fabricant. Ne pas garantir prix identique ? 1 dessin.
+8. Marge pontets surestim?e: fabrication/README.md:38 dit4mm, :60 dit2.9mm. Pour le petit losange le sommet rayonnant est(30.5,29)mm sur panneau, au droit de la rupture x32mm; ?cart1.5mm. Trou(32,29)diam0.6mm: bord du trou ?1.2mm du cuivre. Cette marge reste positive mais le texte est faux. Pontets3mm, per?ages16?0.6mm; leur pas effectif1mm malgr? PAS_PONTET=0.9, car linspace r??chantillonne.
+9. Risques DFM ? faire accepter: Vivaldi Cu touche bord lat?ral et bouche (0mm de garde) puisque _polygones et Edge_Cuts utilisent m?me demi_x et z_total. PCBWay publie garde CNC typique0.25mm. Intentionalit? cuivre affleurant ? confirmer CAM; ne pas d?caler automatiquement ces bords sans ?valuer la simulation. Losange garde lat?rale masse0.40/0.72mm correcte, hors bord alimentation o? Cu affleure volontairement. Le GKO trace0.1mm est une ligne de contour: mesurer son axe, car bbox Gerber est augment? de0.1mm.
+10. Risque SMA: aucune r?f?rence fabricant ni empreinte/plan m?canique/BOM dans les dossiers. Un SMA edge-launch compatible avec masse dessous doit ?tre choisi et superpos? au dessin: F.Cu n?a pas de plages de masse dessus. Les connecteurs qui en exigent ne sont donc pas automatiquement utilisables. Pas de simulation du corps/pin/lancement coaxial; port localis? id?al seulement. Calibration SOL au connecteur ne d?place pas automatiquement plan r?f?rence ? la tranche PCB; de-embedding/port extension n?cessite caract?risation.
+11. Risque mati?re/finition/vernis: les sources simulent ?r4.8,tan?0.026 pour losanges, ?r4.4,tan?0.02 pour Vivaldi. Commande g?n?rique FR4 TG130/TG150 ne fixe ni r?f?rence stratifi? ni Dk/Df GHz; supplier publie ?paisseur?10%. Les trous Vivaldi(?65.534,9)diam3mm ne sont pas mod?lis?s dans pose(), mais ils sont dans FR4 nu ? cet endroit, pas dans la masse malgr? commentaire g?om?trie:98-100 (masse?20mm au pied). Aucun fondement calcul? pour la borne effet masque<1%, couleur indiff?rente, ou effets ENIG limit?s ? la seule ligne. PEC AddMetal ignore pertes cuivre/ENIG. ? traiter comme approximations ? quantifier, pas preuve de mauvaise antenne.
+12. La justification pas de vernis pas option s?re:export_gerber.py:153-158 est p?rim?e comme description du formulaire: PCBWay liste d?sormais Solder mask=None. L?ouverture masque exactement ?gale Cu est r?ellement export?e. Une ouverture sans expansion ne garantit pas cuivre int?gralement d?couvert apr?s tol?rances de registration; faire figer traitement CAM.
+13. DXF secondaire: export_dxf.py:19/62 pr?tend R12, mais ?crit LWPOLYLINE et aucun HEADER/ACADVER/INSUNITS; LWPOLYLINE est post?rieur ? R12. ?chelle est donc ? imposer manuellement selon notice. Aucun trou n?est export? par cette voie.
+14. apercu.py est utile mais pas un DRC: raster0.2mm:32, tol?rance cuivre hors carte1mm?:81, v?rification per?ages r?duite ? bbox:108-112; GRAVURE_MINI:34 d?clar? mais jamais employ?. Aucun calcul r?el largeur minimale/isolement/trou-cuivre/validit? topologique. Pas de d?faut carte d?duit de cette seule insuffisance.
+
+MESURES REPRODUCTIBLES EN M?MOIRE
+
+ZIP simulation\fabrication\panneau_losanges\panneau_losanges_pcbway.zip
+SHA256 ac814acede1a8dc48edd3d5a3255c9d1fc8b60d9da6adb6f6bada0b91271e038
+CRC/testzip: None membres: 7
+ - panneau_losanges.GTL octets 774 identique disque True
+   bbox ((1.5, 0.0), (89.9, 61.2)) primitives 2 ?carts_max_sommets_mm [0.0, 1.4210854715202004e-14]
+ - panneau_losanges.GBL octets 2410 identique disque True
+   bbox ((0.4, 0.0), (91.88, 28.064319)) primitives 2 ?carts_max_sommets_mm [4.961690494020843e-07, 4.768275090327734e-07]
+ - panneau_losanges.GTS octets 802 identique disque True
+   bbox ((1.5, 0.0), (89.9, 61.2)) primitives 2 ?carts_max_sommets_mm [0.0, 1.4210854715202004e-14]
+ - panneau_losanges.GBS octets 2438 identique disque True
+   bbox ((0.4, 0.0), (91.88, 28.064319)) primitives 2 ?carts_max_sommets_mm [4.961690494020843e-07, 4.768275090327734e-07]
+ - panneau_losanges.GKO octets 558 identique disque True
+   bbox trait ((-0.05, -0.05), (92.64999999999999, 72.05)) segments 16
+ - panneau_losanges-NPTH.DRL octets 375 identique disque True
+   trous xyzdiamplated [(32.0, 10.0, 0.6, None), (35.0, 10.0, 0.6, None), (32.0, 11.0, 0.6, None), (35.0, 11.0, 0.6, None), (32.0, 12.0, 0.6, None), (35.0, 12.0, 0.6, None), (32.0, 13.0, 0.6, None), (35.0, 13.0, 0.6, None), (32.0, 27.0, 0.6, None), (35.0, 27.0, 0.6, None), (32.0, 28.0, 0.6, None), (35.0, 28.0, 0.6, None), (32.0, 29.0, 0.6, None), (35.0, 29.0, 0.6, None), (32.0, 30.0, 0.6, None), (35.0, 30.0, 0.6, None)]
+ - panneau_losanges_lisez_moi.txt octets 3734 identique disque True
+Carte source ?tendue axe contours mm: (np.float64(92.6), np.float64(72.0)) nombre polygones [2, 2, 2]
+Couches reconnues: [('top', 'copper'), ('top', 'mask'), ('bottom', 'copper'), ('bottom', 'mask'), ('mechanical', 'outline')] drill_npth: None autres forages: [<ExcellonFile panneau_losanges-NPTH.DRL unknown plating with 16 drills, 0 slots using 1 tools>]
+SVG livr?: 244 octets, enfants 0
+SVG en m?moire sans couleurs: 243 caract?res; couleurs explicites: 6596 caract?res
+
+ZIP simulation\fabrication\vivaldi_tomographie\vivaldi_tomographie_pcbway.zip
+SHA256 df511d1f2d4185a1216c2fe5fdb6bb080e0a876f3dd185929a440fa3ff4b1e6c
+CRC/testzip: None membres: 7
+ - vivaldi_tomographie.GTL octets 14193 identique disque True
+   bbox ((-1.5, 0.0), (71.534368, 280.603102)) primitives 1 ?carts_max_sommets_mm [4.999999987376214e-07]
+ - vivaldi_tomographie.GBL octets 14878 identique disque True
+   bbox ((-71.534368, 0.0), (20.0, 280.603102)) primitives 1 ?carts_max_sommets_mm [4.999999987376214e-07]
+ - vivaldi_tomographie.GTS octets 14221 identique disque True
+   bbox ((-1.5, 0.0), (71.534368, 280.603102)) primitives 1 ?carts_max_sommets_mm [4.999999987376214e-07]
+ - vivaldi_tomographie.GBS octets 14906 identique disque True
+   bbox ((-71.534368, 0.0), (20.0, 280.603102)) primitives 1 ?carts_max_sommets_mm [4.999999987376214e-07]
+ - vivaldi_tomographie.GKO octets 300 identique disque True
+   bbox trait ((-71.584368, -0.05), (71.584368, 280.653102)) segments 4
+ - vivaldi_tomographie-NPTH.DRL octets 167 identique disque True
+   trous xyzdiamplated [(-65.534, 9.0, 3.0, None), (65.534, 9.0, 3.0, None)]
+ - vivaldi_tomographie_lisez_moi.txt octets 3525 identique disque True
+Carte source ?tendue axe contours mm: (np.float64(143.068735), np.float64(280.6031025)) nombre polygones [1, 1, 1]
+Couches reconnues: [('top', 'copper'), ('top', 'mask'), ('bottom', 'copper'), ('bottom', 'mask'), ('mechanical', 'outline')] drill_npth: None autres forages: [<ExcellonFile vivaldi_tomographie-NPTH.DRL unknown plating with 2 drills, 0 slots using 1 tools>]
+SVG livr?: 247 octets, enfants 0
+SVG en m?moire sans couleurs: 246 caract?res; couleurs explicites: 43430 caract?res
+DXF simulation\antennes\diamant_uwb\dxf\diamant_uwb_B_Cu.dxf ?carts sommets mm [4.946849569797962e-05] min [-15.6 -20. ] max [15.6    -4.4087]
+DXF simulation\antennes\diamant_uwb\dxf\diamant_uwb_Edge_Cuts.dxf ?carts sommets mm [0.0] min [-16. -20.] max [16. 20.]
+DXF simulation\antennes\diamant_uwb\dxf\diamant_uwb_F_Cu.dxf ?carts sommets mm [0.0] min [-14.5 -20. ] max [14.5 14. ]
+DXF simulation\antennes\diamant_uwb_x18\dxf\diamant_uwb_x18_B_Cu.dxf ?carts sommets mm [4.88178741164802e-05] min [-28.08 -36.  ] max [28.08   -7.9357]
+DXF simulation\antennes\diamant_uwb_x18\dxf\diamant_uwb_x18_Edge_Cuts.dxf ?carts sommets mm [0.0] min [-28.8 -36. ] max [28.8 36. ]
+DXF simulation\antennes\diamant_uwb_x18\dxf\diamant_uwb_x18_F_Cu.dxf ?carts sommets mm [1.7763568394002505e-15] min [-26.1 -36. ] max [26.1 25.2]
+DXF simulation\antennes\vivaldi_tomographie\dxf\vivaldi_tomographie_B_Cu.dxf ?carts sommets mm [55.0] min [-71.5344   0.    ] max [ 71.5344 279.1375]
+DXF simulation\antennes\vivaldi_tomographie\dxf\vivaldi_tomographie_Edge_Cuts.dxf ?carts sommets mm [1.4656024999999886] min [-71.5344   0.    ] max [ 71.5344 279.1375]
+DXF simulation\antennes\vivaldi_tomographie\dxf\vivaldi_tomographie_F_Cu.dxf ?carts sommets mm [55.0] min [-1.5  0. ] max [ 71.5344 279.1375]
+Test mutation contr?l?: pile0couche graphique+DRLseul accept?= True ; toutes ?critures remplac?es en m?moire.
+
+  panneau_losanges_pcbway.zip
+      pile reconnue : <LayerStack None [] and 1 drill layers>
+      OK  percages    16 trous, diametres [0.6] mm, metallises {False}
+      rendu : C:\Jacques\liteVNA\MicroWaveTomography\simulation\fabrication\panneau_losanges\panneau_losanges_rendu.svg
+
+
+SOURCES WEB PRIMAIRES consult?es le18/10/2026 (URLs ? citer dans rapport)
+ - PCBWay aide Panel by Customer: https://www.pcbway.com/helpcenter/panel_issues/Confirm_the_panel_way_of_the_boards.html
+ - PCBWay devis courant (Board type, Different Design, None masque): https://www.pcbway.com/QuickOrderOnline.aspx
+ - PCBWay capacit?s (?paisseur?10%, contour routage?0.2mm, piste0.1mm, garde Cu/CNC0.25mm, panel gap>=1.6mm): https://www.pcbway.com/capabilities.html
+ - Rogers, solder mask modifie Dk/pertes et couleur peut changer Dk/Df; ne prouve aucun chiffre pour ces antennes: https://www.rogerscorp.com/blog/2020/finding-the-right-solder-mask-for-rfmicrowave-pcbs
+ - Rogers exemple effets ENIG/Cu (ne pas extrapoler chiffres mmWave ?6GHz): https://rogerscorp.com/-/media/project/rogerscorp/documents/articles/english/advanced-connectivity-solutions/managing-circuit-materials-at-mmwave-frequency.pdf
+ - Autodesk LWPOLYLINE post?rieur ?R12: https://help.autodesk.com/cloudhelp/2022/ENU/AutoCAD-AutoLISP/files/GUID-0A3004D1-1BF6-468A-9F69-4D0BA88857F2.htm
+ - ezdxf conversion versR12 traduit LWPOLYLINE vers POLYLINE: https://ezdxf.readthedocs.io/en/stable/addons/r12export.html
+ - Samtec, guide RF et dessins SMA: https://suddendocs.samtec.com/literature/samtec-rf-catalog.pdf
+
+REPRISE EN MAIN: sources g?om?triques actuelles et exports Gerber coh?rents permettent une reprise logicielle; autorisation fabrication sereine demande r?f?rence SMA/validation m?canique, param?tres panneau corrig?s/confirm?s, DFM cuivre affleurant/NPTH/masque accord?, propri?t? FR4 connue ou sensibilit? test?e. Le contr?le de fichier ne valide pas performances ?lectromagn?tiques. Aucune commande/d?p?t PCBWay effectu?.

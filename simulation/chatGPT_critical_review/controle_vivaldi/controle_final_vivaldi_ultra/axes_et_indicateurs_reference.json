@@ -1,0 +1,191 @@
+{
+  "source": "simulation\\resultats\\pcbway_r1\\vivaldi_tomographie\\ultra_fin_16ns\\simulation_manifest.json",
+  "source_sha256": "9d5ca335cbe5b272ccfb2739b341e19aa2e010e8a10f2272ca6442ec1213de64",
+  "maillage": {
+    "axes": {
+      "x": {
+        "lignes": 288,
+        "minimum_mm": 0.1070000000000002,
+        "maximum_mm": 2.9423787375674237,
+        "rapport_voisin_max": 1.5000000000028002,
+        "bornes_mm": [
+          -170.57553422222225,
+          170.57553422222225
+        ],
+        "sha256": "4b436650243b3f8e020ba548c3d5b17c9e88037d3ee93451806a778b1ecdef2e"
+      },
+      "y": {
+        "lignes": 158,
+        "minimum_mm": 0.1142857142857141,
+        "maximum_mm": 2.96354635339452,
+        "rapport_voisin_max": 1.1925303843978114,
+        "bornes_mm": [
+          -170.57553422222225,
+          170.57553422222225
+        ],
+        "sha256": "56f624b24de33b0fd2613abe10b5e6126f88ef803bca74b8a7d6dee1c5d213e8"
+      },
+      "z": {
+        "lignes": 399,
+        "minimum_mm": 0.125,
+        "maximum_mm": 2.9423787375670827,
+        "rapport_voisin_max": 1.5000000000002123,
+        "bornes_mm": [
+          -98.74116672222223,
+          379.6442692222222
+        ],
+        "sha256": "c314a88161a0efbcd240f1324bd34a8a2a384bf0f78f5f833f6d55a2322de84a"
+      }
+    },
+    "cellules": 17933482,
+    "dt_cfl_vide_s": 2.209535900790101e-13
+  },
+  "dt_s": 1.8089657413612908e-13,
+  "sondes": {
+    "port_ut_1": {
+      "echantillons": 88451,
+      "dt_effectif_s": 1.8089658000001378e-13,
+      "debut_s": 0.0,
+      "fin_s": 1.60003019823e-08,
+      "sha256": "ab2228bcf2d0f09741def089e8eff1251d4b502acb446ef9572a53578403595e"
+    },
+    "port_it_1": {
+      "echantillons": 88451,
+      "dt_effectif_s": 1.8089658000001378e-13,
+      "debut_s": 9.04482870681e-14,
+      "fin_s": 1.60003924306e-08,
+      "sha256": "20c49d6abd85491d811b68fe314c2330b6a37f148ca582aba70f8bf28f50be09"
+    }
+  },
+  "passivite_par_profil": {
+    "base_8ns": {
+      "maximum_module": 0.5876661271530872,
+      "passivite_numerique": true
+    },
+    "fin_8ns": {
+      "maximum_module": 0.585996283395619,
+      "passivite_numerique": true
+    },
+    "fin_12ns": {
+      "maximum_module": 0.58566443103674,
+      "passivite_numerique": true
+    },
+    "tres_fin_12ns": {
+      "maximum_module": 0.5925447816418438,
+      "passivite_numerique": true
+    },
+    "tres_fin_16ns": {
+      "maximum_module": 0.5926235535593702,
+      "passivite_numerique": true
+    },
+    "ultra_fin_12ns": {
+      "maximum_module": 0.5914013663604726,
+      "passivite_numerique": true
+    },
+    "ultra_fin_16ns": {
+      "maximum_module": 0.5916724880456407,
+      "passivite_numerique": true
+    }
+  },
+  "indicateurs_reference": {
+    "bande_hz": [
+      1000000000.0,
+      6300000000.0
+    ],
+    "points": 213,
+    "maximum_module": 0.5916724880456407,
+    "passivite_numerique": true,
+    "moins_10_db": {
+      "seuil_db": -10.0,
+      "segments_hz": [
+        [
+          1000000000.0,
+          1025000000.0
+        ],
+        [
+          1450000000.0,
+          1850000000.0
+        ],
+        [
+          2050000000.0,
+          2925000000.0
+        ],
+        [
+          3100000000.0,
+          3600000000.0
+        ],
+        [
+          3775000000.0,
+          4150000000.0
+        ],
+        [
+          4275000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.8169014084507042,
+      "points_sous_seuil": 174,
+      "points_total": 213
+    },
+    "moins_6_db": {
+      "seuil_db": -6.0,
+      "segments_hz": [
+        [
+          1000000000.0,
+          1125000000.0
+        ],
+        [
+          1375000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.9577464788732394,
+      "points_sous_seuil": 204,
+      "points_total": 213
+    },
+    "bande_1p4_6": {
+      "moins_10_db": {
+        "seuil_db": -10.0,
+        "segments_hz": [
+          [
+            1450000000.0,
+            1850000000.0
+          ],
+          [
+            2050000000.0,
+            2925000000.0
+          ],
+          [
+            3100000000.0,
+            3600000000.0
+          ],
+          [
+            3775000000.0,
+            4150000000.0
+          ],
+          [
+            4275000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 0.8648648648648649,
+        "points_sous_seuil": 160,
+        "points_total": 185
+      },
+      "moins_6_db": {
+        "seuil_db": -6.0,
+        "segments_hz": [
+          [
+            1400000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 1.0,
+        "points_sous_seuil": 185,
+        "points_total": 185
+      },
+      "moyenne_puissance_reflechie_db": -13.08223667336027,
+      "pire_db": -7.147871297822597
+    }
+  }
+}

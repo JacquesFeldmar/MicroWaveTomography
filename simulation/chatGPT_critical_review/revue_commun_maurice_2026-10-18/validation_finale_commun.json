@@ -1,0 +1,41 @@
+{
+  "schema": "validation_reprise_commun_maurice_v1",
+  "date_utc": "2026-10-18T14:58:37.873092+00:00",
+  "rapport": "revue_commun_maurice_2026-10-18.md",
+  "rapport_sha256": "ccc6b682015489dd1ba483e36f2154df606da11eecf47dc9c38690bdaf034c83",
+  "sources_gel_campagne_inchangees_sha256": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "raffine_qualification_pcbway.py": "bd1f7d8e72852158e4d037e727ad6855c49f8594a6bfd642be10584221667a6c",
+    "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+    "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15"
+  },
+  "tests_physique": {
+    "tests": 8,
+    "journal": "tests_physique_8.txt",
+    "journal_sha256": "5ea9ac5b5d4a70350ec73e9da3843def97adc841a8613ab84ce2fad7fc0e279d"
+  },
+  "tests_croises": [
+    {
+      "preuve": "tests_maurice_19_commun_root.json",
+      "sha256": "05e869171840770ed2adadbc7845048f97cbd8d2f1f2fc19d0af7bb5a8bf8f1a"
+    },
+    {
+      "preuve": "autotest_cartilage_root_10.json",
+      "sha256": "ff75aa50e8a073b8b7a09e6149d19a5a557ea50d00ca16bbe05804ac63efb3fd"
+    }
+  ],
+  "nuance_chronologie": "Les 19 tests Maurice et dix cas cartilage portent sur physique integre et instrument avant la modification documentaire. Le code executable instrument final a ete ensuite compare a cet original par AST ; il est identique. Les journaux et SHA historiques restent intacts.",
+  "limite": "Aucun controle sur un instrument reel ; les tests logiciels ne prouvent pas le mode du firmware."
+}

@@ -1,0 +1,12 @@
+{
+  "analyse_extreme_fin.py": {
+    "sha256": "80aa0d85b3f8d112d6adb198858724ad4a95cb695a33c4c9e467f532fc651f52",
+    "octets": 13028,
+    "source": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\controle_extreme_fin\\analyse_extreme_fin.py"
+  },
+  "contrat_lecture_partagee.json": {
+    "sha256": "596d7d051b2b37687e3c26caff5e65dd12a8cf7463c76aeee7850ecceda709c2",
+    "octets": 701,
+    "source": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\controle_extreme_fin\\contrat_lecture_partagee.json"
+  }
+}

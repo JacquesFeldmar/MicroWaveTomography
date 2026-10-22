@@ -13,6 +13,15 @@ __pycache__/
 # Depaquetage de controle des Gerbers : se refait avec verifie_gerber.py.
 simulation/fabrication/*/relu/
 
+# Archives de campagne et vidages d'operateur : ce sont des RESULTATS zippes,
+# et `resultats/` est deja ecarte pour cette raison. Ils restent sur le disque
+# et la documentation les designe par leur SHA-256, qui est ce qui les rend
+# verifiables. Les remettre dans le depot est une ligne a retirer ici, de
+# preference avec Git LFS : 92 Mo de ZIP binaire entrent dans l'historique
+# pour toujours.
+simulation/archives/*.zip
+**/operator_dump.vtr
+
 # ---------------------------------------------------------------- genere
 # Se reconstruit depuis les sources versionnees.
 cartilage/docs/ecrans/film_live/

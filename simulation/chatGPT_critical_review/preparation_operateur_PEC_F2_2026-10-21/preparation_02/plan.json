@@ -1,0 +1,133 @@
+{
+  "schema": "plan_setup_operateur_archive_F2_v1",
+  "utc": "2026-10-21T14:10:33.315369+00:00",
+  "script_sha256": "2487b41db8a4bd4df34d20465294bd23bf61c52070b89561839bdb20df7aace7",
+  "sources18_sha256": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316"
+  },
+  "outils_sha256": {
+    "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\Lib\\site-packages\\openEMS\\openEMS.pyx": "1d500cae3ec67c38f979f2f7699147b5789f3107766b07502287943300f4f996",
+    "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\Lib\\site-packages\\openEMS\\openEMS.pxd": "03c007303f795c132c13340e8afc639895b07b7f04f0edce1a88ced272e607c8",
+    "C:\\Jacques\\liteVNA\\MicroWaveTomography\\outils\\openEMS\\openEMS.exe": "90944e794b9656681bc4d529cfa4bae6b10663bdf501f0198821dbb1fb185e54",
+    "C:\\Jacques\\liteVNA\\MicroWaveTomography\\outils\\openEMS\\openEMS.dll": "ccb8cb6c649cffb403f6f9cfdc9b0817a9c7cea9576daff9d64c8b0fddc99bd2",
+    "C:\\Jacques\\liteVNA\\MicroWaveTomography\\outils\\openEMS\\CSXCAD.dll": "1fe4f22605ea634095542625a378905765ae4c0b74b81acadf9cc9bc3e1bf591",
+    "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\Lib\\site-packages\\openEMS\\openEMS.cp313-win_amd64.pyd": "a1e0db024fef69f4582bea9eaf649a1a3dcc47b3113e70c6aaf5a28a5953e057",
+    "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\Lib\\site-packages\\CSXCAD\\CSXCAD.cp313-win_amd64.pyd": "972cbacc5cf332e4daa86d73f730a9f134090807474f5637a67cc371881a0f79",
+    "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\Lib\\site-packages\\CSXCAD\\CSRectGrid.cp313-win_amd64.pyd": "362e54a78f62cdaea43c2e62f7598675e9e48120bb9757c9c97cd9e39ad75e96"
+  },
+  "entrees_originales_sha256": {
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/entree_openems.xml": "646ee8a71b53343b0595c6515d06d26736642919621bcce3f2cfc1c62ad71900",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/maillage.npz": "4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/simulation_manifest.json": "33e5994c1707cbf0969a94cbe7c3584cb4402af5ce5978e2346d36f9fb088211",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/entree_openems.xml": "f7469df2c46697e960c9845b099ae9896e8379bdbc742ea0095dcb59a743219e",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/maillage.npz": "9c18c73bad6f77892073cf010b14e7f2d851340a06617b6bcfe70be7c879554f",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/simulation_manifest.json": "5a9bef4bf70b0c31251b151b0b76535d7c6aa4bbf49de574d10590efc3786b76"
+  },
+  "cas": [
+    {
+      "profil": "base_12ns",
+      "axes": {
+        "x": {
+          "nombre": 185,
+          "octets_sha256": "8d22cb65f473575bc2eee794e3b3c0a399ef6d0feeb0b4ab375273f9c37c2cef",
+          "ecart_max_XML_NPZ_mm": 4.405364961712621e-13
+        },
+        "y": {
+          "nombre": 166,
+          "octets_sha256": "92a5307262508995781997effecae85a8845b4cbc0585ae70d42a34226c3139c",
+          "ecart_max_XML_NPZ_mm": 4.405364961712621e-13
+        },
+        "z": {
+          "nombre": 100,
+          "octets_sha256": "ff0fd0aa51d1cd18af31ee30cb51d10ebb674a4fb7f4a0b3672a7ed30f21f22c",
+          "ecart_max_XML_NPZ_mm": 2.2737367544323206e-13
+        }
+      },
+      "points_grille": 3071000,
+      "dt_restitue_s": 1.8091917271563098e-13,
+      "NrTS_XML": 66329,
+      "echelle_un_tableau_float32_octets": 12284000,
+      "echelle_douze_tableaux_float32_octets": 147408000
+    },
+    {
+      "profil": "fin_16ns",
+      "axes": {
+        "x": {
+          "nombre": 261,
+          "octets_sha256": "a219a4bd2be5690e37c73ee5e4f486af1d1a6ea1c5eb15d265e0b8ff61a5fd97",
+          "ecart_max_XML_NPZ_mm": 4.405364961712621e-13
+        },
+        "y": {
+          "nombre": 268,
+          "octets_sha256": "d6541e5ff6403d3c3c51965068f19cc96e7e44517053dd5efe52e266ab99f9f7",
+          "ecart_max_XML_NPZ_mm": 4.405364961712621e-13
+        },
+        "z": {
+          "nombre": 110,
+          "octets_sha256": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a",
+          "ecart_max_XML_NPZ_mm": 2.2737367544323206e-13
+        }
+      },
+      "points_grille": 7694280,
+      "dt_restitue_s": 1.2061278609776263e-13,
+      "NrTS_XML": 132657,
+      "echelle_un_tableau_float32_octets": 30777120,
+      "echelle_douze_tableaux_float32_octets": 369325440
+    }
+  ],
+  "python": "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+  "numpy": "2.5.3",
+  "mode": "CAD_XML_archive__axes_NPZ_et_dt_manifeste_restitues_sans_recalcul",
+  "options_API": {
+    "setup_only": true,
+    "cleanup": false,
+    "engine": "multithreaded",
+    "numThreads": 1,
+    "debug_PEC": true,
+    "debug_operator": true,
+    "debug_boxes": true,
+    "showProbeDiscretization": true,
+    "verbose": 1
+  },
+  "timestepping_interdit": true,
+  "aucun_Setup_effectue": true,
+  "aide_CLI_code": 0,
+  "limites_surveillees": {
+    "disque_sortie_octets": 4294967296,
+    "disque_libre_min_octets": 21474836480,
+    "rss_enfant_octets": 3221225472,
+    "ram_libre_avant_octets": 4294967296,
+    "ram_libre_pendant_octets": 1610612736,
+    "secondes_par_setup": 1200,
+    "intervalle_s": 0.25,
+    "quota_dur_NTFS": false
+  },
+  "ressources_lors_preparation": {
+    "ram_disponible_octets": 7172861952,
+    "disque_libre_octets": 297955958784
+  },
+  "limites_scientifiques": [
+    "CAD/materiaux lus dans le XML deja arrondi : pas operateur ancien bitidentique garanti.",
+    "Axes NPZ et dt du manifeste exacts restitues en memoire ; aucune interpolation/construction de grille.",
+    "et/ht peuvent etre generes pendant Setup : ce sont des impulsions precalculees, pas du timestepping.",
+    "Les sorties effectives, formats et tableaux VTK seront inventories apres les deux setups.",
+    "Plafonds surveilles, pas quota NTFS dur : depassement possible entre deux controles de0,25s."
+  ]
+}

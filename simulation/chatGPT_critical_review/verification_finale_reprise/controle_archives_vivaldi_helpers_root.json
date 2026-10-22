@@ -1,0 +1,18 @@
+{
+  "date_utc": "2026-10-18T21:30:46.344695+00:00",
+  "archives": [
+    {
+      "nom": "controle_vivaldi_tres_fin_preuves.zip",
+      "sha256": "c102b09a0a3e2f55b111f8e067702ec64c8dc41118dc60c4aee6f8ee0ae6a20b",
+      "membres": 21,
+      "verification_sha_tous_membres_hors_manifeste": true
+    },
+    {
+      "nom": "controle_helpers_n30_vivaldi_ultra_preuves.zip",
+      "sha256": "97f71bce5935169316e12a0171ec3b29be7b6b44cbe2bf306370b27b85faa1d4",
+      "membres": 58,
+      "verification_sha_tous_membres_hors_manifeste": true
+    }
+  ],
+  "CRC_conformes": true
+}

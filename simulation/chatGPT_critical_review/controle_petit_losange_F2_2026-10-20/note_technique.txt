@@ -1,0 +1,169 @@
+NOTE TECHNIQUE ? PETIT LOSANGE F2 ? 20 OCTOBRE 2026
+
+P?rim?tre : cinq profils PETIT F2 clos et seul petit F1 fin16 historique.
+Aucun profil Grand/Vivaldi actif n'a ?t? consult?, aucun solveur, Setup ou
+constructeur de grille n'a ?t? ex?cut?. Le rapport lecture_independante.json
+reste strictement inchang?. Cette note ne qualifie aucune antenne et ne
+modifie aucun seuil.
+
+CONSTAT NUM?RIQUE ? EXPLIQUER
+La vraie paire spatiale est base12 / fin12 : max |deltaS| 0,43583288717441465,
+RMS 0,10990608890048342, p95dB 5,36389499423295 : ?chec. Maximum ? 4,850GHz.
+La paire temporelle fin12 / fin16 r?ussit : 0,0024774025912415757,
+0,0006491587424927885, 0,03818221193320407dB. La r?f?rence fin16 est passive
+(max |S| 0,9784551766391213). Le minimum global se d?place de 5,225GHz
+(base12, ?22,5625dB) ? 5,450GHz (fin16, ?29,8159dB). Ce d?placement est un
+r?sultat mesur? ; son origine RF n'est pas d?montr?e.
+
+1. LES ENTR?ES PHYSIQUES INCOH?RENTES SONT ?CART?ES POUR CETTE PAIRE
+Les XML directs base12 et fin16 poss?dent les m?mes propri?t?s physiques,
+primitives et param?tres. Comparaison de tout le sous-arbre Properties apr?s
+retrait des seuls FillColor/EdgeColor : octets identiques, SHA256 commun
+eff490faf1f4e4021e49f56a00dbe4d7236d8677c74fd591ccbfb615fa274368.
+Le fichier geometrie.json est identique, SHA256
+b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b.
+FR4 : m?me mod?le Debye passif ?13p?les, epsilon_ref4,6, tan?_ref0,011 ?1GHz ;
+m?mes param?tres complets, m?me cuivre PEC, m?mes deux cylindres de vias
+PEC ?quivalents ?0,4572mm. Les15primitives sont toutes marqu?es utilis?es
+dans chaque calibration. Cela ?carte une primitive enti?rement perdue, pas
+une diff?rence de son volume ?lectromagn?tique discr?tis?.
+
+Source : m?me gaussienne Type0, f0=3,65GHz, fc=2,65GHz, m?me bande1?6,3GHz
+et213points. M?me port50?, Caps=1, Direction2, m?me r?sistance/excitation
+sur x?1,143, y=?20, z0..1,6mm. M?me sonde U ? x0/y?20 sur0..1,6 ; m?me
+sonde I demand?e ? z0,8. Pas de changement de mat?riau, largeur de piste,
+port, polarisation, fr?quence ou dessin entre ces deux calculs.
+
+Diff?rences FDTD attendues : base12 NrTS66329, dt r?el1,8091917271563098e?13s,
+OverSampling440 ; fin16 NrTS132657, dt r?el1,2061278609776263e?13s,
+OverSampling660. EndCriteria=0, TimeStepMethod1 et PML8 identiques.
+L'attribut TimeStep XML est arrondi ?6 chiffres ; le solveur est ex?cut?
+avec l'objet et son dt complet, valid? par stats/sondes. Le rejeu W utilise
+le dt complet du manifeste, pas la valeur XML arrondie. Le pr?fixe fin12
+est d?clar? comme d?rivation de fin16, jamais comme un nouveau FDTD.
+Les coordonn?es des huit cellules PML sont bit ? bit identiques base/fin.
+
+2. LA RELECTURE S11 N'EXPLIQUE PAS LE GRAND ?CART
+Une DTFT NumPy ind?pendante a ?t? calcul?e ? partir des vrais temps U et I,
+chacun sur son axe ; aucune translation artificielle d'un demi-pas :
+U(f)=2*dtU*sum(U(t)*exp(?j2?ft)), idem I ;
+S=(U?50I)/(U+50I).
+?cart maximal avec le S1P archiv? : 6,289861721291277e?14 pour base12,
+7,004588453994306e?14 pour fin16. Cette lecture ne lance pas CalcPort/FDTD.
+Les formules install?es ports.py et utilities.py ont ?t? lues comme sources
+primaires locales. Le rapport clos confirme d?j? les sondes/temps Q stricts
+et la stabilit? fin12?16 ; l'audit DTFT ci-dessus porte sur les deux FDTD
+directs base12 et fin16, pas une substitution ? la paire spatiale12/12.
+
+?4,850GHz, l'incident repr?sente62,34% (base12) et62,74% (fin16) de son
+maximum spectral. Le minimum sur toute la bande vaut environ10,53% du max.
+Le d?saccord n'est donc pas amplifi? ici par un incident presque nul.
+Z=U/I ?4,850GHz : base12 ?63,6639?j38,2568? ; fin16 ?147,2004+j22,9375?.
+La diff?rence est pr?sente dans les signaux ?lectromagn?tiques U/I, avant
+le passage ? S11. Cela ne d?montre pas que la mesure de port soit parfaite.
+
+3. CE QUI CHANGE R?ELLEMENT AVEC LA DISCR?TISATION
+La politique est contr?l?e, pas une preuve de convergence acquise :
+?substrat16?24 ; cible SMA0,15?0,10mm ; normale11?17couches ; vias4?6cellules.
+Les plans source y?20 et Ux0 sont exacts aux deux niveaux. I est sur la duale
+z0,8. Les en-t?tes de I affichent les primaires inf?rieures z0,727273/base et
+z0,752941/fin : leur moyenne avec la primaire suivante vaut0,8. Ce n'est pas
+une preuve de d?placement du plan de mesure ou de r?f?rence VNA.
+La section transverse/longitudinale du contour num?rique de courant change
+avec les cellules : l'en-t?te indique x[?1,27867;1,143], y[?20,1455;?20] base,
+et x[?1,2244;1,143], y[?20,1;?20] fin. Le port reste physiquement identique ;
+la d?pendance du port id?al et du retour SMA au maillage reste ? distinguer
+de celle du radiateur. Les vias ont4/6cellules par diam?tre et changent de
+staircase, m?me si leur cylindre CAD et leur ?tat utilis? sont identiques.
+
+Le radiateur poss?de des ar?tes obliques et des changements de pente qui
+ne sont pas tous des lignes obligatoires. Exemples sur les grilles archiv?es :
+- ? x0,6mm (?tranglement) : cellule0,142875mm base,0,09525mm fin ;
+- y?10mm (fin du microruban droit) :0,8704465mm base,0,4352233mm fin ;
+- y?4mm (?tranglement) :1,314908mm base,0,657454mm fin ;
+- y?2 et y9mm (sommets obliques) : environ1,314908?0,657454mm.
+Ces nombres prouvent une modification de l'?chantillonnage des ar?tes.
+Ils ne repr?sentent ni un volume PEC effectif exact ni une erreur de
+longueur ?lectrique mesur?e. La monotonie point par point emp?che les
+grossissements du PCB ; elle n'emp?che pas un d?placement de r?sonance.
+La causalit? entre ces changements et le d?calage5,225?5,450GHz reste une
+inf?rence RF plausible, pas une cause prouv?e par deux r?solutions.
+
+V?RIFICATIONS DISCRIMINANTES, PAR CO?T CROISSANT
+A. D?j? ex?cut?e sans solveur : audit des propri?t?s XML, primitives utilis?es,
+temps et DTFT U/I ind?pendante. Elle ?carte les incoh?rences d'entr?e et une
+simple erreur de conversion S11 ; r?sultats et SHA sont consign?s ici.
+
+B. Avant tout nouveau Run temporel : examiner la distribution PEC et les
+coefficients/rasterisation sur les DEUX grilles existantes, surtout y?10,
+y?4, raccord SMA et vias. Une interrogation CSXCAD de points/coordinations
+Yee est l?g?re, mais ne doit pas ?tre pr?sent?e comme l'op?rateur complet.
+Si n?cessaire, un Setup/dump debug_PEC/debug_material pourrait montrer le
+vrai op?rateur sans calcul temporel ; il exige autorisation, m?moire et
+volume de fichiers, et n'a PAS ?t? ex?cut?. Objectif : savoir quelle zone
+change effectivement de connectivit?, de contour ou de section. Ne pas se
+contenter d'une image du m?me contour CAD.
+
+C. Si un seul nouveau calcul est ensuite autoris? : diagnostic hybride sur
+le PETIT seul, blocs SMA/vias/normale/port gard?s comme FIN, radiateur hors
+bloc gard? comme BASE, domaine/PML inchang?s. Comparer ? base12 ET fin12
+permet de s?parer grossi?rement effet source/retour/?paisseur et effet
+radiateur, au lieu d'augmenter plusieurs r?solutions ensemble. Dur?e12ns
+initiale motiv?e par fin12/16 d?j? stable, ? rev?rifier si le signal change.
+Ce n'est pas un nouveau niveau pr?par?, ni un calcul garantissant un PASS.
+Aucun moteur, catalogue ou grille hybride n'a ?t? cr??. Co?t non construit,
+donc pas de promesse chiffr?e ; il doit ?tre mesur? avant de l'autoriser.
+
+La comparaison F1fin16 / F2fin16 du rapport demeure un diagnostic historique,
+jamais une paire de qualification. Ne pas rel?cher les seuils, supprimer les
+?checs ou attribuer une cause scientifique ? une charge CPU.
+
+PROVENANCE
+Rapport clos conserv? : 383e99da431584a2cfb5437c5a7f11fcd2b5ab440c9fe35709edfae44ef2d149
+Script du rapport clos : 8154805ee5150c766ef4815e3f276d6eeef87350ac9ec290a70f56d7583b311b
+Fichiers lus suppl?mentaires (profils petits clos uniquement) :
+  base_12ns/_calibration_dt/calibration.json : d71dc412bb87a04591694b8f6a6a6aae064b32f272753e4a47073a200b30c24f
+  base_12ns/entree_openems.xml : 646ee8a71b53343b0595c6515d06d26736642919621bcce3f2cfc1c62ad71900
+  base_12ns/geometrie.json : b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b
+  base_12ns/maillage.npz : 4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439
+  base_12ns/port_it_1 : 0379296b6e479824cca44fb0b6ff61dc2e4ae6d06b517b7401e4b0c60b86ad75
+  base_12ns/port_ut_1 : 807996ea34283128de800a1610e89d311c070685fd48718a6409d54744d6b3de
+  fin_16ns/_calibration_dt/calibration.json : d53428d418af0d950ef1bf2b76229b57755c16a3d11881f0a9ede3e284d3097a
+  fin_16ns/entree_openems.xml : f7469df2c46697e960c9845b099ae9896e8379bdbc742ea0095dcb59a743219e
+  fin_16ns/geometrie.json : b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b
+  fin_16ns/maillage.npz : 9c18c73bad6f77892073cf010b14e7f2d851340a06617b6bcfe70be7c879554f
+  fin_16ns/port_it_1 : af96da313fafb8779cc4fe80b494795b91e18b2456c69522f6838f1544e30fd2
+  fin_16ns/port_ut_1 : 62fab5052f24ffb94d50c1605e7ea442ecc202f12f0d2ed43b76cb6a370c18e0
+
+Sources locales du post-traitement consult?es :
+  C:\Users\jfeld\anaconda3\envs\openems\Lib\site-packages\openEMS\ports.py : c88ee94225f8b5e126b60d8ce92ecadd9c9fcfc2c88fcc5525dc077b8f3f89e1
+  C:\Users\jfeld\anaconda3\envs\openems\Lib\site-packages\openEMS\utilities.py : 929e1dcd4426486da1a6f0dda8d4a000944655572c48eecd6158c65999f90ad3
+
+Dix-huit sources gel?es v?rifi?es conformes avant/apr?s cette lecture :
+  antennes/diamant_uwb/geometrie.py : c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8
+  antennes/diamant_uwb_x18/geometrie.py : 4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71
+  antennes/dipole_reference/geometrie.py : 01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9
+  antennes/uwb_surveyor/geometrie.py : 1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037
+  antennes/vivaldi_tomographie/geometrie.py : d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c
+  banc.py : 12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9
+  calcule_maille_controlee.py : ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316
+  connectique.py : d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998
+  donnees.py : a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca
+  export_gerber.py : a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f
+  fdtd.py : 3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34
+  fdtd_maille_controlee.py : 3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1
+  fenetre_sondes.py : e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78
+  materiaux.py : bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3
+  qualification_adaptative.py : 44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0
+  qualifie_pcbway.py : c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db
+  raffine_qualification_pcbway.py : f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa
+  traitement.py : 7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15
+
+Cinq manifestes clos v?rifi?s inchang?s avant/apr?s :
+  base_12ns : 33e5994c1707cbf0969a94cbe7c3584cb4402af5ce5978e2346d36f9fb088211
+  base_8ns : 246aa618627479a4dfdfe17b8778b2ff1523e0e32323a77144dfe07c9b419702
+  fin_12ns : 7ba1dbcf855cbdd5e6145708148dcffd53c1e6e6536cc02d2580893dfce3aca2
+  fin_16ns : 5a9bef4bf70b0c31251b151b0b76535d7c6aa4bbf49de574d10590efc3786b76
+  fin_8ns : 565b60c18117149a413f8a5991c4d5d28e00efa30ae20fd1a16e6dc909c57550
+
+Aucun profil ni rapport clos modifi?. Aucun Run ou constructeur ex?cut?.

@@ -1,0 +1,32 @@
+DEBUT integration_ciblee (copie temporaire uniquement)
+FIN integration_ciblee retour=0
+{
+  "schema": "staging_integration_qualification_v1",
+  "mode": "patch_sur_copie_isolee",
+  "q_original_sha256": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+  "q_original_apres_sha256": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+  "q_copie_testee_sha256": "5fd159116157bef7191c3b86225cf0524fffd3e700295469fa12604c59482217",
+  "patch_sha256": "602df06e4a0cfd3553437f2faa10e973c351506f5b6d975312301c84a9e07fed",
+  "sources_intactes": true,
+  "selection_reelle_sha256_avant": null,
+  "executions": [
+    {
+      "nom": "integration_ciblee",
+      "commande": [
+        "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "-v",
+        "test_integration_qualification"
+      ],
+      "retour": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2daddaf56bfabd5fe15dfbde402776620b293e97de3cbfef1c43533affd0f7ea"
+    }
+  ],
+  "aucun_calcul_fdtd": true,
+  "reussi": true
+}

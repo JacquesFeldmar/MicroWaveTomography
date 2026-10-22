@@ -1,0 +1,37 @@
+{
+  "schema": "controle_root_vivaldi_figures_et_brouillon_v1",
+  "utc": "2026-10-19T09:19:08.454856+00:00",
+  "figures_inspectees_visuellement_par_root": [
+    {
+      "fichier": "chatGPT_critical_review\\controle_vivaldi\\comparaison_ultra_fin_16ns\\comparaison_spatial_ultra_fin.png",
+      "sha256": "ec3e34e4ed9297ed43ef0eca5d3837e3ff92d3faf68f5f6dfb6a85ea8b71540c"
+    },
+    {
+      "fichier": "chatGPT_critical_review\\controle_vivaldi\\comparaison_ultra_fin_16ns\\comparaison_temporel_ultra_fin.png",
+      "sha256": "0ecb51079c7dc9a9bf31f4877a05c2be427e398916a9ffd9966e5d91e124de20"
+    }
+  ],
+  "inspection": {
+    "texte_et_legendes_lisibles": true,
+    "courbes_non_tronquees": true,
+    "seuils_maximum_et_p95_explicitement_distingues": true,
+    "masques_db191_194_et_ecarts_tous_points_presents": true,
+    "aucune_qualification_globale_affichee": true
+  },
+  "index_8_fichiers_valide_sha256": "dce2bc21b00f9f1d453c290c98abe9d6da3c37832dec3dbf84782f41ec9ada8f",
+  "bilan_sha256": "d0ceb6928eaab1b9427a290d36776e3236e5bf2caf411ac949f85e95baad87cd",
+  "valeurs_identiques_contrelecture": true,
+  "preliminaires_verdicts": [
+    false,
+    false,
+    false,
+    true
+  ],
+  "archive_brouillon": {
+    "fichier": "preparation_selection_n34_ultra_fin_preuves.zip",
+    "sha256": "6ae6f7a95bd4326b4110c1d59c18690b48b6737a4fd28cb6e3a69adff688b552",
+    "crc_et_manifest_verifies": true,
+    "trois_fichiers_identiques_aux_origines": true
+  },
+  "qualification_globale_effectuee": false
+}

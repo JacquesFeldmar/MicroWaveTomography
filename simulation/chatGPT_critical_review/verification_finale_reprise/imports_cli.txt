@@ -1,0 +1,19 @@
+test_csv_en_tete_commentaires_et_bom (test_donnees.ImportS11.test_csv_en_tete_commentaires_et_bom) ... ok
+test_deux_entetes_contradictoires (test_donnees.ImportS11.test_deux_entetes_contradictoires) ... ok
+test_doublons_identiques_signales_et_divergents_refuses (test_donnees.ImportS11.test_doublons_identiques_signales_et_divergents_refuses) ... ok
+test_formats_touchstone_refuses (test_donnees.ImportS11.test_formats_touchstone_refuses) ... ok
+test_grilles_deux_fichiers_tolerance_absolue (test_donnees.ImportS11.test_grilles_deux_fichiers_tolerance_absolue) ... ok
+test_grilles_invalides (test_donnees.ImportS11.test_grilles_invalides) ... ok
+test_noms_natifs_anciens_et_decimaux (test_donnees.ImportS11.test_noms_natifs_anciens_et_decimaux) ... ok
+test_s11_non_fini_ou_colonnes_en_trop (test_donnees.ImportS11.test_s11_non_fini_ou_colonnes_en_trop) ... ok
+test_s1p_unites_et_commentaires (test_donnees.ImportS11.test_s1p_unites_et_commentaires) ... ok
+test_trous_de_grille_et_aucune_interpolation (test_donnees.ImportS11.test_trous_de_grille_et_aucune_interpolation) ... ok
+test_aucune_bande_est_un_compte_rendu_valide (test_run.CommandePublique.test_aucune_bande_est_un_compte_rendu_valide) ... ok
+test_estimation_n_execute_ni_serie_ni_lance (test_run.CommandePublique.test_estimation_n_execute_ni_serie_ni_lance) ... ok
+test_mesures_refuse_grille_non_uniforme_avant_figure (test_run.CommandePublique.test_mesures_refuse_grille_non_uniforme_avant_figure) ... ok
+test_serie_commune_et_reimport_natif (test_run.CommandePublique.test_serie_commune_et_reimport_natif) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.260s
+
+OK

@@ -1,0 +1,28 @@
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+  maillage : 8 cellules, dt=0.1000 ps, 10 pas, 0.001 ns imposes
+
+test_arrondi_textuel_admissible (__main__.GardeSondes.test_arrondi_textuel_admissible) ... ok
+test_bon_NrTS_plus_un_et_demi_pas (__main__.GardeSondes.test_bon_NrTS_plus_un_et_demi_pas) ... ok
+test_dt_stats_et_sondes_refuses (__main__.GardeSondes.test_dt_stats_et_sondes_refuses) ... ok
+test_increment_interieur_irregulier_refuse (__main__.GardeSondes.test_increment_interieur_irregulier_refuse) ... ok
+test_non_finis_stats_et_sondes_refuses (__main__.GardeSondes.test_non_finis_stats_et_sondes_refuses) ... ok
+test_origines_U_et_I_refusees (__main__.GardeSondes.test_origines_U_et_I_refusees) ... ok
+test_sondes_N_moins_un_et_N_moins_trois_refusees (__main__.GardeSondes.test_sondes_N_moins_un_et_N_moins_trois_refusees) ... ok
+test_stats_iterations_incompletes_refusees (__main__.GardeSondes.test_stats_iterations_incompletes_refusees) ... ok
+test_tolerance_indices_Q_a_dt_un_dixieme_ps (__main__.GardeSondes.test_tolerance_indices_Q_a_dt_un_dixieme_ps) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.429s
+
+OK

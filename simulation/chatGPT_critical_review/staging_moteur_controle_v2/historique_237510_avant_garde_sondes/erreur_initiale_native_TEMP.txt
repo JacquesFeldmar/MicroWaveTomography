@@ -1,0 +1,7 @@
+Premier controle natif dans TEMP : ImportError DLL load failed while importing
+CSXCAD. La copie TEMP n'a pas le dossier outils/openEMS voisin de la racine
+du projet. F1/F2 le detectent normalement depuis leur propre ICI.
+Correction du runner de controle uniquement : CSXCAD_INSTALL_PATH pointe
+explicitement vers les DLL existantes du projet avant tout import natif.
+Aucune installation, aucune modification moteur ou source historique,
+aucun Run. TEMP initial conserve : controle_f2_sans_run_bmvq_jdq.

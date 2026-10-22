@@ -1,0 +1,22 @@
+{
+  "utc": "2026-10-18T21:19:56.350784+00:00",
+  "commande": [
+    "simulation\\chatGPT_critical_review\\controle_vivaldi\\analyse_vivaldi.py",
+    "--queue-sortie-zero-confirmee",
+    "--sortie",
+    "controle_final_vivaldi"
+  ],
+  "python": "3.13.16",
+  "numpy": "2.5.3",
+  "threads": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "scripts_sha256": {
+    "analyse_extreme_fin.py": "d31fd9e40b7b4c6bc4d9549244c13a31457d6392007fd8c2167c0248d78d81a2",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+    "analyse_vivaldi.py": "3dce54db99c768a48b479e845e1ad9ea52ba1e6f4d2cc6c6231beaf2c947c5f8"
+  },
+  "dependance_numerique": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\controle_extreme_fin\\analyse_extreme_fin.py"
+}

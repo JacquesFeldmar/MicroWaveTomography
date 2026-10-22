@@ -1,0 +1,59 @@
+{
+  "fonctions_AST_inchangees": {
+    "ecarts_independants": true,
+    "bandes": true,
+    "indicateurs_independants": true,
+    "grille_identique": true,
+    "lit_manifeste_partage": true,
+    "manquants": true
+  },
+  "boucles_communes_AST_inchangees": true,
+  "comparaison_exacte_rapport_80aa": {
+    "spatial": true,
+    "temporel": true,
+    "grille_temporelle": true,
+    "indicateurs_reference": true,
+    "passivite_par_profil": true,
+    "verifications_communes": true,
+    "preuves": true
+  },
+  "valeurs_extreme": {
+    "spatial": {
+      "maximum_complexe": 0.02499124575279103,
+      "rms_complexe": 0.017769583831423758,
+      "percentile95_db": 1.1252310353778219,
+      "percentile95_phase_deg": 6.812018793594152
+    },
+    "temporel": {
+      "maximum_complexe": 0.009746129948395214,
+      "rms_complexe": 0.0025004367800776565,
+      "percentile95_db": 0.11208639250998279,
+      "percentile95_phase_deg": 0.7930751614435406
+    }
+  },
+  "mode_n30_sans_confirmation": {
+    "code_sortie": 3,
+    "nombre_profils_attendus": 11,
+    "nombre_Q_charge_calcul": 0,
+    "aucun_fichier_cree": true,
+    "manquants": [
+      {
+        "profil": "n30_8ns",
+        "motif": "manifeste absent"
+      },
+      {
+        "profil": "n30_12ns",
+        "motif": "calcul non termine",
+        "etat": "calcul_en_cours"
+      },
+      {
+        "profil": "coordination",
+        "motif": "sortie zero de la queue non confirmee"
+      }
+    ]
+  },
+  "drapeaux_n30_precedente_incompatibles": true,
+  "neuf_profils_sha256_avant_apres_identiques": true,
+  "nombre_fichiers_profils": 250,
+  "analyseur_sha256": "d31fd9e40b7b4c6bc4d9549244c13a31457d6392007fd8c2167c0248d78d81a2"
+}

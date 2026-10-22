@@ -1,0 +1,83 @@
+MOTEUR F2 — STAGING UNIQUEMENT, AUCUN RUN
+
+modifies/fdtd_maille_controlee.py est une COPIE COMPLETE de fdtd.py, pas un
+chargement dynamique du prototype. Nom moteur litteral maillage_controle_v2.
+Ses neuf sources F1 restent byte-exactes ; son inventaire ajoute sa propre
+source, soit dix fichiers. Aucun autre fichier du prototype n'est importe.
+
+NIVEAUX exposes :
+base={mailles_par_lambda16,mailles_par_lambda_air16,maille_min0,15mm}
+fin ={mailles_par_lambda24,mailles_par_lambda_air16,maille_min0,10mm}.
+Le controleur Q doit reconnaitre ces configurations reelles avec le tagF2 ;
+aucun cache F1 ne peut servir de calcul F2. Les gardes Q/W/AP sont preparees
+separement, pas modifiees ici ni supposees deja validees avec ce moteur.
+
+PERIMETRE DELIBERE ET REPERES TEMPORELS
+Le workflow appelle estime_cout avec antenne_mod explicite parmi les trois
+PCB. L'appel sans module herite du defaut uwb_surveyor de F1 et est refuse
+par F2 : il n'est pas pris en charge dans cette campagne.
+Le champ historique execution.duree_prevue_s=(NrTS-1)*dt est conserve comme
+repere nominal conservateur. Dans openEMS0.37 observe ici, la derniere sonde
+U est a NrTS*dt et I a(NrTS+0,5)*dt ; les sondes ont NrTS+1 lignes.
+Ce champ nominal n'est donc pas une mesure de la derniere abscisse reelle.
+Le controle minimal herite de lance pouvait tolerer quelques pas absents.
+Apres archivage de237510 et ses preuves, le coordinateur a autorise un seul
+durcissement F2 avant CalcPort : iterations statistiques exactes, dt, compte
+NrTS+1, origines0/dt2, fins NrTSdt/(NrTS+0,5)dt et increments reguliers.
+Chaque abscisse respecte abs(t/dt-index)<=2e-6, comme le pilote Q ; le dt
+median utilise isclose(rtol2e-7,atol1e-18). La tolerance supplementaire des
+increments vaut2e-7dt+1e-18s. Aucun n_pas, TimeStep, Run, CalcPort,
+dessin, materiau ou nombre de grille n'est modifie. Qstrict reste obligatoire
+pour les contrats complets, hashes et qualification ; etat=termine seul ne
+remplace pas cette validation.
+
+La construction fine reconstruit automatiquement sa grille BASE dans le
+meme module et scene, puis preserve toutes ses primaires dans les projections
+PCB hors blocs SMA. Les interpolations SMA non physiques restent libres ;
+port uniforme, interfaces et vias restent fixes. Le constructeur verifie
+le non-grossissement exhaustif PCB/blocs et l'egalite bit a bit des PML.
+Le nombre normal est oddceil(h/maille_min)=11/17 ; extensionsceil(h/3/maille_min)
+=4/6 ; nombre via=2ceil((diametre/(0,8maille_min))/2)=4/6. Le constructeur
+peut accepter des resolutions explicites plus fines avec AIR16 conserve,
+mais refuse une configuration plus grossiere ou une grille incompatible.
+Seuls les deux niveaux nommes sont exposes dans le catalogue NIVEAUX.
+
+L'alimentation, les materiaux Debye, la physique du solveur, le calibrage
+operateur du dt, CalcPort, Touchstone et la gestion temporelle restent ceux
+de F1. Les fonctions correspondantes ont des AST identiques ; dans lance,
+la seule addition est politique_maillage dans le manifeste. Chaque sauvegarde
+de manifeste ajoute aussi moteur=maillage_controle_v2. La politique archive
+parametres, blocs, verifications U/I, comptes vias/normale et coordonnees PML.
+
+VERIFICATION NATIVE REELLE, SANS SOLVEUR
+verifie_f2_natif_sans_run.py copie neuf sources exactes + F2 dans un TEMP neuf
+conserve, puis importe F2 depuis ce TEMP avec les DLL openEMS deja installees.
+Le premier essai avait oublie CSXCAD_INSTALL_PATH car TEMP n'a pas outils/
+voisin : ce probleme d'environnement du runner est conserve et corrige.
+Aucune installation ni modification du moteur n'a ete necessaire.
+
+Douze constructions natives : trois antennes x deux niveaux x12/16ns.
+Les six grilles sont bit a bit identiques aux six NPZ de proposition10.
+Les axes et politiques12/16ns sont identiques pour chaque niveau.
+U primairex0, Idualh/2, normale11/17 et vias4/6 sont verifies. Les dossiers
+de solveur ne sont jamais crees ; F.lance/serie/calibre sont interdits dans
+le controle. Les tags prepare/termine/echec sont testes hors simulations.
+Les17 sources historiques et la source F2 sont verifiees avant/apres.
+
+Cellules base / fin :
+petit3 005 640 /7 566 780 ; grand3 722 400 /10 030 398 ; V9 548 352 /27 169 776.
+Ces constructions ne valident ni dt reel, stabilite, extraction des sondes,
+ni S11. Aucun pilotRun ne doit etre deduit de ce document : il revient au
+coordinateur apres relecture du moteur et des controles d'archivage natifs.
+Les trois antennes exigent la nouvelle campagne F2 adoptee par le parent.
+
+Le diff fdtd_F1_vers_F2.diff expose les modifications. La preuve native237510
+est conservee avec la copie historique exacte. La preuve de durcissement
+montre que toutes les fonctions de construction de grilles sont byte-exactes
+entre237510 et la version finale, et les9 tests de garde utilisent un faux
+Run local qui ne charge aucun solveur. Le premier essai de ces tests avait
+une fixture de politique non isolee ; l'erreur est documentee et corrigee.
+Le generateur construit_stage_f2.py est l'outil historique d'assemblage237510,
+pas un generateur du garde final ; la source F2 complete archivee fait foi.
+L'index et les preuves donnent les SHA complets. La promotion en racine n'a
+pas ete faite. Les originaux9/17 et tous profils historiques restent intacts.

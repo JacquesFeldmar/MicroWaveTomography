@@ -1,0 +1,36 @@
+{
+  "articles": [
+    {
+      "dimensions_gko_relu_mm": [
+        92.6,
+        72.0
+      ],
+      "dimensions_source_mm": [
+        92.6,
+        72.0
+      ],
+      "geometrie_sha256": "9659004caf1f1ca5f316f3363c190bed75ce5c87285dbb2144f6e69f8510bc06",
+      "npth": 16,
+      "produit": "panneau_losanges",
+      "pth": 4,
+      "zip_sha256": "7eba0eca18dc3a36608e64bac737d61aea49f5e890b2345281718d4eceed5200"
+    },
+    {
+      "dimensions_gko_relu_mm": [
+        143.668736,
+        280.903102
+      ],
+      "dimensions_source_mm": [
+        143.668735,
+        280.9031025
+      ],
+      "geometrie_sha256": "5d9ab2f3349411b03385967ec7b60932f49b7ef0e88eb477a23e837e1486ce0b",
+      "npth": 2,
+      "produit": "vivaldi_tomographie",
+      "pth": 2,
+      "zip_sha256": "824104ff8933fb296200f145ad31e84357e3e0f6b037e5aa8a77ae5184b8dd03"
+    }
+  ],
+  "revision_physique": "2026-10-18",
+  "statut": "transfert geometrique verifie; qualification electromagnetique definie par bilan de campagne de cette revision"
+}

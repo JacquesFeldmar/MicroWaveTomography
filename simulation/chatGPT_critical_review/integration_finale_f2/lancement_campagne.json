@@ -1,0 +1,19 @@
+{
+  "schema": "lancement_campagne_F2_v1",
+  "utc": "2026-10-19T17:21:29.941170+00:00",
+  "pid": 28980,
+  "commande": [
+    "C:\\Users\\jfeld\\anaconda3\\envs\\ph\\python.exe",
+    "-B",
+    "-X",
+    "utf8",
+    "-u",
+    "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\orchestre_f2.py",
+    "--executer",
+    "--base",
+    "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_maille_controlee_v2"
+  ],
+  "orchestrateur_sha256": "aa359d90ccde3f365c06866df8316b875a620d2d016a9787f0bfd1ae16209357",
+  "lanceur_sha256": "ebbd9be52bbc67855376a195c26d1e0020fb661ffc011829b5a81b10ab3a4d02",
+  "qualification_globale_effectuee": false
+}

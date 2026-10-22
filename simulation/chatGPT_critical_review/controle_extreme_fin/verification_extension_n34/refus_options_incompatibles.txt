@@ -1,0 +1,4 @@
+usage: verification.py [-h] [--base BASE] [--verification-precedente | --n30 |
+                       --n34] [--queue-sortie-zero-confirmee]
+                       [--sortie SORTIE]
+verification.py: error: argument --n30: not allowed with argument --n34

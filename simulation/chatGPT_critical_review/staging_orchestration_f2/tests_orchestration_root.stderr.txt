@@ -1,0 +1,14 @@
+test_echec_numerique_code2_distinct_du_runtime1 (__main__.Orchestration.test_echec_numerique_code2_distinct_du_runtime1) ... ok
+test_gel_mutation_pendant_calcul_interdit_suite_et_analyse (__main__.Orchestration.test_gel_mutation_pendant_calcul_interdit_suite_et_analyse) ... ok
+test_pilote_altere_ou_sources_differentes_refuses_avant_preparation (__main__.Orchestration.test_pilote_altere_ou_sources_differentes_refuses_avant_preparation) ... ok
+test_plan_15_profils_succes_deux_files_et_journaux_utf8 (__main__.Orchestration.test_plan_15_profils_succes_deux_files_et_journaux_utf8) ... ok
+test_preflight_refuse_existant_et_preserve_f1 (__main__.Orchestration.test_preflight_refuse_existant_et_preserve_f1) ... ok
+test_profil_mixte_f1_refuse_meme_code_zero (__main__.Orchestration.test_profil_mixte_f1_refuse_meme_code_zero) ... ok
+test_refus_selection_archive_ou_dossier_inattendu_avant_processus (__main__.Orchestration.test_refus_selection_archive_ou_dossier_inattendu_avant_processus) ... ok
+test_sortie2_sans_bilan_pas_un_verdict_numerique (__main__.Orchestration.test_sortie2_sans_bilan_pas_un_verdict_numerique) ... ok
+test_worker_exit2_conserve_attend_pair_sans_analyse (__main__.Orchestration.test_worker_exit2_conserve_attend_pair_sans_analyse) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 17.658s
+
+OK

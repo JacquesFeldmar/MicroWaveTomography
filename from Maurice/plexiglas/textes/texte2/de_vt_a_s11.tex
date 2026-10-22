@@ -1,0 +1,577 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=25mm]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\jj}{\mathrm{j}}
+\newcommand{\Reel}{\operatorname{Re}}
+\title{De la tension $v(t)$ au coefficient $S_{11}$\\Démodulation, séparation directionnelle et calibration}
+\author{Projet MicroWaveTomography --- banc plexiglas}
+\date{18 septembre 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Nous détaillons ce que la démodulation en phase et en quadrature permet de
+calculer, puis l'information supplémentaire nécessaire pour déterminer
+le coefficient de réflexion. Une tension totale unique ne suffit pas à
+séparer deux ondes de même fréquence. Nous distinguons donc le modèle
+physique idéal, les mesures complexes fournies par l'instrument et leur
+correction par calibration SOL. Les calculs ne supposent pas que le logiciel
+Python reçoit des échantillons de la sinusoïde radiofréquence.
+\end{abstract}
+
+\section{Conventions : une fréquence fixée \texorpdfstring{$f_0$}{f0}}
+On se place en régime sinusoïdal établi, après le transitoire de mise en
+fréquence. L'enveloppe complexe $\alpha(t)$ est définie par rapport à la
+porteuse de fréquence $f_0$, selon la convention
+\begin{equation}
+ v(t)=\Reel\{\alpha(t)\,e^{\jj2\pi f_0t}\},
+ \qquad \alpha(t)=Ae^{\jj\phi}.
+\end{equation}
+Ainsi $v(t)=A\cos(2\pi f_0t+\phi)$ ; $A$ est une amplitude crête.
+L'enveloppe complexe $\alpha(t)$ est constante pendant cette mesure
+idéale : la notation $\alpha(t)$ désigne l'enveloppe en général, mais
+elle ne dépend pas de $t$ dans le régime sinusoïdal établi considéré ici.
+La lettre $t$ désigne ici le temps physique d'observation de la
+sinusoïde, et non un retard de propagation à estimer.
+
+Pour deux contributions de même fréquence,
+\begin{equation}
+ v(t)=A_1\cos(2\pi f_0t+\phi_1)+A_2\cos(2\pi f_0t+\phi_2),
+ \qquad
+ \alpha(t)=A_1e^{\jj\phi_1}+A_2e^{\jj\phi_2}.
+\end{equation}
+La démodulation fournit l'enveloppe complexe du signal par rapport à la
+fréquence $f_0$, après mélange en phase et en quadrature, puis filtrage
+passe-bas (voir section~\ref{s:demod}). Elle ne fournit pas
+séparément ses deux termes. Les deux contributions ne sont pas séparables
+par un filtrage en fréquence puisqu'elles ont la même fréquence.
+
+\section{Calcul de \texorpdfstring{$I$ et $Q$ à partir de $v(t)$}{I et Q à partir de v(t)}}
+\label{s:demod}
+\subsection{Multiplication et filtrage passe-bas}
+En écrivant $\alpha(t)=I+\jj Q$, on obtient
+\begin{equation}
+ v(t)=I\cos(2\pi f_0t)-Q\sin(2\pi f_0t).
+\end{equation}
+On multiplie par deux références cohérentes avec la source :
+\begin{align}
+ 2v(t)\cos(2\pi f_0t)
+ &=I+I\cos(4\pi f_0t)-Q\sin(4\pi f_0t),\\
+ -2v(t)\sin(2\pi f_0t)
+ &=Q-Q\cos(4\pi f_0t)-I\sin(4\pi f_0t).
+\end{align}
+Un filtre passe-bas élimine les termes à $2f_0$ et conserve les constantes :
+\begin{equation}
+ \boxed{I=\mathrm{PB}\{2v(t)\cos(2\pi f_0t)\},\qquad
+ Q=\mathrm{PB}\{-2v(t)\sin(2\pi f_0t)\}.}
+\end{equation}
+Le signe moins dans la voie quadrature résulte de notre convention
+$e^{+\jj2\pi f_0t}$. Une autre convention est possible si elle est employée
+partout de manière cohérente.
+
+\subsection{Expression par intégration}
+Pour une durée $T$ contenant un nombre entier de périodes,
+\begin{align}
+ I&=\frac{2}{T}\int_{t_0}^{t_0+T}v(t)\cos(2\pi f_0t)\,\mathrm dt,\\
+ Q&=-\frac{2}{T}\int_{t_0}^{t_0+T}v(t)\sin(2\pi f_0t)\,\mathrm dt,\\
+ \alpha(t)=I+\jj Q
+ &=\frac{2}{T}\int_{t_0}^{t_0+T}v(t)e^{-\jj2\pi f_0t}\,\mathrm dt.
+\end{align}
+Ces égalités sont exactes pour les sinusoïdes stationnaires considérées.
+Sinon, le rejet du terme à $2f_0$ dépend du filtre ou de la fenêtre
+ d'intégration. Une erreur de fréquence entre signal et référence produit
+une rotation de l'enveloppe : $I$ et $Q$ ne sont alors plus constants.
+Le bruit entraîne également des fluctuations autour de leurs valeurs moyennes.
+
+\subsection{Expression discrète et lien avec la DFT}
+Avec $N$ échantillons réels $v_n=v(t_n)$, $t_n=n/f_s$, une estimation est
+\begin{equation}
+ \widehat{\alpha}(t)=\frac{2}{N}\sum_{n=0}^{N-1}
+ v_n e^{-\jj2\pi f_0 n/f_s}.
+\end{equation}
+Si $f_0=\ell_0f_s/N$, c'est $2/N$ fois le coefficient de DFT d'indice
+$\ell_0$. Pour retrouver exactement l'amplitude complexe d'une sinusoïde
+réelle, on suppose un échantillonnage cohérent, sans repliement, et une
+fréquence distincte de zéro et de Nyquist.
+
+Il s'agit d'une \emph{représentation mathématique de la démodulation}.
+Un VNA peut d'abord transposer le signal vers une fréquence intermédiaire,
+puis le numériser. Nous n'affirmons pas que le LiteVNA échantillonne
+directement la radiofréquence ni qu'il utilise exactement cette somme.
+
+\section{Pourquoi une tension totale ne suffit pas}
+À un plan de référence donné sur une ligne d'impédance réelle
+$Z_0=50\,\Omega$, notons $V^+$ et $V^-$ les amplitudes complexes des ondes
+incidente et réfléchie. La tension totale y est
+\begin{equation}
+ v(t)=\Reel\{\alpha(t)e^{\jj2\pi f_0t}\},
+ \qquad \alpha(t)=V^++V^-.
+\end{equation}
+La mesure de $\alpha(t)$ fournit deux nombres réels ; les deux amplitudes
+complexes inconnues en représentent quatre. Pour tout nombre complexe $C$,
+le couple $(V^++C,V^--C)$ donne la même tension totale.
+
+\subsection{Si l'onde incidente est connue}
+Si $V^+$ est connu \textbf{en amplitude et en phase, au même plan de
+référence}, avec $V^+\ne0$, alors
+\begin{equation}
+ V^-=\alpha(t)-V^+,
+ \qquad
+ \boxed{\Gamma=\frac{V^-}{V^+}=\frac{I+\jj Q}{V^+}-1.}
+\end{equation}
+Connaître uniquement la puissance réglée sur le générateur ne fournit pas
+cette amplitude complexe au plan de mesure.
+
+\subsection{Si la tension démodulée est déjà celle de l'onde réfléchie}
+Si un dispositif directionnel fournit un signal proportionnel à $V^-$,
+et si ce facteur de proportionnalité est corrigé, alors la démodulation
+fournit $I_-+\jj Q_-=V^-$. Dans ce cas,
+\begin{equation}
+ \boxed{\Gamma=\frac{I_-+\jj Q_-}{V^+}.}
+\end{equation}
+Il n'y a pas de terme $-1$ ici. \textbf{Il faut donc toujours préciser ce
+que représente la tension $v(t)$ : tension totale ou signal de réflexion séparé.}
+
+\section{L'information directionnelle supplémentaire}
+Notons $\widetilde J$ l'amplitude complexe du courant, compté positivement
+vers la charge. Nous utilisons $J$ pour éviter de confondre le courant avec
+la composante en phase $I$. Pour les deux ondes,
+\begin{equation}
+ \alpha(t)=V^++V^-,\qquad
+ Z_0\widetilde J=V^+-V^-.
+\end{equation}
+Le signe moins du courant réfléchi traduit son sens de propagation opposé.
+Les deux équations donnent
+\begin{equation}
+ \boxed{V^+=\frac{\alpha(t)+Z_0\widetilde J}{2},\qquad
+ V^-=\frac{\alpha(t)-Z_0\widetilde J}{2}.}
+\end{equation}
+Par conséquent,
+\begin{equation}
+ \boxed{\Gamma=
+ \frac{\alpha(t)-Z_0\widetilde J}
+      {\alpha(t)+Z_0\widetilde J}.}
+\end{equation}
+Un pont directionnel ou un coupleur directionnel permet d'obtenir des
+combinaisons électriques sensibles au sens de propagation. Les équations
+ci-dessus expliquent le principe de séparation ; elles ne signifient pas
+que le LiteVNA mesure directement et séparément la tension et le courant
+avec deux capteurs idéaux. Son schéma interne détaillé n'est pas établi ici.
+
+Le manuel du LiteVNA indique l'emploi d'un mélangeur unique et de
+commutations RF internes. Deux informations complexes ne nécessitent donc
+pas nécessairement deux chaînes de démodulation simultanées. En cas de
+mesure successive, leur comparaison suppose une stabilité et une cohérence
+suffisantes pendant la séquence.
+
+\subsection{Pourquoi le sens de propagation change le signe du courant}
+La tension seule donne une somme : une information supplémentaire est
+nécessaire. Prenons un axe $x$ dirigé vers l'antenne et un courant positif
+dans ce même sens. Sur une ligne idéale sans pertes, les deux ondes peuvent
+s'écrire
+\begin{align}
+ v_+(x,t)&=A_+\cos(2\pi f_0t-\beta x+\phi_+),\\
+ v_-(x,t)&=A_-\cos(2\pi f_0t+\beta x+\phi_-).
+\end{align}
+Le signe devant $\beta x$ distingue les deux sens de propagation.
+L'équation de ligne $\partial v/\partial x=-L'\,\partial i/\partial t$,
+avec $L'$ l'inductance par unité de longueur, donne pour chaque onde
+\begin{equation}
+ i_+=\frac{v_+}{Z_0},\qquad i_-=-\frac{v_-}{Z_0},
+ \qquad Z_0=\frac{2\pi f_0L'}{\beta}.
+\end{equation}
+À un même endroit et au même instant,
+\begin{equation}
+ v=v_++v_-,\qquad Z_0i=v_+-v_-.
+\end{equation}
+Le signe moins ne signifie pas que le courant réfléchi est toujours
+négatif : c'est une sinusoïde. Il signifie que sa relation à la tension
+est inversée lorsque le sens de propagation est inversé.
+
+On dispose donc de la somme et de la différence de deux inconnues.
+On les retrouve sans les séparer dans le temps ni en fréquence :
+\begin{equation}
+ \boxed{v_+=\frac{v+Z_0i}{2},\qquad v_-=\frac{v-Z_0i}{2}.}
+\end{equation}
+Le mécanisme d'annulation apparaît en développant :
+\begin{equation}
+ v-Z_0i=(v_++v_-)-(v_+-v_-)=2v_-.
+\end{equation}
+L'onde incidente s'annule dans cette combinaison, même si elle est présente
+simultanément avec l'onde réfléchie et à la même fréquence.
+
+\subsection{Exemple numérique à un instant donné}
+Supposons, à cet instant et au même point du câble,
+$v_+=1\,\mathrm V$ et $v_-=0{,}2\,\mathrm V$. Pour $Z_0=50\,\Omega$,
+\begin{equation}
+ v=1{,}2\,\mathrm V,\qquad
+ i=\frac{1-0{,}2}{50}=0{,}016\,\mathrm A=16\,\mathrm{mA}.
+\end{equation}
+Les deux valeurs totales permettent de retrouver
+\begin{align}
+ v_+&=\frac{1{,}2+50\times0{,}016}{2}=1\,\mathrm V,\\
+ v_-&=\frac{1{,}2-50\times0{,}016}{2}=0{,}2\,\mathrm V.
+\end{align}
+Cet exemple illustre la séparation instantanée. Le coefficient complexe
+$S_{11}$ est ensuite un rapport d'amplitudes complexes, pas un rapport
+instantané de sinusoïdes qui pourraient passer par zéro.
+
+\subsection{Un pont concret : deux diviseurs de tension}
+Un circuit résistif idéal permet de voir comment produire une information
+de réflexion sans installer un voltmètre et un ampèremètre indépendants.
+Les deux branches suivantes sont alimentées par une même tension
+sinusoïdale d'amplitude complexe $E$ :
+\begin{center}
+\begin{tabular}{c@{\qquad\qquad}c}
+\multicolumn{2}{c}{N\oe ud supérieur commun : $E$}\\
+$|$ & $|$\\
+$R=50\,\Omega$ & $R=50\,\Omega$\\
+$|$ & $|$\\
+Point A : $V_A$ & Point B : $V_B$\\
+$|$ & $|$\\
+$R=50\,\Omega$ & Antenne : impédance $Z$\\
+$|$ & $|$\\
+\multicolumn{2}{c}{Masse commune}
+\end{tabular}
+\end{center}
+On suppose que la mesure différentielle entre A et B ne charge pas le
+pont. Les lois des diviseurs de tension donnent
+\begin{equation}
+ V_A=\frac E2,\qquad V_B=E\frac{Z}{R+Z}.
+\end{equation}
+La tension de différence est donc
+\begin{align}
+ D=V_B-V_A
+ &=E\left(\frac{Z}{R+Z}-\frac12\right)\\
+ &=\frac E2\frac{Z-R}{Z+R}=\frac E2\,\Gamma.
+\end{align}
+Ainsi,
+\begin{equation}
+ \boxed{\Gamma=\frac{D}{V_A}=\frac{V_B-V_A}{V_A}.}
+\end{equation}
+Pour relier ce pont à la séparation tension--courant, le courant dans la
+branche de droite vaut $\widetilde J=(E-V_B)/R$. Au port B,
+\begin{equation}
+ V^+=\frac{V_B+R\widetilde J}{2}=\frac E2=V_A,
+ \qquad
+ V^-=\frac{V_B-R\widetilde J}{2}=V_B-\frac E2=D.
+\end{equation}
+\textbf{Dans ce modèle idéal, la différence de tension du pont est
+exactement l'amplitude de l'onde réfléchie au port B.}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Terminaison & $V_B$ & $D=V_B-V_A$ & $\Gamma$\\
+\midrule
+Charge $Z=R$ & $E/2$ & $0$ & $0$\\
+Circuit ouvert & $E$ & $+E/2$ & $+1$\\
+Court-circuit & $0$ & $-E/2$ & $-1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Le signe négatif du court-circuit correspond à un déphasage de $180^\circ$.
+Le pont réalise une soustraction électrique avant la démodulation : la
+voie I/Q mesure ensuite l'amplitude complexe de cette différence.
+
+\paragraph{Limites du schéma pédagogique.}
+Ce schéma n'est pas présenté comme celui du LiteVNA. À haute fréquence,
+les connexions, composants, dispositifs de mesure différentielle et
+couplages ont leurs propres effets. Un coupleur à lignes couplées utilise
+une autre réalisation physique de la séparation directionnelle. Dans un
+instrument réel, l'annulation imparfaite laisse fuir une partie de l'onde
+incidente vers la voie de réflexion ; la calibration corrige cette erreur
+de directivité dans les limites de stabilité et de validité du modèle.
+
+
+\section{Expression idéale de \texorpdfstring{$S_{11}$}{S11} en fonction des quadratures}
+Pour une mesure de réflexion à un port (ou avec les autres ports adaptés),
+$S_{11}=\Gamma$. Avec les ondes normalisées
+$a_1=V^+/\sqrt{Z_0}$ et $b_1=V^-/\sqrt{Z_0}$, le même rapport s'écrit
+\begin{equation}
+ S_{11}(f_0)=\frac{b_1}{a_1}=\frac{V^-}{V^+}.
+\end{equation}
+Après séparation idéale et remise à l'échelle des deux mesures,
+\begin{equation}
+ V^+=I_++\jj Q_+,\qquad V^-=I_-+\jj Q_-,
+ \qquad
+ \boxed{S_{11}(f_0)=\frac{I_-+\jj Q_-}{I_++\jj Q_+}.}
+\end{equation}
+En multipliant par le conjugué du dénominateur,
+\begin{align}
+ \Reel S_{11}&=\frac{I_-I_++Q_-Q_+}{I_+^2+Q_+^2},\\
+ \operatorname{Im}S_{11}&=\frac{Q_-I_+-I_-Q_+}{I_+^2+Q_+^2},\\
+ |S_{11}|&=\frac{\sqrt{I_-^2+Q_-^2}}{\sqrt{I_+^2+Q_+^2}},\\
+ \arg S_{11}&=\operatorname{atan2}(Q_-,I_-)
+             -\operatorname{atan2}(Q_+,I_+)\pmod{2\pi}.
+\end{align}
+Une rotation de phase commune aux deux mesures s'annule dans le rapport.
+Une erreur différente entre les deux voies ne s'annule pas automatiquement.
+
+\section{Du rapport brut à la mesure calibrée du banc}
+\subsection{Les valeurs reçues par Python}
+Dans le mode brut du pilote \texttt{plexiglas/progs/litevna.py}, les données
+USB décodées fournissent, pour chaque fréquence $f_k$, deux nombres complexes :
+\begin{equation}
+ U_k=I_{\mathrm{ref},k}+\jj Q_{\mathrm{ref},k},\qquad
+ W_k=I_{\mathrm{refl},k}+\jj Q_{\mathrm{refl},k}.
+\end{equation}
+Le programme calcule
+\begin{equation}
+ \boxed{\gamma_{m,k}=W_k/U_k.}
+\end{equation}
+Ces nombres sont des valeurs numériques de mesure internes, pas directement
+des tensions en volts au connecteur. Leurs noms ne prouvent pas qu'ils sont
+exactement égaux aux ondes idéales $V^+$ et $V^-$. Le rapport brut conserve
+les erreurs de la chaîne de mesure.
+
+Par exemple, si $U_k=1000$ et $W_k=100-100\jj$,
+\begin{equation}
+ \gamma_{m,k}=0{,}1-0{,}1\jj,
+ \quad |\gamma_{m,k}|=0{,}1414,
+ \quad \arg\gamma_{m,k}=-45^\circ.
+\end{equation}
+Ce résultat est encore à corriger si l'acquisition est brute.
+
+\subsection{Calibration SOL : trois erreurs complexes par fréquence}
+Le modèle utilisé dans \texttt{commun/sol.py} est
+\begin{equation}
+ \gamma_{m,k}=e_{00,k}+
+ \frac{e_{R,k}S_{11}(f_k)}{1-e_{11,k}S_{11}(f_k)}.
+\end{equation}
+Les coefficients représentent la directivité résiduelle $e_{00,k}$,
+le suivi en réflexion $e_{R,k}$ et la désadaptation de source $e_{11,k}$.
+Dans le code, $e_R$ est enregistré sous le nom \texttt{e10e01}.
+Ils sont déterminés à l'aide des trois étalons court-circuit, circuit
+ouvert et charge adaptée, avec les coefficients de réflexion retenus
+pour ces étalons (idéalement $-1$, $+1$ et $0$).
+
+Posons $x_k=\gamma_{m,k}-e_{00,k}$. On résout explicitement :
+\begin{align}
+ x_k(1-e_{11,k}S_{11})&=e_{R,k}S_{11},\\
+ x_k&=(e_{R,k}+e_{11,k}x_k)S_{11},\\
+ \widehat S_{11}(f_k)
+ &=\frac{\gamma_{m,k}-e_{00,k}}
+ {e_{R,k}+e_{11,k}(\gamma_{m,k}-e_{00,k})}.
+\end{align}
+Cette calibration place la référence au plan de raccordement des étalons,
+sous réserve de leur modèle et de la stabilité du montage. Le câble et
+les adaptateurs situés avant ce plan sont inclus dans la correction.
+L'antenne connectée ensuite n'est pas supprimée par cette calibration.
+
+\paragraph{Autre mode du pilote.}
+En mode de correction interne, le pilote attend une référence numérique
+$2^{30}+\jj0$ et divise la valeur complexe reçue par $2^{30}$. Cette
+normalisation numérique ne doit pas être interprétée comme une mesure
+physique de tension incidente constante. Elle se distingue du rapport
+brut suivi de la SOL logicielle détaillé ci-dessus.
+
+\section{Répéter le calcul pour les \texorpdfstring{$K=201$}{K=201} fréquences}
+À chaque point du balayage, $f_0$ prend successivement la valeur
+$f_k=f_{\min}+k\Delta f$, $k=0,\ldots,K-1$. La chaîne conceptuelle est
+\begin{equation}
+ \boxed{\text{séparation RF}\ \longrightarrow\ (I,Q)\text{ de chaque mesure}
+ \ \longrightarrow\ \gamma_{m,k}\ \longrightarrow\ \widehat S_{11}(f_k).}
+\end{equation}
+Les $K$ valeurs $\widehat S_{11}(f_k)$ sont \textbf{complexes} : on conserve
+leur amplitude et leur phase. $N$, nombre éventuel d'échantillons internes
+utilisés pour une démodulation, et $K$, nombre de fréquences du balayage,
+sont deux quantités différentes. Le pilote ne reçoit pas les $N$
+échantillons radiofréquences évoqués dans le modèle discret.
+
+Pour obtenir ensuite un profil en retard, on peut former, par exemple,
+\begin{equation}
+ h(\tau)=\frac{1}{K}\sum_{k=0}^{K-1}w_k\widehat S_{11}(f_k)
+ e^{+\jj2\pi f_k\tau}.
+\end{equation}
+Dans le traitement avec soustraction du fond, on remplace $\widehat S_{11}$
+par la différence complexe entre les moyennes avec cible et sans cible.
+Ici $\tau$ est un \emph{retard testé}, distinct du temps $t$ de la
+sinusoïde initiale. Le profil affiché est $|h(\tau)|$ ; en réflexion, la
+distance équivalente air est $d=c\tau/2$.
+
+On ne prend donc pas le module de chaque coefficient avant de
+calculer le profil de distance : cela supprimerait l'information de phase
+qui porte les retards.
+
+\section{Pourquoi un coefficient de réflexion contient-il un retard ?}
+\subsection{Réflexion locale et coefficient mesuré}
+Un coefficient de réflexion est un \textbf{rapport complexe}, pas seulement
+une fraction d'amplitude ou de puissance. Sa phase dépend du plan où l'on
+compare les ondes incidente et réfléchie. Il faut distinguer le coefficient
+local $\rho$ de la cible et le coefficient observé au point de mesure.
+
+Considérons d'abord un modèle idéal à un seul trajet, sans atténuation :
+une onde se propage à la vitesse $c$ entre un plan de référence et une
+surface située à la distance $d$. À la fréquence fixée $f_0$, l'onde
+incidente au plan de référence a pour amplitude complexe $A$ :
+\begin{equation}
+ a(t)=\Reel\{A e^{\jj2\pi f_0t}\}.
+\end{equation}
+Après le temps de propagation $d/c$, son expression à la cible est
+\begin{equation}
+ a_{\mathrm{cible}}(t)
+ =\Reel\{A e^{\jj2\pi f_0(t-d/c)}\},
+ \qquad A_{\mathrm{cible}}=A e^{-\jj2\pi f_0d/c}.
+\end{equation}
+La réflexion locale multiplie cette amplitude par $\rho$ :
+\begin{equation}
+ B_{\mathrm{cible}}=\rho A_{\mathrm{cible}}.
+\end{equation}
+Par exemple, le coefficient local du champ électrique tangentiel à une
+surface conductrice parfaite, à incidence normale, vaut $\rho=-1$.
+Il décrit alors une inversion de phase au niveau de la surface.
+
+Le retour vers le plan de référence ajoute un second facteur de propagation :
+\begin{equation}
+ B=B_{\mathrm{cible}} e^{-\jj2\pi f_0d/c}
+ =\rho A e^{-\jj2\pi f_0(2d/c)}.
+\end{equation}
+Le rapport des deux ondes \emph{au même plan de référence} est donc
+\begin{equation}
+ \boxed{S_{11}(f_0)=\frac BA
+ =\rho e^{-\jj2\pi f_0\tau_0},\qquad \tau_0=\frac{2d}{c}.}
+\end{equation}
+\textbf{Le facteur exponentiel provient du trajet aller-retour, pas de
+la réflexion locale.} Un coefficient local constant n'implique donc pas
+un coefficient mesuré de phase constante lorsque la fréquence varie.
+Dans ce modèle, pour $\rho\ne0$ constant et une phase déroulée,
+\begin{equation}
+ \arg S_{11}(f)=\arg\rho-2\pi f\tau_0,\qquad
+ \tau_0=-\frac{1}{2\pi}\frac{\mathrm d\arg S_{11}(f)}{\mathrm df}.
+\end{equation}
+La pente de phase contient l'information de retard.
+
+\subsection{Ce que cette expression signifie avec une antenne}
+Le modèle précédent est directement celui d'une ligne idéale terminée par
+un réflecteur, avec $c$ remplacé par la vitesse de propagation si nécessaire.
+Pour une antenne éclairant une plaque en espace libre, le couplage vers la
+plaque et le retour vers le port introduisent d'autres facteurs. On écrit
+la \emph{contribution de l'écho} sous la forme
+\begin{equation}
+ S_{\text{écho}}(f;d)=g(f,d)e^{-\jj2\pi f(2d/c)}.
+\end{equation}
+On note ce gain $g$ pour le distinguer de l'enveloppe temporelle
+$\alpha(t)$ définie au début du document.
+Le facteur complexe $g(f,d)$ comprend notamment la réflexion de la
+plaque, la propagation en amplitude, la géométrie et la réponse de l'antenne.
+L'approximation $g(f,d)\simeq g$ sur la bande est une hypothèse
+supplémentaire. Si sa phase varie avec la fréquence, elle peut contribuer
+au retard apparent et modifier la forme du pic.
+
+Le $S_{11}$ total contient également la réflexion propre de l'antenne et
+les contributions de l'environnement. Dans un modèle additif simplifié,
+\begin{equation}
+ S_{11}^{\mathrm{avec}}(f)=S_{\mathrm{fond}}(f)
+ +S_{\text{écho}}(f;d).
+\end{equation}
+La soustraction complexe isole l'écho seulement si ce fond reste inchangé.
+Un masquage de l'environnement par la plaque ou une dérive du montage
+laisse aussi des termes résiduels. Ainsi l'expression
+$g e^{-\jj2\pi f\tau_0}$ ne représente pas automatiquement tout le
+$S_{11}$ mesuré.
+
+\section{Pourquoi l'IFFT produit-elle un pic au retard de l'écho ?}
+\subsection{Addition cohérente au bon retard}
+On note $S_{11}^{\mathrm{corrected}}(f_k)$ le signal complexe utilisé pour
+le profil : dans le traitement avec cible, il s'agit de la mesure calibrée
+avec cible, après correction du ''fond'' calibré, la soustraction étant complexe.
+Cette notation inclut donc ici la soustraction du fond, et pas seulement
+la calibration SOL. Dans le cas idéal où ces corrections isolent un seul
+écho, supposons exactement
+$S_{11}^{\mathrm{corrected}}(f_k)=g e^{-\jj2\pi f_k\tau_0}$ avec $g$ constant, et prenons
+une fenêtre uniforme. Pour chaque retard testé $\tau$, calculons
+\begin{equation}
+ h(\tau)=\frac1K\sum_{k=0}^{K-1}S_{11}^{\mathrm{corrected}}(f_k) e^{+\jj2\pi f_k\tau}
+ =\frac{g}{K}\sum_{k=0}^{K-1}
+ e^{\jj2\pi f_k(\tau-\tau_0)}.
+\end{equation}
+Si $\tau=\tau_0$, tous les facteurs exponentiels valent $1$ :
+\begin{equation}
+ h(\tau_0)=\frac{g}{K}(1+\cdots+1)=g.
+\end{equation}
+Les contributions s'ajoutent dans la même direction du plan complexe.
+Pour d'autres retards, elles ont des phases différentes et se compensent
+partiellement. Le module présente donc un maximum au bon retard, avec des
+répétitions dues à l'échantillonnage fréquentiel.
+L'IFFT recherche ainsi le retard qui remet les contributions de
+ toutes les fréquences en phase.
+
+\subsection{Forme du pic et relation exacte avec l'IFFT}
+Pour $f_k=f_{\min}+k\Delta f$, posons $\delta=\tau-\tau_0$.
+La somme géométrique donne
+\begin{equation}
+ h(\tau)=\frac{g}{K}
+ e^{\jj2\pi f_{\min}\delta}
+ e^{\jj\pi(K-1)\Delta f\delta}
+ \frac{\sin(\pi K\Delta f\delta)}{\sin(\pi\Delta f\delta)}.
+\end{equation}
+Aux points où le quotient est indéterminé, sa valeur est définie par
+continuité. Le maximum de module se répète tous les $1/\Delta f$.
+Le pic a une largeur finie : les premiers zéros autour de $\tau_0$ sont
+à $\delta=\pm1/(K\Delta f)$, soit approximativement $\pm1/B$, avec
+$B=(K-1)\Delta f$. La largeur totale entre ces zéros vaut donc environ
+$2/B$ ; $1/B$ est une échelle de résolution, pas cette largeur totale.
+
+Si $z_m$ est l'IFFT de longueur $M\ge K$ de la suite $S_{11}^{\mathrm{corrected}}(f_k)$, complétée par des
+zéros, selon la normalisation usuelle,
+\begin{equation}
+ z_m=\frac1M\sum_{k=0}^{K-1}S_{11}^{\mathrm{corrected}}(f_k) e^{\jj2\pi km/M},
+ \qquad \tau_m=\frac{m}{M\Delta f},
+\end{equation}
+alors
+\begin{equation}
+ h(\tau_m)=\frac{M}{K}e^{\jj2\pi f_{\min}\tau_m}z_m,
+ \qquad |h(\tau_m)|=\frac{M}{K}|z_m|.
+\end{equation}
+Le fait que le balayage commence à $f_{\min}>0$ introduit donc une phase
+supplémentaire, mais ne déplace pas le pic du module dans ce modèle.
+Le remplissage par zéros affine la grille de retard sans augmenter la
+bande mesurée ni la capacité à séparer deux échos proches. Un fenêtrage
+réduit les lobes secondaires, au prix d'un élargissement du pic principal.
+
+\subsection{Conversion du retard en distance et limites physiques}
+Pour un aller-retour dans l'air,
+\begin{equation}
+ \boxed{d=\frac{c\tau_0}{2}.}
+\end{equation}
+Ainsi $4\,\mathrm{ns}$ correspondent à environ $60\,\mathrm{cm}$.
+Pour une bande de $1$ à $6\,\mathrm{GHz}$, $1/B=0{,}2\,\mathrm{ns}$,
+soit une échelle de distance $c/(2B)\simeq3\,\mathrm{cm}$.
+Cette échelle n'est pas une borne universelle de précision pour la
+localisation d'un écho isolé.
+
+Si la chaîne non corrigée ajoute un retard $\tau_a$, l'observation devient
+$g e^{-\jj2\pi f(2d/c+\tau_a)}$ et le pic se place à
+\begin{equation}
+ d_{\mathrm{apparent}}=d+\frac{c\tau_a}{2}.
+\end{equation}
+Une SOL au bout du câble corrige la chaîne située avant son plan de
+référence ; elle ne retire pas la réponse de l'antenne connectée ensuite.
+Une réponse dispersive de l'antenne ou plusieurs trajets peuvent aussi
+déformer le profil : leur effet ne se résume pas nécessairement à un
+décalage constant.
+
+
+\section*{Conclusion}
+La démodulation transforme une tension sinusoïdale en un nombre complexe
+$I+\jj Q$. Elle ne sépare pas les contributions de même fréquence.
+Pour obtenir $S_{11}$, il faut soit connaître l'onde incidente complexe,
+soit disposer d'une information directionnelle supplémentaire. Le rapport
+réfléchi/incident définit alors $S_{11}$ ; dans le banc réel, la calibration
+corrige le rapport numérique mesuré.
+
+\begin{thebibliography}{9}
+\bibitem{keysight} Keysight, \emph{Network Analyzer Basics},
+\href{https://www.keysight.com/us/en/assets/3119-1082/application-notes/5965-7708.pdf}{document 5965-7708}.
+Principe de séparation des signaux incidents et réfléchis.
+\bibitem{litevna} \emph{LiteVNA User Guide},
+\href{https://nanovna.com/wp-content/uploads/2021/11/LiteVNA_User-Guide.pdf}{manuel du LiteVNA}.
+Mélangeur unique et commutation RF ; ce document ne constitue pas ici une
+vérification du schéma détaillé du circuit directionnel.
+\end{thebibliography}
+\end{document}

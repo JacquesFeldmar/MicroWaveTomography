@@ -1,0 +1,17 @@
+M48
+;panneau_losanges -- vias metallises
+;TYPE=PLATED
+;FORMAT={3:3 / absolute / metric / decimal}
+FMAT,2
+METRIC,TZ
+G90
+G05
+T1C0.457
+%
+T1
+X11.682Y5.969
+X20.318Y5.969
+X59.482Y5.969
+X68.118Y5.969
+T0
+M30

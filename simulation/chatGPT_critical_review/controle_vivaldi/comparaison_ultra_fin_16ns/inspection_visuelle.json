@@ -1,0 +1,17 @@
+{
+  "date_utc": "2026-10-19T09:18:05.436457+00:00",
+  "inspection_visuelle_realisee": true,
+  "images": {
+    "comparaison_spatial_ultra_fin.png": "ec3e34e4ed9297ed43ef0eca5d3837e3ff92d3faf68f5f6dfb6a85ea8b71540c",
+    "comparaison_temporel_ultra_fin.png": "0ecb51079c7dc9a9bf31f4877a05c2be427e398916a9ffd9966e5d91e124de20"
+  },
+  "constats": [
+    "Titres, axes et legendes lisibles, sans texte tronque.",
+    "Courbes S11 et ecarts complexes complets ; seuil du maximum et valeur/seuil RMS indiques.",
+    "Masque dB explicite :191points spatial,194temporel ; hors-masque en gris.",
+    "Seuilp95 affiche avec mention :application au percentile, pas a chaque point."
+  ],
+  "incident_generation_initiale": "Premiere execution arretee avant figures/bilan sur comparaison Python tuple/liste des segments ; comparaison canonique JSON exacte appliquee, aucun changement numerique ; journal construction_erreur.log conserve.",
+  "quatre_preliminaires_preserves": true,
+  "aucune_qualification_globale": true
+}

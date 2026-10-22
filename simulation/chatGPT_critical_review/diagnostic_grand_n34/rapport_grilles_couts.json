@@ -1,0 +1,3177 @@
+{
+  "schema": "diagnostic_grand_n34_grilles_couts_v1",
+  "utc": "2026-10-19T13:54:58.908520+00:00",
+  "script_sha256": "8a75df95520a10cfc264c16c5990e6e5df137e97ca8741e41686124386eece59",
+  "python": "3.13.16 | packaged by Anaconda, Inc. | (main, Oct  1 2026, 20:20:25) [MSC v.1942 64 bit (AMD64)]",
+  "numpy": "2.5.3",
+  "fils": 1,
+  "versions_constructeur": {
+    "openEMS": "0.37.0",
+    "CSXCAD": "0.7.0",
+    "scipy": "1.18.1"
+  },
+  "aucun_Run": true,
+  "aucun_nouveau_profil": true,
+  "qualification_officielle": false,
+  "nombre_fichiers_fermes": 360,
+  "sources_17_sha256_avant": {
+    "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+    "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+    "raffine_qualification_plus_pcbway.py": "15fe2ef41de4c4c3c4da0954dc2396fa652f3b75ba18d0f373824a4aab39d3c3"
+  },
+  "sources_17_sha256_apres": {
+    "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+    "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+    "raffine_qualification_plus_pcbway.py": "15fe2ef41de4c4c3c4da0954dc2396fa652f3b75ba18d0f373824a4aab39d3c3"
+  },
+  "fichiers_13_profils_sha256_avant": {
+    "base_8ns\\_calibration_dt\\calibration.json": "91cf7fd1e467c7780b7c0feab5988a25ed37a25bbc4ae97cca704fa388d46e37",
+    "base_8ns\\_calibration_dt\\entree_calibration.xml": "bd22a8146e3e4752779819c3906748ee649c608ec14675217648f614afc349aa",
+    "base_8ns\\_calibration_dt\\et": "af37218786252597c70ce1141ae4b0d3d3d0ce8aa635a4630ec255785e857e7b",
+    "base_8ns\\_calibration_dt\\ht": "edf3b77070b16d581d05a48df6b9dd0160b87ca3ea05869a36bd7a363d162ca7",
+    "base_8ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "base_8ns\\_calibration_dt\\openEMS_stats.txt": "769bb89bbcd5d4a541dd6f1eeae31ef96368215f599e0361826b9b6cf8c7aced",
+    "base_8ns\\_calibration_dt\\port_it_1": "c40e2811b6ddaa7718cb19a75ebfd1f661b3e6d5b95cf02e95572b66ec60e1f7",
+    "base_8ns\\_calibration_dt\\port_ut_1": "fb6608167d2b27db796459670f8568a1e6334c03ca98b6da799deb7ae063b3c0",
+    "base_8ns\\entree_openems.xml": "489818149d137a534f6a2a96e6ec1d56109414eed4a40cf4fb715d297a048623",
+    "base_8ns\\et": "9de2254c29e6894f8485cccaad9152a420ac8b284645481d192739fd9b027c3d",
+    "base_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "base_8ns\\ht": "98df441037e064b69d8c571d9fd767113427fec8498d2e4ecba23b0c1419697f",
+    "base_8ns\\maillage.npz": "74a7d4f71d12c8d1e04b249bb78fda06a43f95f315235f9589641fc1b0c51a8a",
+    "base_8ns\\openEMS_run_stats.txt": "cc6b653f37f4ab1a40cdaeb0e53021ebc4f50ee3f492af040a60097aeea9847d",
+    "base_8ns\\openEMS_stats.txt": "72a8e23fdab3e1f20e44614fc62280e11ffbaabc5831fa6dc8026c1b765b27a0",
+    "base_8ns\\port_it_1": "bee3daedecd3f66f2d335cbbc12ab45cd1c5e4407544955c0e6d4c0c173b7328",
+    "base_8ns\\port_ut_1": "bce5b68fbfa2e33b3b69108bf0cce3d0705aeed9b8b798c55100e6c33298ab14",
+    "base_8ns\\qualification_entree.json": "e812193c7bcf8291e40bee04720c3f42acf538c5a2b83616c9596167954865f0",
+    "base_8ns\\s11.s1p": "c22c372f9cfbbd6b96ce832a2e3dd4b30563a3f19d330587918147028d4fb780",
+    "base_8ns\\s11_indicateurs.json": "0b5007cb7dea74b9e9b99797a1e8383f9d7026dc6f6bcf912357e363cdbf3ce3",
+    "base_8ns\\simulation_manifest.json": "7ab00c7c65e9fcddc2e9a0a50ac699dbccd0b327385dc5c79b594785941a83e1",
+    "base_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "base_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "base_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "base_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "base_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "base_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "base_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "base_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "base_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_8ns\\extraction_calcport.npz": "fd3bc267d2e79589422bb256cbb73f166ebd47eb16e783528238155a53fd3b2e",
+    "fin_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "fin_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fin_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_8ns\\maillage.npz": "2ef5a7633fc50ba2bec9c2d45900fc8ca482df988951e5c7187ca48887d96fc6",
+    "fin_8ns\\origine_entree_openems.xml": "10717d85f6ceaf10f569f6cd12e244301e764cdda00450f8cc3f39aaeffb103e",
+    "fin_8ns\\origine_qualification_entree.json": "9ea6c8e105edd51735bc4d221d3acea9f0a9efbb40fd67b71ee629e0f8722ed4",
+    "fin_8ns\\origine_simulation_manifest.json": "af5a88932cf69e05c3da77fa096582ff84bff8b9f830c3e4c1facc6d272b8a54",
+    "fin_8ns\\parametres_extraction.json": "bdc054c2a72fa43b7c101d7ced7a8972a804d27dbd6eb0e8c6054da4403f948a",
+    "fin_8ns\\port_it_1": "43d75bc0608e1d404c5ca7c000e45b506e1b1302586547c276d4d03ffd162026",
+    "fin_8ns\\port_ut_1": "5a836d9be73f8dd677d8e2d91dc5d23be0ed90b2136931b9ff17ceb7d34247dd",
+    "fin_8ns\\qualification_entree.json": "96130f9b1bec6eee7c449fb102eb42c63125c4f335f404dd34df90c2f9b10ba8",
+    "fin_8ns\\relecture_calcport.json": "ee6a03c1d09a4c199f6fe1663a91ce944b2397737f758b21905e18ba7cf8ccd6",
+    "fin_8ns\\s11.s1p": "d966c7257111e216efeb6685b0a72210fe70def093f73aa727e1a322c80d87df",
+    "fin_8ns\\s11_indicateurs.json": "29ccfe7b6d684a73fef97b5dcd4da84bb134ee28760e0c666a3da7f7f0d4497e",
+    "fin_8ns\\simulation_manifest.json": "eca538ad11dbbadce1acda275a647b24656ec85b9b4c2a3aa9112c748f2e1295",
+    "fin_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_12ns\\_calibration_dt\\calibration.json": "7d93192d7427034ea9dba5a8724bf8d3bb3da267ca65a7ca6d4f435aa9b27b86",
+    "fin_12ns\\_calibration_dt\\entree_calibration.xml": "ad8968af8fef06d1b22d10660e5f70d37b83fd09804bf73a6e9e4b6cfeedeb35",
+    "fin_12ns\\_calibration_dt\\et": "084e1e3af1cc7441265a23014c66d7c066a52867d54cfb5b0c532104c47196e7",
+    "fin_12ns\\_calibration_dt\\ht": "9f20d6961d9318f995dbef6ef0195cde93f3ea159a650e5078c58ffa3d07697c",
+    "fin_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "fin_12ns\\_calibration_dt\\openEMS_stats.txt": "65bc4241c558b0a3a0ae59445aec726de638684ec3e2efb0f6a308c71ef99bab",
+    "fin_12ns\\_calibration_dt\\port_it_1": "db8d39a1398976e20abd2fb0e9ef7c0477fab951829df073620f76607458e3cb",
+    "fin_12ns\\_calibration_dt\\port_ut_1": "22d0d5deb58045b680e98f50108fee9bcf4370d64623f01cce4affe3c0846af2",
+    "fin_12ns\\entree_openems.xml": "10717d85f6ceaf10f569f6cd12e244301e764cdda00450f8cc3f39aaeffb103e",
+    "fin_12ns\\et": "6fce3ccee427be0a00309b3d40d78b585517c0cc8da8e8d2a67fc69d8bb1b3d1",
+    "fin_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_12ns\\ht": "d1c40e09185f725178a82606305ff8fcd51ee9a287f9323dbac37ce322729732",
+    "fin_12ns\\maillage.npz": "2ef5a7633fc50ba2bec9c2d45900fc8ca482df988951e5c7187ca48887d96fc6",
+    "fin_12ns\\openEMS_run_stats.txt": "8f11e937bdef9fd2aa5d12c8befa9f9f2e9e83c0cd4ad3a1f55eaebc0ac871bc",
+    "fin_12ns\\openEMS_stats.txt": "9d665e329358b173b61fbebba6f442bd30cbd7de9fa2c84926a0dcc2e9ff1879",
+    "fin_12ns\\port_it_1": "056a0b952da1c5c73371be424223cbdef7864ccc4ec18cf1bd00d1ce4cdf1579",
+    "fin_12ns\\port_ut_1": "dc9534d55507bf764266dc250dd358dfc0e32417e1bf72178d04c2cd81b1cf16",
+    "fin_12ns\\qualification_entree.json": "9ea6c8e105edd51735bc4d221d3acea9f0a9efbb40fd67b71ee629e0f8722ed4",
+    "fin_12ns\\s11.s1p": "d9b101ddacaab835ea886764eac38722b79f76f38232325ac93926d50fbdb405",
+    "fin_12ns\\s11_indicateurs.json": "2f800879f770da7b8ef86781dc70daaaa2e09fb72471ab1b32f9869019a227da",
+    "fin_12ns\\simulation_manifest.json": "af5a88932cf69e05c3da77fa096582ff84bff8b9f830c3e4c1facc6d272b8a54",
+    "fin_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "tres_fin_8ns\\extraction_calcport.npz": "4018c1ed5105af816d885671db306e155ef6993c8208f87e8bc7189bcfccd7bb",
+    "tres_fin_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "tres_fin_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tres_fin_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "tres_fin_8ns\\maillage.npz": "796621701923f4be9f693929f846b27c1686b5e613a8b480626b14e41bff64ac",
+    "tres_fin_8ns\\origine_entree_openems.xml": "1e1ebf29815becae2da567818d6d0bc09f292a747950daeb2071732dda8dbb75",
+    "tres_fin_8ns\\origine_qualification_entree.json": "8779e0cb15b68df72e76aa133d34804bcd2498291f0b8fbdfd1ae919d0fc7f20",
+    "tres_fin_8ns\\origine_simulation_manifest.json": "6e1e08fa52b60a533245b5d03c0c37a10fe1680daec4577ab1c5316039832a32",
+    "tres_fin_8ns\\parametres_extraction.json": "d0b136e2c7ab128bf5245a788f948dbba092f3feb655f1de3b8fb846688f6649",
+    "tres_fin_8ns\\port_it_1": "e73c50736a7d7459e6f8ad7a902b5c76a81c416c764666f29927a294ab11831d",
+    "tres_fin_8ns\\port_ut_1": "00a678dda7c3e0dfc29f26a31d63c9030b4e48fe8bbbf60fd82bcd25b31068f6",
+    "tres_fin_8ns\\qualification_entree.json": "b449a0ca94716e064ad03b3d5b30f9b075ab0113585323573fe9a252ec75ceba",
+    "tres_fin_8ns\\relecture_calcport.json": "2eaec8e5bd92c0b68fa68fcf8f5669cee2ad26e80c8e3670d3d4e53baeec4dbc",
+    "tres_fin_8ns\\s11.s1p": "97d3f90ecb90d4383e3cf72b9428e2e1dd9e164f2b09d32f9f74ecdf97985421",
+    "tres_fin_8ns\\s11_indicateurs.json": "df88ce32d27d7cf80eb55baa55a8a511c5972d48f37955a45765350e37fc618b",
+    "tres_fin_8ns\\simulation_manifest.json": "12384a7e0a2d8b916ef37674803fb1ebcda5de1ff3ad3a009f0176563348a43d",
+    "tres_fin_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "tres_fin_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "tres_fin_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "tres_fin_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "tres_fin_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "tres_fin_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "tres_fin_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "tres_fin_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "tres_fin_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "tres_fin_12ns\\_calibration_dt\\calibration.json": "286c9b9e529d5a712f1d346648e0508dfc897ef754a1dfe2e7ca9699197be637",
+    "tres_fin_12ns\\_calibration_dt\\entree_calibration.xml": "b7f8143b15dc47f0b7313693c98caf95054c280049b1e823b595bbb3283d2a8a",
+    "tres_fin_12ns\\_calibration_dt\\et": "247e2f3277a8fb65a6ea4c7868527e3cb7be5d5292b9496dd2994d501f7830e7",
+    "tres_fin_12ns\\_calibration_dt\\ht": "bdf07a93c61a088806ce21339e2fd9418f6b01acbb34f1f62c9d8109c7ecf6b4",
+    "tres_fin_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "tres_fin_12ns\\_calibration_dt\\openEMS_stats.txt": "e44a8373c21cc5937b54ed3abf27729ad2bdd0e2a80d3d0c14b2660cbc04fd72",
+    "tres_fin_12ns\\_calibration_dt\\port_it_1": "b7f9fb77c77785591afd05e276d15499e93634addf6a53944c0954dea523817a",
+    "tres_fin_12ns\\_calibration_dt\\port_ut_1": "09e530d0ec47eafb79ee542ac1342918774a6620f3029df492f015a9fc8437b2",
+    "tres_fin_12ns\\entree_openems.xml": "1e1ebf29815becae2da567818d6d0bc09f292a747950daeb2071732dda8dbb75",
+    "tres_fin_12ns\\et": "e59eae3345913d25342db65a694df2342e3cbaaf014bf3bfdffcb1c6c5296f7f",
+    "tres_fin_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "tres_fin_12ns\\ht": "a3aa9b710abbbc0f9aeb773e45ca18f4e77b7aec6b97a124006753f3b131699b",
+    "tres_fin_12ns\\maillage.npz": "796621701923f4be9f693929f846b27c1686b5e613a8b480626b14e41bff64ac",
+    "tres_fin_12ns\\openEMS_run_stats.txt": "e87711ae55e4ca099dc12c224dbf56f3eb29ecb4ee68bd79c5c7e024919d9903",
+    "tres_fin_12ns\\openEMS_stats.txt": "b3671218c464424bd4d647915ea34e18d27f6efc84604b0f2fcb7835be1d12ac",
+    "tres_fin_12ns\\port_it_1": "00894c4e8d926feeff63fce1e70b6ae4e7f4a7c72e3752cceb34e3174b5ec564",
+    "tres_fin_12ns\\port_ut_1": "dc6f7096746ed9e11e2d965b86fb82bb98ff54dbf5fd18bbef0d0856bd4582b9",
+    "tres_fin_12ns\\qualification_entree.json": "8779e0cb15b68df72e76aa133d34804bcd2498291f0b8fbdfd1ae919d0fc7f20",
+    "tres_fin_12ns\\s11.s1p": "c5f018588007c2cdf9318fd2cce0e12cdfaeb40bad15203ec8c93fb5e1bed7bc",
+    "tres_fin_12ns\\s11_indicateurs.json": "a2639478b6c7c78698ea2d16f6f70899816bb6032472548662179a4fba72a148",
+    "tres_fin_12ns\\simulation_manifest.json": "6e1e08fa52b60a533245b5d03c0c37a10fe1680daec4577ab1c5316039832a32",
+    "tres_fin_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "tres_fin_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "tres_fin_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "tres_fin_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "tres_fin_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "tres_fin_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "tres_fin_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "tres_fin_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "tres_fin_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "ultra_fin_8ns\\extraction_calcport.npz": "74b22e162170e4ba00b0ba4611c843a5ca7519d10e7163994c684d6697f11e64",
+    "ultra_fin_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "ultra_fin_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ultra_fin_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "ultra_fin_8ns\\maillage.npz": "8d962ac072be804fabe3feb83cfffef2c2909568f06e85bd0e56188bdf8790fc",
+    "ultra_fin_8ns\\origine_entree_openems.xml": "f54b1a57b8b4f8385ce5ed25c3126540b6654c4fe3b5773dc30a2c485da864a8",
+    "ultra_fin_8ns\\origine_qualification_entree.json": "a6588b720c88284c30baeb1a9661d24156aca88b5c60b0af2fddd80da1d9eeff",
+    "ultra_fin_8ns\\origine_simulation_manifest.json": "2ed991934409364deb329e5bf94c692e31b8e288d16f082e8200d1bbb8191bbe",
+    "ultra_fin_8ns\\parametres_extraction.json": "b3e14fd440e8220a13865a5abee98c8e10dd62294505b467dbde239d643942d8",
+    "ultra_fin_8ns\\port_it_1": "810b1908736a589b4114fdde34c1e3e4a98b2b9503c8722116063bd8e09b7005",
+    "ultra_fin_8ns\\port_ut_1": "9feb38b07660726dee0cd96cd8f626217723c77df70954acf3b2eab1a7c6cb4d",
+    "ultra_fin_8ns\\qualification_entree.json": "42fa4618e7521dd6f1a1840e3a0cda685661e5a0dbedf20b210af1984eaa0ce3",
+    "ultra_fin_8ns\\relecture_calcport.json": "848feb3cd1178c6df7f807fc38c95daaf89e1d6199ebbb84d36c1ec28beedb70",
+    "ultra_fin_8ns\\s11.s1p": "545613864eac19d8a93b382f275188c372aeb488a809332bd75a27ed7d90247e",
+    "ultra_fin_8ns\\s11_indicateurs.json": "200a264a6229fb6e06a339f34f7499719c5424b962b0cf94bf87510c072ae606",
+    "ultra_fin_8ns\\simulation_manifest.json": "25a8ef1b256e4a566b776da93a5d15ce7f6b5d8c20022197e3137d1abf93c04b",
+    "ultra_fin_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "ultra_fin_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "ultra_fin_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "ultra_fin_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "ultra_fin_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "ultra_fin_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "ultra_fin_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "ultra_fin_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "ultra_fin_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "ultra_fin_12ns\\_calibration_dt\\calibration.json": "340ac84e87ef4a96b3cc2fa3e92008c88959b07837f8f97812f3879c1446ebf7",
+    "ultra_fin_12ns\\_calibration_dt\\entree_calibration.xml": "f650bb0e9623373f1b59e876945719eb2da35a21c1502ec3ef0da1f1467e5ce2",
+    "ultra_fin_12ns\\_calibration_dt\\et": "a6ef0feb90d8b5755cd0760008eef2e4003d4f9747e9c7ce46efd21fadbd843d",
+    "ultra_fin_12ns\\_calibration_dt\\ht": "b10cbd547469794366c4988c1b515e68df639714793aae0c0e7d29945b7d2acd",
+    "ultra_fin_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "ultra_fin_12ns\\_calibration_dt\\openEMS_stats.txt": "d18cdcd7900659b4af1e175760387a6abca02ac75c1b390235d849370be185de",
+    "ultra_fin_12ns\\_calibration_dt\\port_it_1": "73e87de70f9018d81ee7ad728905580c348ccac06feab481eb2ef419c9b928ad",
+    "ultra_fin_12ns\\_calibration_dt\\port_ut_1": "2bc78ea7c644cff9a1490a104fe318fd49239a3527a1a09a02e1f983bb338208",
+    "ultra_fin_12ns\\entree_openems.xml": "f54b1a57b8b4f8385ce5ed25c3126540b6654c4fe3b5773dc30a2c485da864a8",
+    "ultra_fin_12ns\\et": "fa61032954aead56a7f33dbcc308037d03a167a845852a8ad992174e8c8683ec",
+    "ultra_fin_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "ultra_fin_12ns\\ht": "c396981067ce0690c3acfb100436d79ef7bc1ee275c0fd76572ed81b004596e4",
+    "ultra_fin_12ns\\maillage.npz": "8d962ac072be804fabe3feb83cfffef2c2909568f06e85bd0e56188bdf8790fc",
+    "ultra_fin_12ns\\openEMS_run_stats.txt": "bdfa8e44fa66332e74450a9841964581ed6a7c1bf979ce6f3a39b5e509c0e5be",
+    "ultra_fin_12ns\\openEMS_stats.txt": "cb2c64685c6902eef382ff3031e221e27ebab0ebd9e74f7162a777c6247769af",
+    "ultra_fin_12ns\\port_it_1": "57c3eb874f7ed968487946157463d21dd6174fefbd270871c44f5e40c7c96cfc",
+    "ultra_fin_12ns\\port_ut_1": "1b764b415e22db465cf67847db2072b54d3f9cd5c2ba54af4e891c6f594e6a6a",
+    "ultra_fin_12ns\\qualification_entree.json": "a6588b720c88284c30baeb1a9661d24156aca88b5c60b0af2fddd80da1d9eeff",
+    "ultra_fin_12ns\\s11.s1p": "4d4bad5520d111b3bca9dd367076dfe9bd6b52f53c261578f9230922f168cef4",
+    "ultra_fin_12ns\\s11_indicateurs.json": "cf97cb4530efc82b465fc97e8145b681eea6f101149f11c0ece741a6a4d0b60d",
+    "ultra_fin_12ns\\simulation_manifest.json": "2ed991934409364deb329e5bf94c692e31b8e288d16f082e8200d1bbb8191bbe",
+    "ultra_fin_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "ultra_fin_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "ultra_fin_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "ultra_fin_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "ultra_fin_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "ultra_fin_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "ultra_fin_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "ultra_fin_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "ultra_fin_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "extreme_fin_8ns\\extraction_calcport.npz": "4eb362dd8dc5b9d0f7d38897b1a3037b6fa557d9ba7b4b58e59a85a128cb46fc",
+    "extreme_fin_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "extreme_fin_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extreme_fin_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "extreme_fin_8ns\\maillage.npz": "3599174dcca35b4b4a5d266614f1b9a2ee8a79204125caa7374dab502f2180fc",
+    "extreme_fin_8ns\\origine_entree_openems.xml": "7af13403f34c078ba6391b6129aaf321b8056f0e559fdb789507453df7794e9a",
+    "extreme_fin_8ns\\origine_qualification_entree.json": "07f2af871164d231c41cd417397047ad3ee56ff30d7b1e4ad6003b4fcc5f1545",
+    "extreme_fin_8ns\\origine_simulation_manifest.json": "7bd3137e81577964df751e022a6b1046c59df6f8a1e766bfd7ba8cb6cc4f6c9f",
+    "extreme_fin_8ns\\parametres_extraction.json": "08d759b5c6b8dba06eccaa4ea0f92b6df4a821011062ff6c53075839d904e3c1",
+    "extreme_fin_8ns\\port_it_1": "decd70ab12f9cb8b019fceab6b83b2a1454bf0645da83f67b0661f23a3da3d88",
+    "extreme_fin_8ns\\port_ut_1": "3cc85aa0300708dc8ced9346156a88b30a47b6a4294f31e544d240068d7695ef",
+    "extreme_fin_8ns\\qualification_entree.json": "1ae2f0a48d070e98694022a065b7414c7cb069a9c63f0628f8e35ca56996963d",
+    "extreme_fin_8ns\\relecture_calcport.json": "8812086b0e94fc9294c7d65a8721c5b841f1af174f00bf2b87c822c0dee742c6",
+    "extreme_fin_8ns\\s11.s1p": "000aa5fc01c743a437f0106e4a320b4e7a5e03261a16b7490f139daea321e2dc",
+    "extreme_fin_8ns\\s11_indicateurs.json": "6f04d2db1f352e3f8c0db70d523c14545930afe06c354f892214ddab11b552ca",
+    "extreme_fin_8ns\\simulation_manifest.json": "cd4b70dccf02368fa025b5d7b2c7d163d1a8d3fcc138e44a4edb3031e7376e14",
+    "extreme_fin_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "extreme_fin_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "extreme_fin_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "extreme_fin_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "extreme_fin_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "extreme_fin_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "extreme_fin_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "extreme_fin_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "extreme_fin_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "extreme_fin_12ns\\_calibration_dt\\calibration.json": "7711e3402013e2a9642aa11384aa4f60ec9b3db2285c7ffe1865ad11ee5f70eb",
+    "extreme_fin_12ns\\_calibration_dt\\entree_calibration.xml": "428898a42b5fe8eb4b47cd203cde30005293adb0dc5e581408fcd0dc8baf1126",
+    "extreme_fin_12ns\\_calibration_dt\\et": "64688e5d1391313d2aa29a7a0da484dbfcc42cf69fd9df2f7c1bf2b7930b00c4",
+    "extreme_fin_12ns\\_calibration_dt\\ht": "5fde74c943002f88c94ba6115f3bba0df447635ac1c52fb5260b579069fbf7c9",
+    "extreme_fin_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "extreme_fin_12ns\\_calibration_dt\\openEMS_stats.txt": "522e009eeef122145db4cc28f3275304c03a926368e635f5c5d002313f8af515",
+    "extreme_fin_12ns\\_calibration_dt\\port_it_1": "12a1fd2b213300213c6bfb336b247043b4281bcd13f2b42d8de1c0abeebc11dd",
+    "extreme_fin_12ns\\_calibration_dt\\port_ut_1": "e1dfd259608d5fa92de701f26cba49b191a38b4f3f098d7c83b838eda070e996",
+    "extreme_fin_12ns\\entree_openems.xml": "7af13403f34c078ba6391b6129aaf321b8056f0e559fdb789507453df7794e9a",
+    "extreme_fin_12ns\\et": "b7ee4a7b95e8f6e1b5c24e3825aae7b641b6cf9ed1a78109e5cf8659e39eb195",
+    "extreme_fin_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "extreme_fin_12ns\\ht": "47ad2a6e078f6f12ab9423118b25238f649a31b7c07b405622c9485ac4fec612",
+    "extreme_fin_12ns\\maillage.npz": "3599174dcca35b4b4a5d266614f1b9a2ee8a79204125caa7374dab502f2180fc",
+    "extreme_fin_12ns\\openEMS_run_stats.txt": "40dcaf1934da5bc845ffdd01becb80b2a9f14bbeafae0c9dfe0b71434ece32ec",
+    "extreme_fin_12ns\\openEMS_stats.txt": "3380ba8e1c49b53a827a6becf2e648b380f58fa0b6f845a42b994fb36ae80f86",
+    "extreme_fin_12ns\\port_it_1": "623bfb7841ea88ddc3ba799ba6e67517734030cdad493930944948525b09e091",
+    "extreme_fin_12ns\\port_ut_1": "63f47a11579569c552fb6ef64dd43ceed26bec1da6962d4b95491ab92e8d5016",
+    "extreme_fin_12ns\\qualification_entree.json": "07f2af871164d231c41cd417397047ad3ee56ff30d7b1e4ad6003b4fcc5f1545",
+    "extreme_fin_12ns\\s11.s1p": "d657d9b297930493a3d750fa1ce44fe3a08644e845c04f52652eb784cf348d45",
+    "extreme_fin_12ns\\s11_indicateurs.json": "8b44cd9da103e4d7e74741db03139ee8d88a1b19b7e83f59a9c308e93cbcb1eb",
+    "extreme_fin_12ns\\simulation_manifest.json": "7bd3137e81577964df751e022a6b1046c59df6f8a1e766bfd7ba8cb6cc4f6c9f",
+    "extreme_fin_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "extreme_fin_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "extreme_fin_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "extreme_fin_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "extreme_fin_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "extreme_fin_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "extreme_fin_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "extreme_fin_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "extreme_fin_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "n30_8ns\\extraction_calcport.npz": "a02d5c016dd136e09b7949050e21887251efb65ce0838d3ea3d847467fe75262",
+    "n30_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "n30_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "n30_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "n30_8ns\\maillage.npz": "dbe7f9219e503949ba72d7b2e4c4cf81dfaf90c0a8e9341fa2051a2adb38ad8d",
+    "n30_8ns\\origine_entree_openems.xml": "d1abc76b452b1f7625e2d34d9c3f4ffbb49d5538288457b9506b74eb5447cce7",
+    "n30_8ns\\origine_qualification_entree.json": "5c23b41b6f1f3ccbc0a245a59b54777da50288be3870d8c76f987ee0eca1316e",
+    "n30_8ns\\origine_simulation_manifest.json": "9d4d73704d093ee7871d858002fe9d338f54c11715f7eb3d44e76bd10a73ae1c",
+    "n30_8ns\\parametres_extraction.json": "a75c04136cc66b92ad7d0ebec478210fa872c4f4769a234719a7a525b31c4d64",
+    "n30_8ns\\port_it_1": "f5573c8b1bf7148176bc6acd1d82dc5fb319bcbedcbbf425bbb97437eb186b09",
+    "n30_8ns\\port_ut_1": "6ec03ce7975d594ac17ec3b1adef9c17dd740c7302eeae8167e742f0f7eebf56",
+    "n30_8ns\\qualification_entree.json": "9ae2ba39857de6b34f49a74b5b93a9f46ebf9d980081b2466d774daa736782d5",
+    "n30_8ns\\relecture_calcport.json": "56bfc7aecc98f1f2cac4233e53b24d99a4215b6be3095fa3f42b0775705a1b2c",
+    "n30_8ns\\s11.s1p": "b296d6cdd77cc0e8b2275c5db7cde5f0155fe8d4aaeaf41bfe37a0db38e11df6",
+    "n30_8ns\\s11_indicateurs.json": "f52d7a84e343fbd0f75c63ff17ef781cd340926a72404a9f81a810c7e0728bb8",
+    "n30_8ns\\simulation_manifest.json": "e6dea9f01dbd4db36873de27f0a9e453eafa95a52996f4ea91cbc11b9dcea33a",
+    "n30_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "n30_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "n30_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "n30_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "n30_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "n30_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "n30_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "n30_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "n30_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "n30_12ns\\_calibration_dt\\calibration.json": "960b28ce45a61723d2182d50d2465f56771949818d717e00b2454e533f496e62",
+    "n30_12ns\\_calibration_dt\\entree_calibration.xml": "63b8d572b497da22def536c51eb746d377a9c99ecceebfd5894366c62d38143c",
+    "n30_12ns\\_calibration_dt\\et": "1f19bb2a4c116dbcf738c50b164e493853d079576714d8fdfb72b3df3fcc99d1",
+    "n30_12ns\\_calibration_dt\\ht": "2381f45a3adf7b9abc69a7888dba8245c3cc02ec0cbefc1942f5fe1d1a9e55a6",
+    "n30_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "n30_12ns\\_calibration_dt\\openEMS_stats.txt": "97b84017a10a42aa2139974960218f88b0fa7ed8146d238e076ead9c0d36c8cd",
+    "n30_12ns\\_calibration_dt\\port_it_1": "a1091962262e7ef932eea1e0eca09665092b2b85a0f193054134ecda2b69fdbe",
+    "n30_12ns\\_calibration_dt\\port_ut_1": "1bc0fc7e8cb6b03d2eaa795bd7dc8a46ce65feb2df09128709bcd41a5f618d73",
+    "n30_12ns\\entree_openems.xml": "d1abc76b452b1f7625e2d34d9c3f4ffbb49d5538288457b9506b74eb5447cce7",
+    "n30_12ns\\et": "017e29b9206739d27e214a9353834105c31e8732d00e5c8157021326e01668b9",
+    "n30_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "n30_12ns\\ht": "281c4e0480a63f40071b89995381be4e1e7aed3adadbbb819e9e2ea70a26f54b",
+    "n30_12ns\\maillage.npz": "dbe7f9219e503949ba72d7b2e4c4cf81dfaf90c0a8e9341fa2051a2adb38ad8d",
+    "n30_12ns\\openEMS_run_stats.txt": "929d4705437fdc88d7abc4de6fac8e358f7b7685f0a4e961a9cdadda066cc4cc",
+    "n30_12ns\\openEMS_stats.txt": "9777469cf63b1b1440bb53a7e6eb0cf2e1de5ff3084a6df115981ab3003f751d",
+    "n30_12ns\\port_it_1": "7bc391f89c593274d279fe3faaa8b4f7b0696ed56db2fd1daca90b406dd8c281",
+    "n30_12ns\\port_ut_1": "8d4f8f09ccb4a2dc32981eef2014acb895573ec034e5ae3e1a45262bd7e8597d",
+    "n30_12ns\\qualification_entree.json": "5c23b41b6f1f3ccbc0a245a59b54777da50288be3870d8c76f987ee0eca1316e",
+    "n30_12ns\\s11.s1p": "10058290c65424db1d4dd9962f4d98c509ac414db69ec69186a4fa3a4e513bf7",
+    "n30_12ns\\s11_indicateurs.json": "5912d4699198972ba1be18d67aed78354b4634ad254c60b13c837dfd4ee44f1f",
+    "n30_12ns\\simulation_manifest.json": "9d4d73704d093ee7871d858002fe9d338f54c11715f7eb3d44e76bd10a73ae1c",
+    "n30_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "n30_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "n30_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "n30_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "n30_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "n30_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "n30_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "n30_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "n30_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "n34_8ns\\extraction_calcport.npz": "cd6466ad60a27c6bdf3336f7224ac47ae418f5fc599e218d25e270176a60cf5a",
+    "n34_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "n34_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "n34_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "n34_8ns\\maillage.npz": "4faa06fb5bf88940d3f9371eae0941bcc819e6a6b7308f95c7ca51649ba48498",
+    "n34_8ns\\origine_entree_openems.xml": "54b7d64c3b2eb155f3c792241738d8fa131f6a698a8a4609dd32707ae893af31",
+    "n34_8ns\\origine_qualification_entree.json": "df34eded04e0fc799e5975606fb33b505c25d8064d5aef1c5c24555955f14c9e",
+    "n34_8ns\\origine_simulation_manifest.json": "3d1cdd6d2935a979d92d0bf082b4d42764590527ad4c91b4c6663a1e2ffe4530",
+    "n34_8ns\\parametres_extraction.json": "d862671c0797142c1fb86247eac2a7cc6e8bbbe0032ad5810d1e91694b0996be",
+    "n34_8ns\\port_it_1": "158392c273255c9b759a84b55541ebaa23d8fb6b6f46612371fcf6b87dd3b084",
+    "n34_8ns\\port_ut_1": "eeb44226305215529a6f85e4a4c4542ca4e0fec321317e3af0f74e53b7cf182f",
+    "n34_8ns\\qualification_entree.json": "1ac5d98644aabbf823935ae43226885f2a8b44535638e35006ee2776419deabc",
+    "n34_8ns\\relecture_calcport.json": "f850eb56e1e7eb3afb395752c18d0b8fa777cfb8e5ee5714728efca86908d925",
+    "n34_8ns\\s11.s1p": "a30f667ff89121634900d56eff6137e2117cf8afdecd40a760b936ef5087c6e8",
+    "n34_8ns\\s11_indicateurs.json": "883cb35b2702e4ada55db41e643ac788b7b880928e5d31272ff098d76c10c346",
+    "n34_8ns\\simulation_manifest.json": "5b80359d70839c066fd0ed00df5186467c75c373c114cd6e062b3cf4bc41cb19",
+    "n34_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "n34_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "n34_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "n34_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "n34_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "n34_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "n34_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "n34_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "n34_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "n34_12ns\\_calibration_dt\\calibration.json": "fefecfb1f85a03fc25127689091f735bbab0215d7f73197d37a0f88e5103d363",
+    "n34_12ns\\_calibration_dt\\entree_calibration.xml": "ffb43c3cc50fedecbe8bb610d36150fcf9ec10aae230924b9f1d18dee62c4651",
+    "n34_12ns\\_calibration_dt\\et": "b6f7e6fa830304f2cccb72ecf28df0a6ca5136d698116ab068839fe6edf9f3ac",
+    "n34_12ns\\_calibration_dt\\ht": "caae83525f7920a2c78f4a4dfe041a0eb6727ce13d5d1b16f7f2da652307e422",
+    "n34_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "n34_12ns\\_calibration_dt\\openEMS_stats.txt": "fc970cb415d86c79c4ca66f4ab78356d68c73802222d22e6cfdb21d53b3eeaa0",
+    "n34_12ns\\_calibration_dt\\port_it_1": "4927e528007f9a0af6e10e8ccbdf2e2fbb209f6ec3872aa993497647b962909d",
+    "n34_12ns\\_calibration_dt\\port_ut_1": "fabf997b1053fe0ab4ff08073ea172c941242b216cefbbb35d6f915ff91dc54f",
+    "n34_12ns\\entree_openems.xml": "54b7d64c3b2eb155f3c792241738d8fa131f6a698a8a4609dd32707ae893af31",
+    "n34_12ns\\et": "bc3216314e9da4b2a5e66ce58f84e322f1e1fbac73282c5f9f61baa530fc3807",
+    "n34_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "n34_12ns\\ht": "64717473828fce44bb7de8454511c16ac9084b87f35de11f81d47f2a6bbc078d",
+    "n34_12ns\\maillage.npz": "4faa06fb5bf88940d3f9371eae0941bcc819e6a6b7308f95c7ca51649ba48498",
+    "n34_12ns\\openEMS_run_stats.txt": "81af6df80835dd8de99b843a68daa510d9cd99e4c0ba207cb6ecce805648d1aa",
+    "n34_12ns\\openEMS_stats.txt": "723cb04c9f44a6b801a787658f772db78ae34de3a11a37196fcd4ef86dcec022",
+    "n34_12ns\\port_it_1": "884144a9e616b838463379b78ba18d42b4ae324fde28afb54ccf226de734eb32",
+    "n34_12ns\\port_ut_1": "e36eb7164cb1990e58a94323b981b7da5501230c51f82ea0c4cd43e2b16b2539",
+    "n34_12ns\\qualification_entree.json": "df34eded04e0fc799e5975606fb33b505c25d8064d5aef1c5c24555955f14c9e",
+    "n34_12ns\\s11.s1p": "1a8d70132269db7784534c159ab132dc701d1763c2ec9aa7d12ef049857a7bf2",
+    "n34_12ns\\s11_indicateurs.json": "b659a2ec6982de3495932ada1cc36d6a537c9021f9d929db27fd992f50f3a9c0",
+    "n34_12ns\\simulation_manifest.json": "3d1cdd6d2935a979d92d0bf082b4d42764590527ad4c91b4c6663a1e2ffe4530",
+    "n34_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "n34_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "n34_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "n34_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "n34_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "n34_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "n34_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "n34_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "n34_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3"
+  },
+  "fichiers_13_profils_sha256_apres": {
+    "base_8ns\\_calibration_dt\\calibration.json": "91cf7fd1e467c7780b7c0feab5988a25ed37a25bbc4ae97cca704fa388d46e37",
+    "base_8ns\\_calibration_dt\\entree_calibration.xml": "bd22a8146e3e4752779819c3906748ee649c608ec14675217648f614afc349aa",
+    "base_8ns\\_calibration_dt\\et": "af37218786252597c70ce1141ae4b0d3d3d0ce8aa635a4630ec255785e857e7b",
+    "base_8ns\\_calibration_dt\\ht": "edf3b77070b16d581d05a48df6b9dd0160b87ca3ea05869a36bd7a363d162ca7",
+    "base_8ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "base_8ns\\_calibration_dt\\openEMS_stats.txt": "769bb89bbcd5d4a541dd6f1eeae31ef96368215f599e0361826b9b6cf8c7aced",
+    "base_8ns\\_calibration_dt\\port_it_1": "c40e2811b6ddaa7718cb19a75ebfd1f661b3e6d5b95cf02e95572b66ec60e1f7",
+    "base_8ns\\_calibration_dt\\port_ut_1": "fb6608167d2b27db796459670f8568a1e6334c03ca98b6da799deb7ae063b3c0",
+    "base_8ns\\entree_openems.xml": "489818149d137a534f6a2a96e6ec1d56109414eed4a40cf4fb715d297a048623",
+    "base_8ns\\et": "9de2254c29e6894f8485cccaad9152a420ac8b284645481d192739fd9b027c3d",
+    "base_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "base_8ns\\ht": "98df441037e064b69d8c571d9fd767113427fec8498d2e4ecba23b0c1419697f",
+    "base_8ns\\maillage.npz": "74a7d4f71d12c8d1e04b249bb78fda06a43f95f315235f9589641fc1b0c51a8a",
+    "base_8ns\\openEMS_run_stats.txt": "cc6b653f37f4ab1a40cdaeb0e53021ebc4f50ee3f492af040a60097aeea9847d",
+    "base_8ns\\openEMS_stats.txt": "72a8e23fdab3e1f20e44614fc62280e11ffbaabc5831fa6dc8026c1b765b27a0",
+    "base_8ns\\port_it_1": "bee3daedecd3f66f2d335cbbc12ab45cd1c5e4407544955c0e6d4c0c173b7328",
+    "base_8ns\\port_ut_1": "bce5b68fbfa2e33b3b69108bf0cce3d0705aeed9b8b798c55100e6c33298ab14",
+    "base_8ns\\qualification_entree.json": "e812193c7bcf8291e40bee04720c3f42acf538c5a2b83616c9596167954865f0",
+    "base_8ns\\s11.s1p": "c22c372f9cfbbd6b96ce832a2e3dd4b30563a3f19d330587918147028d4fb780",
+    "base_8ns\\s11_indicateurs.json": "0b5007cb7dea74b9e9b99797a1e8383f9d7026dc6f6bcf912357e363cdbf3ce3",
+    "base_8ns\\simulation_manifest.json": "7ab00c7c65e9fcddc2e9a0a50ac699dbccd0b327385dc5c79b594785941a83e1",
+    "base_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "base_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "base_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "base_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "base_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "base_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "base_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "base_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "base_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_8ns\\extraction_calcport.npz": "fd3bc267d2e79589422bb256cbb73f166ebd47eb16e783528238155a53fd3b2e",
+    "fin_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "fin_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fin_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_8ns\\maillage.npz": "2ef5a7633fc50ba2bec9c2d45900fc8ca482df988951e5c7187ca48887d96fc6",
+    "fin_8ns\\origine_entree_openems.xml": "10717d85f6ceaf10f569f6cd12e244301e764cdda00450f8cc3f39aaeffb103e",
+    "fin_8ns\\origine_qualification_entree.json": "9ea6c8e105edd51735bc4d221d3acea9f0a9efbb40fd67b71ee629e0f8722ed4",
+    "fin_8ns\\origine_simulation_manifest.json": "af5a88932cf69e05c3da77fa096582ff84bff8b9f830c3e4c1facc6d272b8a54",
+    "fin_8ns\\parametres_extraction.json": "bdc054c2a72fa43b7c101d7ced7a8972a804d27dbd6eb0e8c6054da4403f948a",
+    "fin_8ns\\port_it_1": "43d75bc0608e1d404c5ca7c000e45b506e1b1302586547c276d4d03ffd162026",
+    "fin_8ns\\port_ut_1": "5a836d9be73f8dd677d8e2d91dc5d23be0ed90b2136931b9ff17ceb7d34247dd",
+    "fin_8ns\\qualification_entree.json": "96130f9b1bec6eee7c449fb102eb42c63125c4f335f404dd34df90c2f9b10ba8",
+    "fin_8ns\\relecture_calcport.json": "ee6a03c1d09a4c199f6fe1663a91ce944b2397737f758b21905e18ba7cf8ccd6",
+    "fin_8ns\\s11.s1p": "d966c7257111e216efeb6685b0a72210fe70def093f73aa727e1a322c80d87df",
+    "fin_8ns\\s11_indicateurs.json": "29ccfe7b6d684a73fef97b5dcd4da84bb134ee28760e0c666a3da7f7f0d4497e",
+    "fin_8ns\\simulation_manifest.json": "eca538ad11dbbadce1acda275a647b24656ec85b9b4c2a3aa9112c748f2e1295",
+    "fin_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_12ns\\_calibration_dt\\calibration.json": "7d93192d7427034ea9dba5a8724bf8d3bb3da267ca65a7ca6d4f435aa9b27b86",
+    "fin_12ns\\_calibration_dt\\entree_calibration.xml": "ad8968af8fef06d1b22d10660e5f70d37b83fd09804bf73a6e9e4b6cfeedeb35",
+    "fin_12ns\\_calibration_dt\\et": "084e1e3af1cc7441265a23014c66d7c066a52867d54cfb5b0c532104c47196e7",
+    "fin_12ns\\_calibration_dt\\ht": "9f20d6961d9318f995dbef6ef0195cde93f3ea159a650e5078c58ffa3d07697c",
+    "fin_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "fin_12ns\\_calibration_dt\\openEMS_stats.txt": "65bc4241c558b0a3a0ae59445aec726de638684ec3e2efb0f6a308c71ef99bab",
+    "fin_12ns\\_calibration_dt\\port_it_1": "db8d39a1398976e20abd2fb0e9ef7c0477fab951829df073620f76607458e3cb",
+    "fin_12ns\\_calibration_dt\\port_ut_1": "22d0d5deb58045b680e98f50108fee9bcf4370d64623f01cce4affe3c0846af2",
+    "fin_12ns\\entree_openems.xml": "10717d85f6ceaf10f569f6cd12e244301e764cdda00450f8cc3f39aaeffb103e",
+    "fin_12ns\\et": "6fce3ccee427be0a00309b3d40d78b585517c0cc8da8e8d2a67fc69d8bb1b3d1",
+    "fin_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_12ns\\ht": "d1c40e09185f725178a82606305ff8fcd51ee9a287f9323dbac37ce322729732",
+    "fin_12ns\\maillage.npz": "2ef5a7633fc50ba2bec9c2d45900fc8ca482df988951e5c7187ca48887d96fc6",
+    "fin_12ns\\openEMS_run_stats.txt": "8f11e937bdef9fd2aa5d12c8befa9f9f2e9e83c0cd4ad3a1f55eaebc0ac871bc",
+    "fin_12ns\\openEMS_stats.txt": "9d665e329358b173b61fbebba6f442bd30cbd7de9fa2c84926a0dcc2e9ff1879",
+    "fin_12ns\\port_it_1": "056a0b952da1c5c73371be424223cbdef7864ccc4ec18cf1bd00d1ce4cdf1579",
+    "fin_12ns\\port_ut_1": "dc9534d55507bf764266dc250dd358dfc0e32417e1bf72178d04c2cd81b1cf16",
+    "fin_12ns\\qualification_entree.json": "9ea6c8e105edd51735bc4d221d3acea9f0a9efbb40fd67b71ee629e0f8722ed4",
+    "fin_12ns\\s11.s1p": "d9b101ddacaab835ea886764eac38722b79f76f38232325ac93926d50fbdb405",
+    "fin_12ns\\s11_indicateurs.json": "2f800879f770da7b8ef86781dc70daaaa2e09fb72471ab1b32f9869019a227da",
+    "fin_12ns\\simulation_manifest.json": "af5a88932cf69e05c3da77fa096582ff84bff8b9f830c3e4c1facc6d272b8a54",
+    "fin_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "tres_fin_8ns\\extraction_calcport.npz": "4018c1ed5105af816d885671db306e155ef6993c8208f87e8bc7189bcfccd7bb",
+    "tres_fin_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "tres_fin_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tres_fin_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "tres_fin_8ns\\maillage.npz": "796621701923f4be9f693929f846b27c1686b5e613a8b480626b14e41bff64ac",
+    "tres_fin_8ns\\origine_entree_openems.xml": "1e1ebf29815becae2da567818d6d0bc09f292a747950daeb2071732dda8dbb75",
+    "tres_fin_8ns\\origine_qualification_entree.json": "8779e0cb15b68df72e76aa133d34804bcd2498291f0b8fbdfd1ae919d0fc7f20",
+    "tres_fin_8ns\\origine_simulation_manifest.json": "6e1e08fa52b60a533245b5d03c0c37a10fe1680daec4577ab1c5316039832a32",
+    "tres_fin_8ns\\parametres_extraction.json": "d0b136e2c7ab128bf5245a788f948dbba092f3feb655f1de3b8fb846688f6649",
+    "tres_fin_8ns\\port_it_1": "e73c50736a7d7459e6f8ad7a902b5c76a81c416c764666f29927a294ab11831d",
+    "tres_fin_8ns\\port_ut_1": "00a678dda7c3e0dfc29f26a31d63c9030b4e48fe8bbbf60fd82bcd25b31068f6",
+    "tres_fin_8ns\\qualification_entree.json": "b449a0ca94716e064ad03b3d5b30f9b075ab0113585323573fe9a252ec75ceba",
+    "tres_fin_8ns\\relecture_calcport.json": "2eaec8e5bd92c0b68fa68fcf8f5669cee2ad26e80c8e3670d3d4e53baeec4dbc",
+    "tres_fin_8ns\\s11.s1p": "97d3f90ecb90d4383e3cf72b9428e2e1dd9e164f2b09d32f9f74ecdf97985421",
+    "tres_fin_8ns\\s11_indicateurs.json": "df88ce32d27d7cf80eb55baa55a8a511c5972d48f37955a45765350e37fc618b",
+    "tres_fin_8ns\\simulation_manifest.json": "12384a7e0a2d8b916ef37674803fb1ebcda5de1ff3ad3a009f0176563348a43d",
+    "tres_fin_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "tres_fin_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "tres_fin_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "tres_fin_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "tres_fin_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "tres_fin_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "tres_fin_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "tres_fin_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "tres_fin_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "tres_fin_12ns\\_calibration_dt\\calibration.json": "286c9b9e529d5a712f1d346648e0508dfc897ef754a1dfe2e7ca9699197be637",
+    "tres_fin_12ns\\_calibration_dt\\entree_calibration.xml": "b7f8143b15dc47f0b7313693c98caf95054c280049b1e823b595bbb3283d2a8a",
+    "tres_fin_12ns\\_calibration_dt\\et": "247e2f3277a8fb65a6ea4c7868527e3cb7be5d5292b9496dd2994d501f7830e7",
+    "tres_fin_12ns\\_calibration_dt\\ht": "bdf07a93c61a088806ce21339e2fd9418f6b01acbb34f1f62c9d8109c7ecf6b4",
+    "tres_fin_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "tres_fin_12ns\\_calibration_dt\\openEMS_stats.txt": "e44a8373c21cc5937b54ed3abf27729ad2bdd0e2a80d3d0c14b2660cbc04fd72",
+    "tres_fin_12ns\\_calibration_dt\\port_it_1": "b7f9fb77c77785591afd05e276d15499e93634addf6a53944c0954dea523817a",
+    "tres_fin_12ns\\_calibration_dt\\port_ut_1": "09e530d0ec47eafb79ee542ac1342918774a6620f3029df492f015a9fc8437b2",
+    "tres_fin_12ns\\entree_openems.xml": "1e1ebf29815becae2da567818d6d0bc09f292a747950daeb2071732dda8dbb75",
+    "tres_fin_12ns\\et": "e59eae3345913d25342db65a694df2342e3cbaaf014bf3bfdffcb1c6c5296f7f",
+    "tres_fin_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "tres_fin_12ns\\ht": "a3aa9b710abbbc0f9aeb773e45ca18f4e77b7aec6b97a124006753f3b131699b",
+    "tres_fin_12ns\\maillage.npz": "796621701923f4be9f693929f846b27c1686b5e613a8b480626b14e41bff64ac",
+    "tres_fin_12ns\\openEMS_run_stats.txt": "e87711ae55e4ca099dc12c224dbf56f3eb29ecb4ee68bd79c5c7e024919d9903",
+    "tres_fin_12ns\\openEMS_stats.txt": "b3671218c464424bd4d647915ea34e18d27f6efc84604b0f2fcb7835be1d12ac",
+    "tres_fin_12ns\\port_it_1": "00894c4e8d926feeff63fce1e70b6ae4e7f4a7c72e3752cceb34e3174b5ec564",
+    "tres_fin_12ns\\port_ut_1": "dc6f7096746ed9e11e2d965b86fb82bb98ff54dbf5fd18bbef0d0856bd4582b9",
+    "tres_fin_12ns\\qualification_entree.json": "8779e0cb15b68df72e76aa133d34804bcd2498291f0b8fbdfd1ae919d0fc7f20",
+    "tres_fin_12ns\\s11.s1p": "c5f018588007c2cdf9318fd2cce0e12cdfaeb40bad15203ec8c93fb5e1bed7bc",
+    "tres_fin_12ns\\s11_indicateurs.json": "a2639478b6c7c78698ea2d16f6f70899816bb6032472548662179a4fba72a148",
+    "tres_fin_12ns\\simulation_manifest.json": "6e1e08fa52b60a533245b5d03c0c37a10fe1680daec4577ab1c5316039832a32",
+    "tres_fin_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "tres_fin_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "tres_fin_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "tres_fin_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "tres_fin_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "tres_fin_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "tres_fin_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "tres_fin_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "tres_fin_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "ultra_fin_8ns\\extraction_calcport.npz": "74b22e162170e4ba00b0ba4611c843a5ca7519d10e7163994c684d6697f11e64",
+    "ultra_fin_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "ultra_fin_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ultra_fin_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "ultra_fin_8ns\\maillage.npz": "8d962ac072be804fabe3feb83cfffef2c2909568f06e85bd0e56188bdf8790fc",
+    "ultra_fin_8ns\\origine_entree_openems.xml": "f54b1a57b8b4f8385ce5ed25c3126540b6654c4fe3b5773dc30a2c485da864a8",
+    "ultra_fin_8ns\\origine_qualification_entree.json": "a6588b720c88284c30baeb1a9661d24156aca88b5c60b0af2fddd80da1d9eeff",
+    "ultra_fin_8ns\\origine_simulation_manifest.json": "2ed991934409364deb329e5bf94c692e31b8e288d16f082e8200d1bbb8191bbe",
+    "ultra_fin_8ns\\parametres_extraction.json": "b3e14fd440e8220a13865a5abee98c8e10dd62294505b467dbde239d643942d8",
+    "ultra_fin_8ns\\port_it_1": "810b1908736a589b4114fdde34c1e3e4a98b2b9503c8722116063bd8e09b7005",
+    "ultra_fin_8ns\\port_ut_1": "9feb38b07660726dee0cd96cd8f626217723c77df70954acf3b2eab1a7c6cb4d",
+    "ultra_fin_8ns\\qualification_entree.json": "42fa4618e7521dd6f1a1840e3a0cda685661e5a0dbedf20b210af1984eaa0ce3",
+    "ultra_fin_8ns\\relecture_calcport.json": "848feb3cd1178c6df7f807fc38c95daaf89e1d6199ebbb84d36c1ec28beedb70",
+    "ultra_fin_8ns\\s11.s1p": "545613864eac19d8a93b382f275188c372aeb488a809332bd75a27ed7d90247e",
+    "ultra_fin_8ns\\s11_indicateurs.json": "200a264a6229fb6e06a339f34f7499719c5424b962b0cf94bf87510c072ae606",
+    "ultra_fin_8ns\\simulation_manifest.json": "25a8ef1b256e4a566b776da93a5d15ce7f6b5d8c20022197e3137d1abf93c04b",
+    "ultra_fin_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "ultra_fin_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "ultra_fin_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "ultra_fin_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "ultra_fin_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "ultra_fin_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "ultra_fin_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "ultra_fin_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "ultra_fin_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "ultra_fin_12ns\\_calibration_dt\\calibration.json": "340ac84e87ef4a96b3cc2fa3e92008c88959b07837f8f97812f3879c1446ebf7",
+    "ultra_fin_12ns\\_calibration_dt\\entree_calibration.xml": "f650bb0e9623373f1b59e876945719eb2da35a21c1502ec3ef0da1f1467e5ce2",
+    "ultra_fin_12ns\\_calibration_dt\\et": "a6ef0feb90d8b5755cd0760008eef2e4003d4f9747e9c7ce46efd21fadbd843d",
+    "ultra_fin_12ns\\_calibration_dt\\ht": "b10cbd547469794366c4988c1b515e68df639714793aae0c0e7d29945b7d2acd",
+    "ultra_fin_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "ultra_fin_12ns\\_calibration_dt\\openEMS_stats.txt": "d18cdcd7900659b4af1e175760387a6abca02ac75c1b390235d849370be185de",
+    "ultra_fin_12ns\\_calibration_dt\\port_it_1": "73e87de70f9018d81ee7ad728905580c348ccac06feab481eb2ef419c9b928ad",
+    "ultra_fin_12ns\\_calibration_dt\\port_ut_1": "2bc78ea7c644cff9a1490a104fe318fd49239a3527a1a09a02e1f983bb338208",
+    "ultra_fin_12ns\\entree_openems.xml": "f54b1a57b8b4f8385ce5ed25c3126540b6654c4fe3b5773dc30a2c485da864a8",
+    "ultra_fin_12ns\\et": "fa61032954aead56a7f33dbcc308037d03a167a845852a8ad992174e8c8683ec",
+    "ultra_fin_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "ultra_fin_12ns\\ht": "c396981067ce0690c3acfb100436d79ef7bc1ee275c0fd76572ed81b004596e4",
+    "ultra_fin_12ns\\maillage.npz": "8d962ac072be804fabe3feb83cfffef2c2909568f06e85bd0e56188bdf8790fc",
+    "ultra_fin_12ns\\openEMS_run_stats.txt": "bdfa8e44fa66332e74450a9841964581ed6a7c1bf979ce6f3a39b5e509c0e5be",
+    "ultra_fin_12ns\\openEMS_stats.txt": "cb2c64685c6902eef382ff3031e221e27ebab0ebd9e74f7162a777c6247769af",
+    "ultra_fin_12ns\\port_it_1": "57c3eb874f7ed968487946157463d21dd6174fefbd270871c44f5e40c7c96cfc",
+    "ultra_fin_12ns\\port_ut_1": "1b764b415e22db465cf67847db2072b54d3f9cd5c2ba54af4e891c6f594e6a6a",
+    "ultra_fin_12ns\\qualification_entree.json": "a6588b720c88284c30baeb1a9661d24156aca88b5c60b0af2fddd80da1d9eeff",
+    "ultra_fin_12ns\\s11.s1p": "4d4bad5520d111b3bca9dd367076dfe9bd6b52f53c261578f9230922f168cef4",
+    "ultra_fin_12ns\\s11_indicateurs.json": "cf97cb4530efc82b465fc97e8145b681eea6f101149f11c0ece741a6a4d0b60d",
+    "ultra_fin_12ns\\simulation_manifest.json": "2ed991934409364deb329e5bf94c692e31b8e288d16f082e8200d1bbb8191bbe",
+    "ultra_fin_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "ultra_fin_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "ultra_fin_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "ultra_fin_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "ultra_fin_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "ultra_fin_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "ultra_fin_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "ultra_fin_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "ultra_fin_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "extreme_fin_8ns\\extraction_calcport.npz": "4eb362dd8dc5b9d0f7d38897b1a3037b6fa557d9ba7b4b58e59a85a128cb46fc",
+    "extreme_fin_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "extreme_fin_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extreme_fin_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "extreme_fin_8ns\\maillage.npz": "3599174dcca35b4b4a5d266614f1b9a2ee8a79204125caa7374dab502f2180fc",
+    "extreme_fin_8ns\\origine_entree_openems.xml": "7af13403f34c078ba6391b6129aaf321b8056f0e559fdb789507453df7794e9a",
+    "extreme_fin_8ns\\origine_qualification_entree.json": "07f2af871164d231c41cd417397047ad3ee56ff30d7b1e4ad6003b4fcc5f1545",
+    "extreme_fin_8ns\\origine_simulation_manifest.json": "7bd3137e81577964df751e022a6b1046c59df6f8a1e766bfd7ba8cb6cc4f6c9f",
+    "extreme_fin_8ns\\parametres_extraction.json": "08d759b5c6b8dba06eccaa4ea0f92b6df4a821011062ff6c53075839d904e3c1",
+    "extreme_fin_8ns\\port_it_1": "decd70ab12f9cb8b019fceab6b83b2a1454bf0645da83f67b0661f23a3da3d88",
+    "extreme_fin_8ns\\port_ut_1": "3cc85aa0300708dc8ced9346156a88b30a47b6a4294f31e544d240068d7695ef",
+    "extreme_fin_8ns\\qualification_entree.json": "1ae2f0a48d070e98694022a065b7414c7cb069a9c63f0628f8e35ca56996963d",
+    "extreme_fin_8ns\\relecture_calcport.json": "8812086b0e94fc9294c7d65a8721c5b841f1af174f00bf2b87c822c0dee742c6",
+    "extreme_fin_8ns\\s11.s1p": "000aa5fc01c743a437f0106e4a320b4e7a5e03261a16b7490f139daea321e2dc",
+    "extreme_fin_8ns\\s11_indicateurs.json": "6f04d2db1f352e3f8c0db70d523c14545930afe06c354f892214ddab11b552ca",
+    "extreme_fin_8ns\\simulation_manifest.json": "cd4b70dccf02368fa025b5d7b2c7d163d1a8d3fcc138e44a4edb3031e7376e14",
+    "extreme_fin_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "extreme_fin_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "extreme_fin_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "extreme_fin_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "extreme_fin_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "extreme_fin_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "extreme_fin_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "extreme_fin_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "extreme_fin_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "extreme_fin_12ns\\_calibration_dt\\calibration.json": "7711e3402013e2a9642aa11384aa4f60ec9b3db2285c7ffe1865ad11ee5f70eb",
+    "extreme_fin_12ns\\_calibration_dt\\entree_calibration.xml": "428898a42b5fe8eb4b47cd203cde30005293adb0dc5e581408fcd0dc8baf1126",
+    "extreme_fin_12ns\\_calibration_dt\\et": "64688e5d1391313d2aa29a7a0da484dbfcc42cf69fd9df2f7c1bf2b7930b00c4",
+    "extreme_fin_12ns\\_calibration_dt\\ht": "5fde74c943002f88c94ba6115f3bba0df447635ac1c52fb5260b579069fbf7c9",
+    "extreme_fin_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "extreme_fin_12ns\\_calibration_dt\\openEMS_stats.txt": "522e009eeef122145db4cc28f3275304c03a926368e635f5c5d002313f8af515",
+    "extreme_fin_12ns\\_calibration_dt\\port_it_1": "12a1fd2b213300213c6bfb336b247043b4281bcd13f2b42d8de1c0abeebc11dd",
+    "extreme_fin_12ns\\_calibration_dt\\port_ut_1": "e1dfd259608d5fa92de701f26cba49b191a38b4f3f098d7c83b838eda070e996",
+    "extreme_fin_12ns\\entree_openems.xml": "7af13403f34c078ba6391b6129aaf321b8056f0e559fdb789507453df7794e9a",
+    "extreme_fin_12ns\\et": "b7ee4a7b95e8f6e1b5c24e3825aae7b641b6cf9ed1a78109e5cf8659e39eb195",
+    "extreme_fin_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "extreme_fin_12ns\\ht": "47ad2a6e078f6f12ab9423118b25238f649a31b7c07b405622c9485ac4fec612",
+    "extreme_fin_12ns\\maillage.npz": "3599174dcca35b4b4a5d266614f1b9a2ee8a79204125caa7374dab502f2180fc",
+    "extreme_fin_12ns\\openEMS_run_stats.txt": "40dcaf1934da5bc845ffdd01becb80b2a9f14bbeafae0c9dfe0b71434ece32ec",
+    "extreme_fin_12ns\\openEMS_stats.txt": "3380ba8e1c49b53a827a6becf2e648b380f58fa0b6f845a42b994fb36ae80f86",
+    "extreme_fin_12ns\\port_it_1": "623bfb7841ea88ddc3ba799ba6e67517734030cdad493930944948525b09e091",
+    "extreme_fin_12ns\\port_ut_1": "63f47a11579569c552fb6ef64dd43ceed26bec1da6962d4b95491ab92e8d5016",
+    "extreme_fin_12ns\\qualification_entree.json": "07f2af871164d231c41cd417397047ad3ee56ff30d7b1e4ad6003b4fcc5f1545",
+    "extreme_fin_12ns\\s11.s1p": "d657d9b297930493a3d750fa1ce44fe3a08644e845c04f52652eb784cf348d45",
+    "extreme_fin_12ns\\s11_indicateurs.json": "8b44cd9da103e4d7e74741db03139ee8d88a1b19b7e83f59a9c308e93cbcb1eb",
+    "extreme_fin_12ns\\simulation_manifest.json": "7bd3137e81577964df751e022a6b1046c59df6f8a1e766bfd7ba8cb6cc4f6c9f",
+    "extreme_fin_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "extreme_fin_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "extreme_fin_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "extreme_fin_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "extreme_fin_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "extreme_fin_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "extreme_fin_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "extreme_fin_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "extreme_fin_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "n30_8ns\\extraction_calcport.npz": "a02d5c016dd136e09b7949050e21887251efb65ce0838d3ea3d847467fe75262",
+    "n30_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "n30_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "n30_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "n30_8ns\\maillage.npz": "dbe7f9219e503949ba72d7b2e4c4cf81dfaf90c0a8e9341fa2051a2adb38ad8d",
+    "n30_8ns\\origine_entree_openems.xml": "d1abc76b452b1f7625e2d34d9c3f4ffbb49d5538288457b9506b74eb5447cce7",
+    "n30_8ns\\origine_qualification_entree.json": "5c23b41b6f1f3ccbc0a245a59b54777da50288be3870d8c76f987ee0eca1316e",
+    "n30_8ns\\origine_simulation_manifest.json": "9d4d73704d093ee7871d858002fe9d338f54c11715f7eb3d44e76bd10a73ae1c",
+    "n30_8ns\\parametres_extraction.json": "a75c04136cc66b92ad7d0ebec478210fa872c4f4769a234719a7a525b31c4d64",
+    "n30_8ns\\port_it_1": "f5573c8b1bf7148176bc6acd1d82dc5fb319bcbedcbbf425bbb97437eb186b09",
+    "n30_8ns\\port_ut_1": "6ec03ce7975d594ac17ec3b1adef9c17dd740c7302eeae8167e742f0f7eebf56",
+    "n30_8ns\\qualification_entree.json": "9ae2ba39857de6b34f49a74b5b93a9f46ebf9d980081b2466d774daa736782d5",
+    "n30_8ns\\relecture_calcport.json": "56bfc7aecc98f1f2cac4233e53b24d99a4215b6be3095fa3f42b0775705a1b2c",
+    "n30_8ns\\s11.s1p": "b296d6cdd77cc0e8b2275c5db7cde5f0155fe8d4aaeaf41bfe37a0db38e11df6",
+    "n30_8ns\\s11_indicateurs.json": "f52d7a84e343fbd0f75c63ff17ef781cd340926a72404a9f81a810c7e0728bb8",
+    "n30_8ns\\simulation_manifest.json": "e6dea9f01dbd4db36873de27f0a9e453eafa95a52996f4ea91cbc11b9dcea33a",
+    "n30_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "n30_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "n30_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "n30_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "n30_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "n30_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "n30_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "n30_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "n30_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "n30_12ns\\_calibration_dt\\calibration.json": "960b28ce45a61723d2182d50d2465f56771949818d717e00b2454e533f496e62",
+    "n30_12ns\\_calibration_dt\\entree_calibration.xml": "63b8d572b497da22def536c51eb746d377a9c99ecceebfd5894366c62d38143c",
+    "n30_12ns\\_calibration_dt\\et": "1f19bb2a4c116dbcf738c50b164e493853d079576714d8fdfb72b3df3fcc99d1",
+    "n30_12ns\\_calibration_dt\\ht": "2381f45a3adf7b9abc69a7888dba8245c3cc02ec0cbefc1942f5fe1d1a9e55a6",
+    "n30_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "n30_12ns\\_calibration_dt\\openEMS_stats.txt": "97b84017a10a42aa2139974960218f88b0fa7ed8146d238e076ead9c0d36c8cd",
+    "n30_12ns\\_calibration_dt\\port_it_1": "a1091962262e7ef932eea1e0eca09665092b2b85a0f193054134ecda2b69fdbe",
+    "n30_12ns\\_calibration_dt\\port_ut_1": "1bc0fc7e8cb6b03d2eaa795bd7dc8a46ce65feb2df09128709bcd41a5f618d73",
+    "n30_12ns\\entree_openems.xml": "d1abc76b452b1f7625e2d34d9c3f4ffbb49d5538288457b9506b74eb5447cce7",
+    "n30_12ns\\et": "017e29b9206739d27e214a9353834105c31e8732d00e5c8157021326e01668b9",
+    "n30_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "n30_12ns\\ht": "281c4e0480a63f40071b89995381be4e1e7aed3adadbbb819e9e2ea70a26f54b",
+    "n30_12ns\\maillage.npz": "dbe7f9219e503949ba72d7b2e4c4cf81dfaf90c0a8e9341fa2051a2adb38ad8d",
+    "n30_12ns\\openEMS_run_stats.txt": "929d4705437fdc88d7abc4de6fac8e358f7b7685f0a4e961a9cdadda066cc4cc",
+    "n30_12ns\\openEMS_stats.txt": "9777469cf63b1b1440bb53a7e6eb0cf2e1de5ff3084a6df115981ab3003f751d",
+    "n30_12ns\\port_it_1": "7bc391f89c593274d279fe3faaa8b4f7b0696ed56db2fd1daca90b406dd8c281",
+    "n30_12ns\\port_ut_1": "8d4f8f09ccb4a2dc32981eef2014acb895573ec034e5ae3e1a45262bd7e8597d",
+    "n30_12ns\\qualification_entree.json": "5c23b41b6f1f3ccbc0a245a59b54777da50288be3870d8c76f987ee0eca1316e",
+    "n30_12ns\\s11.s1p": "10058290c65424db1d4dd9962f4d98c509ac414db69ec69186a4fa3a4e513bf7",
+    "n30_12ns\\s11_indicateurs.json": "5912d4699198972ba1be18d67aed78354b4634ad254c60b13c837dfd4ee44f1f",
+    "n30_12ns\\simulation_manifest.json": "9d4d73704d093ee7871d858002fe9d338f54c11715f7eb3d44e76bd10a73ae1c",
+    "n30_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "n30_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "n30_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "n30_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "n30_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "n30_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "n30_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "n30_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "n30_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "n34_8ns\\extraction_calcport.npz": "cd6466ad60a27c6bdf3336f7224ac47ae418f5fc599e218d25e270176a60cf5a",
+    "n34_8ns\\extraction_calcport.py": "dfd34df2043c7e7e7a13532ec7850bc572ba7e3b3d167af817fcde35561b0895",
+    "n34_8ns\\extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "n34_8ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "n34_8ns\\maillage.npz": "4faa06fb5bf88940d3f9371eae0941bcc819e6a6b7308f95c7ca51649ba48498",
+    "n34_8ns\\origine_entree_openems.xml": "54b7d64c3b2eb155f3c792241738d8fa131f6a698a8a4609dd32707ae893af31",
+    "n34_8ns\\origine_qualification_entree.json": "df34eded04e0fc799e5975606fb33b505c25d8064d5aef1c5c24555955f14c9e",
+    "n34_8ns\\origine_simulation_manifest.json": "3d1cdd6d2935a979d92d0bf082b4d42764590527ad4c91b4c6663a1e2ffe4530",
+    "n34_8ns\\parametres_extraction.json": "d862671c0797142c1fb86247eac2a7cc6e8bbbe0032ad5810d1e91694b0996be",
+    "n34_8ns\\port_it_1": "158392c273255c9b759a84b55541ebaa23d8fb6b6f46612371fcf6b87dd3b084",
+    "n34_8ns\\port_ut_1": "eeb44226305215529a6f85e4a4c4542ca4e0fec321317e3af0f74e53b7cf182f",
+    "n34_8ns\\qualification_entree.json": "1ac5d98644aabbf823935ae43226885f2a8b44535638e35006ee2776419deabc",
+    "n34_8ns\\relecture_calcport.json": "f850eb56e1e7eb3afb395752c18d0b8fa777cfb8e5ee5714728efca86908d925",
+    "n34_8ns\\s11.s1p": "a30f667ff89121634900d56eff6137e2117cf8afdecd40a760b936ef5087c6e8",
+    "n34_8ns\\s11_indicateurs.json": "883cb35b2702e4ada55db41e643ac788b7b880928e5d31272ff098d76c10c346",
+    "n34_8ns\\simulation_manifest.json": "5b80359d70839c066fd0ed00df5186467c75c373c114cd6e062b3cf4bc41cb19",
+    "n34_8ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "n34_8ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "n34_8ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "n34_8ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "n34_8ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "n34_8ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "n34_8ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "n34_8ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "n34_8ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "n34_12ns\\_calibration_dt\\calibration.json": "fefecfb1f85a03fc25127689091f735bbab0215d7f73197d37a0f88e5103d363",
+    "n34_12ns\\_calibration_dt\\entree_calibration.xml": "ffb43c3cc50fedecbe8bb610d36150fcf9ec10aae230924b9f1d18dee62c4651",
+    "n34_12ns\\_calibration_dt\\et": "b6f7e6fa830304f2cccb72ecf28df0a6ca5136d698116ab068839fe6edf9f3ac",
+    "n34_12ns\\_calibration_dt\\ht": "caae83525f7920a2c78f4a4dfe041a0eb6727ce13d5d1b16f7f2da652307e422",
+    "n34_12ns\\_calibration_dt\\openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "n34_12ns\\_calibration_dt\\openEMS_stats.txt": "fc970cb415d86c79c4ca66f4ab78356d68c73802222d22e6cfdb21d53b3eeaa0",
+    "n34_12ns\\_calibration_dt\\port_it_1": "4927e528007f9a0af6e10e8ccbdf2e2fbb209f6ec3872aa993497647b962909d",
+    "n34_12ns\\_calibration_dt\\port_ut_1": "fabf997b1053fe0ab4ff08073ea172c941242b216cefbbb35d6f915ff91dc54f",
+    "n34_12ns\\entree_openems.xml": "54b7d64c3b2eb155f3c792241738d8fa131f6a698a8a4609dd32707ae893af31",
+    "n34_12ns\\et": "bc3216314e9da4b2a5e66ce58f84e322f1e1fbac73282c5f9f61baa530fc3807",
+    "n34_12ns\\geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "n34_12ns\\ht": "64717473828fce44bb7de8454511c16ac9084b87f35de11f81d47f2a6bbc078d",
+    "n34_12ns\\maillage.npz": "4faa06fb5bf88940d3f9371eae0941bcc819e6a6b7308f95c7ca51649ba48498",
+    "n34_12ns\\openEMS_run_stats.txt": "81af6df80835dd8de99b843a68daa510d9cd99e4c0ba207cb6ecce805648d1aa",
+    "n34_12ns\\openEMS_stats.txt": "723cb04c9f44a6b801a787658f772db78ae34de3a11a37196fcd4ef86dcec022",
+    "n34_12ns\\port_it_1": "884144a9e616b838463379b78ba18d42b4ae324fde28afb54ccf226de734eb32",
+    "n34_12ns\\port_ut_1": "e36eb7164cb1990e58a94323b981b7da5501230c51f82ea0c4cd43e2b16b2539",
+    "n34_12ns\\qualification_entree.json": "df34eded04e0fc799e5975606fb33b505c25d8064d5aef1c5c24555955f14c9e",
+    "n34_12ns\\s11.s1p": "1a8d70132269db7784534c159ab132dc701d1763c2ec9aa7d12ef049857a7bf2",
+    "n34_12ns\\s11_indicateurs.json": "b659a2ec6982de3495932ada1cc36d6a537c9021f9d929db27fd992f50f3a9c0",
+    "n34_12ns\\simulation_manifest.json": "3d1cdd6d2935a979d92d0bf082b4d42764590527ad4c91b4c6663a1e2ffe4530",
+    "n34_12ns\\sources\\antennes\\diamant_uwb\\geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "n34_12ns\\sources\\antennes\\diamant_uwb_x18\\geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "n34_12ns\\sources\\antennes\\dipole_reference\\geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "n34_12ns\\sources\\antennes\\uwb_surveyor\\geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "n34_12ns\\sources\\antennes\\vivaldi_tomographie\\geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "n34_12ns\\sources\\banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "n34_12ns\\sources\\connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "n34_12ns\\sources\\fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "n34_12ns\\sources\\materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3"
+  },
+  "attestations": {
+    "file": {
+      "schema": "fin_queue_n34_code_terminal_v1",
+      "debut_observation_utc": "2026-10-19T09:19:16.1810341Z",
+      "fin_observation_utc": "2026-10-19T13:48:19.0679688Z",
+      "pid_parent": 22904,
+      "demarrage_parent_utc": "2026-10-19T02:14:01.1167371Z",
+      "code_terminal": 0,
+      "session_associee": 77627,
+      "methode": "Process.Handle conserve puis WaitForExit et ExitCode",
+      "queue_sha256": "a882257a59d5d856fe950e724deab93e5039084ef51542152c5dad86ba035e62",
+      "observateur_sha256": "a76122a10a5b705f2bf13f320481afe30745e194a6b2a22829743c25c1ffceda",
+      "qualification_globale_effectuee": false
+    },
+    "analyse": {
+      "schema": "fin_analyse_n34_automatique_v1",
+      "utc": "2026-10-19T13:48:20.3968235Z",
+      "code_terminal_file": 0,
+      "code_terminal_analyse": 2,
+      "attestation_file_sha256": "ae343e84c86f215431c39f1fb260e480344ef2bfa33f82b6b97c3a632cae9ab7",
+      "helper_sha256": "2d5215a9e388d2c8cfd6f075eafde1776246d9de3bfe84461a9eda06d94e3b9b",
+      "observateur_sha256": "a76122a10a5b705f2bf13f320481afe30745e194a6b2a22829743c25c1ffceda",
+      "stdout_sha256": "c24d0df881d62922bbf0d53c8da06770efe7b6239b0e500df305e55775cd169c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "controle_final": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\controle_extreme_fin\\controle_final_n34",
+      "sources_17_inchangees": true,
+      "aucun_nouveau_fdtd": true,
+      "qualification_globale_effectuee": false,
+      "suite": "Contrelecture independante Q.ecarts, archivage, puis integration seulement si convergence acceptee."
+    },
+    "code_hote_observateur_signale_par_root": 1,
+    "distinction": "File physique0 ; helper2 echec numerique ; hote observateur1 distinct, jamais assimile au codefile."
+  },
+  "evolution13profils": [
+    {
+      "profil": "base_8ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 138,
+            "minimum_mm": 0.18099999999995386,
+            "maximum_mm": 4.736680699882527,
+            "bornes_mm": [
+              -149.01699805555558,
+              149.01699805555558
+            ],
+            "entree_pml8_mm": [
+              -111.12355245649618,
+              111.1235524564961
+            ],
+            "sha256": "59d0975a79bde3873d909ddd0ea1c6c565209cdc3320df159bbe6a2203460530"
+          },
+          "y": {
+            "lignes": 121,
+            "minimum_mm": 0.20319999999997762,
+            "maximum_mm": 4.6971488792407285,
+            "bornes_mm": [
+              -149.01699805555558,
+              149.01699805555558
+            ],
+            "entree_pml8_mm": [
+              -111.43980702163007,
+              112.46725497186554
+            ],
+            "sha256": "2641c547d85876bda8f2ad9a562faef66ab18b65787f8cd5975c15428f2c428d"
+          },
+          "z": {
+            "lignes": 83,
+            "minimum_mm": 0.19999999999999996,
+            "maximum_mm": 4.6971488792407,
+            "bornes_mm": [
+              -113.01699805555556,
+              114.61699805555556
+            ],
+            "entree_pml8_mm": [
+              -75.43980702163007,
+              77.03980702163007
+            ],
+            "sha256": "75ee854f702af229b31bf4c4dd9a473216757bea36f7f68200bb05679ca9b954"
+          }
+        },
+        "cellules": 1348080,
+        "points": 1385934,
+        "dt_cfl_vide_s": 3.735367121993619e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.0845619047618138,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1429999999999998,
+            1.3465000000000487
+          ],
+          "largeur_mm": 0.20350000000004886,
+          "fraction": 0.41553761553706875
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.012976190476194915,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.74999999999997,
+            -35.5
+          ],
+          "largeur_mm": 0.24999999999997158,
+          "fraction": 0.05190476190478556
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.85
+          ],
+          "largeur_mm": 0.25,
+          "fraction": 0.11111111111111072
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.0,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            1.55,
+            1.8552500000000407
+          ],
+          "largeur_mm": 0.30525000000004066,
+          "fraction": 0.0
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.3354773036514871,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -18.335477303651487,
+            -16.322613481742366
+          ],
+          "largeur_mm": 2.0128638219091215,
+          "fraction": 0.1666666666666502
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": -0.12000000000000455,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.318000000000012,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "dt_s": 3.0040876953987133e-13,
+        "n_pas": 26632,
+        "duree_demandee_s": 8e-09,
+        "duree_prevue_s": 8.000185941616314e-09,
+        "fin_energie_active": false,
+        "critere_fin_db_configure": -40.0,
+        "couvre_inverse_df": false,
+        "dt_calibre_operateur": true,
+        "methode": "TimeStep calibre sur operateur openEMS reel"
+      },
+      "montage_maillage": {
+        "mailles_par_lambda": 10,
+        "mailles_par_lambda_air": 10,
+        "maille_min": 0.25,
+        "marge_pml": 8,
+        "marge_air_mm": 60.0,
+        "n_pas_max": 1000000,
+        "critere_fin": -40.0,
+        "symetrie": false,
+        "rapport_max": 1.5,
+        "facteur_courant": 0.95,
+        "duree_ns": 8.0
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "fin_8ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 157,
+            "minimum_mm": 0.13566666666663996,
+            "maximum_mm": 3.8973502422502406,
+            "bornes_mm": [
+              -142.6721841296296,
+              142.6721841296296
+            ],
+            "entree_pml8_mm": [
+              -111.49338219162831,
+              111.49338219162826
+            ],
+            "sha256": "e2e98e51b153d114203d4fa01c7ff96dbb0d5d1da2505c4b0e59da8c31e47983"
+          },
+          "y": {
+            "lignes": 140,
+            "minimum_mm": 0.19999999999999574,
+            "maximum_mm": 3.951691142924801,
+            "bornes_mm": [
+              -142.6721841296296,
+              142.6721841296296
+            ],
+            "entree_pml8_mm": [
+              -111.05865498623132,
+              111.29399158841363
+            ],
+            "sha256": "755696055665f94cdece3abb94a0f21a982f38dfab665bd99478d694415fcdd5"
+          },
+          "z": {
+            "lignes": 89,
+            "minimum_mm": 0.19999999999999996,
+            "maximum_mm": 3.951691142924787,
+            "bornes_mm": [
+              -106.67218412962963,
+              108.27218412962962
+            ],
+            "entree_pml8_mm": [
+              -75.05865498623139,
+              76.65865498623138
+            ],
+            "sha256": "78f9fc95e3f7104402df7068a9e7576c5a7859b1516453511ab7d002b91a22d5"
+          }
+        },
+        "cellules": 1908192,
+        "points": 1956220,
+        "dt_cfl_vide_s": 3.2656606392139123e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.05110476190486679,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1429999999999998,
+            1.2786666666666804
+          ],
+          "largeur_mm": 0.1356666666666806,
+          "fraction": 0.6233064233056889
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.0629761904762205,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.8,
+            -35.6
+          ],
+          "largeur_mm": 0.19999999999999574,
+          "fraction": 0.3148809523811092
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.8
+          ],
+          "largeur_mm": 0.19999999999999996,
+          "fraction": 0.13888888888888842
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.0,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            1.55,
+            1.7531250000000398
+          ],
+          "largeur_mm": 0.20312500000003975,
+          "fraction": 0.0
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.06014791666669339,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -19.38340208333331,
+            -17.939852083333307
+          ],
+          "largeur_mm": 1.4435500000000019,
+          "fraction": 0.9583333333333148
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": 0.0,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.318000000000012,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "convention_duree": "duree_prevue conserve la formule du moteur; fins reelles NrTS*dt et (NrTS+.5)*dt",
+        "couvre_inverse_df": false,
+        "critere_fin_db_configure": -40.0,
+        "dt_calibre_operateur": true,
+        "dt_s": 2.5132161942374195e-13,
+        "duree_demandee_s": 8e-09,
+        "duree_prevue_s": 8.000069789496554e-09,
+        "duree_reelle_I_depuis_zero_s": 8.00044677192569e-09,
+        "duree_reelle_U_s": 8.000321111115978e-09,
+        "fin_energie_active": false,
+        "methode": "derivee de sondes du calcul parent; aucun Run FDTD",
+        "n_pas": 31833
+      },
+      "montage_maillage": {
+        "critere_fin": -40.0,
+        "duree_ns": 8.0,
+        "facteur_courant": 0.95,
+        "maille_min": 0.2,
+        "mailles_par_lambda": 14,
+        "mailles_par_lambda_air": 12,
+        "marge_air_mm": 60.0,
+        "marge_pml": 8,
+        "n_pas_max": 1000000,
+        "rapport_max": 1.5,
+        "symetrie": false
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "fin_12ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 157,
+            "minimum_mm": 0.13566666666663996,
+            "maximum_mm": 3.8973502422502406,
+            "bornes_mm": [
+              -142.6721841296296,
+              142.6721841296296
+            ],
+            "entree_pml8_mm": [
+              -111.49338219162831,
+              111.49338219162826
+            ],
+            "sha256": "e2e98e51b153d114203d4fa01c7ff96dbb0d5d1da2505c4b0e59da8c31e47983"
+          },
+          "y": {
+            "lignes": 140,
+            "minimum_mm": 0.19999999999999574,
+            "maximum_mm": 3.951691142924801,
+            "bornes_mm": [
+              -142.6721841296296,
+              142.6721841296296
+            ],
+            "entree_pml8_mm": [
+              -111.05865498623132,
+              111.29399158841363
+            ],
+            "sha256": "755696055665f94cdece3abb94a0f21a982f38dfab665bd99478d694415fcdd5"
+          },
+          "z": {
+            "lignes": 89,
+            "minimum_mm": 0.19999999999999996,
+            "maximum_mm": 3.951691142924787,
+            "bornes_mm": [
+              -106.67218412962963,
+              108.27218412962962
+            ],
+            "entree_pml8_mm": [
+              -75.05865498623139,
+              76.65865498623138
+            ],
+            "sha256": "78f9fc95e3f7104402df7068a9e7576c5a7859b1516453511ab7d002b91a22d5"
+          }
+        },
+        "cellules": 1908192,
+        "points": 1956220,
+        "dt_cfl_vide_s": 3.2656606392139123e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.05110476190486679,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1429999999999998,
+            1.2786666666666804
+          ],
+          "largeur_mm": 0.1356666666666806,
+          "fraction": 0.6233064233056889
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.0629761904762205,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.8,
+            -35.6
+          ],
+          "largeur_mm": 0.19999999999999574,
+          "fraction": 0.3148809523811092
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.8
+          ],
+          "largeur_mm": 0.19999999999999996,
+          "fraction": 0.13888888888888842
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.0,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            1.55,
+            1.7531250000000398
+          ],
+          "largeur_mm": 0.20312500000003975,
+          "fraction": 0.0
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.06014791666669339,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -19.38340208333331,
+            -17.939852083333307
+          ],
+          "largeur_mm": 1.4435500000000019,
+          "fraction": 0.9583333333333148
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": 0.0,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.318000000000012,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "dt_s": 2.5132161942374195e-13,
+        "n_pas": 47749,
+        "duree_demandee_s": 1.2000000000000002e-08,
+        "duree_prevue_s": 1.200010468424483e-08,
+        "fin_energie_active": false,
+        "critere_fin_db_configure": -40.0,
+        "couvre_inverse_df": false,
+        "dt_calibre_operateur": true,
+        "methode": "TimeStep calibre sur operateur openEMS reel"
+      },
+      "montage_maillage": {
+        "mailles_par_lambda": 14,
+        "mailles_par_lambda_air": 12,
+        "maille_min": 0.2,
+        "marge_pml": 8,
+        "marge_air_mm": 60.0,
+        "n_pas_max": 1000000,
+        "critere_fin": -40.0,
+        "symetrie": false,
+        "rapport_max": 1.5,
+        "facteur_courant": 0.95,
+        "duree_ns": 12.0
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "tres_fin_8ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 173,
+            "minimum_mm": 0.09999999999995368,
+            "maximum_mm": 3.3157462865291336,
+            "bornes_mm": [
+              -138.14017418253968,
+              138.14017418253968
+            ],
+            "entree_pml8_mm": [
+              -111.6142038903071,
+              111.61420389030707
+            ],
+            "sha256": "4b5ea30f791f26882778e3eb1aa95ae375f68fefef9ae303ba6d890c2c70e30d"
+          },
+          "y": {
+            "lignes": 159,
+            "minimum_mm": 0.14999999999997726,
+            "maximum_mm": 3.397752346128698,
+            "bornes_mm": [
+              -138.14017418253968,
+              138.14017418253968
+            ],
+            "entree_pml8_mm": [
+              -110.98759376083694,
+              110.95815541351197
+            ],
+            "sha256": "4f9cf512cb86e0b508a12ba49006a6c21246bc2cb68a3d004a6cc1999f0c971c"
+          },
+          "z": {
+            "lignes": 104,
+            "minimum_mm": 0.09999999999999987,
+            "maximum_mm": 3.3941397957152475,
+            "bornes_mm": [
+              -102.14017418253968,
+              103.74017418253968
+            ],
+            "entree_pml8_mm": [
+              -74.98759376083696,
+              76.58705581681775
+            ],
+            "sha256": "03826d589c18edf2ad3a9c2db9fc69ece268cd4de9650f5c9584b0c940dc44e0"
+          }
+        },
+        "cellules": 2799128,
+        "points": 2860728,
+        "dt_cfl_vide_s": 2.1334831214022473e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.015438095238181404,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1429999999999998,
+            1.242999999999995
+          ],
+          "largeur_mm": 0.0999999999999952,
+          "fraction": 0.8456190476181785
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.03702380952377382,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.849999999999994,
+            -35.7
+          ],
+          "largeur_mm": 0.14999999999999147,
+          "fraction": 0.7531746031748272
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.7000000000000002
+          ],
+          "largeur_mm": 0.10000000000000009,
+          "fraction": 0.27777777777777657
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.006169230769228262,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.4429999999999998,
+            1.5561692307692283
+          ],
+          "largeur_mm": 0.11316923076922847,
+          "fraction": 0.9454866775421635
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.04811833333334903,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -19.106721666666658,
+            -17.95188166666665
+          ],
+          "largeur_mm": 1.1548400000000072,
+          "fraction": 0.95833333333332
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": -2.842170943040401e-14,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.317999999999955,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "convention_duree": "duree_prevue conserve la formule du moteur; fins reelles NrTS*dt et (NrTS+.5)*dt",
+        "couvre_inverse_df": false,
+        "critere_fin_db_configure": -40.0,
+        "dt_calibre_operateur": true,
+        "dt_s": 1.5828450236911298e-13,
+        "duree_demandee_s": 8e-09,
+        "duree_prevue_s": 8.000015318739708e-09,
+        "duree_reelle_I_depuis_zero_s": 8.000252745493263e-09,
+        "duree_reelle_U_s": 8.000173603242078e-09,
+        "fin_energie_active": false,
+        "methode": "derivee de sondes du calcul parent; aucun Run FDTD",
+        "n_pas": 50543
+      },
+      "montage_maillage": {
+        "critere_fin": -40.0,
+        "duree_ns": 8.0,
+        "facteur_courant": 0.95,
+        "maille_min": 0.15,
+        "mailles_par_lambda": 18,
+        "mailles_par_lambda_air": 14,
+        "marge_air_mm": 60.0,
+        "marge_pml": 8,
+        "n_pas_max": 1000000,
+        "rapport_max": 1.5,
+        "symetrie": false
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "tres_fin_12ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 173,
+            "minimum_mm": 0.09999999999995368,
+            "maximum_mm": 3.3157462865291336,
+            "bornes_mm": [
+              -138.14017418253968,
+              138.14017418253968
+            ],
+            "entree_pml8_mm": [
+              -111.6142038903071,
+              111.61420389030707
+            ],
+            "sha256": "4b5ea30f791f26882778e3eb1aa95ae375f68fefef9ae303ba6d890c2c70e30d"
+          },
+          "y": {
+            "lignes": 159,
+            "minimum_mm": 0.14999999999997726,
+            "maximum_mm": 3.397752346128698,
+            "bornes_mm": [
+              -138.14017418253968,
+              138.14017418253968
+            ],
+            "entree_pml8_mm": [
+              -110.98759376083694,
+              110.95815541351197
+            ],
+            "sha256": "4f9cf512cb86e0b508a12ba49006a6c21246bc2cb68a3d004a6cc1999f0c971c"
+          },
+          "z": {
+            "lignes": 104,
+            "minimum_mm": 0.09999999999999987,
+            "maximum_mm": 3.3941397957152475,
+            "bornes_mm": [
+              -102.14017418253968,
+              103.74017418253968
+            ],
+            "entree_pml8_mm": [
+              -74.98759376083696,
+              76.58705581681775
+            ],
+            "sha256": "03826d589c18edf2ad3a9c2db9fc69ece268cd4de9650f5c9584b0c940dc44e0"
+          }
+        },
+        "cellules": 2799128,
+        "points": 2860728,
+        "dt_cfl_vide_s": 2.1334831214022473e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.015438095238181404,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1429999999999998,
+            1.242999999999995
+          ],
+          "largeur_mm": 0.0999999999999952,
+          "fraction": 0.8456190476181785
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.03702380952377382,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.849999999999994,
+            -35.7
+          ],
+          "largeur_mm": 0.14999999999999147,
+          "fraction": 0.7531746031748272
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.7000000000000002
+          ],
+          "largeur_mm": 0.10000000000000009,
+          "fraction": 0.27777777777777657
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.006169230769228262,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.4429999999999998,
+            1.5561692307692283
+          ],
+          "largeur_mm": 0.11316923076922847,
+          "fraction": 0.9454866775421635
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.04811833333334903,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -19.106721666666658,
+            -17.95188166666665
+          ],
+          "largeur_mm": 1.1548400000000072,
+          "fraction": 0.95833333333332
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": -2.842170943040401e-14,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.317999999999955,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "dt_s": 1.5828450236911298e-13,
+        "n_pas": 75814,
+        "duree_demandee_s": 1.2000000000000002e-08,
+        "duree_prevue_s": 1.2000022978109562e-08,
+        "fin_energie_active": false,
+        "critere_fin_db_configure": -40.0,
+        "couvre_inverse_df": false,
+        "dt_calibre_operateur": true,
+        "methode": "TimeStep calibre sur operateur openEMS reel"
+      },
+      "montage_maillage": {
+        "mailles_par_lambda": 18,
+        "mailles_par_lambda_air": 14,
+        "maille_min": 0.15,
+        "marge_pml": 8,
+        "marge_air_mm": 60.0,
+        "n_pas_max": 1000000,
+        "critere_fin": -40.0,
+        "symetrie": false,
+        "rapport_max": 1.5,
+        "facteur_courant": 0.95,
+        "duree_ns": 12.0
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "ultra_fin_8ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 189,
+            "minimum_mm": 0.10859999999996628,
+            "maximum_mm": 2.9704747019459887,
+            "bornes_mm": [
+              -134.74116672222223,
+              134.74116672222223
+            ],
+            "entree_pml8_mm": [
+              -110.97736910665458,
+              110.9773691066546
+            ],
+            "sha256": "08631813adeaac9e27a437a2a9d649bf9b55338301ae79465a223004846a4ffc"
+          },
+          "y": {
+            "lignes": 177,
+            "minimum_mm": 0.12499999999998579,
+            "maximum_mm": 2.940937617959122,
+            "bornes_mm": [
+              -134.74116672222223,
+              134.74116672222223
+            ],
+            "entree_pml8_mm": [
+              -111.5214673795754,
+              111.2136657785496
+            ],
+            "sha256": "c23f734b2972c754bb807da21a8aa5a7f5bb7c7bca82247c817cf1dfe1766ca2"
+          },
+          "z": {
+            "lignes": 111,
+            "minimum_mm": 0.1142857142857141,
+            "maximum_mm": 2.9024624178308684,
+            "bornes_mm": [
+              -98.74116672222223,
+              100.34116672222223
+            ],
+            "entree_pml8_mm": [
+              -75.52146737957538,
+              77.12146737957538
+            ],
+            "sha256": "8ccfcc965cdd657fd2f8d9cef84e38640b64d5b4c8846104124e96f84cfe83cd"
+          }
+        },
+        "cellules": 3639680,
+        "points": 3713283,
+        "dt_cfl_vide_s": 2.2220248581320925e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.04043809523821551,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1429999999999998,
+            1.268000000000029
+          ],
+          "largeur_mm": 0.1250000000000293,
+          "fraction": 0.6764952380943517
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.012976190476223337,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.75,
+            -35.562499999999986
+          ],
+          "largeur_mm": 0.1875000000000142,
+          "fraction": 0.06920634920651922
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.725
+          ],
+          "largeur_mm": 0.125,
+          "fraction": 0.22222222222222143
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 3.9745984281580604e-14,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            1.3929999999999998,
+            1.5500000000000398
+          ],
+          "largeur_mm": 0.15700000000004,
+          "fraction": 0.9999999999997469
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 5.684341886080802e-14,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            -18.96236666666661,
+            -17.999999999999943
+          ],
+          "largeur_mm": 0.9623666666666679,
+          "fraction": 0.9999999999999409
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": 2.842170943040401e-14,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.318000000000012,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "convention_duree": "duree_prevue conserve la formule du moteur; fins reelles NrTS*dt et (NrTS+.5)*dt",
+        "couvre_inverse_df": false,
+        "critere_fin_db_configure": -40.0,
+        "dt_calibre_operateur": true,
+        "dt_s": 1.7622464902128854e-13,
+        "duree_demandee_s": 8e-09,
+        "duree_prevue_s": 8.000070391619436e-09,
+        "duree_reelle_I_depuis_zero_s": 8.000334728592968e-09,
+        "duree_reelle_U_s": 8.000246616268457e-09,
+        "fin_energie_active": false,
+        "methode": "derivee de sondes du calcul parent; aucun Run FDTD",
+        "n_pas": 45398
+      },
+      "montage_maillage": {
+        "critere_fin": -40.0,
+        "duree_ns": 8.0,
+        "facteur_courant": 0.95,
+        "maille_min": 0.125,
+        "mailles_par_lambda": 22,
+        "mailles_par_lambda_air": 16,
+        "marge_air_mm": 60.0,
+        "marge_pml": 8,
+        "n_pas_max": 1000000,
+        "rapport_max": 1.5,
+        "symetrie": false
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "ultra_fin_12ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 189,
+            "minimum_mm": 0.10859999999996628,
+            "maximum_mm": 2.9704747019459887,
+            "bornes_mm": [
+              -134.74116672222223,
+              134.74116672222223
+            ],
+            "entree_pml8_mm": [
+              -110.97736910665458,
+              110.9773691066546
+            ],
+            "sha256": "08631813adeaac9e27a437a2a9d649bf9b55338301ae79465a223004846a4ffc"
+          },
+          "y": {
+            "lignes": 177,
+            "minimum_mm": 0.12499999999998579,
+            "maximum_mm": 2.940937617959122,
+            "bornes_mm": [
+              -134.74116672222223,
+              134.74116672222223
+            ],
+            "entree_pml8_mm": [
+              -111.5214673795754,
+              111.2136657785496
+            ],
+            "sha256": "c23f734b2972c754bb807da21a8aa5a7f5bb7c7bca82247c817cf1dfe1766ca2"
+          },
+          "z": {
+            "lignes": 111,
+            "minimum_mm": 0.1142857142857141,
+            "maximum_mm": 2.9024624178308684,
+            "bornes_mm": [
+              -98.74116672222223,
+              100.34116672222223
+            ],
+            "entree_pml8_mm": [
+              -75.52146737957538,
+              77.12146737957538
+            ],
+            "sha256": "8ccfcc965cdd657fd2f8d9cef84e38640b64d5b4c8846104124e96f84cfe83cd"
+          }
+        },
+        "cellules": 3639680,
+        "points": 3713283,
+        "dt_cfl_vide_s": 2.2220248581320925e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.04043809523821551,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1429999999999998,
+            1.268000000000029
+          ],
+          "largeur_mm": 0.1250000000000293,
+          "fraction": 0.6764952380943517
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.012976190476223337,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.75,
+            -35.562499999999986
+          ],
+          "largeur_mm": 0.1875000000000142,
+          "fraction": 0.06920634920651922
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.725
+          ],
+          "largeur_mm": 0.125,
+          "fraction": 0.22222222222222143
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 3.9745984281580604e-14,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            1.3929999999999998,
+            1.5500000000000398
+          ],
+          "largeur_mm": 0.15700000000004,
+          "fraction": 0.9999999999997469
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 5.684341886080802e-14,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            -18.96236666666661,
+            -17.999999999999943
+          ],
+          "largeur_mm": 0.9623666666666679,
+          "fraction": 0.9999999999999409
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": 2.842170943040401e-14,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.318000000000012,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "dt_s": 1.7622464902128854e-13,
+        "n_pas": 68096,
+        "duree_demandee_s": 1.2000000000000002e-08,
+        "duree_prevue_s": 1.2000017475104643e-08,
+        "fin_energie_active": false,
+        "critere_fin_db_configure": -40.0,
+        "couvre_inverse_df": false,
+        "dt_calibre_operateur": true,
+        "methode": "TimeStep calibre sur operateur openEMS reel"
+      },
+      "montage_maillage": {
+        "mailles_par_lambda": 22,
+        "mailles_par_lambda_air": 16,
+        "maille_min": 0.125,
+        "marge_pml": 8,
+        "marge_air_mm": 60.0,
+        "n_pas_max": 1000000,
+        "critere_fin": -40.0,
+        "symetrie": false,
+        "rapport_max": 1.5,
+        "facteur_courant": 0.95,
+        "duree_ns": 12.0
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "extreme_fin_8ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 209,
+            "minimum_mm": 0.09049999999996228,
+            "maximum_mm": 2.5922087661468822,
+            "bornes_mm": [
+              -132.09749425308644,
+              132.09749425308644
+            ],
+            "entree_pml8_mm": [
+              -111.35982412391296,
+              111.3598241239128
+            ],
+            "sha256": "2d8c2d8c3c8e543235da29d13c88082fd2fb896589b2c36548f546a14a1b33c4"
+          },
+          "y": {
+            "lignes": 200,
+            "minimum_mm": 0.04938271604935096,
+            "maximum_mm": 2.632868788661142,
+            "bornes_mm": [
+              -132.09749425308644,
+              132.09749425308644
+            ],
+            "entree_pml8_mm": [
+              -111.39865184343888,
+              111.03454394379975
+            ],
+            "sha256": "ce076f2f5379c992a434824c90b3a0b06cca37db8bfadae1e1203b8dfdf4ad9d"
+          },
+          "z": {
+            "lignes": 119,
+            "minimum_mm": 0.09999999999999987,
+            "maximum_mm": 2.607019074273069,
+            "bornes_mm": [
+              -96.09749425308642,
+              97.69749425308642
+            ],
+            "entree_pml8_mm": [
+              -75.24134165890197,
+              76.84134165890197
+            ],
+            "sha256": "cf630e55346cf1730f4aa26e2b4e1f6b62cbfbe9edcbe88cf6df885c71f758b2"
+          }
+        },
+        "cellules": 4884256,
+        "points": 4974200,
+        "dt_cfl_vide_s": 1.326679964365948e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.015438095237982452,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1429999999999998,
+            1.242999999999796
+          ],
+          "largeur_mm": 0.09999999999979625,
+          "fraction": 0.845619047619861
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.0629761904762205,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.8,
+            -35.664444444444484
+          ],
+          "largeur_mm": 0.1355555555555128,
+          "fraction": 0.46457845433292067
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.7000000000000002
+          ],
+          "largeur_mm": 0.10000000000000009,
+          "fraction": 0.27777777777777657
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.009238461538257026,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.4464999999997872,
+            1.559238461538257
+          ],
+          "largeur_mm": 0.11273846153846989,
+          "fraction": 0.9180540393031301
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 4.263256414560601e-14,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            -18.000000000000043,
+            -17.22582160695808
+          ],
+          "largeur_mm": 0.7741783930419643,
+          "fraction": 5.5068140016270275e-14
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": -1.1368683772161603e-13,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.317999999999785,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "convention_duree": "duree_prevue conserve la formule du moteur; fins reelles NrTS*dt et (NrTS+.5)*dt",
+        "couvre_inverse_df": false,
+        "critere_fin_db_configure": -40.0,
+        "dt_calibre_operateur": true,
+        "dt_s": 1.0457299734092486e-13,
+        "duree_demandee_s": 8e-09,
+        "duree_prevue_s": 8.000043442575434e-09,
+        "duree_reelle_I_depuis_zero_s": 8.000200302071445e-09,
+        "duree_reelle_U_s": 8.000148015572775e-09,
+        "fin_energie_active": false,
+        "methode": "derivee de sondes du calcul parent; aucun Run FDTD",
+        "n_pas": 76503
+      },
+      "montage_maillage": {
+        "critere_fin": -40.0,
+        "duree_ns": 8.0,
+        "facteur_courant": 0.95,
+        "maille_min": 0.1,
+        "mailles_par_lambda": 26,
+        "mailles_par_lambda_air": 18,
+        "marge_air_mm": 60.0,
+        "marge_pml": 8,
+        "n_pas_max": 1000000,
+        "rapport_max": 1.5,
+        "symetrie": false
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "extreme_fin_12ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 209,
+            "minimum_mm": 0.09049999999996228,
+            "maximum_mm": 2.5922087661468822,
+            "bornes_mm": [
+              -132.09749425308644,
+              132.09749425308644
+            ],
+            "entree_pml8_mm": [
+              -111.35982412391296,
+              111.3598241239128
+            ],
+            "sha256": "2d8c2d8c3c8e543235da29d13c88082fd2fb896589b2c36548f546a14a1b33c4"
+          },
+          "y": {
+            "lignes": 200,
+            "minimum_mm": 0.04938271604935096,
+            "maximum_mm": 2.632868788661142,
+            "bornes_mm": [
+              -132.09749425308644,
+              132.09749425308644
+            ],
+            "entree_pml8_mm": [
+              -111.39865184343888,
+              111.03454394379975
+            ],
+            "sha256": "ce076f2f5379c992a434824c90b3a0b06cca37db8bfadae1e1203b8dfdf4ad9d"
+          },
+          "z": {
+            "lignes": 119,
+            "minimum_mm": 0.09999999999999987,
+            "maximum_mm": 2.607019074273069,
+            "bornes_mm": [
+              -96.09749425308642,
+              97.69749425308642
+            ],
+            "entree_pml8_mm": [
+              -75.24134165890197,
+              76.84134165890197
+            ],
+            "sha256": "cf630e55346cf1730f4aa26e2b4e1f6b62cbfbe9edcbe88cf6df885c71f758b2"
+          }
+        },
+        "cellules": 4884256,
+        "points": 4974200,
+        "dt_cfl_vide_s": 1.326679964365948e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.015438095237982452,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1429999999999998,
+            1.242999999999796
+          ],
+          "largeur_mm": 0.09999999999979625,
+          "fraction": 0.845619047619861
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.0629761904762205,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.8,
+            -35.664444444444484
+          ],
+          "largeur_mm": 0.1355555555555128,
+          "fraction": 0.46457845433292067
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.7000000000000002
+          ],
+          "largeur_mm": 0.10000000000000009,
+          "fraction": 0.27777777777777657
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.009238461538257026,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.4464999999997872,
+            1.559238461538257
+          ],
+          "largeur_mm": 0.11273846153846989,
+          "fraction": 0.9180540393031301
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 4.263256414560601e-14,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            -18.000000000000043,
+            -17.22582160695808
+          ],
+          "largeur_mm": 0.7741783930419643,
+          "fraction": 5.5068140016270275e-14
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": -1.1368683772161603e-13,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.317999999999785,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "dt_s": 1.0457299734092486e-13,
+        "n_pas": 114754,
+        "duree_demandee_s": 1.2000000000000002e-08,
+        "duree_prevue_s": 1.200006516386315e-08,
+        "fin_energie_active": false,
+        "critere_fin_db_configure": -40.0,
+        "couvre_inverse_df": false,
+        "dt_calibre_operateur": true,
+        "methode": "TimeStep calibre sur operateur openEMS reel"
+      },
+      "montage_maillage": {
+        "mailles_par_lambda": 26,
+        "mailles_par_lambda_air": 18,
+        "maille_min": 0.1,
+        "marge_pml": 8,
+        "marge_air_mm": 60.0,
+        "n_pas_max": 1000000,
+        "critere_fin": -40.0,
+        "symetrie": false,
+        "rapport_max": 1.5,
+        "facteur_courant": 0.95,
+        "duree_ns": 12.0
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "n30_8ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 228,
+            "minimum_mm": 0.04598095238094402,
+            "maximum_mm": 2.329104865596946,
+            "bornes_mm": [
+              -129.98255627777777,
+              129.98255627777777
+            ],
+            "entree_pml8_mm": [
+              -111.34971735300245,
+              111.34971735300243
+            ],
+            "sha256": "db849a5ff52ca9388e31ec1c95f5eaa8a490e3da321d3d0279979f38b9bcb4a5"
+          },
+          "y": {
+            "lignes": 220,
+            "minimum_mm": 0.08333333333324333,
+            "maximum_mm": 2.347341873645121,
+            "bornes_mm": [
+              -129.98255627777777,
+              129.98255627777777
+            ],
+            "entree_pml8_mm": [
+              -111.20382128861701,
+              111.39178882910801
+            ],
+            "sha256": "90fa1fe2edc73adc3d154d0d71f5bfeecbd9915f4ffb531dc8c896659ef4e67b"
+          },
+          "z": {
+            "lignes": 134,
+            "minimum_mm": 0.05555555555555558,
+            "maximum_mm": 2.347646901388515,
+            "bornes_mm": [
+              -93.98255627777777,
+              95.58255627777777
+            ],
+            "entree_pml8_mm": [
+              -75.20382128861701,
+              76.80138106666969
+            ],
+            "sha256": "252c1c1f63f8475b4fbe23a300ad3b96b8bb9450a40a178a7bb5d4ca2a602855"
+          }
+        },
+        "cellules": 6611829,
+        "points": 6721440,
+        "dt_cfl_vide_s": 1.087398612082701e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.013133333333456676,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1947142857143263,
+            1.2406952380952703
+          ],
+          "largeur_mm": 0.04598095238094402,
+          "fraction": 0.7143744821845067
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.02869047619051912,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.833333333333336,
+            -35.70833333333326
+          ],
+          "largeur_mm": 0.12500000000007816,
+          "fraction": 0.7704761904759906
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.6555555555555557
+          ],
+          "largeur_mm": 0.05555555555555558,
+          "fraction": 0.499999999999998
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.01830952380954609,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.4131238095238245,
+            1.5683095238095461
+          ],
+          "largeur_mm": 0.1551857142857216,
+          "fraction": 0.8820154039705269
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.11981332273259682,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -18.119813322732597,
+            -17.40093338633649
+          ],
+          "largeur_mm": 0.7188799363961067,
+          "fraction": 0.16666666666654475
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": -0.03999999999999204,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.318000000000012,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "convention_duree": "duree_prevue conserve la formule du moteur; fins reelles NrTS*dt et (NrTS+.5)*dt",
+        "couvre_inverse_df": false,
+        "critere_fin_db_configure": -40.0,
+        "dt_calibre_operateur": true,
+        "dt_s": 8.203669576847067e-14,
+        "duree_demandee_s": 8e-09,
+        "duree_prevue_s": 8.000054497949723e-09,
+        "duree_reelle_I_depuis_zero_s": 8.000177552993376e-09,
+        "duree_reelle_U_s": 8.000136534645491e-09,
+        "fin_energie_active": false,
+        "methode": "derivee de sondes du calcul parent; aucun Run FDTD",
+        "n_pas": 97519
+      },
+      "montage_maillage": {
+        "critere_fin": -40.0,
+        "duree_ns": 8.0,
+        "facteur_courant": 0.95,
+        "maille_min": 0.08333333333333333,
+        "mailles_par_lambda": 30,
+        "mailles_par_lambda_air": 20,
+        "marge_air_mm": 60.0,
+        "marge_pml": 8,
+        "n_pas_max": 1000000,
+        "rapport_max": 1.5,
+        "symetrie": false
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "n30_12ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 228,
+            "minimum_mm": 0.04598095238094402,
+            "maximum_mm": 2.329104865596946,
+            "bornes_mm": [
+              -129.98255627777777,
+              129.98255627777777
+            ],
+            "entree_pml8_mm": [
+              -111.34971735300245,
+              111.34971735300243
+            ],
+            "sha256": "db849a5ff52ca9388e31ec1c95f5eaa8a490e3da321d3d0279979f38b9bcb4a5"
+          },
+          "y": {
+            "lignes": 220,
+            "minimum_mm": 0.08333333333324333,
+            "maximum_mm": 2.347341873645121,
+            "bornes_mm": [
+              -129.98255627777777,
+              129.98255627777777
+            ],
+            "entree_pml8_mm": [
+              -111.20382128861701,
+              111.39178882910801
+            ],
+            "sha256": "90fa1fe2edc73adc3d154d0d71f5bfeecbd9915f4ffb531dc8c896659ef4e67b"
+          },
+          "z": {
+            "lignes": 134,
+            "minimum_mm": 0.05555555555555558,
+            "maximum_mm": 2.347646901388515,
+            "bornes_mm": [
+              -93.98255627777777,
+              95.58255627777777
+            ],
+            "entree_pml8_mm": [
+              -75.20382128861701,
+              76.80138106666969
+            ],
+            "sha256": "252c1c1f63f8475b4fbe23a300ad3b96b8bb9450a40a178a7bb5d4ca2a602855"
+          }
+        },
+        "cellules": 6611829,
+        "points": 6721440,
+        "dt_cfl_vide_s": 1.087398612082701e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.013133333333456676,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.1947142857143263,
+            1.2406952380952703
+          ],
+          "largeur_mm": 0.04598095238094402,
+          "fraction": 0.7143744821845067
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.02869047619051912,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.833333333333336,
+            -35.70833333333326
+          ],
+          "largeur_mm": 0.12500000000007816,
+          "fraction": 0.7704761904759906
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.6555555555555557
+          ],
+          "largeur_mm": 0.05555555555555558,
+          "fraction": 0.499999999999998
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.01830952380954609,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.4131238095238245,
+            1.5683095238095461
+          ],
+          "largeur_mm": 0.1551857142857216,
+          "fraction": 0.8820154039705269
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.11981332273259682,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -18.119813322732597,
+            -17.40093338633649
+          ],
+          "largeur_mm": 0.7188799363961067,
+          "fraction": 0.16666666666654475
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": -0.03999999999999204,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.318000000000012,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "dt_s": 8.203669576847067e-14,
+        "n_pas": 146278,
+        "duree_demandee_s": 1.2000000000000002e-08,
+        "duree_prevue_s": 1.2000081746924584e-08,
+        "fin_energie_active": false,
+        "critere_fin_db_configure": -40.0,
+        "couvre_inverse_df": false,
+        "dt_calibre_operateur": true,
+        "methode": "TimeStep calibre sur operateur openEMS reel"
+      },
+      "montage_maillage": {
+        "mailles_par_lambda": 30,
+        "mailles_par_lambda_air": 20,
+        "maille_min": 0.08333333333333333,
+        "marge_pml": 8,
+        "marge_air_mm": 60.0,
+        "n_pas_max": 1000000,
+        "critere_fin": -40.0,
+        "symetrie": false,
+        "rapport_max": 1.5,
+        "facteur_courant": 0.95,
+        "duree_ns": 12.0
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "n34_8ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 252,
+            "minimum_mm": 0.06787499999992885,
+            "maximum_mm": 2.1583510504855496,
+            "bornes_mm": [
+              -128.25215247979799,
+              128.25215247979799
+            ],
+            "entree_pml8_mm": [
+              -110.98534407591492,
+              110.98534407591472
+            ],
+            "sha256": "15c7d020ae25eed5ada0da9969bf1d9ba6676012172b14aec3b3e4e8b72a3548"
+          },
+          "y": {
+            "lignes": 244,
+            "minimum_mm": 0.034285714285701374,
+            "maximum_mm": 2.1477829375918702,
+            "bornes_mm": [
+              -128.25215247979799,
+              128.25215247979799
+            ],
+            "entree_pml8_mm": [
+              -111.06988897906317,
+              111.2466946433884
+            ],
+            "sha256": "8e5058ada5622e5322143534fad7d5e7de93bf9791cfb67254caa3372df1b0f0"
+          },
+          "z": {
+            "lignes": 141,
+            "minimum_mm": 0.06666666666666643,
+            "maximum_mm": 2.147824972569566,
+            "bornes_mm": [
+              -92.25215247979799,
+              93.85215247979798
+            ],
+            "entree_pml8_mm": [
+              -75.06955269924158,
+              76.66955269924159
+            ],
+            "sha256": "d21ac9b4ca8726ef15b8343c54d06c05c5852e775bc1470d6bff8c4345aea5ad"
+          }
+        },
+        "cellules": 8539020,
+        "points": 8669808,
+        "dt_cfl_vide_s": 9.277292168146676e-14,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.013133333333456676,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.214428571428357,
+            1.2858571428571426
+          ],
+          "largeur_mm": 0.07142857142878567,
+          "fraction": 0.183866666667842
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.02869047619051912,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.765714285714296,
+            -35.62857142857143
+          ],
+          "largeur_mm": 0.13714285714286234,
+          "fraction": 0.20920138888919398
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.6714285714285715
+          ],
+          "largeur_mm": 0.0714285714285714,
+          "fraction": 0.3888888888888877
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.0037142857140792795,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.3929999999998017,
+            1.5537142857140793
+          ],
+          "largeur_mm": 0.1607142857142776,
+          "fraction": 0.9768888888901722
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.10483665739111814,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -18.104836657391118,
+            -17.475816713044523
+          ],
+          "largeur_mm": 0.6290199443465951,
+          "fraction": 0.1666666666666968
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": 0.0352941176469983,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.317999999999785,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "convention_duree": "duree_prevue conserve la formule du moteur; fins reelles NrTS*dt et (NrTS+.5)*dt",
+        "couvre_inverse_df": false,
+        "critere_fin_db_configure": -40.0,
+        "dt_calibre_operateur": true,
+        "dt_s": 7.735011437511996e-14,
+        "duree_demandee_s": 8e-09,
+        "duree_prevue_s": 8.000012929361156e-09,
+        "duree_reelle_I_depuis_zero_s": 8.00012895453272e-09,
+        "duree_reelle_U_s": 8.000090279475531e-09,
+        "fin_energie_active": false,
+        "methode": "derivee de sondes du calcul parent; aucun Run FDTD",
+        "n_pas": 103427
+      },
+      "montage_maillage": {
+        "critere_fin": -40.0,
+        "duree_ns": 8.0,
+        "facteur_courant": 0.95,
+        "maille_min": 0.07142857142857142,
+        "mailles_par_lambda": 34,
+        "mailles_par_lambda_air": 22,
+        "marge_air_mm": 60.0,
+        "marge_pml": 8,
+        "n_pas_max": 1000000,
+        "rapport_max": 1.5,
+        "symetrie": false
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    },
+    {
+      "profil": "n34_12ns",
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 252,
+            "minimum_mm": 0.06787499999992885,
+            "maximum_mm": 2.1583510504855496,
+            "bornes_mm": [
+              -128.25215247979799,
+              128.25215247979799
+            ],
+            "entree_pml8_mm": [
+              -110.98534407591492,
+              110.98534407591472
+            ],
+            "sha256": "15c7d020ae25eed5ada0da9969bf1d9ba6676012172b14aec3b3e4e8b72a3548"
+          },
+          "y": {
+            "lignes": 244,
+            "minimum_mm": 0.034285714285701374,
+            "maximum_mm": 2.1477829375918702,
+            "bornes_mm": [
+              -128.25215247979799,
+              128.25215247979799
+            ],
+            "entree_pml8_mm": [
+              -111.06988897906317,
+              111.2466946433884
+            ],
+            "sha256": "8e5058ada5622e5322143534fad7d5e7de93bf9791cfb67254caa3372df1b0f0"
+          },
+          "z": {
+            "lignes": 141,
+            "minimum_mm": 0.06666666666666643,
+            "maximum_mm": 2.147824972569566,
+            "bornes_mm": [
+              -92.25215247979799,
+              93.85215247979798
+            ],
+            "entree_pml8_mm": [
+              -75.06955269924158,
+              76.66955269924159
+            ],
+            "sha256": "d21ac9b4ca8726ef15b8343c54d06c05c5852e775bc1470d6bff8c4345aea5ad"
+          }
+        },
+        "cellules": 8539020,
+        "points": 8669808,
+        "dt_cfl_vide_s": 9.277292168146676e-14,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.013133333333456676,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.214428571428357,
+            1.2858571428571426
+          ],
+          "largeur_mm": 0.07142857142878567,
+          "fraction": 0.183866666667842
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.02869047619051912,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.765714285714296,
+            -35.62857142857143
+          ],
+          "largeur_mm": 0.13714285714286234,
+          "fraction": 0.20920138888919398
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.6714285714285715
+          ],
+          "largeur_mm": 0.0714285714285714,
+          "fraction": 0.3888888888888877
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.0037142857140792795,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.3929999999998017,
+            1.5537142857140793
+          ],
+          "largeur_mm": 0.1607142857142776,
+          "fraction": 0.9768888888901722
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.10483665739111814,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -18.104836657391118,
+            -17.475816713044523
+          ],
+          "largeur_mm": 0.6290199443465951,
+          "fraction": 0.1666666666666968
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": 0.0352941176469983,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.317999999999785,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "execution": {
+        "dt_s": 7.735011437511996e-14,
+        "n_pas": 155140,
+        "duree_demandee_s": 1.2000000000000002e-08,
+        "duree_prevue_s": 1.2000019394041735e-08,
+        "fin_energie_active": false,
+        "critere_fin_db_configure": -40.0,
+        "couvre_inverse_df": false,
+        "dt_calibre_operateur": true,
+        "methode": "TimeStep calibre sur operateur openEMS reel"
+      },
+      "montage_maillage": {
+        "mailles_par_lambda": 34,
+        "mailles_par_lambda_air": 22,
+        "maille_min": 0.07142857142857142,
+        "marge_pml": 8,
+        "marge_air_mm": 60.0,
+        "n_pas_max": 1000000,
+        "critere_fin": -40.0,
+        "symetrie": false,
+        "rapport_max": 1.5,
+        "facteur_courant": 0.95,
+        "duree_ns": 12.0
+      },
+      "geometrie_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f"
+    }
+  ],
+  "n34_reel": {
+    "points_operateur": 8669808,
+    "dt_s": 7.735011437511996e-14,
+    "pas": 155140,
+    "temps_solveur_s": 41602.606801,
+    "debit_global_cellules_s": 32330522.44908051,
+    "debit_median_dernier_cinquieme_cellules_s": 34760100.0
+  },
+  "grilles_proposees_sans_run": [
+    {
+      "nom": "GRILLE_SEULE_substrat38_air22_port1sur14",
+      "montage": {
+        "acquisition": {
+          "f_min": 1000000000.0,
+          "f_max": 6300000000.0,
+          "points": 213,
+          "zero_padding": 16,
+          "fenetre": "hann",
+          "z_ref": 50.0
+        },
+        "antenne": {
+          "cote": 120.0,
+          "epaisseur": 0.8,
+          "eps_r": 4.4,
+          "tan_delta": 0.02,
+          "rayon_petale": 46.0,
+          "fente": 0.6,
+          "largeur_ligne": 1.5,
+          "longueur_ligne": 38.0,
+          "cuivre": 0.035
+        },
+        "plaque": {
+          "cote": 600.0,
+          "epaisseur": 5.0,
+          "distances_cm": [
+            50.0,
+            60.0,
+            70.0
+          ]
+        },
+        "maillage": {
+          "mailles_par_lambda": 38,
+          "mailles_par_lambda_air": 22,
+          "maille_min": 0.07142857142857142,
+          "marge_pml": 8,
+          "marge_air_mm": 60.0,
+          "n_pas_max": 1000000,
+          "critere_fin": -40.0,
+          "symetrie": false,
+          "rapport_max": 1.5,
+          "facteur_courant": 0.95,
+          "duree_ns": 12.0
+        }
+      },
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 260,
+            "minimum_mm": 0.0678749999999857,
+            "maximum_mm": 2.158351050485436,
+            "bornes_mm": [
+              -128.25215247979799,
+              128.25215247979799
+            ],
+            "entree_pml8_mm": [
+              -110.98534407591488,
+              110.98534407591495
+            ],
+            "sha256": "aead7d510be66e4276a68dde33604fad5eddbb2a3409986aee57a9336c7aaf89"
+          },
+          "y": {
+            "lignes": 252,
+            "minimum_mm": 0.04063492063492902,
+            "maximum_mm": 2.1558277588128476,
+            "bornes_mm": [
+              -128.25215247979799,
+              128.25215247979799
+            ],
+            "entree_pml8_mm": [
+              -111.06988897906317,
+              111.00553040929529
+            ],
+            "sha256": "e36e8e8e866752e3917ef853b7746bc8ef462540d20b8b63397b8e9d2c626321"
+          },
+          "z": {
+            "lignes": 141,
+            "minimum_mm": 0.06666666666666643,
+            "maximum_mm": 2.147824972569566,
+            "bornes_mm": [
+              -92.25215247979799,
+              93.85215247979798
+            ],
+            "entree_pml8_mm": [
+              -75.06955269924158,
+              76.66955269924159
+            ],
+            "sha256": "d21ac9b4ca8726ef15b8343c54d06c05c5852e775bc1470d6bff8c4345aea5ad"
+          }
+        },
+        "cellules": 9101260,
+        "points": 9238320,
+        "dt_cfl_vide_s": 1.0305394926735054e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.013133333333229302,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.2144285714285843,
+            1.2858571428571426
+          ],
+          "largeur_mm": 0.0714285714285583,
+          "fraction": 0.18386666666524404
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.02869047619050491,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.76571428571428,
+            -35.62857142857142
+          ],
+          "largeur_mm": 0.13714285714286234,
+          "fraction": 0.20920138888909037
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.6714285714285715
+          ],
+          "largeur_mm": 0.0714285714285714,
+          "fraction": 0.3888888888888877
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.0037142857143066532,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.393000000000029,
+            1.5537142857143067
+          ],
+          "largeur_mm": 0.1607142857142776,
+          "fraction": 0.9768888888887575
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 0.0931881399032477,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -18.093188139903248,
+            -17.534059300484046
+          ],
+          "largeur_mm": 0.559128839419202,
+          "fraction": 0.1666666666667514
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": -0.035294117646884615,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.318000000000012,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "fichier_npz": "GRILLE_SEULE_substrat38_air22_port1sur14.npz",
+      "fichier_npz_sha256": "a7fc4b6e3c98dec6c799dabb3258f13956180f12e54d3308d9d2ebfbc0fbedb0",
+      "aucun_Run": true,
+      "dossier_calcul_non_cree": true,
+      "aucune_calibration_operateur": true,
+      "dt_projete_s": 8.592199769245584e-14,
+      "pas_12ns_projetes": 139663,
+      "heures_projection_debit_fin_N34": 10.310764082957183,
+      "heures_projection_debit_global_N34": 11.085598482501267,
+      "anciennes_lignes_N34_absentes": {
+        "x": 60,
+        "y": 162,
+        "z": 0
+      },
+      "note_cout": "Projection indicative : ratio des CFL vides, pas impose reel inconnu ; debit observe peut changer."
+    },
+    {
+      "nom": "GRILLE_SEULE_substrat42_air22_port1sur14",
+      "montage": {
+        "acquisition": {
+          "f_min": 1000000000.0,
+          "f_max": 6300000000.0,
+          "points": 213,
+          "zero_padding": 16,
+          "fenetre": "hann",
+          "z_ref": 50.0
+        },
+        "antenne": {
+          "cote": 120.0,
+          "epaisseur": 0.8,
+          "eps_r": 4.4,
+          "tan_delta": 0.02,
+          "rayon_petale": 46.0,
+          "fente": 0.6,
+          "largeur_ligne": 1.5,
+          "longueur_ligne": 38.0,
+          "cuivre": 0.035
+        },
+        "plaque": {
+          "cote": 600.0,
+          "epaisseur": 5.0,
+          "distances_cm": [
+            50.0,
+            60.0,
+            70.0
+          ]
+        },
+        "maillage": {
+          "mailles_par_lambda": 42,
+          "mailles_par_lambda_air": 22,
+          "maille_min": 0.07142857142857142,
+          "marge_pml": 8,
+          "marge_air_mm": 60.0,
+          "n_pas_max": 1000000,
+          "critere_fin": -40.0,
+          "symetrie": false,
+          "rapport_max": 1.5,
+          "facteur_courant": 0.95,
+          "duree_ns": 12.0
+        }
+      },
+      "grille": {
+        "axes": {
+          "x": {
+            "lignes": 266,
+            "minimum_mm": 0.06787499999982938,
+            "maximum_mm": 2.158351050485777,
+            "bornes_mm": [
+              -128.25215247979799,
+              128.25215247979799
+            ],
+            "entree_pml8_mm": [
+              -110.98534407591492,
+              110.9853440759145
+            ],
+            "sha256": "9cd559a6b8e7e4875976ec88e623f4c5e1f44d142f1b2791bd89123931e860d8"
+          },
+          "y": {
+            "lignes": 264,
+            "minimum_mm": 0.04038095238097128,
+            "maximum_mm": 2.1477829375918702,
+            "bornes_mm": [
+              -128.25215247979799,
+              128.25215247979799
+            ],
+            "entree_pml8_mm": [
+              -111.06988897906317,
+              111.3397182264602
+            ],
+            "sha256": "ca49fab81d61b46b288322f0c7182366f96b7f3b22ae305746c699f05a45c437"
+          },
+          "z": {
+            "lignes": 141,
+            "minimum_mm": 0.06666666666666643,
+            "maximum_mm": 2.147824972569566,
+            "bornes_mm": [
+              -92.25215247979799,
+              93.85215247979798
+            ],
+            "entree_pml8_mm": [
+              -75.06955269924158,
+              76.66955269924159
+            ],
+            "sha256": "d21ac9b4ca8726ef15b8343c54d06c05c5852e775bc1470d6bff8c4345aea5ad"
+          }
+        },
+        "cellules": 9757300,
+        "points": 9901584,
+        "dt_cfl_vide_s": 1.0268015295213268e-13,
+        "x_flanc_port": {
+          "position_mm": 1.2275619047618136,
+          "distance_ligne_plus_proche_mm": 0.013133333333570363,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.2144285714282432,
+            1.2858571428571426
+          ],
+          "largeur_mm": 0.07142857142889936,
+          "fraction": 0.18386666666914095
+        },
+        "y_apres_port": {
+          "position_mm": -35.73702380952378,
+          "distance_ligne_plus_proche_mm": 0.037833333333338715,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            -35.774857142857115,
+            -35.65142857142854
+          ],
+          "largeur_mm": 0.1234285714285761,
+          "fraction": 0.30652006172842705
+        },
+        "z_au_dessus_cuivre": {
+          "position_mm": 1.6277777777777778,
+          "distance_ligne_plus_proche_mm": 0.02777777777777768,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.6,
+            1.6714285714285715
+          ],
+          "largeur_mm": 0.0714285714285714,
+          "fraction": 0.3888888888888877
+        },
+        "bord_microstrip_x": {
+          "position_mm": 1.55,
+          "distance_ligne_plus_proche_mm": 0.02158333333365481,
+          "point_sur_ligne": false,
+          "bornes_mm": [
+            1.5284166666663452,
+            1.7315416666663452
+          ],
+          "largeur_mm": 0.203125,
+          "fraction": 0.1062564102579929
+        },
+        "raccord_y": {
+          "position_mm": -18.0,
+          "distance_ligne_plus_proche_mm": 8.526512829121202e-14,
+          "point_sur_ligne": true,
+          "bornes_mm": [
+            -18.502104347826005,
+            -17.999999999999915
+          ],
+          "largeur_mm": 0.5021043478260907,
+          "fraction": 0.9999999999998301
+        },
+        "position_ligne_U_la_plus_proche_x0_mm": 0.035294117646884615,
+        "lignes_diametre_via_x_mm": [
+          4.0894,
+          4.317999999999671,
+          4.546600000000001
+        ],
+        "lignes_diametre_via_y_mm": [
+          -30.2596,
+          -30.031,
+          -29.8024
+        ]
+      },
+      "fichier_npz": "GRILLE_SEULE_substrat42_air22_port1sur14.npz",
+      "fichier_npz_sha256": "47545738b156a4bf76a2d23028c2ebd6565242569bff741d1ce17576090db187",
+      "aucun_Run": true,
+      "dossier_calcul_non_cree": true,
+      "aucune_calibration_operateur": true,
+      "dt_projete_s": 8.561034223080754e-14,
+      "pas_12ns_projetes": 140171,
+      "heures_projection_debit_fin_N34": 11.091220256558525,
+      "heures_projection_debit_global_N34": 11.924704459917091,
+      "anciennes_lignes_N34_absentes": {
+        "x": 70,
+        "y": 164,
+        "z": 0
+      },
+      "note_cout": "Projection indicative : ratio des CFL vides, pas impose reel inconnu ; debit observe peut changer."
+    }
+  ],
+  "union_naive": {
+    "grille": {
+      "axes": {
+        "x": {
+          "lignes": 448,
+          "minimum_mm": 0.003794841269751714,
+          "maximum_mm": 2.1583510504854075,
+          "bornes_mm": [
+            -129.98255627777777,
+            129.98255627777777
+          ],
+          "entree_pml8_mm": [
+            -120.66613681539012,
+            120.6661368153901
+          ],
+          "sha256": "f6e74d2e5c051452505f119b2ec6d87ab108ee9937c5f9609bbae4326c1d36b6"
+        },
+        "y": {
+          "lignes": 446,
+          "minimum_mm": 0.0014285714286614848,
+          "maximum_mm": 2.147782937591856,
+          "bornes_mm": [
+            -129.98255627777777,
+            129.98255627777777
+          ],
+          "entree_pml8_mm": [
+            -120.59318878319738,
+            120.68717255344288
+          ],
+          "sha256": "75aa556564f4f9397297cbebefd8652c10b0abe5131951c33845ef23d1642e50"
+        },
+        "z": {
+          "lignes": 270,
+          "minimum_mm": 0.004435373259112474,
+          "maximum_mm": 2.147824972569566,
+          "bornes_mm": [
+            -93.98255627777777,
+            95.58255627777777
+          ],
+          "entree_pml8_mm": [
+            -84.59318878319739,
+            86.19196867222374
+          ],
+          "sha256": "28b7dc1da30195ddfe21fc1a2e6eca77ed7f982bcbe48c959214e95e5c1cf7d2"
+        }
+      },
+      "cellules": 53508135,
+      "points": 53948160,
+      "dt_cfl_vide_s": 4.2698960139134776e-15,
+      "x_flanc_port": {
+        "position_mm": 1.2275619047618136,
+        "distance_ligne_plus_proche_mm": 0.013133333333456676,
+        "point_sur_ligne": false,
+        "bornes_mm": [
+          1.214428571428357,
+          1.2406952380952703
+        ],
+        "largeur_mm": 0.026266666666913352,
+        "fraction": 0.5
+      },
+      "y_apres_port": {
+        "position_mm": -35.73702380952378,
+        "distance_ligne_plus_proche_mm": 0.02869047619051912,
+        "point_sur_ligne": false,
+        "bornes_mm": [
+          -35.765714285714296,
+          -35.70833333333326
+        ],
+        "largeur_mm": 0.05738095238103824,
+        "fraction": 0.5
+      },
+      "z_au_dessus_cuivre": {
+        "position_mm": 1.6277777777777778,
+        "distance_ligne_plus_proche_mm": 0.02777777777777768,
+        "point_sur_ligne": false,
+        "bornes_mm": [
+          1.6,
+          1.6555555555555557
+        ],
+        "largeur_mm": 0.05555555555555558,
+        "fraction": 0.499999999999998
+      },
+      "bord_microstrip_x": {
+        "position_mm": 1.55,
+        "distance_ligne_plus_proche_mm": 0.0037142857140792795,
+        "point_sur_ligne": false,
+        "bornes_mm": [
+          1.4131238095238245,
+          1.5537142857140793
+        ],
+        "largeur_mm": 0.14059047619025478,
+        "fraction": 0.973580815609068
+      },
+      "raccord_y": {
+        "position_mm": -18.0,
+        "distance_ligne_plus_proche_mm": 0.10483665739111814,
+        "point_sur_ligne": false,
+        "bornes_mm": [
+          -18.104836657391118,
+          -17.475816713044523
+        ],
+        "largeur_mm": 0.6290199443465951,
+        "fraction": 0.1666666666666968
+      },
+      "position_ligne_U_la_plus_proche_x0_mm": 0.0352941176469983,
+      "lignes_diametre_via_x_mm": [
+        4.0894,
+        4.317999999999785,
+        4.546600000000001
+      ],
+      "lignes_diametre_via_y_mm": [
+        -30.2596,
+        -30.031,
+        -29.8024
+      ]
+    },
+    "facteur_cellules_pas_sur_CFL_vides": 136.14939589516646,
+    "recommandee": false
+  },
+  "limites": [
+    "Pas de duree ou stabilite operateur validee pour les propositions ; aucunFDTD.",
+    "Meme air/port nominaux ne garantissent pas des lignes libres ou des sondes identiques.",
+    "Les couts sont des projections, pas des engagements ni des simulations qualifiees."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "controle_archive_n34_root_v1",
+  "utc": "2026-10-19T13:58:45.402326+00:00",
+  "archive_sha256": "e330bdee87024803ff8c3c6cb2bc2d34c2faa1d26aa5f7a192ca5e4b849e15bc",
+  "membres": 60,
+  "manifest_sha256": "35d69057d35982f9770a165849126a1890b1b244851f94f2c8c7de328f2b5d25",
+  "crc_et_tous_sha_valides": true,
+  "origines56_identiques": true,
+  "profils13_fichiers360_inchanges": true,
+  "sources17_inchangees": true,
+  "qualification_globale_reussie": false
+}

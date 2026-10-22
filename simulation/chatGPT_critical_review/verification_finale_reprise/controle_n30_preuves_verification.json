@@ -1,0 +1,33 @@
+{
+  "schema": "verification_archive_controle_n30_v1",
+  "archive": "controle_n30_preuves.zip",
+  "archive_sha256": "f2992757544c969fe198dd12d440b38a077648998e69488f5aead0c80893a88f",
+  "manifest_interne_sha256": "f0b3e7b461568f469a13f6243053ba86cbf3e673ac10d83fa40a0766e08e25fc",
+  "membres_total": 16,
+  "fichiers_source": 13,
+  "membres_hors_manifeste": 15,
+  "taille_octets": 571985,
+  "helper_D31_sha256": "d31fd9e40b7b4c6bc4d9549244c13a31457d6392007fd8c2167c0248d78d81a2",
+  "PNG_sha256": "99c3a939b692a768e1dbafdcd2038c213cc4f745d6045a55ac9ad920196be62e",
+  "maximum_db_affiche": 2.061363435362556,
+  "plafond_db": 2.2262725101915604,
+  "controles": {
+    "CRC_SHA_tous_membres": true,
+    "manifest_relecture_identique": true,
+    "helper_D31_deux_copies_exactes": true,
+    "rapports_NumPy_Q_ecarts_concordants": true,
+    "graphique_et_bilan_SHA_coherents": true,
+    "marge8pourcent_pas_de_pic_rognage": true,
+    "sources16_avant_apres_inchangees": true,
+    "anciensZIP_inchanges": true,
+    "sources_preuves_inchangees_pendant_archive": true,
+    "aucun_profil_duplique_ni_dossier_actif_lu": true
+  },
+  "anciensZIP_sha256": {
+    "controle_extreme_fin_preuves.zip": "505efed7e4bc59f6752c0cbaa8586e7c128b3e8d3edc87d5efbc2dcaa6121be6",
+    "controle_helpers_n30_vivaldi_ultra_preuves.zip": "97f71bce5935169316e12a0171ec3b29be7b6b44cbe2bf306370b27b85faa1d4",
+    "controle_vivaldi_tres_fin_preuves.zip": "c102b09a0a3e2f55b111f8e067702ec64c8dc41118dc60c4aee6f8ee0ae6a20b",
+    "revue_commun_maurice_2026-10-18_preuves.zip": "22bf2d79e7244db2343a4e49f7a5a1eaa45543acb966256a58a4985e933a8831",
+    "staging_integration_qualification_preuves.zip": "bd9b62a3fe6396b54a722ab21fd894424b1940c4adb11a810a9f2ddb52710a04"
+  }
+}

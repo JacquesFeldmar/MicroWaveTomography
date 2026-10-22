@@ -1,0 +1,13 @@
+{
+  "fichiers_sha256": {
+    "modifies/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "preuve_durcissement_F2_Qstrict_sans_run.json": "e8394a9cc284723e5d049b403046b5d45aea4fa86fd5c0a2d4262040c56612a2",
+    "NOTICE_F2_STAGING.txt": "9990728e010cda7ddf5bea4a9dc6dc80f1f5b15fff1cc246c8e85f7b937352be",
+    "fdtd_F1_vers_F2.diff": "184d323f279be85bba653586797ca5e74cbc2927bd0104dd511501a72d829b2e",
+    "test_garde_sondes_f2.py": "9d122d6d32299bae1e92b130adad6ad23898fa560abe2456e58d9734ccee6db6",
+    "tests_garde_sondes_f2_Qstrict.txt": "2625616e0c62b4846f719b8cf9284711af880794845f435c63618e6255f4677e",
+    "erreur_initiale_fixture_garde.txt": "c30614b53aab101de23dafb00b0d782b5df3225779c51499ca920554f339a7ce"
+  },
+  "historique_237510_index_sha256": "61ef34c9ac992cc8a0216d1b2fd4d0990520521cc84fc9ec5d0f713d07f0b0e1",
+  "priorite": "index courant ; anciens index conserves avec leurs sources dans les historiques."
+}

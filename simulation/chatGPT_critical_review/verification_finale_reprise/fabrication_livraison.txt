@@ -1,0 +1,46 @@
+..............................................                           [100%]
+============================== warnings summary ===============================
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:64
+  C:\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+  C:\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+  C:\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+..\..\..\..\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_mathtext.py:45
+  C:\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\matplotlib\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+test_fabrication.py::test_rendus_reels_non_vides
+  C:\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\gerbonara\layers.py:979: UserWarning: Layer "top silk" not found. Found layers: top copper, bottom copper, top mask, bottom mask, mechanical outline
+    warnings.warn(f'Layer "{side} {use}" not found. Found layers: {", ".join(side + " " + use for side, use in self.graphic_layers)}')
+
+test_fabrication.py::test_rendus_reels_non_vides
+  C:\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\gerbonara\layers.py:979: UserWarning: Layer "top paste" not found. Found layers: top copper, bottom copper, top mask, bottom mask, mechanical outline
+    warnings.warn(f'Layer "{side} {use}" not found. Found layers: {", ".join(side + " " + use for side, use in self.graphic_layers)}')
+
+test_fabrication.py::test_rendus_reels_non_vides
+  C:\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\gerbonara\layers.py:979: UserWarning: Layer "bottom silk" not found. Found layers: top copper, bottom copper, top mask, bottom mask, mechanical outline
+    warnings.warn(f'Layer "{side} {use}" not found. Found layers: {", ".join(side + " " + use for side, use in self.graphic_layers)}')
+
+test_fabrication.py::test_rendus_reels_non_vides
+  C:\Users\jfeld\anaconda3\envs\ph\Lib\site-packages\gerbonara\layers.py:979: UserWarning: Layer "bottom paste" not found. Found layers: top copper, bottom copper, top mask, bottom mask, mechanical outline
+    warnings.warn(f'Layer "{side} {use}" not found. Found layers: {", ".join(side + " " + use for side, use in self.graphic_layers)}')
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+46 passed, 18 warnings in 43.27s

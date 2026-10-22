@@ -1,0 +1,16 @@
+{
+  "schema": "revue_root_analyseur_extreme_fin_v1",
+  "date_utc": "2026-10-18T17:14:59.652192+00:00",
+  "analyseur_courant_sha256": "80aa0d85b3f8d112d6adb198858724ad4a95cb695a33c4c9e467f532fc651f52",
+  "analyseur_validation_precedente_sha256": "89de0cb997aae583953cd0b451d3e43966c6e76bb608962eef611eb1f3631317",
+  "fonctions_numeriques_AST_identiques": [
+    "ecarts_independants",
+    "bandes",
+    "indicateurs_independants",
+    "grille_identique"
+  ],
+  "branche_analyse_apres_preconditions_AST_identique": true,
+  "portee": "Les modifications ulterieures concernent le lecteur partage Windows et le verrou de coordination, pas les calculs chiffres deja verifies sur sept profils.",
+  "sources_gelees_inchangees": 16,
+  "qualification_officielle": false
+}

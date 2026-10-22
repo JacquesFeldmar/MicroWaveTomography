@@ -30,6 +30,11 @@ import os
 ECHELLE = 1.8
 EPAISSEUR = 1.6         # mm, imposee par le panneau commun
 LARGEUR_LIGNE = 3.1     # mm, imposee par les 50 ohms a cette epaisseur
+EPS_R = 4.6
+TAN_DELTA = 0.011
+F_REFERENCE_HZ = 1.0e9
+MODELE_MATERIAU = "debye"
+AVEC_SMA = True
 
 _chemin = os.path.join(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__))), "diamant_uwb", "geometrie.py")
@@ -48,6 +53,8 @@ def _regle():
     _base.ECHELLE = ECHELLE
     _base.H_IMPOSE = EPAISSEUR
     _base.WF_IMPOSE = LARGEUR_LIGNE
+    for nom in ("EPS_R", "TAN_DELTA", "F_REFERENCE_HZ", "MODELE_MATERIAU", "AVEC_SMA"):
+        setattr(_base, nom, globals()[nom])
     return _base
 
 
@@ -75,6 +82,14 @@ def pose(csx, fdtd, acq):
 
 def contours_mm():
     return _regle().contours_mm()
+
+
+def vias_mm():
+    return _regle().vias_mm()
+
+
+def materiau():
+    return _regle().materiau()
 
 
 def detail_mini_mm():

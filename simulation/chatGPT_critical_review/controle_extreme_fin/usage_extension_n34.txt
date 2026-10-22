@@ -1,0 +1,44 @@
+Extension de contre-verification N34 — 2026-10-19
+
+Le controle independant reste distinct de la qualification et ne lance aucun
+solveur. Les treize profils du grand losange sont conserves : les onze anciens
+profils et n34_8ns/n34_12ns. Le catalogue n34 est enregistre uniquement dans la
+memoire du processus par PLUS.enregistre(Q), sans modifier Q, R ou PLUS.
+
+Paire spatiale : n30_12ns / n34_12ns.
+Paire temporelle : n34_8ns / n34_12ns ; coordonnees x/y/z et dt identiques bit a bit.
+Reference : n34_12ns. Seuils, masque et quatre fonctions numeriques inchanges.
+Les six fonctions numeriques/lectures partagees ont un AST identique a D31.
+
+Sans attestation explicite, cette commande ne controle que les preconditions :
+  python -B -X utf8 simulation\chatGPT_critical_review\controle_extreme_fin\analyse_extreme_fin.py --n34
+Elle retourne3 et n'appelle pas Q.charge_calcul tant que des preuves finales
+manquent OU que la sortie0 de la queue n'a pas ete confirmee.
+
+UNIQUEMENT APRES sortie0 reelle de la file77627, prefixe8 ET validationPLUS
+compris, le coordinateur peut employer :
+  python -B -X utf8 simulation\chatGPT_critical_review\controle_extreme_fin\analyse_extreme_fin.py --n34 --queue-sortie-zero-confirmee --sortie controle_final_n34
+Le dossier de sortie doit etre NEUF, dans ce repertoire de controle.
+Ne pas fournir cette attestation tant que la file est active.
+
+Les modes precedents sont conserves :
+  --verification-precedente :7profils, tres_fin12/ultra_fin12 et ultra_fin8/12.
+  defaut :9profils, ultra_fin12/extreme_fin12 et extreme_fin8/12.
+  --n30 :11profils, extreme_fin12/n30_12 et n30_8/12.
+Les options de phase sont mutuellement exclusives.
+
+Preuves de non-regression dans verification_extension_n34/ :
+- replay CLI n30 avec attestation HISTORIQUE de la file14137 close :code2,
+  rapport exactement identique hors provenance (qui contient version/heure).
+- replay CLI Vivaldi defaut5 avec attestation HISTORIQUE de la file20307
+  close :code2, rapport exactement identique hors provenance.
+- preconditions N34 SANS attestation de la file77627 active :code3,
+  Q.charge_calcul remplace par une interdiction et jamais appele.
+- options --n34/--n30 incompatibles refusees ; fonctions AST inchangees.
+-17sources gelees,305fichiers grand clos et140fichiers Vivaldi clos strictement
+  identiques par SHA avant/apres. Aucun dossier actif n'est rehashe.
+
+L'ancien analyseur D31 exact et son contrat sont archives dans
+extension_n34_avant/, avec les empreintes anterieures aux modifications.
+Aucune attestation n'a ete fournie pour les files actives77627 et81046.
+Aucune selection ni qualification officielle n'est creee par ces outils.

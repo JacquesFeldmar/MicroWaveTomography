@@ -1,107 +1,48 @@
-# antennes — une antenne, un dossier
+# Antennes et campagnes de mesure
 
-```
-antennes/
-└── <nom_de_l_antenne>/
-    ├── fiche.md          ce qu'on sait d'elle, et d'où on le sait
-    ├── geometrie.py      sa géométrie openEMS, et son retard attendu
-    └── mesures/
-        └── <AAAA-MM-JJ>_<description>/    une campagne d'acquisition
-            ├── manifeste.md               ce qui a été mesuré, et comment
-            ├── background.s1p             la scène vide
-            └── plate_50cm.s1p …           une position de plaque par fichier
-```
+Chaque antenne possède un module `geometrie.py`, une fiche descriptive et éventuellement des campagnes dans `mesures/`. Les trois cartes de production partagent la connectique et le nominal de matériau définis dans `../connectique.py` et `../materiaux.py`.
 
-**Une campagne = un dossier.** Le critère est celui du rapport pour John : les
-fichiers d'une même campagne partagent la **même grille de fréquences**, le
-**même fond** et les **mêmes coefficients SOL**. Dès que l'un des trois change
-— recalibration, autre bande, autre jour — c'est une autre campagne, donc un
-autre dossier. Mélanger deux campagnes, c'est comparer des distances mesurées
-depuis deux plans de référence différents.
+| Dossier | Usage |
+|---|---|
+| `diamant_uwb/` | Petit monopôle en losange dérivé de la conception publiée, avec implantation SMA de production |
+| `diamant_uwb_x18/` | Losange agrandi ×1,8, sur substrat conservé à 1,6 mm et implantation SMA commune |
+| `vivaldi_tomographie/` | Vivaldi du projet, avec garde de contour, trous de fixation et implantation SMA |
+| `dipole_reference/` | Contrôle partiel du montage et des traitements ; le minimum de S11 seul ne constitue pas une fréquence de résonance de référence exacte |
+| `uwb_surveyor/` | Approximation géométrique de la Nooelec du banc, à confronter aux mesures |
 
-`donnees.charge_dossier()` lit un dossier de campagne : il y cherche un fichier
-dont le nom contient `background`, et des fichiers `plate_<n>cm`. Les formats
-acceptés sont le CSV (`f_Hz, réel, imaginaire`) et le Touchstone `.s1p`
-(`# Hz S RI R 50`).
+Les bandes et essais de réglage antérieurs au 18 octobre 2026 concernent la révision historique, conservée dans `../archives/`. Ils ne qualifient pas les nouvelles cartes. La campagne de production et ses critères sont décrits dans [le README principal](../README.md).
+
+## Interface des géométries
+
+| Élément | Fonction |
+|---|---|
+| `NOM`, `DESCRIPTION` | Identité |
+| `pose(csx, fdtd, acq)` | Construction CSXCAD et lignes physiques nécessaires au maillage |
+| `retard_attendu_ns()` | Hypothèse de retard aller simple, ou `None` lorsqu'elle n'est pas justifiée |
+| `cotes()` | Dimensions en mm |
+| `contours_mm()` | Polygones `F_Cu`, `B_Cu`, contour `Edge_Cuts` |
+| `percages_mm()` | Trous non métallisés `(x, y, diamètre)` |
+| `vias_mm()` | Trous métallisés `(x, y, diamètre fini)` |
+| `controles_fabrication()` | Règles spécifiques au dessin |
+
+Les exports et `pose()` utilisent les mêmes contours. La construction conserve les surfaces métalliques idéales et représente explicitement les vias et les trous de fixation. Le demi-encombrement retourné et les lignes imposées couvrent tous les axes, y compris la longueur en z de la Vivaldi posée de chant. `fdtd.verifie_emprise()` refuse une primitive située hors de cette emprise.
+
+Pour les polygones CSXCAD, les coordonnées tournent avec la normale : normale x → `(y,z)`, normale y → `(z,x)`, normale z → `(x,y)`. La Vivaldi utilise la normale y ; cette permutation doit rester vérifiée lors d'un changement.
+
+## Contrôle avant fabrication
 
 ```powershell
-python run.py --mode mesures --donnees antennes\uwb_surveyor\mesures\2026-10-09_plaque_50-70cm
+python -B apercu.py --toutes
+python -B export_gerber.py --tout
+python -B verifie_gerber.py fabrication/panneau_losanges/panneau_losanges_pcbway.zip fabrication/vivaldi_tomographie/vivaldi_tomographie_pcbway.zip
 ```
 
-## Le module `geometrie.py`
+Le contrôle indépendant relit les surfaces Gerber, la ligne médiane du contour, les coordonnées et le statut de métallisation des perçages. Il compare les formes, pas seulement leurs boîtes englobantes. `export_dxf.py` fournit une copie de travail pour CAO ; le chemin de production reste l'export Gerber direct.
 
-Chaque antenne expose la même interface, pour que `fdtd.py` n'ait rien à savoir
-d'elle :
+## Campagnes de mesure
 
-| | | |
-|---|---|---|
-| `NOM`, `DESCRIPTION` | identité | obligatoire |
-| `pose(csx, fdtd, acq)` | construit la géométrie, rend `(port, lignes_x, lignes_y, lignes_z, demi_étendue_xy_mm)` | obligatoire |
-| `retard_attendu_ns()` | le retard aller simple attendu, ou `None` s'il est inconnu | obligatoire |
-| `cotes()` | toutes les cotes, en mm | facultatif |
-| `bande_attendue_ghz()` | la bande annoncée, tracée sur la figure | facultatif |
-| `s11_fiche()` | `(freqs, S11)` relevé sur une fiche technique, pour recalage | facultatif |
-| `contours_mm()` | `{"F_Cu": [...], "B_Cu": [...], "Edge_Cuts": [...]}`, polylignes de `(x, y)` en mm | pour fabriquer |
-| `percages_mm()` | `[(x, y, diamètre), ...]` | pour fabriquer |
-| `controles_fabrication()` | les cotes à vérifier avant de commander | pour fabriquer |
-| `RECOUVREMENT_MAX_MM` | recouvrement toléré entre les deux cuivres | facultatif |
+Une campagne avec plaque partage la même grille, le même fond et la même calibration. `donnees.charge_dossier()` reconnaît `background.s1p` et `plate_<n>cm.s1p`, avec CSV équivalent. Une recalibration, une autre bande ou un autre montage exige une nouvelle campagne.
 
-`retard_attendu_ns()` est ce qui rend la vérification possible : c'est la
-valeur que la mesure simulée doit retrouver.
+Les fichiers Touchstone sont en 50 Ω, paramètres S, représentation RI. Les fréquences sont finies, strictement croissantes et régulièrement espacées. Des doublons CSV/Touchstone identiques sont signalés ; des doublons divergents sont refusés.
 
-`pose()` rend son demi-encombrement **en x et en y seulement**. L'étendue en z
-se déduit des lignes qu'elle impose, parce qu'une antenne posée de chant —
-une Vivaldi — s'étend de 280 mm le long de l'axe de rayonnement. Tant que
-`construit()` déduisait l'étendue en z de la seule distance de plaque, la PML
-tombait sur la bouche de l'antenne et en absorbait le dernier tiers.
-
-### Un piège de CSXCAD, qui n'est écrit nulle part
-
-Pour un polygone de normale `n`, **les deux coordonnées sont lues dans les axes
-`(n+1, n+2) modulo 3`** :
-
-| normale | coordonnées attendues |
-|---|---|
-| `norm_dir=0` (x) | `(y, z)` |
-| `norm_dir=1` (y) | **`(z, x)`** |
-| `norm_dir=2` (z) | `(x, y)` |
-
-Les antennes planaires du projet sont toutes en normale z, donc en `(x, y)`,
-ce qui est l'ordre naturel : elles n'ont jamais été touchées. La Vivaldi, posée
-de chant, est en normale y — et a été simulée **trois fois transposée**,
-279 mm de large pour 143 de long. Rien ne le signalait : ni openEMS, ni le
-maillage, ni le `|S11|`, qui était seulement mauvais. Deux corrections de
-conception ont été décidées sur ce bruit-là.
-
-D'où `fdtd.verifie_emprise()`, appelé juste après `pose()` : il refuse toute
-matière posée hors du volume que l'antenne annonce. Le contrôle coûte une
-milliseconde et ferme la faute pour de bon.
-
-## Les antennes présentes
-
-| Dossier | |
-|---|---|
-| `dipole_reference/` | **l'étalon du traitement** : un dipôle dans le vide, sans substrat ni ligne, dont le retard est nul par construction. Il vérifie que la chaîne lit une plaque là où elle est. |
-| `diamant_uwb/` | **l'étalon du modèle électromagnétique** : monopôle en losange, conception publiée et entièrement cotée, dont le S11 est connu (−10 dB de 2,5 à 13,5 GHz). |
-| `diamant_uwb_x18/` | le même, à l'échelle 1,8, pour la bande du LiteVNA. Ne recopie aucune cote : il charge le précédent et n'en change que l'échelle. |
-| `uwb_surveyor/` | l'antenne du banc, Nooelec UWB Surveyor. Géométrie approximative, à recaler. |
-
-## De la simulation à la fabrication
-
-Les cotes n'existent qu'à **un** endroit, le `geometrie.py` de l'antenne.
-Trois outils en dérivent tout le reste, et chacun contrôle le précédent :
-
-```powershell
-python apercu.py --toutes                       # le dessin, et ses pièges
-python export_gerber.py --tout                  # les fichiers PCBWay
-python verifie_gerber.py fabrication\*\*_pcbway.zip   # relus par un tiers
-```
-
-| | |
-|---|---|
-| `apercu.py` | dessine les contours et mesure le cuivre par tranche. Une simulation coûte des minutes, un dessin une seconde : c'est là qu'on attrape un conducteur qui se pince, un cuivre hors carte, un recouvrement de trop. |
-| `export_gerber.py` | écrit directement le jeu RS-274X + Excellon + le ZIP. Pas d'étape KiCad : c'était le seul endroit où les cotes fabriquées pouvaient diverger de celles qui ont été simulées. |
-| `verifie_gerber.py` | relit le ZIP avec `gerbonara`, qui n'est pas de nous, compare les encombrements aux cotes annoncées et produit un rendu SVG. |
-
-`export_dxf.py` reste disponible pour qui veut reprendre le dessin dans KiCad,
-mais ce n'est plus le chemin de production.
+La mesure S11 des cartes PCBWay, sans plaque, suit [PROTOCOLE_MESURE_PCBWAY.md](../PROTOCOLE_MESURE_PCBWAY.md). Elle conserve les fichiers complexes, la calibration, l'identifiant de la carte, le stratifié et les dimensions réels, les références de simulation et les photographies du montage.

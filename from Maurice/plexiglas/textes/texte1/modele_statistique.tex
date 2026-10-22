@@ -1,0 +1,979 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=25mm]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Reel}{\operatorname{Re}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\CN}{\mathcal{CN}}
+\title{Mesure d'une cible et d'une épaisseur\\par balayage fréquentiel\\
+Modèles de signal, méthodes A et B et information de Fisher}
+\author{Projet MicroWaveTomography --- banc plexiglas}
+\date{Mise à jour : 18 septembre 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Nous présentons d'abord le modèle d'une cible unique sans épaisseur :
+retard, amplitude complexe, réponse de l'antenne et changements du fond.
+Les méthodes A (profil IFFT) et B (ajustement fréquentiel) sont écrites
+explicitement, avec leurs limites d'identifiabilité.
+Pour une plaque diélectrique, on cherche ensuite à estimer l'épaisseur $e$ et un facteur réel
+\textbf{d'amplitude de l'écho arrière} $\alpha$, sans dimension, à partir
+des valeurs complexes de $S_{11}$ mesurées à plusieurs fréquences.
+Le modèle à deux échos conduit à une matrice d'information de Fisher (FIM)
+explicite. Nous distinguons le cas d'une calibration connue du cas où le
+gain et le retard jusqu'à la plaque sont aussi inconnus. Une extension
+inclut les réflexions internes multiples. Aucune précision expérimentale
+n'est chiffrée sans mesure du bruit et du couplage.
+\end{abstract}
+
+\section{Cible unique sans épaisseur : signal et méthodes A et B}
+\label{sec:cible-unique}
+
+Cette section concerne une cible représentée par \textbf{une seule surface
+réfléchissante}, par exemple la face visible d'une plaque métallique.
+Il n'y a ni épaisseur $e$ à estimer, ni écho de face arrière à imposer.
+Une cible géométriquement unique peut néanmoins engendrer plusieurs trajets
+avec la pièce ou une réponse fréquentielle complexe. Le modèle à un seul
+écho est donc une approximation à vérifier, et non une conséquence automatique
+du nombre d'objets.
+
+\subsection{Ce que mesure le LiteVNA : du signal reçu à S11}
+\label{sec:s11-acquisition}
+
+\paragraph{Trois indices différents.}
+On note $k=0,\ldots,K-1$ l'indice de fréquence du balayage
+(\textbf{$K=201$ dans nos mesures}), $r$ l'indice du balayage répété,
+et $m$ l'indice du profil en retard obtenu après IFFT. $K$ est le nombre
+de fréquences réellement mesurées ; $M=N_{\rm FFT}$ sera le nombre de
+points de l'IFFT. Dans les sections ultérieures consacrées à l'épaisseur,
+la notation $N$ pour le nombre de fréquences désigne la même quantité que $K$.
+
+\paragraph{Définition physique, avant de parler de Fourier.}
+À une fréquence fixée $f_k$, la référence incidente et le signal réfléchi
+peuvent se représenter par des sinusoïdes. En notant $u$ le temps physique
+pendant la mesure à cette fréquence, leurs amplitudes complexes sont
+$a_{1,k}=A_k\exp(\ii\phi_{a,k})$ et
+$b_{1,k}=B_k\exp(\ii\phi_{b,k})$. Les signaux correspondants s'écrivent,
+avec une même normalisation des ondes,
+\begin{equation}
+ a_k(u)=\Reel\{a_{1,k}\exp(\ii2\pi f_ku)\},\qquad
+ b_k(u)=\Reel\{b_{1,k}\exp(\ii2\pi f_ku)\}.
+\end{equation}
+Pour une mesure à un port, sans onde incidente venant d'un second port,
+le coefficient de réflexion au plan de référence est
+\begin{equation}\label{eq:s11-definition}
+ \boxed{S_{11}(f_k)=\frac{b_{1,k}}{a_{1,k}}
+ =\frac{B_k}{A_k}\exp[\ii(\phi_{b,k}-\phi_{a,k})].}
+\end{equation}
+C'est \textbf{un scalaire complexe par fréquence}, donc deux nombres réels,
+pas seulement un module ou une puissance. La phase est celle de l'onde
+réfléchie \emph{par rapport} à la référence incidente. L'appareil effectue
+la détection cohérente ; le programme Python ne reçoit pas ici les échantillons
+temporels de la sinusoïde RF et n'effectue pas une première FFT pour les analyser.
+Les deux sinusoïdes ci-dessus sont une représentation physique, non une
+description de l'algorithme de démodulation interne du firmware.
+
+\paragraph{Valeurs effectivement reçues en mode brut USB.}
+Avec l'option \texttt{--sol}, le programme demande le mode brut du LiteVNA.
+Pour chaque $k$ et chaque balayage $r$, le paquet USB fournit notamment quatre
+entiers représentant les composantes réelle et imaginaire des canaux de
+référence et de réflexion~\cite{litevnausb}. Le pilote les assemble en
+\begin{equation}
+ U_{k,r}=I_{{\rm ref},k,r}+\ii Q_{{\rm ref},k,r},\qquad
+ V_{k,r}=I_{{\rm refl},k,r}+\ii Q_{{\rm refl},k,r}.
+\end{equation}
+$I$ et $Q$ sont des valeurs numériques de détection, non des tensions en volts
+calibrées directement au raccord. Le calcul de \texttt{litevna.decoder} est
+\begin{equation}\label{eq:s11-brut}
+ \boxed{\gamma^{\rm brut}_{k,r}=\frac{V_{k,r}}{U_{k,r}}
+ =\frac{I_{\rm refl}+\ii Q_{\rm refl}}{I_{\rm ref}+\ii Q_{\rm ref}}.}
+\end{equation}
+Les indices $(k,r)$ sont omis dans le dernier quotient pour alléger l'écriture.
+Explicitement,
+\begin{align}
+ \Reel\gamma^{\rm brut}
+ &=\frac{I_{\rm refl}I_{\rm ref}+Q_{\rm refl}Q_{\rm ref}}
+ {I_{\rm ref}^2+Q_{\rm ref}^2},\\
+ \operatorname{Im}\gamma^{\rm brut}
+ &=\frac{Q_{\rm refl}I_{\rm ref}-I_{\rm refl}Q_{\rm ref}}
+ {I_{\rm ref}^2+Q_{\rm ref}^2}.
+\end{align}
+Par exemple, $U=1000$ et $V=100-100\ii$ donnent
+$\gamma^{\rm brut}=0{,}1-0{,}1\ii$, un module $0{,}1414$ et une phase
+$-45^\circ$. Ce quotient brut contient encore les erreurs instrumentales.
+Le calcul est indépendant à chaque fréquence : il ne mélange pas les
+201 fréquences.
+
+\paragraph{Correction SOL fréquence par fréquence.}
+Le modèle d'erreur à un port utilisé dans \texttt{commun/sol.py} est
+\begin{equation}
+ \gamma^{\rm brut}_{k,r}=e_{00,k}+
+ \frac{e_{R,k}\,S_{11,k,r}}
+ {1-e_{11,k}S_{11,k,r}}.
+\end{equation}
+Ici $e_{R,k}=(e_{10}e_{01})_k$ est le coefficient complexe de suivi de
+réflexion, stocké sous le nom \texttt{e10e01}. $e_{00,k}$ décrit la directivité
+résiduelle et $e_{11,k}$ la désadaptation de source. Les trois coefficients sont déterminés par SHORT, OPEN
+et LOAD à chaque fréquence. La mesure corrigée est
+\begin{equation}\label{eq:s11-sol}
+ \boxed{\widehat S_{11,k,r}=
+ \frac{\gamma^{\rm brut}_{k,r}-e_{00,k}}
+ {e_{R,k}+e_{11,k}(\gamma^{\rm brut}_{k,r}-e_{00,k})}.}
+\end{equation}
+Dans le reste du document, $S^{(0)}_{k,r}$ et $S^{(1)}_{k,r}$ désignent ces
+valeurs \emph{mesurées et corrigées}, respectivement sans et avec cible.
+Elles ne sont pas les valeurs théoriques calculées à partir du modèle de cible.
+
+L'autre mode, \texttt{--interne}, demande au firmware sa propre correction.
+Dans la convention USB vérifiée par le pilote, la référence vaut alors
+$2^{30}+0\ii$ et la valeur corrigée reçue est
+$(I_{\rm refl}+\ii Q_{\rm refl})/2^{30}$. On n'applique pas en plus la SOL
+logicielle. Les acquisitions analysées avec \texttt{--sol} suivent bien
+les étapes~\eqref{eq:s11-brut} puis~\eqref{eq:s11-sol}.
+
+\paragraph{Des 201 valeurs fréquentielles au profil en retard.}
+Après correction de chaque balayage, on moyenne les nombres complexes puis
+on soustrait le fond :
+\begin{equation}\label{eq:s11-vers-y}
+ y_k=\frac1{R_1}\sum_{r=1}^{R_1}\widehat S^{(1)}_{11,k,r}
+     -\frac1{R_0}\sum_{r=1}^{R_0}\widehat S^{(0)}_{11,k,r},
+ \quad k=0,\ldots,K-1.
+\end{equation}
+Le vecteur $\mathbf y$ contient toujours \textbf{201 valeurs complexes indexées
+par fréquence}. Prendre $20\log_{10}|y_k|$ donne un graphique \emph{en fréquence},
+mais ne donne pas la distance. A conserve les phases pour effectuer ensuite
+une IFFT ; B ajuste directement ces mêmes valeurs complexes.
+Ainsi, la chaîne de calcul est
+\begin{equation*}
+ (I_{\rm ref},Q_{\rm ref},I_{\rm refl},Q_{\rm refl})_{k,r}
+ \ \longrightarrow\ \gamma^{\rm brut}_{k,r}
+ \ \longrightarrow\ \widehat S_{11,k,r}
+ \ \longrightarrow\ y_k
+ \ \begin{cases}
+   \text{IFFT puis module : méthode A},\\
+   \text{ajustement complexe : méthode B}.
+ \end{cases}
+\end{equation*}
+
+\subsection{Référence de distance et réponse de la cible}
+
+On mesure aux fréquences $f_k=f_{\min}+k\Delta f$, $k=0,\ldots,K-1$,
+avec $B=(K-1)\Delta f$. Le VNA mesure des rapports complexes à chaque fréquence ;
+il ne déclenche pas un chronomètre pour chaque écho. La transformation
+fréquence--temps est effectuée ensuite~\cite{keysight}.
+
+La distance géométrique $d$ est mesurée d'un repère déclaré sur l'antenne
+à la face de la cible, le long de l'axe de mesure. Dans l'air, le retard
+de propagation aller-retour est
+\begin{equation}
+ \tau_d=\frac{2d}{c}.
+\end{equation}
+Après calibration SOL au raccord de l'antenne, les effets du câble et des
+raccords inclus dans cette calibration sont normalement corrigés. La réponse
+de l'antenne, absente pendant la SOL, reste présente. Dans une approximation
+à trajet direct, on écrit la contribution de la cible
+\begin{equation}\label{eq:cible-directe}
+ T_k(d)=g\,H_k\exp\left(-\ii2\pi f_k\frac{2d}{c}\right),
+ \qquad g=\alpha_{\rm c}\exp(\ii\phi),\quad \alpha_{\rm c}\geq0.
+\end{equation}
+$H_k$ représente la forme fréquentielle du transfert émission--réception,
+incluant la réponse de l'antenne et, si elle est connue, celle de la diffusion
+par la cible. $g$ est un gain complexe constant sur la bande ajustée ;
+son module $\alpha_{\rm c}$ est une amplitude globale d'écho, \emph{pas}
+un coefficient de perte par mètre. Sa valeur dépend de la normalisation de
+$H_k$. Il ne faut pas confondre $\alpha_{\rm c}$ avec le facteur $\alpha$
+de l'écho arrière utilisé plus loin pour une plaque diélectrique.
+
+Une forme fréquentielle indépendante de $d$ est elle-même une hypothèse :
+la diffraction, l'angle, la taille de la plaque et le champ proche peuvent
+la modifier. Le gain constant peut changer d'une position de cible à l'autre.
+
+Si, sur la bande considérée, on peut factoriser
+\begin{equation}
+ H_k=\widetilde H_k\exp(-\ii2\pi f_k\tau_{\rm a}),
+ \qquad \tau_{\rm app}=\frac{2d}{c}+\tau_{\rm a},
+\end{equation}
+alors $\tau_{\rm a}$ est le retard effectif de la chaîne antenne en
+aller-retour par rapport au repère choisi. La conversion en distance donne
+\begin{equation}\label{eq:cible-offset}
+ d_{\rm app}=\frac{c\tau_{\rm app}}{2}
+ =d+\frac{c\tau_{\rm a}}{2}.
+\end{equation}
+Cette relation décrit un retard pur. Si $\widetilde H_k$ porte encore une
+phase dispersive, ou si d'autres contributions se superposent, la position
+du maximum temporel peut aussi dépendre de la bande et du fenêtrage.
+L'offset n'est donc pas garanti constant. Par exemple, 20~cm de distance
+affichée correspondent à 1,33~ns et 38~cm à 2,54~ns, sans prouver la présence
+d'un objet à ces distances. Une extension de port compense un retard déclaré ;
+elle n'identifie pas à elle seule la réponse complète de l'antenne~\cite{portextension}.
+
+\subsection{Fond, occultation et différence réellement traitée}
+
+Soient $S^{(0)}_{k,r}$ le balayage $r$ sans cible et $S^{(1)}_{k,r}(d)$
+un balayage avec cible. Un modèle additif explicite est
+\begin{align}
+ S^{(0)}_{k,r} &= A^{(0)}_k+F^{(0)}_k+\varepsilon^{(0)}_{k,r},\\
+ S^{(1)}_{k,r}(d) &= A^{(1)}_k(d)+F^{(1)}_k(d)
+                    +T_k(d)+M_k(d)+\varepsilon^{(1)}_{k,r}.
+\end{align}
+$A$ désigne la contribution propre au montage, $F$ celle de l'environnement,
+et $M$ les trajets supplémentaires impliquant la cible. Les contributions
+propres à l'antenne peuvent changer si la présence de la cible modifie son
+couplage. Cette décomposition est un modèle de travail : les termes ne sont
+pas séparément observés à partir d'une seule mesure de $S_{11}$.
+
+Pour $R_0$ balayages de fond et $R_1$ balayages avec cible, la donnée utilisée
+par les deux méthodes est
+\begin{equation}\label{eq:cible-difference}
+ \boxed{y_k=\overline S^{(1)}_k-\overline S^{(0)}_k
+ =T_k(d)+\underbrace{\Delta A_k+\Delta F_k+M_k(d)}_{b_k(d)}+\eta_k,}
+\end{equation}
+où $\Delta A=A^{(1)}-A^{(0)}$ et $\Delta F=F^{(1)}-F^{(0)}$.
+La soustraction est faite \textbf{en complexe, avant le module et les dB}.
+Elle mesure un changement de scène et n'isole $T$ que si $b$ est négligeable
+ou correctement modélisé.
+
+\paragraph{Cas simplifié d'un fond masqué.}
+Si la présence de la plaque multiplie une contribution de fond par un facteur
+$m_k(d)$, alors $F^{(1)}_k=m_k(d)F^{(0)}_k$ et
+\begin{equation}
+ \Delta F_k=[m_k(d)-1]F^{(0)}_k.
+\end{equation}
+Dans ce modèle simplifié, $m=1$ signifie inchangé et $m=0$ masqué complètement.
+En général le changement peut aussi porter sur la phase et ne se réduit pas
+à une atténuation réelle. Pour une occultation complète et $\Delta A=M=0$,
+$y=T-F^{(0)}+\eta$ : le fond est présent avec un signe négatif dans le résidu.
+Le module de sa transformée conserve une bosse, mais \textbf{le signe négatif
+ne change pas son retard}. Il ne suffit donc pas à expliquer une bosse précoce
+par un obstacle situé derrière la plaque.
+
+\paragraph{Cas simplifié d'une dérive du montage.}
+Si $A^{(1)}_k=A^{(0)}_k\exp(-\ii2\pi f_k\delta\tau)$, alors
+\begin{equation}
+ \Delta A_k=A^{(0)}_k[\exp(-\ii2\pi f_k\delta\tau)-1]
+ \simeq-\ii2\pi f_k\delta\tau A^{(0)}_k,
+ \quad |2\pi f_k\delta\tau|\ll1.
+\end{equation}
+Un petit changement de phase d'une contribution forte peut donc dominer
+un écho faible. Cela décrit une possibilité, pas un diagnostic du connecteur
+ou de l'oscillateur. Une contribution fixe dans les quatre acquisitions peut
+venir du matériel \emph{ou} d'un environnement fixe ; des modules superposés
+ne garantissent pas des phases identiques.
+
+\subsection{Modèle statistique de la moyenne complexe}
+
+On écrit
+\begin{equation}\label{eq:cible-stat}
+ \mathbf y=\boldsymbol\mu(\boldsymbol\theta)+\mathbf b+
+ \boldsymbol\eta,\qquad
+ \boldsymbol\eta\sim\CN(\mathbf0,\mathbf C).
+\end{equation}
+Sous l'hypothèse de balayages indépendants et de mesures avec/sans cible
+indépendantes, les covariances par balayage $\mathbf C_1$ et $\mathbf C_0$
+donnent
+\begin{equation}
+ \mathbf C=\frac{\mathbf C_1}{R_1}+\frac{\mathbf C_0}{R_0}.
+\end{equation}
+Dans l'approximation diagonale, $v_k=\sigma_{1,k}^2/R_1+
+\sigma_{0,k}^2/R_0$. Une dérive cohérente ou une occultation ne disparaît
+pas nécessairement par moyennage et ne doit pas être assimilée sans justification
+à ce bruit indépendant. Le réemploi d'un même fond rend aussi les différences
+$\mathbf y$ de plusieurs positions corrélées entre elles.
+
+\subsection{Méthode A : reconstruction non paramétrique}
+
+Le symbole $\tau$ ci-dessous est un \textbf{retard testé}, pas le temps $u$
+pendant lequel le VNA mesure une sinusoïde. Il n'est pas fourni comme un
+échantillon temporel par le VNA. Pour une fenêtre $w_k$ (Hann dans le programme),
+on définit mathématiquement un profil en retard
+\begin{equation}\label{eq:cible-A}
+ h_w(\tau)=\frac1K\sum_{k=0}^{K-1}w_k y_k\exp(\ii2\pi f_k\tau),
+ \qquad p_A(\tau)=|h_w(\tau)|.
+\end{equation}
+Cette somme combine les $K=201$ fréquences pour chaque retard testé. Le
+facteur $1/K$ correspond à la normalisation actuelle du code ; le gain
+cohérent de la fenêtre n'est pas compensé.
+
+\paragraph{Calcul discret réellement effectué.}
+On choisit $M\geq K$ et on complète $w_k y_k$ par des zéros pour $K\leq k<M$.
+Notons ce vecteur $q_k$. La transformée inverse discrète est
+\begin{equation}
+ z_m=\operatorname{IFFT}_M(\mathbf q)_m
+ =\frac1M\sum_{k=0}^{M-1}q_k\exp(\ii2\pi km/M),
+ \qquad m=0,\ldots,M-1.
+\end{equation}
+\textbf{$k$ indexe les fréquences d'entrée ; $m$ indexe les retards de sortie.}
+Les valeurs $z_m$ sont encore complexes. Leur module fournit le profil,
+avec la grille et la normalisation suivantes :
+\begin{equation}
+ \tau_m=\frac{m}{M\Delta f},\qquad
+ d_m=\frac{c\tau_m}{2},\qquad
+ p_A(\tau_m)=\frac{M}{K}
+ |z_m|.
+\end{equation}
+Sans bourrage de zéros, $M=K=201$ : les 201 valeurs d'entrée sont des
+fréquences et les 201 valeurs de sortie sont des retards. Dans le programme,
+$M=16K=3216$ ; seule la première moitié du profil est affichée. Pour un sweep
+de 1 à 6~GHz, $\Delta f=25$~MHz. L'espacement des retards vaut alors
+12,44~ps (1,86~mm sur l'axe radar), contre 199,0~ps sans bourrage de zéros.
+Ces espacements sont ceux de la grille de calcul, pas la résolution physique.
+
+La phase porteuse $\exp(\ii2\pi f_{\min}\tau_m)$ omise par l'IFFT ne change
+pas le module. Le code affiche la première moitié de la période reconstruite.
+Le bourrage de zéros affine l'échantillonnage du profil, sans augmenter la
+résolution physique ; celle-ci est de l'ordre de $1/B$ en temps, avec un
+facteur dépendant de la fenêtre et du critère choisi~\cite{keysight}.
+La période d'ambiguïté est $1/\Delta f$, soit $c/(2\Delta f)$ en distance.
+
+Dans une région $\mathcal I$ où l'on a identifié la contribution à suivre,
+\begin{equation}
+ \widehat\tau_A=\underset{\tau\in\mathcal I}{\operatorname{arg\,max}}\,p_A(\tau),
+ \qquad \widehat d_{A,\rm app}=c\widehat\tau_A/2.
+\end{equation}
+Cette règle de suivi n'est pas une preuve que le plus grand pic est la cible.
+Pour un seul écho pur $y_k=g\exp(-\ii2\pi f_k\tau_0)$,
+\begin{equation}
+ h_w(\tau)=g\,W(\tau-\tau_0),\qquad
+ W(u)=\frac1K\sum_kw_k\exp(\ii2\pi f_ku).
+\end{equation}
+Avec la réponse $H_k$ et les termes $b_k$, on obtient une somme de réponses
+filtrées par la bande et la fenêtre. Les lobes secondaires et les interférences
+peuvent produire plusieurs maxima : \textbf{un maximum n'est pas nécessairement
+un trajet distinct}. Un offset empirique peut être retiré de $\widehat d_A$
+seulement si sa validité a été vérifiée sur des distances connues.
+
+\subsection{Méthode B : ajustement paramétrique d'une cible}
+
+Le modèle minimal, avec forme fréquentielle connue $\widetilde H_k$, est
+\begin{equation}\label{eq:cible-B}
+ \mu_k(g,\tau)=g\,s_k(\tau),\qquad
+ s_k(\tau)=\widetilde H_k\exp(-\ii2\pi f_k\tau).
+\end{equation}
+Il suppose que le terme $b_k$ de~\eqref{eq:cible-difference} a été retiré,
+est négligeable, ou a été inclus dans un modèle auxiliaire contraint.
+Si toute la phase de l'antenne est connue et contenue dans $\widetilde H$,
+$\tau$ peut représenter $2d/c$ ; sinon il s'agit d'un retard apparent.
+Pour $\mathbf C$ connue et indépendante des paramètres, le maximum de
+vraisemblance gaussien minimise
+\begin{equation}
+ (\widehat g,\widehat\tau)=
+ \underset{g\in\mathbb C,\,\tau\in\mathcal T}{\operatorname{arg\,min}}
+ (\mathbf y-g\mathbf s(\tau))^H\mathbf C^{-1}
+ (\mathbf y-g\mathbf s(\tau)).
+\end{equation}
+Pour chaque retard, le gain s'élimine analytiquement :
+\begin{align}
+ \widehat g(\tau)&=\frac{\mathbf s(\tau)^H\mathbf C^{-1}\mathbf y}
+ {\mathbf s(\tau)^H\mathbf C^{-1}\mathbf s(\tau)},\\
+ \widehat\tau_B&=\boxed{\underset{\tau\in\mathcal T}{\operatorname{arg\,max}}
+ \frac{|\mathbf s(\tau)^H\mathbf C^{-1}\mathbf y|^2}
+ {\mathbf s(\tau)^H\mathbf C^{-1}\mathbf s(\tau)}.}
+\end{align}
+On en déduit $\widehat\alpha_{\rm c}=|\widehat g|$,
+$\widehat\phi=\arg\widehat g$ et $\widehat d_{B,\rm app}=c\widehat\tau_B/2$.
+L'intervalle $\mathcal T$ doit tenir compte des ambiguïtés de la grille et
+les minima concurrents doivent être examinés.
+
+\paragraph{Lien précis entre A et B.}
+Pour un écho, $\widetilde H_k=1$ et $\mathbf C=v\mathbf I$, le critère B
+se réduit à maximiser $|\sum_k y_k\exp(\ii2\pi f_k\tau)|^2$.
+Il coïncide avec la recherche du maximum du profil A \emph{sans fenêtre},
+à l'interpolation et à l'optimisation continue près. A avec Hann et B à poids
+uniformes n'emploient pas la même pondération. B n'est donc pas automatiquement
+plus juste ; son intérêt dépend du modèle et des contraintes physiques.
+
+\paragraph{Plusieurs contributions, toujours sans épaisseur.}
+Pour $J$ trajets supposés, une extension est
+\begin{equation}
+ \mu_k=\sum_{j=1}^{J}g_j\widetilde H_{j,k}
+               \exp(-\ii2\pi f_k\tau_j).
+\end{equation}
+Les gains complexes sont obtenus par moindres carrés linéaires pour chaque
+ensemble de retards, puis les retards sont optimisés. $J=2$ impose deux
+contributions mathématiques, pas deux faces d'une plaque métallique.
+Deux retards qui coïncident rendent leurs gains individuels non identifiables.
+Le résidu complexe, les solutions aux bornes et le rang de la FIM doivent
+être contrôlés avant d'interpréter les paramètres comme des trajets physiques.
+
+\paragraph{Correspondance avec les programmes.}
+\texttt{s11\_cible\_A.py} utilise~\eqref{eq:cible-A} avec Hann.
+Le programme \texttt{s11\_cible\_B.py}, avec les options
+\texttt{--modele echos} et \texttt{--echos 1}, ajuste un écho,
+et \texttt{--echos 2} en ajuste deux. Le code actuel suppose
+$\widetilde H_{j,k}=1$ : il n'identifie pas la réponse de l'antenne.
+Son centrage $f_k-f_c$ au lieu de $f_k$ est absorbé par la phase des gains
+libres, sans modifier les retards. Il utilise des poids uniformes par défaut ;
+\texttt{--ponderation bruit} emploie $1/v_k$ si ces variances sont disponibles.
+Le modèle général avec $\widetilde H$ connue ci-dessus est une formulation
+théorique, pas une option de déconvolution déjà présente dans le programme.
+
+\subsection{Identifiabilité et information de Fisher pour une cible}
+
+Si le retard de l'antenne $\tau_{\rm a}$ et la distance $d$ sont tous deux
+inconnus, l'écho pur ne dépend que de $2d/c+\tau_{\rm a}$. Pour toute variation
+$\delta d$, la transformation
+\begin{equation}
+ d'=d+\delta d,\qquad \tau_{\rm a}'=\tau_{\rm a}-2\delta d/c
+\end{equation}
+laisse le signal inchangé. \textbf{Un ajustement sur une seule position ne peut
+pas séparer ces deux inconnues.} De même, une réponse complexe arbitraire
+$H_k$ libre à chaque fréquence peut absorber n'importe quel retard proposé.
+Une caractérisation indépendante de l'antenne ou des distances de référence
+est nécessaire pour fixer le zéro géométrique.
+
+Dans le modèle identifiable~\eqref{eq:cible-B}, posons
+$\boldsymbol\theta=(\alpha_{\rm c},\phi,\tau)$, avec
+$g=\alpha_{\rm c}\exp(\ii\phi)$ et $\alpha_{\rm c}>0$. Les dérivées sont
+\begin{equation}
+ \partial_{\alpha_{\rm c}}\mu_k=\mu_k/\alpha_{\rm c},\qquad
+ \partial_\phi\mu_k=\ii\mu_k,\qquad
+ \partial_\tau\mu_k=-\ii2\pi f_k\mu_k.
+\end{equation}
+Pour un bruit complexe propre de covariance connue,
+\begin{equation}
+ F_{ab}=2\Reel\!\left[(\partial_a\boldsymbol\mu)^H
+                  \mathbf C^{-1}(\partial_b\boldsymbol\mu)\right].
+\end{equation}
+Si $\mathbf C=\operatorname{diag}(v_k)$, définissons
+$\rho_k=|\mu_k|^2/v_k$ et
+$\overline f_\rho=\sum_k\rho_k f_k/\sum_k\rho_k$.
+Après élimination de la phase inconnue (et de l'amplitude, orthogonale ici),
+\begin{equation}
+ F_{\tau,\rm eff}=8\pi^2\sum_k\rho_k(f_k-\overline f_\rho)^2,
+ \qquad
+ \Var(\widehat\tau)\geq F_{\tau,\rm eff}^{-1}.
+\end{equation}
+Pour une distance avec zéro connu, $d=c\tau/2$, donc
+\begin{equation}
+ \boxed{\Var(\widehat d)\geq
+ \frac{c^2}{32\pi^2\sum_k\rho_k(f_k-\overline f_\rho)^2}.}
+\end{equation}
+Ce sont des bornes locales pour un estimateur non biaisé sous un modèle
+correct. Elles ne bornent ni l'erreur de zéro de l'antenne, ni le biais dû à
+un fond mal soustrait. Sans forme fréquentielle calibrée, elles concernent
+au mieux le retard apparent du modèle choisi.
+
+\paragraph{Diagnostic sans nouvelle hypothèse d'épaisseur.}
+Pour deux positions mesurées avec le même fond numérique,
+\begin{equation}
+ \mathbf y(d_1)-\mathbf y(d_2)
+ =\overline{\mathbf S}^{(1)}(d_1)-\overline{\mathbf S}^{(1)}(d_2).
+\end{equation}
+Le fond enregistré s'annule exactement, mais les modifications de scène et
+les dérives entre positions ne s'annulent pas nécessairement. Comparer cette
+différence, plusieurs fenêtres et plusieurs sous-bandes aide à distinguer une
+structure commune d'une contribution mobile, sans attribuer automatiquement
+chaque bosse à un objet. Une réponse répétable sans cible ne suffit pas à
+identifier le composant matériel responsable.
+
+\clearpage
+\section{Plaque diélectrique : paramètres et conventions physiques}
+
+Les fréquences du balayage sont
+\begin{equation}
+ f_k=f_{\min}+k\Delta f,\quad k=0,\ldots,N-1,\qquad
+ B=f_{\max}-f_{\min}=(N-1)\Delta f.
+\end{equation}
+START et STOP sont des fréquences, en hertz. À chaque fréquence, le VNA
+mesure une amplitude et une phase, représentées par un nombre complexe.
+L'ajustement porte sur ces nombres, avant module, logarithme ou IFFT.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Symbole & Définition & Unité \\
+\midrule
+$e>0$ & épaisseur géométrique de la plaque & m \\
+$\alpha\geq0$ & facteur d'amplitude de l'écho arrière & sans dimension \\
+$n_k$ & indice de phase réel, supposé connu & sans dimension \\
+$\beta_k=2\pi f_kn_k/c$ & constante de phase & rad/m \\
+$\tau_0$ & retard aller-retour jusqu'à la face avant & s \\
+$G_k$ & gain complexe du trajet et de l'instrument & sans dimension \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Définition précise de $\alpha$.}
+Nous définissons $\alpha$ comme le multiplicateur réel de l'amplitude
+complexe \emph{nominale} de l'écho arrière, les transmissions et réflexions
+aux interfaces étant déjà incluses dans cette amplitude nominale.
+Ainsi $\alpha=1$ conserve l'écho nominal ; $\alpha=0{,}5$ divise son
+amplitude par deux et sa puissance par quatre. Pour une perte pure,
+$0\leq\alpha\leq1$ et la perte aller-retour vaut $-20\log_{10}\alpha$ dB.
+On peut autoriser $\alpha>1$ si ce facteur représente aussi un écart au
+couplage nominal. Sa phase est fixée par les coefficients physiques connus.
+
+\textbf{$\alpha$ n'est pas un coefficient d'atténuation par mètre.}
+Si un coefficient linéique en amplitude $\kappa$ (Np/m) décrit la propagation,
+alors, pour un aller-retour dans la plaque,
+\begin{equation}\label{eq:conversion}
+ \alpha=\exp(-2\kappa e),\qquad
+ \kappa=-\frac{\log\alpha}{2e}\quad(\alpha>0).
+\end{equation}
+Dans le présent modèle statistique, $e$ et $\alpha$ sont estimés comme
+\emph{deux paramètres indépendants}. En particulier, on ne dérive pas
+$\alpha$ par rapport à $e$ lors du calcul de la FIM en coordonnées $(e,\alpha)$.
+Nous supposons $\alpha$ constant sur la bande ; une perte dépendant de
+la fréquence nécessite une paramétrisation supplémentaire.
+
+\paragraph{Retard et résolution.}
+Avec la convention temporelle $\exp(\ii2\pi ft)$, un trajet aller-retour
+interne donne $\exp(-2\ii\beta_ke)$. Pour un indice constant $n$,
+\begin{equation}
+ \Delta\tau=\frac{2ne}{c}.
+\end{equation}
+Deux réflecteurs distants de 15~mm dans l'air donnent donc environ 100~ps
+d'écart aller-retour (50~ps en trajet simple). Une plaque de 15~mm d'indice
+supposé $\sqrt{2{,}6}$ donne environ 161~ps. Une couche d'air au sein du
+même air ne réfléchit pas : l'exemple des 100~ps suppose deux réflecteurs.
+Pour un indice dispersif, le retard de groupe du trajet interne est
+$2e[n+f\,\mathrm{d}n/\mathrm{d}f]/c$.
+
+De 1 à 3,5~GHz, $B=2{,}5$~GHz et $1/B=400$~ps, soit une échelle de
+résolution en réflexion de $c/(2B)\simeq60$~mm dans l'air. Le coefficient
+exact dépend du fenêtrage et du critère de résolution~\cite{keysight}.
+Cette largeur des pics reconstruits n'est pas une borne universelle
+sur l'erreur d'estimation de $e$.
+
+\section{Deux approches : non paramétrique (A) et paramétrique (B)}
+
+\paragraph{Méthode A --- non paramétrique.}
+On reconstruit un profil temporel par transformée de Fourier inverse des
+mesures fréquentielles, sans imposer au préalable une réponse de plaque
+décrite par quelques paramètres. On cherche ensuite les pics associés aux
+deux faces et l'on convertit leur écart en épaisseur, pour un indice connu.
+La séparation des échos dépend de la bande et du fenêtrage. Le qualificatif
+non paramétrique concerne la reconstruction du profil : il ne signifie pas
+que le traitement est exempt d'hypothèses physiques ou de réglages.
+
+\paragraph{Méthode B --- paramétrique.}
+On impose une famille de réponses complexes décrite par un nombre fini de
+paramètres, ici $(e,\alpha)$ et, si nécessaire, le gain et le retard externes.
+On ajuste ces paramètres directement aux mesures fréquentielles. Deux pics
+temporels séparés ne sont pas nécessaires ; l'identifiabilité et la validité
+du modèle doivent cependant être établies.
+
+\textbf{La FIM calculée dans ce document concerne la méthode B et le modèle
+statistique choisi.} Elle ne constitue pas une évaluation automatique des
+performances de la détection de pics de la méthode A. Les deux méthodes
+peuvent utiliser les mêmes mesures complexes et se compléter : le profil
+temporel aide à examiner la scène, l'ajustement paramétrique estime ses
+paramètres sous les hypothèses déclarées.
+
+\section{Méthode B : moyenne physique à deux échos cohérents}\label{sec:modele}
+
+On suppose une plaque plane homogène, une incidence normale, des milieux
+non magnétiques et une scène stable pendant le balayage. Les effets de
+bord, la diffraction et les changements de trajets parasites ne sont pas
+inclus dans ce modèle.
+
+Notons $r_k=r_{12,k}$ la réflexion de la face avant et $s_k=r_{23,k}$
+celle de la face arrière vue depuis la plaque. Pour air/plaque/air,
+en négligeant l'effet des pertes sur les interfaces,
+\begin{equation}
+ r_k=\frac{1-n_k}{1+n_k},\qquad s_k=-r_k,\qquad
+ b_k=(1-r_k^2)s_k.
+\end{equation}
+Le facteur $1-r_k^2$ représente les deux transmissions de la face avant.
+La moyenne complexe après soustraction du fond est
+\begin{equation}\label{eq:mu}
+ \boxed{\mu_k(e,\alpha)=P_k\left[r_k+\alpha b_kz_k(e)\right],\qquad
+ P_k=G_k\exp(-\ii2\pi f_k\tau_0),\quad
+ z_k(e)=\exp(-2\ii\beta_ke).}
+\end{equation}
+Le premier terme est l'écho de la face avant. Le second est celui de
+la face arrière, avec une amplitude multipliée par $\alpha$ et un retard
+lié à $e$. Les signes des coefficients de réflexion portent la différence
+de phase aux interfaces ; $\alpha$ reste réel positif.
+
+Si l'on préfère définir un rapport d'amplitudes arrière/avant, son module
+est $\alpha|b_k/r_k|$ lorsque $r_k\ne0$. Il diffère donc de notre facteur
+$\alpha$, qui est référencé à l'écho arrière nominal.
+
+La soustraction d'un fond acquis sans cible ne retire pas l'écho de la
+face avant. Elle retire les contributions présentes dans le fond, sous
+l'hypothèse que l'insertion de la plaque ne modifie pas ces contributions.
+Le modèle à deux échos néglige les allers-retours internes supplémentaires ;
+la section~\ref{sec:multiple} donne le modèle complet.
+
+\section{Modèle statistique des données complexes}
+
+On forme le vecteur $\mathbf y=(y_0,\ldots,y_{N-1})^T$ des moyennes
+complexes avec cible, moins les moyennes du fond. On suppose
+\begin{equation}\label{eq:stat}
+ \boxed{\mathbf y=\boldsymbol\mu(\boldsymbol\theta)+\boldsymbol\varepsilon,
+ \quad \boldsymbol\theta=(e,\alpha)^T,\quad
+ \boldsymbol\varepsilon\sim\CN(\mathbf0,\mathbf C).}
+\end{equation}
+Le bruit est gaussien complexe propre :
+$\E[\boldsymbol\varepsilon\boldsymbol\varepsilon^H]=\mathbf C$ et
+$\E[\boldsymbol\varepsilon\boldsymbol\varepsilon^T]=0$.
+La covariance $\mathbf C$ est supposée connue, définie positive et
+indépendante des paramètres. Pour des fréquences indépendantes,
+\begin{equation}\label{eq:variance}
+ \mathbf C=\operatorname{diag}(v_k),\qquad v_k=\E|\varepsilon_k|^2,
+ \quad \Var(\Reel\varepsilon_k)=\Var(\operatorname{Im}\varepsilon_k)=v_k/2.
+\end{equation}
+$v_k$ désigne la variance complexe totale, pas celle d'une seule quadrature.
+Cette convention explique le facteur 2 dans la FIM.
+
+\paragraph{Bruit de la moyenne et du fond.}
+Pour $M_c$ sweeps cible et $M_f$ sweeps fond indépendants, avec covariances
+par sweep $\boldsymbol\Sigma_c$ et $\boldsymbol\Sigma_f$,
+\begin{equation}\label{eq:covfond}
+ \mathbf C=\frac{\boldsymbol\Sigma_c}{M_c}
+          +\frac{\boldsymbol\Sigma_f}{M_f}.
+\end{equation}
+Augmenter seulement $M_c$ ne supprime pas le bruit du fond. Réutiliser un
+même fond dans plusieurs mesures les corrèle entre elles. Une calibration
+commune incertaine peut également créer des corrélations. Si les moyennes
+cible et fond sont corrélées, on soustrait de~\eqref{eq:covfond} leur
+covariance croisée et sa transposée conjuguée. Une dérive déterministe
+ne devient pas un bruit indépendant par simple moyennage.
+
+La densité et la log-vraisemblance sont
+\begin{align}
+ p(\mathbf y;\boldsymbol\theta)&=
+ \frac{\exp[-(\mathbf y-\boldsymbol\mu)^H\mathbf C^{-1}
+ (\mathbf y-\boldsymbol\mu)]}{\pi^N\det\mathbf C},\\
+ \ell(\boldsymbol\theta)&=-(\mathbf y-\boldsymbol\mu)^H\mathbf C^{-1}
+ (\mathbf y-\boldsymbol\mu)+\text{constante}.
+\end{align}
+Le maximum de vraisemblance minimise ce résidu quadratique pondéré
+sur un domaine physique en $(e,\alpha)$.
+
+\section{Construction de la matrice d'information de Fisher}
+
+Pour des paramètres réels, posons
+$\mathbf d_i=\partial\boldsymbol\mu/\partial\theta_i$.
+Le score s'écrit
+\begin{equation}
+ \partial_{\theta_i}\ell
+ =2\Reel\{\mathbf d_i^H\mathbf C^{-1}(\mathbf y-\boldsymbol\mu)\}.
+\end{equation}
+L'espérance du produit de deux scores donne la formule gaussienne complexe
+de Slepian--Bangs~\cite{abeida} :
+\begin{equation}\label{eq:fimg}
+ \boxed{F_{ij}=2\Reel\{\mathbf d_i^H\mathbf C^{-1}\mathbf d_j\}.}
+\end{equation}
+Pour une covariance diagonale,
+\begin{equation}\label{eq:fim2}
+ \boxed{\mathbf F(e,\alpha)=2\sum_k\frac{1}{v_k}
+ \begin{pmatrix}
+ |\partial_e\mu_k|^2 & \Reel\{(\partial_e\mu_k)^*\partial_\alpha\mu_k\}\\
+ \Reel\{(\partial_e\mu_k)^*\partial_\alpha\mu_k\} & |\partial_\alpha\mu_k|^2
+ \end{pmatrix}.}
+\end{equation}
+Si $\mathbf C$ dépend des paramètres, il faut ajouter
+$\operatorname{tr}(\mathbf C^{-1}\mathbf C_{,i}\mathbf C^{-1}\mathbf C_{,j})$
+à~\eqref{eq:fimg}. Une covariance estimée puis tenue fixe conduit à une
+borne conditionnelle approchée.
+
+\section{FIM explicite pour \texorpdfstring{$(e,\alpha)$}{(e, alpha)} : calibration connue}\label{sec:fermee}
+
+Dans cette section, $r_k$, $b_k$, $n_k$, $G_k$ et $\tau_0$ sont connus
+et indépendants de $(e,\alpha)$. Définissons l'écho arrière nominal
+\begin{equation}
+ u_k=P_kb_kz_k(e).
+\end{equation}
+Les deux dérivées de~\eqref{eq:mu} sont
+\begin{equation}\label{eq:deriv}
+ \boxed{\partial_e\mu_k=-2\ii\beta_k\alpha u_k,\qquad
+        \partial_\alpha\mu_k=u_k.}
+\end{equation}
+L'épaisseur modifie la phase de l'écho arrière ; $\alpha$ modifie son
+amplitude. Leur produit scalaire réel à chaque fréquence est nul :
+\begin{equation}
+ \Reel\{(\partial_e\mu_k)^*\partial_\alpha\mu_k\}
+ =\Reel\{2\ii\beta_k\alpha|u_k|^2\}=0.
+\end{equation}
+Pour un bruit indépendant entre fréquences, posons
+\begin{equation}
+ W_0=\sum_k\frac{|u_k|^2}{v_k},\qquad
+ W_2=\sum_k\frac{\beta_k^2|u_k|^2}{v_k}.
+\end{equation}
+On obtient la FIM demandée :
+\begin{equation}\label{eq:fimfermee}
+ \boxed{\mathbf F(e,\alpha)=
+ \begin{pmatrix}
+ 8\alpha^2W_2 & 0\\
+ 0 & 2W_0
+ \end{pmatrix}.}
+\end{equation}
+Cette diagonale exprime une orthogonalité locale des sensibilités, sous
+ces hypothèses. Elle ne signifie pas que les estimateurs sont toujours
+indépendants, ni que $e$ et $\alpha$ resteront découplés quand la calibration
+sera inconnue. Avec une covariance fréquentielle générale, on utilise
+\eqref{eq:fimg} ; le terme croisé ne s'annule plus nécessairement.
+
+\subsection{Bornes de Cramér--Rao}
+Pour un estimateur non biaisé, un modèle régulier et un point intérieur,
+\begin{equation}\label{eq:crb}
+ \Cov(\widehat{\boldsymbol\theta})\succeq\mathbf F^{-1},\qquad
+ \boxed{\Var(\hat e)\geq\frac{1}{8\alpha^2W_2},\quad
+        \Var(\hat\alpha)\geq\frac{1}{2W_0}.}
+\end{equation}
+Le symbole $\succeq$ signifie que la différence est semi-définie positive.
+Les unités de $F_{ee}$ et de $F_{\alpha\alpha}$ sont respectivement
+$\mathrm{m}^{-2}$ et 1. L'écart-type minimal est la racine carrée de la borne
+sur la variance.
+
+Lorsque $\alpha\to0$, l'information sur l'épaisseur disparaît : sans écho
+arrière, on ne peut plus mesurer son retard. À $\alpha=0$ exactement, la
+FIM est singulière et les bornes régulières ne s'appliquent pas à la paire.
+Si l'on impose $\alpha\leq1$, le point $\alpha=1$ est aussi une frontière,
+où les bornes du problème contraint demandent un traitement spécifique.
+
+Une FIM inversible caractérise une identifiabilité locale régulière, pas
+l'unicité globale. Même une mesure à une fréquence peut avoir une FIM locale
+inversible dans ce cas calibré, tout en présentant une ambiguïté d'épaisseur
+par multiples de $c/(2nf)$ pour un indice constant. Des minima concurrents,
+le bruit élevé ou une erreur de modèle peuvent empêcher d'atteindre les bornes.
+
+\subsection{Expression à l'aide du rapport signal sur bruit}
+Posons $\rho_k=|\alpha u_k|^2/v_k$, le rapport signal sur bruit complexe
+\emph{de l'écho arrière}, et $\rho_{\rm tot}=\sum_k\rho_k$. Alors
+\begin{equation}
+ F_{ee}=8\sum_k\rho_k\beta_k^2,\qquad
+ F_{\alpha\alpha}=\frac{2\rho_{\rm tot}}{\alpha^2}.
+\end{equation}
+La présence de la fréquence absolue dans $\beta_k^2$ repose ici sur une
+référence de phase connue. La section suivante montre ce qui change lorsque
+la phase est inconnue.
+
+\section{Paramètres auxiliaires : gain, phase et retard}
+
+Une SOL au bout du câble ne détermine pas à elle seule le couplage complexe
+antenne--plaque. Supposons $G_k=g\,\overline G_k$, avec une forme fréquentielle
+$\overline G_k$ connue, mais un gain $g=g_R+\ii g_I$ et un retard $\tau_0$
+inconnus. Le vecteur complet est
+\begin{equation}
+ \boldsymbol\vartheta=(e,\alpha,g_R,g_I,\tau_0)^T.
+\end{equation}
+Avec $a_k=\overline G_k\exp(-\ii2\pi f_k\tau_0)
+[r_k+\alpha b_kz_k]$, les dérivées supplémentaires sont
+\begin{equation}
+ \partial_{g_R}\mu_k=a_k,\qquad
+ \partial_{g_I}\mu_k=\ii a_k,\qquad
+ \partial_{\tau_0}\mu_k=-\ii2\pi f_k\mu_k.
+\end{equation}
+On construit la FIM complète par~\eqref{eq:fimg}. En notant
+$\boldsymbol\eta=(g_R,g_I,\tau_0)$ les paramètres auxiliaires,
+\begin{equation}
+ \mathbf F_{\text{complète}}=
+ \begin{pmatrix}\mathbf F_{\theta\theta}&\mathbf F_{\theta\eta}\\
+ \mathbf F_{\eta\theta}&\mathbf F_{\eta\eta}\end{pmatrix}.
+\end{equation}
+Si $\mathbf F_{\eta\eta}$ est inversible, l'information effective est
+le complément de Schur :
+\begin{equation}\label{eq:schur}
+ \boxed{\mathbf F_{\rm eff}=\mathbf F_{\theta\theta}
+ -\mathbf F_{\theta\eta}\mathbf F_{\eta\eta}^{-1}\mathbf F_{\eta\theta}.}
+\end{equation}
+La borne pertinente est $\mathbf F_{\rm eff}^{-1}$, si elle existe.
+Le bloc $\mathbf F_{\theta\theta}^{-1}$ supposerait les paramètres auxiliaires
+connus. Si un bloc est singulier, il faut identifier les directions non
+observables ; une pseudo-inverse n'autorise pas à annoncer une précision
+finie dans une direction indéterminée.
+
+\paragraph{Ambiguïté exacte avec un seul écho.}
+Si l'on ne dispose que de l'écho arrière, avec $n$ constant,
+\begin{equation}
+ \mu_k=g\alpha\overline G_k b_k
+ \exp[-\ii2\pi f_k(\tau_0+2ne/c)].
+\end{equation}
+Un gain libre absorbe $\alpha$, et un retard libre absorbe $e$.
+Pour $\alpha,\alpha'>0$, prendre $g'=g\alpha/\alpha'$ et
+$\tau_0'=\tau_0+2n(e-e')/c$ laisse toutes les moyennes inchangées.
+Les deux paramètres sont donc non identifiables dans ce modèle.
+La contribution de face avant liée au même gain, ou des contraintes de
+calibration indépendantes, peuvent apporter l'information manquante.
+Il faut vérifier le rang au point étudié. Un gain complexe arbitraire
+à chaque fréquence peut absorber toute la réponse aux fréquences où
+celle-ci ne s'annule pas.
+
+\subsection{Phase inconnue : la largeur de bande apparaît explicitement}
+Pour isoler ce mécanisme, considérons un seul écho de la forme
+\begin{equation}
+ \mu_k=\alpha A_k\exp(\ii\phi-2\ii\beta_ke),
+\end{equation}
+avec $A_k$ connu (incluant un retard externe connu), et $\phi$ inconnu.
+Posons $w_k=|A_k|^2/v_k$, $W_0=\sum_kw_k$,
+$W_1=\sum_kw_k\beta_k$ et $W_2=\sum_kw_k\beta_k^2$.
+Dans l'ordre $(e,\alpha,\phi)$, la FIM est
+\begin{equation}
+ \mathbf F=
+ \begin{pmatrix}
+ 8\alpha^2W_2 & 0 & -4\alpha^2W_1\\
+ 0 & 2W_0 & 0\\
+ -4\alpha^2W_1 & 0 & 2\alpha^2W_0
+ \end{pmatrix}.
+\end{equation}
+Après élimination de $\phi$,
+\begin{equation}\label{eq:phase}
+ \boxed{\mathbf F_{\rm eff}=
+ \begin{pmatrix}
+ 8\alpha^2\sum_kw_k(\beta_k-\overline\beta)^2 & 0\\
+ 0 & 2W_0
+ \end{pmatrix},\qquad\overline\beta=W_1/W_0.}
+\end{equation}
+La fréquence absolue est remplacée par l'étalement des fréquences : une
+phase constante inconnue absorbe la phase moyenne, mais pas sa pente.
+Pour $n$ constant, des poids égaux et $N$ points équidistants incluant les
+bornes du balayage,
+\begin{equation}
+ \sum_kw_k(\beta_k-\overline\beta)^2
+ =W_0\left(\frac{2\pi n}{c}\right)^2
+ \frac{B^2(N+1)}{12(N-1)}.
+\end{equation}
+À grand $N$, avec $\rho_{\rm tot}=\alpha^2W_0$,
+\begin{equation}
+ \operatorname{sd}(\hat e)\ \gtrsim\
+ \frac{\sqrt{3/2}\,c}{2\pi nB\sqrt{\rho_{\rm tot}}}.
+\end{equation}
+Il s'agit d'une approximation de la borne locale, pas d'une garantie sur
+l'erreur réelle. Elle montre le rôle conjoint de la bande et du bruit :
+une précision inférieure à la largeur des pics est possible dans un modèle
+identifiable. Pour la plaque complète et ses paramètres auxiliaires, on
+recalcule~\eqref{eq:schur} au lieu de transposer cette formule particulière.
+
+\section{Extension aux réflexions internes multiples}\label{sec:multiple}
+
+Si $\alpha$ représente la perte d'amplitude de propagation sur un
+aller-retour, chaque aller-retour supplémentaire introduit le même facteur.
+On pose alors
+\begin{equation}
+ q_k=\alpha z_k(e),\qquad
+ \Gamma_k=\frac{r_k+s_kq_k}{1+r_ks_kq_k},\qquad
+ \mu_k=P_k\Gamma_k.
+\end{equation}
+Le développement
+$\Gamma_k=r_k+(1-r_k^2)s_kq_k+O(q_k^2)$ retrouve le modèle à deux échos.
+L'approximation est justifiée si $|r_ks_kq_k|\ll1$.
+Si $\alpha$ représente seulement une correction empirique du premier
+écho arrière, sa réutilisation à chaque aller-retour est une hypothèse
+supplémentaire, à justifier.
+
+Pour $r_k$ et $s_k$ connus et indépendants de $(e,\alpha)$, définissons
+\begin{equation}
+ h_k=P_k\frac{s_k(1-r_k^2)z_k}{(1+r_ks_k\alpha z_k)^2}.
+\end{equation}
+Alors
+\begin{equation}
+ \partial_e\mu_k=-2\ii\beta_k\alpha h_k,\qquad
+ \partial_\alpha\mu_k=h_k.
+\end{equation}
+La FIM calibrée reste de la forme~\eqref{eq:fimfermee}, en remplaçant
+$u_k$ par $h_k$ dans $W_0$ et $W_2$. Ces poids dépendent maintenant de
+$(e,\alpha)$ à travers les interférences multiples.
+
+\paragraph{Limite de l'hypothèse sur les interfaces.}
+Un matériau dissipatif possède un indice complexe, donc des coefficients
+de Fresnel dépendant des pertes. Pour inclure cet effet, on peut utiliser
+$\kappa=-\log\alpha/(2e)$ et
+$\widetilde n_{2,k}=n_k-\ii c\kappa/(2\pi f_k)$ dans les coefficients
+$r_k$ et $s_k$. Ceux-ci dépendent alors de $e$ et de $\alpha$ : leurs
+\emph{dérivées totales} doivent être incluses dans~\eqref{eq:fim2}.
+En particulier, pour $t\in\{e,\alpha\}$ et $P_k$ connu,
+\begin{equation}
+ \partial_t\mu_k=\frac{P_k}{(1+r_ks_kq_k)^2}
+ \left[(1-s_k^2q_k^2)\partial_t r_k
+ +q_k(1-r_k^2)\partial_t s_k
+ +s_k(1-r_k^2)\partial_t q_k\right].
+\end{equation}
+La diagonale~\eqref{eq:fimfermee} n'est alors plus garantie. La constance de
+$n_k$ et de $\alpha$ sur une bande est une hypothèse effective ; une loi
+matérielle dispersive doit être explicitée si elle est nécessaire.
+
+\section{Application aux données du projet}
+
+\paragraph{Programmes A et B.}
+Le programme \texttt{s11\_cible\_A.py} conserve le profil IFFT avec fenêtre
+de Hann. Le programme \texttt{s11\_cible\_B.py} ajuste directement les données
+complexes, y compris celles d'une acquisition existante (option
+\texttt{--mesure}). La SOL et le fond sont communs aux deux méthodes.
+L'option \texttt{--modele plaque --indice n} utilise le modèle à deux faces
+ci-dessus avec un gain complexe constant inconnu et un retard externe libre ;
+elle estime $e$ et $\alpha$ dans des intervalles déclarés.
+Le mode par défaut \texttt{--modele echos} ajuste une somme d'échos à retards
+et gains complexes libres, adaptée au diagnostic avec une plaque métallique ;
+il n'estime pas une épaisseur diélectrique.
+La réponse fréquentielle de l'antenne n'est pas déconvoluée. Les distances
+restent apparentes et la qualité des résidus doit être examinée avant toute
+interprétation des paramètres ou de la FIM. Voir \texttt{plexiglas/README.md}
+pour les commandes, hypothèses de bruit et fichiers produits.
+
+
+\begin{enumerate}
+\item Utiliser \texttt{freqs} et \texttt{residu} de \texttt{cible.npz},
+produit par \texttt{s11\_cible\_A.py} ou \texttt{s11\_cible\_B.py}. Le résidu est la différence complexe
+entre moyenne cible et moyenne du fond.
+\item Estimer la covariance au niveau de cette moyenne. Dans
+\texttt{fond.npz}, \texttt{sigma\_complexe} est un écart-type complexe
+\emph{par sweep} : son carré doit être divisé par le nombre de sweeps du
+fond avant d'être ajouté à la variance de la moyenne cible.
+\item Vérifier la stabilité, les corrélations fréquentielles et l'hypothèse
+de bruit propre. Si cette dernière échoue, utiliser le vecteur réel empilant
+parties réelle et imaginaire, avec sa covariance complète.
+\item Préciser les grandeurs calibrées : indice, interfaces, réponse
+fréquentielle de l'antenne, gain et retard jusqu'à la face avant.
+Un indice inconnu doit être ajouté aux paramètres : la phase de propagation
+porte d'abord sur le produit $ne$.
+\item Ajuster le modèle complexe sur un domaine physique en recherchant
+les minima concurrents ; calculer les dérivées et la FIM au point ajusté.
+Éliminer les paramètres auxiliaires avant d'inverser.
+\item Examiner le rang après mise à l'échelle des paramètres (par exemple
+$e$ en mm), les corrélations et les résidus. Comparer les bornes à la
+dispersion de répétitions indépendantes.
+\end{enumerate}
+
+\paragraph{Durée des sinusoïdes et information.}
+Le temps d'établissement et d'intégration intervient dans le bruit $v_k$
+et dans la validité de la mesure en régime établi. Il ne se déduit pas de
+START et STOP. Une intégration plus longue peut diminuer les variances,
+sans réduire directement la largeur des pics à bande fixée. Augmenter
+le nombre de points à durée totale fixée ne garantit pas plus d'information,
+car les $v_k$ peuvent augmenter. Sur une grille régulière, $1/\Delta f$
+est la période du profil temporel reconstruit, distincte de sa résolution
+$\sim1/B$.
+
+\paragraph{Conclusion.}
+Pour une calibration connue et un bruit indépendant, l'épaisseur agit
+sur la phase et le facteur $\alpha$ sur l'amplitude de l'écho arrière :
+la FIM est la matrice diagonale~\eqref{eq:fimfermee}. Pour une mesure réelle,
+la question décisive est l'information restant après prise en compte du
+gain, du retard et des autres inconnues, donnée par~\eqref{eq:schur}.
+La résolution de 400~ps entre 1 et 3,5~GHz ne suffit donc pas à conclure
+sur la précision de l'épaisseur : il faut le bruit, le modèle et sa FIM effective.
+
+\begin{thebibliography}{9}
+\bibitem{abeida}
+H. Abeida et J.-P. Delmas,
+\emph{Slepian--Bangs formulas for parameterized density generator of
+elliptically symmetric distributions}, Signal Processing 205 (2023), 108886.
+\href{https://doi.org/10.1016/j.sigpro.2022.108886}{doi:10.1016/j.sigpro.2022.108886}.
+Référence pour la formule gaussienne générale et ses extensions ; les
+calculs du modèle de plaque sont développés dans le présent document.
+\bibitem{keysight}
+Keysight, \emph{Time Domain}, documentation E5080A,
+\href{https://helpfiles.keysight.com/csg/e5080a/time/timedomain.htm}
+{transformation temporelle, résolution et étendue de mesure}.
+\bibitem{portextension}
+Keysight, \emph{Port Extensions}, documentation VNA,
+\href{https://helpfiles.keysight.com/csg/pxivna/S3_Cals/Port_Extensions.htm}
+{déplacement du plan de référence après calibration}.
+\bibitem{litevnausb}
+\emph{LiteVNA User Guide}, annexe « USB data interface »,
+\href{https://nanovna.com/wp-content/uploads/2021/11/LiteVNA_User-Guide.pdf}
+{description du protocole USB}. Les expressions de décodage ci-dessus
+correspondent au pilote \texttt{plexiglas/progs/litevna.py} utilisé dans le projet.
+\end{thebibliography}
+\end{document}

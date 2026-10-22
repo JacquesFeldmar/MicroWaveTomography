@@ -4,76 +4,80 @@ Vivaldi antipodale sur FR4, conception du projet
 
 A COCHER SUR LE FORMULAIRE
 --------------------------
-  Board Type .................. Single pieces
-  Different Design ............ 1
-  Size ........................ 143.1 x 280.6 mm
-  Quantity .................... 5
-  Layers ...................... 2
-  Material .................... FR-4, TG130 ou TG150
-  Thickness ................... 1.6 mm
-  Min track/spacing ........... 6/6 mil, l'option par defaut
-                                (le plus petit detail du dessin fait
-                                 0.80 mm, soit 31 mil)
-  Min hole size ............... 0.3 mm, l'option par defaut
-                                (le plus petit trou fait 3.0 mm)
-  Solder mask ................. n'importe quelle couleur (voir plus bas)
-  Silkscreen .................. None
-  Edge connector .............. No
-  Surface finish .............. ENIG (or) ou Immersion silver (argent)
-  Copper weight ............... 1 oz
-  Gold fingers ................ No
-  Castellated holes ........... No
-  Remove product No. .......... Yes
+Board Type .................. Single pieces
+Different Design ............ 1
+Size ........................ 143.669 x 280.903 mm
+Quantity .................... 5
+Layers ...................... 2
+Material .................... FR-4 Shengyi S1000H, TG150 (pas de substitution sans accord)
+Thickness ................... 1.600 mm
+Copper weight ............... 1 oz (35 um nominal)
+Surface finish .............. ENIG
+Solder mask ................. None, aucune resine sur aucune face
+Silkscreen .................. None
+Min track/spacing ........... 6/6 mil (detail source: 0.457 mm)
+Min hole size ............... 0.457 mm
+Edge connector / gold fingers / castellated holes ... No
+Remove product No. .......... Yes, aucune marque ajoutee sur les antennes
 
-LE VERNIS : OUVERT SUR TOUT LE CUIVRE
--------------------------------------
-Les deux couches de vernis fournies ne sont pas celles d'une carte ordinaire :
-elles reprennent exactement les formes du cuivre. Le vernis est donc RETIRE
-partout ou il y a du cuivre, et ne subsiste que sur le FR4 nu -- les fentes.
+CONTRAT DE FABRICATION ET DE COMPARAISON
+---------------------------------------
+Les dimensions de carte sont celles de la LIGNE MEDIANE du contour GKO.
+La largeur du trait de contour (0,100 mm) ne s'ajoute pas a ces dimensions.
+Les GTS/GBS ouvrent le vernis sur toute la carte; demander aussi explicitement
+None au fabricant. Aucun vernis ne doit rester dans les fentes ou sur le FR4.
+NPTH : 2 trous mecaniques, TYPE=NON_PLATED, fichier -NPTH.DRL.
+PTH : 2 vias metallises, TYPE=PLATED, fichier -PTH.DRL.
+Le panneau comporte 1 conception(s), a declarer comme telles.
+La quantite de l'article panneau se compte en PANNEAUX complets.
+Les diametres PTH sont FINIS apres metallisation; les vias restent ouverts.
+Pas de remplissage, bouchage, tenting ou resine dans les vias.
+Le cuivre rejoint volontairement le bord UNIQUEMENT a l'alimentation SMA.
+Ne pas reculer ce cuivre ni ajouter chanfrein, dorure dure ou metallisation
+de tranche sous pretexte de l'option "Edge connector" : elle est No.
 
-Pourquoi : la simulation suppose du cuivre nu. Le vernis sur le cuivre n'a
-aucun effet radio -- le champ tangentiel y est nul -- mais il faut pouvoir
-souder le connecteur n'importe ou sur la tranche, et il faut que la finition
-protege toute la surface.
+Fiche matiere : https://www.pcbway.com/img/images/product/TDS-S1000H-S1000HB.pdf
+Valeurs de reference du choix de matiere : epsilon_r = 4.6,
+tan(delta) = 0.011 a 1 GHz.
+Ces valeurs ne sont pas des mesures du lot livre ni une caracterisation
+large bande. Conserver reference et lot, epaisseur livree, tolerance de gravure,
+epaisseur de cuivre et empilage ENIG pour confronter mesures et simulation.
+Le modele utilise h=1.600 mm de DIELECTRIQUE. Faire preciser
+l'epaisseur dielectrique et l'epaisseur finie cuivre/finition inclus separement.
+La valeur nominale du formulaire ne remplace pas ces dimensions du lot.
+Le port ideal de simulation ne caracterise pas le connecteur SMA ni sa soudure.
+La calibration VNA doit avoir son plan de reference et ses fichiers conserves.
 
-Ce qui reste de vernis, dans les fentes, deplace la frequence de moins de 1 %
--- vingt micrometres contre 1,6 mm de substrat. C'est dix fois moins que la
-tolerance du FR4 lui-meme sur sa permittivite. On aurait pu demander « pas de
-vernis du tout » et coller encore mieux a la simulation, mais ce n'est pas une
-option sure du formulaire, et le risque de blocage de la commande est plus
-couteux que ce 1 %.
+CONNECTEUR ET SEPARATION
+------------------------
+SMA femelle bord de carte : Cinch/Johnson 142-0701-851, non RP-SMA.
+L'empreinte est DEJA dans les Gerbers : signal dessus, deux pattes de masse
+dessus reliees au plan de masse dessous par deux vias PTH par antenne.
+Le pad signal mesure 2,286 x 5,080 mm avant adaptation vers la ligne.
 
-La couleur du vernis est donc indifferente. La finition, non : ENIG est le
-choix robuste ; sa couche de nickel est legerement plus dissipative en
-hyperfrequence que l'argent chimique, ce qui se discute sur la ligne
-d'alimentation et nulle part ailleurs. L'argent chimique est meilleur en radio
-et se ternit en quelques mois a l'air libre.
-
-LE CONNECTEUR
--------------
-Aucune empreinte de connecteur n'est posee : le SMA est un modele BORD DE
-CARTE (edge-launch), qui se sertit sur la tranche et se soude d'un cote sur le
-ruban, de l'autre sur la masse. C'est ce que suppose la simulation, dont le
-port se trouve exactement dans le plan de cette tranche.
-
-
-FICHIERS
---------
-   vivaldi_tomographie.GTL
-   vivaldi_tomographie.GBL
-   vivaldi_tomographie.GTS
-   vivaldi_tomographie.GBS
-   vivaldi_tomographie.GKO
-   vivaldi_tomographie-NPTH.DRL
+Le connecteur, sa reference et la position de soudure font partie du montage
+experimental. Aucune equivalence exacte avec un port ideal n'est supposee.
+Les connecteurs ne sont pas inclus dans cette commande de PCB nus.
+Les anciennes courbes de la revision sans cette implantation ne qualifient
+pas la revision presente. Se reporter au bilan de campagne qui accompagne
+la livraison pour le statut et les limites de qualification numerique.
 
 CONTROLE AVANT COMMANDE
 -----------------------
-Ouvrir le ZIP dans un visualiseur Gerber (gerbv, ou celui de PCBWay apres
-depot) et mesurer :
-   - largeur de la carte : 143.07 mm
-   - longueur de la carte : 280.60 mm
+   - largeur de la carte : 143.67 mm
+   - longueur de la carte : 280.90 mm
    - ouverture de la bouche, entre les deux bords interieurs du cuivre : 107.07 mm
    - largeur de la ligne d'alimentation : 3.00 mm (c'est elle qui fixe les 50 ohms)
    - largeur du cuivre restant a la bouche, de chaque cote : 18.00 mm
+Verifier le contour et les deux faces dans le visualiseur du fabricant.
+Ne pas ajouter ni modifier de cuivre, trou ou contour lors de la revue CAM.
 
-Si ces cotes ne sont pas retrouvees, ce ne sont pas les fichiers simules.
+FICHIERS
+--------
+  vivaldi_tomographie.GTL
+  vivaldi_tomographie.GBL
+  vivaldi_tomographie.GTS
+  vivaldi_tomographie.GBS
+  vivaldi_tomographie.GKO
+  vivaldi_tomographie-NPTH.DRL
+  vivaldi_tomographie-PTH.DRL

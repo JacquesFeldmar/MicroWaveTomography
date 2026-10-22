@@ -1,0 +1,69 @@
+{
+  "schema": "preparation_contrelecture_n34_statique_root_v1",
+  "utc": "2026-10-19T09:25:09.765830+00:00",
+  "script": "chatGPT_critical_review\\controle_extreme_fin\\revue_croisee_n34\\controle_croise.py",
+  "sha256": "f90614057f62c620622e6fdeaffa3ce1fb22c1ad3f37f45e91e7a1873f2f69f2",
+  "syntaxe_AST_valide": true,
+  "whitelist": [
+    "base_8ns",
+    "fin_8ns",
+    "fin_12ns",
+    "tres_fin_8ns",
+    "tres_fin_12ns",
+    "ultra_fin_8ns",
+    "ultra_fin_12ns",
+    "extreme_fin_8ns",
+    "extreme_fin_12ns",
+    "n30_8ns",
+    "n30_12ns",
+    "n34_8ns",
+    "n34_12ns"
+  ],
+  "paires": {
+    "spatial": [
+      "n30_12ns",
+      "n34_12ns"
+    ],
+    "temporel": [
+      "n34_8ns",
+      "n34_12ns"
+    ]
+  },
+  "schema_helper_et_observateur_coherents_a_la_lecture": true,
+  "revue_agent_independante": "reprise_fdtd/revue_prefixe_sondes",
+  "revue_root_effectuee": true,
+  "script_execute": false,
+  "profil_n34_lu": false,
+  "source_gelee_modifiee": false,
+  "sources_17_inchangees_sha256": {
+    "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+    "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+    "raffine_qualification_plus_pcbway.py": "15fe2ef41de4c4c3c4da0954dc2396fa652f3b75ba18d0f373824a4aab39d3c3"
+  },
+  "conditions_execution": [
+    "Apres fin de26841 et attestationscompletes du vrai code0 de la file77627.",
+    "Helper13profils termine, code0ou2 ; executions du nouveau FDTD/globalQ interdites.",
+    "Compareravant R/Q/CSV finaux pour conserverles17SHA dephasegelee."
+  ],
+  "codes_futurs": {
+    "0": "Accordetconvergenceacceptee",
+    "2": "Accordetechecnumeriqueconserve",
+    "3": "Prerequisabsents,sansprofilouvert",
+    "1": "Erreur integrite/precondition invalide"
+  },
+  "qualification_globale_effectuee": false
+}

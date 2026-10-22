@@ -1,0 +1,30 @@
+{
+  "anciensZIP_sha256": {
+    "controle_extreme_fin_preuves.zip": "505efed7e4bc59f6752c0cbaa8586e7c128b3e8d3edc87d5efbc2dcaa6121be6",
+    "controle_helper_n34_preuves.zip": "76584fda25af11f7d518c5261a8ccf22846879b02847ac018a4a2330fffbc03f",
+    "controle_helpers_n30_vivaldi_ultra_preuves.zip": "97f71bce5935169316e12a0171ec3b29be7b6b44cbe2bf306370b27b85faa1d4",
+    "controle_n30_preuves.zip": "f2992757544c969fe198dd12d440b38a077648998e69488f5aead0c80893a88f",
+    "controle_n34_plus_avant_preuves.zip": "4a439a8eb72530812b13e7d93446b56db022605c6a951b966c34165df6f3bff6",
+    "controle_vivaldi_tres_fin_preuves.zip": "c102b09a0a3e2f55b111f8e067702ec64c8dc41118dc60c4aee6f8ee0ae6a20b",
+    "diagnostic_grilles_n30_preuves.zip": "f6f0faadab879e4c471e189f7555efeb54e09167f1fef2ad46f333c2e6185ecb",
+    "revue_commun_maurice_2026-10-18_preuves.zip": "22bf2d79e7244db2343a4e49f7a5a1eaa45543acb966256a58a4985e933a8831",
+    "staging_integration_qualification_preuves.zip": "bd9b62a3fe6396b54a722ab21fd894424b1940c4adb11a810a9f2ddb52710a04"
+  },
+  "archive": "portee_grilles_pdf_preuves.zip",
+  "archive_sha256": "b8caa952c76a050125080386ad97e76ea684e1c0ab613287909227e277b7b887",
+  "builder_SHA_apres": "68b9f6d3756e71c645dce8f55a530a5d2436198a3962fcfccd380cc2a7eee7fc",
+  "builder_SHA_avant": "2d130603f5ced4a926fb39fc6b6c90f3e061dacbc44f5c805e8bfbf533fd7fe9",
+  "controles": {
+    "CRC_SHA_tous_membres": true,
+    "anciensZIP_inchanges": 9,
+    "aucun_test_PDF_import_projet_solveur_ou_profil": true,
+    "index_source4_valide": true,
+    "sources17_inchangees": true,
+    "sources6_inchangees": true
+  },
+  "fichiers_sources": 6,
+  "manifest_interne_sha256": "41a2e3ecedad9ed5c3ace3dfbe7ecc3c844f813036e1931f9a03cf41a3788027",
+  "membres_total": 9,
+  "taille_octets": 30705,
+  "utc": "2026-10-19T02:36:50.171554+00:00"
+}

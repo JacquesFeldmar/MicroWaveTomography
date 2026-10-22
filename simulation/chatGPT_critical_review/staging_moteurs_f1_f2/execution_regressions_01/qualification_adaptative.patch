@@ -1,0 +1,71 @@
+--- a/simulation/qualification_adaptative.py
++++ b/simulation/qualification_adaptative.py
+@@ -259,13 +259,27 @@
+     return list(profils)
+ 
+ 
+-def _mesure_ecarts(type_,noms,donnees):
++def _grilles_temporelles(noms,chemins):
++    """Les resumes et dt ne remplacent pas les coordonnees NPZ effectives."""
++    with np.load(chemins[noms[0]]/"maillage.npz",allow_pickle=False) as a, \
++         np.load(chemins[noms[1]]/"maillage.npz",allow_pickle=False) as b:
++        for axe in "xyz":
++            x,y = a[axe],b[axe]
++            if (x.dtype.str != "<f8" or y.dtype.str != "<f8" or
++                    x.ndim != 1 or x.shape != y.shape or
++                    not np.all(np.isfinite(x)) or not np.all(np.isfinite(y)) or
++                    x.tobytes() != y.tobytes()):
++                raise ValueError("maillage temporel NPZ non identique bit a bit sur "+axe)
++
++
++def _mesure_ecarts(type_,noms,donnees,chemins):
+     a,b = (donnees[n] for n in noms)
+     if type_ == "temporel":
+         if a[2]["maillage"] != b[2]["maillage"]:
+             raise ValueError("la comparaison temporelle doit conserver le meme maillage")
+         if a[2]["execution"]["dt_s"] != b[2]["execution"]["dt_s"]:
+             raise ValueError("la comparaison temporelle doit conserver le meme pas temporel")
++        _grilles_temporelles(noms,chemins)
+     return Q.ecarts(a[0],a[1],b[0],b[1],temporel=type_ == "temporel")
+ 
+ 
+@@ -335,6 +349,8 @@
+         if (precedent.get("configuration_sha256") != bilan["configuration_sha256"] or
+                 precedent.get("selection") != selection):
+             raise ValueError("configuration de selection modifiee depuis la qualification")
++    campagnes = {}
++    moteur_campagne = None
+     for nom in Q.ANTENNES:
+         spec = effectives[nom]
+         noms = _profils_selection(spec)
+@@ -347,6 +363,11 @@
+             niveau,duree = profil(p)
+             donnees[p] = Q.charge_calcul(chemins[p],exiger_courant=True)
+             Q.valide_campagne(donnees[p][2],donnees[p][3],nom,niveau,duree)
++            moteur = Q.identite_moteur(donnees[p][2],donnees[p][3])
++            if moteur_campagne is None:
++                moteur_campagne = moteur
++            if moteur != moteur_campagne:
++                raise ValueError("melange de moteurs entre calculs ou antennes de la campagne")
+         initial = donnees[noms[0]]
+         for d in donnees.values():
+             if d[3]["geometrie_sha256"] != initial[3]["geometrie_sha256"]:
+@@ -355,10 +376,15 @@
+                 raise ValueError("contrats differents entre calculs retenus ou preliminaires")
+             if any(d[2][cle] != initial[2][cle] for cle in ("sources_sha256","environnement")):
+                 raise ValueError("sources/environnement differents entre calculs retenus ou preliminaires")
++        campagnes[nom] = (spec,noms,chemins,donnees)
++    if moteur_campagne == Q.MOTEUR_F2:
++        bilan["moteur"] = Q.MOTEUR_F2
++    for nom in Q.ANTENNES:
++        spec,noms,chemins,donnees = campagnes[nom]
+         final = donnees[spec["reference"]]
+-        spatial = _mesure_ecarts("spatial",spec["spatial"],donnees)
+-        temporel = _mesure_ecarts("temporel",spec["temporel"],donnees)
+-        essais = [dict(**deepcopy(e),ecarts=_mesure_ecarts(e["type"],e["calculs"],donnees))
++        spatial = _mesure_ecarts("spatial",spec["spatial"],donnees,chemins)
++        temporel = _mesure_ecarts("temporel",spec["temporel"],donnees,chemins)
++        essais = [dict(**deepcopy(e),ecarts=_mesure_ecarts(e["type"],e["calculs"],donnees,chemins))
+                   for e in spec["preliminaires"]]
+         resultat = dict(spatial=spatial,temporel=temporel,reference=str(chemins[spec["reference"]]),
+             geometrie_sha256=final[3]["geometrie_sha256"],indicateurs=Q.indicateurs(final[0],final[1]),

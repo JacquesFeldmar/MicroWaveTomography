@@ -1,0 +1,1542 @@
+{
+  "schema": "lecture_scientifique_operateur_Petit_F2_v1",
+  "utc": "2026-10-22T08:45:25.703617+00:00",
+  "python": "3.13.16 | packaged by Anaconda, Inc. | (main, Oct  1 2026, 20:20:25) [MSC v.1942 64 bit (AMD64)]",
+  "numpy": "2.5.3",
+  "threads_analyse": 1,
+  "scripts_sha256": {
+    "analyse_operateur.py": "c7e21aa6e64219f91882f816c53137bd9c8239a88bc10b62e65f4ffb0c42cb09",
+    "lecture_vtk.py": "41c960d84b3be80a85ee70bc4777c469e64278c8ca8f735a38b19d5b80f3f5d4"
+  },
+  "execution_Setups_close_sha256": "a20c636e0b5aee1d475713c88acd83432a8d9e3859cee434a8eba9378d8d1554",
+  "plan_sha256": "60e25a3876c3f9bb7741dc620607b1c6861b3a4c20e4452af09c325d80121fb7",
+  "sources18_avant": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316"
+  },
+  "sources18_apres": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316"
+  },
+  "inspection03_fichiers_avant": {
+    "contexte/gel_campagne_F2.json": "ef5c2b51af7498b2337839e07ed8104432f44e411ae34e8feb6fafd8763aa581",
+    "contexte/inspecte_operateurs_sans_temps.py": "5179c6b2333d4230e29d9ca7ddd44110fb4d40af0145422026a5f92cd3313261",
+    "contexte/openEMS.pxd": "03c007303f795c132c13340e8afc639895b07b7f04f0edce1a88ced272e607c8",
+    "contexte/openEMS.pyx": "1d500cae3ec67c38f979f2f7699147b5789f3107766b07502287943300f4f996",
+    "contexte/openEMS_help.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "contexte/openEMS_help.stdout.txt": "1b15d9651f0d77755ad6de691a723ddb3273370560f8a09f2b9feadd2459a891",
+    "contexte/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "contexte/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "contexte/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "contexte/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "contexte/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "contexte/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "contexte/sources/calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316",
+    "contexte/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "contexte/sources/donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "contexte/sources/export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "contexte/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "contexte/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "contexte/sources/fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "contexte/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "contexte/sources/qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "contexte/sources/qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "contexte/sources/raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "contexte/sources/traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "entrees/base_12ns/entree_openems.xml": "646ee8a71b53343b0595c6515d06d26736642919621bcce3f2cfc1c62ad71900",
+    "entrees/base_12ns/maillage.npz": "4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439",
+    "entrees/base_12ns/simulation_manifest.json": "33e5994c1707cbf0969a94cbe7c3584cb4402af5ce5978e2346d36f9fb088211",
+    "entrees/fin_16ns/entree_openems.xml": "f7469df2c46697e960c9845b099ae9896e8379bdbc742ea0095dcb59a743219e",
+    "entrees/fin_16ns/maillage.npz": "9c18c73bad6f77892073cf010b14e7f2d851340a06617b6bcfe70be7c879554f",
+    "entrees/fin_16ns/simulation_manifest.json": "5a9bef4bf70b0c31251b151b0b76535d7c6aa4bbf49de574d10590efc3786b76",
+    "execution_demarre.json": "a8002a9045c3b19df28ea729e9a550d7f224bf6618ff6af6b8fb47080d1483fa",
+    "execution_terminee.json": "a20c636e0b5aee1d475713c88acd83432a8d9e3859cee434a8eba9378d8d1554",
+    "index_preparation.json": "d6c90d6b32141e0effd02ad700c5c5fdeeb61a5319e533e5c7a1ee7f327ac018",
+    "index_sorties.json": "5584788304778e8e8964248454eb287896a32034caa4f0a246cd7bb39210663c",
+    "journaux/base_12ns.stderr.txt": "2057ade0444e895826cba9827239d617d85102bbfb049ca2ec43a5ff19d3bd56",
+    "journaux/base_12ns.stdout.txt": "306cd5aef476beaeafc73132c38e4d1b07575a2fe97daecb0601b7914d80d1cb",
+    "journaux/fin_16ns.stderr.txt": "09e0413cb8c92cd72223ebe42770e1ed9aa2faada9875489a77b0da1d5ce85a8",
+    "journaux/fin_16ns.stdout.txt": "90a235a0d46e1a8053975179a674541b45167af15a544d8ed0b69874424ba99e",
+    "plan.json": "60e25a3876c3f9bb7741dc620607b1c6861b3a4c20e4452af09c325d80121fb7",
+    "sorties/base_12ns/box_dump_.vtk": "3b29e53a052035a5916c5d45f82f0cc62ae11505fddd5ce0725a9dd388b84dc5",
+    "sorties/base_12ns/et": "aad9f7153b617c5f45e04a28fc80494a23ad082141c54d0f2cb27a22ee2fc438",
+    "sorties/base_12ns/ht": "c0236e9107627c19fd53757b348af1c6fb7c9904bc880f68fd315b91c11c0c17",
+    "sorties/base_12ns/operator_dump.vtr": "f186747fa2ee303344aa78d6b3cfea00603a42d58b16bcb3f82952f96fd3dda5",
+    "sorties/base_12ns/PEC_dump.vtp": "68553764e1653f7d4d34d3d50043dd6fb5757dce841ef5cc236504a3d0a43784",
+    "sorties/base_12ns/preuve_retour_setup.json": "5d35b22dea607bd76e0465a196d16bce60d8221f4ac1bf3235b84611672a633a",
+    "sorties/fin_16ns/box_dump_.vtk": "b0267dee95bd888b1f364261bd4d14c884ef5f33dea9a2282a42697c488a272d",
+    "sorties/fin_16ns/et": "d158054074ddf0bb8b8d1c0572dd932c2544938b79c5018a8ff89a65c3b32a45",
+    "sorties/fin_16ns/ht": "2e8c0ff79e438be9f6f1b6b256659235589d4fe6dff5524ae0f6bb88147d30e5",
+    "sorties/fin_16ns/operator_dump.vtr": "ef7fac2791f207918ec2d365fdf985d7168bc94e2c0de47e8559c48508a229a6",
+    "sorties/fin_16ns/PEC_dump.vtp": "03e809ec6d6ffc50c36e78d65b9ed9ef475cf03b23278a1b791a61984c136cd4",
+    "sorties/fin_16ns/preuve_retour_setup.json": "f2572c7688d6d0cba8a974be8c2b19cad47309e42bc7a6e4010849e8a233b5d1"
+  },
+  "inspection03_fichiers_apres": {
+    "contexte/gel_campagne_F2.json": "ef5c2b51af7498b2337839e07ed8104432f44e411ae34e8feb6fafd8763aa581",
+    "contexte/inspecte_operateurs_sans_temps.py": "5179c6b2333d4230e29d9ca7ddd44110fb4d40af0145422026a5f92cd3313261",
+    "contexte/openEMS.pxd": "03c007303f795c132c13340e8afc639895b07b7f04f0edce1a88ced272e607c8",
+    "contexte/openEMS.pyx": "1d500cae3ec67c38f979f2f7699147b5789f3107766b07502287943300f4f996",
+    "contexte/openEMS_help.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "contexte/openEMS_help.stdout.txt": "1b15d9651f0d77755ad6de691a723ddb3273370560f8a09f2b9feadd2459a891",
+    "contexte/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "contexte/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "contexte/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "contexte/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "contexte/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "contexte/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "contexte/sources/calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316",
+    "contexte/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "contexte/sources/donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "contexte/sources/export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "contexte/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "contexte/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "contexte/sources/fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "contexte/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "contexte/sources/qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "contexte/sources/qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "contexte/sources/raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "contexte/sources/traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "entrees/base_12ns/entree_openems.xml": "646ee8a71b53343b0595c6515d06d26736642919621bcce3f2cfc1c62ad71900",
+    "entrees/base_12ns/maillage.npz": "4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439",
+    "entrees/base_12ns/simulation_manifest.json": "33e5994c1707cbf0969a94cbe7c3584cb4402af5ce5978e2346d36f9fb088211",
+    "entrees/fin_16ns/entree_openems.xml": "f7469df2c46697e960c9845b099ae9896e8379bdbc742ea0095dcb59a743219e",
+    "entrees/fin_16ns/maillage.npz": "9c18c73bad6f77892073cf010b14e7f2d851340a06617b6bcfe70be7c879554f",
+    "entrees/fin_16ns/simulation_manifest.json": "5a9bef4bf70b0c31251b151b0b76535d7c6aa4bbf49de574d10590efc3786b76",
+    "execution_demarre.json": "a8002a9045c3b19df28ea729e9a550d7f224bf6618ff6af6b8fb47080d1483fa",
+    "execution_terminee.json": "a20c636e0b5aee1d475713c88acd83432a8d9e3859cee434a8eba9378d8d1554",
+    "index_preparation.json": "d6c90d6b32141e0effd02ad700c5c5fdeeb61a5319e533e5c7a1ee7f327ac018",
+    "index_sorties.json": "5584788304778e8e8964248454eb287896a32034caa4f0a246cd7bb39210663c",
+    "journaux/base_12ns.stderr.txt": "2057ade0444e895826cba9827239d617d85102bbfb049ca2ec43a5ff19d3bd56",
+    "journaux/base_12ns.stdout.txt": "306cd5aef476beaeafc73132c38e4d1b07575a2fe97daecb0601b7914d80d1cb",
+    "journaux/fin_16ns.stderr.txt": "09e0413cb8c92cd72223ebe42770e1ed9aa2faada9875489a77b0da1d5ce85a8",
+    "journaux/fin_16ns.stdout.txt": "90a235a0d46e1a8053975179a674541b45167af15a544d8ed0b69874424ba99e",
+    "plan.json": "60e25a3876c3f9bb7741dc620607b1c6861b3a4c20e4452af09c325d80121fb7",
+    "sorties/base_12ns/box_dump_.vtk": "3b29e53a052035a5916c5d45f82f0cc62ae11505fddd5ce0725a9dd388b84dc5",
+    "sorties/base_12ns/et": "aad9f7153b617c5f45e04a28fc80494a23ad082141c54d0f2cb27a22ee2fc438",
+    "sorties/base_12ns/ht": "c0236e9107627c19fd53757b348af1c6fb7c9904bc880f68fd315b91c11c0c17",
+    "sorties/base_12ns/operator_dump.vtr": "f186747fa2ee303344aa78d6b3cfea00603a42d58b16bcb3f82952f96fd3dda5",
+    "sorties/base_12ns/PEC_dump.vtp": "68553764e1653f7d4d34d3d50043dd6fb5757dce841ef5cc236504a3d0a43784",
+    "sorties/base_12ns/preuve_retour_setup.json": "5d35b22dea607bd76e0465a196d16bce60d8221f4ac1bf3235b84611672a633a",
+    "sorties/fin_16ns/box_dump_.vtk": "b0267dee95bd888b1f364261bd4d14c884ef5f33dea9a2282a42697c488a272d",
+    "sorties/fin_16ns/et": "d158054074ddf0bb8b8d1c0572dd932c2544938b79c5018a8ff89a65c3b32a45",
+    "sorties/fin_16ns/ht": "2e8c0ff79e438be9f6f1b6b256659235589d4fe6dff5524ae0f6bb88147d30e5",
+    "sorties/fin_16ns/operator_dump.vtr": "ef7fac2791f207918ec2d365fdf985d7168bc94e2c0de47e8559c48508a229a6",
+    "sorties/fin_16ns/PEC_dump.vtp": "03e809ec6d6ffc50c36e78d65b9ed9ef475cf03b23278a1b791a61984c136cd4",
+    "sorties/fin_16ns/preuve_retour_setup.json": "f2572c7688d6d0cba8a974be8c2b19cad47309e42bc7a6e4010849e8a233b5d1"
+  },
+  "deux_profils_originaux_avant": {
+    "base_12ns/_calibration_dt/calibration.json": "d71dc412bb87a04591694b8f6a6a6aae064b32f272753e4a47073a200b30c24f",
+    "base_12ns/_calibration_dt/entree_calibration.xml": "e8ddf7b723ed6c00622fbf0be5464d4a55e6d46c69a09e252e2afecf0e0300c2",
+    "base_12ns/_calibration_dt/et": "7247e7ea652a9dda956b0de7abdf9a3204b46fe669afb2c45c69e0bbaa7d9d6a",
+    "base_12ns/_calibration_dt/ht": "e75d4852cbc87ba504dcd5a44b84c127d7e2f91d1c061158627b2cd642ac34b7",
+    "base_12ns/_calibration_dt/openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "base_12ns/_calibration_dt/openEMS_stats.txt": "a8d5b02bc31a66be5eca604e2057cec4827a7ff781dc977eaa70d26d135750e9",
+    "base_12ns/_calibration_dt/port_it_1": "003988ddbe71175c8ed96ad2ee080dc6c1e16348c64cea578d20a6dd0223c5e6",
+    "base_12ns/_calibration_dt/port_ut_1": "3aa17598b7a71f1b5cb2c7e1fd5867f7308cfe5309004385255010687c7fa19d",
+    "base_12ns/entree_openems.xml": "646ee8a71b53343b0595c6515d06d26736642919621bcce3f2cfc1c62ad71900",
+    "base_12ns/et": "aad9f7153b617c5f45e04a28fc80494a23ad082141c54d0f2cb27a22ee2fc438",
+    "base_12ns/geometrie.json": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+    "base_12ns/ht": "c0236e9107627c19fd53757b348af1c6fb7c9904bc880f68fd315b91c11c0c17",
+    "base_12ns/maillage.npz": "4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439",
+    "base_12ns/openEMS_run_stats.txt": "0e358b81898ded3d9accb2805c5d931a6c3f00df6c6465b1ab3b7e7198a6860a",
+    "base_12ns/openEMS_stats.txt": "f6a77d713f707d21a1ff1311115d3efcc48bf57a9fab86ab432ad556bea0be97",
+    "base_12ns/port_it_1": "0379296b6e479824cca44fb0b6ff61dc2e4ae6d06b517b7401e4b0c60b86ad75",
+    "base_12ns/port_ut_1": "807996ea34283128de800a1610e89d311c070685fd48718a6409d54744d6b3de",
+    "base_12ns/qualification_entree.json": "c621aaa07274cdbbdfb46b1abc6a08f6447e255241f2e5f80780362d5b0d538d",
+    "base_12ns/s11.s1p": "deb437e598bacd125bb1e1513bd1ef9b0b4a26f558f7f60e71d8025fe10f82a3",
+    "base_12ns/s11_indicateurs.json": "0d31af342d33545844548fa9939f370da742d82cfc49deaedf23dbdccaf48035",
+    "base_12ns/simulation_manifest.json": "33e5994c1707cbf0969a94cbe7c3584cb4402af5ce5978e2346d36f9fb088211",
+    "base_12ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "base_12ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "base_12ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "base_12ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "base_12ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "base_12ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "base_12ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "base_12ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "base_12ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "base_12ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_16ns/_calibration_dt/calibration.json": "d53428d418af0d950ef1bf2b76229b57755c16a3d11881f0a9ede3e284d3097a",
+    "fin_16ns/_calibration_dt/entree_calibration.xml": "4717f70174861d9dcff3ad02fd905d2788f58a3682d193081a02743093360cdf",
+    "fin_16ns/_calibration_dt/et": "4e70c4b53047a30a31d3ab47f8e7f073765dd76898cc0804115f269963281813",
+    "fin_16ns/_calibration_dt/ht": "19d21dab480af2599a094ed212847f370fa217ed46e8e63b6b744aee7b4037a8",
+    "fin_16ns/_calibration_dt/openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "fin_16ns/_calibration_dt/openEMS_stats.txt": "13a60245aeedd6dbe41b359fe200ac8524b5a737911a812647fa31398c7d28cf",
+    "fin_16ns/_calibration_dt/port_it_1": "9d88b0a58f4889845fe735837d2408e0a757f000dcbe24a381042de43e768ba5",
+    "fin_16ns/_calibration_dt/port_ut_1": "d3c19c6120fad2047ea79a0e8122f89dac04e2bfde1c04674b322a5fa8c12092",
+    "fin_16ns/entree_openems.xml": "f7469df2c46697e960c9845b099ae9896e8379bdbc742ea0095dcb59a743219e",
+    "fin_16ns/et": "d158054074ddf0bb8b8d1c0572dd932c2544938b79c5018a8ff89a65c3b32a45",
+    "fin_16ns/geometrie.json": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+    "fin_16ns/ht": "2e8c0ff79e438be9f6f1b6b256659235589d4fe6dff5524ae0f6bb88147d30e5",
+    "fin_16ns/maillage.npz": "9c18c73bad6f77892073cf010b14e7f2d851340a06617b6bcfe70be7c879554f",
+    "fin_16ns/openEMS_run_stats.txt": "42c06f37b4d5edf80b804e062921ed8d22bb100c42f63229d80c1166e59210b2",
+    "fin_16ns/openEMS_stats.txt": "3a497b3ef5d944a23ae27e96c3873647e7bd5f7d0d79f35bfa127f5945aa933c",
+    "fin_16ns/port_it_1": "af96da313fafb8779cc4fe80b494795b91e18b2456c69522f6838f1544e30fd2",
+    "fin_16ns/port_ut_1": "62fab5052f24ffb94d50c1605e7ea442ecc202f12f0d2ed43b76cb6a370c18e0",
+    "fin_16ns/qualification_entree.json": "7a2029c9012f837fc524ad4994571fd476f77c80a30961134cee8b85ca41db1d",
+    "fin_16ns/s11.s1p": "a2ea270d7ad029165cfc6462b540cf3e22d04a040f7fd5118a694bfe31d9e11c",
+    "fin_16ns/s11_indicateurs.json": "19606909112e212d3230d77a7d641698106e700e3494db60d80dbdcb61468923",
+    "fin_16ns/simulation_manifest.json": "5a9bef4bf70b0c31251b151b0b76535d7c6aa4bbf49de574d10590efc3786b76",
+    "fin_16ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_16ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_16ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_16ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_16ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_16ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_16ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_16ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_16ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "fin_16ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3"
+  },
+  "deux_profils_originaux_apres": {
+    "base_12ns/_calibration_dt/calibration.json": "d71dc412bb87a04591694b8f6a6a6aae064b32f272753e4a47073a200b30c24f",
+    "base_12ns/_calibration_dt/entree_calibration.xml": "e8ddf7b723ed6c00622fbf0be5464d4a55e6d46c69a09e252e2afecf0e0300c2",
+    "base_12ns/_calibration_dt/et": "7247e7ea652a9dda956b0de7abdf9a3204b46fe669afb2c45c69e0bbaa7d9d6a",
+    "base_12ns/_calibration_dt/ht": "e75d4852cbc87ba504dcd5a44b84c127d7e2f91d1c061158627b2cd642ac34b7",
+    "base_12ns/_calibration_dt/openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "base_12ns/_calibration_dt/openEMS_stats.txt": "a8d5b02bc31a66be5eca604e2057cec4827a7ff781dc977eaa70d26d135750e9",
+    "base_12ns/_calibration_dt/port_it_1": "003988ddbe71175c8ed96ad2ee080dc6c1e16348c64cea578d20a6dd0223c5e6",
+    "base_12ns/_calibration_dt/port_ut_1": "3aa17598b7a71f1b5cb2c7e1fd5867f7308cfe5309004385255010687c7fa19d",
+    "base_12ns/entree_openems.xml": "646ee8a71b53343b0595c6515d06d26736642919621bcce3f2cfc1c62ad71900",
+    "base_12ns/et": "aad9f7153b617c5f45e04a28fc80494a23ad082141c54d0f2cb27a22ee2fc438",
+    "base_12ns/geometrie.json": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+    "base_12ns/ht": "c0236e9107627c19fd53757b348af1c6fb7c9904bc880f68fd315b91c11c0c17",
+    "base_12ns/maillage.npz": "4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439",
+    "base_12ns/openEMS_run_stats.txt": "0e358b81898ded3d9accb2805c5d931a6c3f00df6c6465b1ab3b7e7198a6860a",
+    "base_12ns/openEMS_stats.txt": "f6a77d713f707d21a1ff1311115d3efcc48bf57a9fab86ab432ad556bea0be97",
+    "base_12ns/port_it_1": "0379296b6e479824cca44fb0b6ff61dc2e4ae6d06b517b7401e4b0c60b86ad75",
+    "base_12ns/port_ut_1": "807996ea34283128de800a1610e89d311c070685fd48718a6409d54744d6b3de",
+    "base_12ns/qualification_entree.json": "c621aaa07274cdbbdfb46b1abc6a08f6447e255241f2e5f80780362d5b0d538d",
+    "base_12ns/s11.s1p": "deb437e598bacd125bb1e1513bd1ef9b0b4a26f558f7f60e71d8025fe10f82a3",
+    "base_12ns/s11_indicateurs.json": "0d31af342d33545844548fa9939f370da742d82cfc49deaedf23dbdccaf48035",
+    "base_12ns/simulation_manifest.json": "33e5994c1707cbf0969a94cbe7c3584cb4402af5ce5978e2346d36f9fb088211",
+    "base_12ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "base_12ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "base_12ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "base_12ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "base_12ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "base_12ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "base_12ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "base_12ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "base_12ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "base_12ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_16ns/_calibration_dt/calibration.json": "d53428d418af0d950ef1bf2b76229b57755c16a3d11881f0a9ede3e284d3097a",
+    "fin_16ns/_calibration_dt/entree_calibration.xml": "4717f70174861d9dcff3ad02fd905d2788f58a3682d193081a02743093360cdf",
+    "fin_16ns/_calibration_dt/et": "4e70c4b53047a30a31d3ab47f8e7f073765dd76898cc0804115f269963281813",
+    "fin_16ns/_calibration_dt/ht": "19d21dab480af2599a094ed212847f370fa217ed46e8e63b6b744aee7b4037a8",
+    "fin_16ns/_calibration_dt/openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "fin_16ns/_calibration_dt/openEMS_stats.txt": "13a60245aeedd6dbe41b359fe200ac8524b5a737911a812647fa31398c7d28cf",
+    "fin_16ns/_calibration_dt/port_it_1": "9d88b0a58f4889845fe735837d2408e0a757f000dcbe24a381042de43e768ba5",
+    "fin_16ns/_calibration_dt/port_ut_1": "d3c19c6120fad2047ea79a0e8122f89dac04e2bfde1c04674b322a5fa8c12092",
+    "fin_16ns/entree_openems.xml": "f7469df2c46697e960c9845b099ae9896e8379bdbc742ea0095dcb59a743219e",
+    "fin_16ns/et": "d158054074ddf0bb8b8d1c0572dd932c2544938b79c5018a8ff89a65c3b32a45",
+    "fin_16ns/geometrie.json": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+    "fin_16ns/ht": "2e8c0ff79e438be9f6f1b6b256659235589d4fe6dff5524ae0f6bb88147d30e5",
+    "fin_16ns/maillage.npz": "9c18c73bad6f77892073cf010b14e7f2d851340a06617b6bcfe70be7c879554f",
+    "fin_16ns/openEMS_run_stats.txt": "42c06f37b4d5edf80b804e062921ed8d22bb100c42f63229d80c1166e59210b2",
+    "fin_16ns/openEMS_stats.txt": "3a497b3ef5d944a23ae27e96c3873647e7bd5f7d0d79f35bfa127f5945aa933c",
+    "fin_16ns/port_it_1": "af96da313fafb8779cc4fe80b494795b91e18b2456c69522f6838f1544e30fd2",
+    "fin_16ns/port_ut_1": "62fab5052f24ffb94d50c1605e7ea442ecc202f12f0d2ed43b76cb6a370c18e0",
+    "fin_16ns/qualification_entree.json": "7a2029c9012f837fc524ad4994571fd476f77c80a30961134cee8b85ca41db1d",
+    "fin_16ns/s11.s1p": "a2ea270d7ad029165cfc6462b540cf3e22d04a040f7fd5118a694bfe31d9e11c",
+    "fin_16ns/s11_indicateurs.json": "19606909112e212d3230d77a7d641698106e700e3494db60d80dbdcb61468923",
+    "fin_16ns/simulation_manifest.json": "5a9bef4bf70b0c31251b151b0b76535d7c6aa4bbf49de574d10590efc3786b76",
+    "fin_16ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_16ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_16ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_16ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_16ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_16ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_16ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_16ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_16ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "fin_16ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3"
+  },
+  "cas": [
+    {
+      "profil": "base_12ns",
+      "forme_zyx3": [
+        100,
+        166,
+        185,
+        3
+      ],
+      "validation_ranges": {
+        "exc_volt": [
+          0.0,
+          0.00014545454178005457
+        ],
+        "vv": [
+          0.0,
+          1.7320508075688772
+        ],
+        "vi": [
+          0.0,
+          4476.4202043877285
+        ],
+        "iv": [
+          0.0,
+          0.03215781053119404
+        ],
+        "ii": [
+          0.0,
+          1.7320508075688772
+        ]
+      },
+      "ecart_axes_VTR_NPZ_m": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "erreur_float32_points_VTP_mm": [
+        4.2319297755000207e-07,
+        9.286403646058261e-07,
+        4.041939982712961e-08
+      ],
+      "graphe_PEC": {
+        "aretes": 20792,
+        "directions_xyz": [
+          10284,
+          10266,
+          242
+        ],
+        "identique_zeros_vv_vi_sur_PCB": true,
+        "contacts": {
+          "masse_G": true,
+          "masse_D": true,
+          "signal_relie_masse": false
+        },
+        "contacts_port": {
+          "bas": true,
+          "haut": true
+        }
+      },
+      "source": {
+        "nombre_aretes": 187,
+        "nombre_x": 17,
+        "nombre_z": 11,
+        "aucun_chevauchement_PEC": true,
+        "R_reconstruite_ohms": 49.99999922070573,
+        "R_reseau_colonnes_ohms": 49.99999922070572,
+        "G_branches_S_minmax": [
+          0.012652270880798455,
+          0.012979697444486531
+        ],
+        "C_RC_base_equivalente_F": 5.297636399584339e-15,
+        "somme_exc_volt_par_colonne_minmax": [
+          -0.0015999999595806003,
+          -0.0015999999595806003
+        ],
+        "domaine_dual_mm": [
+          [
+            -1.2108333333333334,
+            -20.07272727272727,
+            0.0
+          ],
+          [
+            1.2108333333333334,
+            -19.92727272727273,
+            1.6
+          ]
+        ],
+        "largeur_duale_x_mm": 2.421666666666667,
+        "largeur_duale_y_mm": 0.14545454545454106,
+        "boite_I_mm": [
+          [
+            -1.21083,
+            -20.072699999999998,
+            0.8
+          ],
+          [
+            1.21083,
+            -19.9273,
+            0.8
+          ]
+        ],
+        "erreur_boite_I_ASCII_mm": 2.7272727272986685e-05,
+        "centre_normal_I_mm": 0.8
+      },
+      "vias": [
+        {
+          "cote": -1,
+          "colonnes_PEC": 11,
+          "section_duale_mm2": 0.14516099999999985,
+          "aire_cercle_CAD_mm2": 0.16417322322758926,
+          "positions": [
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -14.259599999999999,
+              "dual_x_mm": [
+                -4.3751500000000005,
+                -4.2608500000000005
+              ],
+              "dual_y_mm": [
+                -14.323099999999998,
+                -14.202449999999999
+              ],
+              "aire_duale_mm2": 0.013790294999999949
+            },
+            {
+              "x_mm": -4.432300000000001,
+              "y_mm": -14.145299999999999,
+              "dual_x_mm": [
+                -4.489450000000001,
+                -4.3751500000000005
+              ],
+              "dual_y_mm": [
+                -14.202449999999999,
+                -14.088149999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -14.145299999999999,
+              "dual_x_mm": [
+                -4.3751500000000005,
+                -4.2608500000000005
+              ],
+              "dual_y_mm": [
+                -14.202449999999999,
+                -14.088149999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": -4.2037,
+              "y_mm": -14.145299999999999,
+              "dual_x_mm": [
+                -4.2608500000000005,
+                -4.146550000000001
+              ],
+              "dual_y_mm": [
+                -14.202449999999999,
+                -14.088149999999999
+              ],
+              "aire_duale_mm2": 0.013064489999999915
+            },
+            {
+              "x_mm": -4.432300000000001,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.489450000000001,
+                -4.3751500000000005
+              ],
+              "dual_y_mm": [
+                -14.088149999999999,
+                -13.973849999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.3751500000000005,
+                -4.2608500000000005
+              ],
+              "dual_y_mm": [
+                -14.088149999999999,
+                -13.973849999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": -4.2037,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.2608500000000005,
+                -4.146550000000001
+              ],
+              "dual_y_mm": [
+                -14.088149999999999,
+                -13.973849999999999
+              ],
+              "aire_duale_mm2": 0.013064489999999915
+            },
+            {
+              "x_mm": -4.089400000000001,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.146550000000001,
+                -4.025900000000001
+              ],
+              "dual_y_mm": [
+                -14.088149999999999,
+                -13.973849999999999
+              ],
+              "aire_duale_mm2": 0.01379029500000005
+            },
+            {
+              "x_mm": -4.432300000000001,
+              "y_mm": -13.916699999999999,
+              "dual_x_mm": [
+                -4.489450000000001,
+                -4.3751500000000005
+              ],
+              "dual_y_mm": [
+                -13.973849999999999,
+                -13.859549999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -13.916699999999999,
+              "dual_x_mm": [
+                -4.3751500000000005,
+                -4.2608500000000005
+              ],
+              "dual_y_mm": [
+                -13.973849999999999,
+                -13.859549999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": -4.2037,
+              "y_mm": -13.916699999999999,
+              "dual_x_mm": [
+                -4.2608500000000005,
+                -4.146550000000001
+              ],
+              "dual_y_mm": [
+                -13.973849999999999,
+                -13.859549999999999
+              ],
+              "aire_duale_mm2": 0.013064489999999915
+            }
+          ]
+        },
+        {
+          "cote": 1,
+          "colonnes_PEC": 11,
+          "section_duale_mm2": 0.14516099999999985,
+          "aire_cercle_CAD_mm2": 0.16417322322758926,
+          "positions": [
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -14.259599999999999,
+              "dual_x_mm": [
+                4.2608500000000005,
+                4.3751500000000005
+              ],
+              "dual_y_mm": [
+                -14.323099999999998,
+                -14.202449999999999
+              ],
+              "aire_duale_mm2": 0.013790294999999949
+            },
+            {
+              "x_mm": 4.2037,
+              "y_mm": -14.145299999999999,
+              "dual_x_mm": [
+                4.146550000000001,
+                4.2608500000000005
+              ],
+              "dual_y_mm": [
+                -14.202449999999999,
+                -14.088149999999999
+              ],
+              "aire_duale_mm2": 0.013064489999999915
+            },
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -14.145299999999999,
+              "dual_x_mm": [
+                4.2608500000000005,
+                4.3751500000000005
+              ],
+              "dual_y_mm": [
+                -14.202449999999999,
+                -14.088149999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": 4.432300000000001,
+              "y_mm": -14.145299999999999,
+              "dual_x_mm": [
+                4.3751500000000005,
+                4.489450000000001
+              ],
+              "dual_y_mm": [
+                -14.202449999999999,
+                -14.088149999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": 4.089400000000001,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.025900000000001,
+                4.146550000000001
+              ],
+              "dual_y_mm": [
+                -14.088149999999999,
+                -13.973849999999999
+              ],
+              "aire_duale_mm2": 0.01379029500000005
+            },
+            {
+              "x_mm": 4.2037,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.146550000000001,
+                4.2608500000000005
+              ],
+              "dual_y_mm": [
+                -14.088149999999999,
+                -13.973849999999999
+              ],
+              "aire_duale_mm2": 0.013064489999999915
+            },
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.2608500000000005,
+                4.3751500000000005
+              ],
+              "dual_y_mm": [
+                -14.088149999999999,
+                -13.973849999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": 4.432300000000001,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.3751500000000005,
+                4.489450000000001
+              ],
+              "dual_y_mm": [
+                -14.088149999999999,
+                -13.973849999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": 4.2037,
+              "y_mm": -13.916699999999999,
+              "dual_x_mm": [
+                4.146550000000001,
+                4.2608500000000005
+              ],
+              "dual_y_mm": [
+                -13.973849999999999,
+                -13.859549999999999
+              ],
+              "aire_duale_mm2": 0.013064489999999915
+            },
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -13.916699999999999,
+              "dual_x_mm": [
+                4.2608500000000005,
+                4.3751500000000005
+              ],
+              "dual_y_mm": [
+                -13.973849999999999,
+                -13.859549999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            },
+            {
+              "x_mm": 4.432300000000001,
+              "y_mm": -13.916699999999999,
+              "dual_x_mm": [
+                4.3751500000000005,
+                4.489450000000001
+              ],
+              "dual_y_mm": [
+                -13.973849999999999,
+                -13.859549999999999
+              ],
+              "aire_duale_mm2": 0.013064490000000015
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "profil": "fin_16ns",
+      "forme_zyx3": [
+        110,
+        268,
+        261,
+        3
+      ],
+      "validation_ranges": {
+        "exc_volt": [
+          0.0,
+          9.411764767719433e-05
+        ],
+        "vv": [
+          0.0,
+          1.7320508075688772
+        ],
+        "vi": [
+          0.0,
+          6977.422556710295
+        ],
+        "iv": [
+          0.0,
+          0.0491624971330002
+        ],
+        "ii": [
+          0.0,
+          1.7320508075688772
+        ]
+      },
+      "ecart_axes_VTR_NPZ_m": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "erreur_float32_points_VTP_mm": [
+        4.286337684789032e-07,
+        9.119510657740193e-07,
+        5.620805643147264e-08
+      ],
+      "graphe_PEC": {
+        "aretes": 52240,
+        "directions_xyz": [
+          25676,
+          25646,
+          918
+        ],
+        "identique_zeros_vv_vi_sur_PCB": true,
+        "contacts": {
+          "masse_G": true,
+          "masse_D": true,
+          "signal_relie_masse": false
+        },
+        "contacts_port": {
+          "bas": true,
+          "haut": true
+        }
+      },
+      "source": {
+        "nombre_aretes": 425,
+        "nombre_x": 25,
+        "nombre_z": 17,
+        "aucun_chevauchement_PEC": true,
+        "R_reconstruite_ohms": 49.9999999126989,
+        "R_reseau_colonnes_ohms": 49.999999912698904,
+        "G_branches_S_minmax": [
+          0.012685013112578082,
+          0.013679564102977883
+        ],
+        "C_RC_base_equivalente_F": 3.560509361864921e-15,
+        "somme_exc_volt_par_colonne_minmax": [
+          -0.0016000000105123036,
+          -0.0016000000105123036
+        ],
+        "domaine_dual_mm": [
+          [
+            -1.1837000000228453,
+            -20.050000000000004,
+            0.0
+          ],
+          [
+            1.1836999999770792,
+            -19.95,
+            1.6
+          ]
+        ],
+        "largeur_duale_x_mm": 2.3673999999999245,
+        "largeur_duale_y_mm": 0.10000000000000497,
+        "boite_I_mm": [
+          [
+            -1.1837,
+            -20.049999999999997,
+            0.8
+          ],
+          [
+            1.1837,
+            -19.95,
+            0.8
+          ]
+        ],
+        "erreur_boite_I_ASCII_mm": 2.2920776387991282e-11,
+        "centre_normal_I_mm": 0.8
+      },
+      "vias": [
+        {
+          "cote": -1,
+          "colonnes_PEC": 27,
+          "section_duale_mm2": 0.15741903999826018,
+          "aire_cercle_CAD_mm2": 0.16417322322758926,
+          "positions": [
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -14.259599999999999,
+              "dual_x_mm": [
+                -4.3561000000000005,
+                -4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -14.301933333333348,
+                -14.221499999999999
+              ],
+              "aire_duale_mm2": 0.006129020000001241
+            },
+            {
+              "x_mm": -4.4704000000000015,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                -4.5085000000000015,
+                -4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": -4.3942000000000005,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                -4.4323000000000015,
+                -4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000075
+            },
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                -4.3561000000000005,
+                -4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": -4.2418000000000005,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                -4.2799000000000005,
+                -4.2037
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": -4.1656,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                -4.2037,
+                -4.127500000000001
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.00580643999999994
+            },
+            {
+              "x_mm": -4.4704000000000015,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                -4.5085000000000015,
+                -4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": -4.3942000000000005,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                -4.4323000000000015,
+                -4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000075
+            },
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                -4.3561000000000005,
+                -4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": -4.2418000000000005,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                -4.2799000000000005,
+                -4.2037
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": -4.1656,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                -4.2037,
+                -4.127500000000001
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.00580643999999994
+            },
+            {
+              "x_mm": -4.4704000000000015,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.5085000000000015,
+                -4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": -4.3942000000000005,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.4323000000000015,
+                -4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000075
+            },
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.3561000000000005,
+                -4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": -4.2418000000000005,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.2799000000000005,
+                -4.2037
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": -4.1656,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.2037,
+                -4.127500000000001
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.00580643999999994
+            },
+            {
+              "x_mm": -4.089400000000001,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                -4.127500000000001,
+                -4.047066666689519
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.006129019998258772
+            },
+            {
+              "x_mm": -4.4704000000000015,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                -4.5085000000000015,
+                -4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.005806439999999871
+            },
+            {
+              "x_mm": -4.3942000000000005,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                -4.4323000000000015,
+                -4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.00580643999999994
+            },
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                -4.3561000000000005,
+                -4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.005806439999999871
+            },
+            {
+              "x_mm": -4.2418000000000005,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                -4.2799000000000005,
+                -4.2037
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.005806439999999871
+            },
+            {
+              "x_mm": -4.1656,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                -4.2037,
+                -4.127500000000001
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.0058064399999998035
+            },
+            {
+              "x_mm": -4.4704000000000015,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                -4.5085000000000015,
+                -4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000143
+            },
+            {
+              "x_mm": -4.3942000000000005,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                -4.4323000000000015,
+                -4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.00580644000000021
+            },
+            {
+              "x_mm": -4.3180000000000005,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                -4.3561000000000005,
+                -4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000143
+            },
+            {
+              "x_mm": -4.2418000000000005,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                -4.2799000000000005,
+                -4.2037
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000143
+            },
+            {
+              "x_mm": -4.1656,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                -4.2037,
+                -4.127500000000001
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000075
+            }
+          ]
+        },
+        {
+          "cote": 1,
+          "colonnes_PEC": 27,
+          "section_duale_mm2": 0.15741904000174756,
+          "aire_cercle_CAD_mm2": 0.16417322322758926,
+          "positions": [
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -14.259599999999999,
+              "dual_x_mm": [
+                4.2799000000000005,
+                4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -14.301933333333348,
+                -14.221499999999999
+              ],
+              "aire_duale_mm2": 0.006129020000001241
+            },
+            {
+              "x_mm": 4.1656,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                4.127500000000001,
+                4.2037
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.00580643999999994
+            },
+            {
+              "x_mm": 4.2418000000000005,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                4.2037,
+                4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                4.2799000000000005,
+                4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": 4.3942000000000005,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                4.3561000000000005,
+                4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000075
+            },
+            {
+              "x_mm": 4.4704000000000015,
+              "y_mm": -14.183399999999999,
+              "dual_x_mm": [
+                4.4323000000000015,
+                4.5085000000000015
+              ],
+              "dual_y_mm": [
+                -14.221499999999999,
+                -14.145299999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": 4.1656,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                4.127500000000001,
+                4.2037
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.00580643999999994
+            },
+            {
+              "x_mm": 4.2418000000000005,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                4.2037,
+                4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                4.2799000000000005,
+                4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": 4.3942000000000005,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                4.3561000000000005,
+                4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000075
+            },
+            {
+              "x_mm": 4.4704000000000015,
+              "y_mm": -14.107199999999999,
+              "dual_x_mm": [
+                4.4323000000000015,
+                4.5085000000000015
+              ],
+              "dual_y_mm": [
+                -14.145299999999999,
+                -14.069099999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": 4.089400000000001,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.047066666643753,
+                4.127500000000001
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.0061290200017461455
+            },
+            {
+              "x_mm": 4.1656,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.127500000000001,
+                4.2037
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.00580643999999994
+            },
+            {
+              "x_mm": 4.2418000000000005,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.2037,
+                4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.2799000000000005,
+                4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": 4.3942000000000005,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.3561000000000005,
+                4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000075
+            },
+            {
+              "x_mm": 4.4704000000000015,
+              "y_mm": -14.030999999999999,
+              "dual_x_mm": [
+                4.4323000000000015,
+                4.5085000000000015
+              ],
+              "dual_y_mm": [
+                -14.069099999999999,
+                -13.992899999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000007
+            },
+            {
+              "x_mm": 4.1656,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                4.127500000000001,
+                4.2037
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.0058064399999998035
+            },
+            {
+              "x_mm": 4.2418000000000005,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                4.2037,
+                4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.005806439999999871
+            },
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                4.2799000000000005,
+                4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.005806439999999871
+            },
+            {
+              "x_mm": 4.3942000000000005,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                4.3561000000000005,
+                4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.00580643999999994
+            },
+            {
+              "x_mm": 4.4704000000000015,
+              "y_mm": -13.9548,
+              "dual_x_mm": [
+                4.4323000000000015,
+                4.5085000000000015
+              ],
+              "dual_y_mm": [
+                -13.992899999999999,
+                -13.9167
+              ],
+              "aire_duale_mm2": 0.005806439999999871
+            },
+            {
+              "x_mm": 4.1656,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                4.127500000000001,
+                4.2037
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000075
+            },
+            {
+              "x_mm": 4.2418000000000005,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                4.2037,
+                4.2799000000000005
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000143
+            },
+            {
+              "x_mm": 4.3180000000000005,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                4.2799000000000005,
+                4.3561000000000005
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000143
+            },
+            {
+              "x_mm": 4.3942000000000005,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                4.3561000000000005,
+                4.4323000000000015
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.00580644000000021
+            },
+            {
+              "x_mm": 4.4704000000000015,
+              "y_mm": -13.8786,
+              "dual_x_mm": [
+                4.4323000000000015,
+                4.5085000000000015
+              ],
+              "dual_y_mm": [
+                -13.9167,
+                -13.840499999999999
+              ],
+              "aire_duale_mm2": 0.005806440000000143
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "fichier": "connexions_PEC_port.png",
+      "sha256": "a61cbcd15b49a402a0c5bcfd25697a6335f421391d230d4923a6d86f1c3c91bc"
+    },
+    {
+      "fichier": "coefficients_et_via.png",
+      "sha256": "6dd1681a44e8f7493eb70efe61263c4f7d100bd9925e6f63df74431d04d0866b"
+    }
+  ],
+  "aucun_Setup_Run_ou_nouvelle_grille": true,
+  "aucune_qualification": true,
+  "definition_RC": "G=(1-VV)/VI ; C=dt*(1+VV)/(2*VI) ; Rserie_plans=sum_z 1/sum_x G ; C_RC_inf=1/sum_z 1/sum_x C",
+  "limites": [
+    "L operateur inspecte est celui du CAD XML arrondi, avec axes NPZ/dt restitues : pas ancien CSX bitidentique garanti.",
+    "C RC de base est une representation statique epsilon_inf, pas l impedance complete Debye ni la capacitance RF de toute antenne.",
+    "R reconstituee audite la normalisation du reseau de branches ; elle ne mesure pas Zantenne.",
+    "La section duale de colonnes PEC n est pas un diametre physique de via : les champs sont decales sur Yee.",
+    "Le PEC terminal peut preexister dans le CAD ; les dumps finaux ne permettent pas d attribuer chaque arete aux caps seuls.",
+    "Aucune causalite formelle de l ecart S11 n est demontree par cette seule inspection."
+  ]
+}

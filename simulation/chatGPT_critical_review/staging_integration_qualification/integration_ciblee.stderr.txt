@@ -1,0 +1,12 @@
+test_cli_aide_reconnait_niveaux_et_options_historiques (test_integration_qualification.IntegrationQualification.test_cli_aide_reconnait_niveaux_et_options_historiques) ... ok
+test_cli_comparaison_reelle_sans_et_avec_selection (test_integration_qualification.IntegrationQualification.test_cli_comparaison_reelle_sans_et_avec_selection) ... ok
+test_cli_sans_option_B_et_sans_variable_necrit_aucun_cache (test_integration_qualification.IntegrationQualification.test_cli_sans_option_B_et_sans_variable_necrit_aucun_cache) ... ok
+test_imports_partagent_controleur_et_catalogue_sans_execution (test_integration_qualification.IntegrationQualification.test_imports_partagent_controleur_et_catalogue_sans_execution) ... ok
+test_main_conserve_arguments_et_defauts_sans_calcul (test_integration_qualification.IntegrationQualification.test_main_conserve_arguments_et_defauts_sans_calcul) ... ok
+test_route_import_selon_presence_selection_et_propage_erreur (test_integration_qualification.IntegrationQualification.test_route_import_selon_presence_selection_et_propage_erreur) ... ok
+test_subprocess_main_charge_une_seule_instance_canonique (test_integration_qualification.IntegrationQualification.test_subprocess_main_charge_une_seule_instance_canonique) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 28.277s
+
+OK

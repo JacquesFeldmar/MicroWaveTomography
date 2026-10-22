@@ -85,7 +85,7 @@ verifie("ecarts proches de ceux du rapport (20,0 et 26,3 cm)",
         ", ".join(f"{bil[d]['ecart_proche_cm']:.1f}/"
                   f"{bil[d]['ecart_lointain_cm']:.1f}" for d in sorted(bil)))
 
-print("\n6. La dispersion SEULE elargit l'echo mais ne le deplace pas")
+print("\n6. Dispersion : echo elargi et decalage constant avec la distance")
 
 
 def largeur_et_ecart(antenne, x_cm, cote=0.60):
@@ -118,7 +118,65 @@ verifie("la derive va dans le sens des mesures (ecart qui diminue)",
         ecarts_p[-1] < ecarts_p[0],
         f"{ecarts_p[0]:.2f} -> {ecarts_p[-1]:.2f} cm")
 
-print("\n7. Rappel des mesures a reproduire (rapport du 9 octobre)")
+print("\n7. Regressions audit : pas de fausse deuxieme branche Hann")
+mono = ModeleAntenne(a2=0.)
+fond_mono = simule(FREQS, 50., mono, echos_fixes=())[0]
+mesures_mono = {x: simule(FREQS, x, mono, echos_fixes=())[1] for x in (50., 60., 70.)}
+bmono = tr.bilan(FREQS, fond_mono, mesures_mono, ACQ)
+for x, r in bmono.items():
+    verifie(f"mono {x:.0f} cm : principal sans derive",
+            abs(r["ecart_principal_cm"] - 20.) < .02,
+            f"{r['ecart_principal_cm']:.4f} cm")
+    verifie(f"mono {x:.0f} cm : aucun second candidat",
+            len(r["pics"]) == 1 and np.isnan(r["pic_lointain"]))
+verifie("meme identifiant de suivi principal aux trois distances",
+        len({r["candidats"][0]["suivi_id"] for r in bmono.values()}) == 1)
+verifie("candidats exposes avec rang, niveau et proeminence",
+        all({"rang_amplitude", "niveau_db", "relatif_db", "prominence_db", "qualifie"} <= set(c)
+            for r in bmono.values() for c in r["candidats"]))
+verifie("lobes Hann visibles mais disqualifies",
+        all(any(not c["qualifie"] and c["relatif_db"] < -30. for c in r["candidats"])
+            for r in bmono.values()))
+historique = tr.bilan(FREQS, fond_mono, mesures_mono, ACQ, mode_pics="rapport")
+verifie("mode rapport explicite reproduit l'artefact historique a 70 cm",
+        historique[70.]["ecart_proche_cm"] < 15. and len(historique[70.]["pics"]) == 2)
+verifie("mode rapport conserve pourtant un principal stable",
+        all(abs(r["ecart_principal_cm"] - 20.) < .02 for r in historique.values()))
+bruit_lointain = tr.bilan(FREQS, fond_mono, mesures_mono, ACQ, seuil_relatif_db=-35.)
+verifie("seuil relatif configurable (revele volontairement les lobes)",
+        len(bruit_lointain[50.]["pics"]) == 2)
+sans = tr.bilan(FREQS, np.zeros_like(FREQS), {50.: np.zeros_like(FREQS)}, ACQ)[50.]
+verifie("sans signal : aucun pic, aucune phase arbitraire",
+        not sans["pics"] and not sans["candidats"] and np.isnan(sans["pic_principal"])
+        and np.isnan(sans["decalage_phase_cm"]))
+verifie("bimodal : deux candidats qualifies sans attribution physique",
+        all(len(r["pics"]) == 2 and all(c["qualifie"] for c in r["candidats"][:2]) for r in bil.values()))
+mesures_croisees = {
+    x: a1 * np.exp(-4j * np.pi * FREQS * (x + 10.) / 100 / C)
+       + a2 * np.exp(-4j * np.pi * FREQS * (x + 30.) / 100 / C)
+    for x, a1, a2 in ((50., .9, .3), (60., .3, .9))}
+croisees = tr.bilan(FREQS, np.zeros_like(FREQS), mesures_croisees, ACQ)
+verifie("bimodal : principal suit le rang d'amplitude, sans forcer une branche",
+        abs(croisees[50.]["ecart_principal_cm"] - 10.) < .1 and
+        abs(croisees[60.]["ecart_principal_cm"] - 30.) < .1)
+suivis = [[min((c for c in r["candidats"] if c["qualifie"]),
+               key=lambda c: abs(c["ecart_cm"] - ecart))["suivi_id"]
+           for r in croisees.values()] for ecart in (10., 30.)]
+verifie("bimodal : suivi conserve les deux candidats quand les rangs s'inversent",
+        all(len(set(identifiants)) == 1 for identifiants in suivis))
+epaule = tr.candidats_maxima(np.arange(5) * .01 + .4, [0., 1., .9, 1.01, 0.])
+verifie("proeminence filtre une epaule pourtant proche en amplitude",
+        len([c for c in epaule if c["qualifie"]]) == 1)
+frequences_test = np.linspace(1e9, 2e9, 7)
+adapte = np.array([.1, .1, .8, .8, .1, .1, .8], dtype=complex)
+bandes = tr.bandes_adaptees(frequences_test, adapte)
+verifie("resume S11 : deux segments interrompus, pas une enveloppe",
+        bandes["segments_hz"] == [(frequences_test[0], frequences_test[1]),
+                                   (frequences_test[4], frequences_test[5])])
+verifie("resume S11 : aucune adaptation est un resultat normal",
+        tr.bandes_adaptees(frequences_test, np.full(7, .9))["segments_hz"] == [])
+
+print("\n8. Rappel des mesures a reproduire (rapport du 9 octobre)")
 for d_cm, (proche, lointain) in sorted(MESURES_9_OCT.items()):
     print(f"       plaque {d_cm:.0f} cm : pics {proche:.2f} et {lointain:.2f} cm"
           f"  ->  ecarts {proche-d_cm:.2f} et {lointain-d_cm:.2f} cm")

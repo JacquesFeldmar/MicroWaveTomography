@@ -1,0 +1,48 @@
+MICROWAVETOMOGRAPHY - BARE RF PCBS - TWO SEPARATE ORDER ITEMS
+Physical revision: 2026-10-18. The supplied Gerber profile is authoritative.
+
+ITEM 1: panneau_losanges_pcbway.zip
+Customer-supplied tab-routed panel, TWO DIFFERENT DESIGNS.
+Overall profile centreline size: 92.600 x 72.000 mm.
+Please quote 5 COMPLETE PANELS: 5 small and 5 large antennas after separation.
+Do not count this as a single design. No X-outs or incomplete panels.
+Small PCB: 32.000 x 40.000 mm. Large PCB: 57.600 x 72.000 mm.
+The 3.000 mm routed gap, two 3.000 mm tabs and 16 NPTH mouse-bite holes
+are already drawn. No V-scoring, no added rails or modified tabs.
+16 NPTH holes diameter 0.600 mm; 4 PTH ground vias finished diameter 0.457 mm.
+
+ITEM 2: vivaldi_tomographie_pcbway.zip
+Single PCB, one design, quantity 5.
+Profile centreline size: 143.668736 x 280.903102 mm.
+2 NPTH mounting holes diameter 3.000 mm.
+2 PTH ground vias finished diameter 0.457 mm.
+
+COMMON REQUIREMENTS
+- 2 copper layers, FR-4 Shengyi S1000H TG150. Please confirm the laminate
+  reference and construction. No material substitution without prior agreement.
+- Nominal PCB order thickness: 1.6 mm. Please state dielectric thickness,
+  finished overall thickness and their tolerances separately. Our simulation
+  uses 1.6 mm dielectric; record the actual supplied stack-up for comparison.
+- Finished copper: 1 oz per side, 35 um nominal. Please retain actual data.
+- Surface finish: ENIG. Please retain nickel and gold thickness information.
+- Solder mask: NONE on both faces, including bare FR-4 areas and RF gaps.
+  Supplied GTS/GBS are full-board openings, not a request for resin in gaps.
+- Silkscreen, UV printing, added order number and other added markings: NONE.
+- PTH and NPTH are in separate Excellon files and explicitly identified.
+  PTH diameters are FINISHED diameters after plating. Leave vias OPEN:
+  no plugging, tenting, filling, resin or conductive fill is requested.
+- Copper intentionally reaches the lower feed edge for a soldered SMA launch.
+  Do not pull back that copper. Other Vivaldi edges have a 0.300 mm setback.
+- No gold fingers, hard gold, bevel, castellated holes or edge plating.
+- The SMA footprint is already present. Do not add or replace footprints.
+  Connector: Cinch/Johnson 142-0701-851 female SMA, fitted by the customer.
+  This order is for BARE PCBs; no connectors, assembly or stencil are included.
+- Dimensions refer to the CENTRELINE of the GKO profile. Do not add the
+  0.100 mm graphic stroke width to the finished board size.
+- Preserve antenna copper shapes and registration. Do not alter any copper,
+  hole, slot or profile during CAM without submitting the proposed change.
+
+Please confirm the laminate, quantities, profile/routing, PTH/NPTH distinction,
+no-mask requirement, thickness/stack-up and intended feed-edge copper in CAM.
+The JSON manifest provides traceability; the five Gerbers and two Excellon
+files are the fabrication artwork. This note makes no RF performance claim.

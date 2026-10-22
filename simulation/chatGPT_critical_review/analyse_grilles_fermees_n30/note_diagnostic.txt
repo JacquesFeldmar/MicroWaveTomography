@@ -1,0 +1,60 @@
+Diagnostic des grilles closes du grand losange jusqu'à N30 — 19 octobre 2026
+
+Cette observation documente les échecs spatiaux déjà établis. Elle ne crée
+aucune nouvelle qualification, ne modifie aucun seuil et ne désigne aucune
+nouvelle référence. Les onze profils terminés jusqu'à n30_12ns sont cohérents
+avec leurs sources, leur géométrie, leur contrat et leur environnement.
+
+Une grille non emboîtée est ordinaire et ne constitue pas une erreur en soi.
+Ici, la reconstruction ceil/linspace, le lissage et la redistribution des
+lignes peuvent aussi GROSSIR localement des cellules au palier suivant :
+- à y = −35,975 mm, près du port : 0,04938271604935 mm à extreme_fin,
+  puis 0,08333333333341 mm à N30, soit un rapport 1,6875 ;
+- au point x = −5,23367 mm enregistré dans le rapport, les deux cellules
+  mesurent 0,23622 mm : aucun grossissement x n'est établi à ce point.
+Le grossissement y est mesuré dans les coordonnées NPZ archivées ; il
+n'est pas déduit du seul caractère non emboîté des grilles.
+En revanche, les cellules z dans le substrat passent de 0,1 à 0,08 mm.
+
+Le port idéal reste identique dans les trois XML : x = ±1,143 mm,
+y = −36 mm, z = 0 à 1,6 mm. Le code ajoute ±2*maille_min sur chaque axe.
+Les étendues physiques des intervalles fins x / y / z valent donc :
+  ultra_fin   : 2,786 / 0,500 / 2,100 mm ;
+  extreme_fin : 2,686 / 0,400 / 2,000 mm ;
+  N30         : 2,619333 / 0,333333 / 1,933333 mm.
+Ce sont des intervalles imposés par projection sur chaque axe cartésien,
+pas une boîte locale 3D indépendante : les lignes traversent tout le domaine.
+
+Les bornes extérieures x passent de ±134,74117 à ±132,09749 puis ±129,98256 mm.
+Les PML ont toujours huit cellules. Leur entrée résolue demeure éloignée
+du PCB : distance minimale par face d'environ 75,214 / 75,035 / 75,201 mm pour
+ultra / extreme / N30. Le déplacement des bornes ne démontre donc pas un
+défaut de placement des PML ; leur contribution à S11 n'est pas isolée ici.
+
+Les minima ÉCHANTILLONNÉS évoluent de 3,050 à 3,075 puis 3,125 GHz, et de
+5,825 à 5,850 puis 5,875 GHz. Le pas fréquentiel est 25 MHz ; aucune position
+exacte de résonance entre ces points n'est revendiquée. Les masques dB
+dépendent aussi de la paire : 191 points ultra/extreme, 185 extreme/N30.
+Le RMS complexe, calculé sur tous les points, est indépendant de ce masque.
+
+Preuves et reproduction :
+- rapport.json :cellules exactes, coordonnées des entrées PML, dimensions,
+  minima, métriques historiques et SHA avant/après des 305 fichiers fermés ;
+- profils :simulation/resultats/pcbway_r1/diamant_uwb_x18/{niveau}_{durée}ns/
+  maillage.npz, entree_openems.xml, simulation_manifest.json et s11.s1p ;
+- construction : simulation/fdtd.py lignes 282–317 ; comparaison :
+  simulation/qualifie_pcbway.py lignes 116–131 ;
+- ancrage : checkpoint_n34_fige.json, copie fermée byte-exact du checkpoint
+  opérateur reprise_grand_n34_vivaldi_ultra_fin_lancement.json. Son SHA
+  47dacd80fd860c33e5b5bc0dce61332db1b0d31405936359a2ad22ac7add4383 et les
+  17 SHA attendus sont vérifiés avant/après. Le checkpoint opérateur peut
+  évoluer : il n'est jamais relu par le script ;
+- depuis la racine du projet, lecture seule par défaut :
+  python -B -X utf8 simulation/chatGPT_critical_review/analyse_grilles_fermees_n30/analyse.py
+  L'option --rapport autre_nom_neuf.json écrit uniquement dans ce dossier.
+  Le rejeu exige l'état des sources figées du checkpoint cité.
+
+Limite : ces changements sont établis, mais leur responsabilité respective
+dans S11 n'est pas démontrée. Aucun profil actif N34 ou Vivaldi ultra n'a
+été ouvert ; aucun test ni solveur n'a été lancé. Les échecs et les critères
+de qualification existants restent conservés intégralement.

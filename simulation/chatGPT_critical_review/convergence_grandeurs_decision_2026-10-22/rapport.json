@@ -1,0 +1,589 @@
+{
+  "avertissement": "lecture seule ; aucun seuil modifie, aucune qualification declaree",
+  "bande_hz": [
+    1400000000.0,
+    6000000000.0
+  ],
+  "etendues": {
+    "pcbway_maille_controlee_v2/diamant_uwb": {
+      "niveaux": [
+        "base_12ns",
+        "base_8ns",
+        "fin_12ns",
+        "fin_16ns",
+        "fin_8ns"
+      ],
+      "part_sous_10db_pct": {
+        "etendue": 9.189189189189186,
+        "maximum": 51.35135135135135,
+        "minimum": 42.16216216216216
+      },
+      "part_sous_6db_pct": {
+        "etendue": 0.5405405405405332,
+        "maximum": 79.45945945945945,
+        "minimum": 78.91891891891892
+      },
+      "pire_point_db": {
+        "etendue": 0.007236376474554773,
+        "maximum": -0.5446472065048473,
+        "minimum": -0.5518835829794021
+      },
+      "puissance_reflechie_moyenne_db": {
+        "etendue": 0.13395660759389116,
+        "maximum": -7.174676037894683,
+        "minimum": -7.308632645488574
+      }
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb_x18": {
+      "niveaux": [
+        "base_12ns",
+        "base_8ns",
+        "fin_12ns",
+        "fin_16ns",
+        "fin_8ns"
+      ],
+      "part_sous_10db_pct": {
+        "etendue": 1.0810810810810807,
+        "maximum": 72.43243243243244,
+        "minimum": 71.35135135135135
+      },
+      "part_sous_6db_pct": {
+        "etendue": 0.0,
+        "maximum": 100.0,
+        "minimum": 100.0
+      },
+      "pire_point_db": {
+        "etendue": 0.21658156709933518,
+        "maximum": -7.912902581207786,
+        "minimum": -8.129484148307121
+      },
+      "puissance_reflechie_moyenne_db": {
+        "etendue": 0.13317891014088623,
+        "maximum": -11.959758208077302,
+        "minimum": -12.092937118218188
+      }
+    },
+    "pcbway_maille_controlee_v2/vivaldi_tomographie": {
+      "niveaux": [
+        "base_12ns",
+        "base_8ns",
+        "fin_12ns",
+        "fin_16ns",
+        "fin_8ns"
+      ],
+      "part_sous_10db_pct": {
+        "etendue": 1.0810810810810807,
+        "maximum": 84.32432432432432,
+        "minimum": 83.24324324324324
+      },
+      "part_sous_6db_pct": {
+        "etendue": 0.0,
+        "maximum": 100.0,
+        "minimum": 100.0
+      },
+      "pire_point_db": {
+        "etendue": 0.1651002055749835,
+        "maximum": -6.771483798009539,
+        "minimum": -6.936584003584523
+      },
+      "puissance_reflechie_moyenne_db": {
+        "etendue": 0.07946435307893296,
+        "maximum": -12.681923211357073,
+        "minimum": -12.761387564436006
+      }
+    },
+    "pcbway_r1/diamant_uwb": {
+      "niveaux": [
+        "base_16ns",
+        "base_8ns",
+        "fin_12ns",
+        "fin_16ns",
+        "fin_8ns"
+      ],
+      "part_sous_10db_pct": {
+        "etendue": 1.621621621621614,
+        "maximum": 52.43243243243243,
+        "minimum": 50.810810810810814
+      },
+      "part_sous_6db_pct": {
+        "etendue": 0.0,
+        "maximum": 78.37837837837837,
+        "minimum": 78.37837837837837
+      },
+      "pire_point_db": {
+        "etendue": 0.01316429907864114,
+        "maximum": -0.5556954395972955,
+        "minimum": -0.5688597386759366
+      },
+      "puissance_reflechie_moyenne_db": {
+        "etendue": 0.0226615045169698,
+        "maximum": -7.326793932885407,
+        "minimum": -7.349455437402376
+      }
+    },
+    "pcbway_r1/diamant_uwb_x18": {
+      "niveaux": [
+        "base_8ns",
+        "extreme_fin_12ns",
+        "extreme_fin_8ns",
+        "fin_12ns",
+        "fin_8ns",
+        "n30_12ns",
+        "n30_8ns",
+        "n34_12ns",
+        "n34_8ns",
+        "tres_fin_12ns",
+        "tres_fin_8ns",
+        "ultra_fin_12ns",
+        "ultra_fin_8ns"
+      ],
+      "part_sous_10db_pct": {
+        "etendue": 5.4054054054054035,
+        "maximum": 72.97297297297297,
+        "minimum": 67.56756756756756
+      },
+      "part_sous_6db_pct": {
+        "etendue": 0.0,
+        "maximum": 100.0,
+        "minimum": 100.0
+      },
+      "pire_point_db": {
+        "etendue": 0.5886704868195576,
+        "maximum": -6.444362813419421,
+        "minimum": -7.033033300238978
+      },
+      "puissance_reflechie_moyenne_db": {
+        "etendue": 0.4470746315017813,
+        "maximum": -11.313445720391703,
+        "minimum": -11.760520351893485
+      }
+    },
+    "pcbway_r1/vivaldi_tomographie": {
+      "niveaux": [
+        "base_8ns",
+        "fin_12ns",
+        "fin_8ns",
+        "tres_fin_12ns",
+        "tres_fin_16ns",
+        "ultra_fin_12ns",
+        "ultra_fin_16ns"
+      ],
+      "part_sous_10db_pct": {
+        "etendue": 0.5405405405405475,
+        "maximum": 87.02702702702703,
+        "minimum": 86.48648648648648
+      },
+      "part_sous_6db_pct": {
+        "etendue": 0.0,
+        "maximum": 100.0,
+        "minimum": 100.0
+      },
+      "pire_point_db": {
+        "etendue": 0.44841959137431964,
+        "maximum": -7.142364793162077,
+        "minimum": -7.590784384536397
+      },
+      "puissance_reflechie_moyenne_db": {
+        "etendue": 0.28773767910137416,
+        "maximum": -12.890294813549836,
+        "minimum": -13.17803249265121
+      }
+    },
+    "validation_maille_controle_v2/diamant_uwb": {
+      "niveaux": [
+        "base_2ns",
+        "base_3.5ns"
+      ],
+      "part_sous_10db_pct": {
+        "etendue": 3.243243243243242,
+        "maximum": 49.18918918918919,
+        "minimum": 45.94594594594595
+      },
+      "part_sous_6db_pct": {
+        "etendue": 0.0,
+        "maximum": 80.54054054054053,
+        "minimum": 80.54054054054053
+      },
+      "pire_point_db": {
+        "etendue": 0.08924666604862286,
+        "maximum": -0.45336987988468913,
+        "minimum": -0.542616545933312
+      },
+      "puissance_reflechie_moyenne_db": {
+        "etendue": 0.04058031800370454,
+        "maximum": -7.323324733063691,
+        "minimum": -7.363905051067396
+      }
+    }
+  },
+  "monotonie_f1_grand_losange": [
+    {
+      "arrivee": "tres_fin_12ns",
+      "depart": "fin_12ns",
+      "maximum_complexe": 0.046315801872948766,
+      "rms_complexe": 0.02468819892431312
+    },
+    {
+      "arrivee": "ultra_fin_12ns",
+      "depart": "tres_fin_12ns",
+      "maximum_complexe": 0.03880048309488374,
+      "rms_complexe": 0.020988829452768528
+    },
+    {
+      "arrivee": "extreme_fin_12ns",
+      "depart": "ultra_fin_12ns",
+      "maximum_complexe": 0.02499124575279103,
+      "rms_complexe": 0.017680585782515357
+    },
+    {
+      "arrivee": "n30_12ns",
+      "depart": "extreme_fin_12ns",
+      "maximum_complexe": 0.03174809310318816,
+      "rms_complexe": 0.02184395839800858
+    },
+    {
+      "arrivee": "n34_12ns",
+      "depart": "n30_12ns",
+      "maximum_complexe": 0.06942640758606854,
+      "rms_complexe": 0.01844637321310962
+    }
+  ],
+  "profils": {
+    "pcbway_maille_controlee_v2/diamant_uwb/base_12ns": {
+      "part_sous_10db_pct": 51.35135135135135,
+      "part_sous_6db_pct": 79.45945945945945,
+      "pire_point_db": -0.5518835829794021,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.308632645488574,
+      "sha256_s1p": "deb437e598bacd125bb1e1513bd1ef9b0b4a26f558f7f60e71d8025fe10f82a3"
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb/base_8ns": {
+      "part_sous_10db_pct": 51.35135135135135,
+      "part_sous_6db_pct": 79.45945945945945,
+      "pire_point_db": -0.5446472065048473,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.308510889894606,
+      "sha256_s1p": "74a1e6e892335b6268c7a2631e1f39a26c83c5c52a09ea2021c9594f0a08c139"
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb/fin_12ns": {
+      "part_sous_10db_pct": 42.16216216216216,
+      "part_sous_6db_pct": 78.91891891891892,
+      "pire_point_db": -0.550156646237558,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.174705840691722,
+      "sha256_s1p": "21d4c4b6c4a44001565fbefb73e04291b7cbfcc21cb25422e3531743aedeb934"
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb/fin_16ns": {
+      "part_sous_10db_pct": 42.16216216216216,
+      "part_sous_6db_pct": 78.91891891891892,
+      "pire_point_db": -0.5508363430432907,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.174696767689963,
+      "sha256_s1p": "a2ea270d7ad029165cfc6462b540cf3e22d04a040f7fd5118a694bfe31d9e11c"
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb/fin_8ns": {
+      "part_sous_10db_pct": 42.16216216216216,
+      "part_sous_6db_pct": 78.91891891891892,
+      "pire_point_db": -0.5448378149506572,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.174676037894683,
+      "sha256_s1p": "32566a52ee94d3570dbcf8ea30247a3e900c292d13a2a7db69145e1661a42b62"
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb_x18/base_12ns": {
+      "part_sous_10db_pct": 71.89189189189189,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -8.08824203784795,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -12.092855490412063,
+      "sha256_s1p": "e03f3df22330089e95e945418b762879c022a1ddf8c4f5d1b930d4f53644d998"
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb_x18/base_8ns": {
+      "part_sous_10db_pct": 72.43243243243244,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -8.129484148307121,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -12.092937118218188,
+      "sha256_s1p": "a8ccf712d231b70fef1e8a21e590abccb15cb1402fb921b60df2aa0bb3808bba"
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb_x18/fin_12ns": {
+      "part_sous_10db_pct": 71.35135135135135,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.914011166916891,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.959759265440297,
+      "sha256_s1p": "ac414bc01a6bf5cf588ed44c156c5ac84d17cbf56810d73acf12900440defcea"
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb_x18/fin_16ns": {
+      "part_sous_10db_pct": 71.35135135135135,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.912902581207786,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.959758208077302,
+      "sha256_s1p": "9314e9b3dfc4234c92d0e838d8d1075ea6e1230e39a2e889fd0056c20df437a5"
+    },
+    "pcbway_maille_controlee_v2/diamant_uwb_x18/fin_8ns": {
+      "part_sous_10db_pct": 71.35135135135135,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.947114966034041,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.959795195940826,
+      "sha256_s1p": "646e929025100d8ac1d4ef95ec9348c31cb7d5bdda1e770a549a61e859af15f5"
+    },
+    "pcbway_maille_controlee_v2/vivaldi_tomographie/base_12ns": {
+      "part_sous_10db_pct": 84.32432432432432,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.771483798009539,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -12.681923211357073,
+      "sha256_s1p": "d73ebf07150e3c71354576876bf844e974c8186eb1f0dd1578779526d781e102"
+    },
+    "pcbway_maille_controlee_v2/vivaldi_tomographie/base_8ns": {
+      "part_sous_10db_pct": 84.32432432432432,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.8686661123031465,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -12.68230705089188,
+      "sha256_s1p": "b7687e444bebf6c2d94d84c32f1e32711f72071b5eb72539a0155ed3d14ff125"
+    },
+    "pcbway_maille_controlee_v2/vivaldi_tomographie/fin_12ns": {
+      "part_sous_10db_pct": 83.24324324324324,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.920415991763606,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -12.760771804763571,
+      "sha256_s1p": "f2a97d18da421c8a769729494691b7ae903f82976552acafff6432751bad0d52"
+    },
+    "pcbway_maille_controlee_v2/vivaldi_tomographie/fin_16ns": {
+      "part_sous_10db_pct": 83.24324324324324,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.918638140122344,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -12.760729199371925,
+      "sha256_s1p": "b5199db4c50bce29c12b1add3c57bbe1d9b8491d817e4a48a731ce1ab1cef3b1"
+    },
+    "pcbway_maille_controlee_v2/vivaldi_tomographie/fin_8ns": {
+      "part_sous_10db_pct": 83.78378378378379,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.936584003584523,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -12.761387564436006,
+      "sha256_s1p": "ee98bb2233f71b018edb8c0e2b2071c3ee1b31cdaa136f4ca6676adb4d4f4069"
+    },
+    "pcbway_r1/diamant_uwb/base_16ns": {
+      "part_sous_10db_pct": 51.891891891891895,
+      "part_sous_6db_pct": 78.37837837837837,
+      "pire_point_db": -0.5556954395972955,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.349278858892465,
+      "sha256_s1p": "1b952915fb7b82d4ab9eee95b80333f2769b09adc9583053ef2834df2f28417a"
+    },
+    "pcbway_r1/diamant_uwb/base_8ns": {
+      "part_sous_10db_pct": 52.43243243243243,
+      "part_sous_6db_pct": 78.37837837837837,
+      "pire_point_db": -0.5583384460914589,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.349455437402376,
+      "sha256_s1p": "eae939a1d0318e1ec419cb0e68af330baee77cf1fa2cb0b808fb0cb03b14ce34"
+    },
+    "pcbway_r1/diamant_uwb/fin_12ns": {
+      "part_sous_10db_pct": 51.35135135135135,
+      "part_sous_6db_pct": 78.37837837837837,
+      "pire_point_db": -0.567904061245969,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.326916954833291,
+      "sha256_s1p": "fce438d683021b0a9018c3d4408a6f00b4f83222908ee5fccc4b4f593a461a96"
+    },
+    "pcbway_r1/diamant_uwb/fin_16ns": {
+      "part_sous_10db_pct": 51.35135135135135,
+      "part_sous_6db_pct": 78.37837837837837,
+      "pire_point_db": -0.5609559180665235,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.326793932885407,
+      "sha256_s1p": "fed86f8b874fb53093dbc211a0723a70bf30edabdf645f6e2653836f06d80a1a"
+    },
+    "pcbway_r1/diamant_uwb/fin_8ns": {
+      "part_sous_10db_pct": 50.810810810810814,
+      "part_sous_6db_pct": 78.37837837837837,
+      "pire_point_db": -0.5688597386759366,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.327087189442847,
+      "sha256_s1p": "5efede48c17140e22d0715ca102c389910e501be8ca57b9408da8df0a721c7c8"
+    },
+    "pcbway_r1/diamant_uwb_x18/base_8ns": {
+      "part_sous_10db_pct": 67.56756756756756,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.444362813419421,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.313445720391703,
+      "sha256_s1p": "c22c372f9cfbbd6b96ce832a2e3dd4b30563a3f19d330587918147028d4fb780"
+    },
+    "pcbway_r1/diamant_uwb_x18/extreme_fin_12ns": {
+      "part_sous_10db_pct": 70.8108108108108,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.75212288181288,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.654195036685064,
+      "sha256_s1p": "d657d9b297930493a3d750fa1ce44fe3a08644e845c04f52652eb784cf348d45"
+    },
+    "pcbway_r1/diamant_uwb_x18/extreme_fin_8ns": {
+      "part_sous_10db_pct": 71.35135135135135,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.86418193626311,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.654200826382588,
+      "sha256_s1p": "000aa5fc01c743a437f0106e4a320b4e7a5e03261a16b7490f139daea321e2dc"
+    },
+    "pcbway_r1/diamant_uwb_x18/fin_12ns": {
+      "part_sous_10db_pct": 69.1891891891892,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.512389444316041,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.554717519892957,
+      "sha256_s1p": "d9b101ddacaab835ea886764eac38722b79f76f38232325ac93926d50fbdb405"
+    },
+    "pcbway_r1/diamant_uwb_x18/fin_8ns": {
+      "part_sous_10db_pct": 69.1891891891892,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.65745031578937,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.554738295503565,
+      "sha256_s1p": "d966c7257111e216efeb6685b0a72210fe70def093f73aa727e1a322c80d87df"
+    },
+    "pcbway_r1/diamant_uwb_x18/n30_12ns": {
+      "part_sous_10db_pct": 72.43243243243244,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.774357665398776,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.63354855079781,
+      "sha256_s1p": "10058290c65424db1d4dd9962f4d98c509ac414db69ec69186a4fa3a4e513bf7"
+    },
+    "pcbway_r1/diamant_uwb_x18/n30_8ns": {
+      "part_sous_10db_pct": 72.43243243243244,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.960117253458686,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.633678981925302,
+      "sha256_s1p": "b296d6cdd77cc0e8b2275c5db7cde5f0155fe8d4aaeaf41bfe37a0db38e11df6"
+    },
+    "pcbway_r1/diamant_uwb_x18/n34_12ns": {
+      "part_sous_10db_pct": 72.43243243243244,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.852040496091963,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.701123152802268,
+      "sha256_s1p": "1a8d70132269db7784534c159ab132dc701d1763c2ec9aa7d12ef049857a7bf2"
+    },
+    "pcbway_r1/diamant_uwb_x18/n34_8ns": {
+      "part_sous_10db_pct": 72.97297297297297,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.033033300238978,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.70107802392582,
+      "sha256_s1p": "a30f667ff89121634900d56eff6137e2117cf8afdecd40a760b936ef5087c6e8"
+    },
+    "pcbway_r1/diamant_uwb_x18/tres_fin_12ns": {
+      "part_sous_10db_pct": 71.89189189189189,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.742793334087283,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.760332662670521,
+      "sha256_s1p": "c5f018588007c2cdf9318fd2cce0e12cdfaeb40bad15203ec8c93fb5e1bed7bc"
+    },
+    "pcbway_r1/diamant_uwb_x18/tres_fin_8ns": {
+      "part_sous_10db_pct": 71.89189189189189,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.901778670654162,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.760520351893485,
+      "sha256_s1p": "97d3f90ecb90d4383e3cf72b9428e2e1dd9e164f2b09d32f9f74ecdf97985421"
+    },
+    "pcbway_r1/diamant_uwb_x18/ultra_fin_12ns": {
+      "part_sous_10db_pct": 71.89189189189189,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.846538214238494,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.687461139819233,
+      "sha256_s1p": "4d4bad5520d111b3bca9dd367076dfe9bd6b52f53c261578f9230922f168cef4"
+    },
+    "pcbway_r1/diamant_uwb_x18/ultra_fin_8ns": {
+      "part_sous_10db_pct": 71.89189189189189,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -6.946504452701222,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -11.687506531746228,
+      "sha256_s1p": "545613864eac19d8a93b382f275188c372aeb488a809332bd75a27ed7d90247e"
+    },
+    "pcbway_r1/vivaldi_tomographie/base_8ns": {
+      "part_sous_10db_pct": 87.02702702702703,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.590784384536397,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -13.172842974931589,
+      "sha256_s1p": "1e80ce5ad2752f18aee4a1935fc8d65f72e901c93ee6d4947b0bcf2c024fd3bc"
+    },
+    "pcbway_r1/vivaldi_tomographie/fin_12ns": {
+      "part_sous_10db_pct": 87.02702702702703,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.406440251088165,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -13.173302744556906,
+      "sha256_s1p": "581f2cdc3c41f39b601174779eb61f16d872905f37f811ba881e03ee22ba4bca"
+    },
+    "pcbway_r1/vivaldi_tomographie/fin_8ns": {
+      "part_sous_10db_pct": 86.48648648648648,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.58857412426665,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -13.17803249265121,
+      "sha256_s1p": "f2224742ee8481c0a48a90f2aa760336eeb32603d2a6ff7f12f346fdb61132bd"
+    },
+    "pcbway_r1/vivaldi_tomographie/tres_fin_12ns": {
+      "part_sous_10db_pct": 87.02702702702703,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.351516295193857,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -12.890310613546628,
+      "sha256_s1p": "378fc06e72d51f4d568cd1b910c9fc2aae0147979c7d39191b67c12d8fe0a877"
+    },
+    "pcbway_r1/vivaldi_tomographie/tres_fin_16ns": {
+      "part_sous_10db_pct": 87.02702702702703,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.270900189060684,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -12.890294813549836,
+      "sha256_s1p": "6dab96098b9965c6c62b0a380a6df5b07416d5b570f21d3d15a4429b492374f4"
+    },
+    "pcbway_r1/vivaldi_tomographie/ultra_fin_12ns": {
+      "part_sous_10db_pct": 86.48648648648648,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.142364793162077,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -13.082168514185625,
+      "sha256_s1p": "2fc5a1202af659477bd06e450e956d739fdd36052dd8f63faca1dce40d8a99cb"
+    },
+    "pcbway_r1/vivaldi_tomographie/ultra_fin_16ns": {
+      "part_sous_10db_pct": 86.48648648648648,
+      "part_sous_6db_pct": 100.0,
+      "pire_point_db": -7.147871297822597,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -13.08223667336027,
+      "sha256_s1p": "2c9bcf41e887080acbef43f28d70da34b0a546baa4fa9dd4139693e350061450"
+    },
+    "validation_maille_controle_v2/diamant_uwb/base_2ns": {
+      "part_sous_10db_pct": 45.94594594594595,
+      "part_sous_6db_pct": 80.54054054054053,
+      "pire_point_db": -0.45336987988468913,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.363905051067396,
+      "sha256_s1p": "24bd3ed0b3a3351edfb7f12c0bccbf65211e78a158feb30920a2e9c979157587"
+    },
+    "validation_maille_controle_v2/diamant_uwb/base_3.5ns": {
+      "part_sous_10db_pct": 49.18918918918919,
+      "part_sous_6db_pct": 80.54054054054053,
+      "pire_point_db": -0.542616545933312,
+      "points": 185,
+      "puissance_reflechie_moyenne_db": -7.323324733063691,
+      "sha256_s1p": "bb414d75b6aab908d7fac22f2aa9f04b04ba31b5d87d9141463474edf6725e7c"
+    }
+  }
+}

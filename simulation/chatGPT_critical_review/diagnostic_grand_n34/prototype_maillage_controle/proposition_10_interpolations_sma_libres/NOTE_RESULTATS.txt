@@ -1,0 +1,59 @@
+PROPOSITION10 — SIX GRILLES CONSTRUITES, AUCUN SOLVEUR
+
+Geometries, materiaux et17 sources historiques inchanges. Aucun Run,
+calibrage, S11, profil de qualification ou selection officielle ajoute.
+Base={lambda_substrat16,lambda_air16,maille_port0,15mm} ;
+fin ={lambda_substrat24,lambda_air16,maille_port0,10mm}.
+Normal11/17, vias4/6, meme bloc physique et PML8 exactes aux deux niveaux.
+
+La variante09 conservait artificiellement les points d'interpolation fine
+6,2822667 et6,3669333. Sa contradiction etait conditionnelle a ces points,
+pas une impossibilite physique. La variante10 libere seulement les points
+synthetiques SMA hors port uniforme et vias. Interfaces, centres/parois et
+lignes des vias, x0 primaire, normale impaire et portu+-1,6 restent fixes.
+
+La redistribution reelle Vfin est :
+6,1976 ->6,282266666620885 ->6,364233333318182 ->6,4516 ->6,582649999954057.
+Le dernier intervalle SMA0,087366666681818 permet le suivant0,131049999954057
+avec rapport<=1,5. Aucun detail physique ni plafond n'est relache.
+
+Les primaires BASE sont ancres dans TOUTE la projection PCB hors bloc SMA.
+L'air hors PCB reste libre pour graduer jusqu'aux huit cellules PML fixes.
+Un scan exhaustif des intervalles de l'union des grilles prouve, pour les
+trois antennes, ZERO grossissement de pas sur les projections PCB et blocs
+SMA. Il ne revendique pas la monotonie dans l'air libre ni un emboitement
+global. Certains intervalles PCB sont identiques, d'autres sont subdivises.
+
+Verification independante NumPy : tous plafonds locaux, minimum physique,
+rapport voisin<=1,5(tolerance1e-8), Ux0 primaire exact, Idual h/2 exact,
+11/17 cellules normales et4/6 cellules reelles par diametre via passent.
+Les8 cellules PML sont identiques bit a bit dans les trois axes de chaque
+paire. La garde physique hors PML vaut74,9481145mm a1GHz.
+
+            cellules base / fin        base12ns(h)      fin16ns(h)
+petit       3 005 640 / 7 566 780        1,59–2,22        7,95–11,12
+grand       3 722 400 /10 030 398        1,96–2,75       10,52–14,73
+Vivaldi     9 548 352 /27 169 776        5,01–7,02       28,43–39,80
+
+Couts projetes depuis les vrais nombres de points et CFLvide*0,8, avec
+debit25–35Mpoints/s ; pas un dt operateur calibre ni une duree mesuree.
+CFLbase0,230545464796ps ; CFLfin0,153696976531ps.
+Minima plan PCB base0,1143mm et fin0,0762mm imposes par les vias4/6.
+Normale minima base0,1333333333mm ; fin0,0888888889mm dans extensionsbloc.
+L'interieur du PCB a h/11=0,1454545455mm et h/17=0,0941176471mm.
+Memoire estimee a300–700octets/point : indication prudente, pas mesure.
+
+Il reste a decider si ce cout justifie la strategie10 avant de promouvoir
+un moteurF2 complet autonome et avant le moindre Run. La construction seule
+ne predit ni convergence S11 ni fidelite a une antenne fabriquee.
+Les trois cartes exigeraient la nouvelle campagne F2 ; les preuvesF1 restent
+historiques et ne se melangent pas aux paires de convergence F2.
+
+PROVENANCE ET REJEU
+rapport_prototype.json : chiffres issus du constructeur exact.
+verification_geometrique_et_cfl.json : fonctions communes07 reutilisees.
+verification10_integrale.json : non-grossissement PCB + plafonds/minima.
+Les copies de scripts sont byte-exactes pour provenance. Pour les rejouer,
+restaurer leur chemin original dans prototype_maillage_controle avant
+execution ; leur __file__ sert a resoudre les chemins. Aucune copie placee
+dans ce sous-dossier n'est presentee comme executable en place.

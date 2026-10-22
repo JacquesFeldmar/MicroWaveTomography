@@ -1,0 +1,1663 @@
+{
+  "schema": "integration_native_F2_2375_v1",
+  "utc": "2026-10-19T14:36:09.331578+00:00",
+  "reussi": true,
+  "aucun_Run": true,
+  "aucune_calibration": true,
+  "aucun_patch_applique": true,
+  "nature": "QA routage/construction/cout et archives ; aucune qualification electromagnetique F2",
+  "F2_sha256": "237510b3702694abb4336b895eb8394015265cfbc18d92e8c1cf86d2eb5b0f84",
+  "sources10_sha256": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "237510b3702694abb4336b895eb8394015265cfbc18d92e8c1cf86d2eb5b0f84"
+  },
+  "modifies_sha256": {
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db"
+  },
+  "sources_17_avant": {
+    "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+    "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+    "raffine_qualification_plus_pcbway.py": "15fe2ef41de4c4c3c4da0954dc2396fa652f3b75ba18d0f373824a4aab39d3c3"
+  },
+  "sources_17_apres": {
+    "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+    "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+    "raffine_qualification_plus_pcbway.py": "15fe2ef41de4c4c3c4da0954dc2396fa652f3b75ba18d0f373824a4aab39d3c3"
+  },
+  "catalogue_F2": {
+    "base": {
+      "mailles_par_lambda": 16,
+      "mailles_par_lambda_air": 16,
+      "maille_min": 0.15
+    },
+    "fin": {
+      "mailles_par_lambda": 24,
+      "mailles_par_lambda_air": 16,
+      "maille_min": 0.1
+    }
+  },
+  "cas_natifs": [
+    {
+      "antenne": "diamant_uwb",
+      "niveau": "base",
+      "montage": {
+        "acquisition": {
+          "f_min": 1000000000.0,
+          "f_max": 6300000000.0,
+          "points": 213,
+          "zero_padding": 16,
+          "fenetre": "hann",
+          "z_ref": 50.0
+        },
+        "antenne": {
+          "cote": 120.0,
+          "epaisseur": 0.8,
+          "eps_r": 4.4,
+          "tan_delta": 0.02,
+          "rayon_petale": 46.0,
+          "fente": 0.6,
+          "largeur_ligne": 1.5,
+          "longueur_ligne": 38.0,
+          "cuivre": 0.035
+        },
+        "plaque": {
+          "cote": 600.0,
+          "epaisseur": 5.0,
+          "distances_cm": [
+            50.0,
+            60.0,
+            70.0
+          ]
+        },
+        "maillage": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15,
+          "marge_pml": 8,
+          "marge_air_mm": 60.0,
+          "n_pas_max": 1000000,
+          "critere_fin": -40.0,
+          "symetrie": false,
+          "rapport_max": 1.5,
+          "facteur_courant": 0.95,
+          "duree_ns": 12.0
+        }
+      },
+      "cout": {
+        "antenne": "diamant_uwb",
+        "niveau": "base",
+        "duree_ns": 12.0,
+        "cellules": 3005640,
+        "pas_estimes": 54791,
+        "minutes_indicatives": 91.4900118,
+        "note": "dt operateur et vitesse mesures au lancement"
+      },
+      "axes_sha256": {
+        "x": "8d22cb65f473575bc2eee794e3b3c0a399ef6d0feeb0b4ab375273f9c37c2cef",
+        "y": "92a5307262508995781997effecae85a8845b4cbc0585ae70d42a34226c3139c",
+        "z": "ff0fd0aa51d1cd18af31ee30cb51d10ebb674a4fb7f4a0b3672a7ed30f21f22c"
+      },
+      "politique": {
+        "nom": "maillage_controle_v2",
+        "configuration": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15
+        },
+        "seed_base": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15
+        },
+        "reglages": {
+          "lambda_substrat": 16,
+          "normal": 11,
+          "via": 4,
+          "sma_max_mm": 0.15
+        },
+        "normales_mm": [
+          0.0,
+          1.6
+        ],
+        "axe_normal": "z",
+        "axe_propagation": "y",
+        "bloc_normal_mm": [
+          -0.5333333333333333,
+          2.1333333333333333
+        ],
+        "bloc_propagation_mm": [
+          -21.6,
+          -18.4
+        ],
+        "bloc_sma_x_mm": [
+          -5.588,
+          5.588
+        ],
+        "bloc_sma_u_mm": [
+          -21.6,
+          -13.548399999999999
+        ],
+        "U_x0_primaire_exact": true,
+        "I_dual_hsur2_ecart_mm": 0.0,
+        "cellules_normales": 11,
+        "vias": [
+          {
+            "x_mm": -4.3180000000000005,
+            "u_mm": -14.030999999999999,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 4,
+            "cellules_longitudinales": 4
+          },
+          {
+            "x_mm": 4.3180000000000005,
+            "u_mm": -14.030999999999999,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 4,
+            "cellules_longitudinales": 4
+          }
+        ],
+        "garde_hors_pml_mm": 74.9481145,
+        "pml8": {
+          "x": {
+            "gauche_mm": [
+              -114.74116672222223,
+              -111.76703519444445,
+              -108.79290366666666,
+              -105.81877213888889,
+              -102.84464061111112,
+              -99.87050908333333,
+              -96.89637755555556,
+              -93.92224602777777,
+              -90.9481145
+            ],
+            "droite_mm": [
+              90.9481145,
+              93.92224602777777,
+              96.89637755555556,
+              99.87050908333333,
+              102.84464061111112,
+              105.81877213888889,
+              108.79290366666666,
+              111.76703519444445,
+              114.74116672222223
+            ]
+          },
+          "y": {
+            "gauche_mm": [
+              -118.74116672222223,
+              -115.76703519444445,
+              -112.79290366666666,
+              -109.81877213888889,
+              -106.84464061111112,
+              -103.87050908333333,
+              -100.89637755555556,
+              -97.92224602777777,
+              -94.9481145
+            ],
+            "droite_mm": [
+              94.9481145,
+              97.92224602777777,
+              100.89637755555556,
+              103.87050908333333,
+              106.84464061111112,
+              109.81877213888889,
+              112.79290366666666,
+              115.76703519444445,
+              118.74116672222223
+            ]
+          },
+          "z": {
+            "gauche_mm": [
+              -98.74116672222223,
+              -95.76703519444445,
+              -92.79290366666666,
+              -89.81877213888889,
+              -86.84464061111112,
+              -83.87050908333333,
+              -80.89637755555556,
+              -77.92224602777777,
+              -74.9481145
+            ],
+            "droite_mm": [
+              76.5481145,
+              79.52224602777777,
+              82.49637755555555,
+              85.47050908333333,
+              88.44464061111111,
+              91.41877213888888,
+              94.39290366666665,
+              97.36703519444444,
+              100.34116672222223
+            ]
+          }
+        },
+        "ancres": "primaires BASE conservees dans projection PCB hors blocs SMA ; air libre",
+        "interpolation_sma": "libre hors port uniforme et vias ; interfaces exactes",
+        "aretes": "rectilignes primaires exactes ; pas de regle tiers generalisee",
+        "port": "ideal50ohms au bord PCB ; connecteur coaxial3D non modelise"
+      },
+      "axes_et_politique_identiques_preuve_native": true
+    },
+    {
+      "antenne": "diamant_uwb",
+      "niveau": "fin",
+      "montage": {
+        "acquisition": {
+          "f_min": 1000000000.0,
+          "f_max": 6300000000.0,
+          "points": 213,
+          "zero_padding": 16,
+          "fenetre": "hann",
+          "z_ref": 50.0
+        },
+        "antenne": {
+          "cote": 120.0,
+          "epaisseur": 0.8,
+          "eps_r": 4.4,
+          "tan_delta": 0.02,
+          "rayon_petale": 46.0,
+          "fente": 0.6,
+          "largeur_ligne": 1.5,
+          "longueur_ligne": 38.0,
+          "cuivre": 0.035
+        },
+        "plaque": {
+          "cote": 600.0,
+          "epaisseur": 5.0,
+          "distances_cm": [
+            50.0,
+            60.0,
+            70.0
+          ]
+        },
+        "maillage": {
+          "mailles_par_lambda": 24,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.1,
+          "marge_pml": 8,
+          "marge_air_mm": 60.0,
+          "n_pas_max": 1000000,
+          "critere_fin": -40.0,
+          "symetrie": false,
+          "rapport_max": 1.5,
+          "facteur_courant": 0.95,
+          "duree_ns": 12.0
+        }
+      },
+      "cout": {
+        "antenne": "diamant_uwb",
+        "niveau": "fin",
+        "duree_ns": 12.0,
+        "cellules": 7566780,
+        "pas_estimes": 82186,
+        "minutes_indicatives": 345.4907672666667,
+        "note": "dt operateur et vitesse mesures au lancement"
+      },
+      "axes_sha256": {
+        "x": "a219a4bd2be5690e37c73ee5e4f486af1d1a6ea1c5eb15d265e0b8ff61a5fd97",
+        "y": "d6541e5ff6403d3c3c51965068f19cc96e7e44517053dd5efe52e266ab99f9f7",
+        "z": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a"
+      },
+      "politique": {
+        "nom": "maillage_controle_v2",
+        "configuration": {
+          "mailles_par_lambda": 24,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.1
+        },
+        "seed_base": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15
+        },
+        "reglages": {
+          "lambda_substrat": 24,
+          "normal": 17,
+          "via": 6,
+          "sma_max_mm": 0.1
+        },
+        "normales_mm": [
+          0.0,
+          1.6
+        ],
+        "axe_normal": "z",
+        "axe_propagation": "y",
+        "bloc_normal_mm": [
+          -0.5333333333333333,
+          2.1333333333333333
+        ],
+        "bloc_propagation_mm": [
+          -21.6,
+          -18.4
+        ],
+        "bloc_sma_x_mm": [
+          -5.588,
+          5.588
+        ],
+        "bloc_sma_u_mm": [
+          -21.6,
+          -13.548399999999999
+        ],
+        "U_x0_primaire_exact": true,
+        "I_dual_hsur2_ecart_mm": 0.0,
+        "cellules_normales": 17,
+        "vias": [
+          {
+            "x_mm": -4.3180000000000005,
+            "u_mm": -14.030999999999999,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 6,
+            "cellules_longitudinales": 6
+          },
+          {
+            "x_mm": 4.3180000000000005,
+            "u_mm": -14.030999999999999,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 6,
+            "cellules_longitudinales": 6
+          }
+        ],
+        "garde_hors_pml_mm": 74.9481145,
+        "pml8": {
+          "x": {
+            "gauche_mm": [
+              -114.74116672222223,
+              -111.76703519444445,
+              -108.79290366666666,
+              -105.81877213888889,
+              -102.84464061111112,
+              -99.87050908333333,
+              -96.89637755555556,
+              -93.92224602777777,
+              -90.9481145
+            ],
+            "droite_mm": [
+              90.9481145,
+              93.92224602777777,
+              96.89637755555556,
+              99.87050908333333,
+              102.84464061111112,
+              105.81877213888889,
+              108.79290366666666,
+              111.76703519444445,
+              114.74116672222223
+            ]
+          },
+          "y": {
+            "gauche_mm": [
+              -118.74116672222223,
+              -115.76703519444445,
+              -112.79290366666666,
+              -109.81877213888889,
+              -106.84464061111112,
+              -103.87050908333333,
+              -100.89637755555556,
+              -97.92224602777777,
+              -94.9481145
+            ],
+            "droite_mm": [
+              94.9481145,
+              97.92224602777777,
+              100.89637755555556,
+              103.87050908333333,
+              106.84464061111112,
+              109.81877213888889,
+              112.79290366666666,
+              115.76703519444445,
+              118.74116672222223
+            ]
+          },
+          "z": {
+            "gauche_mm": [
+              -98.74116672222223,
+              -95.76703519444445,
+              -92.79290366666666,
+              -89.81877213888889,
+              -86.84464061111112,
+              -83.87050908333333,
+              -80.89637755555556,
+              -77.92224602777777,
+              -74.9481145
+            ],
+            "droite_mm": [
+              76.5481145,
+              79.52224602777777,
+              82.49637755555555,
+              85.47050908333333,
+              88.44464061111111,
+              91.41877213888888,
+              94.39290366666665,
+              97.36703519444444,
+              100.34116672222223
+            ]
+          }
+        },
+        "ancres": "primaires BASE conservees dans projection PCB hors blocs SMA ; air libre",
+        "interpolation_sma": "libre hors port uniforme et vias ; interfaces exactes",
+        "aretes": "rectilignes primaires exactes ; pas de regle tiers generalisee",
+        "port": "ideal50ohms au bord PCB ; connecteur coaxial3D non modelise"
+      },
+      "axes_et_politique_identiques_preuve_native": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "niveau": "base",
+      "montage": {
+        "acquisition": {
+          "f_min": 1000000000.0,
+          "f_max": 6300000000.0,
+          "points": 213,
+          "zero_padding": 16,
+          "fenetre": "hann",
+          "z_ref": 50.0
+        },
+        "antenne": {
+          "cote": 120.0,
+          "epaisseur": 0.8,
+          "eps_r": 4.4,
+          "tan_delta": 0.02,
+          "rayon_petale": 46.0,
+          "fente": 0.6,
+          "largeur_ligne": 1.5,
+          "longueur_ligne": 38.0,
+          "cuivre": 0.035
+        },
+        "plaque": {
+          "cote": 600.0,
+          "epaisseur": 5.0,
+          "distances_cm": [
+            50.0,
+            60.0,
+            70.0
+          ]
+        },
+        "maillage": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15,
+          "marge_pml": 8,
+          "marge_air_mm": 60.0,
+          "n_pas_max": 1000000,
+          "critere_fin": -40.0,
+          "symetrie": false,
+          "rapport_max": 1.5,
+          "facteur_courant": 0.95,
+          "duree_ns": 12.0
+        }
+      },
+      "cout": {
+        "antenne": "diamant_uwb_x18",
+        "niveau": "base",
+        "duree_ns": 12.0,
+        "cellules": 3722400,
+        "pas_estimes": 54791,
+        "minutes_indicatives": 113.307788,
+        "note": "dt operateur et vitesse mesures au lancement"
+      },
+      "axes_sha256": {
+        "x": "54d334e3d38629bf3a0ceb21c917a44227d38809a4abd1ad179b6ffd6af7bac5",
+        "y": "e76d4e9788e3c3323aed1847b1d000eb752e20dcc1fe7d0b7a63aa62011d34bd",
+        "z": "ff0fd0aa51d1cd18af31ee30cb51d10ebb674a4fb7f4a0b3672a7ed30f21f22c"
+      },
+      "politique": {
+        "nom": "maillage_controle_v2",
+        "configuration": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15
+        },
+        "seed_base": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15
+        },
+        "reglages": {
+          "lambda_substrat": 16,
+          "normal": 11,
+          "via": 4,
+          "sma_max_mm": 0.15
+        },
+        "normales_mm": [
+          0.0,
+          1.6
+        ],
+        "axe_normal": "z",
+        "axe_propagation": "y",
+        "bloc_normal_mm": [
+          -0.5333333333333333,
+          2.1333333333333333
+        ],
+        "bloc_propagation_mm": [
+          -37.6,
+          -34.4
+        ],
+        "bloc_sma_x_mm": [
+          -5.588,
+          5.588
+        ],
+        "bloc_sma_u_mm": [
+          -37.6,
+          -29.548399999999997
+        ],
+        "U_x0_primaire_exact": true,
+        "I_dual_hsur2_ecart_mm": 0.0,
+        "cellules_normales": 11,
+        "vias": [
+          {
+            "x_mm": -4.3180000000000005,
+            "u_mm": -30.031,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 4,
+            "cellules_longitudinales": 4
+          },
+          {
+            "x_mm": 4.3180000000000005,
+            "u_mm": -30.031,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 4,
+            "cellules_longitudinales": 4
+          }
+        ],
+        "garde_hors_pml_mm": 74.9481145,
+        "pml8": {
+          "x": {
+            "gauche_mm": [
+              -127.54116672222221,
+              -124.56703519444444,
+              -121.59290366666667,
+              -118.61877213888889,
+              -115.64464061111111,
+              -112.67050908333333,
+              -109.69637755555556,
+              -106.72224602777777,
+              -103.7481145
+            ],
+            "droite_mm": [
+              103.7481145,
+              106.72224602777777,
+              109.69637755555556,
+              112.67050908333333,
+              115.64464061111111,
+              118.61877213888889,
+              121.59290366666667,
+              124.56703519444444,
+              127.54116672222221
+            ]
+          },
+          "y": {
+            "gauche_mm": [
+              -134.74116672222223,
+              -131.76703519444445,
+              -128.79290366666666,
+              -125.81877213888889,
+              -122.84464061111112,
+              -119.87050908333333,
+              -116.89637755555556,
+              -113.92224602777777,
+              -110.9481145
+            ],
+            "droite_mm": [
+              110.9481145,
+              113.92224602777777,
+              116.89637755555556,
+              119.87050908333333,
+              122.84464061111112,
+              125.81877213888889,
+              128.79290366666666,
+              131.76703519444445,
+              134.74116672222223
+            ]
+          },
+          "z": {
+            "gauche_mm": [
+              -98.74116672222223,
+              -95.76703519444445,
+              -92.79290366666666,
+              -89.81877213888889,
+              -86.84464061111112,
+              -83.87050908333333,
+              -80.89637755555556,
+              -77.92224602777777,
+              -74.9481145
+            ],
+            "droite_mm": [
+              76.5481145,
+              79.52224602777777,
+              82.49637755555555,
+              85.47050908333333,
+              88.44464061111111,
+              91.41877213888888,
+              94.39290366666665,
+              97.36703519444444,
+              100.34116672222223
+            ]
+          }
+        },
+        "ancres": "primaires BASE conservees dans projection PCB hors blocs SMA ; air libre",
+        "interpolation_sma": "libre hors port uniforme et vias ; interfaces exactes",
+        "aretes": "rectilignes primaires exactes ; pas de regle tiers generalisee",
+        "port": "ideal50ohms au bord PCB ; connecteur coaxial3D non modelise"
+      },
+      "axes_et_politique_identiques_preuve_native": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "niveau": "fin",
+      "montage": {
+        "acquisition": {
+          "f_min": 1000000000.0,
+          "f_max": 6300000000.0,
+          "points": 213,
+          "zero_padding": 16,
+          "fenetre": "hann",
+          "z_ref": 50.0
+        },
+        "antenne": {
+          "cote": 120.0,
+          "epaisseur": 0.8,
+          "eps_r": 4.4,
+          "tan_delta": 0.02,
+          "rayon_petale": 46.0,
+          "fente": 0.6,
+          "largeur_ligne": 1.5,
+          "longueur_ligne": 38.0,
+          "cuivre": 0.035
+        },
+        "plaque": {
+          "cote": 600.0,
+          "epaisseur": 5.0,
+          "distances_cm": [
+            50.0,
+            60.0,
+            70.0
+          ]
+        },
+        "maillage": {
+          "mailles_par_lambda": 24,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.1,
+          "marge_pml": 8,
+          "marge_air_mm": 60.0,
+          "n_pas_max": 1000000,
+          "critere_fin": -40.0,
+          "symetrie": false,
+          "rapport_max": 1.5,
+          "facteur_courant": 0.95,
+          "duree_ns": 12.0
+        }
+      },
+      "cout": {
+        "antenne": "diamant_uwb_x18",
+        "niveau": "fin",
+        "duree_ns": 12.0,
+        "cellules": 10030398,
+        "pas_estimes": 82186,
+        "minutes_indicatives": 457.97682779333337,
+        "note": "dt operateur et vitesse mesures au lancement"
+      },
+      "axes_sha256": {
+        "x": "165796cce6ef473029a56ae8e27f954d20392b4184f45d19aa64659ddd08546b",
+        "y": "054818c2475ecdae03064534e6d2767a04005262b9d7b66b1fafcd057b68979c",
+        "z": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a"
+      },
+      "politique": {
+        "nom": "maillage_controle_v2",
+        "configuration": {
+          "mailles_par_lambda": 24,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.1
+        },
+        "seed_base": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15
+        },
+        "reglages": {
+          "lambda_substrat": 24,
+          "normal": 17,
+          "via": 6,
+          "sma_max_mm": 0.1
+        },
+        "normales_mm": [
+          0.0,
+          1.6
+        ],
+        "axe_normal": "z",
+        "axe_propagation": "y",
+        "bloc_normal_mm": [
+          -0.5333333333333333,
+          2.1333333333333333
+        ],
+        "bloc_propagation_mm": [
+          -37.6,
+          -34.4
+        ],
+        "bloc_sma_x_mm": [
+          -5.588,
+          5.588
+        ],
+        "bloc_sma_u_mm": [
+          -37.6,
+          -29.548399999999997
+        ],
+        "U_x0_primaire_exact": true,
+        "I_dual_hsur2_ecart_mm": 0.0,
+        "cellules_normales": 17,
+        "vias": [
+          {
+            "x_mm": -4.3180000000000005,
+            "u_mm": -30.031,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 6,
+            "cellules_longitudinales": 6
+          },
+          {
+            "x_mm": 4.3180000000000005,
+            "u_mm": -30.031,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 6,
+            "cellules_longitudinales": 6
+          }
+        ],
+        "garde_hors_pml_mm": 74.9481145,
+        "pml8": {
+          "x": {
+            "gauche_mm": [
+              -127.54116672222221,
+              -124.56703519444444,
+              -121.59290366666667,
+              -118.61877213888889,
+              -115.64464061111111,
+              -112.67050908333333,
+              -109.69637755555556,
+              -106.72224602777777,
+              -103.7481145
+            ],
+            "droite_mm": [
+              103.7481145,
+              106.72224602777777,
+              109.69637755555556,
+              112.67050908333333,
+              115.64464061111111,
+              118.61877213888889,
+              121.59290366666667,
+              124.56703519444444,
+              127.54116672222221
+            ]
+          },
+          "y": {
+            "gauche_mm": [
+              -134.74116672222223,
+              -131.76703519444445,
+              -128.79290366666666,
+              -125.81877213888889,
+              -122.84464061111112,
+              -119.87050908333333,
+              -116.89637755555556,
+              -113.92224602777777,
+              -110.9481145
+            ],
+            "droite_mm": [
+              110.9481145,
+              113.92224602777777,
+              116.89637755555556,
+              119.87050908333333,
+              122.84464061111112,
+              125.81877213888889,
+              128.79290366666666,
+              131.76703519444445,
+              134.74116672222223
+            ]
+          },
+          "z": {
+            "gauche_mm": [
+              -98.74116672222223,
+              -95.76703519444445,
+              -92.79290366666666,
+              -89.81877213888889,
+              -86.84464061111112,
+              -83.87050908333333,
+              -80.89637755555556,
+              -77.92224602777777,
+              -74.9481145
+            ],
+            "droite_mm": [
+              76.5481145,
+              79.52224602777777,
+              82.49637755555555,
+              85.47050908333333,
+              88.44464061111111,
+              91.41877213888888,
+              94.39290366666665,
+              97.36703519444444,
+              100.34116672222223
+            ]
+          }
+        },
+        "ancres": "primaires BASE conservees dans projection PCB hors blocs SMA ; air libre",
+        "interpolation_sma": "libre hors port uniforme et vias ; interfaces exactes",
+        "aretes": "rectilignes primaires exactes ; pas de regle tiers generalisee",
+        "port": "ideal50ohms au bord PCB ; connecteur coaxial3D non modelise"
+      },
+      "axes_et_politique_identiques_preuve_native": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "niveau": "base",
+      "montage": {
+        "acquisition": {
+          "f_min": 1000000000.0,
+          "f_max": 6300000000.0,
+          "points": 213,
+          "zero_padding": 16,
+          "fenetre": "hann",
+          "z_ref": 50.0
+        },
+        "antenne": {
+          "cote": 120.0,
+          "epaisseur": 0.8,
+          "eps_r": 4.4,
+          "tan_delta": 0.02,
+          "rayon_petale": 46.0,
+          "fente": 0.6,
+          "largeur_ligne": 1.5,
+          "longueur_ligne": 38.0,
+          "cuivre": 0.035
+        },
+        "plaque": {
+          "cote": 600.0,
+          "epaisseur": 5.0,
+          "distances_cm": [
+            50.0,
+            60.0,
+            70.0
+          ]
+        },
+        "maillage": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15,
+          "marge_pml": 8,
+          "marge_air_mm": 60.0,
+          "n_pas_max": 1000000,
+          "critere_fin": -40.0,
+          "symetrie": false,
+          "rapport_max": 1.5,
+          "facteur_courant": 0.95,
+          "duree_ns": 12.0
+        }
+      },
+      "cout": {
+        "antenne": "vivaldi_tomographie",
+        "niveau": "base",
+        "duree_ns": 12.0,
+        "cellules": 9548352,
+        "pas_estimes": 54791,
+        "minutes_indicatives": 290.64653024,
+        "note": "dt operateur et vitesse mesures au lancement"
+      },
+      "axes_sha256": {
+        "x": "b6353f6dbe47030637e2b70e4918b1eba373cf0e93a3e4f4fcb2bf9a41f58a47",
+        "y": "ff0fd0aa51d1cd18af31ee30cb51d10ebb674a4fb7f4a0b3672a7ed30f21f22c",
+        "z": "bcc5b6f3affa385974bc3042f2d7dc64dfee71382d77076f973f4a2e91d1645b"
+      },
+      "politique": {
+        "nom": "maillage_controle_v2",
+        "configuration": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15
+        },
+        "seed_base": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15
+        },
+        "reglages": {
+          "lambda_substrat": 16,
+          "normal": 11,
+          "via": 4,
+          "sma_max_mm": 0.15
+        },
+        "normales_mm": [
+          0.0,
+          1.6
+        ],
+        "axe_normal": "y",
+        "axe_propagation": "z",
+        "bloc_normal_mm": [
+          -0.5333333333333333,
+          2.1333333333333333
+        ],
+        "bloc_propagation_mm": [
+          -1.6,
+          1.6
+        ],
+        "bloc_sma_x_mm": [
+          -5.588,
+          5.588
+        ],
+        "bloc_sma_u_mm": [
+          -1.6,
+          6.4516
+        ],
+        "U_x0_primaire_exact": true,
+        "I_dual_hsur2_ecart_mm": 0.0,
+        "cellules_normales": 11,
+        "vias": [
+          {
+            "x_mm": -4.3180000000000005,
+            "u_mm": 5.969,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 4,
+            "cellules_longitudinales": 4
+          },
+          {
+            "x_mm": 4.3180000000000005,
+            "u_mm": 5.969,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 4,
+            "cellules_longitudinales": 4
+          }
+        ],
+        "garde_hors_pml_mm": 74.9481145,
+        "pml8": {
+          "x": {
+            "gauche_mm": [
+              -170.57553422222225,
+              -167.60140269444446,
+              -164.62727116666667,
+              -161.65313963888892,
+              -158.67900811111113,
+              -155.70487658333334,
+              -152.73074505555556,
+              -149.7566135277778,
+              -146.78248200000002
+            ],
+            "droite_mm": [
+              146.78248200000002,
+              149.7566135277778,
+              152.73074505555556,
+              155.70487658333334,
+              158.67900811111113,
+              161.65313963888892,
+              164.62727116666667,
+              167.60140269444446,
+              170.57553422222225
+            ]
+          },
+          "y": {
+            "gauche_mm": [
+              -98.74116672222223,
+              -95.76703519444445,
+              -92.79290366666666,
+              -89.81877213888889,
+              -86.84464061111112,
+              -83.87050908333333,
+              -80.89637755555556,
+              -77.92224602777777,
+              -74.9481145
+            ],
+            "droite_mm": [
+              76.5481145,
+              79.52224602777777,
+              82.49637755555555,
+              85.47050908333333,
+              88.44464061111111,
+              91.41877213888888,
+              94.39290366666665,
+              97.36703519444444,
+              100.34116672222223
+            ]
+          },
+          "z": {
+            "gauche_mm": [
+              -98.74116672222223,
+              -95.76703519444445,
+              -92.79290366666666,
+              -89.81877213888889,
+              -86.84464061111112,
+              -83.87050908333333,
+              -80.89637755555556,
+              -77.92224602777777,
+              -74.9481145
+            ],
+            "droite_mm": [
+              355.851217,
+              358.8253485277778,
+              361.7994800555556,
+              364.7736115833334,
+              367.7477431111111,
+              370.7218746388889,
+              373.6960061666667,
+              376.67013769444446,
+              379.64426922222225
+            ]
+          }
+        },
+        "ancres": "primaires BASE conservees dans projection PCB hors blocs SMA ; air libre",
+        "interpolation_sma": "libre hors port uniforme et vias ; interfaces exactes",
+        "aretes": "rectilignes primaires exactes ; pas de regle tiers generalisee",
+        "port": "ideal50ohms au bord PCB ; connecteur coaxial3D non modelise"
+      },
+      "axes_et_politique_identiques_preuve_native": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "niveau": "fin",
+      "montage": {
+        "acquisition": {
+          "f_min": 1000000000.0,
+          "f_max": 6300000000.0,
+          "points": 213,
+          "zero_padding": 16,
+          "fenetre": "hann",
+          "z_ref": 50.0
+        },
+        "antenne": {
+          "cote": 120.0,
+          "epaisseur": 0.8,
+          "eps_r": 4.4,
+          "tan_delta": 0.02,
+          "rayon_petale": 46.0,
+          "fente": 0.6,
+          "largeur_ligne": 1.5,
+          "longueur_ligne": 38.0,
+          "cuivre": 0.035
+        },
+        "plaque": {
+          "cote": 600.0,
+          "epaisseur": 5.0,
+          "distances_cm": [
+            50.0,
+            60.0,
+            70.0
+          ]
+        },
+        "maillage": {
+          "mailles_par_lambda": 24,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.1,
+          "marge_pml": 8,
+          "marge_air_mm": 60.0,
+          "n_pas_max": 1000000,
+          "critere_fin": -40.0,
+          "symetrie": false,
+          "rapport_max": 1.5,
+          "facteur_courant": 0.95,
+          "duree_ns": 12.0
+        }
+      },
+      "cout": {
+        "antenne": "vivaldi_tomographie",
+        "niveau": "fin",
+        "duree_ns": 12.0,
+        "cellules": 27169776,
+        "pas_estimes": 82186,
+        "minutes_indicatives": 1240.5417835199999,
+        "note": "dt operateur et vitesse mesures au lancement"
+      },
+      "axes_sha256": {
+        "x": "4f2ffc8ac8f04f130f23a409e246fec9090abbcc41b8068ef79e05034119ced7",
+        "y": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a",
+        "z": "e3f579ed336f1ddf36f14b36173a5704ec9f8247540dfd04c8b025fca7a1acf8"
+      },
+      "politique": {
+        "nom": "maillage_controle_v2",
+        "configuration": {
+          "mailles_par_lambda": 24,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.1
+        },
+        "seed_base": {
+          "mailles_par_lambda": 16,
+          "mailles_par_lambda_air": 16,
+          "maille_min": 0.15
+        },
+        "reglages": {
+          "lambda_substrat": 24,
+          "normal": 17,
+          "via": 6,
+          "sma_max_mm": 0.1
+        },
+        "normales_mm": [
+          0.0,
+          1.6
+        ],
+        "axe_normal": "y",
+        "axe_propagation": "z",
+        "bloc_normal_mm": [
+          -0.5333333333333333,
+          2.1333333333333333
+        ],
+        "bloc_propagation_mm": [
+          -1.6,
+          1.6
+        ],
+        "bloc_sma_x_mm": [
+          -5.588,
+          5.588
+        ],
+        "bloc_sma_u_mm": [
+          -1.6,
+          6.4516
+        ],
+        "U_x0_primaire_exact": true,
+        "I_dual_hsur2_ecart_mm": 0.0,
+        "cellules_normales": 17,
+        "vias": [
+          {
+            "x_mm": -4.3180000000000005,
+            "u_mm": 5.969,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 6,
+            "cellules_longitudinales": 6
+          },
+          {
+            "x_mm": 4.3180000000000005,
+            "u_mm": 5.969,
+            "diametre_mm": 0.45719999999999994,
+            "cellules_transversales": 6,
+            "cellules_longitudinales": 6
+          }
+        ],
+        "garde_hors_pml_mm": 74.9481145,
+        "pml8": {
+          "x": {
+            "gauche_mm": [
+              -170.57553422222225,
+              -167.60140269444446,
+              -164.62727116666667,
+              -161.65313963888892,
+              -158.67900811111113,
+              -155.70487658333334,
+              -152.73074505555556,
+              -149.7566135277778,
+              -146.78248200000002
+            ],
+            "droite_mm": [
+              146.78248200000002,
+              149.7566135277778,
+              152.73074505555556,
+              155.70487658333334,
+              158.67900811111113,
+              161.65313963888892,
+              164.62727116666667,
+              167.60140269444446,
+              170.57553422222225
+            ]
+          },
+          "y": {
+            "gauche_mm": [
+              -98.74116672222223,
+              -95.76703519444445,
+              -92.79290366666666,
+              -89.81877213888889,
+              -86.84464061111112,
+              -83.87050908333333,
+              -80.89637755555556,
+              -77.92224602777777,
+              -74.9481145
+            ],
+            "droite_mm": [
+              76.5481145,
+              79.52224602777777,
+              82.49637755555555,
+              85.47050908333333,
+              88.44464061111111,
+              91.41877213888888,
+              94.39290366666665,
+              97.36703519444444,
+              100.34116672222223
+            ]
+          },
+          "z": {
+            "gauche_mm": [
+              -98.74116672222223,
+              -95.76703519444445,
+              -92.79290366666666,
+              -89.81877213888889,
+              -86.84464061111112,
+              -83.87050908333333,
+              -80.89637755555556,
+              -77.92224602777777,
+              -74.9481145
+            ],
+            "droite_mm": [
+              355.851217,
+              358.8253485277778,
+              361.7994800555556,
+              364.7736115833334,
+              367.7477431111111,
+              370.7218746388889,
+              373.6960061666667,
+              376.67013769444446,
+              379.64426922222225
+            ]
+          }
+        },
+        "ancres": "primaires BASE conservees dans projection PCB hors blocs SMA ; air libre",
+        "interpolation_sma": "libre hors port uniforme et vias ; interfaces exactes",
+        "aretes": "rectilignes primaires exactes ; pas de regle tiers generalisee",
+        "port": "ideal50ohms au bord PCB ; connecteur coaxial3D non modelise"
+      },
+      "axes_et_politique_identiques_preuve_native": true
+    }
+  ],
+  "marqueurs_synthetiques": [
+    {
+      "antenne": "diamant_uwb",
+      "niveau": "base",
+      "etats": [
+        "prepare",
+        "termine"
+      ],
+      "m_moteur": "maillage_controle_v2",
+      "q_moteur": "maillage_controle_v2",
+      "montage_exact": true,
+      "signature_physique": "9423bde70ded3a9006b0be45620b68fe3a13d49b242746cbe6abaa6322a01e0d",
+      "fixture_sans_qualification": true
+    },
+    {
+      "antenne": "diamant_uwb",
+      "niveau": "fin",
+      "etats": [
+        "prepare",
+        "termine"
+      ],
+      "m_moteur": "maillage_controle_v2",
+      "q_moteur": "maillage_controle_v2",
+      "montage_exact": true,
+      "signature_physique": "65bdb99a0eca234afd79ca33a17d37883e5dbc423884b26ec7b293591f1ac6e9",
+      "fixture_sans_qualification": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "niveau": "base",
+      "etats": [
+        "prepare",
+        "termine"
+      ],
+      "m_moteur": "maillage_controle_v2",
+      "q_moteur": "maillage_controle_v2",
+      "montage_exact": true,
+      "signature_physique": "960d7633f57a5c6d03de63567b8f9fceeba6ac1de8ef24c8d58be40f9fab1de3",
+      "fixture_sans_qualification": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "niveau": "fin",
+      "etats": [
+        "prepare",
+        "termine"
+      ],
+      "m_moteur": "maillage_controle_v2",
+      "q_moteur": "maillage_controle_v2",
+      "montage_exact": true,
+      "signature_physique": "f05a6e1cf14198365ed332fe2be0f2d1523e52ff014cc3df9d9b8f33cd1e0aa4",
+      "fixture_sans_qualification": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "niveau": "base",
+      "etats": [
+        "prepare",
+        "termine"
+      ],
+      "m_moteur": "maillage_controle_v2",
+      "q_moteur": "maillage_controle_v2",
+      "montage_exact": true,
+      "signature_physique": "f515c77556ed0d041a8532b0fce7b4f945f6570018b856d878e7881a37217962",
+      "fixture_sans_qualification": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "niveau": "fin",
+      "etats": [
+        "prepare",
+        "termine"
+      ],
+      "m_moteur": "maillage_controle_v2",
+      "q_moteur": "maillage_controle_v2",
+      "montage_exact": true,
+      "signature_physique": "d26123f571e0d8bd784462ed40420152c44b8794dca51c1cd3f95e3ce69bb6df",
+      "fixture_sans_qualification": true
+    }
+  ],
+  "archive_F1": {
+    "chemin": "simulation/archives/campagne_F1_cloture_2026-10-19.zip",
+    "sha256": "a2d63d75a664b35289a13f3a46747469292b7c52fff1c8a8e3f5cb7461eb56b9",
+    "profils_lus": [
+      {
+        "antenne": "diamant_uwb",
+        "profil": "base_16ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "55acb2af3522b2de4baf790094586b69f0761e656ef99f75fc33cd605467441e",
+        "manifest_sha256": "aede9dd5cf62e0ead255bc88473d1b97b80757268a1791d9392ac46f60172759",
+        "qualification_sha256": "12b1dba7a128cb08199a18abbf076267d006051195373346f31d6c92f60065fa",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb",
+        "profil": "base_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "968b3ece9dcb999bc9f6e2230926db6c8f360207dfaa77b06ac4ec2fb5cab700",
+        "manifest_sha256": "13ee9ae98d38dd44867bc75e0044eb13887dc9ad7865a68e842d5e8a69ce5fbd",
+        "qualification_sha256": "379d725e885a7445ca21126b33969e25efe0ae079bd98fb7eb3d1102342166e1",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb",
+        "profil": "fin_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "2f59f32a5043c40a0c10905864b67661bd155f9c4992e4e740fb97bc95269ea8",
+        "manifest_sha256": "914efc12b97fff5393b439acbefa29096c7dfa757f7fa57c0704a189a265bd6a",
+        "qualification_sha256": "403d60a145846c86b5db315dc5dfcc5d8214213889a55e497254a70086261f9f",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb",
+        "profil": "fin_16ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "db988549d878a9a858ef1da2c982760bf6bc5378bf4f26fbba4297f506771093",
+        "manifest_sha256": "4c5ca5face28408fa2741bcf2bb6142111f5f2fd3e91a61871e0615af5d844b9",
+        "qualification_sha256": "6f5966039cc330d4142b37003935d2688280ed0e02833bac321a0459d4a60a28",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb",
+        "profil": "fin_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "145632a1635ce1abc7680c0f449ae5726344562c984e56f29dde569f0fd3cb7c",
+        "manifest_sha256": "ca0efba573ea98c151daab53e2696b06aee8562d54bb64135ef67caf26d9bd1d",
+        "qualification_sha256": "a0b1155100cf9689ef2519903e2fd742aa08ba793abfa7cc4bc9f19236848a1a",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "base_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "eb9aa069be50de489982c0991273dc0b1687bb69a8d2ecffcc255edcc6b64c32",
+        "manifest_sha256": "7ab00c7c65e9fcddc2e9a0a50ac699dbccd0b327385dc5c79b594785941a83e1",
+        "qualification_sha256": "e812193c7bcf8291e40bee04720c3f42acf538c5a2b83616c9596167954865f0",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "extreme_fin_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "65c23ee8c87049c47d75d4a4029fcec3d976d7fbca922794a683851c88edd05a",
+        "manifest_sha256": "7bd3137e81577964df751e022a6b1046c59df6f8a1e766bfd7ba8cb6cc4f6c9f",
+        "qualification_sha256": "07f2af871164d231c41cd417397047ad3ee56ff30d7b1e4ad6003b4fcc5f1545",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "extreme_fin_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "f1826bf9214a5f0fca118c21e634003148118f98ed7bb8ed9daa6d7560d819aa",
+        "manifest_sha256": "cd4b70dccf02368fa025b5d7b2c7d163d1a8d3fcc138e44a4edb3031e7376e14",
+        "qualification_sha256": "1ae2f0a48d070e98694022a065b7414c7cb069a9c63f0628f8e35ca56996963d",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "fin_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "571092469fac70bbdc4954b3114b90a18fa82ca0d28dc077d3748d68ed169183",
+        "manifest_sha256": "af5a88932cf69e05c3da77fa096582ff84bff8b9f830c3e4c1facc6d272b8a54",
+        "qualification_sha256": "9ea6c8e105edd51735bc4d221d3acea9f0a9efbb40fd67b71ee629e0f8722ed4",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "fin_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "67fd2151651fc3c1630c56360ca8e535f7d3a88e9c59e322efa759707ab69046",
+        "manifest_sha256": "eca538ad11dbbadce1acda275a647b24656ec85b9b4c2a3aa9112c748f2e1295",
+        "qualification_sha256": "96130f9b1bec6eee7c449fb102eb42c63125c4f335f404dd34df90c2f9b10ba8",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "n30_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "0c56949685c0949e1db1166fd2060c43c2cd11cb7d1cb0eacb9a3f175f1b3c01",
+        "manifest_sha256": "9d4d73704d093ee7871d858002fe9d338f54c11715f7eb3d44e76bd10a73ae1c",
+        "qualification_sha256": "5c23b41b6f1f3ccbc0a245a59b54777da50288be3870d8c76f987ee0eca1316e",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "n30_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "fe83cf989b4d404197978f129e3b179b6cbe86ea886eb1cf4042ac5f45073bc3",
+        "manifest_sha256": "e6dea9f01dbd4db36873de27f0a9e453eafa95a52996f4ea91cbc11b9dcea33a",
+        "qualification_sha256": "9ae2ba39857de6b34f49a74b5b93a9f46ebf9d980081b2466d774daa736782d5",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "n34_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "e3781826a56903ef720d042945784fec574350e0a70736187221952f9cd14aaf",
+        "manifest_sha256": "3d1cdd6d2935a979d92d0bf082b4d42764590527ad4c91b4c6663a1e2ffe4530",
+        "qualification_sha256": "df34eded04e0fc799e5975606fb33b505c25d8064d5aef1c5c24555955f14c9e",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "n34_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "e5c9ceac4fdb90ddb88c741c53cce9aba68b028f14e12f348dea2b570a52e2a0",
+        "manifest_sha256": "5b80359d70839c066fd0ed00df5186467c75c373c114cd6e062b3cf4bc41cb19",
+        "qualification_sha256": "1ac5d98644aabbf823935ae43226885f2a8b44535638e35006ee2776419deabc",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "tres_fin_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "88730ce255da9e69ceb382ba36c1e2affb4933e2b5f9139873e63b4d805cb85a",
+        "manifest_sha256": "6e1e08fa52b60a533245b5d03c0c37a10fe1680daec4577ab1c5316039832a32",
+        "qualification_sha256": "8779e0cb15b68df72e76aa133d34804bcd2498291f0b8fbdfd1ae919d0fc7f20",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "tres_fin_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "5ccc2e884e41cdb3a5254f49decf506f22ecd0f6b551aae01657903e0fd8addf",
+        "manifest_sha256": "12384a7e0a2d8b916ef37674803fb1ebcda5de1ff3ad3a009f0176563348a43d",
+        "qualification_sha256": "b449a0ca94716e064ad03b3d5b30f9b075ab0113585323573fe9a252ec75ceba",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "ultra_fin_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "32a3e9b38fe1a8494224f9f2ed2ebb5023d258aa65c0ee0796bf7e4a39b7378e",
+        "manifest_sha256": "2ed991934409364deb329e5bf94c692e31b8e288d16f082e8200d1bbb8191bbe",
+        "qualification_sha256": "a6588b720c88284c30baeb1a9661d24156aca88b5c60b0af2fddd80da1d9eeff",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "diamant_uwb_x18",
+        "profil": "ultra_fin_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "0d87ce12c67e3fae985385dd05514f4023c4069123a0319bfa21d86ff131970b",
+        "manifest_sha256": "25a8ef1b256e4a566b776da93a5d15ce7f6b5d8c20022197e3137d1abf93c04b",
+        "qualification_sha256": "42fa4618e7521dd6f1a1840e3a0cda685661e5a0dbedf20b210af1984eaa0ce3",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "vivaldi_tomographie",
+        "profil": "base_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "d8a5fa3950850358de947fb2061265748fdafb3132d5a89969c8833ab6bd417c",
+        "manifest_sha256": "dedc755c29e3449fe46281b08b94e09179656f545117e2de6bd5d0fab1fa79bc",
+        "qualification_sha256": "5807a61e1be7e7a119a39547b1df122256bf0f8f66d6ec0071cec3941ef37aeb",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "vivaldi_tomographie",
+        "profil": "fin_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "29298c73455c78ba205d398afe47f1232e17c313dfd9a870cbdd961e5db4d82d",
+        "manifest_sha256": "dc4ed2eac1b0d6b35faf9e6e207314210778e6edc08c6e95b71742b16e42c436",
+        "qualification_sha256": "c7d3fd15eb1e8623489464d33c087bdcd872aec1ab705ba035c6bacf9527f86a",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "vivaldi_tomographie",
+        "profil": "fin_8ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "1a10e29d97fe72ed46d0567f599c4e94e5be667c42540e8eca23b277866cf9dc",
+        "manifest_sha256": "b053fccf3aa729fb60937ff09e8087a26b207674ed4a4a6cbcdc4f8befb54ff1",
+        "qualification_sha256": "35acdb5f7c4db6881be74440a2d8c238c1cdbc898cd065a5e6c24be4ce42c3dc",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "vivaldi_tomographie",
+        "profil": "tres_fin_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "9d06a82e8a89d8f752dd40ed8a1ccb5b0ea70d47cb32b6d5c800751a85dd97aa",
+        "manifest_sha256": "7f727d18db70ef95b059122dfef0923a051ae91a634bf20cc35d3d101e115019",
+        "qualification_sha256": "0f1eb6d5d75377917343d6beb2363acf20eb13e920e982f77e2f2989327f693b",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "vivaldi_tomographie",
+        "profil": "tres_fin_16ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "b238c9f513eabf5cf029159e9eb43ca9f5d02668f4bb4bb02afd0be2c3f2873e",
+        "manifest_sha256": "c341da8d76af1f00fe7cbe05797e144ac0c8240f9d51bf301bfbb400c9864a4d",
+        "qualification_sha256": "4dcc4380d2c7f73e6f0ce8fe24367cb468d51001d4f2717880b830bf525177c3",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "vivaldi_tomographie",
+        "profil": "ultra_fin_12ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "a26182a91f6ddd0e0a446358b86dd226d572f0272b6d6303b76c4cfb87f6ba63",
+        "manifest_sha256": "6b44b44838eb6fa3d11f24588d217b3069482bf32404ea66155b508f5dfa0c32",
+        "qualification_sha256": "d1f3d9285f466bef2ccf0dacd53551b44b9de98b87e1222d5ece217e4cb0bd54",
+        "charge_courant_et_valide_campagne": true
+      },
+      {
+        "antenne": "vivaldi_tomographie",
+        "profil": "ultra_fin_16ns",
+        "etat": "termine",
+        "moteur": "fdtd",
+        "points": 213,
+        "signature_physique": "46f95dc5caaa34dae990b74d6599ad5702db786d4e9300355faa50883a1cc573",
+        "manifest_sha256": "9d5ca335cbe5b272ccfb2739b341e19aa2e010e8a10f2272ca6442ec1213de64",
+        "qualification_sha256": "5c0985b01aad24643082228cf83f0a1f1722562f3fdb5a243f59bd35dd63aa01",
+        "charge_courant_et_valide_campagne": true
+      }
+    ],
+    "nombre_profils": 25,
+    "catalogue_N34_via_PLUS_en_memoire": true
+  },
+  "preuve_native_fdtd_sha256": "566c1a6fb0f41de77869e4eeb737b7d8d940004538fa00591e62ba71b4af295c",
+  "script_sha256": "ecf12b23de1a225a875c36e76f038eabefe182243c8bd59a4443d6d4b1d8ff45",
+  "versions": {
+    "python": "3.13.16",
+    "executable": "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "openEMS": "0.37.0",
+    "CSXCAD": "0.7.0"
+  },
+  "limites": [
+    "La version2375 est ancree pour cette QA ; une garde de sondes avant CalcPort peut evoluer separement.",
+    "Aucun dt operateur ni S11 F2 physique mesure ; les marqueurs sont des fixtures TEMP clairement identifiees.",
+    "Q.charge_calcul et Q.valide_campagne ne sont appeles que sur les25 vrais profils F1 clos."
+  ]
+}

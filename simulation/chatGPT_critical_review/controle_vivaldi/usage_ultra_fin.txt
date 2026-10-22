@@ -1,0 +1,24 @@
+EXTENSION DU CONTROLE VIVALDI — mode --ultra-fin
+
+Attendre la sortie 0 REELLE de la queue session 81046, derivation du prefixe
+ultra_fin_12ns comprise. Aucune attestation de cette sortie n'est faite pendant
+le calcul actif. Le coordinateur pourra ensuite lancer depuis la racine :
+
+  python -B -X utf8 simulation/chatGPT_critical_review/controle_vivaldi/analyse_vivaldi.py --ultra-fin --queue-sortie-zero-confirmee --sortie controle_final_vivaldi_ultra
+
+Le dossier de sortie doit etre neuf et reste sous controle_vivaldi.
+Sans --sortie, aucune ecriture. Sans attestation de sortie 0 ou si une preuve
+manque, code 3 et aucun Q.charge_calcul. Lectures Windows actives partagees
+READ|WRITE|DELETE. Aucune selection ou qualification officielle n'est ecrite.
+
+Le defaut conserve exactement les cinq profils et les paires du controle 3dce.
+--ultra-fin ajoute ultra_fin_12ns et ultra_fin_16ns : sept profils au total.
+Spatial : tres_fin_16ns/ultra_fin_16ns ; temporel : ultra_fin_12ns/ultra_fin_16ns ;
+reference : ultra_fin_16ns. Le niveau est enregistre dans Q en memoire seulement.
+Tous calculs numeriques et seuils sont reutilises depuis le meme helper U.
+
+Source 3dce et contrat preserves avant edition sous extension_ultra_fin_avant.
+L'archive de l'agent fabrication est egalement preservee et son SHA relu.
+preuve_extension_ultra_fin.json conserve la reproduction EXACTE de toutes les
+metriques du defaut cinq profils (code 2 attendu), les SHA avant/apres de 140
+fichiers et des 16 sources gelees, et le refus de charger UF encore actif.

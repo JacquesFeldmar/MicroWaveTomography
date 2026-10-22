@@ -1,0 +1,17 @@
+{
+  "schema": "index_contrelecture_globale_F2_v1",
+  "nombre_fichiers": 10,
+  "sha256": {
+    "avant.json": "1e22bdb4494e089a13a3a774aa3bc1ceecd589271d70c7ef9ea73421772e60a1",
+    "cloture_preuves.py": "a04c122e15f504b3c75428067e51a6d3ad7b92a4915c55fb77f608043db37f48",
+    "complement_cloture.json": "05943efe59a13609c9d8f04944793293b95fd0eebc38768ce6f27abf6bf11924",
+    "controle_croise.py": "16f3db1173dba510a557fe38bda9182a959922252c0beba254d8b4cf8f5ec8bd",
+    "execution.json": "17da22f2c501b8c59e1515150e217706b099181e418978be71cb737777c454e0",
+    "execution.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "execution.stdout.txt": "4080bd041299bcd808f2663a37dbbd511814d5315f27c12b34d6994d625a83f7",
+    "note_resultats.txt": "bfde4e52a71682da70841487a6d56a21f2ade6f19187e6561ff0b24e622ff2b7",
+    "rapport_croise.json": "b26417db14621e051bf1b002ec3e6e6ebd6503a8fd6b8abeeb49e79cf31dbf53",
+    "revue_orchestration_independante.json": "8b24a18a92735cc4fe01bc0dab6eb5d62cc876a35056d9c495d14dbe7bb6f13b"
+  },
+  "exclusion": "index_sha256.json uniquement"
+}

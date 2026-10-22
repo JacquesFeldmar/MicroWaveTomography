@@ -1,0 +1,332 @@
+{
+  "archive": "panneau_losanges_pcbway.zip",
+  "controles": [
+    {
+      "controle": "produit",
+      "ok": true
+    },
+    {
+      "controle": "schema_convention",
+      "ok": true
+    },
+    {
+      "controle": "geometrie_source_manifeste",
+      "ok": true
+    },
+    {
+      "controle": "sources_sha256",
+      "ok": true
+    },
+    {
+      "controle": "contrat_simulation",
+      "ok": true
+    },
+    {
+      "controle": "options_fabrication",
+      "ok": true
+    },
+    {
+      "controle": "membres_exacts",
+      "ok": true
+    },
+    {
+      "controle": "sha256_panneau_losanges-NPTH.DRL",
+      "ok": true
+    },
+    {
+      "controle": "sha256_panneau_losanges-PTH.DRL",
+      "ok": true
+    },
+    {
+      "controle": "sha256_panneau_losanges.GBL",
+      "ok": true
+    },
+    {
+      "controle": "sha256_panneau_losanges.GBS",
+      "ok": true
+    },
+    {
+      "controle": "sha256_panneau_losanges.GKO",
+      "ok": true
+    },
+    {
+      "controle": "sha256_panneau_losanges.GTL",
+      "ok": true
+    },
+    {
+      "controle": "sha256_panneau_losanges.GTS",
+      "ok": true
+    },
+    {
+      "controle": "sha256_panneau_losanges_lisez_moi.txt",
+      "ok": true
+    },
+    {
+      "controle": "options_sans_vernis",
+      "ok": true
+    },
+    {
+      "controle": "sha256_zip",
+      "ok": true
+    },
+    {
+      "controle": "couche_GTL",
+      "ok": true
+    },
+    {
+      "controle": "couche_GBL",
+      "ok": true
+    },
+    {
+      "controle": "couche_GTS",
+      "ok": true
+    },
+    {
+      "controle": "couche_GBS",
+      "ok": true
+    },
+    {
+      "controle": "couche_GKO",
+      "ok": true
+    },
+    {
+      "controle": "declaration_NPTH",
+      "ok": true
+    },
+    {
+      "controle": "declaration_PTH",
+      "ok": true
+    },
+    {
+      "controle": "geometrie_GTL",
+      "difference_symetrique_mm2": 1.482293042255279e-06,
+      "distance_contours_mm": 4.1744966298696815e-07,
+      "ok": true,
+      "surface_attendue_mm2": 1745.5677998739495,
+      "surface_relue_mm2": 1745.5677990915628,
+      "tolerance_surface_mm2": 0.002
+    },
+    {
+      "controle": "geometrie_GBL",
+      "difference_symetrique_mm2": 2.24080195663361e-05,
+      "distance_contours_mm": 5.222547060427943e-07,
+      "ok": true,
+      "surface_attendue_mm2": 1619.6138588959213,
+      "surface_relue_mm2": 1619.613854164638,
+      "tolerance_surface_mm2": 0.002
+    },
+    {
+      "controle": "geometrie_GTS",
+      "difference_symetrique_mm2": 0.0,
+      "distance_contours_mm": 0.0,
+      "ok": true,
+      "surface_attendue_mm2": 6667.2,
+      "surface_relue_mm2": 6667.2,
+      "tolerance_surface_mm2": 0.002
+    },
+    {
+      "controle": "geometrie_GBS",
+      "difference_symetrique_mm2": 0.0,
+      "distance_contours_mm": 0.0,
+      "ok": true,
+      "surface_attendue_mm2": 6667.2,
+      "surface_relue_mm2": 6667.2,
+      "tolerance_surface_mm2": 0.002
+    },
+    {
+      "controle": "geometrie_GKO",
+      "difference_longueur_mm": 0.0,
+      "dimensions_ligne_mediane_mm": [
+        92.6,
+        72.0
+      ],
+      "distance_ligne_mediane_mm": 0.0,
+      "ok": true
+    },
+    {
+      "attendus": 16,
+      "controle": "percages_NPTH",
+      "ok": true,
+      "relus": [
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 32.0,
+          "y_mm": 10.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 32.0,
+          "y_mm": 11.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 32.0,
+          "y_mm": 12.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 32.0,
+          "y_mm": 13.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 32.0,
+          "y_mm": 27.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 32.0,
+          "y_mm": 28.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 32.0,
+          "y_mm": 29.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 32.0,
+          "y_mm": 30.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 35.0,
+          "y_mm": 10.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 35.0,
+          "y_mm": 11.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 35.0,
+          "y_mm": 12.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 35.0,
+          "y_mm": 13.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 35.0,
+          "y_mm": 27.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 35.0,
+          "y_mm": 28.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 35.0,
+          "y_mm": 29.0
+        },
+        {
+          "diametre_mm": 0.6,
+          "metallisation": "NPTH",
+          "x_mm": 35.0,
+          "y_mm": 30.0
+        }
+      ]
+    },
+    {
+      "attendus": 4,
+      "controle": "percages_PTH",
+      "ok": true,
+      "relus": [
+        {
+          "diametre_mm": 0.457,
+          "metallisation": "PTH",
+          "x_mm": 11.682,
+          "y_mm": 5.969
+        },
+        {
+          "diametre_mm": 0.457,
+          "metallisation": "PTH",
+          "x_mm": 20.318,
+          "y_mm": 5.969
+        },
+        {
+          "diametre_mm": 0.457,
+          "metallisation": "PTH",
+          "x_mm": 59.482,
+          "y_mm": 5.969
+        },
+        {
+          "diametre_mm": 0.457,
+          "metallisation": "PTH",
+          "x_mm": 68.118,
+          "y_mm": 5.969
+        }
+      ]
+    },
+    {
+      "controle": "rendu_GTL",
+      "ok": true,
+      "pixels_non_blancs": 420395,
+      "png": "panneau_losanges_GTL.png"
+    },
+    {
+      "controle": "rendu_GBL",
+      "ok": true,
+      "pixels_non_blancs": 366040,
+      "png": "panneau_losanges_GBL.png"
+    },
+    {
+      "controle": "rendu_GTS",
+      "ok": true,
+      "pixels_non_blancs": 1459049,
+      "png": "panneau_losanges_GTS.png"
+    },
+    {
+      "controle": "rendu_GBS",
+      "ok": true,
+      "pixels_non_blancs": 1459049,
+      "png": "panneau_losanges_GBS.png"
+    },
+    {
+      "controle": "rendu_GKO",
+      "ok": true,
+      "pixels_non_blancs": 14374,
+      "png": "panneau_losanges_GKO.png"
+    },
+    {
+      "controle": "rendu_superposition",
+      "ok": true,
+      "pixels_non_blancs": 715094,
+      "png": "panneau_losanges_superposition.png"
+    },
+    {
+      "controle": "rendu_dessus",
+      "ok": true,
+      "pixels_non_blancs": 384045,
+      "png": "panneau_losanges_dessus.png"
+    },
+    {
+      "controle": "rendu_dessous",
+      "ok": true,
+      "pixels_non_blancs": 354774,
+      "png": "panneau_losanges_dessous.png"
+    }
+  ],
+  "convention_contour": "ligne_mediane_GKO_mm",
+  "ok": true,
+  "sha256": "7eba0eca18dc3a36608e64bac737d61aea49f5e890b2345281718d4eceed5200"
+}

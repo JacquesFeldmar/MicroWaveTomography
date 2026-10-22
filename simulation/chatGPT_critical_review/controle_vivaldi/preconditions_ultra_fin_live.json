@@ -1,0 +1,52 @@
+{
+  "qualification_officielle": false,
+  "mode": "vivaldi_ultra_fin",
+  "racine": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_r1\\vivaldi_tomographie",
+  "profils_attendus": [
+    "base_8ns",
+    "fin_8ns",
+    "fin_12ns",
+    "tres_fin_12ns",
+    "tres_fin_16ns",
+    "ultra_fin_12ns",
+    "ultra_fin_16ns"
+  ],
+  "provenance": {
+    "utc": "2026-10-18T21:24:46.602226+00:00",
+    "commande": [
+      "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\controle_vivaldi\\analyse_vivaldi.py",
+      "--ultra-fin"
+    ],
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "scripts_sha256": {
+      "analyse_extreme_fin.py": "d31fd9e40b7b4c6bc4d9549244c13a31457d6392007fd8c2167c0248d78d81a2",
+      "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+      "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+      "analyse_vivaldi.py": "f985d19ecd6d8c876691f9417f4d6df3e656c95ca5a75b8941c7b57ebee150e3"
+    },
+    "dependance_numerique": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\controle_extreme_fin\\analyse_extreme_fin.py"
+  },
+  "sortie_zero_queue_confirmee_par_coordinateur": false,
+  "etat": "preconditions_non_remplies",
+  "manquants": [
+    {
+      "profil": "ultra_fin_12ns",
+      "motif": "manifeste absent"
+    },
+    {
+      "profil": "ultra_fin_16ns",
+      "motif": "calcul non termine",
+      "etat": "calcul_en_cours"
+    },
+    {
+      "profil": "coordination",
+      "motif": "sortie zero de la queue 81046 non confirmee"
+    }
+  ],
+  "controles_numeriques_reussis": false
+}

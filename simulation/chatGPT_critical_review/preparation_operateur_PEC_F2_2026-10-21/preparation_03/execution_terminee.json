@@ -1,0 +1,44 @@
+{
+  "code": 0,
+  "deux_Setup_uniquement": true,
+  "resultats": [
+    {
+      "profil": "base_12ns",
+      "commande": [
+        "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\preparation_operateur_PEC_F2_2026-10-21\\inspecte_operateurs_sans_temps.py",
+        "--worker",
+        "base_12ns",
+        "--plan",
+        "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\preparation_operateur_PEC_F2_2026-10-21\\preparation_03"
+      ],
+      "code_processus": 0,
+      "arret_surveillance": null,
+      "secondes": 14.287439500098117,
+      "maximum_RSS_observe_octets": 819286016
+    },
+    {
+      "profil": "fin_16ns",
+      "commande": [
+        "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\preparation_operateur_PEC_F2_2026-10-21\\inspecte_operateurs_sans_temps.py",
+        "--worker",
+        "fin_16ns",
+        "--plan",
+        "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\preparation_operateur_PEC_F2_2026-10-21\\preparation_03"
+      ],
+      "code_processus": 0,
+      "arret_surveillance": null,
+      "secondes": 34.763725199969485,
+      "maximum_RSS_observe_octets": 1961504768
+    }
+  ],
+  "sources18_et_entrees_inchangees": true,
+  "aucun_pas_temporel": true
+}

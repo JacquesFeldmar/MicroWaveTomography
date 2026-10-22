@@ -1,0 +1,6 @@
+# Versions de l'environnement Windows Python 3.13 utilise le 18 octobre 2026.
+# Installer openEMS 0.37.0 et CSXCAD 0.7.0 depuis les wheels officielles locales
+# de outils/openEMS/python, puis ces dependances dans le meme environnement.
+numpy==2.5.3
+scipy==1.18.1
+matplotlib==3.11.2

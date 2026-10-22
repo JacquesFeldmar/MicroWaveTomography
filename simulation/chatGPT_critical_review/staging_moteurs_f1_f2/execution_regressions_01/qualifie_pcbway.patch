@@ -1,0 +1,164 @@
+--- a/simulation/qualifie_pcbway.py
++++ b/simulation/qualifie_pcbway.py
+@@ -40,6 +40,57 @@
+ import raffine_qualification_pcbway as R
+ R.enregistre(sys.modules[__name__])
+ BASE = RACINE / "resultats" / "pcbway_r1"
++MOTEUR_F1 = "fdtd"
++MOTEUR_F2 = "maillage_controle_v2"
++SOURCE_F2 = "fdtd_maille_controlee.py"
++
++
++def identite_moteur(manifeste, qualification):
++    """Deux tags absents designent F1 ; seul le double tag F2 est accepte."""
++    if "moteur" not in manifeste and "moteur" not in qualification:
++        return MOTEUR_F1
++    if manifeste.get("moteur") == qualification.get("moteur") == MOTEUR_F2:
++        return MOTEUR_F2
++    raise ValueError("tags moteur du manifeste et de la qualification incompatibles")
++
++
++def module_moteur(moteur=None):
++    """Registre ferme : aucun nom de module fourni par une archive n'est importe."""
++    if moteur is None or moteur == MOTEUR_F1:
++        return F
++    if moteur != MOTEUR_F2:
++        raise ValueError("moteur de simulation inconnu")
++    import importlib
++    module = importlib.import_module("fdtd_maille_controlee")
++    if (getattr(module, "NOM_MOTEUR", None) != MOTEUR_F2 or
++            Path(module.__file__).resolve() != (RACINE / SOURCE_F2).resolve()):
++        raise ValueError("module du moteur F2 different du module connu")
++    return module
++
++
++def moteur_calcul(dossier, manifeste, qualification, exiger_courant=False):
++    """Controle le marqueur et l'inventaire complet avant choix du moteur."""
++    nom = identite_moteur(manifeste, qualification)
++    inventaire = manifeste.get("sources_sha256")
++    if not isinstance(inventaire, dict):
++        raise ValueError("inventaire des sources du moteur absent")
++    source_f2 = Path(dossier) / "sources" / SOURCE_F2
++    if nom == MOTEUR_F1 and (SOURCE_F2 in inventaire or source_f2.exists()):
++        raise ValueError("source F2 presente sans les deux tags moteur F2")
++    if nom == MOTEUR_F2 and (SOURCE_F2 not in inventaire or not source_f2.is_file()):
++        raise ValueError("source du moteur F2 absente")
++    module = module_moteur(nom)
++    attendues = module._sources()
++    if nom == MOTEUR_F2:
++        complet = dict(F._sources())
++        complet[SOURCE_F2] = hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest()
++        if attendues != complet:
++            raise ValueError("le moteur F2 doit conserver les neuf sources F1 et sa propre source")
++    if set(inventaire) != set(attendues):
++        raise ValueError("inventaire complet des sources du moteur different")
++    if (exiger_courant or nom == MOTEUR_F2) and inventaire != attendues:
++        raise ValueError("sources physiques/moteur modifiees depuis le calcul")
++    return module
+ 
+ 
+ def sauve(path, obj):
+@@ -62,14 +113,16 @@
+                           n_pas_max=1000000))
+ 
+ 
+-def calcule(antenne, niveau, duree_ns, fils=10, cout=False, base=BASE):
+-    module = F.charge_antenne(antenne)
++def calcule(antenne, niveau, duree_ns, fils=10, cout=False, base=BASE, moteur=None):
++    moteur_module = module_moteur(moteur)
++    moteur_attendu = MOTEUR_F1 if moteur is None else moteur
++    module = moteur_module.charge_antenne(antenne)
+     carte = G.carte_antenne(antenne)
+     montage = montage_campagne(niveau, duree_ns)
+     dossier = Path(base)/antenne/f"{niveau}_{duree_ns:g}ns"
+     empreinte = signature(carte, montage)
+     if cout:
+-        cellules, pas, minutes = F.estime_cout(montage, antenne_mod=module, duree_ns=duree_ns)
++        cellules, pas, minutes = moteur_module.estime_cout(montage, antenne_mod=module, duree_ns=duree_ns)
+         print(json.dumps(dict(antenne=antenne, niveau=niveau, duree_ns=duree_ns,
+             cellules=cellules, pas_estimes=pas, minutes_indicatives=minutes,
+             note="dt operateur et vitesse mesures au lancement"), ensure_ascii=False), flush=True)
+@@ -77,6 +130,8 @@
+     preuve = dossier/"qualification_entree.json"
+     if (dossier/"simulation_manifest.json").exists():
+         _, _, actuel, precedent = charge_calcul(dossier, exiger_courant=True)
++        if identite_moteur(actuel, precedent) != moteur_attendu:
++            raise FileExistsError(f"moteur different du calcul demande : {dossier}")
+         valide_campagne(actuel, precedent, antenne, niveau, duree_ns)
+         if precedent.get("signature_physique") != empreinte:
+             raise FileExistsError(f"Configuration differente : {dossier}")
+@@ -97,8 +152,10 @@
+         geometrie_sha256=hashlib.sha256(G.json_octets(G.geometrie_canonique(carte))).hexdigest(),
+         simulation_contract=carte["simulation_contract"], montage=asdict(montage),
+         debut_utc=datetime.now(timezone.utc).isoformat())
++    if moteur_attendu == MOTEUR_F2:
++        entrees["moteur"] = MOTEUR_F2
+     try:
+-        f, s = F.lance(montage, module, dossier=str(dossier), duree_ns=duree_ns,
++        f, s = moteur_module.lance(montage, module, dossier=str(dossier), duree_ns=duree_ns,
+                        fils=fils, verbose=0)
+     finally:
+         if dossier.is_dir():
+@@ -155,6 +212,7 @@
+     q = json.loads((dossier/"qualification_entree.json").read_text(encoding="utf-8"))
+     if m["etat"] != "termine":
+         raise ValueError(f"calcul non termine : {dossier}")
++    moteur = moteur_calcul(dossier, m, q, exiger_courant=exiger_courant)
+     _verifie_fichiers(dossier, m["fichiers_sha256"])
+     _verifie_fichiers(dossier/"sources", m["sources_sha256"])
+     critiques = {"s11.s1p","maillage.npz","geometrie.json","port_ut_1","port_it_1"}
+@@ -176,10 +234,8 @@
+         if (G.json_octets(G.geometrie_canonique(carte)) != G.json_octets(q["geometrie"]) or
+                 G.json_octets(carte["simulation_contract"]) != G.json_octets(q["simulation_contract"])):
+             raise ValueError("geometrie/contrat courants differents de la simulation")
+-        if m["sources_sha256"] != F._sources():
+-            raise ValueError("sources physiques/moteur modifiees depuis le calcul")
+-        module = F.charge_antenne(m["antenne"])
+-        geometrie_fdtd = {nom:F._jsonable(getattr(module,nom)())
++        module = moteur.charge_antenne(m["antenne"])
++        geometrie_fdtd = {nom:moteur._jsonable(getattr(module,nom)())
+             for nom in ("cotes","contours_mm","vias_mm","trous_mm","materiau")
+             if callable(getattr(module,nom,None))}
+         archive = json.loads((dossier/"geometrie.json").read_text(encoding="utf-8"))
+@@ -194,6 +250,7 @@
+ 
+ def valide_campagne(m, q, antenne, niveau, duree_ns):
+     """Refuse qu'un simple nom de dossier tienne lieu de preuve de configuration."""
++    identite_moteur(m, q)
+     if (m["antenne"] != antenne or q["antenne"] != antenne or q["niveau"] != niveau or
+             G.json_octets(q["montage"]) != G.json_octets(asdict(montage_campagne(niveau,duree_ns)))):
+         raise ValueError("configuration differente du niveau de campagne attendu")
+@@ -259,11 +316,20 @@
+         import qualification_adaptative as A
+         return A.comparer(base, ecrire=ecrire)
+     bilan={"schema":"qualification_pcbway_r1", "antennes":{}, "tous_reussis":True}
++    moteur_campagne = None
+     for nom in ANTENNES:
+         racine=Path(base)/nom
+         selections=[("base",racine/"base_8ns"),("fin",racine/"fin_8ns"),
+                     ("fin prolonge",racine/"fin_12ns")]
+         donnees=[(label,*charge_calcul(p,exiger_courant=True)) for label,p in selections]
++        for d in donnees:
++            identite = identite_moteur(d[3], d[4])
++            if moteur_campagne is None:
++                moteur_campagne = identite
++            if identite != moteur_campagne:
++                raise ValueError("melange de moteurs entre calculs ou antennes de la campagne")
++        if moteur_campagne == MOTEUR_F2:
++            bilan["moteur"] = MOTEUR_F2
+         for d,(niveau,duree) in zip(donnees,[("base",8.),("fin",8.),("fin",12.)]):
+             valide_campagne(d[3],d[4],nom,niveau,duree)
+         if len({d[4]["geometrie_sha256"] for d in donnees}) != 1:
+@@ -331,9 +397,11 @@
+     p.add_argument("--cout",action="store_true")
+     p.add_argument("--comparer",action="store_true")
+     p.add_argument("--base",type=Path,default=BASE)
++    p.add_argument("--moteur", choices=[MOTEUR_F2], default=None)
+     args=p.parse_args(argv)
+     if args.comparer:
+         return 0 if comparer(args.base)["tous_reussis"] else 2
+     if not args.antenne:p.error("choisir --antenne ou --comparer")
+-    calcule(args.antenne,args.niveau,args.duree_ns,args.fils,args.cout,args.base)
++    options = {} if args.moteur is None else {"moteur":args.moteur}
++    calcule(args.antenne,args.niveau,args.duree_ns,args.fils,args.cout,args.base,**options)
+     return 0

@@ -1,0 +1,20 @@
+{
+  "utc": "2026-10-18T17:10:46.759937+00:00",
+  "commande": [
+    "simulation\\chatGPT_critical_review\\controle_extreme_fin\\analyse_extreme_fin.py",
+    "--verification-precedente",
+    "--sortie",
+    "verification_precedente_ultra_v1"
+  ],
+  "python": "3.13.16",
+  "numpy": "2.5.3",
+  "threads": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "scripts_sha256": {
+    "analyse_extreme_fin.py": "89de0cb997aae583953cd0b451d3e43966c6e76bb608962eef611eb1f3631317",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "raffine_qualification_pcbway.py": "bd1f7d8e72852158e4d037e727ad6855c49f8594a6bfd642be10584221667a6c"
+  }
+}

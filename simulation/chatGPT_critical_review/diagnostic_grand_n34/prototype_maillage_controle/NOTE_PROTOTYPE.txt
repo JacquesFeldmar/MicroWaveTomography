@@ -1,0 +1,85 @@
+PROTOTYPE DE MAILLAGE CONTROLE — 19 OCTOBRE 2026
+
+Aucun solveur, calibrage de dt, nouveau profil de simulation ou verdict de
+qualification n'a ete produit. Les17 sources historiques restent identiques
+a l'ancrage ferme47dacd80... . Les tableaux sont issus des six vraies grilles
+construites en memoire avec les geometries et materiaux historiques exacts.
+
+La proposition a examiner est proposition_07_plancher_cellules_libres.
+Les essais precedents sont conserves ; les propositions03/04/05/06 gardent
+leur constructeur byte-exact. La variante09/15 etait un diagnostic de cout :
+11/17 a ete retenu ici pour respecter la cible port.15/.10mm dans la normale.
+La premiere tentative avait perdu le proprietaire C++ de CSX, puis une
+tentative avait superpose deux divisions du via faute d'ancrage du centre.
+Ces erreurs du prototype sont corrigees sans changement des sources F1.
+
+PARAMETRES PROPOSES, NON APPROUVES POUR UN CALCUL
+base : lambda_substrat16, lambda_air16, maille_port_max0,15mm,
+       11 cellules normales dans1,6mm, 4 cellules par diametre de via.
+fin  : lambda_substrat24, lambda_air16, maille_port_max0,10mm,
+       17 cellules normales dans1,6mm, 6 cellules par diametre de via.
+
+La boite suit les extrema physiques reels de chaque axe. Entre cette boite
+et l'entree PML :74,9481145mm = lambda(f_min=1GHz)/4. Ensuite huit cellules
+uniformes de2,97413152778mm, a des coordonnees exactement communes aux deux
+niveaux. Cette boite differe de la boite F1 ; c'est une nouvelle campagne,
+pas une precision absolue retrospectivement attribuee aux anciens calculs.
+
+Les faces cuivre n=0 et n=1,6 sont primaires exactes. Le nombre impair11/17
+place n=0,8 au centre d'une cellule duale. L'ancien milieu primaire declare
+par geometrie.pose n'est pas reinjecte. x=0 est primaire exact pour U.
+Le bloc normal fixe est[-h/3,4h/3] ; les extensions ont4/6 cellules.
+Le bloc longitudinal autour de la source est[u0-1,6,u0+1,6], uniforme avec
+22/32 cellules, source u0 exacte. Les vraies aretes droites du signal, du
+microruban et des masses sont protegees ; les courbes gardent leur dessin
+original. Pas de regle1/3-2/3 generalisee dans ce prototype.
+
+Les via PEC equivalents gardent leur geometrie. Centres et diametres sont
+ancres avant toute subdivision :4/6 cellules REELLES dans les deux axes du
+plan PCB. Les48 sommets des pastilles ne sont pas tous projetes en grille.
+L'extremite oblique du taperu5,487 n'est pas projetee comme plan obligatoire,
+ce qui evite de la confondre avec l'extrema de pastilleu5,4864.
+
+Un plancher explicite empeche le LP de recreer de petites cellules libres
+non physiques. Dans la variante05/06 Vfin, le lissage avait produit0,065525mm
+juste apres la pastilleu6,4516. La proposition07 supprime cet artefact :
+minima Vfin XYZ=0,0762/0,0888888889/0,0762mm. Les minima X/Z sont imposes
+par les vias6 ; le minimum Y vient des extensions du bloc normal.
+
+COUTS INDICATIFS : CFLvide*0,8, debit25 a35 millions de points/s
+             cellules base / fin       base12ns(h)       fin16ns(h)
+petit        3 005 640 / 5 234 616       1,59–2,22         5,51–7,71
+grand        3 722 400 / 6 724 864       1,96–2,75         7,07–9,89
+Vivaldi      9 548 352 /18 521 280       5,01–7,02        19,40–27,16
+Le dt reel devra etre calibre ; ce tableau n'est pas une mesure solveur.
+Le choix0,8 est proche du ratio dt/CFL reel0,818708 de VUF historique.
+VUF avait minima XYZ0,107/0,1142857/0,125mm, CFL0,22095359ps et dt0,18089657ps.
+Le CFL F2fin0,15369698ps est surtout reduit par la resolution explicite des
+vias. La memoirerapportee300–700octets/point est une fourchette indicative,
+pas une mesure d'allocation. Eviter de promettre deux gros calculs paralleles
+sans controle de la RAM effectivement libre au moment du lancement.
+
+CONTROLES ET LIMITES
+verification_geometrique_et_cfl.json examine tous les sous-intervalles de
+l'union des deux grilles, pas seulement quelques points favorables.
+Aucun grossissement dans les trois blocs critiques : au pire fin/base
+0,75 transversal SMA,0,666667 normal,0,6875 longitudinal SMA. Les8 cellules
+PML sont identiques bit a bit dans chaque axe. Toutes les cellules gardent
+le rapport voisin<=1,5 dans la tolerance numerique1e-8 du moteur historique.
+
+Hors de ces blocs, les points LP restent non emboites. Des grossissements
+locaux sont conserves et mesures explicitement dans le rapport : grand
+ratio1,125 enX et1,333 enY ; Vivaldi1,6 enX pres de71,17mm et1,35 enZ pres
+de8,41mm. Les maxima globaux dans les projections physiques diminuent,
+mais cela n'est PAS une preuve de raffinement point par point de tout le
+radiateur. Le parent doit decider si la politique est suffisante avantF2.
+Ni la causalite des anciens echecs ni une reussite future ne sont deduites
+de ces seules constructions. Aucun seuil n'est modifie.
+
+Si cette politique est adoptee, le futur moteur complet fdtd_maille_controlee.py
+doit etre autonome : neuf sourcesF1 inchangees + sa propre source, nom moteur
+litteral maillage_controle_v2, presets numeriques stricts exposes, refus des
+configurations inconnues. Les trois antennes exigent une campagne F2 propre.
+Les anciennes preuves F1 restent historiques ; aucune comparaison F1/F2 ne
+sert a declarer une convergence spatiale. Les controles Q/W/AP sont geres
+separement par le coordinateur et ne sont pas modifies dans ce dossier.

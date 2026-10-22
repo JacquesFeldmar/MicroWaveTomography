@@ -1,0 +1,60 @@
+# Comparaison des antennes PCBWay aux simulations
+
+Cette procédure associe une référence S11 calculée à chaque carte fabriquée. La bande commune est 1,000 à 6,300 GHz, 213 points équidistants de 25 MHz, référence 50 Ω. Elle s'applique aux deux losanges séparés du panneau et à la Vivaldi.
+
+## Connecteurs et plan de référence
+
+Les trois cartes reçoivent une SMA femelle standard Cinch Johnson 142-0701-851. Les LiteVNA 62/64 et la Nooelec UWB Surveyor possèdent également une SMA femelle : prévoir un câble coaxial SMA mâle–mâle, avec une bande documentée couvrant la mesure. Le manuel distingue le LiteVNA 67, équipé de N femelles, qui nécessiterait une liaison adaptée. Une RP-SMA est mécaniquement différente au contact central et ne convient pas à cette implantation. Les fiches [LiteVNA](https://nanovna.com/wp-content/uploads/2021/11/LiteVNA_User-Guide.pdf), [Nooelec](https://www.nooelec.com/store/downloads/dl/file/id/110/product/339/uwb_surveyor_datasheet_revision_1.pdf) et [Cinch](https://www.cinch.com/media/drawings/products/rf-microwave/connectors/dr-ccs-john-142-0701-851.pdf) documentent ces interfaces.
+
+La calibration SOL au bout du câble déplace le plan de mesure jusqu'à l'interface de connexion SMA. Le calcul utilise un port idéal au bord de la carte et comprend l'implantation cuivre et les vias, mais pas le corps coaxial, le PTFE, la broche ni les soudures. Les deux plans sont donc différents. La comparaison de module et de forme des courbes évalue le prototype avec cette incertitude de transition ; elle n'est pas une validation absolue de phase au plan coaxial.
+
+Conserver la mesure calibrée originale. Une extension de port peut retirer un retard électrique connu et indépendant de l'ajustement recherché ; elle ne supprime pas les réflexions ni la dispersion de la transition. Pour une comparaison complexe exigeante au même plan, il faudra caractériser cette transition par un coupon et une méthode de désencapsulation, ou la modéliser en 3D. Ne pas ajuster librement un retard pour présenter la concordance comme acquise.
+
+## Réception et assemblage
+
+1. Photographier chaque panneau et chaque carte, dessus et dessous, avec une règle. Attribuer des identifiants permanents, par exemple `L1-01`, `L18-01`, `V-01`, sans ajouter de matière sur les zones rayonnantes.
+2. Archiver le récapitulatif de fabrication : stratifié réellement employé, épaisseur diélectrique et épaisseur finie, cuivre, finition et absence de vernis. Mesurer la largeur/longueur du contour, le ruban, le pad d'alimentation et la position des perçages. Le modèle prend 1,6 mm de diélectrique ; une épaisseur finie de 1,6 mm incluant cuivre et finition diffère légèrement. Une substitution de stratifié nécessite une nouvelle référence de simulation.
+3. Séparer les losanges, puis ébavurer le contour sans entamer le cuivre. Ne pas mesurer le panneau comme s'il contenait deux antennes isolées.
+4. Monter la SMA conformément au dessin Cinch : bord de carte et corps alignés, broche sur le pad signal, masses soudées symétriquement dessus/dessous, sans pont vers le signal. Photographier la soudure. Vérifier la continuité entre masses et vias et l'absence de court-circuit signal/masse.
+5. Consigner référence et lot du connecteur, longueur de broche conservée, méthode de soudure, dimensions et éventuelles reprises. Utiliser la même méthode sur toutes les cartes.
+
+## Acquisition S11
+
+1. Laisser le VNA et le câble se stabiliser selon leur documentation. Régler 1,000–6,300 GHz et 213 points ; noter version du micrologiciel, puissance, moyennage et réglages de vitesse. Désactiver le lissage et le fenêtrage temporel pour le fichier de comparaison principal.
+2. Réaliser SOL avec des étalons OPEN, SHORT et LOAD à interface **SMA femelle standard**, compatibles avec le connecteur mâle au bout du câble et la bande de mesure. Tout adaptateur de liaison inclus dans la chaîne calibrée doit rester en place et identique pour mesurer la carte : le retirer ou le remplacer impose une nouvelle calibration dans la configuration retenue, sans supposer que le plan précédent est conservé. Enregistrer le jeu de calibration et ses références. Rebrancher une charge de contrôle et sauvegarder sa mesure pour documenter la qualité de calibration dans la bande.
+3. Installer la carte sur un support peu diélectrique, éloignée des conducteurs, de la table et de l'opérateur. Documenter les distances, l'orientation et le trajet du câble par des photos. Le calcul est en espace libre ; le support et le câble réels peuvent perturber l'antenne.
+4. Sauvegarder S11 complexe en Touchstone RI, 50 Ω, avec fréquences explicites. Ne pas remplacer le fichier original par une image ou un CSV de module seul.
+5. Faire trois cycles de déconnexion/reconnexion d'une même carte sans changer le montage. Déplacer ensuite le câble et le support de façon documentée et répéter une acquisition : cette variation évalue leur influence. Si elle domine l'écart attendu, améliorer le montage avant d'interpréter le diélectrique.
+6. Mesurer plusieurs exemplaires de chaque dessin lorsque disponibles. Refaire la vérification de calibration en fin de série et lors d'un changement de câble ou de bande.
+
+Chaque acquisition conserve sa calibration. Un changement de calibration, de bande, de câble ou de montage constitue une nouvelle série.
+
+La chaîne `commun/instrument.py` / `commun/sol.py` est conçue pour une acquisition brute suivie d'une correction SOL en Python. Le pilote `NanoVNAv2` installé (scikit-rf 1.12.0) ne règle ni ne vérifie explicitement le registre de mode USB `0x26` ; son emploi ne prouve donc pas à lui seul que les données sont brutes. Identifier et consigner le firmware, le mode USB effectif et la calibration appliquée avant de constituer la série de référence. L'affichage du VNA ne suffit pas à déterminer l'état de correction du flux USB.
+
+Le [manuel LiteVNA](https://nanovna.com/wp-content/uploads/2021/11/LiteVNA_User-Guide.pdf), table `rawSamplesMode`, décrit un mode 3 avec correction interne ; son paragraphe FIFO conserve une affirmation contradictoire sur l'absence de correction. Le pilote distinct `from Maurice/plexiglas/progs/litevna.py` sélectionne et relit le mode brut/interne, mais son fonctionnement sur le firmware réel n'a pas été contrôlé pendant cette reprise. Les essais logiciels sur doubles ne remplacent pas ce contrôle au banc.
+
+Pour la voie brute, conserver séparément acquisitions, étalons/coefficient de correction et S11 corrigé. Pour une voie déjà corrigée en interne, conserver cet état et sa calibration sans appliquer une deuxième SOL. Dans les deux cas, le fichier comparé à la simulation est le **S11 corrigé une seule fois** ; un état de correction inconnu ne permet pas de conclure à l'accord simulation/mesure.
+
+## Fichiers à conserver
+
+Créer un dossier `antennes/<nom>/mesures/<date>_pcbway_<identifiant>/`. Le manifeste comprend date/heure, opérateur, carte et ZIP de fabrication avec SHA-256, référence simulée et son SHA-256, mesures dimensionnelles, stratifié confirmé, connecteur, photos, configuration VNA, étalons et calibration, support et câble, température si disponible, et liste des fichiers.
+
+Nommer les répétitions `s11_<carte>_reconnexion01.s1p`, etc. Le format d'échange retenu est `# Hz S RI R 50`, suivi des colonnes fréquence, réel, imaginaire. Les fichiers de plaque/fond restent dans une campagne distincte avec les noms `background.s1p` et `plate_<distance>cm.s1p`.
+
+## Comparaison et interprétation
+
+Superposer d'abord |S11| en dB sans recalage, puis l'impédance et la phase en précisant leurs plans. Comparer les intervalles disjoints sous −10 dB et −6 dB, la couverture de 1,4–6,0 GHz, les fréquences des principaux minima et les écarts de module. Les minima très profonds sont sensibles à de petites erreurs complexes ; donner aussi les écarts complexes et la dispersion entre reconnexions.
+
+L'ordre de recherche d'un écart est : calibration et connectique, reproductibilité du montage, dimensions réelles et soudure, stratifié/épaisseur, puis limites du modèle. Les valeurs typiques S1000H à 1 GHz ne donnent pas une tolérance garantie de permittivité sur toute la bande. Les pertes ohmiques, l'ENIG et la transition coaxiale peuvent contribuer à l'écart ; une simulation passive et convergée ne les mesure pas.
+
+Une bonne adaptation S11 ne prouve ni le rendement de rayonnement, ni le gain, ni la stabilité du centre de phase, ni la qualité de tomographie. Ces propriétés nécessitent d'autres calculs ou mesures. La présente livraison établit une référence S11 reproductible pour la première fabrication.
+
+## Outil de comparaison
+
+Depuis `simulation/`, avec l'environnement Python de traitement :
+
+```powershell
+python -B -X utf8 compare_s11.py --simulation resultats/pcbway_maille_controlee_v2/vivaldi_tomographie/comparaison/reference_simulation.s1p --mesure mesures/V-01_reconnexion01.s1p mesures/V-01_reconnexion02.s1p --plan-mesure "interface SMA apres calibration SOL" --sortie resultats/comparaison_V-01
+```
+
+La référence F2 ci-dessus ne sera disponible pour comparaison qu’après qualification globale réussie. Le dossier de sortie doit être neuf. L'outil refuse les grilles différentes et conserve les S1P originaux avec leurs empreintes. Il écrit courbes, indicateurs et dispersion des répétitions, sans recaler le retard ni attribuer un verdict automatique d'accord physique. Voir [le mode d'emploi](compare_s11_usage.md).

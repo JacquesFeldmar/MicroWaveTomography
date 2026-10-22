@@ -1,0 +1,46 @@
+{
+  "schema": "comparaison_commun_maurice_v1",
+  "date_utc": "2026-10-18T14:56:40.351874+00:00",
+  "sources_Maurice_inchangees": true,
+  "six_fichiers_compares": [
+    {
+      "chemin": "__init__.py",
+      "maurice_sha256": "4bc1c4af102511c60ddf9557e574c5f514b6c8b4361f56ef87997e34c102a402",
+      "racine_avant_sha256": "541a8579e674178aca02c0d108071f6b1fcf43a4b006991a67bfa742993033ff",
+      "racine_apres_sha256": "541a8579e674178aca02c0d108071f6b1fcf43a4b006991a67bfa742993033ff"
+    },
+    {
+      "chemin": "README.md",
+      "maurice_sha256": "1569d252031ae6cbf5e640be10895b7593c4e7c85f58dd9bf599f8c78f8e2279",
+      "racine_avant_sha256": "a0c63252a3ce6a89adacabba9fb6723fd5c571d3335f26af5453ba626afccf32",
+      "racine_apres_sha256": "75d162352524c426718dda6d910ec25311095868da19b464a5b36dc6ba296cf4"
+    },
+    {
+      "chemin": "instrument.py",
+      "maurice_sha256": "7f6d5035ed1ab8b9bbbd1405570223aa255051ac48f26bba72d27fdd592c2441",
+      "racine_avant_sha256": "97b543f4aa445e2f9206f3ac588a0bee67839ed311f9045bae9f34c293297646",
+      "racine_apres_sha256": "bb30ffeec918f0f0b7e593264de603df5a13fd64330e0cc967f6b52c627bc015"
+    },
+    {
+      "chemin": "sol.py",
+      "maurice_sha256": "5391a64709619baa33b77f74e49ef63ea598807a48af7949382cb4c9f34c240c",
+      "racine_avant_sha256": "6a5b3e61af9d51f4814a0b7ba7ba61d9ab49bc3531742bb237bef99e9e349c34",
+      "racine_apres_sha256": "6a5b3e61af9d51f4814a0b7ba7ba61d9ab49bc3531742bb237bef99e9e349c34"
+    },
+    {
+      "chemin": "physique.py",
+      "maurice_sha256": "85d4bf9a64dba6a132cb7daaa13a2ddf4c18e0dcf1d41e04bb51a820606cf15b",
+      "racine_avant_sha256": "f63f66012c72190b2da5f37a124381bd5209c995072207a9bfa15e7cfe7659d4",
+      "racine_apres_sha256": "c84122492df9edbcfbd98d9933b960add265a98cb2e1e9b567fe5054eace5e14"
+    },
+    {
+      "chemin": "docs/Lite_VNA.pdf",
+      "maurice_sha256": "0e509a97481243fd2ee8c4e0f69f05eb5aafd39d1501573c920d0129efc278a1",
+      "racine_avant_sha256": "0e509a97481243fd2ee8c4e0f69f05eb5aafd39d1501573c920d0129efc278a1",
+      "racine_apres_sha256": "0e509a97481243fd2ee8c4e0f69f05eb5aafd39d1501573c920d0129efc278a1"
+    }
+  ],
+  "instrument_AST_executable_identique": true,
+  "init_sol_identiques_hors_CRLF_LF": true,
+  "manuel_local_identique_octets": true
+}

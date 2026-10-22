@@ -1,0 +1,74 @@
+{
+  "schema": "verification_logicielle_reprise_r1",
+  "date_utc": "2026-10-18T09:14:27.048643+00:00",
+  "tests_reussis": 114,
+  "controles_traitement_reussis": 39,
+  "notes": [
+    "Les tests de logiciel ne remplacent pas les calculs de convergence physiques.",
+    "Le journal initial de la fixture ancienne est conserve; le SHA factice de cette fixture a ete corrige, sans changement du lecteur de production."
+  ],
+  "preuves": [
+    {
+      "fichier": "unittests_openems_apres_fixture.txt",
+      "tests": 54,
+      "code_sortie": 0,
+      "sha256": "02905f52de7f9a34a382457b21e72ffca4791f1f6f9fa50e1c0efcb08daf9969"
+    },
+    {
+      "fichier": "imports_cli.txt",
+      "tests": 14,
+      "code_sortie": 0,
+      "sha256": "310b3da303f2a8d366aaa15401dc75fc4b7210aa411fcb28ccf317543515865f"
+    },
+    {
+      "fichier": "fabrication_livraison.txt",
+      "tests": 46,
+      "code_sortie": 0,
+      "sha256": "19f3d04cb4c977803be4bfd0e9eed5d27e52a9249029c2657c24f1a497b8213f"
+    },
+    {
+      "fichier": "traitement.txt",
+      "controles": 39,
+      "code_sortie": 0,
+      "sha256": "92757395e59339a767f1ca292f425cf91345159cdb95421555be17d2a1636da9"
+    }
+  ],
+  "sources_sha256": {
+    "apercu.py": "dd11516b5b159d36ee3a224f567f6a0d6c986cf783b7c56a7a3b2c84b4b3a5c3",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "compare_s11.py": "8c49e7608c672a75b86ff6a42552d45f5b37e8b88b015eb30db53acf439ee711",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+    "export_dxf.py": "aa4910d44cb00b180135cb7710379ba41fa52fc81c3f3517bbd5e76cbab50659",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+    "figures.py": "326f3af3c7ee256e3254462d602beb7e1c09b5f3eaceda8c67c28e7f468826a7",
+    "livre_pcbway.py": "f44617d3a2cc3aad6efff94d060875ead8f3cfce0be8fa64ecb56004b61393c2",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "modele.py": "1802913350fa14c51df39ae61a2667b880e05ed6f5a7b3abaf72079b34f82a7e",
+    "poursuit_campagne_pcbway.py": "908bc7b647c25be4405e70a6ac81f2e945980e6a881b5e3a44069e890dfa7c8b",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "run.py": "5acc2a8285aabbcfdbe586fbedbd26bb76f143f44bf59ccf707b8bdc63e2dfc9",
+    "test_donnees.py": "264c22b0b23eb0af1f0af07b96580858b8075e708eb329be3f7e92fbda11ff9f",
+    "test_fabrication.py": "dc5cd0f28f453daf5a36c626968ab0c226f60ffc6bbcb34fa90296dffb382333",
+    "test_livre_pcbway.py": "65ac6c8a97257c65d4a004b3a4aac818a897f34bdb98364509e81dd03d32cfd4",
+    "test_run.py": "e028a59d63bc2d0c3db3cd83fa262dcf6e8ab5558714af90ae7f2a98aad92fb7",
+    "test_traitement.py": "ac58e12809bcab4a483db4b7082682a76739486335eb2e9a9d6ef677673c8528",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "verifie_gerber.py": "def8f7273428352591a3a98cec2ce8b224ce1758b82f4beb070fa7debd46db40",
+    "tests/test_compare_s11.py": "ee94e1fdec812ca7fd11168f05c67da8c283e4d1cd894de96aaa977fc0f2f417",
+    "tests/test_fdtd_reprise.py": "f6478388b68c2f4a370f811d2671a4a54883ff0c528a2cbd29e80e0234a149e5",
+    "tests/test_fenetre_sondes.py": "54f57c16f949e02bcb2a8c9b3c990809f4c1e258c027c859f67ab374d5e94763",
+    "tests/test_poursuit_campagne_pcbway.py": "35a66087d600d18b2b0ac4fc780b1504763c31c52ff4c7813d4e9a71a0096b27",
+    "tests/test_qualification_pcbway.py": "06d48c850a2c8e509421d674ca2c79b1dd87646667ba2f99ad49ec295d0c9e75",
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/dipole_reference/verifier.py": "e5b79341af5d0423f94c47ebb288b5d2a6d18efacd376d09050835c2f54a7be2",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/bilan_reglage.py": "a511162cbad46625a8e3f606c22ed38cd3677f4e68869c35e866284977ba1cb6",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "antennes/vivaldi_tomographie/regle.py": "10f85163879887857c8266f3315d815ab0903eedc27f4b7e185d25e205b6f641"
+  }
+}

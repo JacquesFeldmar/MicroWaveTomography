@@ -5,8 +5,11 @@ Ouverture, balayage, moyennage vectoriel, enregistrement et relecture des
 balayages BRUTS. Aucun modele physique, aucun dossier de donnees : la bande et
 les chemins sont fournis par l'appelant.
 
-L'USB du LiteVNA renvoie TOUJOURS des donnees non calibrees, quelle que soit la
-calibration faite dans son menu : la correction est l'affaire de sol.py.
+Ce module attend des acquisitions brutes pour correction par sol.py. Le pilote
+NanoVNAv2 (scikit-rf 1.12.0) ne selectionne ni ne verifie explicitement le mode
+USB 0x26. Le mode 3 de certains firmwares fournit des donnees deja corrigees :
+identifier firmware, mode et calibration avant mesure ; ne pas doubler la SOL.
+Voir README.md pour les limites documentaires et le pilote distinct de Maurice.
 """
 
 import os

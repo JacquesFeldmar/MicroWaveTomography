@@ -1,0 +1,64 @@
+ ---------------------------------------------------------------------- 
+ | openEMS 64bit -- version v0.37.0
+ | (C) 2010-2026 Thorsten Liebig <thorsten.liebig@gmx.de>  GPL license
+ ---------------------------------------------------------------------- 
+	Used external libraries:
+		CSXCAD -- Version: v0.7.0
+		hdf5   -- Version: 2.2.0
+		          compiled against: HDF5 library version: 2.2.0
+		tinyxml -- compiled against: 2.6.2
+		fparser
+		boost  -- compiled against: 1_91
+		vtk -- Version: 9.3.20231030
+		       compiled against: 9.3.20231030
+
+ Usage: openEMS <FDTD_XML_FILE> [<options>...]
+ 
+Options:
+  -h [ --help ]                     Show this help message and exit
+  --disable-dumps                   Disable all field dumps for faster 
+                                    simulation
+  --debug-material                  Dump material distribution to a vtk file 
+                                    for debugging
+  --debug-PEC                       Dump metal distribution to a vtk file for 
+                                    debugging
+  --debug-operator                  Dump operator to vtk file for debugging
+  --debug-boxes                     Dump e.g. probe boxes to vtk file for 
+                                    debugging
+  --debug-CSX                       Write CSX geometry file to debugCSX.xml
+  --engine arg (=fastest)           Choose engine type 
+                                    
+                                      fastest: fastest available engine 
+                                               (default)
+                                      basic: basic FDTD engine
+                                      sse: engine using SSE vector extensions
+                                      sse-compressed: engine using compressed 
+                                                      operator + sse vector 
+                                                      extensions
+                                      multithreaded: engine using compressed 
+                                                     operator + sse vector 
+                                                     extensions + multithreadin
+                                                     g
+                                    
+  --numThreads arg (=0)             Force use n threads for multithreaded 
+                                    engine (needs: --engine=multithreaded)
+  --no-simulation                   only run preprocessing; do not simulate
+  --dump-statistics                 dump simulation statistics to 
+                                    'openEMS_run_stats.txt' and 
+                                    'openEMS_stats.txt'
+  --exact-endcriteria               evaluate the energy end criteria every 
+                                    Nyquist timesteps instead of every few 
+                                    seconds of wall-clock time, so the run 
+                                    stops at the same timestep regardless of 
+                                    machine speed/load; costs performance, 
+                                    useful mainly for engine/code verification
+
+Additional global arguments:
+  --showProbeDiscretization         Show probe discretization information
+  --nativeFieldDumps                Dump all fields using the native field 
+                                    components
+  --legacyHDF5Dumps                 Dump all fields using the legacy HDF5 file 
+                                    format as required for Octave/Matlab import
+  -v [ --verbose ] [=arg(=1)] (=0)  Verbose level, select debug level 1 to 3, 
+                                    also accept -v, -vv, -vvv
+

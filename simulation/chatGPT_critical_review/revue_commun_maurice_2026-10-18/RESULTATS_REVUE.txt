@@ -1,0 +1,49 @@
+Reprise selective de commun/physique.py, 18 octobre 2026
+
+Source examinee : from Maurice/commun/physique.py.
+Seuls la documentation du plan de reference et les controles d'entree de
+profil_distance sont repris. La signature, le calcul IFFT, ses niveaux,
+les fenetres, les constantes et les autres fonctions restent inchanges.
+Les fins de ligne CRLF de la racine sont conservees.
+
+Le remplacement integral par la copie Maurice aurait supprime cote_plaque_mm,
+importee par cartilage/noyau.py et utilisee par cartilage/calibration.py.
+Cette fonction est conservee dans la version integree.
+
+Les deux sol.py sont identiques apres normalisation CRLF/LF : aucun correctif
+de calibration SOL n'est introduit. Les anciens comportements d'interpolation
+des coefficients et de retour brut hors bande ne sont pas modifies.
+Ils ne constituent pas des apports nouveaux de Maurice.
+
+Archive avant modification : physique.py.orig, octets originaux conserves.
+Provenance et empreintes : inventaire_provenance.json.
+Changement exact : apport_profil_distance.patch.
+
+Verification ciblee, depuis la racine du projet :
+  OMP_NUM_THREADS=1, OPENBLAS_NUM_THREADS=1, MKL_NUM_THREADS=1,
+  NUMEXPR_NUM_THREADS=1
+  C:\Users\jfeld\anaconda3\envs\ph\python.exe -B -X utf8
+      -m unittest commun.tests.test_physique -v
+
+Resultat : 8 tests reussis, aucun echec ni erreur.
+  - 90 profils synthetiques et 45 profils issus des cinq exports John sont
+    strictement identiques a ceux de l'original archive : grilles de 3 a
+    401 points, listes/tableaux, zooms 1/8/16, Hann/Blackman-Harris/rectangulaire.
+  - Retards connus 0/50/60/70/150 cm retrouves au demi-pas pres ; unites mm
+    et gain coherent de la Hann non normalise inchanges.
+  - Grilles irregulieres, decroissantes, repetees, non finies, tailles ou
+    dimensions incompatibles et zooms invalides refuses avant IFFT.
+  - Signatures et API publiques conservees ; cote_plaque_mm inchangee.
+  - Import de cartilage/noyau.py et profil d'un VNASimule reussis avec
+    ouvrir_reel remplace par une fonction levant une erreur si appelee.
+    Aucun instrument reel n'a ete ouvert.
+
+Les appelants cartilage utilisent toujours la meme API. Tomographie ne
+contient actuellement aucun programme Python. Les programmes plexiglas de
+Maurice rendent leur propre dossier commun importable ; ils restent intacts.
+Le traitement du simulateur PCBWay utilise banc.py/traitement.py et ne depend
+pas de commun.physique : aucune source de la campagne FDTD n'est modifiee.
+
+Portee : protection de l'entree IFFT et clarification du plan SOL. Ce controle
+ne caracterise ni les etalons ni les antennes et ne demontre pas le comportement
+d'un firmware USB reel. Les fichiers sources Maurice restent inchanges.

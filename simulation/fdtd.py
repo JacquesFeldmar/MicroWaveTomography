@@ -1,404 +1,595 @@
-"""FDTD -- le montage dans openEMS.
+"""Scenes openEMS, maillages controles et executions archivables.
 
-Le LiteVNA n'est pas simule : un VNA calibre au plan SOL, c'est exactement un
-port de 50 ohms. Tout le reste est geometrique.
-
-    port localise 50 ohms  --  ANTENNE  --  air  --  plaque PEC  --  PML
-
-La geometrie de l'antenne ne vit PAS ici : chaque antenne a son module, dans
-`antennes/<nom>/geometrie.py`, qui expose
-
-    NOM, DESCRIPTION
-    pose(csx, fdtd, acq)  ->  (port, lignes_x, lignes_y, lignes_z, demi_etendue)
-    retard_attendu_ns()   ->  float ou None
-
-Ce fichier ne s'occupe que du reste : la plaque, le maillage, les frontieres,
-l'execution et l'ecriture des Touchstone. openEMS est importe paresseusement,
-pour que le reste du projet tourne sans lui.
+Une serie fond/cibles partage exactement les memes lignes, le meme pas de
+ temps CFL conservatif et le meme nombre de pas. Les sondes temporelles,
+ l'entree XML, le maillage et un manifeste SHA-256 restent dans chaque calcul.
+ La construction et l'estimation de cout n'executent jamais le solveur.
 """
+from dataclasses import asdict
+from datetime import datetime, timezone
+import hashlib
 import importlib.util
+import json
 import os
+from pathlib import Path
+import platform
+import shutil
 
 import numpy as np
 
 from banc import C, Montage
+from materiaux import ATTRIBUT_MODELE
 
 ICI = os.path.dirname(os.path.abspath(__file__))
-DOSSIER_ANTENNES = os.path.join(ICI, "antennes")
-
-# openEMS est livre comme un dossier de DLL : ses modules Python ne se chargent
-# que si CSXCAD_INSTALL_PATH le designe. On le pose ici si l'environnement ne
-# l'a pas fait, pour que le projet marche depuis n'importe quel terminal.
-_OPENEMS = os.path.join(os.path.dirname(ICI), "outils", "openEMS")
-if not os.environ.get("CSXCAD_INSTALL_PATH") and os.path.isdir(_OPENEMS):
-    os.environ["CSXCAD_INSTALL_PATH"] = _OPENEMS
+DOSSIER_ANTENNES = os.path.join(ICI, 'antennes')
+_OPENEMS = os.path.join(os.path.dirname(ICI), 'outils', 'openEMS')
+if not os.environ.get('CSXCAD_INSTALL_PATH') and os.path.isdir(_OPENEMS):
+    os.environ['CSXCAD_INSTALL_PATH'] = _OPENEMS
 
 
-# ======================================================================
-# CHARGEMENT D'UNE ANTENNE
-# ======================================================================
 def antennes_disponibles():
-    if not os.path.isdir(DOSSIER_ANTENNES):
-        return []
-    return sorted(n for n in os.listdir(DOSSIER_ANTENNES)
-                  if os.path.isfile(os.path.join(DOSSIER_ANTENNES, n,
-                                                 "geometrie.py")))
+    return sorted(p.parent.name for p in Path(DOSSIER_ANTENNES).glob('*/geometrie.py'))
 
 
 def charge_antenne(nom):
-    """Importe antennes/<nom>/geometrie.py."""
-    chemin = os.path.join(DOSSIER_ANTENNES, nom, "geometrie.py")
-    if not os.path.isfile(chemin):
-        raise FileNotFoundError(
-            f"antenne inconnue : {nom}. Disponibles : "
-            f"{', '.join(antennes_disponibles()) or 'aucune'}")
-    spec = importlib.util.spec_from_file_location(f"antenne_{nom}", chemin)
+    chemin = Path(DOSSIER_ANTENNES) / nom / 'geometrie.py'
+    if not chemin.is_file():
+        raise FileNotFoundError(f'antenne inconnue : {nom}. Disponibles : '
+                               + ', '.join(antennes_disponibles()))
+    spec = importlib.util.spec_from_file_location(f'antenne_{nom}', chemin)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod
 
 
-# ======================================================================
-# MARGE D'AIR
-# ======================================================================
 def marge_air(acq, maillage):
-    """Air a laisser entre l'objet et la PML, en mm.
-
-    C'est le BAS de la bande qui commande : une PML placee a moins d'un quart
-    de la plus grande longueur d'onde ne joue plus son role, l'energie ne
-    descend plus et la simulation tourne jusqu'au nombre de pas maximal sans
-    jamais converger. A 1 GHz, lambda vaut 300 mm : il faut 75 mm d'air.
-    """
-    lam_max = C / acq.f_min * 1e3
-    return max(maillage.marge_air_mm, lam_max / 4)
+    """Marge d'air en mm, hors les huit cellules de PML."""
+    return max(maillage.marge_air_mm, C / acq.f_min * 1e3 / 4)
 
 
-# ======================================================================
-# COUT
-# ======================================================================
-def estime_cout(montage: Montage, x_cm=None, demi_etendue_mm=60.0):
-    """(cellules, pas de temps, minutes). Plancher : le raffinement local
-    autour de l'alimentation n'est pas compte."""
-    a, m = montage.acquisition, montage.maillage
-    pas_air = C / a.f_max * 1e3 / m.mailles_par_lambda_air       # mm
-    marge = marge_air(a, m) + m.marge_pml * pas_air
-    demi = max(demi_etendue_mm, montage.plaque.cote / 2 if x_cm else 0)
-    lx = ly = 2 * (demi + marge)
-    lz = (x_cm * 10 if x_cm else 0) + 2 * marge + montage.plaque.epaisseur
-    cellules = (lx / pas_air) * (ly / pas_air) * (lz / pas_air)
-    if m.symetrie:
-        cellules /= 4
-    pas_temps = pas_air * 1e-3 / (C * np.sqrt(3)) * 0.98          # Courant
-    # Deux contraintes sur la duree simulee :
-    #   - laisser les echos aller et revenir, plus une marge d'extinction ;
-    #   - couvrir 1/df, sinon les echos de la portee non ambigue (6 m avec un
-    #     pas de 25 MHz) sont tronques et la comparaison avec la mesure n'a
-    #     plus de sens.
-    duree = max(1.0 / a.df, 4 * (lz * 1e-3) / C + 20e-9)
-    n_pas = min(m.n_pas_max, int(duree / pas_temps))
-    minutes = cellules * n_pas / 30e6 / 60             # ~30 Mcellules/s
-    return int(cellules), n_pas, minutes
-
-
-# ======================================================================
-# MAILLAGE
-# ======================================================================
-TOL_PRIORITAIRE = 0.1      # mm : plus petit detail qu'on accepte de distinguer
+def _uniques(lignes):
+    """Dedoublonne seulement l'arrondi numerique; jamais un vrai detail."""
+    valeurs = np.sort(np.asarray(lignes, dtype=float).ravel())
+    if not np.all(np.isfinite(valeurs)):
+        raise ValueError('ligne de maillage non finie')
+    return valeurs[np.r_[True, np.diff(valeurs) > 1e-8]] if valeurs.size else valeurs
 
 
 def _fusionne(prioritaires, autres, tol):
-    """Lignes de maillage, sans deux lignes plus proches que `tol`.
-
-    Les prioritaires -- les bords de matiere -- sont conservees, mais
-    dedoublonnees entre elles a TOL_PRIORITAIRE : deux lignes distantes de
-    quelques micrometres ne decrivent aucun detail reel et ne font que
-    diviser le pas de temps. Une ligne de remplissage n'est retenue que si
-    elle s'eloigne de ses voisines d'au moins `tol`.
-    """
-    brutes = np.sort(np.unique(np.asarray(prioritaires, dtype=float)))
-    lignes = brutes[:1]
-    for v in brutes[1:]:
-        if v - lignes[-1] > TOL_PRIORITAIRE:
-            lignes = np.append(lignes, v)
-    for v in np.sort(np.unique(np.asarray(autres, dtype=float))):
-        i = int(np.searchsorted(lignes, v))
-        voisins = lignes[max(0, i - 1):min(len(lignes), i + 1)]
-        if voisins.size == 0 or np.all(np.abs(voisins - v) > tol):
-            lignes = np.insert(lignes, i, v)
+    """Conserve les interfaces; ecarte les echantillons trop proches."""
+    lignes = _uniques(prioritaires)
+    for valeur in _uniques(autres):
+        i = int(np.searchsorted(lignes, valeur))
+        voisins = lignes[max(0, i-1):i+1]
+        if not voisins.size or np.all(np.abs(voisins-valeur) >= tol):
+            lignes = np.insert(lignes, i, valeur)
     return lignes
 
 
-def _nettoie_apres_lissage(grille, prio, maille_air):
-    """Retire les cellules minuscules creees par le lissage lui-meme.
+def _gradue(lignes, rapport_max, fixes, taille_max):
+    """Repartit les cellules libres en conservant toutes les interfaces.
 
-    SmoothMeshLines gradue les intervalles avec un rapport donne, et termine
-    parfois sa progression a quelques dixiemes de millimetre d'une ligne
-    imposee -- 399,723 juste avant 400,000, par exemple. Cette cellule ne
-    decrit rien et divise le pas de temps de toute la simulation.
-
-    Le seuil obeit a DEUX bornes, et il faut les deux :
-
-      - moitie du plus petit intervalle que l'antenne a demande, pour ne
-        jamais effacer un detail voulu ;
-      - un dixieme de la maille d'air visee, pour ne jamais effacer le
-        remplissage legitime. Sans ce plafond, une antenne dont les lignes
-        sont espacees de 20 mm donne un seuil de 9 mm, qui supprime toutes
-        les lignes a 4,8 mm posees par le lissage -- le maillage devient
-        deux fois trop grossier et le resultat ne veut plus rien dire.
-
-    En cas de conflit, la ligne prioritaire -- un bord de matiere -- reste.
+    Les contraintes d_i <= ratio*d_(i+1) sont lineaires. Une repartition
+    lineaire minimise le deplacement depuis le lissage initial, avec une
+    taille maximale par zone. Des cellules ne sont ajoutees qu'en cas de
+    besoin. On evite ainsi de propager une subdivision binaire dans tout
+    l'air. scipy est deja une dependance de l'environnement openEMS.
     """
-    for axe in "xyz":
-        lignes = np.asarray(grille.GetLines(axe), dtype=float)
-        p = np.asarray(sorted(set(np.round(prio[axe], 6))), dtype=float)
-        ecarts = np.diff(p)
-        seuil = min(0.45 * ecarts.min(), maille_air / 10) if ecarts.size \
-            else maille_air / 10
-        seuil = max(0.05, seuil)
-        garde = [lignes[0]]
-        for v in lignes[1:]:
-            if v - garde[-1] > seuil:
-                garde.append(v)
-            elif (np.any(np.abs(p - v) < 1e-6)
-                  and not np.any(np.abs(p - garde[-1]) < 1e-6)):
-                garde[-1] = v          # la prioritaire l'emporte
-        grille.SetLines(axe, np.array(garde))
+    try:
+        from scipy.optimize import linprog
+        from scipy.sparse import lil_matrix
+    except ImportError as exc:
+        raise ImportError("le maillage controle exige scipy (pip install scipy)") from exc
+    lignes, fixes = _uniques(np.r_[lignes, fixes]), _uniques(fixes)
+    for _ in range(20):
+        d = np.diff(lignes)
+        if np.all(np.maximum(d[1:]/d[:-1], d[:-1]/d[1:]) <= rapport_max*(1+1e-10)):
+            return lignes
+        n = len(d)
+        # Largeurs et variables d'ecart absolu a la grille initiale.
+        a_ub = lil_matrix((2*(n-1)+2*n, 2*n), dtype=float)
+        b_ub = np.zeros(a_ub.shape[0])
+        for i in range(n-1):
+            a_ub[2*i, i], a_ub[2*i, i+1] = 1., -rapport_max
+            a_ub[2*i+1, i], a_ub[2*i+1, i+1] = -rapport_max, 1.
+        for i in range(n):
+            j = 2*(n-1)+2*i
+            a_ub[j, i], a_ub[j, n+i], b_ub[j] = 1., -1., d[i]
+            a_ub[j+1, i], a_ub[j+1, n+i], b_ub[j+1] = -1., -1., -d[i]
+        indices = np.array([int(np.argmin(abs(lignes-f))) for f in fixes])
+        a_eq = lil_matrix((len(fixes)-1, 2*n), dtype=float)
+        for j, (lo, hi) in enumerate(zip(indices[:-1], indices[1:])):
+            a_eq[j, lo:hi] = 1.
+        plafonds = [taille_max((lo+hi)/2) for lo, hi in zip(lignes[:-1], lignes[1:])]
+        resultat = linprog(np.r_[np.zeros(n), 1/np.maximum(d, 1e-6)],
+            A_ub=a_ub.tocsr(), b_ub=b_ub, A_eq=a_eq.tocsr(), b_eq=np.diff(fixes),
+            bounds=[(max(1e-6, float(d.min())/4), p) for p in plafonds]+[(0, None)]*n,
+            method='highs')
+        if resultat.success:
+            nouvelles = np.r_[lignes[0], lignes[0]+np.cumsum(resultat.x[:n])]
+            # Restaurer les flottants exacts des interfaces apres cumul.
+            nouvelles[indices] = fixes
+            ecarts = np.diff(nouvelles)
+            rapports = np.maximum(ecarts[1:]/ecarts[:-1], ecarts[:-1]/ecarts[1:])
+            if rapports.max() <= rapport_max*(1+1e-7):
+                return nouvelles
+        # Trop peu de cellules au voisinage d'une interface fine : ajouter
+        # localement avant de retenter la repartition globale.
+        voisin = np.minimum(np.r_[np.inf, d[:-1]], np.r_[d[1:], np.inf])
+        idx = np.flatnonzero(d > rapport_max*voisin*(1+1e-10))
+        lignes = _uniques(np.r_[lignes, (lignes[idx]+lignes[idx+1])/2])
+    raise RuntimeError('impossible de graduer la grille en conservant les interfaces')
+
+
+def _proprietes_matiere(csx):
+    """Interfaces, bornes dielectriques, ports et modeles de materiau."""
+    interfaces = {a: [] for a in 'xyz'}
+    dielectriques, ports, definitions = [], [], []
+    for prop in csx.GetAllProperties():
+        nom = prop.GetName()
+        # Les sondes de courant sont placees sur la grille duale par openEMS.
+        sonde = nom.startswith(('port_it_', 'port_ut_', 'port_excite_'))
+        epsilon = None
+        if hasattr(prop, 'GetMaterialProperty'):
+            epsilon = float(np.max(np.asarray(prop.GetMaterialProperty('epsilon'))))
+            definition = None
+            try:
+                brut = prop.GetAttributeValue(ATTRIBUT_MODELE)
+                if brut:
+                    definition = json.loads(brut)
+            except (ValueError, TypeError):
+                pass
+            if definition:
+                epsilon = max(epsilon, definition.get('epsilon_statique', epsilon))
+                definitions.append(dict(nom=nom, **definition))
+            else:
+                definitions.append(dict(nom=nom, type='material_constant',
+                    epsilon=epsilon,
+                    kappa_s_m=float(np.max(np.asarray(prop.GetMaterialProperty('kappa'))))))
+        for prim in prop.GetAllPrimitives():
+            b = np.asarray(prim.GetBoundBox(), dtype=float)
+            if not sonde:
+                for i, axe in enumerate('xyz'):
+                    interfaces[axe].extend(b[:, i])
+            if epsilon is not None and epsilon > 1:
+                dielectriques.append((b, epsilon))
+            if nom.startswith('port_resist_'):
+                ports.append(b)
+    return interfaces, dielectriques, ports, definitions
 
 
 def verifie_emprise(csx, demi, lz, marge=1e-6):
-    """Refuse toute matiere posee hors du volume que l'antenne annonce.
-
-    `pose()` rend son demi-encombrement en x et y, et ses lignes imposees en
-    z. Tout ce qu'elle a dessine doit tenir dedans. Si ce n'est pas le cas,
-    c'est que la geometrie n'est pas celle qu'on croit -- et la simulation
-    n'aura aucun sens, sans rien signaler.
-
-    Ce garde-fou a ete ecrit apres la faute qui lui donne son nom. Les
-    polygones de CSXCAD prennent leurs coordonnees dans les axes (n+1, n+2)
-    modulo 3, ou n est la normale : (x, y) pour une normale z, mais (z, x)
-    pour une normale y. La Vivaldi, posee de chant, a donc ete simulee trois
-    fois transposee -- 279 mm de large pour 143 de long. Rien ne le disait :
-    ni openEMS, ni le maillage, ni le |S11|, qui etait simplement mauvais.
-    Deux corrections de conception ont ete faites sur ce bruit-la.
-    """
-    boite = None
-    for prop in csx.GetAllProperties():
-        for prim in prop.GetAllPrimitives():
-            b = np.asarray(prim.GetBoundBox(), dtype=float)
-            boite = b if boite is None else np.array(
-                [np.minimum(boite[0], b[0]), np.maximum(boite[1], b[1])])
-    if boite is None:
-        return boite
+    """Refuse une geometrie hors des bornes annoncees par pose()."""
+    boites = [np.asarray(p.GetBoundBox(), dtype=float)
+              for prop in csx.GetAllProperties() for p in prop.GetAllPrimitives()]
+    if not boites:
+        return None
+    boite = np.array([np.min([b[0] for b in boites], axis=0),
+                      np.max([b[1] for b in boites], axis=0)])
     permis = np.array([[-demi, -demi, float(np.min(lz))],
                        [demi, demi, float(np.max(lz))]])
-    deborde = (boite[0] < permis[0] - marge) | (boite[1] > permis[1] + marge)
-    if deborde.any():
-        axes = "".join(a for a, d in zip("xyz", deborde) if d)
-        raise RuntimeError(
-            f"la geometrie deborde du volume annonce sur l'axe/les axes "
-            f"{axes} : matiere de {boite[0]} a {boite[1]}, alors que pose() "
-            f"annonce {permis[0]} a {permis[1]}. Verifie l'ordre des "
-            f"coordonnees des polygones : pour une normale n, CSXCAD les lit "
-            f"dans les axes (n+1, n+2) modulo 3.")
+    if np.any(boite[0] < permis[0]-marge) or np.any(boite[1] > permis[1]+marge):
+        raise RuntimeError(f'geometrie hors volume annonce : {boite.tolist()} '
+                           f'au lieu de {permis.tolist()}. Verifier les axes '
+                           'des polygones (normale y : coordonnees z,x).')
     return boite
 
 
-def verifie_maillage(csx, maille_cible):
-    """Rend (pas minimal par axe, pas de temps impose). A appeler avant de lancer."""
-    g = csx.GetGrid()
-    mini = {}
-    for axe in "xyz":
-        d = np.diff(np.asarray(g.GetLines(axe)))
-        mini[axe] = float(d.min()) if d.size else float("nan")
-    pas = min(mini.values())
-    return mini, pas * 1e-3 / (C * np.sqrt(3))
+def resume_maillage(csx):
+    axes = {}
+    for axe in 'xyz':
+        lignes = np.asarray(csx.GetGrid().GetLines(axe), dtype='<f8')
+        d = np.diff(lignes)
+        if not d.size or np.any(d <= 0) or not np.all(np.isfinite(lignes)):
+            raise ValueError('maillage invalide sur '+axe)
+        rapports = np.maximum(d[1:]/d[:-1], d[:-1]/d[1:])
+        axes[axe] = dict(lignes=len(lignes), minimum_mm=float(d.min()),
+                         maximum_mm=float(d.max()),
+                         rapport_voisin_max=float(rapports.max()) if rapports.size else 1.,
+                         bornes_mm=[float(lignes[0]), float(lignes[-1])],
+                         sha256=hashlib.sha256(lignes.tobytes()).hexdigest())
+    mini_m = np.array([axes[a]['minimum_mm'] for a in 'xyz'])*1e-3
+    return dict(axes=axes,
+                cellules=int(np.prod([axes[a]['lignes']-1 for a in 'xyz'])),
+                dt_cfl_vide_s=float(1/(C*np.sqrt(np.sum(1/mini_m**2)))))
 
 
-# ======================================================================
-# SCENE
-# ======================================================================
+def verifie_maillage(csx, maille_cible, rapport_max=None):
+    """Controle maille AIR finale; rend (minima mm, CFL anisotrope s)."""
+    resume = resume_maillage(csx)
+    for axe, d in resume['axes'].items():
+        if d['maximum_mm'] > maille_cible*(1+1e-8):
+            raise ValueError(f'maille trop grande sur {axe}: {d["maximum_mm"]:.6g} '
+                             f'> {maille_cible:.6g} mm')
+        if rapport_max and d['rapport_voisin_max'] > rapport_max*(1+1e-8):
+            raise ValueError('rapport de cellules excessif sur '+axe)
+    return ({a: d['minimum_mm'] for a, d in resume['axes'].items()},
+            resume['dt_cfl_vide_s'])
+
+
+def _durations(montage, csx, n_pas=None, duree_ns=None, dt_s=None):
+    a, m = montage.acquisition, montage.maillage
+    resume = resume_maillage(csx)
+    dt = dt_s if dt_s is not None else m.facteur_courant*resume['dt_cfl_vide_s']
+    taille_z_m = np.ptp(resume['axes']['z']['bornes_mm'])*1e-3
+    explicite = duree_ns if duree_ns is not None else m.duree_ns
+    duree = (explicite*1e-9 if explicite is not None else
+             max(1/a.df, 4*taille_z_m/C+20e-9))
+    if not np.isfinite(duree) or duree <= 0:
+        raise ValueError('duree physique invalide')
+    # La derniere sonde est a (NrTS-1)*dt : prevoir un pas de plus.
+    nombre = int(n_pas) if n_pas is not None else int(np.ceil(duree/dt))+1
+    if nombre < 2 or nombre > m.n_pas_max:
+        raise ValueError(f'{nombre} pas necessaires, n_pas_max={m.n_pas_max}; '
+                         'augmenter la limite, jamais tronquer en silence')
+    return dict(dt_s=dt, n_pas=nombre, duree_demandee_s=float(duree),
+                duree_prevue_s=(nombre-1)*dt, fin_energie_active=False,
+                critere_fin_db_configure=m.critere_fin,
+                couvre_inverse_df=bool((nombre-1)*dt >= 1/a.df),
+                dt_calibre_operateur=dt_s is not None,
+                methode=('TimeStep calibre sur operateur openEMS reel' if dt_s is not None
+                         else 'ESTIMATION CFL vide; calibration operateur requise avant Run'))
+
+
 def construit(montage: Montage, antenne_mod, x_cm=None, dossier=None,
-              x_domaine=None, n_pas=None):
-    """Monte la scene openEMS. Rend (FDTD, CSX, port, dossier).
+              x_domaine=None, n_pas=None, distances_communes_cm=None,
+              duree_ns=None, dt_impose_s=None):
+    """Rend (FDTD, CSX, port, chemin absolu), sans ecrire ni calculer.
 
-    x_domaine : distance qui fixe la TAILLE du domaine et les lignes de
-        maillage, independamment de la presence de la plaque. Deux
-        simulations d'une meme serie doivent partager le meme maillage,
-        sans quoi leur difference n'a aucun sens.
-    n_pas : nombre de pas impose. S'il est donne, le critere d'arret par
-        l'energie est desactive, pour que toutes les simulations de la serie
-        couvrent exactement la meme duree.
+    distances_communes_cm impose toutes les faces de toutes les plaques,
+    meme dans le fond. x_domaine est conserve pour les anciens appelants.
     """
     from openEMS import openEMS
     from CSXCAD import ContinuousStructure
-
+    from CSXCAD.SmoothMeshLines import SmoothMeshLines
     a, pl, m = montage.acquisition, montage.plaque, montage.maillage
-    f0 = 0.5 * (a.f_min + a.f_max)
-    fc = 0.5 * (a.f_max - a.f_min)
-
-    if n_pas:
-        fdtd = openEMS(NrTS=n_pas, EndCriteria=0)
-    else:
-        fdtd = openEMS(NrTS=m.n_pas_max,
-                       EndCriteria=10 ** (m.critere_fin / 10))
-    fdtd.SetGaussExcite(f0, fc)
-    fdtd.SetBoundaryCond(["PML_8"] * 6)
-
+    if m.symetrie:
+        raise ValueError('plans de symetrie non implementes : utiliser symetrie=False')
+    if not (0 < a.f_min < a.f_max and a.points >= 2):
+        raise ValueError('acquisition invalide')
+    if m.marge_pml != 8:
+        raise ValueError('PML_8 impose marge_pml=8 cellules')
+    fdtd = openEMS(NrTS=m.n_pas_max, EndCriteria=0, TimeStepMethod=1)
+    fdtd.SetGaussExcite(0.5*(a.f_min+a.f_max), 0.5*(a.f_max-a.f_min))
+    fdtd.SetBoundaryCond(['PML_8']*6)
     csx = ContinuousStructure()
     fdtd.SetCSX(csx)
     grille = csx.GetGrid()
-    grille.SetDeltaUnit(1e-3)                          # tout en mm
-
+    grille.SetDeltaUnit(1e-3)
     port, lx, ly, lz, demi = antenne_mod.pose(csx, fdtd, a)
     verifie_emprise(csx, demi, lz)
-
-    x_dom = x_domaine if x_domaine is not None else x_cm
+    interfaces, dielectriques, ports, _ = _proprietes_matiere(csx)
+    distances = list(distances_communes_cm or ())
+    if x_domaine is not None:
+        distances.append(x_domaine)
     if x_cm is not None:
-        plaque = csx.AddMetal("plaque")
-        z = x_cm * 10.0
-        plaque.AddBox([-pl.cote / 2, -pl.cote / 2, z],
-                      [pl.cote / 2, pl.cote / 2, z + pl.epaisseur], priority=10)
-    if x_dom is not None:
-        demi = max(demi, pl.cote / 2)
-
-    maille_air = C / a.f_max * 1e3 / m.mailles_par_lambda_air
-    marge = marge_air(a, m) + m.marge_pml * maille_air
-    etendue = demi + marge
-    # L'ANTENNE AUSSI occupe de la place en z, et il faut de l'air au-dela.
-    # Une Vivaldi est posee de chant : elle s'etend sur 280 mm le long de
-    # l'axe de rayonnement. Sans ce max, la PML tombait pile sur sa bouche,
-    # absorbait le dernier tiers de l'evasement, et le |S11| rendu n'etait
-    # pas celui de l'antenne mais celui d'une antenne tronquee.
-    z_antenne = float(np.max(lz))
-    z_max = max((x_dom * 10 + pl.epaisseur if x_dom else 0.0),
-                z_antenne) + marge
-    z_min = min(0.0, float(np.min(lz))) - marge
-
-    # Les lignes de la GEOMETRIE sont prioritaires ; celles qui remplissent
-    # l'air ne sont retenues que si elles ne tombent pas a cote d'une
-    # prioritaire. Sans cela, deux lignes distantes de quelques micrometres
-    # imposent un pas de temps mille fois trop petit : la simulation n'avance
-    # plus et n'atteint jamais son critere d'arret.
-    tol = maille_air / 20
-    prio = {"x": lx, "y": ly, "z": lz}
-    if x_dom is not None:
-        # Les lignes de la plaque sont posees meme quand elle est absente :
-        # c'est ce qui garantit un maillage identique dans toute la serie.
-        prio["z"] = np.concatenate([lz, [x_dom * 10, x_dom * 10 + pl.epaisseur]])
-    remplissage = {
-        "x": np.array([-etendue, etendue]),
-        "y": np.array([-etendue, etendue]),
-        "z": np.concatenate([[z_min, z_max], np.arange(0, z_max, maille_air)]),
-    }
-    for axe in "xyz":
-        grille.AddLine(axe, _fusionne(prio[axe], remplissage[axe], tol))
-    grille.SmoothMeshLines("all", maille_air, ratio=1.4)
-    _nettoie_apres_lissage(grille, prio, maille_air)
-
-    # Chemin ABSOLU : openEMS change de repertoire courant pendant le calcul
-    # et ne le restaure pas, donc un chemin relatif ne designe plus le meme
-    # dossier au moment de relire les sondes du port.
+        if distances_communes_cm is not None and x_cm not in distances:
+            raise ValueError('la cible ne figure pas dans distances_communes_cm')
+        distances.append(x_cm)
+    distances = sorted(set(float(x) for x in distances))
+    if any(not np.isfinite(x) or x <= 0 for x in distances):
+        raise ValueError('distances de plaque non positives ou non finies')
+    if distances:
+        demi = max(demi, pl.cote/2)
+        for axe in 'xy':
+            interfaces[axe].extend([-pl.cote/2, pl.cote/2])
+        for x in distances:
+            interfaces['z'].extend([x*10, x*10+pl.epaisseur])
+    if x_cm is not None:
+        csx.AddMetal('plaque').AddBox(
+            [-pl.cote/2, -pl.cote/2, x_cm*10],
+            [pl.cote/2, pl.cote/2, x_cm*10+pl.epaisseur], priority=10)
+    air = C/a.f_max*1e3/m.mailles_par_lambda_air
+    marge = marge_air(a, m)+8*air
+    z_min = min(0., float(np.min(lz)))-marge
+    z_max = max(float(np.max(lz)),
+                distances[-1]*10+pl.epaisseur if distances else 0.)+marge
+    bornes = dict(x=[-demi-marge, demi+marge], y=[-demi-marge, demi+marge],
+                  z=[z_min, z_max])
+    declares = dict(x=lx, y=ly, z=lz)
+    for i, axe in enumerate('xyz'):
+        fixes = interfaces[axe]+bornes[axe]
+        lignes = _fusionne(fixes, declares[axe], m.maille_min/2)
+        detail_zones = []
+        for b in ports:
+            zone = [b[0, i]-2*m.maille_min, b[1, i]+2*m.maille_min]
+            detail_zones.append(zone)
+            lignes = _fusionne(lignes, zone, m.maille_min/2)
+            fixes.extend([float(lignes[np.argmin(abs(lignes-z))]) for z in zone])
+        def taille_max(milieu):
+            cible = air
+            for b, epsilon in dielectriques:
+                if b[0, i]-1e-8 <= milieu <= b[1, i]+1e-8:
+                    cible = min(cible, C/a.f_max*1e3/(np.sqrt(epsilon)*m.mailles_par_lambda))
+            if any(za <= milieu <= zb for za, zb in detail_zones):
+                cible = min(cible, m.maille_min)
+            return cible
+        nouvelles = [lignes]
+        for lo, hi in zip(lignes[:-1], lignes[1:]):
+            cible = taille_max((lo+hi)/2)
+            # L'air sera gradue depuis les cellules fines, plutot que rempli
+            # d'emblee par des intervalles grossiers presque uniformes.
+            if cible < air*(1-1e-12):
+                n = max(1, int(np.ceil((hi-lo)/cible)))
+                nouvelles.append(np.linspace(lo, hi, n+1))
+        lissees = SmoothMeshLines(np.concatenate(nouvelles), air,
+                                  ratio=1.2, check_symmetry=False)
+        grille.SetLines(axe, _gradue(lissees, m.rapport_max, fixes, taille_max))
+    verifie_maillage(csx, air, m.rapport_max)
+    # Verification independante des tailles dans TOUTE la projection du
+    # substrat, apres redistribution des points libres.
+    for b, epsilon in dielectriques:
+        limite = C/a.f_max*1e3/(np.sqrt(epsilon)*m.mailles_par_lambda)
+        for i, axe in enumerate('xyz'):
+            l = np.asarray(grille.GetLines(axe))
+            milieu = (l[:-1]+l[1:])/2
+            d = np.diff(l)[(milieu >= b[0, i]-1e-8) & (milieu <= b[1, i]+1e-8)]
+            if d.size and d.max() > limite*(1+1e-7):
+                raise ValueError(f'maille de substrat excessive sur {axe}')
+    # Les minima par axe rendent le CFL conservatif meme s'ils se trouvent
+    # en des lieux differents. Le modele Debye impose epsilon_inf > 1.
+    execution = _durations(montage, csx, n_pas, duree_ns, dt_impose_s)
+    if dt_impose_s is not None:
+        fdtd.SetTimeStep(execution['dt_s'])
+    else:
+        fdtd.SetTimeStepFactor(m.facteur_courant)
+    fdtd.SetNumberOfTimeSteps(execution['n_pas'])
+    # Sondes a chaque pas pour verifier le pas de temps effectif et la duree.
+    fdtd.SetOverSampling(int(np.ceil(1/(2*a.f_max*execution['dt_s'])))+1)
     dossier = os.path.abspath(dossier or os.path.join(
-        "resultats", "fdtd", antenne_mod.NOM,
-        "antenne_seule" if x_cm is None else f"plaque_{x_cm:.0f}cm"))
-    os.makedirs(dossier, exist_ok=True)
+        'resultats', 'fdtd', antenne_mod.NOM,
+        'antenne_seule' if x_cm is None else f'plaque_{x_cm:g}cm'))
     return fdtd, csx, port, dossier
 
 
-# ======================================================================
-# EXECUTION
-# ======================================================================
-def lance(montage: Montage, antenne_mod, x_cm=None, dossier=None,
-          apercu=False, fils=None, verbose=0, x_domaine=None, n_pas=None):
-    """Lance une simulation. Rend (freqs, S11) sur la grille de l'acquisition."""
-    fdtd, csx, port, dossier = construit(montage, antenne_mod, x_cm, dossier,
-                                         x_domaine=x_domaine, n_pas=n_pas)
+def estime_cout(montage: Montage, x_cm=None, demi_etendue_mm=60.0, *,
+                antenne_mod=None, distances_communes_cm=None, duree_ns=None):
+    """Cellules reelles, pas imposes, minutes indicatives a 30 Mcellules/s.
 
-    a = montage.acquisition
-    mini, dt = verifie_maillage(csx, C / a.f_max * 1e3
-                                / montage.maillage.mailles_par_lambda_air)
-    n_pas = int((1.0 / a.df) / dt)
-    print(f"  maillage : pas min {min(mini.values()):.3f} mm "
-          f"({', '.join(f'{k}={v:.2f}' for k, v in mini.items())}) -> "
-          f"dt = {dt*1e12:.2f} ps -> {n_pas} pas pour couvrir 1/df")
-    if dt < 0.2e-12:
-        raise RuntimeError(
-            f"pas de temps de {dt*1e15:.1f} fs : une cellule microscopique "
-            f"s'est glissee dans le maillage (pas min "
-            f"{min(mini.values())*1e3:.1f} um). Regarde les lignes rendues "
-            f"par pose() : deux d'entre elles sont probablement presque "
-            f"confondues.")
-    if n_pas > montage.maillage.n_pas_max:
-        print(f"  ATTENTION : il faudrait {n_pas} pas et le maximum est "
-              f"{montage.maillage.n_pas_max}. La reponse sera tronquee.")
+    Construit la vraie grille sans Run ni fichiers. demi_etendue_mm reste
+    accepte pour compatibilite; l'encombrement vient maintenant de pose().
+    """
+    antenne_mod = antenne_mod or charge_antenne('uwb_surveyor')
+    fdtd, csx, _, _ = construit(montage, antenne_mod, x_cm=x_cm,
+                               distances_communes_cm=distances_communes_cm,
+                               duree_ns=duree_ns)
+    resume = resume_maillage(csx)
+    pas = _durations(montage, csx, duree_ns=duree_ns)['n_pas']
+    return resume['cellules'], pas, resume['cellules']*pas/30e6/60
 
-    # openEMS se place dans le dossier de simulation et n'en ressort pas :
-    # sans cette precaution, la deuxieme simulation d'une serie ecrirait au
-    # mauvais endroit.
+
+def _sha256(chemin):
+    h = hashlib.sha256()
+    with open(chemin, 'rb') as f:
+        for bloc in iter(lambda: f.read(1024*1024), b''):
+            h.update(bloc)
+    return h.hexdigest()
+
+
+def _sources():
+    sources = list(Path(DOSSIER_ANTENNES).glob('*/geometrie.py'))
+    sources += [Path(ICI)/n for n in ('fdtd.py', 'banc.py', 'materiaux.py',
+                                     'connectique.py') if (Path(ICI)/n).is_file()]
+    return {str(p.relative_to(ICI)).replace('\\', '/'): _sha256(p) for p in sources}
+
+
+def _sauve_manifeste(dossier, manifeste):
+    chemin = Path(dossier)/'simulation_manifest.json'
+    temporaire = chemin.with_suffix('.json.tmp')
+    temporaire.write_text(json.dumps(manifeste, ensure_ascii=False, indent=2,
+                                     allow_nan=False), encoding='utf-8')
+    temporaire.replace(chemin)
+
+
+def _jsonable(valeur):
+    if isinstance(valeur, np.ndarray):
+        return valeur.tolist()
+    if isinstance(valeur, np.generic):
+        return valeur.item()
+    if isinstance(valeur, dict):
+        return {str(k): _jsonable(v) for k, v in valeur.items()}
+    if isinstance(valeur, (list, tuple)):
+        return [_jsonable(v) for v in valeur]
+    return valeur
+
+
+def _calibre_dt(montage, antenne_mod, x_cm, dossier, *,
+                x_domaine=None, distances_communes_cm=None, fils=None):
+    """Deux iterations auto pour lire le dt de l'operateur REEL, archivees.
+
+    Le calcul du solveur tient compte des cellules, des PEC et des elements
+    localises. Son dt peut etre plus petit que le CFL vide sur les minima.
+    La troncature volontaire du pulse n'affecte pas le dt de l'operateur.
+    """
+    p = Path(dossier).resolve()
+    if p.exists() and any(p.iterdir()):
+        raise FileExistsError('calibration de dt existante : '+str(p))
+    p.mkdir(parents=True, exist_ok=True)
+    f, c, _, _ = construit(montage, antenne_mod, x_cm, dossier=str(p),
+        x_domaine=x_domaine, n_pas=2, distances_communes_cm=distances_communes_cm)
+    f.Write2XML(str(p/'entree_calibration.xml'))
     retour = os.getcwd()
     try:
-        if apercu:
-            fdtd.Run(dossier, cleanup=False, setup_only=True)
-            return None, None
-        fdtd.Run(dossier, cleanup=True, numThreads=fils or 0, verbose=verbose)
+        resultat = f.Run(str(p), cleanup=False, numThreads=fils or 0,
+                         verbose=0, dump_statistics=True)
+        if resultat not in (None, 0):
+            raise RuntimeError(f'echec de preparation operateur : {resultat}')
     finally:
         os.chdir(retour)
+    stats = np.loadtxt(p/'openEMS_stats.txt', comments='%')
+    dt = float(stats[1])
+    if not np.isfinite(dt) or dt <= 0:
+        raise RuntimeError('dt operateur non valide')
+    poles = [t for definition in _proprietes_matiere(c)[3]
+             for t in definition.get('relaxation_s', [])]
+    # openEMS ignore une relaxation plus courte que trois pas de temps.
+    # Conserver une marge et ne jamais ignorer un pole du modele annonce.
+    dt_final = min(dt*0.999, min(poles)/4 if poles else dt)
+    primitives = [dict(propriete=prop.GetName(), index=i,
+                       type=pr.GetType(), utilise=bool(pr.GetPrimitiveUsed()),
+                       bornes_mm=np.asarray(pr.GetBoundBox()).tolist())
+                  for prop in c.GetAllProperties()
+                  for i, pr in enumerate(prop.GetAllPrimitives())]
+    details = dict(dt_operateur_s=dt, dt_retenu_s=dt_final,
+                   cellules_annoncees_solveur=int(stats[0]),
+                   iterations_calibration=int(stats[2]),
+                   finalite='calibration du dt uniquement, pulse volontairement tronque',
+                   primitives=primitives,
+                   fichiers_sha256={f.name: _sha256(f) for f in p.iterdir() if f.is_file()})
+    (p/'calibration.json').write_text(json.dumps(details, ensure_ascii=False,
+                                    indent=2), encoding='utf-8')
+    return dt_final, details
 
-    freqs = np.linspace(a.f_min, a.f_max, a.points)
-    port.CalcPort(dossier, freqs, ref_impedance=a.z_ref)
-    return freqs, port.uf_ref / port.uf_inc
+
+def lance(montage: Montage, antenne_mod, x_cm=None, dossier=None,
+          apercu=False, fils=None, verbose=0, x_domaine=None, n_pas=None,
+          distances_communes_cm=None, duree_ns=None, dt_impose_s=None,
+          calibration_info=None):
+    """Execute dans un dossier neuf; rend (frequences, S11 complexe)."""
+    fdtd, csx, port, dossier = construit(montage, antenne_mod, x_cm, dossier,
+        x_domaine, n_pas, distances_communes_cm, duree_ns)
+    p = Path(dossier)
+    if p.exists() and any(p.iterdir()):
+        raise FileExistsError(f'dossier de calcul non vide : {dossier}; '
+                              'choisir un nouveau dossier pour preserver les preuves')
+    p.mkdir(parents=True, exist_ok=True)
+    if dt_impose_s is None:
+        dt_impose_s, calibration_info = _calibre_dt(
+            montage, antenne_mod, x_cm, p/'_calibration_dt',
+            x_domaine=x_domaine, distances_communes_cm=distances_communes_cm, fils=fils)
+        fdtd, csx, port, dossier = construit(montage, antenne_mod, x_cm,
+            dossier, x_domaine, n_pas, distances_communes_cm, duree_ns, dt_impose_s)
+    else:
+        fdtd, csx, port, dossier = construit(montage, antenne_mod, x_cm,
+            dossier, x_domaine, n_pas, distances_communes_cm, duree_ns, dt_impose_s)
+    execution = _durations(montage, csx, n_pas, duree_ns, dt_impose_s)
+    resume = resume_maillage(csx)
+    np.savez_compressed(p/'maillage.npz',
+        **{a: np.asarray(csx.GetGrid().GetLines(a), dtype='<f8') for a in 'xyz'})
+    fdtd.Write2XML(str(p/'entree_openems.xml'))
+    geometrie = {nom: _jsonable(getattr(antenne_mod, nom)())
+                 for nom in ('cotes', 'contours_mm', 'vias_mm', 'trous_mm', 'materiau')
+                 if callable(getattr(antenne_mod, nom, None))}
+    (p/'geometrie.json').write_text(json.dumps(geometrie, ensure_ascii=False,
+                                  indent=2, allow_nan=False), encoding='utf-8')
+    import openEMS
+    import CSXCAD
+    import scipy
+    for source in _sources():
+        destination = p/'sources'/source
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(Path(ICI)/source, destination)
+    manifeste = dict(schema_version=1, etat='prepare', antenne=antenne_mod.NOM,
+        cible_cm=x_cm, distances_communes_cm=list(distances_communes_cm or ()),
+        x_domaine_cm=x_domaine, montage=asdict(montage), maillage=resume,
+        execution=execution, materiaux=_proprietes_matiere(csx)[3],
+        calibration_dt=calibration_info,
+        sources_sha256=_sources(), entree_xml_sha256=_sha256(p/'entree_openems.xml'),
+        geometrie_sha256=_sha256(p/'geometrie.json'),
+        environnement=dict(python=platform.python_version(), numpy=np.__version__,
+            scipy=scipy.__version__, csxcad=getattr(CSXCAD, '__version__', 'inconnu'),
+            dtype_maillage='float64 little-endian',
+            openems=getattr(openEMS, '__version__', 'inconnu')),
+        debut_utc=datetime.now(timezone.utc).isoformat())
+    _sauve_manifeste(dossier, manifeste)
+    print(f'  maillage : {resume["cellules"]:,} cellules, '
+          f'dt={execution["dt_s"]*1e12:.4f} ps, {execution["n_pas"]} pas, '
+          f'{execution["duree_prevue_s"]*1e9:.3f} ns imposes')
+    retour = os.getcwd()
+    try:
+        manifeste['etat'] = 'apercu' if apercu else 'calcul_en_cours'
+        _sauve_manifeste(dossier, manifeste)
+        fdtd.Run(dossier, cleanup=False, setup_only=apercu,
+                 numThreads=fils or 0, verbose=verbose, dump_statistics=True)
+        if apercu:
+            return None, None
+        sondes = {}
+        for nom in ('port_ut_1', 'port_it_1'):
+            donnees = np.loadtxt(p/nom, comments='%')
+            if donnees.ndim != 2 or len(donnees) < 2 or not np.all(np.isfinite(donnees)):
+                raise RuntimeError('sonde absente, trop courte ou non finie : '+nom)
+            dt_reel = float(np.median(np.diff(donnees[:, 0])))
+            if not np.isclose(dt_reel, execution['dt_s'], rtol=2e-7, atol=1e-18):
+                raise RuntimeError(f'dt mesure {dt_reel} != dt impose '
+                                   f'{execution["dt_s"]}; extraction refusee')
+            if donnees[-1, 0]-donnees[0, 0] < execution['duree_prevue_s']-2*dt_reel:
+                raise RuntimeError('sonde tronquee avant la duree imposee : '+nom)
+            sondes[nom] = dict(echantillons=len(donnees), dt_effectif_s=dt_reel,
+                debut_s=float(donnees[0, 0]), fin_s=float(donnees[-1, 0]),
+                sha256=_sha256(p/nom))
+        a = montage.acquisition
+        freqs = np.linspace(a.f_min, a.f_max, a.points)
+        port.CalcPort(dossier, freqs, ref_impedance=a.z_ref)
+        s11 = port.uf_ref/port.uf_inc
+        if not np.all(np.isfinite(s11)):
+            raise RuntimeError('S11 non fini : verifier excitation et port')
+        ecrit_s1p(str(p/'s11.s1p'), freqs, s11, z_ref=a.z_ref,
+                   commentaire=f'openEMS, {antenne_mod.NOM}; voir simulation_manifest.json')
+        manifeste.update(etat='termine', sondes=sondes)
+        return freqs, s11
+    except Exception as exc:
+        manifeste.update(etat='echec', erreur=f'{type(exc).__name__}: {exc}')
+        raise
+    finally:
+        os.chdir(retour)
+        manifeste['fin_utc'] = datetime.now(timezone.utc).isoformat()
+        manifeste['fichiers_sha256'] = {
+            str(f.relative_to(p)).replace('\\', '/'): _sha256(f)
+            for f in p.rglob('*') if f.is_file() and
+            f.name not in ('simulation_manifest.json', 'simulation_manifest.json.tmp')}
+        _sauve_manifeste(dossier, manifeste)
 
 
 def serie(montage: Montage, antenne_mod, distances_cm, dossier_base=None,
-          fils=None, verbose=0):
-    """Une campagne simulee : le fond puis chaque distance de plaque.
-
-    Les simulations d'une serie partagent OBLIGATOIREMENT le meme maillage et
-    la meme duree. Sans cela, leur difference R = S11_plaque - S11_fond est
-    dominee par l'ecart entre deux troncatures, et non par l'echo de la
-    plaque. C'est la transposition exacte de la regle de mesure : un fond
-    n'est valable que pris dans la meme configuration.
-
-    Rend (freqs, S11_fond, {distance_cm : S11}).
-    """
-    x_dom = max(distances_cm)
-    a = montage.acquisition
-
-    # Un premier montage, uniquement pour connaitre le pas de temps du
-    # maillage commun, et en deduire le nombre de pas a imposer.
-    # Garder la reference au FDTD : il possede la structure C++, et la laisser
-    # partir detruirait le maillage qu'on veut justement inspecter.
-    sonde = construit(montage, antenne_mod, None, x_domaine=x_dom,
-                      dossier=os.path.join(ICI, "resultats", "_sonde"))
-    _, dt = verifie_maillage(sonde[1], C / a.f_max * 1e3
-                             / montage.maillage.mailles_par_lambda_air)
-    n_pas = min(montage.maillage.n_pas_max, int(np.ceil((1.0 / a.df) / dt)))
-    print(f"  serie : maillage commun, dt = {dt*1e12:.2f} ps, "
-          f"{n_pas} pas imposes a toutes les simulations "
-          f"({n_pas*dt*1e9:.1f} ns, il en faut {1/a.df*1e9:.1f})")
-
-    base = dossier_base or os.path.join("resultats", "fdtd", antenne_mod.NOM)
-    freqs, fond = lance(montage, antenne_mod, None,
-                        dossier=os.path.join(base, "fond"),
-                        x_domaine=x_dom, n_pas=n_pas, fils=fils,
-                        verbose=verbose)
+          fils=None, verbose=0, duree_ns=None):
+    """Fond puis cibles, grilles et durees strictement identiques."""
+    distances = sorted(set(float(x) for x in distances_cm))
+    if not distances:
+        raise ValueError('serie vide')
+    base = Path(dossier_base or os.path.join('resultats', 'fdtd', antenne_mod.NOM))
+    plans = []
+    for x in [None]+distances:
+        nom = 'fond' if x is None else f'plaque_{x:g}cm'
+        if (base/nom).exists() and any((base/nom).iterdir()):
+            raise FileExistsError(f'dossier existant : {base/nom}')
+        f, c, _, _ = construit(montage, antenne_mod, x_cm=x,
+            distances_communes_cm=distances, duree_ns=duree_ns, dossier=str(base/nom))
+        plans.append((resume_maillage(c), _durations(montage, c, duree_ns=duree_ns)))
+    if any(p != plans[0] for p in plans[1:]):
+        raise RuntimeError('les scenes de serie ne partagent pas le meme maillage/temps')
+    calibrations = {}
+    for x in [None]+distances:
+        nom = 'fond' if x is None else f'plaque_{x:g}cm'
+        calibrations[nom] = _calibre_dt(montage, antenne_mod, x,
+            base/'_calibrations_dt'/nom, distances_communes_cm=distances, fils=fils)
+    dt_commun = min(c[0] for c in calibrations.values())
+    infos = dict(dt_commun_s=dt_commun,
+                 scenes={nom: c[1] for nom, c in calibrations.items()})
+    freqs, fond = lance(montage, antenne_mod, dossier=str(base/'fond'),
+        distances_communes_cm=distances, duree_ns=duree_ns, fils=fils, verbose=verbose,
+        dt_impose_s=dt_commun, calibration_info=infos)
     mesures = {}
-    for x in distances_cm:
-        _, s11 = lance(montage, antenne_mod, x,
-                       dossier=os.path.join(base, f"plaque_{x:.0f}cm"),
-                       x_domaine=x_dom, n_pas=n_pas, fils=fils,
-                       verbose=verbose)
-        mesures[x] = s11
+    for x in distances:
+        _, mesures[x] = lance(montage, antenne_mod, x,
+            dossier=str(base/f'plaque_{x:g}cm'), distances_communes_cm=distances,
+            duree_ns=duree_ns, fils=fils, verbose=verbose,
+            dt_impose_s=dt_commun, calibration_info=infos)
     return freqs, fond, mesures
 
 
-def ecrit_s1p(chemin, freqs, s11, z_ref=50.0, commentaire=""):
-    """Touchstone 1 port, reel/imaginaire : le format des fichiers du rapport."""
-    os.makedirs(os.path.dirname(chemin) or ".", exist_ok=True)
-    with open(chemin, "w", encoding="ascii") as f:
+def ecrit_s1p(chemin, freqs, s11, z_ref=50.0, commentaire=''):
+    """Touchstone 1 port complexe, grille et valeurs controlees."""
+    f, s = np.asarray(freqs), np.asarray(s11)
+    if (f.ndim != 1 or s.shape != f.shape or not len(f) or
+            not np.all(np.isfinite(f)) or not np.all(np.isfinite(s))):
+        raise ValueError('frequences/S11 incompatibles ou non finis')
+    if np.any(np.diff(f) <= 0):
+        raise ValueError('frequences non croissantes')
+    os.makedirs(os.path.dirname(chemin) or '.', exist_ok=True)
+    with open(chemin, 'w', encoding='ascii') as out:
         if commentaire:
-            f.write(f"! {commentaire}\n")
-        f.write(f"# Hz S RI R {z_ref:.0f}\n")
-        for fr, s in zip(freqs, s11):
-            f.write(f"{fr:.0f} {s.real:.9e} {s.imag:.9e}\n")
+            out.write('! '+commentaire.encode('ascii', 'replace').decode()+'\n')
+        out.write(f'# Hz S RI R {z_ref:g}\n')
+        for fr, valeur in zip(f, s):
+            out.write(f'{fr:.12g} {valeur.real:.12e} {valeur.imag:.12e}\n')
     return chemin

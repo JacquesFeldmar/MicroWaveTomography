@@ -1,0 +1,21 @@
+CONTRELECTURE GLOBALE F2 CLOSE - NON QUALIFIEE
+
+Les15 profils sont termines et integres :420 fichiers et18 sources exacts avant/apres.
+Q charge les calculs avec exiger_courant=True et valide chaque campagne.
+AP ecrire=False reproduit exactement le bilan existant, sans modifier ses sorties.
+Les trois controles spatiaux echouent ; les trois controles temporels reussissent.
+Les trois references sont passives. Cette passivite ne corrige aucun echec spatial.
+
+diamant_uwb spatial : max=0.43583288717441465, RMS=0.10990608890048342, P95dB=5.36389499423295, PASS=False.
+diamant_uwb temporel : max=0.0024774025912415757, RMS=0.0006491587424927885, P95dB=0.03818221193320407, PASS=True.
+diamant_uwb_x18 spatial : max=0.412047225516328, RMS=0.11760840748496572, P95dB=5.260925393014891, PASS=False.
+diamant_uwb_x18 temporel : max=5.470432920406153e-05, RMS=1.8539817565470815e-05, P95dB=0.0012388022089423868, PASS=True.
+vivaldi_tomographie spatial : max=0.36591402188669203, RMS=0.08471113976573695, P95dB=3.0208964340946776, PASS=False.
+vivaldi_tomographie temporel : max=0.001384749316067066, RMS=0.00038923529939325876, P95dB=0.02877802377320577, PASS=True.
+
+Vivaldi est recalcule par un parseur S1P RI et NumPy independants de Q.ecarts.
+Les valeurs, seuils et verdicts sont exactement reproduits ; masques183points spatial et192points temporel.
+Six paires temporelles (finales et preliminaires) ont axes NPZ et dt bitidentiques.
+Six Run et neuf prefixes sont clos code0 ; AP/orchestrateur code2 correspond au refus numerique attendu.
+Le controle present termine code0 parce que les constats sont reproduits ; qualification_globale_reussie=false.
+Aucun solveur, nouvelle grille, ecriture AP, PDF ou livraison. Aucune cause PEC physique n'est pretendue demontree.

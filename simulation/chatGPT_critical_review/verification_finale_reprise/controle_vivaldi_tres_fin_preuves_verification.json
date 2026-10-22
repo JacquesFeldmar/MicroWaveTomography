@@ -1,0 +1,22 @@
+{
+  "schema": "verification_archive_preuves_vivaldi_v1",
+  "archive": "controle_vivaldi_tres_fin_preuves.zip",
+  "archive_sha256": "c102b09a0a3e2f55b111f8e067702ec64c8dc41118dc60c4aee6f8ee0ae6a20b",
+  "manifest_interne_sha256": "cb746958e3d71e3435a485ca268ba2ae26fb1d8db662e4717114369cc4ac3465",
+  "membres_total": 21,
+  "fichiers_source": 18,
+  "membres_hors_manifeste": 20,
+  "helpers_copies": 2,
+  "helper_sha256": "3dce54db99c768a48b479e845e1ad9ea52ba1e6f4d2cc6c6231beaf2c947c5f8",
+  "controles": {
+    "archive_neuve": true,
+    "chemins_plats_uniques": true,
+    "CRC_testzip": true,
+    "manifest_relecture_identique": true,
+    "SHA256_tous_membres": true,
+    "helper_deux_copies_exactes": true,
+    "sources_inchangees_pendant_archive": true,
+    "aucun_profil_duplique": true
+  },
+  "taille_octets": 611426
+}

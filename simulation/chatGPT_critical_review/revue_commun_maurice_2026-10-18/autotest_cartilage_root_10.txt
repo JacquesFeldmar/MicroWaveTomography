@@ -1,0 +1,25 @@
+==========================================================================
+  AUTOTEST DU NOYAU -- donnees synthetiques, aucun instrument
+==========================================================================
+
+  Resolution 52 mm
+
+  cas                      vrai     2 pics     modele   err. mod.   standoff     ms
+  ------------------------------------------------------------------------
+  PMMA 80 mm / air        80.0     79.895     80.000     +0.0000     150.0   3423
+  PMMA 20 mm / air        20.0     44.060     20.000     -0.0000     150.0   1941
+  PMMA 12 mm / air        12.0     47.377     12.000     +0.0000     150.0   1486
+  PMMA  4 mm / air         4.0     45.541      4.000     +0.0000     150.0    194
+  PMMA  2 mm / air         2.0     44.979      2.000     +0.0000     150.0    199
+  Cartilage 3 mm / os      3.0     11.264      3.000     -0.0000     150.0    187
+  Cartilage 1 mm / os      1.0     11.108      1.000     -0.0000     150.0    185
+
+  inverse (eps_r)          vrai     mesure      erreur
+  ----------------------------------------------------
+  pmma 12 mm              2.60     2.6000    -0.00000
+  verre 10 mm             6.90     6.9000    -0.00000
+  cartilage 3 mm         42.50    42.5000    -0.00000
+
+  VERDICT : REUSSI
+
+Imports calibration/qualification et identites API : REUSSIS ; aucun pilote VNA instancie.

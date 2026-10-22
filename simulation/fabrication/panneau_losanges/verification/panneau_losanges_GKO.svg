@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="94.69999999999999mm" height="74.1mm" viewBox="-1.05 -1.05 94.69999999999999 74.1" style="background-color:white" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g transform="translate(-0.05 72.05) scale(1 -1) translate(0.05 0.05)">
+    <path d="M 0.0 0.0 L 32.0 0.0 L 32.0 10.0 L 35.0 10.0 L 35.0 0.0 L 92.6 0.0 L 92.6 72.0 L 35.0 72.0 L 35.0 30.0 L 32.0 30.0 L 32.0 40.0 L 0.0 40.0 L 0.0 0.0" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1"/>
+    <path d="M 32.0 13.0 L 35.0 13.0 L 35.0 27.0 L 32.0 27.0 L 32.0 13.0" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.1"/>
+  </g>
+</svg>

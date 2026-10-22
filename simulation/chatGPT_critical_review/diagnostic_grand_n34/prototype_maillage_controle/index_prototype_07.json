@@ -1,0 +1,18 @@
+{
+  "usage": "prototypes sans Run, aucune qualification",
+  "fichiers_sha256": {
+    "erreur_initiale_prototype.txt": "9d9eb43f616247ae7ef46ace5b2e7171d3698741454c8bafc198a40889b771a9",
+    "NOTE_PROTOTYPE.txt": "0d1911071a740c084613cd8acce7aebfe7cb3f5d94d5a6438281b58be5e6b8c6",
+    "proposition_07_plancher_cellules_libres/construit_prototype_exact.py": "4b676f600c0e2df6dc207d8e0380b9022a7ca3d7464c6bbe6c0db8f982b477ba",
+    "proposition_07_plancher_cellules_libres/diamant_uwb_base_GRILLE_SEULE.npz": "4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439",
+    "proposition_07_plancher_cellules_libres/diamant_uwb_fin_GRILLE_SEULE.npz": "535a7a07a83db185a7102b6b0f3864102fb0f3f90d307aa073fad43534c55940",
+    "proposition_07_plancher_cellules_libres/diamant_uwb_x18_base_GRILLE_SEULE.npz": "d91a7ddf69b9ab047a67d5bd24782e65bca9c9d64c7c40b51f7849dcc2fa3357",
+    "proposition_07_plancher_cellules_libres/diamant_uwb_x18_fin_GRILLE_SEULE.npz": "a508ffd8a3da57fb8b16918b27c2b35a828e63a7b6b04f2586a23087cbaf8942",
+    "proposition_07_plancher_cellules_libres/rapport_prototype.json": "34f1c2c7818a78745d824b2506f3d81f80250808a744c395bc99c02226b7f978",
+    "proposition_07_plancher_cellules_libres/verification_geometrique_et_cfl.json": "90fbbaf6247167c67268123fdc265f3ad333c3164aaf27835d61a550ca618c8e",
+    "proposition_07_plancher_cellules_libres/vivaldi_tomographie_base_GRILLE_SEULE.npz": "0f389011526db23a6586f8461737d05f1b95de3cb26aa26f7b04f1fa48601c29",
+    "proposition_07_plancher_cellules_libres/vivaldi_tomographie_fin_GRILLE_SEULE.npz": "03470bde0045beb602d2790237d2bd1a32efab8c38f8f90ef8975a077b964311",
+    "verifie_propositions.py": "a6e3b3b89a6b349757f7a5c0c41a8e54df03eaa58807bd0c669a83ffe3680999"
+  },
+  "note": "Le constructeur courant evolue ; seule sa copie fermee07 est indexee."
+}

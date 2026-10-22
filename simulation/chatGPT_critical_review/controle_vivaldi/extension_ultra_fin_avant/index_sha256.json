@@ -1,0 +1,14 @@
+{
+  "analyse_vivaldi.py": {
+    "sha256": "3dce54db99c768a48b479e845e1ad9ea52ba1e6f4d2cc6c6231beaf2c947c5f8",
+    "octets": 6339
+  },
+  "usage_vivaldi.txt": {
+    "sha256": "82a7bf96427bba66fb11fb80776bb5076b4773046f6db9c5ef35dcf9f80a0d9a",
+    "octets": 1609
+  },
+  "resume_preparation_vivaldi.json": {
+    "sha256": "2d6799cf0c5eb200bf01357ec95fd04106ab661226e2c7aa184b36b9afea951a",
+    "octets": 2062
+  }
+}

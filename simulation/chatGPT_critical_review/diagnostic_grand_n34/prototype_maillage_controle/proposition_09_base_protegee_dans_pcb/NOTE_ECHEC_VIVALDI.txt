@@ -1,0 +1,38 @@
+DERNIER ESSAI09 — PROTECTION BASE LIMITEE AU PCB REEL
+
+Aucun Run, aucune calibration, aucune modification des17 sources ni des
+copies fermees07/08. Les frontieres primaires BASE sont conservees dans la
+projection du PCB hors bloc SMA ; l'air hors PCB reste libre, hormis PML8.
+
+Cinq grilles construites : petitbase3 005 640, petitfin7 566 780,
+grandbase3 722 400, grandfin10 030 398, Vbase9 548 352 cellules.
+La sixieme grille Vfin echoue sur l'axeZ apres vingt essais du LP.
+Le controle numerique ne reconstruit rien et conserve les cinq NPZ existants.
+
+Les deux paires losanges respectent, sur TOUS les intervalles de l'union des
+grilles, l'absence de grossissement dans les projections PCB et blocs SMA.
+PML8 identiques bit a bit, x0 primaire, Idual h/2 exact, normal11/17, vias4/6,
+plafonds locaux et rapport voisin<=1,5 dans la tolerance1e-8 sont verifies.
+Ces constats portent sur des grilles, pas sur une prediction S11.
+
+ECHEC VFIN : CONTRADICTION LOCALE DES CONTRAINTES
+La derniere cellule fine du bloc SMA longitudinal vaut0,08466666666666622mm.
+Le premier intervalle BASE impose juste apres est :
+[6,4516 ; 6,582649999954057], soit0,1310499999540573mm.
+Sans subdivision : rapport1,547834645126669>1,5.
+Avec au moins deux cellules : longueur minimale2*0,0762=0,1524mm, superieure
+a l'intervalle impose0,13105mm. Le plancher provient de la resolution vias6.
+Conserver cette ancre, ce plancher, la cellule SMA et le rapport1,5 est donc
+incompatible localement, meme quand l'air au-dela du PCB est entierement libre.
+L'exception du constructeur est 'Graduation controlee non resolue;
+vivaldi_tomographie/fin/z'. Aucun garde-fou n'est assoupli pour la contourner.
+
+Les calculs de cout sont seulement disponibles pour les cinq grilles closes
+et restent des projections CFLvide*0,8 et debit25–35Mpoints/s :
+petitfin16ns7,95–11,12h ; grandfin16ns10,52–14,73h.
+Pas de cout Vfin extrapole depuis une grille inexistante.
+
+Le rapport_partiel_et_echec.json conserve chiffres exacts, cellules minimales,
+caps, sondes, voies, PML, monotonicite et les17 SHA avant/apres conformes.
+Le constructeur exact et le petit analyseur de conservation sont archives.
+L'exploration est arretee comme demande ; le coordinateur choisira la suite.

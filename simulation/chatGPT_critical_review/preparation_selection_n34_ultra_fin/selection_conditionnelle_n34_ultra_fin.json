@@ -1,0 +1,180 @@
+{
+  "schema": "selection_qualification_pcbway_v1",
+  "antennes": {
+    "diamant_uwb": {
+      "spatial": [
+        "base_16ns",
+        "fin_16ns"
+      ],
+      "temporel": [
+        "fin_12ns",
+        "fin_16ns"
+      ],
+      "reference": "fin_16ns",
+      "preliminaires": [
+        {
+          "type": "spatial",
+          "calculs": [
+            "base_8ns",
+            "fin_8ns"
+          ],
+          "motif": "Premiere comparaison spatiale conservee"
+        },
+        {
+          "type": "temporel",
+          "calculs": [
+            "fin_8ns",
+            "fin_12ns"
+          ],
+          "motif": "Premiere comparaison temporelle conservee"
+        },
+        {
+          "type": "temporel",
+          "calculs": [
+            "base_8ns",
+            "base_16ns"
+          ],
+          "motif": "Diagnostic supplementaire de la fenetre courte sur la grille de base"
+        }
+      ]
+    },
+    "diamant_uwb_x18": {
+      "spatial": [
+        "n30_12ns",
+        "n34_12ns"
+      ],
+      "temporel": [
+        "n34_8ns",
+        "n34_12ns"
+      ],
+      "reference": "n34_12ns",
+      "preliminaires": [
+        {
+          "type": "spatial",
+          "calculs": [
+            "base_8ns",
+            "fin_8ns"
+          ],
+          "motif": "Premiere comparaison spatiale conservee"
+        },
+        {
+          "type": "temporel",
+          "calculs": [
+            "fin_8ns",
+            "fin_12ns"
+          ],
+          "motif": "Premiere comparaison temporelle conservee"
+        },
+        {
+          "type": "spatial",
+          "calculs": [
+            "fin_12ns",
+            "tres_fin_12ns"
+          ],
+          "motif": "Palier spatial precedent conserve ; ses seuils ont ete depasses"
+        },
+        {
+          "type": "temporel",
+          "calculs": [
+            "tres_fin_8ns",
+            "tres_fin_12ns"
+          ],
+          "motif": "Controle temporel du palier precedent conserve"
+        },
+        {
+          "type": "spatial",
+          "calculs": [
+            "tres_fin_12ns",
+            "ultra_fin_12ns"
+          ],
+          "motif": "Palier spatial precedent conserve ; ses seuils ont ete depasses"
+        },
+        {
+          "type": "temporel",
+          "calculs": [
+            "ultra_fin_8ns",
+            "ultra_fin_12ns"
+          ],
+          "motif": "Controle temporel du palier precedent conserve"
+        },
+        {
+          "type": "spatial",
+          "calculs": [
+            "ultra_fin_12ns",
+            "extreme_fin_12ns"
+          ],
+          "motif": "Palier spatial precedent conserve ; ses seuils ont ete depasses"
+        },
+        {
+          "type": "temporel",
+          "calculs": [
+            "extreme_fin_8ns",
+            "extreme_fin_12ns"
+          ],
+          "motif": "Controle temporel du palier precedent conserve"
+        },
+        {
+          "type": "spatial",
+          "calculs": [
+            "extreme_fin_12ns",
+            "n30_12ns"
+          ],
+          "motif": "Palier spatial precedent conserve ; ses seuils ont ete depasses"
+        },
+        {
+          "type": "temporel",
+          "calculs": [
+            "n30_8ns",
+            "n30_12ns"
+          ],
+          "motif": "Controle temporel du palier precedent conserve"
+        }
+      ]
+    },
+    "vivaldi_tomographie": {
+      "spatial": [
+        "tres_fin_16ns",
+        "ultra_fin_16ns"
+      ],
+      "temporel": [
+        "ultra_fin_12ns",
+        "ultra_fin_16ns"
+      ],
+      "reference": "ultra_fin_16ns",
+      "preliminaires": [
+        {
+          "type": "spatial",
+          "calculs": [
+            "base_8ns",
+            "fin_8ns"
+          ],
+          "motif": "Premiere comparaison spatiale conservee"
+        },
+        {
+          "type": "temporel",
+          "calculs": [
+            "fin_8ns",
+            "fin_12ns"
+          ],
+          "motif": "Premiere comparaison temporelle conservee"
+        },
+        {
+          "type": "spatial",
+          "calculs": [
+            "fin_12ns",
+            "tres_fin_12ns"
+          ],
+          "motif": "Raffinement precedent insuffisant, conserve avec son echec"
+        },
+        {
+          "type": "temporel",
+          "calculs": [
+            "tres_fin_12ns",
+            "tres_fin_16ns"
+          ],
+          "motif": "Controle temporel du palier precedent conserve"
+        }
+      ]
+    }
+  }
+}

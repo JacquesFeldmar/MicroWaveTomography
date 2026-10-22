@@ -1,0 +1,15 @@
+{
+  "schema": "lancement_pilote_F2_v1",
+  "utc": "2026-10-19T14:39:36.790538+00:00",
+  "pid": 36668,
+  "commande": [
+    "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+    "-B",
+    "-X",
+    "utf8",
+    "-u",
+    "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\integration_finale_f2\\procedure_pilote_f2.py"
+  ],
+  "pilote_sha256": "78b45d36db9153f34f746d80415e59a5cb93c2e60160742b9da173be7c894e1d",
+  "lanceur_sha256": "61cbcdad926bc490d019d47261663700cb4c8749bf761c16f9bfa06c96ee406b"
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "validation_consommateurs_commun_root_v1",
+  "date_utc": "2026-10-18T14:54:14.510145+00:00",
+  "bibliotheque_testee": "commun de la racine MicroWaveTomography",
+  "root": "C:\\Jacques\\liteVNA\\MicroWaveTomography",
+  "cas_synthetiques": 10,
+  "imports": [
+    "cartilage/noyau.py",
+    "cartilage/calibration.py",
+    "cartilage/qualification.py"
+  ],
+  "exit_code": 0,
+  "versions": {
+    "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:16:45) [MSC v.1942 64 bit (AMD64)]",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.1",
+    "scikit-rf": "1.12.0"
+  },
+  "modules": {
+    "commun": {
+      "fichier": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\commun\\__init__.py",
+      "sha256": "541a8579e674178aca02c0d108071f6b1fcf43a4b006991a67bfa742993033ff"
+    },
+    "physique": {
+      "fichier": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\commun\\physique.py",
+      "sha256": "c84122492df9edbcfbd98d9933b960add265a98cb2e1e9b567fe5054eace5e14"
+    },
+    "instrument": {
+      "fichier": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\commun\\instrument.py",
+      "sha256": "97b543f4aa445e2f9206f3ac588a0bee67839ed311f9045bae9f34c293297646"
+    },
+    "sol": {
+      "fichier": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\commun\\sol.py",
+      "sha256": "6a5b3e61af9d51f4814a0b7ba7ba61d9ab49bc3531742bb237bef99e9e349c34"
+    }
+  },
+  "journal": "autotest_cartilage_root_10.txt",
+  "journal_sha256": "3559148642989cceda864e4e54f06f82c9ee008d1bb791d5ce78409f89a4b267",
+  "environnement": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MPLBACKEND": "Agg"
+  },
+  "materiel": "Aucun port ouvert ; aucun appel ouvrir_reel ; aucun import du pilote NanoVNAv2."
+}

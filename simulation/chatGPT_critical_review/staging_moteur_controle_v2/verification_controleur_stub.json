@@ -1,0 +1,26 @@
+{
+  "schema": "tests_gardes_controleur_f2_v1",
+  "utc": "2026-10-19T14:07:40.652391+00:00",
+  "code_sortie_observe": 0,
+  "tests_reussis": 8,
+  "python": "ph 3.12",
+  "source_sha256": {
+    "calcule_maille_controlee.py": "3f3881ccd2362c69f11efbb008f16a8d365bf67861814c9533c35485152d38e0",
+    "test_controleur_maille.py": "952966a5ee206e6f4f0994b819a1686648d7006a677eb4a6f1e95fbb7a74f981"
+  },
+  "moteur_factice_uniquement": true,
+  "aucun_solveur_importe": true,
+  "aucun_FDTD": true,
+  "aucune_qualification_acquise": true,
+  "cas": [
+    "Cout sans aucune ecriture",
+    "Dossier partiel vide refuse",
+    "Archive controle existante refusee",
+    "Imbrication dans historique refusee",
+    "Inventaire incomplet refuse",
+    "Source modifiee pendant Run factice refusee sans preuve fin",
+    "Marqueur manquant interdit preuve fin",
+    "Fin ecrite seulement apres controles complets"
+  ],
+  "incident_test_initial": "Patch.dict(sys.modules) de fixture retirait NumPy importe pendant le test et empechait sa recharge. Le lanceur utilise maintenant math.isfinite pour sa seule validation scalaire ; les8cas passent. Aucun calcul physique concerne."
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "controle_finalisation_preparee_root_v1",
+  "date_utc": "2026-10-19T03:06:04.663851+00:00",
+  "builder_archive": {
+    "fichier": "portee_grilles_pdf_preuves.zip",
+    "sha256": "b8caa952c76a050125080386ad97e76ea684e1c0ab613287909227e277b7b887",
+    "manifest_sha256": "41a2e3ecedad9ed5c3ace3dfbe7ecc3c844f813036e1931f9a03cf41a3788027",
+    "membres_verifies_crc_sha256": 9,
+    "sha_ancien": "2d130603f5ced4a926fb39fc6b6c90f3e061dacbc44f5c805e8bfbf533fd7fe9",
+    "sha_courant": "68b9f6d3756e71c645dce8f55a530a5d2436198a3962fcfccd380cc2a7eee7fc",
+    "AST_un_seul_texte_modifie": true,
+    "texte_ajoute": " Les grilles sont reconstruites sans emboîtement ; un réglage nominal plus fin ne garantit pas la diminution de chaque cellule locale. Le voisinage fin du port varie aussi avec la cible locale de maille.",
+    "PDF_reel_qa_visuelle_reste_a_faire": true
+  },
+  "port_signal": {
+    "preuve": "controle_port_signal_2p286.json",
+    "sha256": "86c2c83647215445b800eebabb9358ad936ac0ba1ccf65da01a7cb39ffdd9cbf",
+    "coupes_signal_port_2p286_mm_coherentes": 3,
+    "sources_referencees_sha256_verifies": 4,
+    "XML_fermes_resistance_source_verifies": [
+      {
+        "profil": "diamant_uwb_x18/n30_12ns",
+        "source_resistance_mm": [
+          [
+            -1.143,
+            -36.0,
+            0.0
+          ],
+          [
+            1.143,
+            -36.0,
+            1.6
+          ]
+        ],
+        "sha256": "d1abc76b452b1f7625e2d34d9c3f4ffbb49d5538288457b9506b74eb5447cce7"
+      },
+      {
+        "profil": "vivaldi_tomographie/tres_fin_16ns",
+        "source_resistance_mm": [
+          [
+            -1.143,
+            0.0,
+            0.0
+          ],
+          [
+            1.143,
+            1.6,
+            0.0
+          ]
+        ],
+        "sha256": "ac405ab2978d9cb1207391ed9fb5a34ad34b8246e37a5275ae6b14e1b24fbf42"
+      }
+    ],
+    "interpretation_sondes_attribuee_revue_FDTD": true,
+    "connecteur_SMA_3D_non_modele": true
+  },
+  "compatibilite_ph": {
+    "script": "controle_lecture_ph_profils_fermes.py",
+    "script_sha256": "53aaf553bd899b55e41883403fc15fac020073720189abc945a3b74142ec6164",
+    "rapport": "controle_lecture_ph_profils_fermes.json",
+    "rapport_sha256": "c87a860f209451665e593648409e5d116d3ea6c8637d6044a7679e984b9c39e8",
+    "python": "3.12.13",
+    "numpy": "2.4.4",
+    "code_sortie_preuve": 0,
+    "profils_acceptes": 21,
+    "fichiers_fermes_sha256_relus_par_root": 590,
+    "sources_gelees_sha256_relues_par_root": 17,
+    "six_paires_18_comparaisons_exactes": true,
+    "echecs_physiques_spatiaux_grand_et_V_conserves": true
+  },
+  "profils_actifs_lus": false,
+  "qualification_finale_reussie": false,
+  "aucune_selection_ou_livraison_creee": true
+}

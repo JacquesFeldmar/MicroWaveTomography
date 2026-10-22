@@ -1,0 +1,17 @@
+{
+  "schema": "tests_gardes_controleur_f2_catalogue_explicite_v2",
+  "utc": "2026-10-19T14:10:29.107934+00:00",
+  "tests_reussis": 8,
+  "code_sortie_observe": 0,
+  "moteur_factice_uniquement": true,
+  "aucun_solveur_importe": true,
+  "aucun_FDTD": true,
+  "qualification_globale_effectuee": false,
+  "source_sha256": {
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316",
+    "test_controleur_maille.py": "3a944a3781d478d0568202fab26fc99d0fbc18eaf094098851d4e4147b8b54e5"
+  },
+  "ajout": "Montage archive demande explicitement au catalogue du moteur F2 ; appel verifie dans le cas positif.",
+  "historique_premiere_version_reconstituee_octet_identique": true,
+  "historique_preuve_sha256": "4cea9fabf715574e411024007cbc45b82411eb8a208f6888f77085104c105a7e"
+}

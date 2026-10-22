@@ -1,0 +1,944 @@
+{
+  "schema": "revue_croisee_extreme_fin_v1",
+  "date_utc": "2026-10-18T18:15:34.373426+00:00",
+  "q_sha256": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+  "r_sha256": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+  "script_sha256": "696436d7110b5b21c5ba38ee0ef68f80d08079692cde8f2c637f304f67fad623",
+  "profils": {
+    "base_8ns": {
+      "lecture_courante_et_configuration_validees": true,
+      "n_pas": 26632,
+      "dt_s": 3.0040876953987133e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "manifeste_sha256": "7ab00c7c65e9fcddc2e9a0a50ac699dbccd0b327385dc5c79b594785941a83e1",
+      "entree_sha256": "e812193c7bcf8291e40bee04720c3f42acf538c5a2b83616c9596167954865f0",
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8239846987056257,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1375000000.0,
+              1825000000.0
+            ],
+            [
+              2450000000.0,
+              3550000000.0
+            ],
+            [
+              4475000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.647887323943662,
+          "points_sous_seuil": 138,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1250000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9530516431924883,
+          "points_sous_seuil": 203,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1825000000.0
+              ],
+              [
+                2450000000.0,
+                3550000000.0
+              ],
+              [
+                4475000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.6756756756756757,
+            "points_sous_seuil": 125,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.313445720391703,
+          "pire_db": -6.444362813419421
+        }
+      }
+    },
+    "fin_8ns": {
+      "lecture_courante_et_configuration_validees": true,
+      "n_pas": 31833,
+      "dt_s": 2.5132161942374195e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "manifeste_sha256": "eca538ad11dbbadce1acda275a647b24656ec85b9b4c2a3aa9112c748f2e1295",
+      "entree_sha256": "96130f9b1bec6eee7c449fb102eb42c63125c4f335f404dd34df90c2f9b10ba8",
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8284822825543938,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1850000000.0
+            ],
+            [
+              2525000000.0,
+              3675000000.0
+            ],
+            [
+              4475000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.6572769953051644,
+          "points_sous_seuil": 140,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1850000000.0
+              ],
+              [
+                2525000000.0,
+                3675000000.0
+              ],
+              [
+                4475000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.6918918918918919,
+            "points_sous_seuil": 128,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.554738295503565,
+          "pire_db": -6.65745031578937
+        }
+      }
+    },
+    "fin_12ns": {
+      "lecture_courante_et_configuration_validees": true,
+      "n_pas": 47749,
+      "dt_s": 2.5132161942374195e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "manifeste_sha256": "af5a88932cf69e05c3da77fa096582ff84bff8b9f830c3e4c1facc6d272b8a54",
+      "entree_sha256": "9ea6c8e105edd51735bc4d221d3acea9f0a9efbb40fd67b71ee629e0f8722ed4",
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8296794475696468,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1850000000.0
+            ],
+            [
+              2525000000.0,
+              3675000000.0
+            ],
+            [
+              4475000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.6572769953051644,
+          "points_sous_seuil": 140,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1850000000.0
+              ],
+              [
+                2525000000.0,
+                3675000000.0
+              ],
+              [
+                4475000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.6918918918918919,
+            "points_sous_seuil": 128,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.554717519892957,
+          "pire_db": -6.512389444316041
+        }
+      }
+    },
+    "tres_fin_8ns": {
+      "lecture_courante_et_configuration_validees": true,
+      "n_pas": 50543,
+      "dt_s": 1.5828450236911298e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "manifeste_sha256": "12384a7e0a2d8b916ef37674803fb1ebcda5de1ff3ad3a009f0176563348a43d",
+      "entree_sha256": "b449a0ca94716e064ad03b3d5b30f9b075ab0113585323573fe9a252ec75ceba",
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.82825103142973,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2525000000.0,
+              3725000000.0
+            ],
+            [
+              4425000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.6807511737089202,
+          "points_sous_seuil": 145,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2525000000.0,
+                3725000000.0
+              ],
+              [
+                4425000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7189189189189189,
+            "points_sous_seuil": 133,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.760520351893485,
+          "pire_db": -6.901778670654162
+        }
+      }
+    },
+    "tres_fin_12ns": {
+      "lecture_courante_et_configuration_validees": true,
+      "n_pas": 75814,
+      "dt_s": 1.5828450236911298e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "manifeste_sha256": "6e1e08fa52b60a533245b5d03c0c37a10fe1680daec4577ab1c5316039832a32",
+      "entree_sha256": "8779e0cb15b68df72e76aa133d34804bcd2498291f0b8fbdfd1ae919d0fc7f20",
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.829228701411012,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2525000000.0,
+              3725000000.0
+            ],
+            [
+              4425000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.6807511737089202,
+          "points_sous_seuil": 145,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2525000000.0,
+                3725000000.0
+              ],
+              [
+                4425000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7189189189189189,
+            "points_sous_seuil": 133,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.760332662670521,
+          "pire_db": -6.742793334087283
+        }
+      }
+    },
+    "ultra_fin_8ns": {
+      "lecture_courante_et_configuration_validees": true,
+      "n_pas": 45398,
+      "dt_s": 1.7622464902128854e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "manifeste_sha256": "25a8ef1b256e4a566b776da93a5d15ce7f6b5d8c20022197e3137d1abf93c04b",
+      "entree_sha256": "42fa4618e7521dd6f1a1840e3a0cda685661e5a0dbedf20b210af1984eaa0ce3",
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8279096979393247,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2500000000.0,
+              3725000000.0
+            ],
+            [
+              4450000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.6807511737089202,
+          "points_sous_seuil": 145,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2500000000.0,
+                3725000000.0
+              ],
+              [
+                4450000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7189189189189189,
+            "points_sous_seuil": 133,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.687506531746228,
+          "pire_db": -6.946504452701222
+        }
+      }
+    },
+    "ultra_fin_12ns": {
+      "lecture_courante_et_configuration_validees": true,
+      "n_pas": 68096,
+      "dt_s": 1.7622464902128854e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "manifeste_sha256": "2ed991934409364deb329e5bf94c692e31b8e288d16f082e8200d1bbb8191bbe",
+      "entree_sha256": "a6588b720c88284c30baeb1a9661d24156aca88b5c60b0af2fddd80da1d9eeff",
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8292788594674164,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2500000000.0,
+              3725000000.0
+            ],
+            [
+              4450000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.6807511737089202,
+          "points_sous_seuil": 145,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2500000000.0,
+                3725000000.0
+              ],
+              [
+                4450000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7189189189189189,
+            "points_sous_seuil": 133,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.687461139819233,
+          "pire_db": -6.846538214238494
+        }
+      }
+    },
+    "extreme_fin_8ns": {
+      "lecture_courante_et_configuration_validees": true,
+      "n_pas": 76503,
+      "dt_s": 1.0457299734092486e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "manifeste_sha256": "cd4b70dccf02368fa025b5d7b2c7d163d1a8d3fcc138e44a4edb3031e7376e14",
+      "entree_sha256": "1ae2f0a48d070e98694022a065b7414c7cb069a9c63f0628f8e35ca56996963d",
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8293480989636404,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2550000000.0,
+              3750000000.0
+            ],
+            [
+              4450000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.676056338028169,
+          "points_sous_seuil": 144,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2550000000.0,
+                3750000000.0
+              ],
+              [
+                4450000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7135135135135136,
+            "points_sous_seuil": 132,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.654200826382588,
+          "pire_db": -6.86418193626311
+        }
+      }
+    },
+    "extreme_fin_12ns": {
+      "lecture_courante_et_configuration_validees": true,
+      "n_pas": 114754,
+      "dt_s": 1.0457299734092486e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "manifeste_sha256": "7bd3137e81577964df751e022a6b1046c59df6f8a1e766bfd7ba8cb6cc4f6c9f",
+      "entree_sha256": "07f2af871164d231c41cd417397047ad3ee56ff30d7b1e4ad6003b4fcc5f1545",
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8307188282837085,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2550000000.0,
+              3725000000.0
+            ],
+            [
+              4450000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.6713615023474179,
+          "points_sous_seuil": 143,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2550000000.0,
+                3725000000.0
+              ],
+              [
+                4450000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7081081081081081,
+            "points_sous_seuil": 131,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.654195036685064,
+          "pire_db": -6.75212288181288
+        }
+      }
+    }
+  },
+  "nombre_profils": 9,
+  "communs": {
+    "geometrie": true,
+    "contrat": true,
+    "sources": true,
+    "environnement": true,
+    "grille_frequence": true
+  },
+  "sources_physiques_sha256": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998"
+  },
+  "environnement": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "csxcad": "0.7.0",
+    "dtype_maillage": "float64 little-endian",
+    "openems": "0.37.0"
+  },
+  "coherence_temporelle": {
+    "maillage_manifeste_identique": true,
+    "dt_binaire_identique": true,
+    "dt_hex": "0x1.d6f4751a7ef9fp-44",
+    "axes": {
+      "x": {
+        "forme": [
+          209
+        ],
+        "dtype": "float64",
+        "identique_binaire": true
+      },
+      "y": {
+        "forme": [
+          200
+        ],
+        "dtype": "float64",
+        "identique_binaire": true
+      },
+      "z": {
+        "forme": [
+          119
+        ],
+        "dtype": "float64",
+        "identique_binaire": true
+      }
+    },
+    "fichier_npz_identique": true
+  },
+  "points_masque_module_ge_0p1": {
+    "spatial": 191,
+    "temporel": 194
+  },
+  "spatial": {
+    "valeurs": {
+      "maximum_complexe": 0.02499124575279103,
+      "rms_complexe": 0.017769583831423758,
+      "percentile95_db": 1.1252310353778219,
+      "percentile95_phase_deg": 6.812018793594152
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.05,
+      "rms_complexe": 0.02,
+      "percentile95_db": 1.0
+    },
+    "reussi": false,
+    "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+  },
+  "temporel": {
+    "valeurs": {
+      "maximum_complexe": 0.009746129948395214,
+      "rms_complexe": 0.0025004367800776565,
+      "percentile95_db": 0.11208639250998279,
+      "percentile95_phase_deg": 0.7930751614435406
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.015,
+      "rms_complexe": 0.005,
+      "percentile95_db": 0.5
+    },
+    "reussi": true,
+    "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+  },
+  "indicateurs_reference_extreme12": {
+    "bande_hz": [
+      1000000000.0,
+      6300000000.0
+    ],
+    "points": 213,
+    "maximum_module": 0.8307188282837085,
+    "passivite_numerique": true,
+    "moins_10_db": {
+      "seuil_db": -10.0,
+      "segments_hz": [
+        [
+          1400000000.0,
+          1875000000.0
+        ],
+        [
+          2550000000.0,
+          3725000000.0
+        ],
+        [
+          4450000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.6713615023474179,
+      "points_sous_seuil": 143,
+      "points_total": 213
+    },
+    "moins_6_db": {
+      "seuil_db": -6.0,
+      "segments_hz": [
+        [
+          1275000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.9483568075117371,
+      "points_sous_seuil": 202,
+      "points_total": 213
+    },
+    "bande_1p4_6": {
+      "moins_10_db": {
+        "seuil_db": -10.0,
+        "segments_hz": [
+          [
+            1400000000.0,
+            1875000000.0
+          ],
+          [
+            2550000000.0,
+            3725000000.0
+          ],
+          [
+            4450000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 0.7081081081081081,
+        "points_sous_seuil": 131,
+        "points_total": 185
+      },
+      "moins_6_db": {
+        "seuil_db": -6.0,
+        "segments_hz": [
+          [
+            1400000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 1.0,
+        "points_sous_seuil": 185,
+        "points_total": 185
+      },
+      "moyenne_puissance_reflechie_db": -11.654195036685064,
+      "pire_db": -6.75212288181288
+    }
+  },
+  "reussi": false,
+  "aucun_calcul_ni_resultat_modifie": true,
+  "portee": "Lecture stricte des preuves de neuf profils et criteres Q existants, aucun FDTD, aucune selection, registre R en memoire seulement."
+}

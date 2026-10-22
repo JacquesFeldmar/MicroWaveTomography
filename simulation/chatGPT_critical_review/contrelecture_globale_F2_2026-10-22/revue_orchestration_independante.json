@@ -1,0 +1,16 @@
+{
+  "relecteur": "/root/reprise_fabrication/revue_cloture_orchestrateur_f2",
+  "nature": "Retour de contrelecture independante en lecture seule, sans import projet, solveur ni test.",
+  "constats": {
+    "calculs6_code0": true,
+    "prefixes9_code0": true,
+    "deux_queues_terminees_code0": true,
+    "AP_code2_numerique": true,
+    "echec_technique": false,
+    "trois_spatiaux_FALSE_trois_temporels_TRUE": true,
+    "fin_UTC": "2026-10-22T04:12:27.906696+00:00",
+    "six_fin_calcul_sources_controles_inchanges": true
+  },
+  "nuance": "Avertissements openEMS sur nombre de pas/excitation et arret avant critere energetique conserves ; aucun traceback ni arret fatal vu par le relecteur. Les codes0 ne valent pas qualification numerique.",
+  "portee_sources": "Le relecteur a compare les18SHA declares au gel ; la relecture des octets copies est faite par cloture_preuves.py et consignee dans complement_cloture.json."
+}

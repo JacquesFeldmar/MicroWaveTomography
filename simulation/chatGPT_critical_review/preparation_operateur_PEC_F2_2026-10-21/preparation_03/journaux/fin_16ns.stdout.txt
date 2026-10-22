@@ -1,0 +1,83 @@
+openEMS - dumping PEC info to 'PEC_dump.vtk'
+openEMS - dumping boxes to 'box_dump*.vtk'
+openEMS - dumping operator to 'operator_dump.vtk'
+openEMS - enabled multithreading
+openEMS - fixed number of threads: 1
+openEMS - showing probe discretization information
+openEMS - verbose level 1
+ ---------------------------------------------------------------------- 
+ | openEMS 64bit -- version v0.37.0
+ | (C) 2010-2026 Thorsten Liebig <thorsten.liebig@gmx.de>  GPL license
+ ---------------------------------------------------------------------- 
+	Used external libraries:
+		CSXCAD -- Version: v0.7.0
+		hdf5   -- Version: 2.2.0
+		          compiled against: HDF5 library version: 2.2.0
+		tinyxml -- compiled against: 2.6.2
+		fparser
+		boost  -- compiled against: 1_91
+		vtk -- Version: 9.3.20231030
+		       compiled against: 9.3.20231030
+
+Create FDTD operator (compressed SSE + multi-threading)
+Multithreaded operator using 1 threads.
+Operator: Dumping FDTD operator information to vtk file: operator_dump ...Operator: Dumping PEC information to vtk file: PEC_dump ... done.
+Compressing the FDTD operator... this may take a while...
+------- Stat: FDTD Operator -------
+Dimensions		: 261x268x110 = 7694280 Cells (7.69428 MCells)
+Size of Operator	: 369325440 Byte (352.216 MiB) 
+Size of Field-Data	: 184662720 Byte (176.108 MiB) 
+-----------------------------------
+Background materials (epsR/mueR/kappa/sigma): 1/1/0/0
+-----------------------------------
+Number of PEC edges	: 52288
+in x direction		: 25724
+in y direction		: 25646
+in z direction		: 918
+-----------------------------------
+Timestep (s)		: 1.20613e-13	(1.27088e-13)
+Timestep method name	: Rennings_1
+Nyquist criteria (TS)	: 658
+Nyquist criteria (s)	: 7.93632e-11
+-----------------------------------
+SSE compression enabled	: yes
+Unique SSE operators	: 178382
+-----------------------------------
+-----------------------------------
+--- Excitation Extension ---
+Voltage excitations	: 425	 (0, 0, 425)
+Current excitations	: 0	 (0, 0, 0)
+Excitation Length (TS)	: 8964
+Excitation Length (s)	: 1.08117e-09
+--- Uniaxial PML Extension ---
+ PML range		: [0,0,0] to [8,267,109]
+ Grading function	: " -log(1e-6)*log(2.5)/(2*dl*Z*(pow(2.5,W/dl)-1)) * pow(2.5, D/dl) "
+--- Uniaxial PML Extension ---
+ PML range		: [252,0,0] to [260,267,109]
+ Grading function	: " -log(1e-6)*log(2.5)/(2*dl*Z*(pow(2.5,W/dl)-1)) * pow(2.5, D/dl) "
+--- Uniaxial PML Extension ---
+ PML range		: [9,0,0] to [251,8,109]
+ Grading function	: " -log(1e-6)*log(2.5)/(2*dl*Z*(pow(2.5,W/dl)-1)) * pow(2.5, D/dl) "
+--- Uniaxial PML Extension ---
+ PML range		: [9,259,0] to [251,267,109]
+ Grading function	: " -log(1e-6)*log(2.5)/(2*dl*Z*(pow(2.5,W/dl)-1)) * pow(2.5, D/dl) "
+--- Uniaxial PML Extension ---
+ PML range		: [9,9,0] to [251,258,8]
+ Grading function	: " -log(1e-6)*log(2.5)/(2*dl*Z*(pow(2.5,W/dl)-1)) * pow(2.5, D/dl) "
+--- Uniaxial PML Extension ---
+ PML range		: [9,9,101] to [251,258,109]
+ Grading function	: " -log(1e-6)*log(2.5)/(2*dl*Z*(pow(2.5,W/dl)-1)) * pow(2.5, D/dl) "
+--- Debye Dispersive Material Extension ---
+ Debye poles N       	: 13
+ Active cells        	: 394368
+--- Series/Parallel Lumped RLC load ---
+Active cells		: 0
+-----------------------------------
+Creation time for operator: 33.9855 s
+FDTD simulation size: 261x268x110 --> 7.69428e+06 FDTD cells 
+FDTD timestep is: 1.20613e-13 s; Nyquist rate: 658 timesteps @6.30015e+09 Hz
+Excitation signal length is: 8964 timesteps (1.08117e-09s)
+Max. number of timesteps: 132657 ( --> 14.7989 * Excitation signal length)
+Create FDTD engine (compressed SSE + multi-threading)
+Multithreaded engine using 1 threads. Utilization: (261)
+Setting up processing...

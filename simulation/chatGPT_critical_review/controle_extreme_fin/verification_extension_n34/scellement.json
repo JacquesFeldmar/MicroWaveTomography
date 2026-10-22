@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-19T02:16:18.273845+00:00",
+  "analyseur_sha256": "2d5215a9e388d2c8cfd6f075eafde1776246d9de3bfe84461a9eda06d94e3b9b",
+  "ancienne_version_archivee": "d31fd9e40b7b4c6bc4d9549244c13a31457d6392007fd8c2167c0248d78d81a2",
+  "relecture_independante": "revue_prefixe_sondes : aucun defaut concret ; modes7/9/11 equivalents ; six fonctions AST identiques ;17sources+305grand+140V et Vhelperf985 inchanges.",
+  "commande_apres_sortie0_reelle_queue77627_prefixe_et_validation_compris": "python -B -X utf8 simulation/chatGPT_critical_review/controle_extreme_fin/analyse_extreme_fin.py --n34 --queue-sortie-zero-confirmee --sortie controle_final_n34",
+  "aucune_attestation_queue_live": true,
+  "aucun_fdtd": true,
+  "aucune_selection_ou_qualification_officielle": true
+}

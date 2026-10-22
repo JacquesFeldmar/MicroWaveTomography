@@ -1,0 +1,155 @@
+DIAGNOSTIC DES DEUX LOSANGES F2 — 20 OCTOBRE 2026
+
+Périmètre : cinq profils Grand F2 clos pour la relecture numérique ; seuls
+Petit et Grand base_12ns/fin_16ns pour l'inspection XML/NPZ/CSX du port.
+Aucun profil Vivaldi consulté. Aucun constructeur de grille, SetupFDTD,
+Run, calibration ou nouveau calcul temporel. Les dix-huit sources gelées
+et les preuves closes lues ont été vérifiées inchangées avant/après.
+
+1. RÉSULTAT GRAND, INDÉPENDANT DES FORMULES Q
+
+La comparaison NumPy indépendante retrouve exactement Q, seuils et verdicts :
+spatial base12/fin12 : max |deltaS| 0,412047225516328 ; RMS
+0,11760840748496572 ; p95dB 5,260925393014891 : ÉCHEC.
+Maximum à 4,850 GHz ; p95 de phase 50,028936746494814 degrés.
+Temporel fin12/fin16 : max 5,470432920406153e-5 ; RMS
+1,8539817565470815e-5 ; p95dB 0,0012388022089423868 : RÉUSSITE.
+La grille et le dt de cette paire temporelle sont identiques bit à bit.
+Référence fin16 passive, max |S| 0,8322158955013979.
+Le minimum global se déplace de 2,975 GHz (base12, −39,859373215883906 dB)
+à 3,100 GHz (fin16, −39,02320072299938 dB).
+
+Les cinq preuves Q sont valides et partagent physique, environnement,
+géométrie, contrat et fréquences. Les 140 fichiers de ces seuls cinq
+profils, et les dix-huit sources, sont tous inchangés après lecture.
+Il s'agit d'un constat d'échec spatial, pas d'une qualification globale.
+
+Le Petit possède lui aussi son maximum d'écart spatial à 4,850 GHz
+(0,43583288717441465), mais un radiateur et un minimum global différents.
+Cette fréquence commune motive le contrôle de l'alimentation commune ;
+elle ne démontre ni défaut du port ni causalité RF.
+
+2. GÉOMÉTRIE ET PARAMÈTRES : PAS DE RUPTURE CAD DÉMONTRÉE
+
+Sur chaque antenne, les sous-arbres Properties des XML directs base12 et
+fin16 sont identiques après retrait des seuls FillColor/EdgeColor.
+SHA256 du sous-arbre physique Grand :
+543488a2a483d848af15c1b31a469d82e7ec897596f9247adb717a83d48f2773
+SHA256 du sous-arbre physique Petit :
+eff490faf1f4e4021e49f56a00dbe4d7236d8677c74fd591ccbfb615fa274368
+Les quinze primitives sont marquées utilisées dans les quatre archives
+de calibration existantes. Aucune calibration n'a été relancée.
+
+Le pad signal réel au bord mesure 2,286 mm : x ±1,143, puis pad droit
+sur 5,08 mm et transition vers la piste 3,1 mm. Les anciens sommets du
+feed au bord sont remplacés dans ruban_losange ; aucune piste de 3,1 mm
+cachée sous le port n'a été trouvée.
+Masses supérieures x [−5,588;−3,175] et [3,175;5,588], u 0..5,08 ;
+attaches de largeur 0,4572 jusqu'aux vias x ±4,318, u 5,969 ;
+vias cylindres PEC pleins équivalents Ø0,4572, z 0..1,6 ;
+pastilles supérieures Ø0,9652. B_Cu est continu sous ces vias.
+La coordonnée longitudinale locale u part de y=−20 Petit, y=−36 Grand.
+
+Le script inspecte_port_archive.py extrait seulement le sous-arbre CSX des
+XML clos dans quatre fichiers locaux. Il charge ces copies dans CSXCAD ;
+aucun dessin ou axe n'est calculé. Les points interrogés proviennent des
+axes NPZ archivés ou des chemins physiques explicites du raccord.
+
+Résultats des quatre cas Petit/Grand × base/fin :
+- Tous les points sondés sur masse→attache→via→B_Cu sont PEC.
+- Le chemin central du signal sur u 0..7 mm est PEC.
+- Dans un graphe DIAGNOSTIQUE formé par présence METAL au milieu des
+  arêtes primaires, les deux masses supérieures et B_Cu sont reliés ;
+  le signal constitue un réseau distinct. Aucune coupure ou liaison
+  signal-masse n'est démontrée par cet échantillonnage.
+- Les 187 arêtes verticales candidates du port base et les 425 du port
+  fin possèdent toutes la propriété port_resist_1 ; aucune présence
+  METAL intérieure au trajet vertical source n'est détectée.
+
+Ce graphe n'est PAS l'opérateur PEC natif openEMS. Une interrogation
+ponctuelle au bord exact d'un cylindre est sensible aux arrondis ; les
+comptages d'arêtes ne constituent pas une mesure exacte de conductivité
+ou de section électrique effective. La continuité CAD ne prouve ni une
+impédance correcte ni la convergence S11.
+
+3. PORT ET SONDES : INVARIANTS ET LIMITE NON LEVÉE
+
+Dans les quatre XML : résistance 50 ohms, Direction=2, Caps=1,
+priorité20 ; source de même volume, E suivant −z ; cuivre priorité10,
+vias priorité30. Boîte x ±1,143, y au bord, z 0..1,6 mm.
+U est demandée et enregistrée à x=0, y au bord, z 0..1,6.
+I est demandée à z=0,8. Ses en-têtes affichent la primaire inférieure
+0,7272727 mm base et 0,7529412 mm fin ; le centre de chaque cellule
+concernée vaut exactement 0,8 mm. Ce n'est pas la preuve d'une sonde
+déplacée vers une autre hauteur physique.
+Le contour x/y de I suit les cellules : x départ −1,27867/base,
+−1,2244/fin ; x fin +1,143 ; y départ bord−0,1455/base ou bord−0,1/fin,
+y fin au bord. Les en-têtes complets sont conservés dans le JSON.
+
+Le masque CSX ANY ne permettrait pas de conclure à l'absence de cuivre :
+le lumped de priorité20 peut cacher une propriété cuivre de priorité10.
+Le script interroge donc séparément METAL (0x004) et LUMPED_ELEMENT
+(0x2000), avec markFoundAsUsed=False. La documentation primaire locale
+précise que Caps=True ajoute des plaques PEC terminales pour le contact.
+Elles sont matérialisées par l'opérateur et ne figurent pas comme de
+nouvelles primitives Metal dans le XML. Aucun dump natif de ces caps,
+du PEC discret ou des coefficients n'a été produit ici.
+
+Le contrôle précédent du Petit par DTFT des vrais temps U et I retrouvait
+les S1P à environ 7e-14. Le grand écart est donc déjà présent dans les
+signaux Petit ; une simple conversion Touchstone n'explique pas ce cas.
+Le Grand n'a pas fait l'objet d'une nouvelle DTFT brute dans cette note.
+
+4. CONTRÔLES DISCRIMINANTS PROPOSÉS, AUCUN LANCÉ
+
+A. Le moins coûteux avant un nouveau calcul temporel : matérialiser
+l'opérateur des DEUX grilles Petit déjà archivées, avec dumps ciblés
+debug_PEC/debug_operator/debug_boxes. Vérifier la vraie connexion des
+caps au signal/retour, les arêtes E supprimées près des vias et la
+distribution des coefficients résistifs et de l'intégrale I. Cette étape
+demande un Setup et des ressources ; elle n'est pas autorisée/exécutée
+dans la présente inspection. L'objectif est de lever la limite entre
+géométrie interrogée et opérateur réellement intégré, sans raffiner à
+l'aveugle ni modifier les dessins PCB.
+
+B. Si les opérateurs ne révèlent pas d'anomalie claire : un coupon de
+ligne microruban droit avec le même substrat, le même pad/taper/SMA/vias
+et une terminaison 50 ohms contrôlée à l'autre bout. Comparer les mêmes
+deux résolutions sur une courte fenêtre couvrant impulsion et transit,
+avec contrôle de queue. Un écart de port comparable sur ce coupon
+indiquerait que le radiateur losange n'est pas nécessaire à l'effet ;
+un coupon stable réorienterait l'effort vers les arêtes/résonances du
+radiateur ou leur interaction avec l'alimentation. Les éventuels deux
+ports/terminaisons doivent être documentés, et non supposés parfaits.
+Le dessin, la grille, la durée et le coût de ce coupon ne sont pas
+préparés ici ; aucune durée courte ne remplacerait une qualification.
+
+C. Alternative après A : un seul diagnostic Petit à bloc SMA/normale FIN
+et radiateur extérieur BASE, comparé aux deux résultats existants.
+Il isolerait grossièrement la zone qui porte la sensibilité ; il ne
+constituerait pas à lui seul une preuve de convergence. Aucun hybride
+ou niveau supplémentaire n'a été créé.
+
+À ce stade, une nouvelle augmentation globale de résolution n'est pas
+justifiée par une cause identifiée. Aucun seuil n'est relâché et aucun
+échec historique n'est supprimé.
+
+PREUVES ET SOURCES
+lecture_independante.json :
+707f3ec11455013de6d8063f4aceaeb845eeebb03bd06d3b2717b91244703a6d
+inspection_port_archive.json :
+1b7115897d82dd7da442e151ae5e2110e154d30a8a39e3c0d2fcc1456843f43f
+Ces JSON donnent les chemins clos et SHA des fichiers/sources lus.
+La carte gel est integration_finale_f2/gel_campagne_F2.json ; ses dix-huit
+empreintes ont été vérifiées avant et après chaque script.
+
+Sources primaires locales consultées :
+C:/Users/jfeld/anaconda3/envs/openems/Lib/site-packages/openEMS/ports.py
+  LumpedPort, lignes 266–295 : R, Caps, source et sondes U/I.
+C:/Users/jfeld/anaconda3/envs/openems/Lib/site-packages/CSXCAD/CSProperties.pyx
+  lignes 823–829 : plaques PEC terminales du lumped.
+C:/Users/jfeld/anaconda3/envs/openems/Lib/site-packages/CSXCAD/CSXCAD.pyx
+  lignes 269–276, 546–557 : ReadFromXML et requêtes de priorité.
+Le code C++ de matérialisation de l'opérateur openEMS n'est pas fourni
+dans ces seuls wrappers locaux ; aucune règle de rasterisation exacte
+supplémentaire n'est affirmée.

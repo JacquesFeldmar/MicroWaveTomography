@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "etat": "termine",
+  "antenne": "diamant_uwb",
+  "cible_cm": null,
+  "distances_communes_cm": [],
+  "x_domaine_cm": null,
+  "montage": {
+    "acquisition": {
+      "f_min": 1000000000.0,
+      "f_max": 6000000000.0,
+      "points": 201,
+      "zero_padding": 16,
+      "fenetre": "hann",
+      "z_ref": 50.0
+    },
+    "antenne": {
+      "cote": 120.0,
+      "epaisseur": 0.8,
+      "eps_r": 4.4,
+      "tan_delta": 0.02,
+      "rayon_petale": 46.0,
+      "fente": 0.6,
+      "largeur_ligne": 1.5,
+      "longueur_ligne": 38.0,
+      "cuivre": 0.035
+    },
+    "plaque": {
+      "cote": 600.0,
+      "epaisseur": 5.0,
+      "distances_cm": [
+        50.0,
+        60.0,
+        70.0
+      ]
+    },
+    "maillage": {
+      "mailles_par_lambda": 10,
+      "mailles_par_lambda_air": 10,
+      "maille_min": 0.3,
+      "marge_pml": 8,
+      "marge_air_mm": 60.0,
+      "n_pas_max": 250000,
+      "critere_fin": -40.0,
+      "symetrie": false,
+      "rapport_max": 1.5,
+      "facteur_courant": 0.95,
+      "duree_ns": 0.1
+    }
+  },
+  "maillage": {
+    "axes": {
+      "x": {
+        "lignes": 135,
+        "minimum_mm": 0.1929999999999601,
+        "maximum_mm": 4.839200103598273,
+        "rapport_voisin_max": 1.5000000000005993,
+        "bornes_mm": [
+          -134.92044223333335,
+          134.92044223333335
+        ],
+        "sha256": "689af86a2773c6049e5be0dd00bb9d54326cec66ee38937e21b3945377a22d03"
+      },
+      "y": {
+        "lignes": 117,
+        "minimum_mm": 0.19999999999996732,
+        "maximum_mm": 4.945468464346277,
+        "rapport_voisin_max": 1.500000000000032,
+        "bornes_mm": [
+          -134.92044223333335,
+          134.92044223333335
+        ],
+        "sha256": "0f67780bc923ffdd861bfb3c57d8d2f71314365c83bdbf99e2d467dc1fa8ad29"
+      },
+      "z": {
+        "lignes": 82,
+        "minimum_mm": 0.19999999999999996,
+        "maximum_mm": 4.7972028874004735,
+        "rapport_voisin_max": 1.3333333333333333,
+        "bornes_mm": [
+          -114.92044223333333,
+          116.52044223333333
+        ],
+        "sha256": "e2dda567b7f682731c74cb872b5d08e871825610fc716ad79853f6f5a9bb0356"
+      }
+    },
+    "cellules": 1259064,
+    "dt_cfl_vide_s": 3.8051138140648274e-13
+  },
+  "execution": {
+    "dt_s": 3.614858123361586e-13,
+    "n_pas": 200,
+    "duree_demandee_s": 1.0000000000000002e-10,
+    "duree_prevue_s": 7.193567665489556e-11,
+    "fin_energie_active": false,
+    "critere_fin_db_configure": -40.0,
+    "couvre_inverse_df": false,
+    "methode": "TimeStep impose a facteur_courant * CFL anisotrope vide"
+  },
+  "materiaux": [
+    {
+      "nom": "FR4",
+      "delta_epsilon": [
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837,
+        0.03708360903209837
+      ],
+      "epsilon_inf": 4.35895654129136,
+      "epsilon_reference": 4.6,
+      "epsilon_statique": 4.841043458708639,
+      "frequence_reference_hz": 1000000000.0,
+      "hypothese": "FR4 nominal, pertes approximativement constantes; non identifie sur le lot fabrique",
+      "poles_fixes_hz": [
+        1000000.0,
+        3162277.6601683795,
+        10000000.0,
+        31622776.601683795,
+        100000000.0,
+        316227766.01683795,
+        999999999.9999999,
+        3162277660.1683793,
+        10000000000.0,
+        31622776601.683784,
+        100000000000.0,
+        316227766016.83795,
+        999999999999.9999
+      ],
+      "relaxation_s": [
+        1.5915494309189535e-07,
+        5.0329212104487035e-08,
+        1.5915494309189534e-08,
+        5.032921210448704e-09,
+        1.5915494309189535e-09,
+        5.032921210448703e-10,
+        1.5915494309189535e-10,
+        5.032921210448704e-11,
+        1.5915494309189536e-11,
+        5.0329212104487046e-12,
+        1.5915494309189534e-12,
+        5.032921210448703e-13,
+        1.5915494309189536e-13
+      ],
+      "tan_delta_reference": 0.011,
+      "type": "debye_passif_13_poles"
+    }
+  ],
+  "sources_sha256": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "78a67026138be8d535781204240bc968065c39a3ed388fdcce8a332a0f1e60eb",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "57447c16e3d3de5233c15f201c277bcd3b5d996557bcad95ba91e63500b33732",
+    "connectique.py": "d1adfeaae85a2cea41c65824f6cb5066724127a916b91fceeb389e8e4dbe9adb"
+  },
+  "entree_xml_sha256": "36af4dcef2fc8f9d72315261b9d21cb375597a335a420787ffb29e7399635b27",
+  "geometrie_sha256": "274b67baaf3e1a0605e6202b9ebfce8f262412e46b3fd7571118e87cdf9f3551",
+  "environnement": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "openems": "0.37.0"
+  },
+  "debut_utc": "2026-10-18T08:30:53.723832+00:00",
+  "sondes": {
+    "port_ut_1": {
+      "echantillons": 201,
+      "dt_effectif_s": 3.6148581230000517e-13,
+      "debut_s": 0.0,
+      "fin_s": 7.22971624672e-11,
+      "sha256": "4aafd2c342b7ae86728c8ff5c1fbd976a2e0073564d68c724c69c63d99edfd94"
+    },
+    "port_it_1": {
+      "echantillons": 201,
+      "dt_effectif_s": 3.6148581230000517e-13,
+      "debut_s": 1.80742906168e-13,
+      "fin_s": 7.24779053734e-11,
+      "sha256": "75eb9574ba51a23d5773c21bbd978049f2b2c09d25bd696b8fb990d3fe1c1972"
+    }
+  },
+  "fin_utc": "2026-10-18T08:31:03.255600+00:00",
+  "fichiers_sha256": {
+    "entree_openems.xml": "36af4dcef2fc8f9d72315261b9d21cb375597a335a420787ffb29e7399635b27",
+    "et": "99611cd3eb987a414cf59fd4bdd35e1ec554fa1dd95a8b96ef296575d918ce0f",
+    "geometrie.json": "274b67baaf3e1a0605e6202b9ebfce8f262412e46b3fd7571118e87cdf9f3551",
+    "ht": "91759878c08a43b54f8ff8319c1304f36a05bcd3a96f62926fba638fae95270d",
+    "maillage.npz": "09dd7136074f8c5b7d4f97d4bd62e03b4787b5af640cb8b1fca39f392386a02e",
+    "openEMS_run_stats.txt": "c2edde85e3b43864e22efa4c976a32d9cd92792e4dae77cff553c67335bc2bef",
+    "openEMS_stats.txt": "fc1e96434cba0fe54526102c2b20e07c024c65fc8158fb430227a7784d76b7a9",
+    "port_it_1": "75eb9574ba51a23d5773c21bbd978049f2b2c09d25bd696b8fb990d3fe1c1972",
+    "port_ut_1": "4aafd2c342b7ae86728c8ff5c1fbd976a2e0073564d68c724c69c63d99edfd94",
+    "s11.s1p": "bdb93d9ed465aa8c63ccf774fcf03102306fadf6f747619ffb4006363ca1cd5c"
+  }
+}

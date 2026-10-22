@@ -1,0 +1,62 @@
+{
+  "schema": "staging_integration_qualification_v1",
+  "mode": "patch_sur_copie_isolee",
+  "q_original_sha256": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+  "q_original_apres_sha256": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+  "q_copie_testee_sha256": "5fd159116157bef7191c3b86225cf0524fffd3e700295469fa12604c59482217",
+  "patch_sha256": "602df06e4a0cfd3553437f2faa10e973c351506f5b6d975312301c84a9e07fed",
+  "sources_intactes": true,
+  "selection_reelle_sha256_avant": null,
+  "sources_sha256": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "apercu.py": "dd11516b5b159d36ee3a224f567f6a0d6c986cf783b7c56a7a3b2c84b4b3a5c3",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "compare_s11.py": "8c49e7608c672a75b86ff6a42552d45f5b37e8b88b015eb30db53acf439ee711",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+    "export_dxf.py": "aa4910d44cb00b180135cb7710379ba41fa52fc81c3f3517bbd5e76cbab50659",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+    "figures.py": "326f3af3c7ee256e3254462d602beb7e1c09b5f3eaceda8c67c28e7f468826a7",
+    "livre_pcbway.py": "ed7638e1e9ad77b930200f485596fcc5fb711bd128b1a49c2eef4edebde0c740",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "modele.py": "1802913350fa14c51df39ae61a2667b880e05ed6f5a7b3abaf72079b34f82a7e",
+    "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+    "qualification_adaptative.py": "8e34a5f47dffaaa36851d6eaf1e5dd2685ec699101d97390898691a4fddde43a",
+    "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+    "raffine_qualification_pcbway.py": "bd1f7d8e72852158e4d037e727ad6855c49f8594a6bfd642be10584221667a6c",
+    "run.py": "5acc2a8285aabbcfdbe586fbedbd26bb76f143f44bf59ccf707b8bdc63e2dfc9",
+    "test_donnees.py": "264c22b0b23eb0af1f0af07b96580858b8075e708eb329be3f7e92fbda11ff9f",
+    "test_fabrication.py": "dc5cd0f28f453daf5a36c626968ab0c226f60ffc6bbcb34fa90296dffb382333",
+    "test_livre_pcbway.py": "84c8454bc8e0ddd52baf5bb0eaa80f8c98b3bc8b7cdce61b0221190008cd1af3",
+    "test_run.py": "e028a59d63bc2d0c3db3cd83fa262dcf6e8ab5558714af90ae7f2a98aad92fb7",
+    "test_traitement.py": "ac58e12809bcab4a483db4b7082682a76739486335eb2e9a9d6ef677673c8528",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "verifie_gerber.py": "def8f7273428352591a3a98cec2ce8b224ce1758b82f4beb070fa7debd46db40"
+  },
+  "executions": [
+    {
+      "nom": "integration_ciblee",
+      "commande": [
+        "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "-v",
+        "test_integration_qualification"
+      ],
+      "retour": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2daddaf56bfabd5fe15dfbde402776620b293e97de3cbfef1c43533affd0f7ea"
+    }
+  ],
+  "aucun_calcul_fdtd": true,
+  "reussi": true
+}

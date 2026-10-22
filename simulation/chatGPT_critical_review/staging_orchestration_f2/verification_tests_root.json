@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-19T17:20:48.752548+00:00",
+  "code_natif": 0,
+  "tests": 9,
+  "aucun_Run_openEMS": true,
+  "orchestrateur_sha256": "aa359d90ccde3f365c06866df8316b875a620d2d016a9787f0bfd1ae16209357",
+  "tests_sha256": "c0ac90ceb665a266cfd7a1f336b11d418f945ed6b808b1cdf940a625685d4e98",
+  "stdout_sha256": "5a3941a8f98b9f80aea49ce05627b21ed36d3ead93557c4cfc96f2b557b5c926",
+  "stderr_sha256": "3c646ca04c5ea241b946af324a5a0fb37386801f4c432cc72e543154edfef0f5"
+}

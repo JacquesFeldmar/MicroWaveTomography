@@ -1,0 +1,25 @@
+{
+  "schema": "revue_independante_staging_moteurs_v1",
+  "utc_consigne": "2026-10-19T14:22:33.066487+00:00",
+  "relecteur": "/root/reprise_fabrication/revue_staging_moteurs",
+  "nature": "Deux passes de lecture seule ; aucun test ni profil ouvert par le relecteur",
+  "limites_initiales": [
+    "Q sans selection ne comparait pas les axes NPZ effectifs.",
+    "Q sans selection pouvait ecrire les references de la premiere antenne avant detection du melange moteur."
+  ],
+  "corrections_confirmees": [
+    "Controle commun Q.verifie_grilles_temporelles sur float64 fini, formes et octets ; AP delegue au meme controle.",
+    "Q precharge et controle toutes les antennes avant la boucle autorisee a ecrire.",
+    "Tests explicites Q sans selection : deux refus et parcours positif trois F2.",
+    "F2 exige neuf sources F1 et sa propre source, exactement dix SHA."
+  ],
+  "verdict": "Aucun nouveau defaut concret vu sur les corrections ; aucun autre defaut concret sur registre, caches, catalogue distinct, W ou AP.",
+  "fichiers_relus_sha256": {
+    "modifies/fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "modifies/qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "modifies/qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "tests/test_moteurs_qualification.py": "1c77e66576f54693f347193f09818922cc5c67115e210e6d04df437e1dcf97fc",
+    "verifie_staging.py": "334362cdcd9749728ace04440995e863837cfbe82f5f13759486154f9a3ae30e"
+  },
+  "reserve": "Cette revue et les tests stub ne valident pas la physique du futur moteur F2 ou ses presets reels."
+}

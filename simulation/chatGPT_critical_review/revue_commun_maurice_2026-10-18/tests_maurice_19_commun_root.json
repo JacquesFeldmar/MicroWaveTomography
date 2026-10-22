@@ -1,0 +1,46 @@
+{
+  "schema": "validation_tests_maurice_commun_root_v1",
+  "date_utc": "2026-10-18T14:54:08.409098+00:00",
+  "bibliotheque_testee": "commun de la racine MicroWaveTomography, preimporte avant discovery et verifie apres execution",
+  "root": "C:\\Jacques\\liteVNA\\MicroWaveTomography",
+  "suite": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\from Maurice\\plexiglas\\tests",
+  "tests": 19,
+  "echecs": 0,
+  "erreurs": 0,
+  "ignores": 0,
+  "exit_code": 0,
+  "versions": {
+    "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:16:45) [MSC v.1942 64 bit (AMD64)]",
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.1",
+    "pyserial": "3.5",
+    "scikit-rf": "1.12.0"
+  },
+  "modules": {
+    "commun": {
+      "fichier": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\commun\\__init__.py",
+      "sha256": "541a8579e674178aca02c0d108071f6b1fcf43a4b006991a67bfa742993033ff"
+    },
+    "physique": {
+      "fichier": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\commun\\physique.py",
+      "sha256": "c84122492df9edbcfbd98d9933b960add265a98cb2e1e9b567fe5054eace5e14"
+    },
+    "instrument": {
+      "fichier": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\commun\\instrument.py",
+      "sha256": "97b543f4aa445e2f9206f3ac588a0bee67839ed311f9045bae9f34c293297646"
+    },
+    "sol": {
+      "fichier": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\commun\\sol.py",
+      "sha256": "6a5b3e61af9d51f4814a0b7ba7ba61d9ab49bc3531742bb237bef99e9e349c34"
+    }
+  },
+  "journal": "tests_maurice_19_commun_root.txt",
+  "journal_sha256": "c5694f9a9790ad96900e9a5cc32d28dab9fee05dfe2ebdd6ee21a6ccedd9085c",
+  "environnement": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MPLBACKEND": "Agg"
+  },
+  "garde_materiel": "Serial et enumeration ports bloques ; les tests USB installent leurs FauxVNA locaux. Aucun pilote NanoVNAv2 importe."
+}

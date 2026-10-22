@@ -1,0 +1,26 @@
+{
+  "verification_precedente": {
+    "code_sortie": 2,
+    "rms_spatial": 0.02162359892061181,
+    "maximum_temporel": 0.009980515944572232,
+    "sept_profils_sha256_avant_apres_identiques": true,
+    "nombre_fichiers_lus": 195
+  },
+  "appel_par_defaut": {
+    "code_sortie": 3,
+    "etat": "preconditions_non_remplies",
+    "aucun_fichier_cree_par_analyseur": true,
+    "manquants": [
+      {
+        "profil": "extreme_fin_8ns",
+        "motif": "manifeste absent"
+      },
+      {
+        "profil": "extreme_fin_12ns",
+        "motif": "calcul non termine",
+        "etat": "calcul_en_cours"
+      }
+    ]
+  },
+  "analyseur_sha256": "89de0cb997aae583953cd0b451d3e43966c6e76bb608962eef611eb1f3631317"
+}

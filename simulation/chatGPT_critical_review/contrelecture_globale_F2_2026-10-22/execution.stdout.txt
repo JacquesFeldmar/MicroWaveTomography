@@ -1,0 +1,77 @@
+{
+  "controle_reproduit": true,
+  "qualification_globale_reussie": false,
+  "fichiers_profils": 420,
+  "manifestes": 15,
+  "sources": 18,
+  "vivaldi_numpy": {
+    "parseur": "S1P Hz RI 50ohms strict, NumPy direct sans Q.ecarts ni lit_s1p",
+    "ecarts": {
+      "spatial": {
+        "calculs": [
+          "base_12ns",
+          "fin_12ns"
+        ],
+        "valeurs": {
+          "maximum_complexe": 0.36591402188669203,
+          "rms_complexe": 0.08471113976573695,
+          "percentile95_db": 3.0208964340946776,
+          "percentile95_phase_deg": 30.469275780102212
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "points_masque": 183,
+        "points_complexes": 213
+      },
+      "temporel": {
+        "calculs": [
+          "fin_12ns",
+          "fin_16ns"
+        ],
+        "valeurs": {
+          "maximum_complexe": 0.001384749316067066,
+          "rms_complexe": 0.00038923529939325876,
+          "percentile95_db": 0.02877802377320577,
+          "percentile95_phase_deg": 0.2035883948376743
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "points_masque": 192,
+        "points_complexes": 213
+      }
+    },
+    "indicateurs_reference": {
+      "maximum_module": 0.5876166560517126,
+      "passivite_numerique": true,
+      "points": 213,
+      "points_bande_1p4_6": 185,
+      "points_moins10": 154,
+      "points_moins6": 185,
+      "moyenne_puissance_reflechie_db": -12.760729199371925,
+      "pire_db": -6.918638140122344
+    },
+    "passivite_cinq_profils": {
+      "base_8ns": true,
+      "fin_8ns": true,
+      "fin_12ns": true,
+      "base_12ns": true,
+      "fin_16ns": true
+    },
+    "maxima_cinq_profils": {
+      "base_8ns": 0.5956858202575345,
+      "fin_8ns": 0.5872306958540241,
+      "fin_12ns": 0.5876724825661864,
+      "base_12ns": 0.5958516540844728,
+      "fin_16ns": 0.5876166560517126
+    }
+  },
+  "rapport_sha256": "b26417db14621e051bf1b002ec3e6e6ebd6503a8fd6b8abeeb49e79cf31dbf53"
+}

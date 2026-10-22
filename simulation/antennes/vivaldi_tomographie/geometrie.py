@@ -56,6 +56,7 @@ et toutes fatales :
      de se retirer.
 """
 import numpy as np
+import connectique
 
 NOM = "vivaldi_tomographie"
 DESCRIPTION = "Vivaldi antipodale sur FR4, conception du projet"
@@ -67,9 +68,13 @@ DESCRIPTION = "Vivaldi antipodale sur FR4, conception du projet"
 # avec la condition qui les ferait revenir.
 F_BASSE = 1.4e9         # Hz -- 1,4 GHz : toute la bande du LiteVNA
 F_HAUTE = 6.3e9         # Hz
-EPS_R = 4.4             # FR4 ; mettre 3.66 pour du Rogers RO4350B
-TAN_DELTA = 0.02        # 0.0037 pour du RO4350B
+EPS_R = 4.6             # Shengyi S1000H nominal, fiche fabricant a 1 GHz
+TAN_DELTA = 0.011
+F_REFERENCE_HZ = 1.0e9
+MODELE_MATERIAU = "debye"
+AVEC_SMA = True
 H = 1.6                 # mm, epaisseur du substrat
+GARDE_CUIVRE_BORD = 0.30  # mm ; cuivre inchange, substrat elargi hors bord SMA
 
 # ------------------------------------------------- cotes derivees
 # LES TROIS COTES REGLEES PAR LA SIMULATION, le 18/10/2026, et le resultat de
@@ -95,9 +100,8 @@ LARGEUR_MASSE = 40.0    # mm
 # trop large, donc de trop basse impedance, et l'antenne desadapte a plat.
 RECOUVREMENT_MAX_MM = 1.2 * LARGEUR_LIGNE
 
-# Deux trous de fixation, loin de la ligne et de la fente : ils traversent le
-# plan de masse a 60 mm du ruban, ce qui est sans effet a 6 GHz, et ils
-# donnent au fabricant le fichier de percage qu'il attend.
+# Deux trous de fixation dans le FR4 sans cuivre. Ils sont presents dans
+# l'export ET dans le modele dielectrique ; aucun effet nul n'est suppose.
 TROU_DIAMETRE = 3.0     # mm
 TROU_MARGE = 6.0        # mm depuis le bord lateral
 TROU_Z = 9.0            # mm depuis le bord d'alimentation
@@ -113,6 +117,8 @@ def cotes():
         ouverture=ouverture,                    # entre bords INTERIEURS
         evasement=evasement,                    # longueur de l'evasement seul
         demi_x=ouverture / 2 + AILE,            # demi-largeur de la carte
+        demi_carte=ouverture / 2 + AILE + GARDE_CUIVRE_BORD,
+        longueur_carte=LONGUEUR_LIGNE + TRANSITION + evasement + GARDE_CUIVRE_BORD,
         demi_masse=(ouverture / 2 + AILE if LARGEUR_MASSE is None
                     else LARGEUR_MASSE / 2),
         z_ligne=LONGUEUR_LIGNE,
@@ -137,9 +143,7 @@ def retard_attendu_ns():
     COMPLET, donc une borne haute -- et, pour la mesure de distance, un
     avertissement : ce retard n'est pas constant en frequence.
     """
-    d = cotes()
-    v = 299792458.0 / np.sqrt((EPS_R + 1) / 2)
-    return d["z_total"] * 1e-3 / v * 1e9
+    return None
 
 
 # ======================================================================
@@ -205,6 +209,8 @@ def _polygones(d):
     dessus = [(-lw / 2, 0.0), (lw / 2, 0.0)]
     dessus += [(float(xi), float(zi)) for zi, xi in zip(z, b)]
     dessus += [(float(xi), float(zi)) for zi, xi in zip(z[::-1], a[::-1])]
+    if AVEC_SMA:
+        dessus = connectique.ruban_vivaldi(dessus, lw)
 
     dessous = [(-m, 0.0), (m, 0.0)]
     dessous += [(float(xi), float(zi)) for zi, xi in zip(z, g)]
@@ -217,12 +223,26 @@ def contours_mm():
     """Les contours a plat, pour l'export de fabrication."""
     d = cotes()
     dessus, dessous = _polygones(d)
-    dx, z_t = d["demi_x"], d["z_total"]
-    return {
+    dx, z_t = d["demi_carte"], d["longueur_carte"]
+    contours = {
         "F_Cu": [dessus],
         "B_Cu": [dessous],
         "Edge_Cuts": [[(-dx, 0.0), (dx, 0.0), (dx, z_t), (-dx, z_t)]],
     }
+    if AVEC_SMA:
+        empreinte = connectique.empreinte_mm()
+        for couche in ("F_Cu", "B_Cu"):
+            contours[couche].extend(empreinte[couche])
+    return contours
+
+
+def vias_mm():
+    return connectique.vias_mm() if AVEC_SMA else []
+
+
+def materiau():
+    return dict(reference="Shengyi S1000H TG150", eps_r=EPS_R, tan_delta=TAN_DELTA,
+                frequence_reference_hz=F_REFERENCE_HZ, modele=MODELE_MATERIAU)
 
 
 def percages_mm():
@@ -246,8 +266,8 @@ def detail_mini_mm():
 
 def controles_fabrication():
     d = cotes()
-    return (f"   - largeur de la carte : {2*d['demi_x']:.2f} mm\n"
-            f"   - longueur de la carte : {d['z_total']:.2f} mm\n"
+    return (f"   - largeur de la carte : {2*d['demi_carte']:.2f} mm\n"
+            f"   - longueur de la carte : {d['longueur_carte']:.2f} mm\n"
             f"   - ouverture de la bouche, entre les deux bords interieurs "
             f"du cuivre : {d['ouverture']:.2f} mm\n"
             f"   - largeur de la ligne d'alimentation : "
@@ -262,16 +282,19 @@ def controles_fabrication():
 def pose(csx, fdtd, acq):
     """Pose l'antenne de chant. Rend (port, lx, ly, lz, demi_etendue_xy)."""
     d = cotes()
-    eps0 = 8.8541878128e-12
-    f0 = 0.5 * (acq.f_min + acq.f_max)
-    kappa = 2 * np.pi * f0 * eps0 * EPS_R * TAN_DELTA
+    from materiaux import ajoute_fr4
     dx, lw, z_t = d["demi_x"], d["largeur_ligne"], d["z_total"]
 
-    sub = csx.AddMaterial("substrat", epsilon=EPS_R, kappa=kappa)
-    sub.AddBox([-dx, 0.0, 0.0], [dx, d["h"], z_t], priority=1)
+    sub = ajoute_fr4(csx, "substrat", EPS_R, TAN_DELTA,
+                     frequence_reference_hz=F_REFERENCE_HZ, modele=MODELE_MATERIAU)
+    sub.AddBox([-d["demi_carte"], 0.0, 0.0],
+               [d["demi_carte"], d["h"], d["longueur_carte"]], priority=1)
+    air = csx.AddMaterial("trous_fixation_air", epsilon=1.0)
+    for x, z, diametre in percages_mm():
+        air.AddCylinder([x, 0.0, z], [x, d["h"], z], radius=diametre/2, priority=40)
 
     metal = csx.AddMetal("cuivre")
-    dessus, dessous = _polygones(d)
+    contours = contours_mm()
 
     # CONVENTION CSXCAD, verifiee a la main le 18/10/2026 et nulle part
     # ecrite : pour un polygone de normale n, les deux coordonnees sont les
@@ -289,14 +312,18 @@ def pose(csx, fdtd, acq):
         return np.array([(zi, xi) for xi, zi in poly]).T
 
     # Face du dessus (y = h) : ligne d'alimentation puis evasement vers +x.
-    metal.AddPolygon(_zx(dessus), norm_dir=1, elevation=d["h"], priority=10)
+    for poly in contours["F_Cu"]:
+        metal.AddPolygon(_zx(poly), norm_dir=1, elevation=d["h"], priority=10)
     # Face du dessous (y = 0) : evasement symetrique vers -x. C'est ce qui
     # fait l'antipodale.
-    metal.AddPolygon(_zx(dessous), norm_dir=1, elevation=0.0, priority=10)
+    for poly in contours["B_Cu"]:
+        metal.AddPolygon(_zx(poly), norm_dir=1, elevation=0.0, priority=10)
+    connectique.pose_vias(csx, vias_mm(), d["h"], normale="y")
 
     # Port vertical au pied de la ligne, entre les deux faces.
+    largeur_port = connectique.LARGEUR_SIGNAL_MM if AVEC_SMA else lw
     port = fdtd.AddLumpedPort(
-        1, acq.z_ref, [-lw / 2, 0.0, 0.0], [lw / 2, d["h"], 0.0],
+        1, acq.z_ref, [-largeur_port / 2, 0.0, 0.0], [largeur_port / 2, d["h"], 0.0],
         "y", 1.0, priority=20, edges2grid="all")
 
     # Uniquement les lignes que la geometrie IMPOSE. Surtout pas de grille
@@ -319,7 +346,15 @@ def pose(csx, fdtd, acq):
     cibles = cibles[np.min(np.abs(cibles[:, None] - bords[None, :]),
                            axis=1) > ecart_mini]
     z_pts = np.interp(cibles, a[a.size // 3:], z[a.size // 3:])
-    lx = np.concatenate([bords, -bords, cibles, -cibles])
+    lx = np.concatenate([bords, -bords, cibles, -cibles, [-d["demi_carte"], d["demi_carte"]]])
     ly = np.array([0.0, d["h"] / 2, d["h"]])     # deux cellules dans le FR4
-    lz = np.concatenate([[0.0, d["z_ligne"], d["z_fente"], z_t], z_pts])
-    return port, lx, ly, lz, dx
+    lz = np.concatenate([[0.0, d["z_ligne"], d["z_fente"], z_t, d["longueur_carte"]], z_pts])
+    if AVEC_SMA:
+        bx = [connectique.LARGEUR_SIGNAL_MM/2, connectique.MASSE_INTERIEUR_MM,
+              connectique.MASSE_EXTERIEUR_MM, connectique.VIA_X_MM]
+        lx = np.concatenate([lx, bx, -np.array(bx)])
+        lz = np.concatenate([lz, [connectique.LONGUEUR_PAD_MM, connectique.VIA_U_MM]])
+    for x, z, diametre in percages_mm():
+        lx = np.concatenate([lx, [x-diametre/2, x+diametre/2]])
+        lz = np.concatenate([lz, [z-diametre/2, z+diametre/2]])
+    return port, lx, ly, lz, d["demi_carte"]

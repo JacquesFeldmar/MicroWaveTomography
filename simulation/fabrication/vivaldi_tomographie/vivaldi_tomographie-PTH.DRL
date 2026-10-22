@@ -1,0 +1,15 @@
+M48
+;vivaldi_tomographie -- vias metallises
+;TYPE=PLATED
+;FORMAT={3:3 / absolute / metric / decimal}
+FMAT,2
+METRIC,TZ
+G90
+G05
+T1C0.457
+%
+T1
+X-4.318Y5.969
+X4.318Y5.969
+T0
+M30

@@ -1,0 +1,7 @@
+{
+  "motif": "Precontrole Windows FileShare READ|WRITE|DELETE ; Q.charge_calcul interdit sans attestation de sortie zero queue.",
+  "validation_numerique_precedente": "Fonctions numeriques inchangees ; validation des 7 profils conservee dans verification_precedente_ultra_v1.",
+  "controle_du_lecteur_partage": "Appel par defaut sur extreme12 actif : code3, preconditions signalees, aucun Q.charge_calcul.",
+  "commande_apres_sortie_zero": "python -B -X utf8 simulation\\chatGPT_critical_review\\controle_extreme_fin\\analyse_extreme_fin.py --queue-sortie-zero-confirmee --sortie controle_final_extreme",
+  "analyseur_sha256": "80aa0d85b3f8d112d6adb198858724ad4a95cb695a33c4c9e467f532fc651f52"
+}

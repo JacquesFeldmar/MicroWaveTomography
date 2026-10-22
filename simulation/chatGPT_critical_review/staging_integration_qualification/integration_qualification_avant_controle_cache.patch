@@ -1,0 +1,55 @@
+--- a/simulation/qualifie_pcbway.py
++++ b/simulation/qualifie_pcbway.py
+@@ -16,6 +16,12 @@
+ from pathlib import Path
+ import sys
+ 
++# L'entree CLI delegue au controleur canonique : AP et L importent ainsi
++# exactement le meme module et le meme catalogue, sans alias sys.modules.
++if __name__ == "__main__":
++    from qualifie_pcbway import main
++    raise SystemExit(main())
++
+ sys.dont_write_bytecode = True
+ import numpy as np
+ 
+@@ -32,6 +38,8 @@
+     "fin": dict(mailles_par_lambda=14, mailles_par_lambda_air=12, maille_min=0.20),
+     "tres_fin": dict(mailles_par_lambda=18, mailles_par_lambda_air=14, maille_min=0.15),
+ }
++import raffine_qualification_pcbway as R
++R.enregistre(sys.modules[__name__])
+ BASE = RACINE / "resultats" / "pcbway_r1"
+ 
+ 
+@@ -248,6 +256,9 @@
+ 
+ 
+ def comparer(base=BASE, ecrire=True):
++    if (Path(base)/"selection_qualification.json").is_file():
++        import qualification_adaptative as A
++        return A.comparer(base, ecrire=ecrire)
+     bilan={"schema":"qualification_pcbway_r1", "antennes":{}, "tous_reussis":True}
+     for nom in ANTENNES:
+         racine=Path(base)/nom
+@@ -312,7 +323,7 @@
+     return bilan
+ 
+ 
+-if __name__ == "__main__":
++def main(argv=None):
+     p=argparse.ArgumentParser(description=__doc__)
+     p.add_argument("--antenne",choices=ANTENNES)
+     p.add_argument("--niveau",choices=NIVEAUX,default="base")
+@@ -321,8 +332,9 @@
+     p.add_argument("--cout",action="store_true")
+     p.add_argument("--comparer",action="store_true")
+     p.add_argument("--base",type=Path,default=BASE)
+-    args=p.parse_args()
++    args=p.parse_args(argv)
+     if args.comparer:
+-        sys.exit(0 if comparer(args.base)["tous_reussis"] else 2)
++        return 0 if comparer(args.base)["tous_reussis"] else 2
+     if not args.antenne:p.error("choisir --antenne ou --comparer")
+     calcule(args.antenne,args.niveau,args.duree_ns,args.fils,args.cout,args.base)
++    return 0

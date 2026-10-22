@@ -16,7 +16,7 @@ Chaque module d'antenne expose :
 
 une polyligne etant une liste de (x, y) en millimetres, fermee implicitement.
 
-Format produit : DXF R12 minimal, LWPOLYLINE fermees, unites en MILLIMETRES.
+Format produit : DXF R2000 (AC1015), LWPOLYLINE fermees, $INSUNITS=4 (mm).
 """
 import argparse
 import os
@@ -31,10 +31,9 @@ NOTICE = """Fabrication chez PCBWay -- {nom}
 
 {description}
 
-Carte : {largeur:.2f} x {hauteur:.2f} mm, FR4, 2 couches, cuivre 35 um (1 oz),
-finition ENIG de preference a l'etamage : le HASL laisse un relief de
-plusieurs dizaines de micrometres sur les bords rayonnants, qui sont
-justement ce que la simulation suppose nets.
+Carte : {largeur:.2f} x {hauteur:.2f} mm. Ces DXF servent a l'inspection et a
+l'edition. Les ZIP produits par export_gerber.py sont les fichiers a fournir
+a PCBWay; leur notice porte le contrat de matiere et de finition.
 
 Dans KiCad
 ----------
@@ -45,8 +44,9 @@ Dans KiCad
 3. Les polylignes importees sont des CONTOURS. Les convertir en zones
    pleines : selectionner le contour, clic droit > Creer a partir de la
    selection > Zone. Sans cela, seul le trait serait grave.
-4. Poser l'empreinte du connecteur SMA bord de carte a l'endroit indique
-   par la fiche de l'antenne, pin central sur F.Cu, masse sur B.Cu.
+4. L'empreinte SMA fait deja partie des cuivres quand elle est active dans
+   geometrie.py; ne pas ajouter une seconde empreinte. Les percages/vias
+   sont dans les Excellon du ZIP Gerber, pas dans ces DXF de contours.
 5. Fichier > Fabrication > Gerbers, plus le fichier de percage.
 
 Controle avant commande
@@ -59,8 +59,10 @@ et la carte ne correspondrait plus a la simulation.
 
 
 def ecrit_dxf(chemin, polylignes, calque):
-    """DXF R12 : une section ENTITIES, une LWPOLYLINE fermee par contour."""
-    mor = ["0", "SECTION", "2", "ENTITIES"]
+    """DXF R2000, explicit millimetres; R12 does not support LWPOLYLINE."""
+    mor = ["0", "SECTION", "2", "HEADER", "9", "$ACADVER", "1", "AC1015",
+           "9", "$INSUNITS", "70", "4", "0", "ENDSEC",
+           "0", "SECTION", "2", "ENTITIES"]
     for pts in polylignes:
         mor += ["0", "LWPOLYLINE", "8", calque, "90", str(len(pts)), "70", "1"]
         for x, y in pts:

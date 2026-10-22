@@ -1,0 +1,236 @@
+{
+  "archive": "vivaldi_tomographie_pcbway.zip",
+  "controles": [
+    {
+      "controle": "produit",
+      "ok": true
+    },
+    {
+      "controle": "schema_convention",
+      "ok": true
+    },
+    {
+      "controle": "geometrie_source_manifeste",
+      "ok": true
+    },
+    {
+      "controle": "sources_sha256",
+      "ok": true
+    },
+    {
+      "controle": "contrat_simulation",
+      "ok": true
+    },
+    {
+      "controle": "options_fabrication",
+      "ok": true
+    },
+    {
+      "controle": "membres_exacts",
+      "ok": true
+    },
+    {
+      "controle": "sha256_vivaldi_tomographie-NPTH.DRL",
+      "ok": true
+    },
+    {
+      "controle": "sha256_vivaldi_tomographie-PTH.DRL",
+      "ok": true
+    },
+    {
+      "controle": "sha256_vivaldi_tomographie.GBL",
+      "ok": true
+    },
+    {
+      "controle": "sha256_vivaldi_tomographie.GBS",
+      "ok": true
+    },
+    {
+      "controle": "sha256_vivaldi_tomographie.GKO",
+      "ok": true
+    },
+    {
+      "controle": "sha256_vivaldi_tomographie.GTL",
+      "ok": true
+    },
+    {
+      "controle": "sha256_vivaldi_tomographie.GTS",
+      "ok": true
+    },
+    {
+      "controle": "sha256_vivaldi_tomographie_lisez_moi.txt",
+      "ok": true
+    },
+    {
+      "controle": "options_sans_vernis",
+      "ok": true
+    },
+    {
+      "controle": "sha256_zip",
+      "ok": true
+    },
+    {
+      "controle": "couche_GTL",
+      "ok": true
+    },
+    {
+      "controle": "couche_GBL",
+      "ok": true
+    },
+    {
+      "controle": "couche_GTS",
+      "ok": true
+    },
+    {
+      "controle": "couche_GBS",
+      "ok": true
+    },
+    {
+      "controle": "couche_GKO",
+      "ok": true
+    },
+    {
+      "controle": "declaration_NPTH",
+      "ok": true
+    },
+    {
+      "controle": "declaration_PTH",
+      "ok": true
+    },
+    {
+      "controle": "geometrie_GTL",
+      "difference_symetrique_mm2": 0.0001503277002407056,
+      "distance_contours_mm": 5.962611334317331e-07,
+      "ok": true,
+      "surface_attendue_mm2": 7012.199173550315,
+      "surface_relue_mm2": 7012.199217768081,
+      "tolerance_surface_mm2": 0.002
+    },
+    {
+      "controle": "geometrie_GBL",
+      "difference_symetrique_mm2": 0.0001394546117688998,
+      "distance_contours_mm": 5.924683032452393e-07,
+      "ok": true,
+      "surface_attendue_mm2": 13452.87336925296,
+      "surface_relue_mm2": 13452.873419107074,
+      "tolerance_surface_mm2": 0.002
+    },
+    {
+      "controle": "geometrie_GTS",
+      "difference_symetrique_mm2": 0.0003527374686094235,
+      "distance_contours_mm": 4.999999987376214e-07,
+      "ok": true,
+      "surface_attendue_mm2": 40356.99339375034,
+      "surface_relue_mm2": 40356.99360281907,
+      "tolerance_surface_mm2": 0.002
+    },
+    {
+      "controle": "geometrie_GBS",
+      "difference_symetrique_mm2": 0.0003527374686094235,
+      "distance_contours_mm": 4.999999987376214e-07,
+      "ok": true,
+      "surface_attendue_mm2": 40356.99339375034,
+      "surface_relue_mm2": 40356.99360281907,
+      "tolerance_surface_mm2": 0.002
+    },
+    {
+      "controle": "geometrie_GKO",
+      "difference_longueur_mm": 9.99999883788405e-07,
+      "dimensions_ligne_mediane_mm": [
+        143.668735,
+        280.9031025
+      ],
+      "distance_ligne_mediane_mm": 4.999999987376214e-07,
+      "ok": true
+    },
+    {
+      "attendus": 2,
+      "controle": "percages_NPTH",
+      "ok": true,
+      "relus": [
+        {
+          "diametre_mm": 3.0,
+          "metallisation": "NPTH",
+          "x_mm": -65.534,
+          "y_mm": 9.0
+        },
+        {
+          "diametre_mm": 3.0,
+          "metallisation": "NPTH",
+          "x_mm": 65.534,
+          "y_mm": 9.0
+        }
+      ]
+    },
+    {
+      "attendus": 2,
+      "controle": "percages_PTH",
+      "ok": true,
+      "relus": [
+        {
+          "diametre_mm": 0.457,
+          "metallisation": "PTH",
+          "x_mm": -4.318,
+          "y_mm": 5.969
+        },
+        {
+          "diametre_mm": 0.457,
+          "metallisation": "PTH",
+          "x_mm": 4.318,
+          "y_mm": 5.969
+        }
+      ]
+    },
+    {
+      "controle": "rendu_GTL",
+      "ok": true,
+      "pixels_non_blancs": 2201107,
+      "png": "vivaldi_tomographie_GTL.png"
+    },
+    {
+      "controle": "rendu_GBL",
+      "ok": true,
+      "pixels_non_blancs": 3008944,
+      "png": "vivaldi_tomographie_GBL.png"
+    },
+    {
+      "controle": "rendu_GTS",
+      "ok": true,
+      "pixels_non_blancs": 3727319,
+      "png": "vivaldi_tomographie_GTS.png"
+    },
+    {
+      "controle": "rendu_GBS",
+      "ok": true,
+      "pixels_non_blancs": 3727319,
+      "png": "vivaldi_tomographie_GBS.png"
+    },
+    {
+      "controle": "rendu_GKO",
+      "ok": true,
+      "pixels_non_blancs": 16309,
+      "png": "vivaldi_tomographie_GKO.png"
+    },
+    {
+      "controle": "rendu_superposition",
+      "ok": true,
+      "pixels_non_blancs": 1878179,
+      "png": "vivaldi_tomographie_superposition.png"
+    },
+    {
+      "controle": "rendu_dessus",
+      "ok": true,
+      "pixels_non_blancs": 650279,
+      "png": "vivaldi_tomographie_dessus.png"
+    },
+    {
+      "controle": "rendu_dessous",
+      "ok": true,
+      "pixels_non_blancs": 1244085,
+      "png": "vivaldi_tomographie_dessous.png"
+    }
+  ],
+  "convention_contour": "ligne_mediane_GKO_mm",
+  "ok": true,
+  "sha256": "824104ff8933fb296200f145ad31e84357e3e0f6b037e5aa8a77ae5184b8dd03"
+}

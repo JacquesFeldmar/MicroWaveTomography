@@ -1,0 +1,36 @@
+{
+  "source_originale": "simulation\\donnees.py",
+  "sha256_original_attendu": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+  "sha256_original_apres": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+  "sha256_copie_testee": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+  "sha256_patch": "9d7c5d957908d850dd584fec5b69042d1187b3ed464c8ae80540807e5b2ba414",
+  "tests": 17,
+  "echecs": 0,
+  "erreurs": 0,
+  "sources_et_exports_intacts": true,
+  "entrees_sha256": {
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\background.csv": "bfa0615d020c13923f8c206f85a5e3d234e363fd354a184e241e8d19653a06e8",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\background.s1p": "1a1eb899f94224ed83163cdded662630d2a26b387cd96d5def35bc5f518dbbc7",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\echo_phase_50cm.csv": "6658e024cdcebc9cac8f0d1de093c79872534b4eae22953c75bbf03df6f0ea78",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\echo_phase_60cm.csv": "ffdcb99cc8bb3479a2bbe85c1a6fee6f6be1a6502e323ecd8827d690ad563bc2",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\echo_phase_70cm.csv": "0b535097c14173709883c7f181b3c5693594e99ca73f2ddf34cbf6e4f8a53879",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\echo_phase_slopes.csv": "cc7402a64eaf45725ea4bad07fb4104b6602aafe8cb986e5c02f4b61fb407426",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\independent_short.csv": "99778dff829fd73d0e7dfd12f5537592cde18cbdabadf725b076a34960d45781",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\independent_short.s1p": "99003870f4bc9c12090b6559b2a75fabcc34404c0b876b6ecd9ef3da224483e7",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\manifest.json": "1fa9a6f37ecb3231a8585a3f8ffbc0f027fade9f58d1f053b448fa4f10ee307d",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\peak_summary.csv": "d17faf64f2704b22805b1e83d5644cfb645729732ac0054dd39e7f10cc326449",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\plate_50cm.csv": "0ae20b7f7b1880920cc75671ad22bb3e8afbdeff8054118690d3811cee8a44ae",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\plate_50cm.s1p": "e6ba8d3f644e18c9dc747dceac29915fdee985625beefd08840ee5805b51b6b6",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\plate_60cm.csv": "f723cc16c6176c857b57cbf9ce41d463e62cd76b37715e44db33be7935a6185c",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\plate_60cm.s1p": "4bf12ec99713ed929ca2da93be76266c7861a7657c28c1b3072fd456b7952c21",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\plate_70cm.csv": "6097b394cab1193c88272dfd11a6043c060fdab0f24570afe4f34777e3f75c7b",
+    "from Maurice\\plexiglas\\textes\\texte3_john\\data\\plate_70cm.s1p": "010f02a2257b6bd2f2c6a10c9576ebec7192c1f4272fc21fc4750821b3918a86"
+  },
+  "threads": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "reussi": true
+}

@@ -1,0 +1,588 @@
+﻿{
+  "scope": "read-only, no FDTD Run",
+  "s11": {
+    "diamant_uwb": {
+      "points": 261,
+      "envelope_10_GHz": [
+        2.3,
+        13.6
+      ],
+      "envelope_coverage_percent": 84.58149779735683,
+      "intervals_under_10_GHz": [
+        [
+          2.3,
+          5.8
+        ],
+        [
+          6.6,
+          9.5
+        ],
+        [
+          10.55,
+          13.6
+        ]
+      ],
+      "intervals_over_6_GHz": [
+        [
+          1.0,
+          2.1
+        ]
+      ],
+      "sha256": "10118b48d41466653a8618e98010ba56dfedc1edc570021e2c3795fa7ac2b5bb",
+      "max_complex_difference_from_raw_probes": 6.536699468402725e-11,
+      "recorded_port_duration_ns": 1.56580014414
+    },
+    "diamant_uwb_x18": {
+      "points": 201,
+      "envelope_10_GHz": [
+        1.275,
+        6.0
+      ],
+      "envelope_coverage_percent": 87.36842105263159,
+      "intervals_under_10_GHz": [
+        [
+          1.275,
+          1.6
+        ],
+        [
+          2.225,
+          6.0
+        ]
+      ],
+      "intervals_over_6_GHz": [
+        [
+          1.0,
+          1.175
+        ]
+      ],
+      "sha256": "9ef7e75ab5aac508b374f217283dcfd7a8e6b9e6400f61fa33ede9b951786280",
+      "max_complex_difference_from_raw_probes": 6.376961564509617e-11,
+      "recorded_port_duration_ns": 2.74198882611
+    },
+    "vivaldi_tomographie": {
+      "points": 201,
+      "envelope_10_GHz": [
+        1.0,
+        5.95
+      ],
+      "envelope_coverage_percent": 69.34673366834171,
+      "intervals_under_10_GHz": [
+        [
+          1.0,
+          1.025
+        ],
+        [
+          1.3,
+          1.75
+        ],
+        [
+          1.9,
+          2.7
+        ],
+        [
+          2.925,
+          3.95
+        ],
+        [
+          4.1,
+          4.75
+        ],
+        [
+          4.95,
+          5.175
+        ],
+        [
+          5.7,
+          5.75
+        ],
+        [
+          5.925,
+          5.95
+        ]
+      ],
+      "intervals_over_6_GHz": [
+        [
+          5.45,
+          5.65
+        ],
+        [
+          5.825,
+          5.85
+        ]
+      ],
+      "sha256": "5b02944aa91fbd63ec4a7d77b0c63eae5c4b634b577fde148bd694c6da0ebb53",
+      "metrics_1p4_to_6": {
+        "under_10_percent": 71.35135135135135,
+        "under_6_percent": 94.05405405405406,
+        "worst_db": -2.898246059995836,
+        "mean_power_db": -10.592863726342808
+      },
+      "max_complex_difference_from_raw_probes": 6.547257646299425e-11,
+      "recorded_port_duration_ns": 7.16359803824
+    }
+  },
+  "meshes": {
+    "diamant_uwb": {
+      "x": {
+        "lines": 139,
+        "minimum_mm": 0.4,
+        "maximum_mm": 2.0953810727696833,
+        "bounds_mm": [
+          -112.0791121,
+          112.0791121
+        ],
+        "max_adjacent_ratio": 2.2222222222222223,
+        "sha256": "6baab3dd85e43ff5b4316255bbce5253e89f2e42bccf6ddd16f58438029c91b2"
+      },
+      "y": {
+        "lines": 130,
+        "minimum_mm": 0.40000000000000036,
+        "maximum_mm": 2.1227266071884827,
+        "bounds_mm": [
+          -112.0791121,
+          112.0791121
+        ],
+        "max_adjacent_ratio": 2.499999999999998,
+        "sha256": "7aed2f6f9ca6905344340006c3952a1b5be0ea8bc108d1ff90236694719dbc00"
+      },
+      "z": {
+        "lines": 91,
+        "minimum_mm": 0.5413747,
+        "maximum_mm": 2.1413747,
+        "bounds_mm": [
+          -92.0791121,
+          93.6791121
+        ],
+        "max_adjacent_ratio": 3.955439181033026,
+        "sha256": "15950b506904f3c4e51d324c100f2f18e4665e9b1aed30ec760dfeb60ab0b2a6"
+      },
+      "cells": 1602180,
+      "dt_estimate_ps": 0.7703332806185883
+    },
+    "diamant_uwb_x18": {
+      "x": {
+        "lines": 99,
+        "minimum_mm": 0.24999999999999,
+        "maximum_mm": 4.865005161446476,
+        "bounds_mm": [
+          -150.92044223333335,
+          150.92044223333335
+        ],
+        "max_adjacent_ratio": 7.200000000000291,
+        "sha256": "0f5bd28df5b2a81cdeab371489da683e840ec3714ab7208a325304c348739d7e"
+      },
+      "y": {
+        "lines": 92,
+        "minimum_mm": 0.7199999999999562,
+        "maximum_mm": 4.820500959186887,
+        "bounds_mm": [
+          -150.92044223333335,
+          150.92044223333335
+        ],
+        "max_adjacent_ratio": 2.500000000000148,
+        "sha256": "5d42fd55750cca86180d48bef6fdca1d88543a9d8192ef1f0563b918c7e0da61"
+      },
+      "z": {
+        "lines": 62,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.996540966666666,
+        "bounds_mm": [
+          -114.92044223333333,
+          116.52044223333333
+        ],
+        "max_adjacent_ratio": 4.245676208333332,
+        "sha256": "daefc43b3e2d282417126b519c5b5dce7fe098abaf2514c99a94a0ede6422c92"
+      },
+      "cells": 543998,
+      "dt_estimate_ps": 0.4814583003865985
+    },
+    "vivaldi_tomographie": {
+      "x": {
+        "lines": 92,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.996540966666686,
+        "bounds_mm": [
+          -186.45480973333332,
+          186.45480973333332
+        ],
+        "max_adjacent_ratio": 1.4000000000000015,
+        "sha256": "e4b8ef37d640320a23f2fb3fed4454fb8950becde42ffeda71c11842e08d4341"
+      },
+      "y": {
+        "lines": 84,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.970260713879682,
+        "bounds_mm": [
+          -186.45480973333332,
+          186.45480973333332
+        ],
+        "max_adjacent_ratio": 1.357052275486759,
+        "sha256": "d89a3310ddd46abfda6967cd902ec71df66fda2639ab122326e4f3e20f8c6632"
+      },
+      "z": {
+        "lines": 133,
+        "minimum_mm": 0.796808366666653,
+        "maximum_mm": 4.996540966666666,
+        "bounds_mm": [
+          -114.92044223333333,
+          395.5235447333333
+        ],
+        "max_adjacent_ratio": 6.270693400935352,
+        "sha256": "0238d7f22f6e40cd3f16c61b0bca4745744737aac13ddd43fa814352e3f9b498"
+      },
+      "cells": 996996,
+      "dt_estimate_ps": 1.5345200077966543
+    }
+  },
+  "individual_calls": {
+    "background": {
+      "x": {
+        "lines": 92,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.996540966666686,
+        "bounds_mm": [
+          -186.45480973333332,
+          186.45480973333332
+        ],
+        "max_adjacent_ratio": 1.4000000000000015,
+        "sha256": "e4b8ef37d640320a23f2fb3fed4454fb8950becde42ffeda71c11842e08d4341"
+      },
+      "y": {
+        "lines": 84,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.970260713879682,
+        "bounds_mm": [
+          -186.45480973333332,
+          186.45480973333332
+        ],
+        "max_adjacent_ratio": 1.357052275486759,
+        "sha256": "d89a3310ddd46abfda6967cd902ec71df66fda2639ab122326e4f3e20f8c6632"
+      },
+      "z": {
+        "lines": 133,
+        "minimum_mm": 0.796808366666653,
+        "maximum_mm": 4.996540966666666,
+        "bounds_mm": [
+          -114.92044223333333,
+          395.5235447333333
+        ],
+        "max_adjacent_ratio": 6.270693400935352,
+        "sha256": "0238d7f22f6e40cd3f16c61b0bca4745744737aac13ddd43fa814352e3f9b498"
+      },
+      "cells": 996996,
+      "dt_estimate_ps": 1.5345200077966543
+    },
+    "50.0": {
+      "x": {
+        "lines": 184,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.976609778744006,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.4000000000000015,
+        "sha256": "ada6f3cba6681e25afc6eb49d010189276dcc477c728bb7040fa9788c1e131e5"
+      },
+      "y": {
+        "lines": 175,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.987493580426531,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.3570522754867589,
+        "sha256": "79a811059f611e3f7ebb3ecdeb55d1825bed029127e47acc56ed98505d886924"
+      },
+      "z": {
+        "lines": 186,
+        "minimum_mm": 0.6390839564147655,
+        "maximum_mm": 5.0,
+        "bounds_mm": [
+          -114.92044223333333,
+          619.5710798666667
+        ],
+        "max_adjacent_ratio": 6.270693400935352,
+        "sha256": "06241d670bf9e4ebb55eb254b7312b391d2f0f496ef54388132c75cf7d6f8b9b"
+      },
+      "cells": 5890770,
+      "dt_estimate_ps": 1.2307691018392328
+    },
+    "60.0": {
+      "x": {
+        "lines": 184,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.976609778744006,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.4000000000000015,
+        "sha256": "ada6f3cba6681e25afc6eb49d010189276dcc477c728bb7040fa9788c1e131e5"
+      },
+      "y": {
+        "lines": 175,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.987493580426531,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.3570522754867589,
+        "sha256": "79a811059f611e3f7ebb3ecdeb55d1825bed029127e47acc56ed98505d886924"
+      },
+      "z": {
+        "lines": 203,
+        "minimum_mm": 0.796808366666653,
+        "maximum_mm": 5.41162496666675,
+        "bounds_mm": [
+          -114.92044223333333,
+          719.5018991999999
+        ],
+        "max_adjacent_ratio": 6.270693400935352,
+        "sha256": "16dd0bb53071b9de05a2c391d2e08632ef9950ba52765ccbdf148dbf2d9aaf07"
+      },
+      "cells": 6432084,
+      "dt_estimate_ps": 1.5345200077966543
+    },
+    "70.0": {
+      "x": {
+        "lines": 184,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.976609778744006,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.4000000000000015,
+        "sha256": "ada6f3cba6681e25afc6eb49d010189276dcc477c728bb7040fa9788c1e131e5"
+      },
+      "y": {
+        "lines": 175,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.987493580426531,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.3570522754867589,
+        "sha256": "79a811059f611e3f7ebb3ecdeb55d1825bed029127e47acc56ed98505d886924"
+      },
+      "z": {
+        "lines": 226,
+        "minimum_mm": 0.796808366666653,
+        "maximum_mm": 5.480805633333375,
+        "bounds_mm": [
+          -114.92044223333333,
+          819.4327185333333
+        ],
+        "max_adjacent_ratio": 6.270693400935352,
+        "sha256": "5a352ac96dc427602a2a038a476de131acab9c61061da08ecff369f4fbe99196"
+      },
+      "cells": 7164450,
+      "dt_estimate_ps": 1.5345200077966543
+    }
+  },
+  "common_domain_calls": {
+    "background": {
+      "x": {
+        "lines": 184,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.976609778744006,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.4000000000000015,
+        "sha256": "ada6f3cba6681e25afc6eb49d010189276dcc477c728bb7040fa9788c1e131e5"
+      },
+      "y": {
+        "lines": 175,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.987493580426531,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.3570522754867589,
+        "sha256": "79a811059f611e3f7ebb3ecdeb55d1825bed029127e47acc56ed98505d886924"
+      },
+      "z": {
+        "lines": 226,
+        "minimum_mm": 0.796808366666653,
+        "maximum_mm": 5.480805633333375,
+        "bounds_mm": [
+          -114.92044223333333,
+          819.4327185333333
+        ],
+        "max_adjacent_ratio": 6.270693400935352,
+        "sha256": "5a352ac96dc427602a2a038a476de131acab9c61061da08ecff369f4fbe99196"
+      },
+      "cells": 7164450,
+      "dt_estimate_ps": 1.5345200077966543
+    },
+    "50.0": {
+      "x": {
+        "lines": 184,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.976609778744006,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.4000000000000015,
+        "sha256": "ada6f3cba6681e25afc6eb49d010189276dcc477c728bb7040fa9788c1e131e5"
+      },
+      "y": {
+        "lines": 175,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.987493580426531,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.3570522754867589,
+        "sha256": "79a811059f611e3f7ebb3ecdeb55d1825bed029127e47acc56ed98505d886924"
+      },
+      "z": {
+        "lines": 226,
+        "minimum_mm": 0.796808366666653,
+        "maximum_mm": 5.480805633333375,
+        "bounds_mm": [
+          -114.92044223333333,
+          819.4327185333333
+        ],
+        "max_adjacent_ratio": 6.270693400935352,
+        "sha256": "5a352ac96dc427602a2a038a476de131acab9c61061da08ecff369f4fbe99196"
+      },
+      "cells": 7164450,
+      "dt_estimate_ps": 1.5345200077966543,
+      "distance_from_plate_faces_to_mesh_mm": [
+        0.34590333333335366,
+        0.3493623666666963
+      ]
+    },
+    "60.0": {
+      "x": {
+        "lines": 184,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.976609778744006,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.4000000000000015,
+        "sha256": "ada6f3cba6681e25afc6eb49d010189276dcc477c728bb7040fa9788c1e131e5"
+      },
+      "y": {
+        "lines": 175,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.987493580426531,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.3570522754867589,
+        "sha256": "79a811059f611e3f7ebb3ecdeb55d1825bed029127e47acc56ed98505d886924"
+      },
+      "z": {
+        "lines": 226,
+        "minimum_mm": 0.796808366666653,
+        "maximum_mm": 5.480805633333375,
+        "bounds_mm": [
+          -114.92044223333333,
+          819.4327185333333
+        ],
+        "max_adjacent_ratio": 6.270693400935352,
+        "sha256": "5a352ac96dc427602a2a038a476de131acab9c61061da08ecff369f4fbe99196"
+      },
+      "cells": 7164450,
+      "dt_estimate_ps": 1.5345200077966543,
+      "distance_from_plate_faces_to_mesh_mm": [
+        0.4150840000000926,
+        0.41854303333343523
+      ]
+    },
+    "70.0": {
+      "x": {
+        "lines": 184,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.976609778744006,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.4000000000000015,
+        "sha256": "ada6f3cba6681e25afc6eb49d010189276dcc477c728bb7040fa9788c1e131e5"
+      },
+      "y": {
+        "lines": 175,
+        "minimum_mm": 0.8,
+        "maximum_mm": 4.987493580426531,
+        "bounds_mm": [
+          -414.92044223333335,
+          414.92044223333335
+        ],
+        "max_adjacent_ratio": 1.3570522754867589,
+        "sha256": "79a811059f611e3f7ebb3ecdeb55d1825bed029127e47acc56ed98505d886924"
+      },
+      "z": {
+        "lines": 226,
+        "minimum_mm": 0.796808366666653,
+        "maximum_mm": 5.480805633333375,
+        "bounds_mm": [
+          -114.92044223333333,
+          819.4327185333333
+        ],
+        "max_adjacent_ratio": 6.270693400935352,
+        "sha256": "5a352ac96dc427602a2a038a476de131acab9c61061da08ecff369f4fbe99196"
+      },
+      "cells": 7164450,
+      "dt_estimate_ps": 1.5345200077966543,
+      "distance_from_plate_faces_to_mesh_mm": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "parameter_effects": {
+    "symetrie": {
+      "value": false,
+      "same_grid_as_default": true,
+      "advertised_cost": [
+        230412,
+        4241,
+        0.5428779992448053
+      ]
+    },
+    "mailles_par_lambda": {
+      "value": 80,
+      "same_grid_as_default": true,
+      "advertised_cost": [
+        57603,
+        4241,
+        0.13571949981120132
+      ]
+    },
+    "maille_min": {
+      "value": 0.05,
+      "same_grid_as_default": true,
+      "advertised_cost": [
+        57603,
+        4241,
+        0.13571949981120132
+      ]
+    }
+  },
+  "vivaldi_substrate": {
+    "x": {
+      "maximum_step_mm": 4.717903211566188,
+      "cells_per_substrate_wavelength_6GHz": 5.048868823411257
+    },
+    "z": {
+      "maximum_step_mm": 4.996540966666666,
+      "cells_per_substrate_wavelength_6GHz": 4.767312946227962
+    }
+  }
+}

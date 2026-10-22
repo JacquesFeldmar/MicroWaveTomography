@@ -104,12 +104,26 @@ class Maillage:
     """Le maillage decide du cout. Trois presets sont proposes dans run.py."""
     mailles_par_lambda: int = 20      # pres de l'antenne, a f_max
     mailles_par_lambda_air: int = 10  # dans l'espace libre
-    maille_min: float = 0.2           # mm, dans la fente d'alimentation
+    maille_min: float = 0.2           # mm, taille visee autour du port
     marge_pml: float = 8              # cellules de PML
     marge_air_mm: float = 60.0        # air entre l'objet et la PML
-    n_pas_max: int = 60000
+    n_pas_max: int = 250000
     critere_fin: float = -40.0        # dB d'energie residuelle
-    symetrie: bool = True             # deux plans de symetrie si la geometrie s'y prete
+    symetrie: bool = False            # reserve : aucun plan n'est actuellement implemente
+    rapport_max: float = 1.5          # borne VERIFIEE sur les cellules finales
+    facteur_courant: float = 0.95     # marge sous le CFL vide anisotrope
+    duree_ns: float | None = None     # None : max(1/df, propagation + extinction)
+
+    def __post_init__(self):
+        if min(self.mailles_par_lambda, self.mailles_par_lambda_air,
+               self.maille_min, self.n_pas_max) <= 0:
+            raise ValueError("les resolutions et n_pas_max doivent etre positifs")
+        if not 1 < self.rapport_max <= 1.5:
+            raise ValueError("rapport_max doit etre dans ]1, 1.5]")
+        if not 0 < self.facteur_courant < 1:
+            raise ValueError("facteur_courant doit etre dans ]0, 1[")
+        if self.duree_ns is not None and self.duree_ns <= 0:
+            raise ValueError("duree_ns doit etre positive")
 
 
 # ======================================================================

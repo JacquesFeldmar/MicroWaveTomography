@@ -1,0 +1,18 @@
+{
+  "archive": "preparation_selection_n34_ultra_fin_preuves.zip",
+  "archive_sha256": "6ae6f7a95bd4326b4110c1d59c18690b48b6737a4fd28cb6e3a69adff688b552",
+  "condition": "Brouillon hors BASE ; aucune reussite N34 ou qualification globale presumee",
+  "controles": {
+    "CRC_SHA_tous_membres": true,
+    "anciensZIP_inchanges": 10,
+    "aucun_profil_import_projet_test_solveur_ou_selection_BASE": true,
+    "sources17_inchangees": true,
+    "sources3_inchangees": true
+  },
+  "fichiers_sources": 3,
+  "manifest_interne_sha256": "6d4f0ac35fca09fc50c1d775cb6e8bd819480511db0fa78a40fd05e954b20821",
+  "membres_total": 6,
+  "selection_sha256": "f3ee3fa71dd0280402b92a235ac069a46dd9e2ab5a1f5779ad5dcdca34f8bbc8",
+  "taille_octets": 6653,
+  "utc": "2026-10-19T09:16:54.076686+00:00"
+}

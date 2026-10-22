@@ -1,0 +1,11 @@
+Verification du correctif de portabilite de la documentation livree.
+Date : 2026-10-18
+Repertoire : C:\Jacques\liteVNA\MicroWaveTomography
+Environnement : OMP_NUM_THREADS=1 ; OPENBLAS_NUM_THREADS=1
+Commande : C:\Users\jfeld\anaconda3\envs\ph\python.exe -B -Xutf8 -m pytest -q simulation/test_livre_pcbway.py
+
+.................................                                        [100%]
+33 passed in 49.15s
+Code de sortie : 0
+
+Les tests utilisent des campagnes temporaires synthetiques ; aucun solveur, ZIP usine courant ou dossier de livraison reel n'a ete genere.

@@ -1,0 +1,14 @@
+COUT_NATIF_OK diamant_uwb base 3005640
+COUT_NATIF_OK diamant_uwb fin 7566780
+COUT_NATIF_OK diamant_uwb_x18 base 3722400
+COUT_NATIF_OK diamant_uwb_x18 fin 10030398
+COUT_NATIF_OK vivaldi_tomographie base 9548352
+COUT_NATIF_OK vivaldi_tomographie fin 27169776
+F1_ARCHIVES_OK 25
+{
+  "reussi": true,
+  "cas_natifs": 6,
+  "profils_F1": 25,
+  "sources17_inchangees": true,
+  "rapport_sha256": "7c1dee7a96096986ba9a48b13b11ecbcc94ed79571ac21fa1999009414afbc87"
+}

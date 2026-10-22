@@ -1,0 +1,42 @@
+{
+  "background": {
+    "source": "plexiglas/mesures/fond_20261009T152625_619797Z/fond.npz",
+    "sweeps": 100,
+    "start_hz": 1000000000.0,
+    "stop_hz": 6000000000.0,
+    "points": 201,
+    "background_subtracted": false
+  },
+  "plate_50cm": {
+    "source": "plexiglas/mesures/cible_20261009T152714_059505Z/cible.npz",
+    "sweeps": 10,
+    "start_hz": 1000000000.0,
+    "stop_hz": 6000000000.0,
+    "points": 201,
+    "background_subtracted": false
+  },
+  "plate_60cm": {
+    "source": "plexiglas/mesures/cible_20261009T152744_199371Z/cible.npz",
+    "sweeps": 10,
+    "start_hz": 1000000000.0,
+    "stop_hz": 6000000000.0,
+    "points": 201,
+    "background_subtracted": false
+  },
+  "plate_70cm": {
+    "source": "plexiglas/mesures/cible_20261009T152756_458012Z/cible.npz",
+    "sweeps": 10,
+    "start_hz": 1000000000.0,
+    "stop_hz": 6000000000.0,
+    "points": 201,
+    "background_subtracted": false
+  },
+  "independent_short": {
+    "source": "plexiglas/controle_short/short_20261009T100910_230677Z/short.npz",
+    "sweeps": 10,
+    "start_hz": 1000000000.0,
+    "stop_hz": 6000000000.0,
+    "points": 201,
+    "background_subtracted": false
+  }
+}

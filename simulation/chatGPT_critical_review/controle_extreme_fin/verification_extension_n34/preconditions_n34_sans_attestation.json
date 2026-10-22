@@ -1,0 +1,56 @@
+{
+  "qualification_officielle": false,
+  "racine": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_r1\\diamant_uwb_x18",
+  "mode": "n34",
+  "profils_attendus": [
+    "base_8ns",
+    "fin_8ns",
+    "fin_12ns",
+    "tres_fin_8ns",
+    "tres_fin_12ns",
+    "ultra_fin_8ns",
+    "ultra_fin_12ns",
+    "extreme_fin_8ns",
+    "extreme_fin_12ns",
+    "n30_8ns",
+    "n30_12ns",
+    "n34_8ns",
+    "n34_12ns"
+  ],
+  "provenance": {
+    "utc": "2026-10-19T02:15:50.321909+00:00",
+    "commande": [
+      "simulation/chatGPT_critical_review/controle_extreme_fin/verification_extension_n34/verification.py"
+    ],
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "scripts_sha256": {
+      "analyse_extreme_fin.py": "2d5215a9e388d2c8cfd6f075eafde1776246d9de3bfe84461a9eda06d94e3b9b",
+      "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+      "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+      "raffine_qualification_plus_pcbway.py": "15fe2ef41de4c4c3c4da0954dc2396fa652f3b75ba18d0f373824a4aab39d3c3"
+    }
+  },
+  "sortie_zero_queue_confirmee_par_coordinateur": false,
+  "etat": "preconditions_non_remplies",
+  "manquants": [
+    {
+      "profil": "n34_8ns",
+      "motif": "manifeste absent"
+    },
+    {
+      "profil": "n34_12ns",
+      "motif": "calcul non termine",
+      "etat": "calcul_en_cours"
+    },
+    {
+      "profil": "coordination",
+      "motif": "sortie zero de la queue non confirmee"
+    }
+  ],
+  "controles_numeriques_reussis": false
+}

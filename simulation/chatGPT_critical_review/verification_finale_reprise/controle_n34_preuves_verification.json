@@ -1,0 +1,35 @@
+{
+  "anciensZIP_sha256": {
+    "controle_extreme_fin_preuves.zip": "505efed7e4bc59f6752c0cbaa8586e7c128b3e8d3edc87d5efbc2dcaa6121be6",
+    "controle_helper_n34_preuves.zip": "76584fda25af11f7d518c5261a8ccf22846879b02847ac018a4a2330fffbc03f",
+    "controle_helpers_n30_vivaldi_ultra_preuves.zip": "97f71bce5935169316e12a0171ec3b29be7b6b44cbe2bf306370b27b85faa1d4",
+    "controle_n30_preuves.zip": "f2992757544c969fe198dd12d440b38a077648998e69488f5aead0c80893a88f",
+    "controle_n34_plus_avant_preuves.zip": "4a439a8eb72530812b13e7d93446b56db022605c6a951b966c34165df6f3bff6",
+    "controle_vivaldi_tres_fin_preuves.zip": "c102b09a0a3e2f55b111f8e067702ec64c8dc41118dc60c4aee6f8ee0ae6a20b",
+    "controle_vivaldi_ultra_fin_preuves.zip": "c5bc829374747412995f8c9b0667b27b725eb67f453809f1b6078933b1125b9a",
+    "diagnostic_grilles_n30_preuves.zip": "f6f0faadab879e4c471e189f7555efeb54e09167f1fef2ad46f333c2e6185ecb",
+    "portee_grilles_pdf_preuves.zip": "b8caa952c76a050125080386ad97e76ea684e1c0ab613287909227e277b7b887",
+    "preparation_selection_n34_ultra_fin_preuves.zip": "6ae6f7a95bd4326b4110c1d59c18690b48b6737a4fd28cb6e3a69adff688b552",
+    "revue_commun_maurice_2026-10-18_preuves.zip": "22bf2d79e7244db2343a4e49f7a5a1eaa45543acb966256a58a4985e933a8831",
+    "staging_integration_qualification_preuves.zip": "bd9b62a3fe6396b54a722ab21fd894424b1940c4adb11a810a9f2ddb52710a04"
+  },
+  "archive": "controle_n34_preuves.zip",
+  "archive_sha256": "e330bdee87024803ff8c3c6cb2bc2d34c2faa1d26aa5f7a192ca5e4b849e15bc",
+  "controles": {
+    "CRC_SHA_tous_membres": true,
+    "anciensZIP_inchanges": 12,
+    "aucun_diagnostic_futur_inclus": true,
+    "aucun_import_projet_test_solveur_export_reanalyse": true,
+    "index_PLUS6_et_figures6_valides": true,
+    "profils13_fichiers360_inchanges": true,
+    "sources17_inchangees": true
+  },
+  "fichiers_sources": 56,
+  "manifest_interne_sha256": "35d69057d35982f9770a165849126a1890b1b244851f94f2c8c7de328f2b5d25",
+  "membres_total": 60,
+  "qualification_globale": false,
+  "spatial_reussi": false,
+  "taille_octets": 808827,
+  "temporel_reussi": true,
+  "utc": "2026-10-19T13:57:28.728535+00:00"
+}

@@ -1,0 +1,376 @@
+{
+  "qualification_officielle": false,
+  "racine": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_r1\\diamant_uwb_x18",
+  "mode": "n30",
+  "profils_attendus": [
+    "base_8ns",
+    "fin_8ns",
+    "fin_12ns",
+    "tres_fin_8ns",
+    "tres_fin_12ns",
+    "ultra_fin_8ns",
+    "ultra_fin_12ns",
+    "extreme_fin_8ns",
+    "extreme_fin_12ns",
+    "n30_8ns",
+    "n30_12ns"
+  ],
+  "provenance": {
+    "utc": "2026-10-19T02:15:49.082922+00:00",
+    "commande": [
+      "simulation/chatGPT_critical_review/controle_extreme_fin/verification_extension_n34/verification.py"
+    ],
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "scripts_sha256": {
+      "analyse_extreme_fin.py": "2d5215a9e388d2c8cfd6f075eafde1776246d9de3bfe84461a9eda06d94e3b9b",
+      "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+      "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb"
+    }
+  },
+  "sortie_zero_queue_confirmee_par_coordinateur": true,
+  "grille_temporelle": {
+    "coordonnees_bit_a_bit_identiques": true,
+    "dt_bit_a_bit_identique": true,
+    "dt_s": 8.203669576847067e-14
+  },
+  "spatial": {
+    "profils": [
+      "extreme_fin_12ns",
+      "n30_12ns"
+    ],
+    "valeurs": {
+      "maximum_complexe": 0.03174809310318816,
+      "rms_complexe": 0.021298828096835233,
+      "percentile95_db": 1.4211171777497076,
+      "percentile95_phase_deg": 6.421662024517233
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.05,
+      "rms_complexe": 0.02,
+      "percentile95_db": 1.0
+    },
+    "reussi": false,
+    "points_masque_db": 185,
+    "masque_db": "deux modules >= -20 dB ; max/RMS sur tous les points"
+  },
+  "temporel": {
+    "profils": [
+      "n30_8ns",
+      "n30_12ns"
+    ],
+    "valeurs": {
+      "maximum_complexe": 0.00971553795113394,
+      "rms_complexe": 0.0024884228172199407,
+      "percentile95_db": 0.1284848879049815,
+      "percentile95_phase_deg": 0.8932960181750875
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.015,
+      "rms_complexe": 0.005,
+      "percentile95_db": 0.5
+    },
+    "reussi": true,
+    "points_masque_db": 187,
+    "masque_db": "deux modules >= -20 dB ; max/RMS sur tous les points"
+  },
+  "etat": "analyse_terminee",
+  "reference": "n30_12ns",
+  "verifications_communes": {
+    "nombre_profils": 11,
+    "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+    "sources_physiques_sha256": {
+      "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+      "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+      "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+      "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+      "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+      "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+      "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+      "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+      "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998"
+    },
+    "environnement_archive": {
+      "python": "3.13.16",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "csxcad": "0.7.0",
+      "dtype_maillage": "float64 little-endian",
+      "openems": "0.37.0"
+    },
+    "contrat": {
+      "antenne": "diamant_uwb_x18",
+      "connecteur": {
+        "epaisseur_pcb_mm": 1.6,
+        "genre": "SMA femelle standard (non RP-SMA)",
+        "largeur_signal_mm": 2.2859999999999996,
+        "limite": "boitier SMA, PTFE, broche et soudure non modelises en 3D",
+        "longueur_pad_mm": 5.08,
+        "modele_vias": "cylindres PEC pleins equivalents, pas paroi mince",
+        "page": 58,
+        "plan_simulation": "bord du PCB, port ideal 50 ohms",
+        "reference": "Cinch Johnson 142-0701-851",
+        "source": "https://www.cinch.com/media/catalogs/products/rf-microwave/cable-assemblies/cable-assembly/ca-Johnson-Catalog.pdf",
+        "vias_diametre_fini_mm": 0.45719999999999994
+      },
+      "cuivre": "PEC ideal; finition et rugosite non modelisees",
+      "epaisseur_substrat_mm": 1.6,
+      "materiau": {
+        "definition": {
+          "delta_epsilon": [
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276
+          ],
+          "epsilon_inf": 4.4355277919894585,
+          "epsilon_reference": 4.6,
+          "epsilon_statique": 4.838965044976087,
+          "frequence_reference_hz": 1000000000.0,
+          "hypothese": "FR4 nominal, pertes approximativement constantes; non identifie sur le lot fabrique",
+          "poles_fixes_hz": [
+            1000000.0,
+            2610157.215682538,
+            6812920.690579606,
+            17782794.100389227,
+            46415888.33612781,
+            121152765.86285901,
+            316227766.01683795,
+            825404185.2680206,
+            2154434690.0318866,
+            5623413251.903491,
+            14677992676.220736,
+            38311868495.57294,
+            100000000000.0
+          ],
+          "relaxation_s": [
+            1.5915494309189535e-07,
+            6.097523250157075e-08,
+            2.3360750890871633e-08,
+            8.949940160889102e-09,
+            3.4288893048722943e-09,
+            1.3136715613414353e-09,
+            5.032921210448703e-10,
+            1.928206155632897e-10,
+            7.387318066696178e-11,
+            2.83021958306234e-11,
+            1.0843100047987916e-11,
+            4.154194231228535e-12,
+            1.5915494309189534e-12
+          ],
+          "tan_delta_reference": 0.011,
+          "type": "debye_passif_13_poles"
+        },
+        "epsilon_reference": 4.6,
+        "frequence_reference_hz": 1000000000.0,
+        "modele": "debye",
+        "tan_delta_reference": 0.011
+      }
+    }
+  },
+  "preuves": {
+    "base_8ns": {
+      "simulation_manifest.json": "7ab00c7c65e9fcddc2e9a0a50ac699dbccd0b327385dc5c79b594785941a83e1",
+      "qualification_entree.json": "e812193c7bcf8291e40bee04720c3f42acf538c5a2b83616c9596167954865f0",
+      "s11.s1p": "c22c372f9cfbbd6b96ce832a2e3dd4b30563a3f19d330587918147028d4fb780",
+      "maillage.npz": "74a7d4f71d12c8d1e04b249bb78fda06a43f95f315235f9589641fc1b0c51a8a"
+    },
+    "fin_8ns": {
+      "simulation_manifest.json": "eca538ad11dbbadce1acda275a647b24656ec85b9b4c2a3aa9112c748f2e1295",
+      "qualification_entree.json": "96130f9b1bec6eee7c449fb102eb42c63125c4f335f404dd34df90c2f9b10ba8",
+      "s11.s1p": "d966c7257111e216efeb6685b0a72210fe70def093f73aa727e1a322c80d87df",
+      "maillage.npz": "2ef5a7633fc50ba2bec9c2d45900fc8ca482df988951e5c7187ca48887d96fc6"
+    },
+    "fin_12ns": {
+      "simulation_manifest.json": "af5a88932cf69e05c3da77fa096582ff84bff8b9f830c3e4c1facc6d272b8a54",
+      "qualification_entree.json": "9ea6c8e105edd51735bc4d221d3acea9f0a9efbb40fd67b71ee629e0f8722ed4",
+      "s11.s1p": "d9b101ddacaab835ea886764eac38722b79f76f38232325ac93926d50fbdb405",
+      "maillage.npz": "2ef5a7633fc50ba2bec9c2d45900fc8ca482df988951e5c7187ca48887d96fc6"
+    },
+    "tres_fin_8ns": {
+      "simulation_manifest.json": "12384a7e0a2d8b916ef37674803fb1ebcda5de1ff3ad3a009f0176563348a43d",
+      "qualification_entree.json": "b449a0ca94716e064ad03b3d5b30f9b075ab0113585323573fe9a252ec75ceba",
+      "s11.s1p": "97d3f90ecb90d4383e3cf72b9428e2e1dd9e164f2b09d32f9f74ecdf97985421",
+      "maillage.npz": "796621701923f4be9f693929f846b27c1686b5e613a8b480626b14e41bff64ac"
+    },
+    "tres_fin_12ns": {
+      "simulation_manifest.json": "6e1e08fa52b60a533245b5d03c0c37a10fe1680daec4577ab1c5316039832a32",
+      "qualification_entree.json": "8779e0cb15b68df72e76aa133d34804bcd2498291f0b8fbdfd1ae919d0fc7f20",
+      "s11.s1p": "c5f018588007c2cdf9318fd2cce0e12cdfaeb40bad15203ec8c93fb5e1bed7bc",
+      "maillage.npz": "796621701923f4be9f693929f846b27c1686b5e613a8b480626b14e41bff64ac"
+    },
+    "ultra_fin_8ns": {
+      "simulation_manifest.json": "25a8ef1b256e4a566b776da93a5d15ce7f6b5d8c20022197e3137d1abf93c04b",
+      "qualification_entree.json": "42fa4618e7521dd6f1a1840e3a0cda685661e5a0dbedf20b210af1984eaa0ce3",
+      "s11.s1p": "545613864eac19d8a93b382f275188c372aeb488a809332bd75a27ed7d90247e",
+      "maillage.npz": "8d962ac072be804fabe3feb83cfffef2c2909568f06e85bd0e56188bdf8790fc"
+    },
+    "ultra_fin_12ns": {
+      "simulation_manifest.json": "2ed991934409364deb329e5bf94c692e31b8e288d16f082e8200d1bbb8191bbe",
+      "qualification_entree.json": "a6588b720c88284c30baeb1a9661d24156aca88b5c60b0af2fddd80da1d9eeff",
+      "s11.s1p": "4d4bad5520d111b3bca9dd367076dfe9bd6b52f53c261578f9230922f168cef4",
+      "maillage.npz": "8d962ac072be804fabe3feb83cfffef2c2909568f06e85bd0e56188bdf8790fc"
+    },
+    "extreme_fin_8ns": {
+      "simulation_manifest.json": "cd4b70dccf02368fa025b5d7b2c7d163d1a8d3fcc138e44a4edb3031e7376e14",
+      "qualification_entree.json": "1ae2f0a48d070e98694022a065b7414c7cb069a9c63f0628f8e35ca56996963d",
+      "s11.s1p": "000aa5fc01c743a437f0106e4a320b4e7a5e03261a16b7490f139daea321e2dc",
+      "maillage.npz": "3599174dcca35b4b4a5d266614f1b9a2ee8a79204125caa7374dab502f2180fc"
+    },
+    "extreme_fin_12ns": {
+      "simulation_manifest.json": "7bd3137e81577964df751e022a6b1046c59df6f8a1e766bfd7ba8cb6cc4f6c9f",
+      "qualification_entree.json": "07f2af871164d231c41cd417397047ad3ee56ff30d7b1e4ad6003b4fcc5f1545",
+      "s11.s1p": "d657d9b297930493a3d750fa1ce44fe3a08644e845c04f52652eb784cf348d45",
+      "maillage.npz": "3599174dcca35b4b4a5d266614f1b9a2ee8a79204125caa7374dab502f2180fc"
+    },
+    "n30_8ns": {
+      "simulation_manifest.json": "e6dea9f01dbd4db36873de27f0a9e453eafa95a52996f4ea91cbc11b9dcea33a",
+      "qualification_entree.json": "9ae2ba39857de6b34f49a74b5b93a9f46ebf9d980081b2466d774daa736782d5",
+      "s11.s1p": "b296d6cdd77cc0e8b2275c5db7cde5f0155fe8d4aaeaf41bfe37a0db38e11df6",
+      "maillage.npz": "dbe7f9219e503949ba72d7b2e4c4cf81dfaf90c0a8e9341fa2051a2adb38ad8d"
+    },
+    "n30_12ns": {
+      "simulation_manifest.json": "9d4d73704d093ee7871d858002fe9d338f54c11715f7eb3d44e76bd10a73ae1c",
+      "qualification_entree.json": "5c23b41b6f1f3ccbc0a245a59b54777da50288be3870d8c76f987ee0eca1316e",
+      "s11.s1p": "10058290c65424db1d4dd9962f4d98c509ac414db69ec69186a4fa3a4e513bf7",
+      "maillage.npz": "dbe7f9219e503949ba72d7b2e4c4cf81dfaf90c0a8e9341fa2051a2adb38ad8d"
+    }
+  },
+  "passivite_par_profil": {
+    "base_8ns": {
+      "maximum_module": 0.8239846987056257,
+      "passivite_numerique": true
+    },
+    "fin_8ns": {
+      "maximum_module": 0.8284822825543938,
+      "passivite_numerique": true
+    },
+    "fin_12ns": {
+      "maximum_module": 0.8296794475696468,
+      "passivite_numerique": true
+    },
+    "tres_fin_8ns": {
+      "maximum_module": 0.82825103142973,
+      "passivite_numerique": true
+    },
+    "tres_fin_12ns": {
+      "maximum_module": 0.829228701411012,
+      "passivite_numerique": true
+    },
+    "ultra_fin_8ns": {
+      "maximum_module": 0.8279096979393247,
+      "passivite_numerique": true
+    },
+    "ultra_fin_12ns": {
+      "maximum_module": 0.8292788594674164,
+      "passivite_numerique": true
+    },
+    "extreme_fin_8ns": {
+      "maximum_module": 0.8293480989636404,
+      "passivite_numerique": true
+    },
+    "extreme_fin_12ns": {
+      "maximum_module": 0.8307188282837085,
+      "passivite_numerique": true
+    },
+    "n30_8ns": {
+      "maximum_module": 0.8311966653007206,
+      "passivite_numerique": true
+    },
+    "n30_12ns": {
+      "maximum_module": 0.8324793906245259,
+      "passivite_numerique": true
+    }
+  },
+  "indicateurs_reference": {
+    "bande_hz": [
+      1000000000.0,
+      6300000000.0
+    ],
+    "points": 213,
+    "maximum_module": 0.8324793906245259,
+    "passivite_numerique": true,
+    "moins_10_db": {
+      "seuil_db": -10.0,
+      "segments_hz": [
+        [
+          1400000000.0,
+          1875000000.0
+        ],
+        [
+          2600000000.0,
+          3825000000.0
+        ],
+        [
+          4425000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.6854460093896714,
+      "points_sous_seuil": 146,
+      "points_total": 213
+    },
+    "moins_6_db": {
+      "seuil_db": -6.0,
+      "segments_hz": [
+        [
+          1275000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.9483568075117371,
+      "points_sous_seuil": 202,
+      "points_total": 213
+    },
+    "bande_1p4_6": {
+      "moins_10_db": {
+        "seuil_db": -10.0,
+        "segments_hz": [
+          [
+            1400000000.0,
+            1875000000.0
+          ],
+          [
+            2600000000.0,
+            3825000000.0
+          ],
+          [
+            4425000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 0.7243243243243244,
+        "points_sous_seuil": 134,
+        "points_total": 185
+      },
+      "moins_6_db": {
+        "seuil_db": -6.0,
+        "segments_hz": [
+          [
+            1400000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 1.0,
+        "points_sous_seuil": 185,
+        "points_total": 185
+      },
+      "moyenne_puissance_reflechie_db": -11.63354855079781,
+      "pire_db": -6.774357665398776
+    }
+  },
+  "controles_numeriques_reussis": false
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "contrelecture_root_avant_setup_F2_v1",
+  "utc": "2026-10-22T08:35:46.388545+00:00",
+  "script_sha256": "5179c6b2333d4230e29d9ca7ddd44110fb4d40af0145422026a5f92cd3313261",
+  "plan_sha256": "60e25a3876c3f9bb7741dc620607b1c6861b3a4c20e4452af09c325d80121fb7",
+  "setup_only_litteral_unique": true,
+  "wrapper_retour_avant_RunFDTD_verifie": true,
+  "deux_setups_sequentiels_un_fil": true,
+  "sources_et_profils_originals_lecture_seule": true,
+  "sorties_diagnostiques_uniquement": true,
+  "limite": "Axes NPZ exacts mais CAD XML arrondi ; pas de preuve bitexacte de l ancien operateur vivant"
+}

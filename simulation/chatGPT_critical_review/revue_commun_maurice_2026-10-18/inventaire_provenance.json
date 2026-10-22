@@ -1,0 +1,22 @@
+{
+  "operation": "Reprise selective doc et validations de profil_distance; aucune autre API modifiee",
+  "racine_avant_sha256": "f63f66012c72190b2da5f37a124381bd5209c995072207a9bfa15e7cfe7659d4",
+  "racine_apres_sha256": "c84122492df9edbcfbd98d9933b960add265a98cb2e1e9b567fe5054eace5e14",
+  "archive": "physique.py.orig",
+  "maurice_source": "from Maurice/commun/physique.py",
+  "maurice_source_sha256": "85d4bf9a64dba6a132cb7daaa13a2ddf4c18e0dcf1d41e04bb51a820606cf15b",
+  "racine_sol_sha256": "6a5b3e61af9d51f4814a0b7ba7ba61d9ab49bc3531742bb237bef99e9e349c34",
+  "maurice_sol_sha256": "5391a64709619baa33b77f74e49ef63ea598807a48af7949382cb4c9f34c240c",
+  "sol_identique_apres_normalisation_fins_de_ligne": true,
+  "CRLF_preserves": true,
+  "API_conservee": [
+    "c",
+    "eps0",
+    "MILIEUX",
+    "milieu",
+    "indice",
+    "profil_distance",
+    "resolution_mm",
+    "cote_plaque_mm"
+  ]
+}

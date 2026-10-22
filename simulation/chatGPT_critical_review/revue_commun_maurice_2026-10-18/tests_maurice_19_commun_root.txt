@@ -1,0 +1,29 @@
+Bibliotheque testee : C:\Jacques\liteVNA\MicroWaveTomography\commun\__init__.py
+physique : C:\Jacques\liteVNA\MicroWaveTomography\commun\physique.py
+test_decode_indices_et_signes_iq (test_chaine_mesure.ChaineMesureTests.test_decode_indices_et_signes_iq) ... ok
+test_distances_connues_et_independance_du_zoom (test_chaine_mesure.ChaineMesureTests.test_distances_connues_et_independance_du_zoom) ... ok
+test_grille_non_uniforme_refusee (test_chaine_mesure.ChaineMesureTests.test_grille_non_uniforme_refusee) ... ok
+test_grille_programmee_apres_sortie_du_mode_usb (test_chaine_mesure.ChaineMesureTests.test_grille_programmee_apres_sortie_du_mode_usb) ... ok
+test_indices_invalides_persistants_arret_et_retour_mode_normal (test_chaine_mesure.ChaineMesureTests.test_indices_invalides_persistants_arret_et_retour_mode_normal) ... ok
+test_registre_incorrect_refuse_avant_acquisition (test_chaine_mesure.ChaineMesureTests.test_registre_incorrect_refuse_avant_acquisition) ... ok
+test_reprise_bloc_invalide_sans_conserver_ses_donnees (test_chaine_mesure.ChaineMesureTests.test_reprise_bloc_invalide_sans_conserver_ses_donnees) ... ok
+test_sol_retire_un_retard_de_cable_synthetique (test_chaine_mesure.ChaineMesureTests.test_sol_retire_un_retard_de_cable_synthetique) ... ok
+test_echo_connu_sur_deux_bandes (test_ifft_sous_bande.SousBandeTests.test_echo_connu_sur_deux_bandes) ... ok
+test_grilles_invalides (test_ifft_sous_bande.SousBandeTests.test_grilles_invalides) ... ok
+test_acquisition_commune_sauvegarde_avant_traitement (test_methodes_AB.MethodesTests.test_acquisition_commune_sauvegarde_avant_traitement) ... Avec cible : ne pas déplacer antenne, câbles ou support.
+START=1 GHz, STOP=6 GHz, Δf=25 MHz, 201 points.
+Mesure cible enregistrée : C:\Users\jfeld\AppData\Local\Temp\tmpaqzd3pon\mesures\cible_20261018T145403_844731Z\cible.npz
+ok
+test_bornes_et_variances_invalides (test_methodes_AB.MethodesTests.test_bornes_et_variances_invalides) ... ok
+test_deux_trajets_dont_un_parasite_plus_fort (test_methodes_AB.MethodesTests.test_deux_trajets_dont_un_parasite_plus_fort) ... ok
+test_fim_retard_avec_gain_inconnu (test_methodes_AB.MethodesTests.test_fim_retard_avec_gain_inconnu) ... ok
+test_fim_singuliere_ne_donne_pas_de_fausse_precision (test_methodes_AB.MethodesTests.test_fim_singuliere_ne_donne_pas_de_fausse_precision) ... ok
+test_modele_incomplet_signale (test_methodes_AB.MethodesTests.test_modele_incomplet_signale) ... ok
+test_plaque_epaisseur_amplitude_et_retard_inconnus_avec_bruit (test_methodes_AB.MethodesTests.test_plaque_epaisseur_amplitude_et_retard_inconnus_avec_bruit) ... ok
+test_relecture_ne_contacte_pas_le_vna_et_a_conserve_le_profil (test_methodes_AB.MethodesTests.test_relecture_ne_contacte_pas_le_vna_et_a_conserve_le_profil) ... ok
+test_variance_des_moyennes_cible_et_fond (test_methodes_AB.MethodesTests.test_variance_des_moyennes_cible_et_fond) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 4.601s
+
+OK

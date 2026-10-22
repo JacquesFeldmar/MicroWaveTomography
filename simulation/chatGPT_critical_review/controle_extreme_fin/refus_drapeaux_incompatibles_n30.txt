@@ -1,0 +1,4 @@
+usage: analyse_extreme_fin.py [-h] [--base BASE] [--verification-precedente |
+                              --n30] [--queue-sortie-zero-confirmee]
+                              [--sortie SORTIE]
+analyse_extreme_fin.py: error: argument --verification-precedente: not allowed with argument --n30

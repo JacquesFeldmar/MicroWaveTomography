@@ -1,0 +1,129 @@
+REVUE INDEPENDANTE DE LA CHAINE DE QUALIFICATION S11 PCBWAY
+18 octobre 2026
+
+Objet et perimetre
+
+Cette revue porte sur qualifie_pcbway.py, fenetre_sondes.py, le README courant
+et PROTOCOLE_MESURE_PCBWAY.md. Elle examine la logique d'acceptation et la
+provenance des resultats. Elle n'est pas un nouveau calcul electromagnetique.
+Les geometries, materiaux et moteur FDTD n'ont pas ete modifies par cette revue.
+
+Une suite ciblee a ete ajoutee : tests/test_qualification_pcbway.py.
+Commande executee depuis la racine du projet :
+
+  C:\Users\jfeld\anaconda3\envs\openems\python.exe -B -X utf8
+    -m unittest discover -s simulation/tests
+    -p test_qualification_pcbway.py -v
+
+Resultat final : 22 tests reussis, environ 10 secondes. Aucun Run openEMS.
+
+Les archives de tests sont temporaires, isolees et explicitement marquees
+synthetiques. Leur geometrie, leur grille, leurs materiaux et leur XML sont
+construits avec les vrais objets CSXCAD. Leurs sondes sont synthetiques ;
+CalcPort et la derivation 12 vers 8 ns sont reels. Un resultat positif de ces
+tests ne qualifie donc aucune antenne physique.
+
+Corrections demandees et verifiees pendant cette revue
+
+L'ancienne reutilisation de cache ne controlait que l'etat termine et une
+signature de configuration. Elle ne suffisait pas pour refuser un S11 altere,
+un moteur modifie ou une archive mal etiquetee. La logique courante controle
+maintenant les empreintes des fichiers critiques et des sources archivees,
+les chemins, la coherence des montages et des signatures, puis les geometries,
+contrats et sources courants avant toute reutilisation.
+
+Les noms base_8ns, fin_8ns et fin_12ns ne constituent plus seuls une preuve de
+configuration. Le comparateur controle les niveaux, l'acquisition, la duree
+demandee, le pas et le nombre d'echantillons des deux sondes. Il exige les
+memes sources et environnements entre les trois calculs, puis le meme
+maillage et le meme pas pour la comparaison temporelle.
+
+Les tests refusent notamment : S11 altere, entree SHA critique supprimee,
+source archivee alteree meme si la liste generale des empreintes est mise a
+jour, chemin SHA exterieur a l'archive, montage de qualification incoherent,
+autre geometrie/source courante, autre niveau/duree et environnement different.
+
+Le cas S11 exactement nul produisait une puissance moyenne en dB non finie.
+Le plancher introduit dans les indicateurs permet maintenant un JSON conforme.
+
+Indices, fichiers de reference et calcul des criteres
+
+Le tuple interne du comparateur est correctement indexe : etiquette,
+frequences, S11, manifeste, qualification. La reference livree est bien le
+calcul fin_12ns, tandis que les ecarts spatiaux portent sur base_8ns/fin_8ns
+et les ecarts temporels sur fin_8ns/fin_12ns.
+
+Les ecarts complexes maximal et RMS sont calcules sur tous les points, y
+compris aux minima profonds. Le percentile 95 en dB ne retient que les points
+ou les deux modules sont au moins 0,1, soit -20 dB. Les limites spatiales
+0,05/0,02/1 dB et temporelles 0,015/0,005/0,5 dB sont effectivement distinctes
+et decisives. La difference de phase utilise l'angle principal du produit
+S11_a conjugue(S11_b) : elle ne fabrique pas un ecart de 350 degres lorsque
+les phases sont proches de +180 et -180 degres.
+
+La phase est un diagnostic ; aucun seuil de phase independant n'entre dans
+l'acceptation. Lorsque le masque dB est vide, la logique refuse de qualifier
+silencieusement : le percentile est nul au sens JSON (None en Python) et le
+controle n'est pas reussi. Ce comportement prudent peut rejeter une antenne
+parfaitement adaptee ; ce n'est pas une preuve de non-convergence physique.
+
+La puissance reflechie moyenne est correctement moyennee en lineaire avant
+passage en dB. Les bandes sous -10/-6 dB sont des segments disjoints aux points
+echantillonnes, et non une enveloppe continue entre deux frequences extremes.
+
+Une comparaison positive complete a ete testee jusqu'aux CSV/Touchstone/PNG
+produits. La relecture ecrire=False conserve les octets existants. Un CSV de
+reference numeriquement altere est refuse sans regeneration automatique.
+
+Derivation temporelle des sondes
+
+La methode conserve les octets du prefixe original, les temps U et I et leur
+decalage d'un demi-pas. Elle utilise le vrai CalcPort reconstruit depuis les
+sources archivees et verifie d'abord la reproduction du S11 parent complet.
+Elle controle le maillage, les materiaux, le nombre d'iterations, la cadence
+et l'origine des sondes, ainsi que l'excitation gaussienne non tronquee.
+
+La fenetre dite 8 ns suit la convention du moteur :
+NrTS = ceil(8 ns / dt) + 1, puis NrTS + 1 echantillons d'indices 0..NrTS.
+U est echantillonne a k dt et I a (k + 1/2) dt. La derniere ligne peut donc
+depasser legerement 8 ns ; la provenance et les temps reels le consignent.
+Il ne faut ni retirer arbitrairement une ligne ni ajouter une seconde
+correction de phase pour le demi-pas Yee.
+
+Sous les conditions controlees, le prefixe est le debut de la meme evolution
+discrete causale. Cette extraction est adaptee au test de sensibilite a la
+fenetre temporelle. Elle est explicitement une derivee du calcul long, et
+ne doit pas etre presentee comme une deuxieme execution independante du FDTD.
+
+Portee scientifique et plan de mesure
+
+L'accord entre deux maillages et entre 8 et 12 ns etablira une stabilite
+numerique empirique sous les seuils annonces. Il ne donne pas, a lui seul,
+une borne d'erreur absolue, une preuve de regime asymptotique de convergence
+ou une borne sur toute contribution arrivant apres 12 ns. Le diagnostic de
+queue des sondes complete ce controle ; il ne mesure pas toute l'energie
+electromagnetique restante dans le domaine.
+
+Le README et le protocole distinguent correctement le port ideal au bord du
+PCB du plan d'accouplement SMA d'une mesure SOL. Ils conservent la mesure
+complexe originale, interdisent un recalage libre du retard pour fabriquer
+l'accord et expliquent qu'une extension de port ne retire pas les reflexions
+et la dispersion de la transition. La comparaison complexe exigeante requiert
+le meme plan, par caracterisation de la transition ou modele coaxial 3D.
+
+Les limites PEC/ENIG/soudure, le substrat nominal extrapole et les variations
+de montage sont identifiees. Un S11 stable et passif n'est pas une mesure du
+gain, du rendement, du centre de phase ou de la qualite tomographique.
+
+Verdict de cette revue
+
+La logique actuelle peut juger et tracer les resultats de la campagne selon
+les criteres fixes. Les defauts bloquants de cache et de provenance identifies
+ici sont couverts par des regressions. Aucun changement physique n'a ete
+introduit dans les calculs en cours.
+
+Cette note ne declare aucune des trois antennes qualifiee. Lors de la revue,
+les calculs de base du petit losange et de la Vivaldi etaient encore en cours,
+et la base du grand losange restait a executer. Le verdict de livraison doit
+etre fonde sur les trois couples de comparaisons effectivement termines,
+leurs indicateurs, leurs empreintes et les fichiers de production associes.

@@ -1,0 +1,66 @@
+
+1. Reglages identiques a ceux du rapport
+  [OK  ] IFFT sur 3216 points   3216
+  [OK  ] pas de frequence 25 MHz   25.00 MHz
+  [OK  ] pas d'axe 1,86 mm   1.864 mm
+  [OK  ] resolution c/2B environ 3 cm   3.00 cm
+  [OK  ] fenetre de Hann symetrique
+
+2. Un echo pur doit se retrouver la ou on l'a mis
+  [OK  ] echo a 30 cm   trouve 30.00 cm
+  [OK  ] echo a 50 cm   trouve 50.00 cm
+  [OK  ] echo a 65 cm   trouve 65.00 cm
+  [OK  ] echo a 100 cm   trouve 100.00 cm
+
+3. La pente de phase doit rendre le meme retard
+  [OK  ] retard supplementaire retrouve   1.2000 ns pour 1.2000 attendus
+  [OK  ] decalage equivalent   17.99 cm
+
+4. Le modele : un retard d'antenne donne un decalage CONSTANT
+  [OK  ] decalage egal a c.tau1   20.00, 20.00, 20.00 cm pour 20.00 attendus
+  [OK  ] decalage constant d'une distance a l'autre   etendue 0.000 cm
+
+5. Deux trajets internes -> deux branches, comme dans le rapport
+  [OK  ] branche proche a c.tau1   69.91 cm pour 70.00 attendus
+  [OK  ] branche lointaine a c.(tau1+tau2)/2   76.60 cm pour 76.30 attendus
+  [OK  ] ecarts proches de ceux du rapport (20,0 et 26,3 cm)   19.9/26.6, 19.9/26.6, 19.9/26.6
+
+6. Dispersion : echo elargi et decalage constant avec la distance
+  [OK  ] l'echo s'elargit   5.8 cm -> 8.2 cm a mi-hauteur
+  [OK  ] mais le decalage reste constant sur une GRANDE plaque   etendue 0.000 cm
+
+6b. Dispersion + plaque trop petite -> le decalage derive
+  [OK  ] une plaque de 30 cm suffit a creer une derive   14.40, 14.29, 14.19 cm, etendue 0.20 cm
+  [OK  ] la derive va dans le sens des mesures (ecart qui diminue)   14.40 -> 14.19 cm
+
+7. Regressions audit : pas de fausse deuxieme branche Hann
+  [OK  ] mono 50 cm : principal sans derive   19.9991 cm
+  [OK  ] mono 50 cm : aucun second candidat
+  [OK  ] mono 60 cm : principal sans derive   19.9991 cm
+  [OK  ] mono 60 cm : aucun second candidat
+  [OK  ] mono 70 cm : principal sans derive   19.9992 cm
+  [OK  ] mono 70 cm : aucun second candidat
+  [OK  ] meme identifiant de suivi principal aux trois distances
+  [OK  ] candidats exposes avec rang, niveau et proeminence
+  [OK  ] lobes Hann visibles mais disqualifies
+  [OK  ] mode rapport explicite reproduit l'artefact historique a 70 cm
+  [OK  ] mode rapport conserve pourtant un principal stable
+  [OK  ] seuil relatif configurable (revele volontairement les lobes)
+  [OK  ] sans signal : aucun pic, aucune phase arbitraire
+  [OK  ] bimodal : deux candidats qualifies sans attribution physique
+  [OK  ] bimodal : principal suit le rang d'amplitude, sans forcer une branche
+  [OK  ] bimodal : suivi conserve les deux candidats quand les rangs s'inversent
+  [OK  ] proeminence filtre une epaule pourtant proche en amplitude
+  [OK  ] resume S11 : deux segments interrompus, pas une enveloppe
+  [OK  ] resume S11 : aucune adaptation est un resultat normal
+
+8. Rappel des mesures a reproduire (rapport du 9 octobre)
+       plaque 50 cm : pics 69.91 et 75.88 cm  ->  ecarts 19.91 et 25.88 cm
+       plaque 60 cm : pics 79.61 et 86.32 cm  ->  ecarts 19.61 et 26.32 cm
+       plaque 70 cm : pics 90.42 et 96.57 cm  ->  ecarts 20.42 et 26.57 cm
+
+  bande            1.0 - 6.0 GHz, 201 points, pas 25.0 MHz
+  IFFT             3216 points, pas d'axe 1.86 mm, resolution c/2B 3.0 cm
+  plaque           60 x 60 cm a 50, 60, 70 cm
+
+  TOUS LES CONTROLES SONT PASSES

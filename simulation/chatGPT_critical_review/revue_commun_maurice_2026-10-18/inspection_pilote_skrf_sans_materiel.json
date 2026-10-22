@@ -1,0 +1,38 @@
+{
+  "schema": "inspection_pilote_skrf_sans_materiel_v1",
+  "date_utc": "2026-10-18T14:52:22.290412+00:00",
+  "environnement": "ph",
+  "version_scikit_rf": "1.12.0",
+  "sources": {
+    "nanovna": {
+      "chemin_original": "C:\\Users\\jfeld\\anaconda3\\envs\\ph\\Lib\\site-packages\\skrf\\vi\\vna\\nanovna\\nanovna.py",
+      "copie_preuve": "source_skrf_1.12.0_nanovna.py.txt",
+      "sha256": "e031750fdfd31a0e145bb06508e50af75d94027d735e4baa59c9b4cc751f5c6a"
+    },
+    "vna": {
+      "chemin_original": "C:\\Users\\jfeld\\anaconda3\\envs\\ph\\Lib\\site-packages\\skrf\\vi\\vna\\vna.py",
+      "copie_preuve": "source_skrf_1.12.0_vna.py.txt",
+      "sha256": "c87c3fdace55a15bb20bbed0baf501fe2def0023b6522e03b55e875b828c3bd9"
+    }
+  },
+  "skrf_env_openems_present": false,
+  "inspection": "Fichiers lus sans importer skrf.vi, sans instancier un VNA et sans ouvrir de port serie.",
+  "constante_RAW_SAMPLES_MODE_0x26": 37,
+  "usages_attribut_RAW_SAMPLES_MODE": [],
+  "constat": [
+    "__init__ : ouverture via VNA puis _reset_protocol (huit NOP) et programmation frequence ; aucune lecture/ecriture explicite du registre 0x26.",
+    "get_s11_s21 : clear_fifo (WRITE0x30=0), puis READFIFO0x30 ; aucune selection ni verification explicite du mode de donnees.",
+    "_convert_bytes_to_sparams calcule b1/a1 et b2/a1 ; ceci ne prouve pas a lui seul que le firmware a fourni des ondes brutes.",
+    "Le docstring scikit-rf annonce des donnees non calibrees ; ce commentaire est distinct de la preuve de mode effectif sur le firmware du banc.",
+    "commun.instrument racine et copie Maurice ont le meme AST executable ; seule la documentation instrument differe."
+  ],
+  "reperes_lignes_nanovna": {
+    "docstring_non_calibre": 55,
+    "init": 108,
+    "reset_protocol": 123,
+    "clear_fifo": 217,
+    "conversion": 220,
+    "get_s11_s21": 248
+  },
+  "limite": "Aucun etat du LiteVNA ni firmware effectif du banc verifie ; aucun changement de conduite materielle autorise par cette inspection."
+}

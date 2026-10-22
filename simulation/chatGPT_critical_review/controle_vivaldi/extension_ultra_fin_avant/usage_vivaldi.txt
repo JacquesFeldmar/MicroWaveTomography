@@ -1,0 +1,27 @@
+CONTROLE INDEPENDANT VIVALDI — sans FDTD ni qualification officielle
+
+Attendre que le coordinateur constate la sortie 0 de la queue session 20307,
+y compris la derivation tres_fin_16ns vers tres_fin_12ns. Fournir ensuite :
+
+  python -B -X utf8 simulation/chatGPT_critical_review/controle_vivaldi/analyse_vivaldi.py --queue-sortie-zero-confirmee --sortie controle_final_vivaldi
+
+controle_final_vivaldi doit etre un sous-dossier neuf de ce controle.
+Sans --sortie : aucune ecriture. Sans attestation explicite de sortie 0 :
+preconditions seulement, aucun Q.charge_calcul. Les manifestes actifs sont
+ouverts avec FILE_SHARE_READ|WRITE|DELETE par le lecteur partage reutilise.
+
+Cinq profils verifies : base_8ns, fin_8ns, fin_12ns, tres_fin_12ns,
+tres_fin_16ns. Spatial : fin_12ns/tres_fin_12ns. Temporel :
+tres_fin_12ns/tres_fin_16ns. Reference : tres_fin_16ns.
+Les algorithmes sont importes depuis controle_extreme_fin/analyse_extreme_fin.py ;
+leur SHA et les versions sont conserves dans la provenance.
+
+Codes : 0 criteres respectes ; 2 criteres non respectes ; 3 preconditions
+manquantes ; 1 erreur d'integrite/configuration. Aucun de ces rapports ne
+remplace la selection ou la qualification officielle du projet.
+
+preuve_initiale_vivaldi.py est une preuve preparatoire separee en lecture seule.
+Elle retrouve exactement les deux ECHECS historiques de convergence sur les
+trois executions physiques initiales terminees. Elle n'affirme aucune sortie
+0 de la file globale initiale, dont la comparaison avait echoue. Son rapport
+consigne les SHA avant/apres de 85 fichiers de profils et des 16 sources gelees.

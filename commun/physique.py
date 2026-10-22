@@ -50,11 +50,26 @@ def indice(freqs, eps_r, sigma):
 # PROFIL DE DISTANCE
 # ======================================================================
 def profil_distance(freqs, s11, zoom=16, fenetre="hann"):
-    """Enveloppe et axe des distances (aller simple, mm) depuis le plan du VNA.
+    """Enveloppe et distance équivalente air (mm) depuis le plan de référence.
+
+    Après SOL, le zéro est le plan de calibration. La réponse de l'antenne
+    n'est pas déconvoluée. Le module de l'IFFT est conservé avec le gain de
+    la fenêtre (pas une amplitude d'écho corrigée du gain de l'antenne).
 
     Le pas temporel vaut 1/(n_fft.df) avec df = BW/(N-1). Utiliser 1/BW
     surestime toutes les distances de N/(N-1) -- 1 % a 101 points.
     """
+    freqs = np.asarray(freqs, dtype=float)
+    s11 = np.asarray(s11, dtype=complex)
+    if (freqs.ndim != 1 or s11.ndim != 1 or len(freqs) != len(s11)
+            or len(freqs) < 2 or not np.all(np.isfinite(freqs))
+            or not np.all(np.isfinite(s11))):
+        raise ValueError("Profil : fréquences et S11 finis, unidimensionnels et de même taille requis.")
+    ecarts = np.diff(freqs)
+    if np.any(ecarts <= 0) or not np.allclose(ecarts, ecarts[0], rtol=1e-9, atol=1e-3):
+        raise ValueError("L'IFFT nécessite une grille de fréquences croissante et uniforme.")
+    if not isinstance(zoom, (int, np.integer)) or zoom < 1:
+        raise ValueError("Le facteur zoom doit être un entier positif.")
     n = len(s11)
     if fenetre == "hann":
         fen = np.hanning(n)

@@ -1,0 +1,93 @@
+--- a/simulation/fenetre_sondes.py
++++ b/simulation/fenetre_sondes.py
+@@ -29,15 +29,41 @@
+ # susceptible d'evoluer. CalcPort utilise les temps propres de U et de I dans
+ # sa DTFT; ne pas appliquer une deuxieme correction de phase au demi-pas.
+ EXTRACTION = r'''
++import hashlib
++import importlib
+ import json
+ from pathlib import Path
+ import sys
+ import numpy as np
+ source, sortie = map(Path, sys.argv[1:3])
++entrees = json.loads((sortie/'parametres_extraction.json').read_text(encoding='utf-8'))
++mere = json.loads((source/'simulation_manifest.json').read_text(encoding='utf-8'))
++qualification = json.loads((source/'qualification_entree.json').read_text(encoding='utf-8'))
++tag = 'maillage_controle_v2'
++if 'moteur' not in mere and 'moteur' not in qualification and 'moteur' not in entrees:
++    nom_module = 'fdtd'
++    if 'fdtd_maille_controlee.py' in mere['sources_sha256'] or (source/'sources/fdtd_maille_controlee.py').exists():
++        raise ValueError('source F2 sans marqueurs F2')
++elif mere.get('moteur') == qualification.get('moteur') == entrees.get('moteur') == tag:
++    nom_module = 'fdtd_maille_controlee'
++    if nom_module+'.py' not in mere['sources_sha256']:
++        raise ValueError('source du moteur F2 absente')
++else:
++    raise ValueError('marqueurs du moteur differents avant extraction')
++if entrees['sources_sha256'] != mere['sources_sha256']:
++    raise ValueError('inventaire des sources different avant extraction')
++for nom, empreinte in entrees['sources_sha256'].items():
++    p = (source/'sources'/nom).resolve()
++    if not p.is_relative_to((source/'sources').resolve()) or hashlib.sha256(p.read_bytes()).hexdigest() != empreinte:
++        raise ValueError('source archivee alteree avant import : '+nom)
+ sys.path.insert(0, str(source/'sources'))
+-import fdtd as F
++F = importlib.import_module(nom_module)
++if (Path(F.__file__).resolve() != (source/'sources'/(nom_module+'.py')).resolve() or
++        F._sources() != entrees['sources_sha256']):
++    raise ValueError('moteur importe different des sources archivees')
++if nom_module == 'fdtd_maille_controlee' and getattr(F,'NOM_MOTEUR',None) != tag:
++    raise ValueError('identite du module F2 incoherente')
+ from banc import Acquisition, Antenne, Plaque, Maillage, Montage
+-entrees = json.loads((sortie/'parametres_extraction.json').read_text(encoding='utf-8'))
+ d = entrees['montage']
+ montage = Montage(acquisition=Acquisition(**d['acquisition']),
+     antenne=Antenne(**d['antenne']), plaque=Plaque(**d['plaque']),
+@@ -49,10 +75,12 @@
+     distances_communes_cm=entrees.get('distances_communes_cm') or None,
+     n_pas=entrees['n_pas'], duree_ns=entrees['duree_ns'],
+     dt_impose_s=entrees['dt_s'])
+-archive = np.load(source/'maillage.npz')
+-for axe in 'xyz':
+-    if not np.array_equal(np.asarray(csx.GetGrid().GetLines(axe)), archive[axe]):
+-        raise ValueError('reconstruction du maillage archive differente sur '+axe)
++with np.load(source/'maillage.npz',allow_pickle=False) as archive:
++    for axe in 'xyz':
++        actuel, attendu = np.asarray(csx.GetGrid().GetLines(axe)), archive[axe]
++        if (actuel.dtype != attendu.dtype or actuel.ndim != 1 or
++                actuel.shape != attendu.shape or actuel.tobytes() != attendu.tobytes()):
++            raise ValueError('reconstruction bit exacte du maillage archive differente sur '+axe)
+ if F._proprietes_matiere(csx)[3] != entrees['materiaux']:
+     raise ValueError('reconstruction des materiaux archivee differente')
+ data = np.loadtxt(source/'s11.s1p', comments=('!', '#'))
+@@ -149,6 +177,9 @@
+     qualification = json.loads(q_path.read_text(encoding='utf-8'))
+     if manifeste.get('etat') != 'termine' or manifeste.get('derive_sondes'):
+         raise ValueError('source attendue : simulation FDTD directe terminee')
++    import qualifie_pcbway as Q
++    identite_moteur = Q.identite_moteur(manifeste, qualification)
++    Q.moteur_calcul(source, manifeste, qualification)
+     if manifeste['execution'].get('fin_energie_active', True):
+         raise ValueError('une execution a arret anticipe ne satisfait pas ce protocole')
+     for nom, empreinte in manifeste['fichiers_sha256'].items():
+@@ -204,7 +235,6 @@
+     nouveau_montage = deepcopy(manifeste['montage'])
+     nouveau_montage['maillage']['duree_ns'] = float(duree_ns)
+     # Le runner doit retrouver exactement la signature du calcul court.
+-    import qualifie_pcbway as Q
+     carte = Q.G.carte_antenne(manifeste['antenne'])
+     if (Q.G.json_octets(Q.G.geometrie_canonique(carte)) != Q.G.json_octets(qualification['geometrie']) or
+             Q.G.json_octets(carte['simulation_contract']) != Q.G.json_octets(qualification['simulation_contract'])):
+@@ -255,7 +285,10 @@
+         parametres = dict(antenne=manifeste['antenne'], montage=nouveau_montage,
+             cible_cm=manifeste.get('cible_cm'), x_domaine_cm=manifeste.get('x_domaine_cm'),
+             distances_communes_cm=manifeste.get('distances_communes_cm'),
+-            dt_s=dt_s, n_pas=n_pas, duree_ns=duree_ns, materiaux=manifeste['materiaux'])
++            dt_s=dt_s, n_pas=n_pas, duree_ns=duree_ns, materiaux=manifeste['materiaux'],
++            sources_sha256=manifeste['sources_sha256'])
++        if identite_moteur == Q.MOTEUR_F2:
++            parametres['moteur'] = Q.MOTEUR_F2
+         ecrit_json(sortie/'parametres_extraction.json', parametres)
+         (sortie/'extraction_calcport.py').write_text(EXTRACTION, encoding='utf-8')
+         commande = [sys.executable, '-B', '-X', 'utf8', str(sortie/'extraction_calcport.py'),

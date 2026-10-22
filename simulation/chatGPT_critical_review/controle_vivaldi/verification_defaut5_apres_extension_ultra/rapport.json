@@ -1,0 +1,339 @@
+{
+  "qualification_officielle": false,
+  "mode": "vivaldi",
+  "racine": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\resultats\\pcbway_r1\\vivaldi_tomographie",
+  "profils_attendus": [
+    "base_8ns",
+    "fin_8ns",
+    "fin_12ns",
+    "tres_fin_12ns",
+    "tres_fin_16ns"
+  ],
+  "provenance": {
+    "utc": "2026-10-18T21:24:45.873667+00:00",
+    "commande": [
+      "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\controle_vivaldi\\analyse_vivaldi.py",
+      "--queue-sortie-zero-confirmee",
+      "--sortie",
+      "verification_defaut5_apres_extension_ultra"
+    ],
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "scripts_sha256": {
+      "analyse_extreme_fin.py": "d31fd9e40b7b4c6bc4d9549244c13a31457d6392007fd8c2167c0248d78d81a2",
+      "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+      "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+      "analyse_vivaldi.py": "f985d19ecd6d8c876691f9417f4d6df3e656c95ca5a75b8941c7b57ebee150e3"
+    },
+    "dependance_numerique": "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\controle_extreme_fin\\analyse_extreme_fin.py"
+  },
+  "sortie_zero_queue_confirmee_par_coordinateur": true,
+  "grille_temporelle": {
+    "coordonnees_bit_a_bit_identiques": true,
+    "dt_bit_a_bit_identique": true,
+    "dt_s": 1.7137318288694525e-13
+  },
+  "spatial": {
+    "profils": [
+      "fin_12ns",
+      "tres_fin_12ns"
+    ],
+    "valeurs": {
+      "maximum_complexe": 0.07163689647125497,
+      "rms_complexe": 0.03166219237830621,
+      "percentile95_db": 2.5289229575863996,
+      "percentile95_phase_deg": 12.487679717198935
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.05,
+      "rms_complexe": 0.02,
+      "percentile95_db": 1.0
+    },
+    "reussi": false,
+    "points_masque_db": 188,
+    "masque_db": "deux modules >= -20 dB ; max/RMS sur tous les points"
+  },
+  "temporel": {
+    "profils": [
+      "tres_fin_12ns",
+      "tres_fin_16ns"
+    ],
+    "valeurs": {
+      "maximum_complexe": 0.007518339178838044,
+      "rms_complexe": 0.0019619896547893754,
+      "percentile95_db": 0.13548102734697648,
+      "percentile95_phase_deg": 0.9030590046936895
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.015,
+      "rms_complexe": 0.005,
+      "percentile95_db": 0.5
+    },
+    "reussi": true,
+    "points_masque_db": 193,
+    "masque_db": "deux modules >= -20 dB ; max/RMS sur tous les points"
+  },
+  "etat": "analyse_terminee",
+  "reference": "tres_fin_16ns",
+  "verifications_communes": {
+    "nombre_profils": 5,
+    "geometrie_sha256": "5d9ab2f3349411b03385967ec7b60932f49b7ef0e88eb477a23e837e1486ce0b",
+    "sources_physiques_sha256": {
+      "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+      "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+      "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+      "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+      "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+      "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+      "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+      "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+      "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998"
+    },
+    "environnement_archive": {
+      "python": "3.13.16",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "csxcad": "0.7.0",
+      "dtype_maillage": "float64 little-endian",
+      "openems": "0.37.0"
+    },
+    "contrat": {
+      "antenne": "vivaldi_tomographie",
+      "connecteur": {
+        "epaisseur_pcb_mm": 1.6,
+        "genre": "SMA femelle standard (non RP-SMA)",
+        "largeur_signal_mm": 2.2859999999999996,
+        "limite": "boitier SMA, PTFE, broche et soudure non modelises en 3D",
+        "longueur_pad_mm": 5.08,
+        "modele_vias": "cylindres PEC pleins equivalents, pas paroi mince",
+        "page": 58,
+        "plan_simulation": "bord du PCB, port ideal 50 ohms",
+        "reference": "Cinch Johnson 142-0701-851",
+        "source": "https://www.cinch.com/media/catalogs/products/rf-microwave/cable-assemblies/cable-assembly/ca-Johnson-Catalog.pdf",
+        "vias_diametre_fini_mm": 0.45719999999999994
+      },
+      "cuivre": "PEC ideal; finition et rugosite non modelisees",
+      "epaisseur_substrat_mm": 1.6,
+      "materiau": {
+        "definition": {
+          "delta_epsilon": [
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276,
+            0.031033634845125276
+          ],
+          "epsilon_inf": 4.4355277919894585,
+          "epsilon_reference": 4.6,
+          "epsilon_statique": 4.838965044976087,
+          "frequence_reference_hz": 1000000000.0,
+          "hypothese": "FR4 nominal, pertes approximativement constantes; non identifie sur le lot fabrique",
+          "poles_fixes_hz": [
+            1000000.0,
+            2610157.215682538,
+            6812920.690579606,
+            17782794.100389227,
+            46415888.33612781,
+            121152765.86285901,
+            316227766.01683795,
+            825404185.2680206,
+            2154434690.0318866,
+            5623413251.903491,
+            14677992676.220736,
+            38311868495.57294,
+            100000000000.0
+          ],
+          "relaxation_s": [
+            1.5915494309189535e-07,
+            6.097523250157075e-08,
+            2.3360750890871633e-08,
+            8.949940160889102e-09,
+            3.4288893048722943e-09,
+            1.3136715613414353e-09,
+            5.032921210448703e-10,
+            1.928206155632897e-10,
+            7.387318066696178e-11,
+            2.83021958306234e-11,
+            1.0843100047987916e-11,
+            4.154194231228535e-12,
+            1.5915494309189534e-12
+          ],
+          "tan_delta_reference": 0.011,
+          "type": "debye_passif_13_poles"
+        },
+        "epsilon_reference": 4.6,
+        "frequence_reference_hz": 1000000000.0,
+        "modele": "debye",
+        "tan_delta_reference": 0.011
+      }
+    }
+  },
+  "preuves": {
+    "base_8ns": {
+      "simulation_manifest.json": "dedc755c29e3449fe46281b08b94e09179656f545117e2de6bd5d0fab1fa79bc",
+      "qualification_entree.json": "5807a61e1be7e7a119a39547b1df122256bf0f8f66d6ec0071cec3941ef37aeb",
+      "s11.s1p": "1e80ce5ad2752f18aee4a1935fc8d65f72e901c93ee6d4947b0bcf2c024fd3bc",
+      "maillage.npz": "e375d4da82e89d35900d3f281a32c3dc883a698ff5a3825085a1a4948536f5f9"
+    },
+    "fin_8ns": {
+      "simulation_manifest.json": "b053fccf3aa729fb60937ff09e8087a26b207674ed4a4a6cbcdc4f8befb54ff1",
+      "qualification_entree.json": "35acdb5f7c4db6881be74440a2d8c238c1cdbc898cd065a5e6c24be4ce42c3dc",
+      "s11.s1p": "f2224742ee8481c0a48a90f2aa760336eeb32603d2a6ff7f12f346fdb61132bd",
+      "maillage.npz": "f1ff4a78f92ea94192bfd3086ddd957ee1d52957ce6b257ab04359a6ecfd40b3"
+    },
+    "fin_12ns": {
+      "simulation_manifest.json": "dc4ed2eac1b0d6b35faf9e6e207314210778e6edc08c6e95b71742b16e42c436",
+      "qualification_entree.json": "c7d3fd15eb1e8623489464d33c087bdcd872aec1ab705ba035c6bacf9527f86a",
+      "s11.s1p": "581f2cdc3c41f39b601174779eb61f16d872905f37f811ba881e03ee22ba4bca",
+      "maillage.npz": "f1ff4a78f92ea94192bfd3086ddd957ee1d52957ce6b257ab04359a6ecfd40b3"
+    },
+    "tres_fin_12ns": {
+      "simulation_manifest.json": "7f727d18db70ef95b059122dfef0923a051ae91a634bf20cc35d3d101e115019",
+      "qualification_entree.json": "0f1eb6d5d75377917343d6beb2363acf20eb13e920e982f77e2f2989327f693b",
+      "s11.s1p": "378fc06e72d51f4d568cd1b910c9fc2aae0147979c7d39191b67c12d8fe0a877",
+      "maillage.npz": "2a7c6a7d349d5c6dead40460adad590ad201421e1b13a86ca1acb5cfa4c84a9e"
+    },
+    "tres_fin_16ns": {
+      "simulation_manifest.json": "c341da8d76af1f00fe7cbe05797e144ac0c8240f9d51bf301bfbb400c9864a4d",
+      "qualification_entree.json": "4dcc4380d2c7f73e6f0ce8fe24367cb468d51001d4f2717880b830bf525177c3",
+      "s11.s1p": "6dab96098b9965c6c62b0a380a6df5b07416d5b570f21d3d15a4429b492374f4",
+      "maillage.npz": "2a7c6a7d349d5c6dead40460adad590ad201421e1b13a86ca1acb5cfa4c84a9e"
+    }
+  },
+  "passivite_par_profil": {
+    "base_8ns": {
+      "maximum_module": 0.5876661271530872,
+      "passivite_numerique": true
+    },
+    "fin_8ns": {
+      "maximum_module": 0.585996283395619,
+      "passivite_numerique": true
+    },
+    "fin_12ns": {
+      "maximum_module": 0.58566443103674,
+      "passivite_numerique": true
+    },
+    "tres_fin_12ns": {
+      "maximum_module": 0.5925447816418438,
+      "passivite_numerique": true
+    },
+    "tres_fin_16ns": {
+      "maximum_module": 0.5926235535593702,
+      "passivite_numerique": true
+    }
+  },
+  "indicateurs_reference": {
+    "bande_hz": [
+      1000000000.0,
+      6300000000.0
+    ],
+    "points": 213,
+    "maximum_module": 0.5926235535593702,
+    "passivite_numerique": true,
+    "moins_10_db": {
+      "seuil_db": -10.0,
+      "segments_hz": [
+        [
+          1000000000.0,
+          1025000000.0
+        ],
+        [
+          1450000000.0,
+          1850000000.0
+        ],
+        [
+          2050000000.0,
+          2925000000.0
+        ],
+        [
+          3100000000.0,
+          3600000000.0
+        ],
+        [
+          3775000000.0,
+          4175000000.0
+        ],
+        [
+          4275000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.8215962441314554,
+      "points_sous_seuil": 175,
+      "points_total": 213
+    },
+    "moins_6_db": {
+      "seuil_db": -6.0,
+      "segments_hz": [
+        [
+          1000000000.0,
+          1125000000.0
+        ],
+        [
+          1375000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.9577464788732394,
+      "points_sous_seuil": 204,
+      "points_total": 213
+    },
+    "bande_1p4_6": {
+      "moins_10_db": {
+        "seuil_db": -10.0,
+        "segments_hz": [
+          [
+            1450000000.0,
+            1850000000.0
+          ],
+          [
+            2050000000.0,
+            2925000000.0
+          ],
+          [
+            3100000000.0,
+            3600000000.0
+          ],
+          [
+            3775000000.0,
+            4175000000.0
+          ],
+          [
+            4275000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 0.8702702702702703,
+        "points_sous_seuil": 161,
+        "points_total": 185
+      },
+      "moins_6_db": {
+        "seuil_db": -6.0,
+        "segments_hz": [
+          [
+            1400000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 1.0,
+        "points_sous_seuil": 185,
+        "points_total": 185
+      },
+      "moyenne_puissance_reflechie_db": -12.890294813549836,
+      "pire_db": -7.270900189060684
+    }
+  },
+  "controles_numeriques_reussis": false
+}

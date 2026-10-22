@@ -1,5 +1,6 @@
 M48
 ;panneau_losanges -- tous non metallises
+;TYPE=NON_PLATED
 ;FORMAT={3:3 / absolute / metric / decimal}
 FMAT,2
 METRIC,TZ

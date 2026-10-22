@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-19T17:29:51.618296+00:00",
+  "toutes_fonctions_sauf_copie_livre_AST_identiques": true,
+  "validation_qualification_et_relecture_inchangees": true,
+  "tests": 35,
+  "source_livre": "55d4da44ab192ac9f5e978f82f27da797a8662b48aee0a28198021143e1f5d35",
+  "tests_sha256": "8f1790b96fc27f00e781fc0e66928ac7e7f5324dc2c7616f90a2595acde7d05c",
+  "deux_ZIP_candidats_inchanges": {
+    "losanges": "7eba0eca18dc3a36608e64bac737d61aea49f5e890b2345281718d4eceed5200",
+    "vivaldi": "824104ff8933fb296200f145ad31e84357e3e0f6b037e5aa8a77ae5184b8dd03"
+  }
+}

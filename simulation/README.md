@@ -1,213 +1,99 @@
-# simulation — LiteVNA, antennes et plaque métallique
+# Simulation et fabrication des antennes PCBWay
 
-Projet Python/openEMS paramétrable pour simuler le montage du rapport destiné à
-John : un port 50 Ω (le LiteVNA calibré au plan SOL), une antenne, et une
-plaque métallique parallèle à son plan, à distance variable. Il sert aussi à
-**concevoir et faire fabriquer** les antennes du projet.
+La reprise du 18 octobre 2026 prépare deux articles : un panneau comprenant les deux monopôles en losange, et une Vivaldi seule. Le même dessin de cuivre alimente les simulations et les exports Gerber. La campagne de qualification de cette révision est en cours ; les chiffres de l'ancienne révision ne qualifient pas ces fichiers.
 
-Trois objectifs, dans cet ordre :
+**Qualification globale non acquise : aucune livraison finale validée.** Les six calculs longs F2, les neuf préfixes et l'analyse automatique sont terminés depuis le 22 octobre à 06:12 à Paris. Les trois antennes passent leurs contrôles temporels mais échouent à la convergence spatiale. Les quinze profils sont [archivés avec leurs sources exactes](archives/campagne_F2_cloture_non_convergente_2026-10-22.zip). Le diagnostic de l'opérateur discret se poursuit, sans changement des dessins PCB ni des seuils. Les 25 profils F1 restent un [historique distinct](archives/campagne_F1_cloture_2026-10-19.zip). Voir [le suivi](TACHES_REPRISE_PCBWAY.md#état-courant).
 
-1. **simuler le principe physique** du montage et produire les figures du
-   rapport ;
-2. **reproduire quantitativement le décalage** observé sur les mesures réelles
-   — 20,0 cm le 9 octobre, 36,5 cm le 17 septembre ;
-3. **produire les fichiers de fabrication** des antennes, vérifiés par
-   simulation avant d'être envoyés chez PCBWay.
+Le suivi et les critères de livraison figurent dans [TACHES_REPRISE_PCBWAY.md](TACHES_REPRISE_PCBWAY.md). Les sources et résultats antérieurs sont conservés dans [l'archive initiale](archives/etat_avant_reprise_2026-10-18.zip), avec les [audits et la réponse de Claude](chatGPT_critical_review/).
+
+Les calculs terminés ne constituent donc pas une qualification de fabrication. Les écarts entre maillages doivent être compris et résolus avant livraison. Deux inspections natives du petit losange sont effectuées sans intégration temporelle ; elles produisent les dumps du cuivre effectif, des coefficients et des boîtes de sondes pour ce diagnostic. Leur CAD XML archivé comporte des arrondis, dont la portée sera explicitée dans l'interprétation.
+
+## Cartes et hypothèses physiques
+
+| Carte individuelle | Dimensions du contour médian | Implantation |
+|---|---|---|
+| Losange ×1 | 32 × 40 mm | SMA femelle Cinch Johnson 142-0701-851 |
+| Losange ×1,8 | 57,6 × 72 mm | Même SMA |
+| Vivaldi | 143,668735 × 280,9031025 mm | Même SMA et deux trous de fixation non métallisés |
+
+Les losanges sont réunis dans un panneau de 92,60 × 72,00 mm. Les simulations S11 portent sur les **cartes individuelles après séparation**, sans couplage avec l'autre losange. Voir [fabrication/README.md](fabrication/README.md) pour les paramètres de commande.
+
+Le nominal commun est un FR-4 S1000H de 1,6 mm, deux couches cuivre 1 oz, finition ENIG, sans vernis épargne ni sérigraphie. Le modèle diélectrique de Debye est ajusté sur les valeurs typiques documentées à 1 GHz : ε′ = 4,6 et tan δ = 0,011. Son extrapolation en fréquence est une hypothèse causale, pas une mesure du lot fabriqué. Le cuivre est une feuille PEC ; le nickel, l'or, la rugosité, le corps du connecteur et les soudures ne sont pas résolus en 3D. Ces limites interviennent dans l'interprétation de l'écart simulation/mesure.
+
+La garde cuivre/bord de la Vivaldi est de 0,30 mm hors alimentation. Ses perçages de fixation sont présents dans le modèle. Les vias de masse de l'implantation SMA sont représentés par des cylindres PEC équivalents. La transition du pad SMA vers les lignes de 3,0/3,1 mm est propre à ces cartes. L'épaisseur de 1,6 mm du modèle est celle du diélectrique ; l'épaisseur finie réellement livrée doit être distinguée et relevée à réception.
 
 ## Organisation
 
-```
-simulation/
-├── banc.py            paramètres : acquisition, plaque, maillage, mesures de référence
-├── traitement.py      le traitement du rapport : profil, pics, phase, retard de groupe
-├── modele.py          modèle analytique du montage, sans openEMS
-├── fdtd.py            la scène openEMS, le maillage, l'exécution, le coût
-├── donnees.py         lecture des CSV et Touchstone mesurés
-├── figures.py         les figures 2 et 3 du rapport
-├── run.py             point d'entrée, tous modes
-│
-├── apercu.py          dessine une antenne et contrôle son dessin   ─┐
-├── export_gerber.py   écrit les Gerbers, le perçage et le ZIP       ├ fabrication
-├── verifie_gerber.py  les relit avec gerbonara, qui n'est pas de nous ┘
-├── export_dxf.py      l'ancien chemin, par KiCad (plus utilisé)
-│
-├── test_traitement.py les contrôles de la chaîne (à lancer en premier)
-├── BACKLOG.md         les options écartées, et ce qui les ferait revenir
-├── fabrication/       les deux commandes PCBWay, prêtes à déposer
-└── antennes/
-    ├── dipole_reference/     l'étalon du traitement
-    ├── diamant_uwb/          l'étalon du modèle électromagnétique
-    ├── diamant_uwb_x18/      le même, à l'échelle de notre bande
-    ├── vivaldi_tomographie/  l'antenne de travail
-    │   └── regle.py          balaie un paramètre et compare les |S11|
-    └── uwb_surveyor/         l'antenne du banc
-        └── mesures/<AAAA-MM-JJ>_<description>/
-```
-
-## État au 18/10/2026
-
-| | |
+| Fichier ou dossier | Fonction |
 |---|---|
-| `traitement.py` | **vérifié** — `test_traitement.py` passe ses 16 contrôles |
-| `modele.py` | **fonctionne** — modèle analytique, sans openEMS, instantané |
-| `fdtd.py` | **fonctionne** — openEMS 0.37.0, environnement `openems` |
-| **la chaîne de mesure** | **vérifiée** sur le dipôle : écart constant à 0,87 cm près, échelle juste à 1,2 % |
-| **le modèle électromagnétique** | **validé** sur le losange publié : 2,30–13,60 GHz simulés contre 2,5–13,5 publiés, 85 % de couverture |
-| le losange ×1,8 sur FR4 1,6 mm | **simulé** : −10 dB de 1,27 à 6,00 GHz, 87 % de couverture |
-| la Vivaldi | **réglée** sur 21 essais : 71,4 % de la bande sous −10 dB, 94,1 % sous −6 dB, `\|S11\|` moyen −10,6 dB |
-| **les fichiers PCBWay** | **écrits et relus par un tiers** — voir `fabrication/README.md` |
-| l'UWB Surveyor | géométrie relevée sur la photo de la fiche technique, pas encore simulée |
-| objectif (2) | **en attente des fichiers de mesure** |
+| `antennes/*/geometrie.py` | Contours, perçages et construction CSXCAD |
+| `connectique.py`, `materiaux.py` | Implantation SMA commune et matériau dispersif |
+| `banc.py`, `fdtd.py` | Paramètres, maillage, exécution, archives et coût |
+| `fdtd_maille_controlee.py`, `calcule_maille_controlee.py` | Moteur F2 séparé et lancement avec sources et contrôles archivés |
+| `orchestre_f2.py` | Deux files longues, préfixes et analyse globale différée, sans import du solveur |
+| `qualifie_pcbway.py` | Campagne S11, comparaison des maillages et des durées |
+| `qualification_adaptative.py` | Sélection explicite des comparaisons par antenne et conservation des essais préliminaires |
+| `resultats/pcbway_r1/` | Campagne historique F1, incluant l'échec spatial N34 |
+| `resultats/validation_maille_controle_v2/` | Pilote opérateur et rejeu F2, sans qualification de convergence |
+| `resultats/pcbway_maille_controlee_v2/` | Destination séparée de la campagne longue F2 |
+| `export_gerber.py`, `verifie_gerber.py`, `apercu.py` | Génération, relecture indépendante et contrôles géométriques |
+| `fabrication/` | Deux articles PCBWay et leurs notices |
+| `PROTOCOLE_MESURE_PCBWAY.md` | Acquisition et comparaison aux antennes fabriquées |
+| `traitement.py`, `donnees.py`, `run.py`, `figures.py` | Analyse des mesures et du montage avec plaque |
+| `modele.py` | Modèle analytique du montage avec plaque |
+| `references/` | Fiches techniques du stratifié et de la SMA |
+| `chatGPT_critical_review/` | Audit initial, réponse et décisions de reprise |
 
-## Neuf pièges, et ce qui les attrape maintenant
+## Environnements et contrôles
 
-Ils ont dominé la mise au point, et **aucun n'était de la physique**. Chacun a
-laissé derrière lui un contrôle automatique, parce qu'aucun ne s'était
-signalé : la simulation tournait, rendait une courbe, et la courbe était
-fausse.
+La machine utilise Python 3.13 dans l'environnement conda `openems`, avec openEMS 0.37.0 et CSXCAD 0.7.0. Le dessin, la fabrication et les traitements peuvent tourner sous Python 3.12 dans `ph`. Les dépendances sont consignées dans `requirements_fdtd.txt` et `requirements_fabrication.txt`. `fdtd.py` recherche les bibliothèques dans `../outils/openEMS` si aucun chemin n'est fourni.
 
-| Origine | Effet | Ce qui l'attrape désormais |
-|---|---|---|
-| lignes de l'antenne et de l'air à 7 µm l'une de l'autre | pas de temps ÷ 1400 | `_fusionne()` |
-| épaisseur de cuivre de 35 µm | cellules de 35 µm | cuivre en feuille d'épaisseur nulle |
-| face arrière de plaque entre deux lignes | pas de temps ÷ 4 | épaisseur égale au pas de la grille |
-| `SmoothMeshLines` finissant sa progression à 0,28 mm d'une ligne imposée | pas de temps ÷ 4 | `_nettoie_apres_lissage()` |
-| grille régulière d'antenne tombant près des lignes fines | 96 min au lieu de 2 | ne donner que les lignes imposées |
-| **domaine dimensionné sur la seule distance de plaque** | la PML absorbait le dernier tiers d'une antenne posée de chant | `construit()` déduit l'étendue en z des lignes de l'antenne |
-| **polygone de normale y donné en (x, z) au lieu de (z, x)** | antenne simulée transposée, trois fois, sans aucun signe | `fdtd.verifie_emprise()` |
-| ligne d'échantillonnage à 0,32 mm d'un bord de matière | pas de temps ÷ 2,4 | la géométrie écarte ses échantillons des bords |
-| deux essais de réglage écrits dans le même fichier | le second effaçait le premier en silence | `regle.py` nomme par la configuration entière |
-
-Les deux derniers sont les plus instructifs : ils ne ralentissaient pas la
-simulation, ils ne la faisaient pas échouer. Ils rendaient simplement un
-mauvais `|S11|`, qu'on pouvait prendre pour un défaut de conception — et deux
-« corrections » de la Vivaldi ont été décidées sur ce bruit-là avant qu'on ne
-remonte à la cause. D'où la règle qui s'en déduit : **avant de corriger une
-conception, vérifier qu'on a bien simulé celle qu'on croit.**
-
-## Installation
-
-openEMS **est installé** sur cette machine :
-
-| | |
-|---|---|
-| Paquet | `openEMS_x64_v0.37.0_msvc`, décompressé dans `..\outils\openEMS\` |
-| Environnement | conda **`openems`**, Python 3.13 |
-| Modules | `openEMS 0.37.0`, `CSXCAD 0.7.0` |
-| Contrôle des Gerbers | `gerbonara`, dans l'environnement `ph` |
-
-L'environnement `ph` est resté intact : les wheels Windows d'openEMS n'existent
-que pour Python 3.13 et 3.14, et `ph` est en 3.12. **Les simulations se lancent
-donc avec `conda activate openems`** ; le reste — contrôles, modèle analytique,
-traitement des mesures, dessin et export de fabrication — tourne dans `ph`.
-
-Pour refaire l'installation ailleurs :
+Depuis `simulation/` :
 
 ```powershell
-conda create -n openems python=3.13 numpy matplotlib h5py -y
-conda activate openems
-# ZIP officiel : https://github.com/thliebig/openEMS-Project/releases
-python -m pip install --no-index --find-links <dossier>\openEMS\python openEMS
-setx CSXCAD_INSTALL_PATH <dossier>\openEMS
+# Environnement ph
+python -B test_traitement.py
+python -B -m unittest test_donnees test_run -v
+python -B -m pytest -q -p no:cacheprovider test_fabrication.py
+python -B apercu.py --toutes
+python -B export_gerber.py --tout
+python -B verifie_gerber.py fabrication/panneau_losanges/panneau_losanges_pcbway.zip fabrication/vivaldi_tomographie/vivaldi_tomographie_pcbway.zip
+
+# Environnement openems
+python -B -m unittest discover -s tests -v
+# Estimation F2 uniquement ; la campagne réelle est déjà orchestrée séparément.
+python -B calcule_maille_controlee.py --antenne diamant_uwb --niveau base --duree-ns 12 --fils 10 --cout
 ```
 
-`CSXCAD_INSTALL_PATH` doit désigner le dossier qui contient `CSXCAD.dll`.
-`fdtd.py` le pose tout seul sur `..\outils\openEMS` s'il n'est pas défini.
+Chaque calcul exige un dossier neuf. Il conserve les sources, XML, grilles, matériaux, sondes temporelles, versions et empreintes SHA-256. Le pas temporel est déterminé par le véritable opérateur openEMS, puis contrôlé sur les sondes. Les paramètres de maillage fixent la résolution dans l'air et le substrat ; les interfaces restent exactes et la graduation finale est bornée à 1,5. Voir [la note technique du moteur](chatGPT_critical_review/note_moteur_fdtd_reprise_2026-10-18.md).
 
-## Utilisation
+## Qualification et références S11
+
+La campagne couvre 1,000 à 6,300 GHz par pas de 25 MHz, soit 213 points. Elle compare un maillage de base à un maillage fin, puis deux fenêtres de durée sur le même maillage fin. Le préfixe de sondes d'un calcul de 12 ns peut fournir exactement les échantillons d'une fenêtre de 8 ns : cette dérivation est identifiée et conserve sa provenance. Elle ne constitue pas une seconde exécution du solveur.
+
+Les critères sont fixés avant lecture des résultats : écarts complexes maximal/RMS de 0,05/0,02 pour le raffinement spatial et 0,015/0,005 pour le prolongement temporel ; le percentile 95 des écarts de module doit rester sous 1 dB et 0,5 dB respectivement, lorsque les deux modules dépassent −20 dB. Le module doit rester passif à la tolérance numérique près. Une convergence échouée appelle un calcul supplémentaire ; elle ne devient pas une qualification par modification des seuils.
+
+`qualification_adaptative.py` permet de sélectionner explicitement les calculs retenus pour chaque antenne dans `selection_qualification.json` à la racine de sa campagne. La paire spatiale conserve la même durée ; la paire temporelle conserve le même maillage et le même pas, avec un prolongement d’au moins 4 ns. Le calcul fin spatial doit appartenir à la paire temporelle, dont le dernier calcul fournit la référence. Les paires restent ainsi reliées. La référence ne peut être plus courte qu’un calcul préliminaire ; une adaptation restant à la durée initiale de 12 ns doit affiner réellement le niveau fin. Les essais préliminaires, leurs motifs, leurs écarts recalculés et leurs éventuels échecs sont conservés avec toutes les preuves. Aucun seuil n’est assoupli.
+
+La campagne reste en cours : une durée prolongée ne devient une référence de livraison qu’après réussite des comparaisons retenues. Un brouillon peut être préparé **hors du dossier de résultats** puis validé structurellement, sans lancer de FDTD :
 
 ```powershell
-python test_traitement.py                          # d'abord, toujours
-
-python run.py --mode analytique                    # le principe, instantané
-python run.py --mode analytique --derive -0.25 --cote-plaque 30 --bruit -70
-python run.py --mode mesures --donnees antennes\uwb_surveyor\mesures\2026-10-09_plaque_50-70cm
-
-python apercu.py --toutes                          # le dessin, avant la machine
-python apercu.py --panneau losanges
-
-conda activate openems
-cd antennes\dipole_reference && python verifier.py # vérifier le programme
-cd ..\.. && python run.py --mode fdtd-antenne --antenne diamant_uwb --fmax 14
-python run.py --mode fdtd --antenne uwb_surveyor --distances 50 60 70
-cd antennes\vivaldi_tomographie
-python regle.py --parametre MARGE_OUVERTURE --valeurs 1.0 1.3
-
-conda activate ph                                  # fabrication
-python export_gerber.py --tout
-python verifie_gerber.py fabrication\panneau_losanges\panneau_losanges_pcbway.zip
+python -B -X utf8 qualification_adaptative.py --creer-selection brouillons/selection_20ns.json --adapter vivaldi_tomographie --duree-ns 20 --depuis-ns 16 --motif "Sensibilité temporelle à évaluer avec une fenêtre prolongée"
+python -B -X utf8 qualification_adaptative.py --valider-selection brouillons/selection_20ns.json
 ```
 
-Tous les modes de `run.py` écrivent les trois mêmes figures — profils, phase,
-écarts — et impriment le tableau du rapport, pour que modèle, simulation et
-mesure se comparent ligne à ligne.
+Ces durées illustrent une préparation, sans présumer de sa réussite. `--selection-source <ancien_brouillon.json>` conserve aussi les comparaisons d’une sélection précédente. La création exige un fichier neuf ; la validation porte uniquement sur la structure, les profils et le chaînage des paires. La sélection définitive sera figée après les calculs en cours, avec son instantané et son SHA-256.
 
-## Le traitement est celui du rapport, au chiffre près
+Les références livrées comprennent S11 complexe en Touchstone, CSV, impédance, phase, bandes disjointes sous −10/−6 dB, sondes et manifestes. Le plan idéal est le bord du PCB. La [procédure de mesure](PROTOCOLE_MESURE_PCBWAY.md) explique la comparaison au plan de connexion SMA réel.
 
-```
-R_k = S11_plaque(f_k) − S11_fond(f_k)
-P_m = 16 · |IFFT_3216(w_k R_k)_m|          niveau affiché : 20 log10 P_m
-d_m = c · m / (2 · 3216 · Δf)
-```
+L'outil [compare_s11.py](compare_s11_usage.md) superpose ensuite les S1P mesurés et la référence, conserve les originaux et quantifie les écarts ainsi que la dispersion des reconnexions. Il ne recale pas automatiquement la phase et ne transforme pas ces écarts en verdict physique.
 
-Bande 1–6 GHz, 201 points, Δf = 25 MHz, Hann symétrique, remplissage 16, gain
-cohérent **non** normalisé, 50 Ω. Pas d'axe 1,86 mm ; ce n'est pas la
-résolution, qui vaut c/2B ≈ 3 cm.
+## Montage avec plaque et traitements historiques
 
-`test_traitement.py` vérifie que la chaîne rend la distance qu'on y injecte à
-2 mm près, et le retard injecté à 10⁻³ ns près.
+`run.py` conserve les modes analytique, mesures, antenne seule et série FDTD avec plaque. Une série FDTD impose un maillage, un pas et une durée communs au fond et à toutes les positions. Les imports exigent des fréquences finies, croissantes et régulièrement espacées, des valeurs complexes finies et une référence de 50 Ω.
 
-## Ce que le modèle analytique montre déjà
+Le modèle analytique est un générateur d'échos à amplitudes heuristiques : il peut dépasser |S11| = 1 et ne prédit pas un coefficient de réflexion passif normalisé. Il sert à contrôler les retards et les hypothèses de traitement, séparément des calculs électromagnétiques de production.
 
-1. **Un retard d'antenne produit un décalage rigoureusement constant.** Avec
-   τ₁ = 0,667 ns, l'écart vaut 19,91 cm aux trois distances — la valeur mesurée
-   le 9 octobre à 50 cm.
-2. **Les deux branches de pics peuvent venir d'une seule antenne.** Traversée
-   deux fois, elle produit trois échos à c·τ₁, c·(τ₁+τ₂)/2 et c·τ₂. Avec
-   τ₂−τ₁ = 0,42 ns, les deux premiers tombent à 20,0 et 26,3 cm ; le troisième
-   reste 30 dB plus bas. **Deux branches n'impliquent pas deux surfaces.**
-3. **La dispersion seule n'explique pas la dérive de l'écart.** Elle élargit
-   l'écho (5,8 → 8,2 cm à mi-hauteur) mais laisse le décalage constant. La
-   dérive n'apparaît qu'avec une pondération qui change avec la distance :
-   troncature de Fresnel d'une plaque trop petite, ou échos parasites.
+Le profil de distance utilise la différence complexe plaque/fond, une fenêtre de Hann et un remplissage de zéros. Le maximum principal est distingué des candidats secondaires ; un lobe secondaire de la fenêtre ne prouve pas la présence d'une seconde surface. Le mode historique de sélection des pics reste accessible explicitement avec `--mode-pics rapport` pour reproduire un ancien rapport. Les comparaisons aux valeurs du 9 octobre sont elles aussi explicites avec `--reference-9-oct`.
 
-## L'ordre de marche
-
-1. `test_traitement.py` — la chaîne de traitement.
-2. `antennes/dipole_reference/verifier.py` — **le traitement de bout en bout**,
-   sur une antenne dont le retard est nul par construction. Si une plaque posée
-   à 30 cm n'est pas lue à 30 cm, inutile d'aller plus loin.
-3. `run.py --mode fdtd-antenne --antenne diamant_uwb --fmax 14` — **le modèle
-   électromagnétique**, sur une conception publiée : notre |S11| doit retrouver
-   la bande 2,5–13,5 GHz de l'article.
-4. `apercu.py` avant toute simulation d'une antenne dessinée ici — une
-   simulation coûte des minutes, un dessin une seconde.
-5. `run.py --mode fdtd-antenne --antenne uwb_surveyor` — l'antenne du banc
-   seule, à comparer à la courbe de ROS de sa fiche technique.
-6. `run.py --mode fdtd` — avec la plaque, puis confrontation aux mesures.
-
-**Une série se simule d'un bloc.** `fdtd.serie()` impose à toutes les
-simulations d'une campagne le même maillage et le même nombre de pas. Sans
-cela, chaque simulation s'arrête sur son propre critère d'énergie, et la
-différence `S11_plaque − S11_fond` n'est plus que l'écart entre deux
-troncatures. C'est la transposition de la règle de mesure : un fond ne vaut que
-pris dans la même configuration.
-
-## Les limites à garder en tête
-
-- **La géométrie de l'UWB Surveyor est approximative.** Reproduire 20 cm en
-  ajustant un retard ne prouverait rien : c'est leur origine physique qu'on
-  cherche.
-- **L'environnement n'est pas modélisé.** Les mesures ont été faites sur une
-  table, sans absorbant. Le modèle analytique accepte des échos fixes ; la FDTD
-  ne verra qu'un montage idéal.
-- **Le câble n'est pas simulé**, et c'est volontaire : la calibration SOL le
-  retire. Un tronçon resté en aval du plan de calibration est une hypothèse à
-  écarter côté mesure, pas côté simulation.
-- **Les deux campagnes ne donnent pas le même décalage** — 20,0 et 36,5 cm pour
-  la même antenne. Aucune simulation ne peut expliquer les deux à la fois : la
-  différence est en aval du plan de calibration, ou dans le traitement d'un de
-  ces jours-là.
-- **Les trous de fixation ne sont pas simulés.** Ceux de la Vivaldi traversent
-  le plan de masse à 60 mm du ruban : l'effet est nul à ces fréquences, mais
-  c'est une différence entre la carte simulée et la carte commandée.
+Les décalages historiques de 20,0 et 36,5 cm ne sont pas expliqués par la seule géométrie approximative de la Nooelec. Les fichiers bruts, la calibration, les plans de référence et le traitement doivent être confrontés. Cette enquête reste distincte de la qualification S11 des trois cartes à fabriquer. Le dipôle et le losange publié apportent des contrôles partiels ; ils ne démontrent pas, à eux seuls, l'exactitude de toute la chaîne électromagnétique.

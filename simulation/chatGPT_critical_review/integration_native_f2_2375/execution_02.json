@@ -1,0 +1,12 @@
+{
+  "commande": [
+    "C:\\Users\\jfeld\\anaconda3\\envs\\openems\\python.exe",
+    "-B",
+    "-X",
+    "utf8",
+    "C:\\Jacques\\liteVNA\\MicroWaveTomography\\simulation\\chatGPT_critical_review\\integration_native_f2_2375\\verifie_integration.py"
+  ],
+  "code_sortie": 0,
+  "stdout_sha256": "c41b6de3f150ec65b0e1dd7e3dcca5c5afd77b2276f281b00a10e78187d33c6e",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

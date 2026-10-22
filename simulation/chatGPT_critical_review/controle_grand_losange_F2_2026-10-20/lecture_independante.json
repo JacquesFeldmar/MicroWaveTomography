@@ -1,0 +1,1636 @@
+{
+  "schema": "lecture_independante_grand_losange_F2_v1",
+  "utc": "2026-10-20T20:56:22.984346+00:00",
+  "script_sha256": "8cf971ee1b50a7d5f4cbf1949658f4ea8f226265c26425b1e7a90cee2c8a19ab",
+  "python": "3.13.16 | packaged by Anaconda, Inc. | (main, Oct  1 2026, 20:20:25) [MSC v.1942 64 bit (AMD64)]",
+  "numpy": "2.5.3",
+  "threads_analyse": 1,
+  "aucun_solveur": true,
+  "aucune_construction_maillage": true,
+  "aucune_selection_ecrite": true,
+  "gel_sha256": "ef5c2b51af7498b2337839e07ed8104432f44e411ae34e8feb6fafd8763aa581",
+  "sources18_avant": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316"
+  },
+  "sources18_apres": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316"
+  },
+  "cinq_manifestes_sha256": {
+    "base_8ns": "f2a8fc09fcd0dc8fe6ce45190c611721f300b0836b10f9f0de652f429c574b14",
+    "base_12ns": "fbeae545057cda6c6d69dbdf5f79974fd511428ce561822425612939aeb12e36",
+    "fin_8ns": "a656b51801b9a67cc7a82dc0646e4365a539029bea59997d9de05da94ab8d14e",
+    "fin_12ns": "345df085ce0df3535db7490dc91d40d98931f4ac1a0d195fed76f96bc8477b44",
+    "fin_16ns": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d"
+  },
+  "tous_fichiers_cinq_profils_avant": {
+    "base_8ns/extraction_calcport.npz": "3100c7bbf013e75db8379b9e212bf614c849c865f6b33a53c6df428ba94bdf0f",
+    "base_8ns/extraction_calcport.py": "ffcc4bb72984a1e9562d1f60d476a952bae2d5fe1721f403b1094634652844d5",
+    "base_8ns/extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "base_8ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "base_8ns/maillage.npz": "d91a7ddf69b9ab047a67d5bd24782e65bca9c9d64c7c40b51f7849dcc2fa3357",
+    "base_8ns/origine_entree_openems.xml": "1391e9986477495400aa4f27cbfe1e9dd44c69b5c0420f6d913859ab7d6fcc5f",
+    "base_8ns/origine_qualification_entree.json": "7315f5f54536e194b8885bbd1dfb8463cef270e61b69f1540bd091ac042cd3e9",
+    "base_8ns/origine_simulation_manifest.json": "fbeae545057cda6c6d69dbdf5f79974fd511428ce561822425612939aeb12e36",
+    "base_8ns/parametres_extraction.json": "966c2ec52add6af8e99f8ac66551897dda1a0d6ca2ee25595732d79825c8fc45",
+    "base_8ns/port_it_1": "42cbe945942dff50880a4986789ac64a281318ae5ffaac5930128028361d257d",
+    "base_8ns/port_ut_1": "80ff490cddbc0e001b292a48b9aa0de6737e8d7a61df210a667f78421ea08472",
+    "base_8ns/qualification_entree.json": "cbd8dbe5ad47c058964885174202c6e7a49415e922f29d126963e5cc662af04a",
+    "base_8ns/relecture_calcport.json": "87f17cb70a748678ccf62f84277268a38235a9e4be48fe16fecc12c8951817aa",
+    "base_8ns/s11.s1p": "a8ccf712d231b70fef1e8a21e590abccb15cb1402fb921b60df2aa0bb3808bba",
+    "base_8ns/s11_indicateurs.json": "19b94d1acb385c2f2ba28ce46474da037401c50fee635f38dac6bd747a360441",
+    "base_8ns/simulation_manifest.json": "f2a8fc09fcd0dc8fe6ce45190c611721f300b0836b10f9f0de652f429c574b14",
+    "base_8ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "base_8ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "base_8ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "base_8ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "base_8ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "base_8ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "base_8ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "base_8ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "base_8ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "base_8ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "base_12ns/_calibration_dt/calibration.json": "8593bf1a6143541565b5fcbdc9717dfa474839fa8deb707dd4fcbaccf21149bc",
+    "base_12ns/_calibration_dt/entree_calibration.xml": "4bec7f435a9bf460417b744599640dc198813dc79d54930b9b4757000b0bdc9a",
+    "base_12ns/_calibration_dt/et": "7247e7ea652a9dda956b0de7abdf9a3204b46fe669afb2c45c69e0bbaa7d9d6a",
+    "base_12ns/_calibration_dt/ht": "e75d4852cbc87ba504dcd5a44b84c127d7e2f91d1c061158627b2cd642ac34b7",
+    "base_12ns/_calibration_dt/openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "base_12ns/_calibration_dt/openEMS_stats.txt": "1150a69a3223f714a93f585f4315a1139da92816faf74b9ced0b63f46cd0404c",
+    "base_12ns/_calibration_dt/port_it_1": "7899a057d3c6920fb31c92b83ac49ae1b9152cc6fe59b6953b0d3026e9cce5e9",
+    "base_12ns/_calibration_dt/port_ut_1": "dd1f681bdd5bea5706d88a90dd0d27cebbba7223f22ebef2b58a350e2d5f5671",
+    "base_12ns/entree_openems.xml": "1391e9986477495400aa4f27cbfe1e9dd44c69b5c0420f6d913859ab7d6fcc5f",
+    "base_12ns/et": "aad9f7153b617c5f45e04a28fc80494a23ad082141c54d0f2cb27a22ee2fc438",
+    "base_12ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "base_12ns/ht": "c0236e9107627c19fd53757b348af1c6fb7c9904bc880f68fd315b91c11c0c17",
+    "base_12ns/maillage.npz": "d91a7ddf69b9ab047a67d5bd24782e65bca9c9d64c7c40b51f7849dcc2fa3357",
+    "base_12ns/openEMS_run_stats.txt": "4d44ad977652b0b128bc351846d692a8f01e49b30d84b5e47a143a6fd214bf6e",
+    "base_12ns/openEMS_stats.txt": "e5b9f9b214cfd16fc22774b046f6fe6199a296f6759fc55a902ee2a628a3a71c",
+    "base_12ns/port_it_1": "f1bea76ed3dbc5aba6f4f0a7b061f91933d938099357f8943a7f06ce1515167b",
+    "base_12ns/port_ut_1": "8040483948c8ea955475e411dba7d58ec3608e34a68f89df286a0c4ac4ddd92b",
+    "base_12ns/qualification_entree.json": "7315f5f54536e194b8885bbd1dfb8463cef270e61b69f1540bd091ac042cd3e9",
+    "base_12ns/s11.s1p": "e03f3df22330089e95e945418b762879c022a1ddf8c4f5d1b930d4f53644d998",
+    "base_12ns/s11_indicateurs.json": "c4566ec3c4ad7b5f6ab685c3b84a53a7e96132a58b4e6e4cdafd1fa36415110e",
+    "base_12ns/simulation_manifest.json": "fbeae545057cda6c6d69dbdf5f79974fd511428ce561822425612939aeb12e36",
+    "base_12ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "base_12ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "base_12ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "base_12ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "base_12ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "base_12ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "base_12ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "base_12ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "base_12ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "base_12ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_8ns/extraction_calcport.npz": "097cff370d1126e7612f20bc2520cfe03afbcbf911a73eb05fb340c99447a2ed",
+    "fin_8ns/extraction_calcport.py": "ffcc4bb72984a1e9562d1f60d476a952bae2d5fe1721f403b1094634652844d5",
+    "fin_8ns/extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fin_8ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_8ns/maillage.npz": "566a0c748d7f7227700f01e57408d73156860d7be1a1c09e388fe67ed5641ef5",
+    "fin_8ns/origine_entree_openems.xml": "7cc3bcfd984cf5db5334ff33cbad427dc8090ce503da5394113230cb4dd69a03",
+    "fin_8ns/origine_qualification_entree.json": "e265c68bad546c0d0708426c73483e0016afd45cdc24eb222d2c6fe6d74a6c02",
+    "fin_8ns/origine_simulation_manifest.json": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d",
+    "fin_8ns/parametres_extraction.json": "7cbdfd85cece4cfb68b14e446dd0d05fabe2f7db84118e4c33a0a26fd19b16b0",
+    "fin_8ns/port_it_1": "607c43c7f462f109f267e7a2e5bfe6e66513e712163ce8016fb351487a11461a",
+    "fin_8ns/port_ut_1": "b2b6905646a45b17c1be1066cf0748281714384d2b634d8ae7fc89cc40a1efd2",
+    "fin_8ns/qualification_entree.json": "a77c9a8931c6e80a76615e1fc8313ce1db9508054bdd32a5cfc025761ef2aa16",
+    "fin_8ns/relecture_calcport.json": "3fc1cd536a45c3d05b68d78cbf1cf85c3d63db8c618e2c0bf4ca045aeab90c05",
+    "fin_8ns/s11.s1p": "646e929025100d8ac1d4ef95ec9348c31cb7d5bdda1e770a549a61e859af15f5",
+    "fin_8ns/s11_indicateurs.json": "9d7d4a72d0bd111878c0d3bad544e0b79f0eea98f7cfbd099f604232c001592f",
+    "fin_8ns/simulation_manifest.json": "a656b51801b9a67cc7a82dc0646e4365a539029bea59997d9de05da94ab8d14e",
+    "fin_8ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_8ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_8ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_8ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_8ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_8ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_8ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_8ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_8ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "fin_8ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_12ns/extraction_calcport.npz": "b9bfdafc517502824099f496f3566abf37e144163581379555d45ce71da33b75",
+    "fin_12ns/extraction_calcport.py": "ffcc4bb72984a1e9562d1f60d476a952bae2d5fe1721f403b1094634652844d5",
+    "fin_12ns/extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fin_12ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_12ns/maillage.npz": "566a0c748d7f7227700f01e57408d73156860d7be1a1c09e388fe67ed5641ef5",
+    "fin_12ns/origine_entree_openems.xml": "7cc3bcfd984cf5db5334ff33cbad427dc8090ce503da5394113230cb4dd69a03",
+    "fin_12ns/origine_qualification_entree.json": "e265c68bad546c0d0708426c73483e0016afd45cdc24eb222d2c6fe6d74a6c02",
+    "fin_12ns/origine_simulation_manifest.json": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d",
+    "fin_12ns/parametres_extraction.json": "8d85662fc33e689b826d3ca95eb5fa2afddf304d8d50f8e3844842aad885e7dd",
+    "fin_12ns/port_it_1": "44a0a90bd21de56c20ffd1474bb31caa1538829ce99e1153667a808d0abb6ae8",
+    "fin_12ns/port_ut_1": "035edc9d672db100af4601580799390077d16612d421a563bfb086727f34c891",
+    "fin_12ns/qualification_entree.json": "111fab093db2a075da56ba7c26d1a83e4a6cc380e5b0cdf368465b0f2b413e4a",
+    "fin_12ns/relecture_calcport.json": "0d2d715578c250a5d28a9f4f40fc063e4aba86fb14aef6f37c9e1e6e1eca35cd",
+    "fin_12ns/s11.s1p": "ac414bc01a6bf5cf588ed44c156c5ac84d17cbf56810d73acf12900440defcea",
+    "fin_12ns/s11_indicateurs.json": "86e51f571520aa5ecfd9b901aaa866f588259265530b704aa0e0a60f764327c3",
+    "fin_12ns/simulation_manifest.json": "345df085ce0df3535db7490dc91d40d98931f4ac1a0d195fed76f96bc8477b44",
+    "fin_12ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_12ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_12ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_12ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_12ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_12ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_12ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_12ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_12ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "fin_12ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_16ns/_calibration_dt/calibration.json": "70d0c2faef061f9363f6c0cbc056d4a0912f4393eceb662e701b7681fe4d8dcb",
+    "fin_16ns/_calibration_dt/entree_calibration.xml": "cc83bdb45645478c011697862c99859af9f90cdd383e7938e9e0026762f3db11",
+    "fin_16ns/_calibration_dt/et": "4e70c4b53047a30a31d3ab47f8e7f073765dd76898cc0804115f269963281813",
+    "fin_16ns/_calibration_dt/ht": "19d21dab480af2599a094ed212847f370fa217ed46e8e63b6b744aee7b4037a8",
+    "fin_16ns/_calibration_dt/openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "fin_16ns/_calibration_dt/openEMS_stats.txt": "36be6b87beca7434e143c67268651f21ccd24b1333f91f2e0a532382819a8ef7",
+    "fin_16ns/_calibration_dt/port_it_1": "ad51e25ff44e1c1e7a2b1f8be9d2ebc6f71d0e79cd0bf5a4d9021a5c629ad672",
+    "fin_16ns/_calibration_dt/port_ut_1": "ee9b0eb93811bffa6293cadf6640f5e133feff7f23606663c3a30d93dd789aa7",
+    "fin_16ns/entree_openems.xml": "7cc3bcfd984cf5db5334ff33cbad427dc8090ce503da5394113230cb4dd69a03",
+    "fin_16ns/et": "d158054074ddf0bb8b8d1c0572dd932c2544938b79c5018a8ff89a65c3b32a45",
+    "fin_16ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_16ns/ht": "2e8c0ff79e438be9f6f1b6b256659235589d4fe6dff5524ae0f6bb88147d30e5",
+    "fin_16ns/maillage.npz": "566a0c748d7f7227700f01e57408d73156860d7be1a1c09e388fe67ed5641ef5",
+    "fin_16ns/openEMS_run_stats.txt": "bb673fb024fb8367e96ccef80e0b4398a0849af490bb3f52ab4e19d3ea24ffb6",
+    "fin_16ns/openEMS_stats.txt": "71b222f0cbfa90d23949b205c7461124055b57fd44fa4aed02be9539f7cad692",
+    "fin_16ns/port_it_1": "c48b9adde48314fa23c5ad5dd69465b4b13011316637d15f167e022ea7cb7a91",
+    "fin_16ns/port_ut_1": "04dad9c6be469f9a112b7b8d596456f81098b6b5f03ea8c0d069ba1c7f8752d6",
+    "fin_16ns/qualification_entree.json": "e265c68bad546c0d0708426c73483e0016afd45cdc24eb222d2c6fe6d74a6c02",
+    "fin_16ns/s11.s1p": "9314e9b3dfc4234c92d0e838d8d1075ea6e1230e39a2e889fd0056c20df437a5",
+    "fin_16ns/s11_indicateurs.json": "356ec5efe06481ae0e1f0308c2eddb740e3d5564f2ea2b2069b993796db19633",
+    "fin_16ns/simulation_manifest.json": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d",
+    "fin_16ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_16ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_16ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_16ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_16ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_16ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_16ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_16ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_16ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "fin_16ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3"
+  },
+  "tous_fichiers_cinq_profils_apres": {
+    "base_8ns/extraction_calcport.npz": "3100c7bbf013e75db8379b9e212bf614c849c865f6b33a53c6df428ba94bdf0f",
+    "base_8ns/extraction_calcport.py": "ffcc4bb72984a1e9562d1f60d476a952bae2d5fe1721f403b1094634652844d5",
+    "base_8ns/extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "base_8ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "base_8ns/maillage.npz": "d91a7ddf69b9ab047a67d5bd24782e65bca9c9d64c7c40b51f7849dcc2fa3357",
+    "base_8ns/origine_entree_openems.xml": "1391e9986477495400aa4f27cbfe1e9dd44c69b5c0420f6d913859ab7d6fcc5f",
+    "base_8ns/origine_qualification_entree.json": "7315f5f54536e194b8885bbd1dfb8463cef270e61b69f1540bd091ac042cd3e9",
+    "base_8ns/origine_simulation_manifest.json": "fbeae545057cda6c6d69dbdf5f79974fd511428ce561822425612939aeb12e36",
+    "base_8ns/parametres_extraction.json": "966c2ec52add6af8e99f8ac66551897dda1a0d6ca2ee25595732d79825c8fc45",
+    "base_8ns/port_it_1": "42cbe945942dff50880a4986789ac64a281318ae5ffaac5930128028361d257d",
+    "base_8ns/port_ut_1": "80ff490cddbc0e001b292a48b9aa0de6737e8d7a61df210a667f78421ea08472",
+    "base_8ns/qualification_entree.json": "cbd8dbe5ad47c058964885174202c6e7a49415e922f29d126963e5cc662af04a",
+    "base_8ns/relecture_calcport.json": "87f17cb70a748678ccf62f84277268a38235a9e4be48fe16fecc12c8951817aa",
+    "base_8ns/s11.s1p": "a8ccf712d231b70fef1e8a21e590abccb15cb1402fb921b60df2aa0bb3808bba",
+    "base_8ns/s11_indicateurs.json": "19b94d1acb385c2f2ba28ce46474da037401c50fee635f38dac6bd747a360441",
+    "base_8ns/simulation_manifest.json": "f2a8fc09fcd0dc8fe6ce45190c611721f300b0836b10f9f0de652f429c574b14",
+    "base_8ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "base_8ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "base_8ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "base_8ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "base_8ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "base_8ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "base_8ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "base_8ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "base_8ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "base_8ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "base_12ns/_calibration_dt/calibration.json": "8593bf1a6143541565b5fcbdc9717dfa474839fa8deb707dd4fcbaccf21149bc",
+    "base_12ns/_calibration_dt/entree_calibration.xml": "4bec7f435a9bf460417b744599640dc198813dc79d54930b9b4757000b0bdc9a",
+    "base_12ns/_calibration_dt/et": "7247e7ea652a9dda956b0de7abdf9a3204b46fe669afb2c45c69e0bbaa7d9d6a",
+    "base_12ns/_calibration_dt/ht": "e75d4852cbc87ba504dcd5a44b84c127d7e2f91d1c061158627b2cd642ac34b7",
+    "base_12ns/_calibration_dt/openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "base_12ns/_calibration_dt/openEMS_stats.txt": "1150a69a3223f714a93f585f4315a1139da92816faf74b9ced0b63f46cd0404c",
+    "base_12ns/_calibration_dt/port_it_1": "7899a057d3c6920fb31c92b83ac49ae1b9152cc6fe59b6953b0d3026e9cce5e9",
+    "base_12ns/_calibration_dt/port_ut_1": "dd1f681bdd5bea5706d88a90dd0d27cebbba7223f22ebef2b58a350e2d5f5671",
+    "base_12ns/entree_openems.xml": "1391e9986477495400aa4f27cbfe1e9dd44c69b5c0420f6d913859ab7d6fcc5f",
+    "base_12ns/et": "aad9f7153b617c5f45e04a28fc80494a23ad082141c54d0f2cb27a22ee2fc438",
+    "base_12ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "base_12ns/ht": "c0236e9107627c19fd53757b348af1c6fb7c9904bc880f68fd315b91c11c0c17",
+    "base_12ns/maillage.npz": "d91a7ddf69b9ab047a67d5bd24782e65bca9c9d64c7c40b51f7849dcc2fa3357",
+    "base_12ns/openEMS_run_stats.txt": "4d44ad977652b0b128bc351846d692a8f01e49b30d84b5e47a143a6fd214bf6e",
+    "base_12ns/openEMS_stats.txt": "e5b9f9b214cfd16fc22774b046f6fe6199a296f6759fc55a902ee2a628a3a71c",
+    "base_12ns/port_it_1": "f1bea76ed3dbc5aba6f4f0a7b061f91933d938099357f8943a7f06ce1515167b",
+    "base_12ns/port_ut_1": "8040483948c8ea955475e411dba7d58ec3608e34a68f89df286a0c4ac4ddd92b",
+    "base_12ns/qualification_entree.json": "7315f5f54536e194b8885bbd1dfb8463cef270e61b69f1540bd091ac042cd3e9",
+    "base_12ns/s11.s1p": "e03f3df22330089e95e945418b762879c022a1ddf8c4f5d1b930d4f53644d998",
+    "base_12ns/s11_indicateurs.json": "c4566ec3c4ad7b5f6ab685c3b84a53a7e96132a58b4e6e4cdafd1fa36415110e",
+    "base_12ns/simulation_manifest.json": "fbeae545057cda6c6d69dbdf5f79974fd511428ce561822425612939aeb12e36",
+    "base_12ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "base_12ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "base_12ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "base_12ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "base_12ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "base_12ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "base_12ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "base_12ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "base_12ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "base_12ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_8ns/extraction_calcport.npz": "097cff370d1126e7612f20bc2520cfe03afbcbf911a73eb05fb340c99447a2ed",
+    "fin_8ns/extraction_calcport.py": "ffcc4bb72984a1e9562d1f60d476a952bae2d5fe1721f403b1094634652844d5",
+    "fin_8ns/extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fin_8ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_8ns/maillage.npz": "566a0c748d7f7227700f01e57408d73156860d7be1a1c09e388fe67ed5641ef5",
+    "fin_8ns/origine_entree_openems.xml": "7cc3bcfd984cf5db5334ff33cbad427dc8090ce503da5394113230cb4dd69a03",
+    "fin_8ns/origine_qualification_entree.json": "e265c68bad546c0d0708426c73483e0016afd45cdc24eb222d2c6fe6d74a6c02",
+    "fin_8ns/origine_simulation_manifest.json": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d",
+    "fin_8ns/parametres_extraction.json": "7cbdfd85cece4cfb68b14e446dd0d05fabe2f7db84118e4c33a0a26fd19b16b0",
+    "fin_8ns/port_it_1": "607c43c7f462f109f267e7a2e5bfe6e66513e712163ce8016fb351487a11461a",
+    "fin_8ns/port_ut_1": "b2b6905646a45b17c1be1066cf0748281714384d2b634d8ae7fc89cc40a1efd2",
+    "fin_8ns/qualification_entree.json": "a77c9a8931c6e80a76615e1fc8313ce1db9508054bdd32a5cfc025761ef2aa16",
+    "fin_8ns/relecture_calcport.json": "3fc1cd536a45c3d05b68d78cbf1cf85c3d63db8c618e2c0bf4ca045aeab90c05",
+    "fin_8ns/s11.s1p": "646e929025100d8ac1d4ef95ec9348c31cb7d5bdda1e770a549a61e859af15f5",
+    "fin_8ns/s11_indicateurs.json": "9d7d4a72d0bd111878c0d3bad544e0b79f0eea98f7cfbd099f604232c001592f",
+    "fin_8ns/simulation_manifest.json": "a656b51801b9a67cc7a82dc0646e4365a539029bea59997d9de05da94ab8d14e",
+    "fin_8ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_8ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_8ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_8ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_8ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_8ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_8ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_8ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_8ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "fin_8ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_12ns/extraction_calcport.npz": "b9bfdafc517502824099f496f3566abf37e144163581379555d45ce71da33b75",
+    "fin_12ns/extraction_calcport.py": "ffcc4bb72984a1e9562d1f60d476a952bae2d5fe1721f403b1094634652844d5",
+    "fin_12ns/extraction_journal.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fin_12ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_12ns/maillage.npz": "566a0c748d7f7227700f01e57408d73156860d7be1a1c09e388fe67ed5641ef5",
+    "fin_12ns/origine_entree_openems.xml": "7cc3bcfd984cf5db5334ff33cbad427dc8090ce503da5394113230cb4dd69a03",
+    "fin_12ns/origine_qualification_entree.json": "e265c68bad546c0d0708426c73483e0016afd45cdc24eb222d2c6fe6d74a6c02",
+    "fin_12ns/origine_simulation_manifest.json": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d",
+    "fin_12ns/parametres_extraction.json": "8d85662fc33e689b826d3ca95eb5fa2afddf304d8d50f8e3844842aad885e7dd",
+    "fin_12ns/port_it_1": "44a0a90bd21de56c20ffd1474bb31caa1538829ce99e1153667a808d0abb6ae8",
+    "fin_12ns/port_ut_1": "035edc9d672db100af4601580799390077d16612d421a563bfb086727f34c891",
+    "fin_12ns/qualification_entree.json": "111fab093db2a075da56ba7c26d1a83e4a6cc380e5b0cdf368465b0f2b413e4a",
+    "fin_12ns/relecture_calcport.json": "0d2d715578c250a5d28a9f4f40fc063e4aba86fb14aef6f37c9e1e6e1eca35cd",
+    "fin_12ns/s11.s1p": "ac414bc01a6bf5cf588ed44c156c5ac84d17cbf56810d73acf12900440defcea",
+    "fin_12ns/s11_indicateurs.json": "86e51f571520aa5ecfd9b901aaa866f588259265530b704aa0e0a60f764327c3",
+    "fin_12ns/simulation_manifest.json": "345df085ce0df3535db7490dc91d40d98931f4ac1a0d195fed76f96bc8477b44",
+    "fin_12ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_12ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_12ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_12ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_12ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_12ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_12ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_12ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_12ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "fin_12ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "fin_16ns/_calibration_dt/calibration.json": "70d0c2faef061f9363f6c0cbc056d4a0912f4393eceb662e701b7681fe4d8dcb",
+    "fin_16ns/_calibration_dt/entree_calibration.xml": "cc83bdb45645478c011697862c99859af9f90cdd383e7938e9e0026762f3db11",
+    "fin_16ns/_calibration_dt/et": "4e70c4b53047a30a31d3ab47f8e7f073765dd76898cc0804115f269963281813",
+    "fin_16ns/_calibration_dt/ht": "19d21dab480af2599a094ed212847f370fa217ed46e8e63b6b744aee7b4037a8",
+    "fin_16ns/_calibration_dt/openEMS_run_stats.txt": "7db34cab6c2779fc914896c7a7053862874272c8dffde2be2cf43315b4c6ead0",
+    "fin_16ns/_calibration_dt/openEMS_stats.txt": "36be6b87beca7434e143c67268651f21ccd24b1333f91f2e0a532382819a8ef7",
+    "fin_16ns/_calibration_dt/port_it_1": "ad51e25ff44e1c1e7a2b1f8be9d2ebc6f71d0e79cd0bf5a4d9021a5c629ad672",
+    "fin_16ns/_calibration_dt/port_ut_1": "ee9b0eb93811bffa6293cadf6640f5e133feff7f23606663c3a30d93dd789aa7",
+    "fin_16ns/entree_openems.xml": "7cc3bcfd984cf5db5334ff33cbad427dc8090ce503da5394113230cb4dd69a03",
+    "fin_16ns/et": "d158054074ddf0bb8b8d1c0572dd932c2544938b79c5018a8ff89a65c3b32a45",
+    "fin_16ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "fin_16ns/ht": "2e8c0ff79e438be9f6f1b6b256659235589d4fe6dff5524ae0f6bb88147d30e5",
+    "fin_16ns/maillage.npz": "566a0c748d7f7227700f01e57408d73156860d7be1a1c09e388fe67ed5641ef5",
+    "fin_16ns/openEMS_run_stats.txt": "bb673fb024fb8367e96ccef80e0b4398a0849af490bb3f52ab4e19d3ea24ffb6",
+    "fin_16ns/openEMS_stats.txt": "71b222f0cbfa90d23949b205c7461124055b57fd44fa4aed02be9539f7cad692",
+    "fin_16ns/port_it_1": "c48b9adde48314fa23c5ad5dd69465b4b13011316637d15f167e022ea7cb7a91",
+    "fin_16ns/port_ut_1": "04dad9c6be469f9a112b7b8d596456f81098b6b5f03ea8c0d069ba1c7f8752d6",
+    "fin_16ns/qualification_entree.json": "e265c68bad546c0d0708426c73483e0016afd45cdc24eb222d2c6fe6d74a6c02",
+    "fin_16ns/s11.s1p": "9314e9b3dfc4234c92d0e838d8d1075ea6e1230e39a2e889fd0056c20df437a5",
+    "fin_16ns/s11_indicateurs.json": "356ec5efe06481ae0e1f0308c2eddb740e3d5564f2ea2b2069b993796db19633",
+    "fin_16ns/simulation_manifest.json": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d",
+    "fin_16ns/sources/antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "fin_16ns/sources/antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "fin_16ns/sources/antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "fin_16ns/sources/antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "fin_16ns/sources/antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fin_16ns/sources/banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "fin_16ns/sources/connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fin_16ns/sources/fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "fin_16ns/sources/fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "fin_16ns/sources/materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3"
+  },
+  "cinq_profils_Q_valides": true,
+  "communs_physique_contrat_geometrie_env_frequences": true,
+  "diagnostics_profils": [
+    {
+      "profil": "base_8ns",
+      "manifeste_sha256": "f2a8fc09fcd0dc8fe6ce45190c611721f300b0836b10f9f0de652f429c574b14",
+      "maximum_module": 0.8295712185393789,
+      "passivite": true,
+      "minimum_S11_db": -39.788353663047616,
+      "frequence_minimum_hz": 2975000000.0,
+      "maillage": {
+        "axes": {
+          "x": {
+            "bornes_mm": [
+              -127.54116672222221,
+              127.54116672222221
+            ],
+            "lignes": 201,
+            "maximum_mm": 2.9741315277777858,
+            "minimum_mm": 0.11430000000000007,
+            "rapport_voisin_max": 1.500000000695827,
+            "sha256": "54d334e3d38629bf3a0ceb21c917a44227d38809a4abd1ad179b6ffd6af7bac5"
+          },
+          "y": {
+            "bornes_mm": [
+              -134.74116672222223,
+              134.74116672222223
+            ],
+            "lignes": 189,
+            "maximum_mm": 2.9741315277777858,
+            "minimum_mm": 0.11430000000000007,
+            "rapport_voisin_max": 1.5000000000001221,
+            "sha256": "e76d4e9788e3c3323aed1847b1d000eb752e20dcc1fe7d0b7a63aa62011d34bd"
+          },
+          "z": {
+            "bornes_mm": [
+              -98.74116672222223,
+              100.34116672222223
+            ],
+            "lignes": 100,
+            "maximum_mm": 2.9741315277777858,
+            "minimum_mm": 0.1333333333333333,
+            "rapport_voisin_max": 1.5000000006003942,
+            "sha256": "ff0fd0aa51d1cd18af31ee30cb51d10ebb674a4fb7f4a0b3672a7ed30f21f22c"
+          }
+        },
+        "cellules": 3722400,
+        "dt_cfl_vide_s": 2.305454647960933e-13
+      },
+      "dt_s": 1.8091917271563098e-13,
+      "FDTD_direct": false,
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8295712185393789,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2450000000.0,
+              3600000000.0
+            ],
+            [
+              4225000000.0,
+              4675000000.0
+            ],
+            [
+              4825000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.6854460093896714,
+          "points_sous_seuil": 146,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2450000000.0,
+                3600000000.0
+              ],
+              [
+                4225000000.0,
+                4675000000.0
+              ],
+              [
+                4825000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7243243243243244,
+            "points_sous_seuil": 134,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -12.092937118218188,
+          "pire_db": -8.129484148307121
+        }
+      }
+    },
+    {
+      "profil": "base_12ns",
+      "manifeste_sha256": "fbeae545057cda6c6d69dbdf5f79974fd511428ce561822425612939aeb12e36",
+      "maximum_module": 0.8293324964090504,
+      "passivite": true,
+      "minimum_S11_db": -39.859373215883906,
+      "frequence_minimum_hz": 2975000000.0,
+      "maillage": {
+        "axes": {
+          "x": {
+            "lignes": 201,
+            "minimum_mm": 0.11430000000000007,
+            "maximum_mm": 2.9741315277777858,
+            "rapport_voisin_max": 1.500000000695827,
+            "bornes_mm": [
+              -127.54116672222221,
+              127.54116672222221
+            ],
+            "sha256": "54d334e3d38629bf3a0ceb21c917a44227d38809a4abd1ad179b6ffd6af7bac5"
+          },
+          "y": {
+            "lignes": 189,
+            "minimum_mm": 0.11430000000000007,
+            "maximum_mm": 2.9741315277777858,
+            "rapport_voisin_max": 1.5000000000001221,
+            "bornes_mm": [
+              -134.74116672222223,
+              134.74116672222223
+            ],
+            "sha256": "e76d4e9788e3c3323aed1847b1d000eb752e20dcc1fe7d0b7a63aa62011d34bd"
+          },
+          "z": {
+            "lignes": 100,
+            "minimum_mm": 0.1333333333333333,
+            "maximum_mm": 2.9741315277777858,
+            "rapport_voisin_max": 1.5000000006003942,
+            "bornes_mm": [
+              -98.74116672222223,
+              100.34116672222223
+            ],
+            "sha256": "ff0fd0aa51d1cd18af31ee30cb51d10ebb674a4fb7f4a0b3672a7ed30f21f22c"
+          }
+        },
+        "cellules": 3722400,
+        "dt_cfl_vide_s": 2.305454647960933e-13
+      },
+      "dt_s": 1.8091917271563098e-13,
+      "FDTD_direct": true,
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8293324964090504,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2475000000.0,
+              3600000000.0
+            ],
+            [
+              4225000000.0,
+              4675000000.0
+            ],
+            [
+              4825000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.6807511737089202,
+          "points_sous_seuil": 145,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2475000000.0,
+                3600000000.0
+              ],
+              [
+                4225000000.0,
+                4675000000.0
+              ],
+              [
+                4825000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7189189189189189,
+            "points_sous_seuil": 133,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -12.092855490412063,
+          "pire_db": -8.08824203784795
+        }
+      }
+    },
+    {
+      "profil": "fin_8ns",
+      "manifeste_sha256": "a656b51801b9a67cc7a82dc0646e4365a539029bea59997d9de05da94ab8d14e",
+      "maximum_module": 0.8323282279563947,
+      "passivite": true,
+      "minimum_S11_db": -39.005309630222115,
+      "frequence_minimum_hz": 3100000000.0,
+      "maillage": {
+        "axes": {
+          "x": {
+            "bornes_mm": [
+              -127.54116672222221,
+              127.54116672222221
+            ],
+            "lignes": 295,
+            "maximum_mm": 2.9741315277777858,
+            "minimum_mm": 0.07620000000000005,
+            "rapport_voisin_max": 1.5000000000046203,
+            "sha256": "165796cce6ef473029a56ae8e27f954d20392b4184f45d19aa64659ddd08546b"
+          },
+          "y": {
+            "bornes_mm": [
+              -134.74116672222223,
+              134.74116672222223
+            ],
+            "lignes": 314,
+            "maximum_mm": 2.9741315277777858,
+            "minimum_mm": 0.07620000000000005,
+            "rapport_voisin_max": 1.5000000000000775,
+            "sha256": "054818c2475ecdae03064534e6d2767a04005262b9d7b66b1fafcd057b68979c"
+          },
+          "z": {
+            "bornes_mm": [
+              -98.74116672222223,
+              100.34116672222223
+            ],
+            "lignes": 110,
+            "maximum_mm": 2.974131527866774,
+            "minimum_mm": 0.0888888888888888,
+            "rapport_voisin_max": 1.5000000009995522,
+            "sha256": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a"
+          }
+        },
+        "cellules": 10030398,
+        "dt_cfl_vide_s": 1.5369697653072884e-13
+      },
+      "dt_s": 1.2061278609776263e-13,
+      "FDTD_direct": false,
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8323282279563947,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2575000000.0,
+              3750000000.0
+            ],
+            [
+              4275000000.0,
+              4775000000.0
+            ],
+            [
+              4950000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.676056338028169,
+          "points_sous_seuil": 144,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2575000000.0,
+                3750000000.0
+              ],
+              [
+                4275000000.0,
+                4775000000.0
+              ],
+              [
+                4950000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7135135135135136,
+            "points_sous_seuil": 132,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.959795195940826,
+          "pire_db": -7.947114966034041
+        }
+      }
+    },
+    {
+      "profil": "fin_12ns",
+      "manifeste_sha256": "345df085ce0df3535db7490dc91d40d98931f4ac1a0d195fed76f96bc8477b44",
+      "maximum_module": 0.8322132965959429,
+      "passivite": true,
+      "minimum_S11_db": -39.02156021741605,
+      "frequence_minimum_hz": 3100000000.0,
+      "maillage": {
+        "axes": {
+          "x": {
+            "bornes_mm": [
+              -127.54116672222221,
+              127.54116672222221
+            ],
+            "lignes": 295,
+            "maximum_mm": 2.9741315277777858,
+            "minimum_mm": 0.07620000000000005,
+            "rapport_voisin_max": 1.5000000000046203,
+            "sha256": "165796cce6ef473029a56ae8e27f954d20392b4184f45d19aa64659ddd08546b"
+          },
+          "y": {
+            "bornes_mm": [
+              -134.74116672222223,
+              134.74116672222223
+            ],
+            "lignes": 314,
+            "maximum_mm": 2.9741315277777858,
+            "minimum_mm": 0.07620000000000005,
+            "rapport_voisin_max": 1.5000000000000775,
+            "sha256": "054818c2475ecdae03064534e6d2767a04005262b9d7b66b1fafcd057b68979c"
+          },
+          "z": {
+            "bornes_mm": [
+              -98.74116672222223,
+              100.34116672222223
+            ],
+            "lignes": 110,
+            "maximum_mm": 2.974131527866774,
+            "minimum_mm": 0.0888888888888888,
+            "rapport_voisin_max": 1.5000000009995522,
+            "sha256": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a"
+          }
+        },
+        "cellules": 10030398,
+        "dt_cfl_vide_s": 1.5369697653072884e-13
+      },
+      "dt_s": 1.2061278609776263e-13,
+      "FDTD_direct": false,
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8322132965959429,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2575000000.0,
+              3750000000.0
+            ],
+            [
+              4275000000.0,
+              4775000000.0
+            ],
+            [
+              4950000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.676056338028169,
+          "points_sous_seuil": 144,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2575000000.0,
+                3750000000.0
+              ],
+              [
+                4275000000.0,
+                4775000000.0
+              ],
+              [
+                4950000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7135135135135136,
+            "points_sous_seuil": 132,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.959759265440297,
+          "pire_db": -7.914011166916891
+        }
+      }
+    },
+    {
+      "profil": "fin_16ns",
+      "manifeste_sha256": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d",
+      "maximum_module": 0.8322158955013979,
+      "passivite": true,
+      "minimum_S11_db": -39.02320072299938,
+      "frequence_minimum_hz": 3100000000.0,
+      "maillage": {
+        "axes": {
+          "x": {
+            "lignes": 295,
+            "minimum_mm": 0.07620000000000005,
+            "maximum_mm": 2.9741315277777858,
+            "rapport_voisin_max": 1.5000000000046203,
+            "bornes_mm": [
+              -127.54116672222221,
+              127.54116672222221
+            ],
+            "sha256": "165796cce6ef473029a56ae8e27f954d20392b4184f45d19aa64659ddd08546b"
+          },
+          "y": {
+            "lignes": 314,
+            "minimum_mm": 0.07620000000000005,
+            "maximum_mm": 2.9741315277777858,
+            "rapport_voisin_max": 1.5000000000000775,
+            "bornes_mm": [
+              -134.74116672222223,
+              134.74116672222223
+            ],
+            "sha256": "054818c2475ecdae03064534e6d2767a04005262b9d7b66b1fafcd057b68979c"
+          },
+          "z": {
+            "lignes": 110,
+            "minimum_mm": 0.0888888888888888,
+            "maximum_mm": 2.974131527866774,
+            "rapport_voisin_max": 1.5000000009995522,
+            "bornes_mm": [
+              -98.74116672222223,
+              100.34116672222223
+            ],
+            "sha256": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a"
+          }
+        },
+        "cellules": 10030398,
+        "dt_cfl_vide_s": 1.5369697653072884e-13
+      },
+      "dt_s": 1.2061278609776263e-13,
+      "FDTD_direct": true,
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8322158955013979,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2575000000.0,
+              3750000000.0
+            ],
+            [
+              4275000000.0,
+              4775000000.0
+            ],
+            [
+              4950000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.676056338028169,
+          "points_sous_seuil": 144,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2575000000.0,
+                3750000000.0
+              ],
+              [
+                4275000000.0,
+                4775000000.0
+              ],
+              [
+                4950000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7135135135135136,
+            "points_sous_seuil": 132,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.959758208077304,
+          "pire_db": -7.912902581207786
+        }
+      }
+    }
+  ],
+  "comparaisons_F2": {
+    "spatial": {
+      "profils": [
+        "base_12ns",
+        "fin_12ns"
+      ],
+      "numpy": {
+        "valeurs": {
+          "maximum_complexe": 0.412047225516328,
+          "rms_complexe": 0.11760840748496572,
+          "percentile95_db": 5.260925393014891,
+          "percentile95_phase_deg": 50.028936746494814
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          210,
+          211,
+          212
+        ],
+        "nombre_masque_db": 162,
+        "maximum_complexe_frequence_hz": 4850000000.0,
+        "points_ecart_complexe_principaux": [
+          {
+            "frequence_hz": 4850000000.0,
+            "delta_complexe": 0.412047225516328,
+            "module_a": 0.23877645154259364,
+            "module_b": 0.39423616529410743,
+            "delta_db": 4.355299359203064,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 76.90559245835158
+          },
+          {
+            "frequence_hz": 4825000000.0,
+            "delta_complexe": 0.4118724636959749,
+            "module_a": 0.2897857528403355,
+            "module_b": 0.3661931996227041,
+            "delta_db": 2.032664903680063,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 76.80825316660005
+          },
+          {
+            "frequence_hz": 4800000000.0,
+            "delta_complexe": 0.4004924055445449,
+            "module_a": 0.3377378133113612,
+            "module_b": 0.3247086814863843,
+            "delta_db": 0.34171574055546994,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 74.36597166082538
+          },
+          {
+            "frequence_hz": 4875000000.0,
+            "delta_complexe": 0.39993450225770794,
+            "module_a": 0.18885630980761223,
+            "module_b": 0.40206793707743294,
+            "delta_db": 6.5633588439504855,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 75.75179961505444
+          },
+          {
+            "frequence_hz": 4775000000.0,
+            "delta_complexe": 0.37862315506697314,
+            "module_a": 0.3754335182777557,
+            "module_b": 0.27664102569616966,
+            "delta_db": 2.652329143529837,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 69.0931353274789
+          },
+          {
+            "frequence_hz": 4900000000.0,
+            "delta_complexe": 0.37566594414413135,
+            "module_a": 0.14241158770590537,
+            "module_b": 0.38638666343449535,
+            "delta_db": 8.669535991109848,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 75.01762921327312
+          },
+          {
+            "frequence_hz": 4750000000.0,
+            "delta_complexe": 0.34687925545975407,
+            "module_a": 0.39408317920045094,
+            "module_b": 0.22683781939815362,
+            "delta_db": 4.797448687307231,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 61.08988298798894
+          },
+          {
+            "frequence_hz": 4925000000.0,
+            "delta_complexe": 0.3420857309216334,
+            "module_a": 0.10153900368396823,
+            "module_b": 0.34947247239210777,
+            "delta_db": 10.73560149494189,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 77.45222089732518
+          },
+          {
+            "frequence_hz": 4725000000.0,
+            "delta_complexe": 0.3073201871250121,
+            "module_a": 0.38760957548016245,
+            "module_b": 0.178233863163934,
+            "delta_db": 6.748085537899865,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 50.67407651320514
+          },
+          {
+            "frequence_hz": 4950000000.0,
+            "delta_complexe": 0.304154853209495,
+            "module_a": 0.06934411262018012,
+            "module_b": 0.29821827709753734,
+            "delta_db": 12.670493237061669,
+            "dans_masque_db": false,
+            "phase_ecart_deg": 88.29224566874863
+          }
+        ]
+      },
+      "Q": {
+        "valeurs": {
+          "maximum_complexe": 0.412047225516328,
+          "rms_complexe": 0.11760840748496572,
+          "percentile95_db": 5.260925393014891,
+          "percentile95_phase_deg": 50.028936746494814
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      },
+      "accord_exact": true
+    },
+    "temporel": {
+      "profils": [
+        "fin_12ns",
+        "fin_16ns"
+      ],
+      "numpy": {
+        "valeurs": {
+          "maximum_complexe": 5.470432920406153e-05,
+          "rms_complexe": 1.8539817565470815e-05,
+          "percentile95_db": 0.0012388022089423868,
+          "percentile95_phase_deg": 0.008208896380190026
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159,
+          160,
+          161,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185,
+          186,
+          187,
+          188,
+          189,
+          190,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          210,
+          211,
+          212
+        ],
+        "nombre_masque_db": 180,
+        "maximum_complexe_frequence_hz": 4900000000.0,
+        "points_ecart_complexe_principaux": [
+          {
+            "frequence_hz": 4900000000.0,
+            "delta_complexe": 5.470432920406153e-05,
+            "module_a": 0.38638666343449535,
+            "module_b": 0.3863955082268166,
+            "delta_db": 0.00019882676592217923,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.00800507015391221
+          },
+          {
+            "frequence_hz": 4925000000.0,
+            "delta_complexe": 5.47041187192962e-05,
+            "module_a": 0.34947247239210777,
+            "module_b": 0.3494177986043301,
+            "delta_db": 0.0013589843997211222,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.0002986423430670177
+          },
+          {
+            "frequence_hz": 4875000000.0,
+            "delta_complexe": 5.3570137666241895e-05,
+            "module_a": 0.40206793707743294,
+            "module_b": 0.40211925654303937,
+            "delta_db": 0.0011085857091056323,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.0021893631665074525
+          },
+          {
+            "frequence_hz": 4950000000.0,
+            "delta_complexe": 5.3556281057780626e-05,
+            "module_a": 0.29821827709753734,
+            "module_b": 0.2982236296534638,
+            "delta_db": 0.00015589685946937234,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.010237997136984095
+          },
+          {
+            "frequence_hz": 4850000000.0,
+            "delta_complexe": 5.142802442026147e-05,
+            "module_a": 0.39423616529410743,
+            "module_b": 0.39421487040023323,
+            "delta_db": 0.0004691860108423102,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.006803551494553378
+          },
+          {
+            "frequence_hz": 4975000000.0,
+            "delta_complexe": 5.137902080743726e-05,
+            "module_a": 0.240726185476063,
+            "module_b": 0.24077616368075022,
+            "delta_db": 0.0018031279495997967,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.0028357774357017323
+          },
+          {
+            "frequence_hz": 4825000000.0,
+            "delta_complexe": 4.846137113225434e-05,
+            "module_a": 0.3661931996227041,
+            "module_b": 0.3661526300457449,
+            "delta_db": 0.0009623400699932434,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.004147580176032171
+          },
+          {
+            "frequence_hz": 5000000000.0,
+            "delta_complexe": 4.8397154446378576e-05,
+            "module_a": 0.18322133642337773,
+            "module_b": 0.1832045029580321,
+            "delta_db": 0.0007980530115886754,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.014190123304561791
+          },
+          {
+            "frequence_hz": 5025000000.0,
+            "delta_complexe": 4.4907411874059566e-05,
+            "module_a": 0.12946232938465932,
+            "module_b": 0.1294216218696439,
+            "delta_db": 0.002731579026547547,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.008393470395755111
+          },
+          {
+            "frequence_hz": 4800000000.0,
+            "delta_complexe": 4.486687540438245e-05,
+            "module_a": 0.3247086814863843,
+            "module_b": 0.3247393033224302,
+            "delta_db": 0.0008190891182284693,
+            "dans_masque_db": true,
+            "phase_ecart_deg": 0.005786035422250794
+          }
+        ]
+      },
+      "Q": {
+        "valeurs": {
+          "maximum_complexe": 5.470432920406153e-05,
+          "rms_complexe": 1.8539817565470815e-05,
+          "percentile95_db": 0.0012388022089423868,
+          "percentile95_phase_deg": 0.008208896380190026
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      },
+      "accord_exact": true
+    }
+  },
+  "temps_axes_NPZ_et_dt_octets_identiques": true,
+  "reference": "fin_16ns",
+  "reference_passive": true,
+  "reference_maximum_module": 0.8322158955013979,
+  "convergence_F2_grand_acquise": false,
+  "qualification_globale_effectuee": false,
+  "conclusion": "Cinq profils integres ; echec spatialF2, controle temporel reussi. Antenne non qualifiee.",
+  "limites": [
+    "Les valeurs seules ne prouvent pas la cause scientifique du desaccord spatial.",
+    "Aucun profil Vivaldi, moteur, catalogue ou seuil modifie ; aucun calcul temporel lance."
+  ]
+}

@@ -1,0 +1,54 @@
+QA native d'integration Q/W/AP et moteur F2 ancre 237510
+
+Resultat de reference : execution_02.json, code0, rapport_integration.json.
+Six appels Q.calcule(cout=True) deleguent au vrai moteur F2 autonome dans
+une copie TEMP : trois antennes, niveaux base et fin, duree12ns.
+Chaque appel construit reellement la grille native, sans Run ni calibration.
+Les axes SHA et la politique complete sont compares a la preuve native FDTD
+566c1a6f, sauvegardee ici avant toute evolution du moteur.
+
+Catalogue effectivement transmis :
+  base : mailles_par_lambda16 ; air16 ; maille_min0.15mm.
+  fin  : mailles_par_lambda24 ; air16 ; maille_min0.10mm.
+Controles : sources9F1+F2 exactes10, registre connu, configuration du
+Montage et politique identiques, U au primaire x0, I au dual h/2,
+11/17 cellules normales, 4/6 cellules par diametre des deux vias.
+
+Les marqueurs prepare/termine et le tag de qualification sont controles
+dans six fixtures TEMP explicites. Q.calcule appelle un lance intercepte,
+avec vraie fonction F2._sauve_manifeste et donnees synthetiques.
+Ces fixtures ne sont jamais relues comme profils physiques complets,
+ni conservees comme resultats de simulation ; aucun S11F2 reel n'existe ici.
+
+Les25 vrais profils F1 sont extraits exclusivement depuis l'archive fermee
+campagne_F1_cloture_2026-10-19.zip SHAa2d63d75... dans TEMP, puis controles
+par Q.charge_calcul(exiger_courant=True) et Q.valide_campagne.
+N34 est enregistre uniquement en memoire via PLUS.enregistre(Q), avec
+34/22/(1/14) exact ; R533 et tous les originaux restent inchanges.
+Cette relecture confirme leur compatibilite avec les nouveaux lecteurs ;
+elle ne transforme aucun echec spatial F1 en qualification reussie.
+
+Premier essai code1 : la fixture comparait directement un asdict contenant
+des tuples aux listes relues depuis JSON. Un premier cout natif avait passe.
+La comparaison est corrigee en JSON canonique sans changer les valeurs,
+les criteres, les sources Q/W/AP ou F2. Le script et tous les journaux de
+cet essai sont conserves sous historique_01/ et execution.*.
+Le second essai complet est reussi, avec six couts et25 profils relus.
+
+Les17 sources originales sont verifiees identiques avant/apres cette QA,
+de meme que les trois propositions Q/W/AP. La source F2 utilisee est la
+copie byte exacte237510 ; elle n'est pas declaree finale : une garde plus
+stricte avant CalcPort est en preparation separee par l'agent FDTD.
+
+Etapes de validation restantes pertinentes : verifier le delta final de
+cette garde sur sondes/statistiques ; puis pilote natif F2 reel, suivi de
+Q.charge_calcul+valide_campagne et d'un prefixe W dont grille, materiaux,
+S11parent et sources sont effectivement relus. La convergence RF des trois
+antennes necessite la nouvelle campagne F2 ; aucun verdict RF n'est ajoute.
+
+Reproduction : environnement openems local, python -B -Xutf8
+verifie_integration.py, sur une copie NEUVE de ce dossier sans rapport
+preexistant. Le script impose OMP/BLAS1 et n'applique aucun correctif root.
+Le SHA d'archive F1 et les sources originales attendues sont strictement
+ancres : une promotion ulterieure des controleurs exige de conserver ce
+staging historique ou de documenter une nouvelle QA distincte.

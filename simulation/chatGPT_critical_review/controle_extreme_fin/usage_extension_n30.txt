@@ -1,0 +1,28 @@
+CONTROLE INDEPENDANT N30 — aucun FDTD, aucune qualification officielle
+
+Le coordinateur doit d'abord constater la sortie 0 de la queue session 14137,
+y compris la derivation du prefixe n30_8ns. Le drapeau de confirmation est une
+attestation du coordinateur ; il ne surveille pas les processus a sa place.
+
+Depuis C:\Jacques\liteVNA\MicroWaveTomography, avec Python openems :
+
+  python -B -X utf8 simulation/chatGPT_critical_review/controle_extreme_fin/analyse_extreme_fin.py --n30 --queue-sortie-zero-confirmee --sortie controle_final_n30
+
+Le dossier controle_final_n30 doit etre neuf. Il est cree sous le repertoire
+de cet analyseur et contient rapport, provenance, journal et source exacte.
+Sans --sortie, l'analyseur n'ecrit aucun fichier.
+
+Modes conserves : defaut = 9 profils jusque extreme_fin ;
+--verification-precedente = 7 profils jusque ultra_fin ; --n30 = 11 profils.
+Les drapeaux --n30 et --verification-precedente sont incompatibles.
+En mode n30 : spatial extreme_fin_12ns/n30_12ns, temporel n30_8ns/n30_12ns,
+reference n30_12ns. Seuils et fonctions numeriques inchanges.
+
+Codes : 0 criteres respectes ; 2 criteres non respectes ; 3 preconditions
+manquantes (aucun Q.charge_calcul) ; 1 erreur d'integrite/configuration.
+Les manifestes encore actifs sont lus avec FILE_SHARE_READ|WRITE|DELETE.
+
+Ancienne version 80aa preservee avec son contrat dans extension_n30_avant.
+Preuve de conservation : preuve_extension_n30.json. Les 250 fichiers des neuf
+profils termines conservent leurs SHA ; les metriques du rapport 80aa sont
+strictement retrouvees. Aucune source physique ni aucun controleur modifie.

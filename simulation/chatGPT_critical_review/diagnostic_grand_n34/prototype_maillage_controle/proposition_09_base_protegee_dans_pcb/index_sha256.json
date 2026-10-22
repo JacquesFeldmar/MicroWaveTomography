@@ -1,0 +1,14 @@
+{
+  "usage": "echec construction Vfin, aucunRun",
+  "fichiers_sha256": {
+    "conserve_echec09_exact.py": "88bd5740880e97213e7a9372b851aff91e126fc5ed642539992b5147c3707c6b",
+    "construit_prototype_exact.py": "b8ee006ea91ab65251089f098022a6bc1ecf03c3a088547bf5132daa319ce5ff",
+    "diamant_uwb_base_GRILLE_SEULE.npz": "4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439",
+    "diamant_uwb_fin_GRILLE_SEULE.npz": "02bf7f395a1b03bf6d85ff651c8a5f9b873aa49fbcf3f511217d31196453a4ce",
+    "diamant_uwb_x18_base_GRILLE_SEULE.npz": "d91a7ddf69b9ab047a67d5bd24782e65bca9c9d64c7c40b51f7849dcc2fa3357",
+    "diamant_uwb_x18_fin_GRILLE_SEULE.npz": "3993ac3c6b50709d23fa3a986194e24d8f4a9bb92a8cc9bc800e80c7723eb544",
+    "NOTE_ECHEC_VIVALDI.txt": "52feda24023d5737c67e33a7fee0e7f1a14d65a51deab1a8444f1bb6a5c3c816",
+    "rapport_partiel_et_echec.json": "f97b495753c80d56152c111c33928a73fddf40a6518211c785a887aac80b7815",
+    "vivaldi_tomographie_base_GRILLE_SEULE.npz": "0f389011526db23a6586f8461737d05f1b95de3cb26aa26f7b04f1fa48601c29"
+  }
+}

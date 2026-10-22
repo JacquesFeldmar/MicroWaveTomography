@@ -2,10 +2,9 @@ Fabrication chez PCBWay -- diamant_uwb_x18
 
 monopole planaire en losange, conception publiee, losange a l'echelle 1.8 sur FR4 de 1.6 mm
 
-Carte : 57.60 x 72.00 mm, FR4, 2 couches, cuivre 35 um (1 oz),
-finition ENIG de preference a l'etamage : le HASL laisse un relief de
-plusieurs dizaines de micrometres sur les bords rayonnants, qui sont
-justement ce que la simulation suppose nets.
+Carte : 57.60 x 72.00 mm. Ces DXF servent a l'inspection et a
+l'edition. Les ZIP produits par export_gerber.py sont les fichiers a fournir
+a PCBWay; leur notice porte le contrat de matiere et de finition.
 
 Dans KiCad
 ----------
@@ -18,8 +17,9 @@ Dans KiCad
 3. Les polylignes importees sont des CONTOURS. Les convertir en zones
    pleines : selectionner le contour, clic droit > Creer a partir de la
    selection > Zone. Sans cela, seul le trait serait grave.
-4. Poser l'empreinte du connecteur SMA bord de carte a l'endroit indique
-   par la fiche de l'antenne, pin central sur F.Cu, masse sur B.Cu.
+4. L'empreinte SMA fait deja partie des cuivres quand elle est active dans
+   geometrie.py; ne pas ajouter une seconde empreinte. Les percages/vias
+   sont dans les Excellon du ZIP Gerber, pas dans ces DXF de contours.
 5. Fichier > Fabrication > Gerbers, plus le fichier de percage.
 
 Controle avant commande

@@ -1,0 +1,140 @@
+LECTURE DES DEUX OPÉRATEURS PETIT F2 CLOS — 22 OCTOBRE 2026
+
+Les deux Setups d'inspection03 sont réellement terminés, code zéro chacun,
+sans intégration temporelle : 14,287 s et 34,764 s ; RSS maximale observée
+819 286 016 et 1 961 504 768 octets. Leur attestation est
+preparation_operateur_PEC_F2_2026-10-21/preparation_03/execution_terminee.json.
+Aucun autre Setup ou Run n'a été lancé pour cette analyse.
+
+Le diagnostic porte sur le CAD XML ARCHIVÉ, avec axes NPZ et dt restitués.
+Les arrondis du XML empêchent de présenter ces opérateurs comme la copie
+binaire exacte des anciens CSX en mémoire. Cette limite demeure même
+lorsque les tableaux natifs sont maintenant inspectables.
+
+1. RÉSISTANCE, CONTACTS ET SONDES : PAS DE DÉFAUT GROSSIER TROUVÉ
+
+Les cinq tableaux réels exc_volt/vv/vi/iv/ii sont décodés sans installation
+de paquet, par un lecteur strict XML/base64/zlib/NumPy. Toutes les tailles
+de blocs, formes, normes min/max annoncées par VTK et coordonnées NPZ sont
+contrôlées. Les lignes du VTP correspondent à des arêtes primaires
+adjacentes ; la précision Float32 de leurs points est prise en compte.
+
+Le support de source ne contient que des arêtes z :
+base : 17 colonnes x × 11 couches z = 187 arêtes ;
+fin : 25 colonnes x × 17 couches z = 425 arêtes.
+Aucune n'est annulée par un PEC et toutes possèdent une conductance.
+Les coefficients du schéma RC de base permettent l'inversion
+G=(1−VV)/VI, C=dt(1+VV)/(2VI).
+La résistance du réseau, somme des plans série et des branches parallèles,
+vaut 49,99999922070573 ohms base et 49,9999999126989 ohms fin.
+Une reconstruction par colonnes donne la même valeur à l'arrondi près.
+L'écart résiduel est compatible avec les tableaux Float32. Il ne s'agit
+pas d'une mesure de l'impédance de l'antenne, mais d'un audit de la
+normalisation de la résistance distribuée : elle reste bien 50 ohms.
+
+La somme de exc_volt sur chaque colonne verticale vaut respectivement
+−0,0015999999595806003 et −0,0016000000105123036, soit −h en mètres à
+l'arrondi Float32 près. Diminuer dz diminue normalement chaque terme ;
+cela ne constitue pas une disparition de l'excitation.
+
+Le graphe des segments PEC natifs est identique à l'ensemble VV=VI=0 sur
+le PCB : 20 792 arêtes uniques base, 52 240 fin. Les deux masses
+supérieures sont reliées aux vias et à B_Cu ; le signal reste distinct.
+Toutes les colonnes du port joignent le signal en haut et la masse en
+bas. Aucun court-circuit vertical ou contact perdu n'est démontré.
+Les nombres de PEC du journal peuvent inclure des incréments répétés ;
+ils ne sont pas utilisés comme cardinal d'un graphe d'arêtes uniques.
+Le PEC des plans terminaux peut déjà appartenir au cuivre CAD : un dump
+final ne permet pas d'attribuer chaque arête aux seuls Caps=1.
+
+Les coordonnées NATIVES de la sonde I confirment z=0,8 mm, et son contour
+englobe le support dual complet des arêtes de source. Les anciens
+en-têtes qui indiquaient la primaire inférieure ne prouvaient pas un
+décalage physique de cette sonde. Le box_dump ASCII est arrondi à six
+chiffres ; son erreur maximale mesurée est 0,0000273 mm base.
+
+2. CE QUI CHANGE RÉELLEMENT À L'ALIMENTATION
+
+La boîte source y d'épaisseur géométrique nulle occupe une cellule duale
+non nulle. Les coordonnées du contour I sont donc :
+base : x ±1,210833333 mm, y −20,072727273..−19,927272727 mm ;
+fin : x environ ±1,183700000 mm, y −20,050000000..−19,950000000 mm.
+Largeur duale y : 0,145454545 → 0,100000000 mm ; largeur x :
+2,421666667 → 2,367400000 mm. Le port nominal CAD demeure 2,286 mm.
+R reste normalisée, mais le support électrique local n'est pas invariant.
+
+La capacité équivalente du réseau RC statique de l'opérateur, reconstruite à partir de
+VV/VI vaut 5,2976364 fF puis 3,5605094 fF. C'est la capacité associée à
+epsilon_inf et à cette zone de source, pas la capacité RF totale du
+modèle Debye ou de l'antenne. Sa variation est −32,79 %, mais sa valeur
+absolue est très petite. À 4,85 GHz, l'échelle 50·omega·|deltaC| vaut
+environ 0,00265. Ce seul chiffre ne justifie donc pas d'attribuer le grand
+deltaS≈0,436 à un simple condensateur parallèle ; l'interaction complète
+des champs n'est pas contenue dans cette estimation de circuit.
+
+Chaque via possède 11 colonnes PEC traversantes base, 27 fin. La somme
+des aires DUALES correspondantes vaut 0,145161 mm² puis environ
+0,15741904 mm², soit +8,44 %. L'aire du cercle CAD est 0,16417322 mm².
+Le tracé montre une section Yee en escalier, sans rupture de connexion.
+Ces aires de support discret ne doivent pas être annoncées comme de
+nouveaux diamètres fabriqués ou une mesure exacte de l'inductance du via.
+Leur rôle dans l'écart de S11 reste une hypothèse à isoler, d'autant que
+le CAD de cette inspection est celui du XML arrondi.
+
+CONCLUSION ET PROCHAIN TEST MINIMAL PROPOSÉ
+
+L'inspection écarte une résistance distribuée fortement différente de
+50 ohms, une source partiellement bloquée, un contact PEC perdu ou un
+placement I grossièrement erroné dans ces deux opérateurs archivés.
+Elle démontre une variation des supports du port et des vias ; elle ne
+démontre pas que ces variations expliquent l'échec spatial des losanges.
+Aucune correction de moteur ou augmentation globale du maillage ne
+découle automatiquement de ce diagnostic.
+
+Le prochain contrôle causal le plus clair serait un coupon de ligne
+microruban droit conservant exactement le pad/taper, les masses SMA,
+les vias, le substrat et la définition de port, terminé passivement de
+façon documentée. Comparer les deux résolutions sur ce coupon, avec
+sondes supplémentaires U/I le long de la ligne, permettrait de séparer
+la sensibilité de l'alimentation de celle des résonances du losange.
+Une courte fenêtre doit couvrir impulsion et transit ; sa queue doit
+être contrôlée. Un coupon stable orienterait vers le radiateur ; un
+écart analogue même sans losange impliquerait alimentation/ligne/mesure.
+Le coupon n'est pas dessiné, maillé ou lancé ici. Son vrai coût doit être
+construit avant lancement ; aucune promesse de quelques minutes n'est
+faite. Ce test diagnostique ne qualifie pas les trois antennes.
+
+Une variante hybride SMA FIN/radiateur BASE sur le Petit serait possible
+mais moins facile à interpréter : dans une grille cartésienne tensorielle,
+les lignes x/y/z et la résolution normale ont des effets hors du bloc
+SMA. Elle ne constituerait pas une séparation locale parfaite.
+
+REPRODUCTIBILITÉ ET INTÉGRITÉ
+
+analyse_operateur.py et lecture_vtk.py ne font que lire les preuves closes
+et écrire dans ce nouveau dossier. Le rapport contient les SHA avant/après
+des 51 fichiers d'inspection03, des 62 fichiers des deux profils Petit
+originaux explicitement autorisés et des dix-huit sources gelées : tous
+sont identiques. Aucun autre profil n'est parcouru. Les deux PNG ont été
+ouverts et vérifiés visuellement après génération.
+Un rejeu sans écrasement consiste à copier les DEUX scripts seuls dans
+un nouveau dossier frère sous chatGPT_critical_review puis exécuter
+analyse_operateur.py avec Python openems -B -X utf8. Les chemins des
+preuves originales restent fixes ; le rapport existant est refusé.
+
+Références primaires utilisées pour interpréter les coefficients :
+https://raw.githubusercontent.com/thliebig/openEMS/v0.37.0/FDTD/operator.cpp
+  Calc_ECOperatorPos, Calc_LumpedElements et ordre PEC/lumped/extensions.
+https://raw.githubusercontent.com/thliebig/openEMS/v0.37.0/FDTD/operator.h
+  aires duales et longueurs primaires.
+https://raw.githubusercontent.com/thliebig/openEMS/v0.37.0/tools/vtk_file_writer.cpp
+  vecteurs Float32, x variant le plus vite, coordonnées mises à l'échelle.
+https://raw.githubusercontent.com/thliebig/openEMS/v0.37.0/FDTD/extensions/operator_ext_excitation.cpp
+  excitation pondérée multipliée par la longueur de l'arête.
+https://docs.vtk.org/en/v9.6.1/vtk_file_formats/vtkxml_file_format.html
+  formats XML VTK et données comprimées/base64.
+L'identité binaire entre le code amont et la DLL locale n'est pas déduite
+du seul numéro de version. Les mesures chiffrées ci-dessus proviennent
+des tableaux réellement émis par la DLL locale, et non de ce source amont.
+
+Les échecs spatiaux précédents et leurs seuils sont conservés intégralement.

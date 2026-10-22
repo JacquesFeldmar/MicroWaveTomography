@@ -1,0 +1,20 @@
+{
+  "schema": "contrelecture_root_pilote_F2_v1",
+  "utc": "2026-10-19T17:20:31.544470+00:00",
+  "reussi": true,
+  "preuve_sha256": "56fdae2da50d0b618b449ff5b93f347324d3d779c890820e4ca7cb236e749d00",
+  "S1P_prefixe_et_rejeu_fichiers_octets_identiques": true,
+  "S1P_sha256": "24bd3ed0b3a3351edfb7f12c0bccbf65211e78a158feb30920a2e9c979157587",
+  "sources18_inchangees": true,
+  "lecture_Q_stricte_reussie": true,
+  "aucun_nouveau_Run": true,
+  "stats": [
+    3071000.0,
+    1.80919172715631e-13,
+    19347.0,
+    3.500243234529313e-09,
+    1877.823534,
+    31640159.96404058
+  ],
+  "qualification_globale_effectuee": false
+}

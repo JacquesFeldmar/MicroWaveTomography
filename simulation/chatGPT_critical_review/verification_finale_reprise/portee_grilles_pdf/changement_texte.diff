@@ -1,0 +1,13 @@
+--- construit_bilan_qualification_pcbway_avant.py
++++ construit_bilan_qualification_pcbway.py
+@@ -377,7 +377,9 @@
+     ajout("Portée de cette qualification", "h2")
+     ajout("Le succès qualifie la stabilité de S11 pour les grilles et durées sélectionnées, avec les seuils déclarés. "
+           "Il ne borne pas toutes les erreurs de discrétisation et ne qualifie ni gain, ni diagramme, ni centre de phase, "
+-          "ni modèle direct de tomographie. Les hypothèses de matériau et de connectique restent à confronter aux prototypes.")
++          "ni modèle direct de tomographie. Les hypothèses de matériau et de connectique restent à confronter aux prototypes. "
++          "Les grilles sont reconstruites sans emboîtement ; un réglage nominal plus fin ne garantit pas la diminution de chaque cellule locale. "
++          "Le voisinage fin du port varie aussi avec la cible locale de maille.")
+     ajout("Antenne isolée dans l'air, domaine tronqué par huit cellules PML et garde d'air d'au moins 74,95 mm ; "
+           "troncature PML non qualifiée indépendamment.")
+ 

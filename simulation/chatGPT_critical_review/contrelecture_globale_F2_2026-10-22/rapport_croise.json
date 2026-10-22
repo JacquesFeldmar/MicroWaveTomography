@@ -1,0 +1,989 @@
+{
+  "schema": "contrelecture_globale_F2_close_v1",
+  "utc": "2026-10-22T08:36:28.507339+00:00",
+  "controle_integrite_et_reproduction_reussi": true,
+  "qualification_globale_reussie": false,
+  "verdict": "REFUS_NUMERIQUE : trois echecs spatiaux ; trois controles temporels reussis ; references passives",
+  "aucun_Run": true,
+  "aucune_nouvelle_grille": true,
+  "aucune_ecriture_AP": true,
+  "aucun_PDF_ou_livraison": true,
+  "script_sha256": "16f3db1173dba510a557fe38bda9182a959922252c0beba254d8b4cf8f5ec8bd",
+  "gel_sources_sha256": "ef5c2b51af7498b2337839e07ed8104432f44e411ae34e8feb6fafd8763aa581",
+  "sources_18_avant": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316"
+  },
+  "sources_18_apres": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316"
+  },
+  "manifestes_15_sha256": {
+    "diamant_uwb/base_8ns": "246aa618627479a4dfdfe17b8778b2ff1523e0e32323a77144dfe07c9b419702",
+    "diamant_uwb/fin_8ns": "565b60c18117149a413f8a5991c4d5d28e00efa30ae20fd1a16e6dc909c57550",
+    "diamant_uwb/fin_12ns": "7ba1dbcf855cbdd5e6145708148dcffd53c1e6e6536cc02d2580893dfce3aca2",
+    "diamant_uwb/base_12ns": "33e5994c1707cbf0969a94cbe7c3584cb4402af5ce5978e2346d36f9fb088211",
+    "diamant_uwb/fin_16ns": "5a9bef4bf70b0c31251b151b0b76535d7c6aa4bbf49de574d10590efc3786b76",
+    "diamant_uwb_x18/base_8ns": "f2a8fc09fcd0dc8fe6ce45190c611721f300b0836b10f9f0de652f429c574b14",
+    "diamant_uwb_x18/fin_8ns": "a656b51801b9a67cc7a82dc0646e4365a539029bea59997d9de05da94ab8d14e",
+    "diamant_uwb_x18/fin_12ns": "345df085ce0df3535db7490dc91d40d98931f4ac1a0d195fed76f96bc8477b44",
+    "diamant_uwb_x18/base_12ns": "fbeae545057cda6c6d69dbdf5f79974fd511428ce561822425612939aeb12e36",
+    "diamant_uwb_x18/fin_16ns": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d",
+    "vivaldi_tomographie/base_8ns": "a4dfab1d88cd7cfb0e9f91e45a5fdceed661f79b7948c038064a7adbd079f810",
+    "vivaldi_tomographie/fin_8ns": "f2b4921f23f00887b420df4411a01739446e5c523074fbcb7d6954e47eee8ceb",
+    "vivaldi_tomographie/fin_12ns": "e5c7e5a22eb9fa68366178018e874a2802a190fbaa2d4a8dad6ea2c106305b4c",
+    "vivaldi_tomographie/base_12ns": "7f5e8d92ed5737a12185bdc70f975520793bf0a2ba10d64a9144269962b02ee2",
+    "vivaldi_tomographie/fin_16ns": "2e69ef37ece5d2296fc571423aac0a17846c4b92e97170a080dfd8a7321ff9a4"
+  },
+  "fichiers_profils_nombre": 420,
+  "fichiers_profils_inchanges": true,
+  "entrees_sorties_avant": {
+    "resultats\\pcbway_maille_controlee_v2\\qualification_globale.json": "b67644badf4fe7ae56fc319543d79b207bca536c5dbf743aa9e0f51f147c578a",
+    "resultats\\pcbway_maille_controlee_v2\\selection_qualification.json": "7214d7fc6138d7e5bfd95a37db80f4b145846ea57035ec44f2a7741db06fe2c5",
+    "resultats\\pcbway_maille_controlee_v2\\etat_orchestration.json": "377fdff79cc67dff8f0dcb81176ec14bac6891b6b3b5ec6c177c7eb6872e5cd2",
+    "resultats\\pcbway_maille_controlee_v2\\fin_orchestration.json": "d36c680dde5d8e53fc5999e6e1c0021c10fc3e76e39cb0728cc29d8c5be1fc0f",
+    "chatGPT_critical_review\\integration_finale_f2\\gel_campagne_F2.json": "ef5c2b51af7498b2337839e07ed8104432f44e411ae34e8feb6fafd8763aa581",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb\\comparaison\\comparaison_convergence.png": "b5d550c1121f41bbe5382444c1ac96ecb2a0b28d46eeb73ae3462af8b16a16be",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb\\comparaison\\qualification.json": "e6e9da39e5412e9a31e25bac0385c27abe05538666f512345ab0351e615b414f",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb\\comparaison\\reference_simulation.csv": "d1023c6d8ab190874ffe43c1a0c9833e6bb007d487bed8e278603bd14ef200a1",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb\\comparaison\\reference_simulation.s1p": "74ffd742441ea6ccf238e907d5454d73821d82ab5991453e3367af83cdae4472",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb_x18\\comparaison\\comparaison_convergence.png": "e0109c42215861940c30d4e01613e697998eb2f0f14149bd5621ab87d763c1dc",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb_x18\\comparaison\\qualification.json": "d08556c08e3eccd76345fd0de79eef055daa9abc87c6806a697f772436273e50",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb_x18\\comparaison\\reference_simulation.csv": "fefa625212d9fef49b4ac212a555206112f2cac9cef98191b311b24cdbd9d1ae",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb_x18\\comparaison\\reference_simulation.s1p": "4029442fef9a061be84f565855360fd862cb2035e36e069a3c0bf28f56943ba7",
+    "resultats\\pcbway_maille_controlee_v2\\vivaldi_tomographie\\comparaison\\comparaison_convergence.png": "761b73837c3dcbfdb7e05b14ab8a482bc27015fa96acca551d83d9d77d6801b6",
+    "resultats\\pcbway_maille_controlee_v2\\vivaldi_tomographie\\comparaison\\qualification.json": "9c5dfd9fef6cc50632e1ed2a90c2c33c4e4434b3ec0447cd6e9146e02ddbe6d8",
+    "resultats\\pcbway_maille_controlee_v2\\vivaldi_tomographie\\comparaison\\reference_simulation.csv": "7a462c4321cafc27aa51e877edec0ee2a7b854ccd93b9c2bffbb1cbe8cdd3824",
+    "resultats\\pcbway_maille_controlee_v2\\vivaldi_tomographie\\comparaison\\reference_simulation.s1p": "35f462b278a57fc52f53e3763cd13516bc16a2b593598129b31beff3870d4a5c"
+  },
+  "entrees_sorties_apres": {
+    "resultats\\pcbway_maille_controlee_v2\\qualification_globale.json": "b67644badf4fe7ae56fc319543d79b207bca536c5dbf743aa9e0f51f147c578a",
+    "resultats\\pcbway_maille_controlee_v2\\selection_qualification.json": "7214d7fc6138d7e5bfd95a37db80f4b145846ea57035ec44f2a7741db06fe2c5",
+    "resultats\\pcbway_maille_controlee_v2\\etat_orchestration.json": "377fdff79cc67dff8f0dcb81176ec14bac6891b6b3b5ec6c177c7eb6872e5cd2",
+    "resultats\\pcbway_maille_controlee_v2\\fin_orchestration.json": "d36c680dde5d8e53fc5999e6e1c0021c10fc3e76e39cb0728cc29d8c5be1fc0f",
+    "chatGPT_critical_review\\integration_finale_f2\\gel_campagne_F2.json": "ef5c2b51af7498b2337839e07ed8104432f44e411ae34e8feb6fafd8763aa581",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb\\comparaison\\comparaison_convergence.png": "b5d550c1121f41bbe5382444c1ac96ecb2a0b28d46eeb73ae3462af8b16a16be",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb\\comparaison\\qualification.json": "e6e9da39e5412e9a31e25bac0385c27abe05538666f512345ab0351e615b414f",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb\\comparaison\\reference_simulation.csv": "d1023c6d8ab190874ffe43c1a0c9833e6bb007d487bed8e278603bd14ef200a1",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb\\comparaison\\reference_simulation.s1p": "74ffd742441ea6ccf238e907d5454d73821d82ab5991453e3367af83cdae4472",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb_x18\\comparaison\\comparaison_convergence.png": "e0109c42215861940c30d4e01613e697998eb2f0f14149bd5621ab87d763c1dc",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb_x18\\comparaison\\qualification.json": "d08556c08e3eccd76345fd0de79eef055daa9abc87c6806a697f772436273e50",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb_x18\\comparaison\\reference_simulation.csv": "fefa625212d9fef49b4ac212a555206112f2cac9cef98191b311b24cdbd9d1ae",
+    "resultats\\pcbway_maille_controlee_v2\\diamant_uwb_x18\\comparaison\\reference_simulation.s1p": "4029442fef9a061be84f565855360fd862cb2035e36e069a3c0bf28f56943ba7",
+    "resultats\\pcbway_maille_controlee_v2\\vivaldi_tomographie\\comparaison\\comparaison_convergence.png": "761b73837c3dcbfdb7e05b14ab8a482bc27015fa96acca551d83d9d77d6801b6",
+    "resultats\\pcbway_maille_controlee_v2\\vivaldi_tomographie\\comparaison\\qualification.json": "9c5dfd9fef6cc50632e1ed2a90c2c33c4e4434b3ec0447cd6e9146e02ddbe6d8",
+    "resultats\\pcbway_maille_controlee_v2\\vivaldi_tomographie\\comparaison\\reference_simulation.csv": "7a462c4321cafc27aa51e877edec0ee2a7b854ccd93b9c2bffbb1cbe8cdd3824",
+    "resultats\\pcbway_maille_controlee_v2\\vivaldi_tomographie\\comparaison\\reference_simulation.s1p": "35f462b278a57fc52f53e3763cd13516bc16a2b593598129b31beff3870d4a5c"
+  },
+  "AP_ecrire_false_reproduit_bilan_exact": true,
+  "profils_valides": [
+    {
+      "antenne": "diamant_uwb",
+      "profil": "base_8ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": true,
+      "n_pas": 44220,
+      "dt_s": 1.8091917271563098e-13,
+      "geometrie_sha256": "58b33685211460a88a3efc7e52647a37070242a70c4a31f56ea94b2c56a29fba",
+      "geometrie_fdtd_sha256": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+      "maximum_module": 0.979512749145747,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "diamant_uwb",
+      "profil": "fin_8ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": true,
+      "n_pas": 66329,
+      "dt_s": 1.2061278609776263e-13,
+      "geometrie_sha256": "58b33685211460a88a3efc7e52647a37070242a70c4a31f56ea94b2c56a29fba",
+      "geometrie_fdtd_sha256": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+      "maximum_module": 0.9796255869497316,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "diamant_uwb",
+      "profil": "fin_12ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": true,
+      "n_pas": 99493,
+      "dt_s": 1.2061278609776263e-13,
+      "geometrie_sha256": "58b33685211460a88a3efc7e52647a37070242a70c4a31f56ea94b2c56a29fba",
+      "geometrie_fdtd_sha256": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+      "maximum_module": 0.9783036573331615,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "diamant_uwb",
+      "profil": "base_12ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": false,
+      "n_pas": 66329,
+      "dt_s": 1.8091917271563098e-13,
+      "geometrie_sha256": "58b33685211460a88a3efc7e52647a37070242a70c4a31f56ea94b2c56a29fba",
+      "geometrie_fdtd_sha256": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+      "maximum_module": 0.9783455878954898,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "diamant_uwb",
+      "profil": "fin_16ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": false,
+      "n_pas": 132657,
+      "dt_s": 1.2061278609776263e-13,
+      "geometrie_sha256": "58b33685211460a88a3efc7e52647a37070242a70c4a31f56ea94b2c56a29fba",
+      "geometrie_fdtd_sha256": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+      "maximum_module": 0.9784551766391213,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "profil": "base_8ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": true,
+      "n_pas": 44220,
+      "dt_s": 1.8091917271563098e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "geometrie_fdtd_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+      "maximum_module": 0.8295712185393789,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "profil": "fin_8ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": true,
+      "n_pas": 66329,
+      "dt_s": 1.2061278609776263e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "geometrie_fdtd_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+      "maximum_module": 0.8323282279563947,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "profil": "fin_12ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": true,
+      "n_pas": 99493,
+      "dt_s": 1.2061278609776263e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "geometrie_fdtd_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+      "maximum_module": 0.8322132965959429,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "profil": "base_12ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": false,
+      "n_pas": 66329,
+      "dt_s": 1.8091917271563098e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "geometrie_fdtd_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+      "maximum_module": 0.8293324964090504,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "profil": "fin_16ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": false,
+      "n_pas": 132657,
+      "dt_s": 1.2061278609776263e-13,
+      "geometrie_sha256": "c40da083eda15c91b8f7b9ef14362a6dd659754235ab76ce6e059d5b7372e9ca",
+      "geometrie_fdtd_sha256": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+      "maximum_module": 0.8322158955013979,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "profil": "base_8ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": true,
+      "n_pas": 44220,
+      "dt_s": 1.8091917271563098e-13,
+      "geometrie_sha256": "5d9ab2f3349411b03385967ec7b60932f49b7ef0e88eb477a23e837e1486ce0b",
+      "geometrie_fdtd_sha256": "18ee11f95294effe582335d65fbbd8ec75a4f57f0e2b86140142774165f208e4",
+      "maximum_module": 0.5956858202575345,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "profil": "fin_8ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": true,
+      "n_pas": 66329,
+      "dt_s": 1.2061278609776263e-13,
+      "geometrie_sha256": "5d9ab2f3349411b03385967ec7b60932f49b7ef0e88eb477a23e837e1486ce0b",
+      "geometrie_fdtd_sha256": "18ee11f95294effe582335d65fbbd8ec75a4f57f0e2b86140142774165f208e4",
+      "maximum_module": 0.5872306958540241,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "profil": "fin_12ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": true,
+      "n_pas": 99493,
+      "dt_s": 1.2061278609776263e-13,
+      "geometrie_sha256": "5d9ab2f3349411b03385967ec7b60932f49b7ef0e88eb477a23e837e1486ce0b",
+      "geometrie_fdtd_sha256": "18ee11f95294effe582335d65fbbd8ec75a4f57f0e2b86140142774165f208e4",
+      "maximum_module": 0.5876724825661864,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "profil": "base_12ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": false,
+      "n_pas": 66329,
+      "dt_s": 1.8091917271563098e-13,
+      "geometrie_sha256": "5d9ab2f3349411b03385967ec7b60932f49b7ef0e88eb477a23e837e1486ce0b",
+      "geometrie_fdtd_sha256": "18ee11f95294effe582335d65fbbd8ec75a4f57f0e2b86140142774165f208e4",
+      "maximum_module": 0.5958516540844728,
+      "passivite_numerique": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "profil": "fin_16ns",
+      "charge_exiger_courant": true,
+      "valide_campagne": true,
+      "moteur": "maillage_controle_v2",
+      "etat": "termine",
+      "derive_sondes": false,
+      "n_pas": 132657,
+      "dt_s": 1.2061278609776263e-13,
+      "geometrie_sha256": "5d9ab2f3349411b03385967ec7b60932f49b7ef0e88eb477a23e837e1486ce0b",
+      "geometrie_fdtd_sha256": "18ee11f95294effe582335d65fbbd8ec75a4f57f0e2b86140142774165f208e4",
+      "maximum_module": 0.5876166560517126,
+      "passivite_numerique": true
+    }
+  ],
+  "paires_temporelles_bitidentiques": [
+    {
+      "antenne": "diamant_uwb",
+      "calculs": [
+        "fin_12ns",
+        "fin_16ns"
+      ],
+      "dt_bitidentique": true,
+      "dt_hex": "3d40f988993c9eee",
+      "axes_bitidentiques": true,
+      "axes_sha256": {
+        "x": "a219a4bd2be5690e37c73ee5e4f486af1d1a6ea1c5eb15d265e0b8ff61a5fd97",
+        "y": "d6541e5ff6403d3c3c51965068f19cc96e7e44517053dd5efe52e266ab99f9f7",
+        "z": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a"
+      }
+    },
+    {
+      "antenne": "diamant_uwb",
+      "calculs": [
+        "fin_8ns",
+        "fin_12ns"
+      ],
+      "dt_bitidentique": true,
+      "dt_hex": "3d40f988993c9eee",
+      "axes_bitidentiques": true,
+      "axes_sha256": {
+        "x": "a219a4bd2be5690e37c73ee5e4f486af1d1a6ea1c5eb15d265e0b8ff61a5fd97",
+        "y": "d6541e5ff6403d3c3c51965068f19cc96e7e44517053dd5efe52e266ab99f9f7",
+        "z": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a"
+      }
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "calculs": [
+        "fin_12ns",
+        "fin_16ns"
+      ],
+      "dt_bitidentique": true,
+      "dt_hex": "3d40f988993c9eee",
+      "axes_bitidentiques": true,
+      "axes_sha256": {
+        "x": "165796cce6ef473029a56ae8e27f954d20392b4184f45d19aa64659ddd08546b",
+        "y": "054818c2475ecdae03064534e6d2767a04005262b9d7b66b1fafcd057b68979c",
+        "z": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a"
+      }
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "calculs": [
+        "fin_8ns",
+        "fin_12ns"
+      ],
+      "dt_bitidentique": true,
+      "dt_hex": "3d40f988993c9eee",
+      "axes_bitidentiques": true,
+      "axes_sha256": {
+        "x": "165796cce6ef473029a56ae8e27f954d20392b4184f45d19aa64659ddd08546b",
+        "y": "054818c2475ecdae03064534e6d2767a04005262b9d7b66b1fafcd057b68979c",
+        "z": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a"
+      }
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "calculs": [
+        "fin_12ns",
+        "fin_16ns"
+      ],
+      "dt_bitidentique": true,
+      "dt_hex": "3d40f988993c9eee",
+      "axes_bitidentiques": true,
+      "axes_sha256": {
+        "x": "4f2ffc8ac8f04f130f23a409e246fec9090abbcc41b8068ef79e05034119ced7",
+        "y": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a",
+        "z": "e3f579ed336f1ddf36f14b36173a5704ec9f8247540dfd04c8b025fca7a1acf8"
+      }
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "calculs": [
+        "fin_8ns",
+        "fin_12ns"
+      ],
+      "dt_bitidentique": true,
+      "dt_hex": "3d40f988993c9eee",
+      "axes_bitidentiques": true,
+      "axes_sha256": {
+        "x": "4f2ffc8ac8f04f130f23a409e246fec9090abbcc41b8068ef79e05034119ced7",
+        "y": "bba1213460898196f5ee969a67e4b2156f5f5e85a8d459c9866ccf2569a88b2a",
+        "z": "e3f579ed336f1ddf36f14b36173a5704ec9f8247540dfd04c8b025fca7a1acf8"
+      }
+    }
+  ],
+  "verdicts_antennes": {
+    "diamant_uwb": {
+      "spatial": {
+        "valeurs": {
+          "maximum_complexe": 0.43583288717441465,
+          "rms_complexe": 0.10990608890048342,
+          "percentile95_db": 5.36389499423295,
+          "percentile95_phase_deg": 32.29577196352716
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      },
+      "temporel": {
+        "valeurs": {
+          "maximum_complexe": 0.0024774025912415757,
+          "rms_complexe": 0.0006491587424927885,
+          "percentile95_db": 0.03818221193320407,
+          "percentile95_phase_deg": 0.259403328631007
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      },
+      "reussi": false,
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.9784551766391213,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              2525000000.0,
+              3425000000.0
+            ],
+            [
+              5000000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.4225352112676056,
+          "points_sous_seuil": 90,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              2300000000.0,
+              4825000000.0
+            ],
+            [
+              4925000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.7417840375586855,
+          "points_sous_seuil": 158,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                2525000000.0,
+                3425000000.0
+              ],
+              [
+                5000000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.42162162162162165,
+            "points_sous_seuil": 78,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                2300000000.0,
+                4825000000.0
+              ],
+              [
+                4925000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7891891891891892,
+            "points_sous_seuil": 146,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -7.174696767689963,
+          "pire_db": -0.5508363430432907
+        }
+      },
+      "selection_effective": {
+        "preliminaires": [
+          {
+            "calculs": [
+              "base_8ns",
+              "fin_8ns"
+            ],
+            "motif": "Essai initial spatial a 8 ns conserve sans presumer sa reussite",
+            "type": "spatial"
+          },
+          {
+            "calculs": [
+              "fin_8ns",
+              "fin_12ns"
+            ],
+            "motif": "Essai initial temporel 8 vers 12 ns conserve sans presumer sa reussite",
+            "type": "temporel"
+          }
+        ],
+        "reference": "fin_16ns",
+        "spatial": [
+          "base_12ns",
+          "fin_12ns"
+        ],
+        "temporel": [
+          "fin_12ns",
+          "fin_16ns"
+        ]
+      }
+    },
+    "diamant_uwb_x18": {
+      "spatial": {
+        "valeurs": {
+          "maximum_complexe": 0.412047225516328,
+          "rms_complexe": 0.11760840748496572,
+          "percentile95_db": 5.260925393014891,
+          "percentile95_phase_deg": 50.028936746494814
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      },
+      "temporel": {
+        "valeurs": {
+          "maximum_complexe": 5.470432920406153e-05,
+          "rms_complexe": 1.8539817565470815e-05,
+          "percentile95_db": 0.0012388022089423868,
+          "percentile95_phase_deg": 0.008208896380190026
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      },
+      "reussi": false,
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.8322158955013979,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1400000000.0,
+              1875000000.0
+            ],
+            [
+              2575000000.0,
+              3750000000.0
+            ],
+            [
+              4275000000.0,
+              4775000000.0
+            ],
+            [
+              4950000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.676056338028169,
+          "points_sous_seuil": 144,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1275000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9483568075117371,
+          "points_sous_seuil": 202,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                1875000000.0
+              ],
+              [
+                2575000000.0,
+                3750000000.0
+              ],
+              [
+                4275000000.0,
+                4775000000.0
+              ],
+              [
+                4950000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.7135135135135136,
+            "points_sous_seuil": 132,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -11.959758208077304,
+          "pire_db": -7.912902581207786
+        }
+      },
+      "selection_effective": {
+        "preliminaires": [
+          {
+            "calculs": [
+              "base_8ns",
+              "fin_8ns"
+            ],
+            "motif": "Essai initial spatial a 8 ns conserve sans presumer sa reussite",
+            "type": "spatial"
+          },
+          {
+            "calculs": [
+              "fin_8ns",
+              "fin_12ns"
+            ],
+            "motif": "Essai initial temporel 8 vers 12 ns conserve sans presumer sa reussite",
+            "type": "temporel"
+          }
+        ],
+        "reference": "fin_16ns",
+        "spatial": [
+          "base_12ns",
+          "fin_12ns"
+        ],
+        "temporel": [
+          "fin_12ns",
+          "fin_16ns"
+        ]
+      }
+    },
+    "vivaldi_tomographie": {
+      "spatial": {
+        "valeurs": {
+          "maximum_complexe": 0.36591402188669203,
+          "rms_complexe": 0.08471113976573695,
+          "percentile95_db": 3.0208964340946776,
+          "percentile95_phase_deg": 30.469275780102212
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      },
+      "temporel": {
+        "valeurs": {
+          "maximum_complexe": 0.001384749316067066,
+          "rms_complexe": 0.00038923529939325876,
+          "percentile95_db": 0.02877802377320577,
+          "percentile95_phase_deg": 0.2035883948376743
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      },
+      "reussi": false,
+      "indicateurs": {
+        "bande_hz": [
+          1000000000.0,
+          6300000000.0
+        ],
+        "points": 213,
+        "maximum_module": 0.5876166560517126,
+        "passivite_numerique": true,
+        "moins_10_db": {
+          "seuil_db": -10.0,
+          "segments_hz": [
+            [
+              1000000000.0,
+              1025000000.0
+            ],
+            [
+              1475000000.0,
+              1875000000.0
+            ],
+            [
+              2075000000.0,
+              2325000000.0
+            ],
+            [
+              2400000000.0,
+              2950000000.0
+            ],
+            [
+              3150000000.0,
+              3675000000.0
+            ],
+            [
+              3775000000.0,
+              4350000000.0
+            ],
+            [
+              4425000000.0,
+              4725000000.0
+            ],
+            [
+              4925000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.7887323943661971,
+          "points_sous_seuil": 168,
+          "points_total": 213
+        },
+        "moins_6_db": {
+          "seuil_db": -6.0,
+          "segments_hz": [
+            [
+              1000000000.0,
+              1125000000.0
+            ],
+            [
+              1375000000.0,
+              6300000000.0
+            ]
+          ],
+          "couverture": 0.9577464788732394,
+          "points_sous_seuil": 204,
+          "points_total": 213
+        },
+        "bande_1p4_6": {
+          "moins_10_db": {
+            "seuil_db": -10.0,
+            "segments_hz": [
+              [
+                1475000000.0,
+                1875000000.0
+              ],
+              [
+                2075000000.0,
+                2325000000.0
+              ],
+              [
+                2400000000.0,
+                2950000000.0
+              ],
+              [
+                3150000000.0,
+                3675000000.0
+              ],
+              [
+                3775000000.0,
+                4350000000.0
+              ],
+              [
+                4425000000.0,
+                4725000000.0
+              ],
+              [
+                4925000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 0.8324324324324325,
+            "points_sous_seuil": 154,
+            "points_total": 185
+          },
+          "moins_6_db": {
+            "seuil_db": -6.0,
+            "segments_hz": [
+              [
+                1400000000.0,
+                6000000000.0
+              ]
+            ],
+            "couverture": 1.0,
+            "points_sous_seuil": 185,
+            "points_total": 185
+          },
+          "moyenne_puissance_reflechie_db": -12.760729199371925,
+          "pire_db": -6.918638140122344
+        }
+      },
+      "selection_effective": {
+        "preliminaires": [
+          {
+            "calculs": [
+              "base_8ns",
+              "fin_8ns"
+            ],
+            "motif": "Essai initial spatial a 8 ns conserve sans presumer sa reussite",
+            "type": "spatial"
+          },
+          {
+            "calculs": [
+              "fin_8ns",
+              "fin_12ns"
+            ],
+            "motif": "Essai initial temporel 8 vers 12 ns conserve sans presumer sa reussite",
+            "type": "temporel"
+          }
+        ],
+        "reference": "fin_16ns",
+        "spatial": [
+          "base_12ns",
+          "fin_12ns"
+        ],
+        "temporel": [
+          "fin_12ns",
+          "fin_16ns"
+        ]
+      }
+    }
+  },
+  "vivaldi_numpy_independant": {
+    "parseur": "S1P Hz RI 50ohms strict, NumPy direct sans Q.ecarts ni lit_s1p",
+    "ecarts": {
+      "spatial": {
+        "calculs": [
+          "base_12ns",
+          "fin_12ns"
+        ],
+        "valeurs": {
+          "maximum_complexe": 0.36591402188669203,
+          "rms_complexe": 0.08471113976573695,
+          "percentile95_db": 3.0208964340946776,
+          "percentile95_phase_deg": 30.469275780102212
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "points_masque": 183,
+        "points_complexes": 213
+      },
+      "temporel": {
+        "calculs": [
+          "fin_12ns",
+          "fin_16ns"
+        ],
+        "valeurs": {
+          "maximum_complexe": 0.001384749316067066,
+          "rms_complexe": 0.00038923529939325876,
+          "percentile95_db": 0.02877802377320577,
+          "percentile95_phase_deg": 0.2035883948376743
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "points_masque": 192,
+        "points_complexes": 213
+      }
+    },
+    "indicateurs_reference": {
+      "maximum_module": 0.5876166560517126,
+      "passivite_numerique": true,
+      "points": 213,
+      "points_bande_1p4_6": 185,
+      "points_moins10": 154,
+      "points_moins6": 185,
+      "moyenne_puissance_reflechie_db": -12.760729199371925,
+      "pire_db": -6.918638140122344
+    },
+    "passivite_cinq_profils": {
+      "base_8ns": true,
+      "fin_8ns": true,
+      "fin_12ns": true,
+      "base_12ns": true,
+      "fin_16ns": true
+    },
+    "maxima_cinq_profils": {
+      "base_8ns": 0.5956858202575345,
+      "fin_8ns": 0.5872306958540241,
+      "fin_12ns": 0.5876724825661864,
+      "base_12ns": 0.5958516540844728,
+      "fin_16ns": 0.5876166560517126
+    }
+  },
+  "orchestration": {
+    "etat": "non_convergence",
+    "calculs": 6,
+    "prefixes": 9,
+    "codes_etapes_tous_zero": true,
+    "code_AP": 2,
+    "code_orchestrateur": 2,
+    "echec_numerique": true,
+    "echec_technique": false,
+    "fin": {
+      "etat": "non_convergence",
+      "retour_orchestrateur": 2,
+      "tous_reussis": false,
+      "utc": "2026-10-22T04:12:27.906696+00:00"
+    },
+    "stdout_AP_identique_bilan": true,
+    "stderr_AP_vide": true
+  },
+  "limites": [
+    "La relecture et les codes0 valident l'integrite technique, pas la convergence spatiale.",
+    "Aucun nouveau calcul ni diagnostic causal de l'operateur PEC n'est execute.",
+    "Le controle lui-meme termine code0 si les constats sont reproduits ; le verdict de qualification reste false."
+  ]
+}

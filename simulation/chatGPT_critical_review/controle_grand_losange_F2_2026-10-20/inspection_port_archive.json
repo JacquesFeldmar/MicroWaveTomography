@@ -1,0 +1,714 @@
+{
+  "schema": "inspection_port_CAD_grilles_archivees_v1",
+  "script_sha256": "fb5f704e2b1eaf3e027e202a03725344c5816f66340331fabb01e80bb368c3d3",
+  "python": "3.13.16 | packaged by Anaconda, Inc. | (main, Oct  1 2026, 20:20:25) [MSC v.1942 64 bit (AMD64)]",
+  "numpy": "2.5.3",
+  "aucun_Run_Setup_construit": true,
+  "aucune_lecture_Vivaldi": true,
+  "sources18_avant": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316"
+  },
+  "sources18_apres": {
+    "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+    "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+    "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+    "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+    "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+    "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+    "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+    "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+    "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+    "fdtd_maille_controlee.py": "3906a789d3dc69439c5ef354c4d65e394a3e35c2a36ed092acc675b18cde1da1",
+    "qualifie_pcbway.py": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+    "qualification_adaptative.py": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+    "fenetre_sondes.py": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+    "raffine_qualification_pcbway.py": "f8b488a301ab636337853fb44ef890c51633e1f51c8fa480ec6bd40816d552aa",
+    "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+    "donnees.py": "a7e8184f8ef3d8c0b4d7f9dd18b9fdadd0350dd43ad693c4d6a7c8a52cdefdca",
+    "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+    "calcule_maille_controlee.py": "ebdb811c68314083fb655f686034f1ff8a7a21709fa1b916d79d03fee0c85316"
+  },
+  "fichiers_clos_sha256": {
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/simulation_manifest.json": "33e5994c1707cbf0969a94cbe7c3584cb4402af5ce5978e2346d36f9fb088211",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/entree_openems.xml": "646ee8a71b53343b0595c6515d06d26736642919621bcce3f2cfc1c62ad71900",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/maillage.npz": "4eb2c20c0ddb4bf8489edb16823e8fc63edff678f57ebdf53d60a4ac258b2439",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/geometrie.json": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/port_ut_1": "807996ea34283128de800a1610e89d311c070685fd48718a6409d54744d6b3de",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/port_it_1": "0379296b6e479824cca44fb0b6ff61dc2e4ae6d06b517b7401e4b0c60b86ad75",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/base_12ns/_calibration_dt/calibration.json": "d71dc412bb87a04591694b8f6a6a6aae064b32f272753e4a47073a200b30c24f",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/simulation_manifest.json": "5a9bef4bf70b0c31251b151b0b76535d7c6aa4bbf49de574d10590efc3786b76",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/entree_openems.xml": "f7469df2c46697e960c9845b099ae9896e8379bdbc742ea0095dcb59a743219e",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/maillage.npz": "9c18c73bad6f77892073cf010b14e7f2d851340a06617b6bcfe70be7c879554f",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/geometrie.json": "b5fd10f29a7fbaacd43c0d48a6dfb15f4ded224329c42a7b331a7b9ce1b4529b",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/port_ut_1": "62fab5052f24ffb94d50c1605e7ea442ecc202f12f0d2ed43b76cb6a370c18e0",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/port_it_1": "af96da313fafb8779cc4fe80b494795b91e18b2456c69522f6838f1544e30fd2",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb/fin_16ns/_calibration_dt/calibration.json": "d53428d418af0d950ef1bf2b76229b57755c16a3d11881f0a9ede3e284d3097a",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/base_12ns/simulation_manifest.json": "fbeae545057cda6c6d69dbdf5f79974fd511428ce561822425612939aeb12e36",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/base_12ns/entree_openems.xml": "1391e9986477495400aa4f27cbfe1e9dd44c69b5c0420f6d913859ab7d6fcc5f",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/base_12ns/maillage.npz": "d91a7ddf69b9ab047a67d5bd24782e65bca9c9d64c7c40b51f7849dcc2fa3357",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/base_12ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/base_12ns/port_ut_1": "8040483948c8ea955475e411dba7d58ec3608e34a68f89df286a0c4ac4ddd92b",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/base_12ns/port_it_1": "f1bea76ed3dbc5aba6f4f0a7b061f91933d938099357f8943a7f06ce1515167b",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/base_12ns/_calibration_dt/calibration.json": "8593bf1a6143541565b5fcbdc9717dfa474839fa8deb707dd4fcbaccf21149bc",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/fin_16ns/simulation_manifest.json": "f8094de9b5442e5ee76cb6b2d7bc99b0a23a0968d66744d34babea6412f22e3d",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/fin_16ns/entree_openems.xml": "7cc3bcfd984cf5db5334ff33cbad427dc8090ce503da5394113230cb4dd69a03",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/fin_16ns/maillage.npz": "566a0c748d7f7227700f01e57408d73156860d7be1a1c09e388fe67ed5641ef5",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/fin_16ns/geometrie.json": "45f8d4ee4946bce3da58365f3df67ebd352562141e3b409608dfafbcf141725f",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/fin_16ns/port_ut_1": "04dad9c6be469f9a112b7b8d596456f81098b6b5f03ea8c0d069ba1c7f8752d6",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/fin_16ns/port_it_1": "c48b9adde48314fa23c5ad5dd69465b4b13011316637d15f167e022ea7cb7a91",
+    "resultats/pcbway_maille_controlee_v2/diamant_uwb_x18/fin_16ns/_calibration_dt/calibration.json": "70d0c2faef061f9363f6c0cbc056d4a0912f4393eceb662e701b7681fe4d8dcb"
+  },
+  "cas": [
+    {
+      "antenne": "diamant_uwb",
+      "profil": "base_12ns",
+      "extraction_CSX": {
+        "fichier": "extrait_CSX_diamant_uwb_base_12ns.xml",
+        "sha256": "71127a5cfe89c9106fea7d3ac24fd96ea3506f4a94dcfe553738890dda7b41dd",
+        "usage": "Sous-arbre XML existant uniquement ; aucune construction de scene ou de grille"
+      },
+      "physique_Properties_sans_couleurs_sha256": "eff490faf1f4e4021e49f56a00dbe4d7236d8677c74fd591ccbfb615fa274368",
+      "port": {
+        "attributs": {
+          "ID": "3",
+          "Name": "port_resist_1",
+          "Direction": "2",
+          "Caps": "1",
+          "R": "5.000000e+01",
+          "LEtype": "0.000000e+00"
+        },
+        "P1": {
+          "x": -1.143,
+          "y": -20.0,
+          "z": 0.0
+        },
+        "P2": {
+          "x": 1.143,
+          "y": -20.0,
+          "z": 1.6
+        },
+        "priorite": "20",
+        "aretes_verticales_examinees": 187,
+        "PEC_interieur_source": [],
+        "aretes_source_sans_resistance": []
+      },
+      "controles_chemins_CAD": [
+        {
+          "cote": -1,
+          "chemin": "masse_vers_neck",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "neck_vers_via",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "fut_via",
+          "points": 35,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "contact_masse_B",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "masse_vers_neck",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "neck_vers_via",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "fut_via",
+          "points": 35,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "contact_masse_B",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        }
+      ],
+      "signal_central_CAD": {
+        "points": 71,
+        "points_sans_PEC": []
+      },
+      "graphe_echantillonne": {
+        "definition": "Presence METAL au milieu des aretes primaires : diagnostic seulement, PAS operateur solveur",
+        "dimensions_bloc": [
+          83,
+          47,
+          12
+        ],
+        "aretes_PEC_xyz": [
+          6162,
+          6182,
+          242
+        ],
+        "connexions": {
+          "masse_B__signal": false,
+          "masse_B__masse_G": true,
+          "masse_B__masse_D": true,
+          "masse_G__signal": false,
+          "masse_D__signal": false,
+          "masse_D__masse_G": true
+        },
+        "points_references": {
+          "signal": [
+            41,
+            0,
+            11
+          ],
+          "masse_B": [
+            41,
+            7,
+            0
+          ],
+          "masse_G": [
+            10,
+            21,
+            11
+          ],
+          "masse_D": [
+            72,
+            21,
+            11
+          ]
+        }
+      },
+      "sondes_entetes": {
+        "port_ut_1": [
+          "% time-domain voltage integration by openEMS v0.37.0 @Mon Oct 19 19:21:49 2026",
+          "% start-coordinates: (0,-0.02,0) m -> [92,50,44]",
+          "% stop-coordinates: (0,-0.02,0.0016) m -> [92,50,55]",
+          "% t/s\tvoltage"
+        ],
+        "port_it_1": [
+          "% time-domain current integration by openEMS v0.37.0 @Mon Oct 19 19:21:49 2026",
+          "% start-coordinates: (-0.00127867,-0.0201455,0.000727273) m -> [83,49,49]",
+          "% stop-coordinates: (0.001143,-0.02,0.000727273) m -> [100,50,49]",
+          "% t/s\tcurrent"
+        ]
+      },
+      "z_primaire_inferieur_I_mm": 0.7272727272727274,
+      "z_primaire_superieur_I_mm": 0.8727272727272728,
+      "z_centre_dual_I_mm": 0.8,
+      "dt_s": 1.8091917271563098e-13
+    },
+    {
+      "antenne": "diamant_uwb",
+      "profil": "fin_16ns",
+      "extraction_CSX": {
+        "fichier": "extrait_CSX_diamant_uwb_fin_16ns.xml",
+        "sha256": "b78b7551b866bcee29331685838eb41a926245fb2852a8b5af26cac24985795f",
+        "usage": "Sous-arbre XML existant uniquement ; aucune construction de scene ou de grille"
+      },
+      "physique_Properties_sans_couleurs_sha256": "eff490faf1f4e4021e49f56a00dbe4d7236d8677c74fd591ccbfb615fa274368",
+      "port": {
+        "attributs": {
+          "ID": "3",
+          "Name": "port_resist_1",
+          "Direction": "2",
+          "Caps": "1",
+          "R": "5.000000e+01",
+          "LEtype": "0.000000e+00"
+        },
+        "P1": {
+          "x": -1.143,
+          "y": -20.0,
+          "z": 0.0
+        },
+        "P2": {
+          "x": 1.143,
+          "y": -20.0,
+          "z": 1.6
+        },
+        "priorite": "20",
+        "aretes_verticales_examinees": 425,
+        "PEC_interieur_source": [],
+        "aretes_source_sans_resistance": []
+      },
+      "controles_chemins_CAD": [
+        {
+          "cote": -1,
+          "chemin": "masse_vers_neck",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "neck_vers_via",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "fut_via",
+          "points": 35,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "contact_masse_B",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "masse_vers_neck",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "neck_vers_via",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "fut_via",
+          "points": 35,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "contact_masse_B",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        }
+      ],
+      "signal_central_CAD": {
+        "points": 71,
+        "points_sans_PEC": []
+      },
+      "graphe_echantillonne": {
+        "definition": "Presence METAL au milieu des aretes primaires : diagnostic seulement, PAS operateur solveur",
+        "dimensions_bloc": [
+          123,
+          69,
+          18
+        ],
+        "aretes_PEC_xyz": [
+          13324,
+          13354,
+          918
+        ],
+        "connexions": {
+          "masse_B__signal": false,
+          "masse_B__masse_G": true,
+          "masse_B__masse_D": true,
+          "masse_G__signal": false,
+          "masse_D__signal": false,
+          "masse_D__masse_G": true
+        },
+        "points_references": {
+          "signal": [
+            61,
+            0,
+            17
+          ],
+          "masse_B": [
+            61,
+            10,
+            0
+          ],
+          "masse_G": [
+            14,
+            30,
+            17
+          ],
+          "masse_D": [
+            108,
+            30,
+            17
+          ]
+        }
+      },
+      "sondes_entetes": {
+        "port_ut_1": [
+          "% time-domain voltage integration by openEMS v0.37.0 @Mon Oct 19 20:27:34 2026",
+          "% start-coordinates: (0,-0.02,0) m -> [130,84,46]",
+          "% stop-coordinates: (0,-0.02,0.0016) m -> [130,84,63]",
+          "% t/s\tvoltage"
+        ],
+        "port_it_1": [
+          "% time-domain current integration by openEMS v0.37.0 @Mon Oct 19 20:27:34 2026",
+          "% start-coordinates: (-0.0012244,-0.0201,0.000752941) m -> [117,83,54]",
+          "% stop-coordinates: (0.001143,-0.02,0.000752941) m -> [142,84,54]",
+          "% t/s\tcurrent"
+        ]
+      },
+      "z_primaire_inferieur_I_mm": 0.7529411764705882,
+      "z_primaire_superieur_I_mm": 0.8470588235294118,
+      "z_centre_dual_I_mm": 0.8,
+      "dt_s": 1.2061278609776263e-13
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "profil": "base_12ns",
+      "extraction_CSX": {
+        "fichier": "extrait_CSX_diamant_uwb_x18_base_12ns.xml",
+        "sha256": "b5bac7554ab5b3d3b1b33219c6e67c111e15aa70a616d6fcd8af66a214863bea",
+        "usage": "Sous-arbre XML existant uniquement ; aucune construction de scene ou de grille"
+      },
+      "physique_Properties_sans_couleurs_sha256": "543488a2a483d848af15c1b31a469d82e7ec897596f9247adb717a83d48f2773",
+      "port": {
+        "attributs": {
+          "ID": "3",
+          "Name": "port_resist_1",
+          "Direction": "2",
+          "Caps": "1",
+          "R": "5.000000e+01",
+          "LEtype": "0.000000e+00"
+        },
+        "P1": {
+          "x": -1.143,
+          "y": -36.0,
+          "z": 0.0
+        },
+        "P2": {
+          "x": 1.143,
+          "y": -36.0,
+          "z": 1.6
+        },
+        "priorite": "20",
+        "aretes_verticales_examinees": 187,
+        "PEC_interieur_source": [],
+        "aretes_source_sans_resistance": []
+      },
+      "controles_chemins_CAD": [
+        {
+          "cote": -1,
+          "chemin": "masse_vers_neck",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "neck_vers_via",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "fut_via",
+          "points": 35,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "contact_masse_B",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "masse_vers_neck",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "neck_vers_via",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "fut_via",
+          "points": 35,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "contact_masse_B",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        }
+      ],
+      "signal_central_CAD": {
+        "points": 71,
+        "points_sans_PEC": []
+      },
+      "graphe_echantillonne": {
+        "definition": "Presence METAL au milieu des aretes primaires : diagnostic seulement, PAS operateur solveur",
+        "dimensions_bloc": [
+          83,
+          47,
+          12
+        ],
+        "aretes_PEC_xyz": [
+          6162,
+          6182,
+          220
+        ],
+        "connexions": {
+          "masse_B__signal": false,
+          "masse_B__masse_G": true,
+          "masse_B__masse_D": true,
+          "masse_G__signal": false,
+          "masse_D__signal": false,
+          "masse_D__masse_G": true
+        },
+        "points_references": {
+          "signal": [
+            41,
+            0,
+            11
+          ],
+          "masse_B": [
+            41,
+            7,
+            0
+          ],
+          "masse_G": [
+            10,
+            21,
+            11
+          ],
+          "masse_D": [
+            72,
+            21,
+            11
+          ]
+        }
+      },
+      "sondes_entetes": {
+        "port_ut_1": [
+          "% time-domain voltage integration by openEMS v0.37.0 @Tue Oct 20 04:10:41 2026",
+          "% start-coordinates: (0,-0.036,0) m -> [100,50,44]",
+          "% stop-coordinates: (0,-0.036,0.0016) m -> [100,50,55]",
+          "% t/s\tvoltage"
+        ],
+        "port_it_1": [
+          "% time-domain current integration by openEMS v0.37.0 @Tue Oct 20 04:10:41 2026",
+          "% start-coordinates: (-0.00127867,-0.0361455,0.000727273) m -> [91,49,49]",
+          "% stop-coordinates: (0.001143,-0.036,0.000727273) m -> [108,50,49]",
+          "% t/s\tcurrent"
+        ]
+      },
+      "z_primaire_inferieur_I_mm": 0.7272727272727274,
+      "z_primaire_superieur_I_mm": 0.8727272727272728,
+      "z_centre_dual_I_mm": 0.8,
+      "dt_s": 1.8091917271563098e-13
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "profil": "fin_16ns",
+      "extraction_CSX": {
+        "fichier": "extrait_CSX_diamant_uwb_x18_fin_16ns.xml",
+        "sha256": "6ceaad9283a99ca57496fe45b2e3f039a55a89c8fe761795a8dd8a8466386eac",
+        "usage": "Sous-arbre XML existant uniquement ; aucune construction de scene ou de grille"
+      },
+      "physique_Properties_sans_couleurs_sha256": "543488a2a483d848af15c1b31a469d82e7ec897596f9247adb717a83d48f2773",
+      "port": {
+        "attributs": {
+          "ID": "3",
+          "Name": "port_resist_1",
+          "Direction": "2",
+          "Caps": "1",
+          "R": "5.000000e+01",
+          "LEtype": "0.000000e+00"
+        },
+        "P1": {
+          "x": -1.143,
+          "y": -36.0,
+          "z": 0.0
+        },
+        "P2": {
+          "x": 1.143,
+          "y": -36.0,
+          "z": 1.6
+        },
+        "priorite": "20",
+        "aretes_verticales_examinees": 425,
+        "PEC_interieur_source": [],
+        "aretes_source_sans_resistance": []
+      },
+      "controles_chemins_CAD": [
+        {
+          "cote": -1,
+          "chemin": "masse_vers_neck",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "neck_vers_via",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "fut_via",
+          "points": 35,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": -1,
+          "chemin": "contact_masse_B",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "masse_vers_neck",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "neck_vers_via",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "fut_via",
+          "points": 35,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        },
+        {
+          "cote": 1,
+          "chemin": "contact_masse_B",
+          "points": 29,
+          "points_sans_PEC": [],
+          "continu_aux_points_sondes": true
+        }
+      ],
+      "signal_central_CAD": {
+        "points": 71,
+        "points_sans_PEC": []
+      },
+      "graphe_echantillonne": {
+        "definition": "Presence METAL au milieu des aretes primaires : diagnostic seulement, PAS operateur solveur",
+        "dimensions_bloc": [
+          123,
+          69,
+          18
+        ],
+        "aretes_PEC_xyz": [
+          13324,
+          13354,
+          884
+        ],
+        "connexions": {
+          "masse_B__signal": false,
+          "masse_B__masse_G": true,
+          "masse_B__masse_D": true,
+          "masse_G__signal": false,
+          "masse_D__signal": false,
+          "masse_D__masse_G": true
+        },
+        "points_references": {
+          "signal": [
+            61,
+            0,
+            17
+          ],
+          "masse_B": [
+            61,
+            10,
+            0
+          ],
+          "masse_G": [
+            14,
+            30,
+            17
+          ],
+          "masse_D": [
+            108,
+            30,
+            17
+          ]
+        }
+      },
+      "sondes_entetes": {
+        "port_ut_1": [
+          "% time-domain voltage integration by openEMS v0.37.0 @Tue Oct 20 05:19:26 2026",
+          "% start-coordinates: (0,-0.036,0) m -> [147,84,46]",
+          "% stop-coordinates: (0,-0.036,0.0016) m -> [147,84,63]",
+          "% t/s\tvoltage"
+        ],
+        "port_it_1": [
+          "% time-domain current integration by openEMS v0.37.0 @Tue Oct 20 05:19:26 2026",
+          "% start-coordinates: (-0.0012244,-0.0361,0.000752941) m -> [134,83,54]",
+          "% stop-coordinates: (0.001143,-0.036,0.000752941) m -> [159,84,54]",
+          "% t/s\tcurrent"
+        ]
+      },
+      "z_primaire_inferieur_I_mm": 0.7529411764705882,
+      "z_primaire_superieur_I_mm": 0.8470588235294118,
+      "z_centre_dual_I_mm": 0.8,
+      "dt_s": 1.2061278609776263e-13
+    }
+  ],
+  "limites": [
+    "Interrogation de la geometrie CSX et graphe aux milieux des aretes seulement.",
+    "Pas de coefficients ou PEC discret natif openEMS extraits.",
+    "Le graphe ne comprend pas les plaques PEC end caps creees par operateur LumpedElement Caps1.",
+    "Un resultat de connectivite identique ne demontre pas une impedance ou une adaptation identiques."
+  ]
+}

@@ -34,8 +34,9 @@ def figure_profils(res, chemin, titre="", zoom_cm=(40, 120)):
         for x_cm, niv in r["pics"]:
             ax1.plot([x_cm], [niv], "o", color=_couleur(i), ms=7)
     ax1.set_xlim(*zoom_cm)
-    ax1.set_title("Région de la cible : les deux plus grands maxima locaux "
-                  "sont marqués", fontsize=11)
+    historique = any(r.get("mode_pics") == "rapport" for r in res.values())
+    ax1.set_title("Région de la cible : maxima candidats marqués "
+                  + ("(sélection historique, lobes inclus)" if historique else "(niveau et proéminence filtrés)"), fontsize=11)
     ax2.set_xlim(0, 250)
     ax2.set_title("Profil complet", fontsize=11)
     for ax in (ax1, ax2):
@@ -83,25 +84,28 @@ def figure_phase(res, freqs, chemin, titre=""):
     return chemin
 
 
-def figure_ecarts(res, chemin, titre=""):
-    """Les écarts simulés, superposés aux mesures du 9 octobre."""
+def figure_ecarts(res, chemin, titre="", reference_9_oct=False):
+    """Écarts des maxima numériques; repère du 9 octobre seulement sur demande."""
     fig, ax = plt.subplots(figsize=(9, 5.5))
     d = sorted(res)
-    ax.plot(d, [res[x]["ecart_proche_cm"] for x in d], "o-", color="#1f77b4",
-            lw=2, label="simulation — branche proche")
-    if not np.isnan(res[d[0]]["ecart_lointain_cm"]):
-        ax.plot(d, [res[x]["ecart_lointain_cm"] for x in d], "s-",
-                color="#2ca02c", lw=2, label="simulation — branche lointaine")
-    dm = sorted(MESURES_9_OCT)
-    ax.plot(dm, [MESURES_9_OCT[x][0] - x for x in dm], "o--", color="#1f77b4",
-            lw=1.5, alpha=0.55, label="mesure 9 oct. — branche proche")
-    ax.plot(dm, [MESURES_9_OCT[x][1] - x for x in dm], "s--", color="#2ca02c",
-            lw=1.5, alpha=0.55, label="mesure 9 oct. — branche lointaine")
-    ax.axhline(DECALAGE_PROCHE_CM, color="#1f77b4", ls=":", lw=1)
-    ax.axhline(DECALAGE_LOINTAIN_CM, color="#2ca02c", ls=":", lw=1)
+    if d:
+        ax.plot(d, [res[x]["ecart_principal_cm"] for x in d], "o-", color="#1f77b4",
+                lw=2, label="maximum principal (rang d'amplitude 1)")
+        secondaires = [res[x]["pics"][1][0] - x if len(res[x]["pics"]) > 1 else np.nan for x in d]
+        if np.any(np.isfinite(secondaires)):
+            ax.plot(d, secondaires, "s-", color="#2ca02c", lw=2,
+                    label="second maximum candidat (sans attribution physique)")
+    if reference_9_oct:
+        dm = sorted(MESURES_9_OCT)
+        ax.plot(dm, [MESURES_9_OCT[x][0] - x for x in dm], "o--", color="#1f77b4",
+                lw=1.5, alpha=0.55, label="repère UWB Surveyor 9 oct. — proche")
+        ax.plot(dm, [MESURES_9_OCT[x][1] - x for x in dm], "s--", color="#2ca02c",
+                lw=1.5, alpha=0.55, label="repère UWB Surveyor 9 oct. — lointain")
+        ax.axhline(DECALAGE_PROCHE_CM, color="#1f77b4", ls=":", lw=1)
+        ax.axhline(DECALAGE_LOINTAIN_CM, color="#2ca02c", ls=":", lw=1)
     ax.set_xlabel("distance vraie de la plaque (cm)")
     ax.set_ylabel("écart = pic − distance (cm)")
-    ax.set_title(titre or "Écarts simulés et mesurés", fontsize=12)
+    ax.set_title(titre or "Écarts des maxima candidats", fontsize=12)
     ax.grid(alpha=0.3)
     ax.legend(fontsize=9)
     fig.tight_layout()
@@ -122,10 +126,10 @@ def figure_s11(freqs, s11, chemin, bande_attendue=None, titre="",
     s = np.asarray(s11)
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(11, 7.5), sharex=True)
 
-    ax1.plot(f, 20 * np.log10(np.abs(s)), color="#1f77b4", lw=2,
+    ax1.plot(f, tr.en_db(np.abs(s)), color="#1f77b4", lw=2,
              label="simulation")
     if reference is not None:
-        ax1.plot(reference[0] / 1e9, 20 * np.log10(np.abs(reference[1])),
+        ax1.plot(reference[0] / 1e9, tr.en_db(np.abs(reference[1])),
                  color="#d62728", lw=1.6, ls="--", label="référence")
     ax1.axhline(-10, color="gray", ls=":", lw=1.2)
     ax1.text(f[0], -9.4, "−10 dB", fontsize=9, color="gray")
@@ -136,7 +140,7 @@ def figure_s11(freqs, s11, chemin, bande_attendue=None, titre="",
                           f"{bande_attendue[1]:.1f} GHz")
         dans = (f >= bande_attendue[0]) & (f <= bande_attendue[1])
         if dans.any():
-            pire = float(np.max(20 * np.log10(np.abs(s[dans]))))
+            pire = float(np.max(tr.en_db(np.abs(s[dans]))))
             ax1.set_title(f"{titre} — dans la bande annoncée, le pire |S11| "
                           f"vaut {pire:.1f} dB", fontsize=11)
     if not ax1.get_title():
@@ -152,18 +156,19 @@ def figure_s11(freqs, s11, chemin, bande_attendue=None, titre="",
     ax2.set_xlabel("fréquence (GHz)")
     ax2.set_ylabel("retard de groupe de $S_{11}$ (ns)")
     ax2.grid(alpha=0.3)
-    ax2.set_title("Retard de groupe : les ondulations trahissent les "
-                  "réflexions internes", fontsize=10)
+    ax2.set_title("Phase de la réflexion au port ; ce retard ne mesure pas "
+                  "directement le délai du champ rayonné", fontsize=10)
     fig.tight_layout()
     fig.savefig(chemin, dpi=120)
     plt.close(fig)
     return chemin
 
 
-def toutes(res, freqs, dossier, prefixe="", titre=""):
+def toutes(res, freqs, dossier, prefixe="", titre="", reference_9_oct=False):
     os.makedirs(dossier, exist_ok=True)
     return [
         figure_profils(res, os.path.join(dossier, f"{prefixe}profils.png"), titre),
         figure_phase(res, freqs, os.path.join(dossier, f"{prefixe}phase.png"), titre),
-        figure_ecarts(res, os.path.join(dossier, f"{prefixe}ecarts.png"), titre),
+        figure_ecarts(res, os.path.join(dossier, f"{prefixe}ecarts.png"), titre,
+                      reference_9_oct=reference_9_oct),
     ]

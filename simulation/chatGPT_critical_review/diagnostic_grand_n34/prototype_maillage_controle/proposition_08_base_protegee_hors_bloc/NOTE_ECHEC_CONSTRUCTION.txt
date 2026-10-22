@@ -1,0 +1,39 @@
+VARIANTE08 — ECHEC DE CONSTRUCTION, PAS ECHEC DE SIMULATION
+
+Aucun Run. La base petit losange est construite et identique a07. La grille
+fine petit losange echoue dans gradue_plancher sur l'axeY apres vingt essais.
+Les autres antennes n'ont pas ete construites dans cette variante : aucune
+extrapolation de cout ou reussite ne leur est attribuee.
+
+Le code garde toutes les lignes BASE hors des trois blocs physiques communs
+et remplace seulement l'interieur par la resolution fine. La source exacte
+est conservee ici. Il ne forme pas l'union des deux anciennes grilles libres.
+
+Exception relevee dans la sortie de l'outil :
+RuntimeError: Graduation controlee non resolue; diamant_uwb/fin/y
+Ancres adjacentes contraignantes :
+[-21.818181818181856,-21.6,-21.5]
+largeurs[0.21818181818185423,0.10000000000000142]mm
+[-13.633066666666666,-13.548399999999999,-13.38519127872101]
+largeurs[0.08466666666666711,0.16320872127898944]mm
+
+La garde-fou du prototype08 verifie aussi les plafonds locaux avant chaque
+retour du LP, contrairement au retour rapide de07. La contrelecture07 n'a
+cependant pas trouve de depassement de ces plafonds dans ses six grilles.
+
+Limite mathematique qui explique le risque de cette strategie : si toutes
+les anciennes frontieres restent fixes, un ancien intervalle de longueurD
+subdivise en au moins deux cellules dont le rapport est<=R a une derniere
+cellule de longueur au plus D*R/(R+1). Pour rejoindre un intervalle suivant
+non subdivise de longueurD'>=D, il faudrait une derniere cellule>=D'/R.
+AvecR=1,5,0,6D<2D'/3 : la transition est impossible. Dans une ancienne grille
+qui grandit vers l'air puis reste uniforme, la subdivision tend donc a se
+propager jusqu'aux cellules PML qui doivent rester fixes. Ce raisonnement
+est une limite de conception, pas un certificat complet d'infaisabilite du
+LP effectivement assemble : le prototype s'est arrete sans le resoudre.
+
+Le coordinateur a autorise l'arret si cette variante etait incompatible ou
+trop couteuse. Aucune relaxation du rapport, du plancher, des PML, des seuils
+de S11 ou des ancres historiques n'a ete appliquee pour la faire reussir.
+La proposition07, avec sa limite explicite de points LP mobiles hors bloc,
+reste disponible pour decision. Aucun moteurF2 racine n'est encore cree.

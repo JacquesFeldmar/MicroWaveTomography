@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-19T14:37:22.859557+00:00",
+  "origines": {
+    "fdtd_maille_controlee_2375.py": {
+      "chemin": "simulation/chatGPT_critical_review/staging_moteur_controle_v2/modifies/fdtd_maille_controlee.py",
+      "sha256": "237510b3702694abb4336b895eb8394015265cfbc18d92e8c1cf86d2eb5b0f84",
+      "nature": "copie byte exacte avant evolution de garde"
+    },
+    "preuve_native_f2_grilles_2375.json": {
+      "chemin": "simulation/chatGPT_critical_review/staging_moteur_controle_v2/preuve_native_f2_grilles.json",
+      "sha256": "566c1a6fb0f41de77869e4eeb737b7d8d940004538fa00591e62ba71b4af295c",
+      "nature": "preuve ancree pour comparaison six axes/politiques"
+    },
+    "staged/fenetre_sondes.py": {
+      "chemin": "simulation/chatGPT_critical_review/staging_moteurs_f1_f2/modifies/fenetre_sondes.py",
+      "sha256": "e9246913dc06ea41b79d16495c90409c877a3b9bcdd0cd856f899baa8cf88a78",
+      "nature": "source copiee en TEMP, non dupliquee ici"
+    },
+    "staged/qualification_adaptative.py": {
+      "chemin": "simulation/chatGPT_critical_review/staging_moteurs_f1_f2/modifies/qualification_adaptative.py",
+      "sha256": "44d3aabe067ff954365d990b41f19cc618bb1dacb77dae1ddcf29d10ce3208c0",
+      "nature": "source copiee en TEMP, non dupliquee ici"
+    },
+    "staged/qualifie_pcbway.py": {
+      "chemin": "simulation/chatGPT_critical_review/staging_moteurs_f1_f2/modifies/qualifie_pcbway.py",
+      "sha256": "c041dd8f2666d0ed700f1768386e28c58c2b4504b49ad31304be68b7dad6e2db",
+      "nature": "source copiee en TEMP, non dupliquee ici"
+    }
+  },
+  "archive_F1": {
+    "chemin": "simulation/archives/campagne_F1_cloture_2026-10-19.zip",
+    "sha256": "a2d63d75a664b35289a13f3a46747469292b7c52fff1c8a8e3f5cb7461eb56b9"
+  },
+  "autonomie": false
+}

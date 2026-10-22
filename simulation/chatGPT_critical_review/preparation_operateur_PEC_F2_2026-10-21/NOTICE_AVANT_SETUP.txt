@@ -1,0 +1,112 @@
+PRÉPARATION D'UNE INSPECTION D'OPÉRATEUR — 21 OCTOBRE 2026
+
+Statut : préparation exécutée, AUCUN SetupFDTD exécuté.
+Le plan actif est preparation_03/plan.json. preparation_01 et _02 sont
+conservées comme états préparatoires : ajout des SHA des extensions .pyd,
+puis garde finally empêchant un enfant orphelin après interruption.
+Le script courant refuse ces deux anciens plans ; ne pas les utiliser.
+
+Le script est inspecte_operateurs_sans_temps.py. Le mode --sortie ne fait
+que lire les deux profils Petit F2 clos, vérifier les dix-huit sources,
+copier les entrées/contexte et exécuter openEMS.exe --help. Il n'importe
+pas openEMS et ne lance aucun Setup. Le plan et son index sont créés
+exclusivement dans un dossier neuf de cette revue.
+
+Le futur mode --executer est soumis à la contrelecture ROOT :
+
+C:/Users/jfeld/anaconda3/envs/openems/python.exe -B -X utf8
+  simulation/chatGPT_critical_review/preparation_operateur_PEC_F2_2026-10-21/inspecte_operateurs_sans_temps.py
+  --executer
+  C:/Jacques/liteVNA/MicroWaveTomography/simulation/chatGPT_critical_review/preparation_operateur_PEC_F2_2026-10-21/preparation_03
+
+Ce n'est PAS une commande déjà exécutée. Le coordinateur doit vérifier
+le SHA courant du script et celui du plan avant de l'employer.
+
+GARANTIE D'ABSENCE DE TIMESTEPPING
+
+Options locales vérifiées sur le vrai exécutable openEMS v0.37.0 :
+--debug-PEC, --debug-operator, --debug-boxes, --numThreads et --no-simulation.
+L'aide intégrale, stdout/stderr, est copiée dans preparation_03/contexte.
+Le wrapper Python installé expose Run(setup_only=True). Son implémentation
+appelle SetupFDTD puis retourne son code AVANT l'appel RunFDTD ; le code
+est consultable dans contexte/openEMS.pyx, lignes 649–701.
+
+L'inspecteur utilise cet argument FORMEL setup_only=True, littéral dans
+l'unique appel Run du script, et exige le retour entier zéro. Aucun appel
+CalcPort, aucune exportation S11, aucun import du constructeur de projet.
+Le numéro de pas XML reste inchangé car aucun pas ne sera intégré.
+Le nom Run de la méthode Python ne doit pas être confondu avec un appel
+temporel RunFDTD : ce dernier est derrière la branche de retour évitée.
+
+Il ne faut PAS ajouter no_simulation=True : l'option C++ correspondante
+retourne avant la création des processings/box_dump dans le source
+officiel consulté. L'argument FORMEL Python laisse le Setup complet créer
+les boîtes, puis retourne avant l'intégration temporelle.
+Source primaire complémentaire :
+https://github.com/thliebig/openEMS/blob/master/openems.cpp
+(bloc m_no_simulation avant SetupProcessing/box_dump ; source amont,
+pas une preuve d'identité octet à octet de cette DLL locale).
+
+Un Setup peut précalculer les fichiers d'excitation et/ht : leur présence
+ne prouve aucune intégration temporelle. Le script exige en outre absence
+de valeurs temporelles dans les éventuels fichiers port_*, absence de
+openEMS_run_stats.txt et de traces de progression RunFDTD. Une discordance
+fait échouer le contrôle, sans transformer les sorties en qualification.
+
+SCÈNE ET FIDÉLITÉ
+
+Seuls diamant_uwb/base_12ns et diamant_uwb/fin_16ns sont autorisés.
+ReadFromXML lit une COPIE EXACTE du XML complet dans un objet indépendant.
+Les coordonnées du NPZ archivé et le dt du manifeste sont restitués
+littéralement en mémoire, sans interpolation, lissage, construction d'un
+nouveau maillage ou modification du dessin. Les octets des axes relus
+doivent être identiques à ceux du NPZ. Il s'agit explicitement du mode
+CAD_XML_archive__axes_NPZ_et_dt_manifeste_restitues_sans_recalcul.
+Les écarts de sérialisation XML/NPZ mesurés atteignent 4,4054e-13 mm.
+
+Les primitives et matériaux du XML comportent eux aussi des arrondis.
+Restituer axes et dt ne les annule pas : ce diagnostic caractérisera
+l'opérateur de la scène ARCHIVÉE, sans prétendre récupérer bit à bit
+l'ancien opérateur CSX construit en mémoire lors des calculs originaux.
+Les quinze primitives, matériaux, port et excitation ne sont pas recréés.
+Les entrées, les dix-huit sources, l'exécutable, les DLL et extensions
+Python natives pertinentes sont empreintés et vérifiés avant/après.
+
+RESSOURCES ET VOLUME
+
+Deux enfants distincts SEQUENTIELS, au plus un Setup à la fois ; moteur
+multithreaded imposé avec numThreads=1, toutes bibliothèques d'analyse
+à un fil, priorité enfant sous la normale. Les sorties C++ stdout/stderr
+sont capturées par fichiers de sous-processus, pas par une redirection
+Python qui manquerait les flux natifs. Le cwd est restauré dans finally.
+
+Les grilles existantes ont 3 071 000 et 7 694 280 points. Échelle mémoire
+brute, PAS prédiction du dump : un tableau float32 vaut 12,284 et 30,777 Mo ;
+douze tableaux valent 147,408 et 369,325 Mo. Formats, extensions, nombre
+réel de tableaux et coût natif ne sont pas encore mesurés. Le temps
+ne croît pas avec 66 329/132 657 intégrations car aucune n'est exécutée ;
+aucune durée de Setup fiable n'est promise avant mesure.
+
+Surveillance toutes les 0,25 s : 4 Gio pour ce seul dossier de revue,
+RSS enfant 3 Gio maximum observé, disque libre 20 Gio minimum ; RAM libre
+4 Gio avant chaque enfant et 1,5 Gio pendant ; délai 20 minutes par Setup.
+Ces seuils sont des arrêts surveillés, PAS des quotas NTFS/Job Object durs :
+un dépassement entre deux contrôles est possible. La préparation a constaté
+environ 298 Go libres sur disque et 6,7 Go de RAM physique libre ; les
+valeurs exactes sont dans le plan et seront revérifiées avant exécution.
+
+Le dépassement, un moniteur défaillant ou une exception arrête SEULEMENT
+l'enfant diagnostique direct. Aucun processus de calcul Vivaldi n'est
+recherché ni visé. Aucune reprise automatique ni suppression : les
+sorties partielles et journaux sont conservés et indexés. Si le premier
+Setup échoue, le second n'est pas lancé. Un dossier déjà commencé est
+refusé. Les sorties restent hors des profils et de toute qualification.
+
+BUT DISCRIMINANT APRÈS EXÉCUTION AUTORISÉE
+
+Lire PEC/operator/boxes près du port, des caps et des deux vias ; comparer
+le vrai PEC discret et les coefficients des deux grilles déjà existantes.
+Les noms PEC_dump*, operator_dump* et box_dump_* sont exigés. L'inspection
+des tableaux réels et la comparaison scientifique restent à faire après
+les deux Setups ; aucune conclusion RF n'est préjugée ici. Aucun profil
+Vivaldi actif n'a été lu pendant cette préparation.

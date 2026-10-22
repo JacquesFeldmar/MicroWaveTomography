@@ -1,52 +1,17 @@
-# Nooelec UWB Surveyor
+# Nooelec UWB Surveyor du banc
 
-Antenne biconique planaire, c'est l'antenne du banc.
+L'UWB Surveyor est l'antenne commerciale utilisée sur le banc. La [fiche Nooelec révision 1](../../uwb_surveyor_datasheet_revision_1.pdf) documente l'encombrement de 120 × 120 × 0,8 mm, une bande annoncée de 700 MHz à 10 GHz et une SMA femelle standard. L'exemplaire décrit dans le projet porte le marquage v1.0b2, 2025-10-15.
 
-| | |
-|---|---|
-| Fiche technique | [`../../uwb_surveyor_datasheet_revision_1.pdf`](../../uwb_surveyor_datasheet_revision_1.pdf), révision 1 du 22/06/2022 |
-| Référence | SKU 100840 |
-| Bande | 700 MHz – 10 GHz |
-| Gain moyen | ~3 dBi (2,0 à 1 GHz ; 1,5 à 2,5 GHz ; 3,4 à 5 GHz) |
-| ROS | 1,5 typique, mais ~3 vers 1,7 GHz, et divergent sous 0,8 GHz |
-| Dimensions | 120 × 120 × 0,8 mm, 26 g |
-| Connecteur | SMA femelle |
-| Exemplaire du banc | marqué v1.0b2, 2025-10-15 |
+## Géométrie approximative
 
-## Ce que la fiche ne donne pas
+La fiche ne fournit pas les cotes détaillées des conducteurs ni l'empilement diélectrique complet. [geometrie.py](geometrie.py) conserve un modèle relevé sur photo : disque tronqué de rayon 83,5 mm, centre à y = 92,7 mm, ligne de 1,5 mm et longueur d'alimentation dérivée de 69,2 mm. Les anciennes valeurs de 46 et 38 mm présentes dans la fiche précédente ne correspondent plus au code. Ces valeurs restent des estimations, pas des cotes Nooelec certifiées. Le matériau de ce module historique conserve εr = 4,4 et une conductivité ajustée au centre de la bande ; il n'utilise pas le nouveau contrat S1000H des PCB de production.
 
-**Le dessin des conducteurs.** Ni fichiers de fabrication, ni cotes des pétales,
-ni largeur de la ligne d'alimentation, ni position exacte de la fente. La
-géométrie de [`geometrie.py`](geometrie.py) est donc une **approximation**, dont
-les paramètres sont groupés en tête du fichier :
+Une confrontation au S11 et aux dimensions de l'exemplaire est nécessaire avant d'interpréter les retards simulés. Une courbe de ROS seule ne détermine pas de façon unique cette géométrie ni sa phase. La scène actuelle place la carte dans le plan xy et une plaque parallèle à une distance en z ; l'orientation doit être confrontée au montage et au diagramme réels.
 
-| Paramètre | Valeur posée | |
-|---|---|---|
-| `RAYON_PETALE` | 46 mm | déduit de l'encombrement |
-| `FENTE` | 0,6 mm | choisi |
-| `LARGEUR_LIGNE` | 1,5 mm | ligne 50 Ω sur 0,8 mm de FR4 |
-| `LONGUEUR_LIGNE` | 38 mm | estimé d'après la photo de la fiche |
+## Retards historiques
 
-**Le seul critère de recalage disponible est la courbe de ROS de la page 3.**
-Simuler l'antenne seule, comparer son |S11| à cette courbe, puis ajuster les
-quatre paramètres ci-dessus. Tant que ce recalage n'est pas fait, le retard
-simulé n'a pas de valeur probante.
+Le retard calculé pour la seule ligne approximative est de 0,421 ns, soit environ 12,62 cm sur l'axe de distance. Il ne fournit ni une borne inférieure rigoureuse du pic large bande, ni une borne supérieure du retard total. Résonances, couplages, centre de phase, environnement et traitement peuvent intervenir ; deux traversées de la largeur de la carte ne bornent pas ces effets.
 
-## Le retard, qui est la question du projet
+Les décalages de 20,0 cm et 36,5 cm rapportés dans les deux campagnes historiques doivent être examinés à partir des données complexes, des calibrations, de la sélection des pics et des plans de référence. Il n'est pas établi qu'un même mécanisme physique explique ces deux chiffres. Les campagnes sont distinctes et ne doivent pas être mélangées.
 
-`retard_attendu_ns()` ne rend que le retard de la **ligne d'alimentation**,
-0,23 ns, soit 6,9 cm de décalage affiché. C'est une **borne basse** : le
-rayonnement part plus loin que la fente, et son point de départ dépend de la
-fréquence.
-
-Les mesures, elles, donnent 20 cm (campagne du 9 octobre) à 36,5 cm (campagne
-du 17 septembre). La géométrie seule ne peut pas produire plus de 24 cm, même
-en faisant parcourir à l'onde tout le côté de la carte dans le FR4. **C'est
-l'écart entre ces deux chiffres que la simulation doit expliquer.**
-
-## Diagramme de rayonnement
-
-Le diagramme est un tore : maximum dans le plan perpendiculaire à l'axe des
-pétales, **nuls dans cet axe**. La plaque doit donc être présentée à la face de
-la carte, ce que suppose `geometrie.py` : la carte est dans le plan *xy* et la
-plaque est parallèle, à *z = x*.
+La première fabrication concerne les deux losanges et la Vivaldi, pas une copie de cette Nooelec. La qualification de ces cartes et leur [protocole de mesure](../../PROTOCOLE_MESURE_PCBWAY.md) sont indépendants de l'enquête historique.

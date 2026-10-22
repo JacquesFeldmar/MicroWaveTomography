@@ -1,0 +1,104 @@
+{
+  "schema": "complement_cloture_F2_v1",
+  "utc": "2026-10-22T08:37:52.150035+00:00",
+  "reussi_integrite": true,
+  "qualification_globale_reussie": false,
+  "archive_orchestration": {
+    "index_sha256": "f7ecf85ae985fbfb3ff685d483366111c241182563704b6733f1eb96ce4fca06",
+    "fichiers_indexes_relus": 25,
+    "tous_SHA_exacts": true,
+    "copies18sources_octets_exacts": true,
+    "gel_attendu_byteexact": true
+  },
+  "preuves_six_calculs": [
+    {
+      "antenne": "diamant_uwb",
+      "profil": "base_12ns",
+      "controle_sha256": "18b7ac0159709f26e96a5708496f95ad483d2a5cfd8bcbd71e93ae1a14788345",
+      "fin_sha256": "3cf78239c9a79e5f1d62f5dfba01c0b04469f23e900b0c87907d4407c730b3f0",
+      "sources10_et_controles8_declares_exacts": true,
+      "copies8_controles_octets_exacts": true
+    },
+    {
+      "antenne": "diamant_uwb",
+      "profil": "fin_16ns",
+      "controle_sha256": "4c32566e7f80361307e4b42b5d598987e6efaa1aa998b9513b247f3c0701f052",
+      "fin_sha256": "6cd11a223337f1e42f3838a57b401ab666ab143690419ee70afb8b33c93e094b",
+      "sources10_et_controles8_declares_exacts": true,
+      "copies8_controles_octets_exacts": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "profil": "base_12ns",
+      "controle_sha256": "cb2a942273682b6a3390660817796647cdf966355d1ef29aec19b08ed4f47cf1",
+      "fin_sha256": "ac77553b589f2fe5ae738a8cdc4f2b741131fee559dac9fc25b88deba8b1bc1e",
+      "sources10_et_controles8_declares_exacts": true,
+      "copies8_controles_octets_exacts": true
+    },
+    {
+      "antenne": "diamant_uwb_x18",
+      "profil": "fin_16ns",
+      "controle_sha256": "ef05a6d2e849730df28551b695696e7980ef24bd387a5c2904ea804ad7d7479a",
+      "fin_sha256": "c2f754baad5f364f6d6d660cea5eaba986c8f67e161424a936fc24bdbe17e62e",
+      "sources10_et_controles8_declares_exacts": true,
+      "copies8_controles_octets_exacts": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "profil": "base_12ns",
+      "controle_sha256": "85909f4c0ebc3eb8023485dde71e5291cdb9d4b6837f69bb6ef535498946d925",
+      "fin_sha256": "6b264fd873bb77b29ca8c710637c4e8e8a4ca400a50d2c0738f9b3d373f1be60",
+      "sources10_et_controles8_declares_exacts": true,
+      "copies8_controles_octets_exacts": true
+    },
+    {
+      "antenne": "vivaldi_tomographie",
+      "profil": "fin_16ns",
+      "controle_sha256": "a278d02dfd34b9b75e19974eb4881c182f79ac5444c999cff8fded1c3beb53a4",
+      "fin_sha256": "20d2bc52149a51b217b9e6edd6e53c3d8e787c914a7b4743472a2675831a7033",
+      "sources10_et_controles8_declares_exacts": true,
+      "copies8_controles_octets_exacts": true
+    }
+  ],
+  "journaux_sha256": {
+    "journaux/analyse/AP.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/analyse/AP.stdout.log": "3767f78699f893986ce73d2d9f1642299cefd521d6af967aadef1a5085e1ba77",
+    "journaux/losanges/01_diamant_uwb_base_12ns.stderr.log": "76a84a207fa91303ef52d5e210e8ead0c7caf2583c8aef09d5ddb47803df3fc7",
+    "journaux/losanges/01_diamant_uwb_base_12ns.stdout.log": "c90f229bed40332fd273b5f40390b2c6508cbed9063d9f9183de7ed76826cef1",
+    "journaux/losanges/02_diamant_uwb_base_8ns.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/losanges/02_diamant_uwb_base_8ns.stdout.log": "cd11067e4d94fa395f2d416a4861b5e513c05dde070f902d481ed30a6e363c59",
+    "journaux/losanges/03_diamant_uwb_fin_16ns.stderr.log": "0f4167eec78e4afcefa035e954f27ba22ea04ed64ace96e94b5b6094001b8154",
+    "journaux/losanges/03_diamant_uwb_fin_16ns.stdout.log": "ff8a0642b8e59277522fb4a799838a32b9c6596393cba8acdaf46cacc2866593",
+    "journaux/losanges/04_diamant_uwb_fin_8ns.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/losanges/04_diamant_uwb_fin_8ns.stdout.log": "c1b864809f7d6771a8910d31fc3de581c9897d39671b1123fcab93cd73fe6b47",
+    "journaux/losanges/05_diamant_uwb_fin_12ns.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/losanges/05_diamant_uwb_fin_12ns.stdout.log": "495223f3d6957d2314b39fc367da0945f53dabcd3688df3c9d69037e8c35edd4",
+    "journaux/losanges/06_diamant_uwb_x18_base_12ns.stderr.log": "76a84a207fa91303ef52d5e210e8ead0c7caf2583c8aef09d5ddb47803df3fc7",
+    "journaux/losanges/06_diamant_uwb_x18_base_12ns.stdout.log": "b8c2755f16c1368138ec813d5ba7a9ae7d2fc0a7eda9a754c4e999f9195cbee7",
+    "journaux/losanges/07_diamant_uwb_x18_base_8ns.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/losanges/07_diamant_uwb_x18_base_8ns.stdout.log": "d8ff904ff84e79c55f330be8335d605564cf4e2e0a5693ccaea78432b3eef008",
+    "journaux/losanges/08_diamant_uwb_x18_fin_16ns.stderr.log": "0f4167eec78e4afcefa035e954f27ba22ea04ed64ace96e94b5b6094001b8154",
+    "journaux/losanges/08_diamant_uwb_x18_fin_16ns.stdout.log": "339f3f9229e4165d54f17c13d97482cf578db6114a3d799213d3cbdf7ac16a3b",
+    "journaux/losanges/09_diamant_uwb_x18_fin_8ns.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/losanges/09_diamant_uwb_x18_fin_8ns.stdout.log": "005244038d8bd358010e01c78f0e738a1bc76879470612f1605b8e6fbc4d0aad",
+    "journaux/losanges/10_diamant_uwb_x18_fin_12ns.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/losanges/10_diamant_uwb_x18_fin_12ns.stdout.log": "134c9573996339b75a201f93b1fb8e128ea769b2742e05b14aaa1aaa27e74d49",
+    "journaux/vivaldi/01_vivaldi_tomographie_base_12ns.stderr.log": "76a84a207fa91303ef52d5e210e8ead0c7caf2583c8aef09d5ddb47803df3fc7",
+    "journaux/vivaldi/01_vivaldi_tomographie_base_12ns.stdout.log": "5dc4c171d962a6a1762961814af4d1bc6e9922e29eb89ba67bf1b33bf9e1f001",
+    "journaux/vivaldi/02_vivaldi_tomographie_base_8ns.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/vivaldi/02_vivaldi_tomographie_base_8ns.stdout.log": "1508cbbcc8ba544a46d3edd58a70d127c9be45a7a1d9fdd7028385d61930118c",
+    "journaux/vivaldi/03_vivaldi_tomographie_fin_16ns.stderr.log": "0f4167eec78e4afcefa035e954f27ba22ea04ed64ace96e94b5b6094001b8154",
+    "journaux/vivaldi/03_vivaldi_tomographie_fin_16ns.stdout.log": "c5984fa85c7bc543a4bb6d37c3a19dd68df2e8acabf9748cb3a0d9d3d08c9b1f",
+    "journaux/vivaldi/04_vivaldi_tomographie_fin_8ns.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/vivaldi/04_vivaldi_tomographie_fin_8ns.stdout.log": "9e27154fa7ec60d6c6e8060adafa272eefedd0f81b18ddff125ac70ec7b293b9",
+    "journaux/vivaldi/05_vivaldi_tomographie_fin_12ns.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "journaux/vivaldi/05_vivaldi_tomographie_fin_12ns.stdout.log": "aba5bf3a5de178b55a0717ac600e60148de0c2429d7fe05439367c2c6e143b43"
+  },
+  "sources18_et420fichiers_toujours_inchanges": true,
+  "code_controle": 0,
+  "code_AP_numerique": 2,
+  "code_orchestrateur_numerique": 2,
+  "etat": "non_convergence",
+  "aucun_Run": true,
+  "aucune_ecriture_projet": true
+}

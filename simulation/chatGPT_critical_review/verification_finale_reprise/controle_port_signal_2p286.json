@@ -1,0 +1,455 @@
+{
+  "schema": "revue_geometrique_port_signal_2p286_v1",
+  "utc_note": "2026-10-19T02:41:44.916113+00:00",
+  "nature": "Revue geometrique du cuivre et de la couverture du port, aucune validation physique supplementaire",
+  "auteur_revue_coupes": "/root/reprise_fabrication",
+  "methode_preexistante": "Lecture des sources, contours_mm des trois geometries et intersection Shapely des polygones avec leur bord alimentation ; aucun pose, export ou solveur.",
+  "conclusion": "Le cuivre signal est reellement retreci a2.286mm au bord des trois cartes ; aucun feed plus large superpose ne subsiste. Le port couvre toute la largeur du signal.",
+  "mecanisme_remplacement": {
+    "losanges": "ruban_losange reconstruit le contour en conservant sommets[1:-1] : les deux anciens sommets de bord sont retires.",
+    "vivaldi": "ruban_vivaldi reconstruit le contour en conservant polygone[2:] : les deux anciens sommets de bord sont retires.",
+    "empreinte": "empreinte_mm ajoute uniquement les masses et vias ; aucun second feed original n est ajoute."
+  },
+  "cotes": "Millimetres de conception ; les valeurs1.143 et2.286 peuvent avoir un ecart de representation flottante inferieur a1e-14.",
+  "antennes": {
+    "diamant_uwb": {
+      "avec_SMA": true,
+      "repere_coupes": "x,y du PCB et physiques",
+      "bord_alimentation_mm": -20.0,
+      "coupe_signal": {
+        "couche": "F_Cu",
+        "indice_polygone": 0,
+        "segment_mm": [
+          [
+            -1.143,
+            -20.0
+          ],
+          [
+            1.143,
+            -20.0
+          ]
+        ],
+        "largeur_mm": 2.286
+      },
+      "port": {
+        "boite_physique_mm": [
+          [
+            -1.143,
+            -20.0,
+            0.0
+          ],
+          [
+            1.143,
+            -20.0,
+            1.6
+          ]
+        ],
+        "direction_excitation": "z",
+        "largeur_transverse_mm": 2.286,
+        "couvre_tout_signal_au_bord": true
+      },
+      "pad_et_taper": {
+        "pad_longueur_mm": 5.08,
+        "pad_demi_largeur_mm": 1.143,
+        "fin_pad_coord_longitudinale_mm": -14.92,
+        "fin_taper_coord_longitudinale_mm": -14.513,
+        "fin_taper_demi_largeur_mm": 1.55,
+        "largeur_ligne_apres_taper_mm": 3.1
+      },
+      "autres_cuivres_au_bord": {
+        "F_Cu_masses_polygones": [
+          1,
+          4
+        ],
+        "F_Cu_segments_masses_mm": [
+          [
+            [
+              -5.588,
+              -20.0
+            ],
+            [
+              -3.175,
+              -20.0
+            ]
+          ],
+          [
+            [
+              3.175,
+              -20.0
+            ],
+            [
+              5.588,
+              -20.0
+            ]
+          ]
+        ],
+        "ecart_signal_masse_par_cote_mm": 2.032,
+        "B_Cu_segment_masse_mm": [
+          [
+            -15.6,
+            -20.0
+          ],
+          [
+            15.6,
+            -20.0
+          ]
+        ]
+      }
+    },
+    "diamant_uwb_x18": {
+      "avec_SMA": true,
+      "repere_coupes": "x,y du PCB et physiques",
+      "bord_alimentation_mm": -36.0,
+      "coupe_signal": {
+        "couche": "F_Cu",
+        "indice_polygone": 0,
+        "segment_mm": [
+          [
+            -1.143,
+            -36.0
+          ],
+          [
+            1.143,
+            -36.0
+          ]
+        ],
+        "largeur_mm": 2.286
+      },
+      "port": {
+        "boite_physique_mm": [
+          [
+            -1.143,
+            -36.0,
+            0.0
+          ],
+          [
+            1.143,
+            -36.0,
+            1.6
+          ]
+        ],
+        "direction_excitation": "z",
+        "largeur_transverse_mm": 2.286,
+        "couvre_tout_signal_au_bord": true
+      },
+      "pad_et_taper": {
+        "pad_longueur_mm": 5.08,
+        "pad_demi_largeur_mm": 1.143,
+        "fin_pad_coord_longitudinale_mm": -30.92,
+        "fin_taper_coord_longitudinale_mm": -30.513,
+        "fin_taper_demi_largeur_mm": 1.55,
+        "largeur_ligne_apres_taper_mm": 3.1
+      },
+      "autres_cuivres_au_bord": {
+        "F_Cu_masses_polygones": [
+          1,
+          4
+        ],
+        "F_Cu_segments_masses_mm": [
+          [
+            [
+              -5.588,
+              -36.0
+            ],
+            [
+              -3.175,
+              -36.0
+            ]
+          ],
+          [
+            [
+              3.175,
+              -36.0
+            ],
+            [
+              5.588,
+              -36.0
+            ]
+          ]
+        ],
+        "ecart_signal_masse_par_cote_mm": 2.032,
+        "B_Cu_segment_masse_mm": [
+          [
+            -28.08,
+            -36.0
+          ],
+          [
+            28.08,
+            -36.0
+          ]
+        ]
+      }
+    },
+    "vivaldi_tomographie": {
+      "avec_SMA": true,
+      "repere_coupes": "x,y du PCB ; y devient z physique",
+      "bord_alimentation_mm": 0.0,
+      "coupe_signal": {
+        "couche": "F_Cu",
+        "indice_polygone": 0,
+        "segment_mm": [
+          [
+            -1.143,
+            0.0
+          ],
+          [
+            1.143,
+            0.0
+          ]
+        ],
+        "largeur_mm": 2.286
+      },
+      "port": {
+        "boite_physique_mm": [
+          [
+            -1.143,
+            0.0,
+            0.0
+          ],
+          [
+            1.143,
+            1.6,
+            0.0
+          ]
+        ],
+        "direction_excitation": "y",
+        "largeur_transverse_mm": 2.286,
+        "couvre_tout_signal_au_bord": true
+      },
+      "pad_et_taper": {
+        "pad_longueur_mm": 5.08,
+        "pad_demi_largeur_mm": 1.143,
+        "fin_pad_coord_longitudinale_mm": 5.08,
+        "fin_taper_coord_longitudinale_mm": 5.437,
+        "fin_taper_demi_largeur_mm": 1.5,
+        "largeur_ligne_apres_taper_mm": 3.0
+      },
+      "autres_cuivres_au_bord": {
+        "F_Cu_masses_polygones": [
+          1,
+          4
+        ],
+        "F_Cu_segments_masses_mm": [
+          [
+            [
+              -5.588,
+              0.0
+            ],
+            [
+              -3.175,
+              0.0
+            ]
+          ],
+          [
+            [
+              3.175,
+              0.0
+            ],
+            [
+              5.588,
+              0.0
+            ]
+          ]
+        ],
+        "ecart_signal_masse_par_cote_mm": 2.032,
+        "B_Cu_segment_masse_mm": [
+          [
+            -20.0,
+            0.0
+          ],
+          [
+            20.0,
+            0.0
+          ]
+        ]
+      }
+    }
+  },
+  "references_sources": [
+    {
+      "chemin": "simulation/connectique.py",
+      "sha256": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+      "lignes": [
+        14,
+        15,
+        16,
+        17,
+        29,
+        56,
+        60,
+        65,
+        69,
+        87,
+        94
+      ],
+      "role": "cotes SMA ; remplacement des sommets du feed ; masses separees ; limite SMA3D"
+    },
+    {
+      "chemin": "simulation/antennes/diamant_uwb/geometrie.py",
+      "sha256": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+      "lignes": [
+        65,
+        94,
+        104,
+        112,
+        154,
+        167,
+        172,
+        173,
+        175,
+        176
+      ],
+      "role": "polygone signal remplace ; cuivre pose depuis contours_mm ; port largeur SMA"
+    },
+    {
+      "chemin": "simulation/antennes/diamant_uwb_x18/geometrie.py",
+      "sha256": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+      "lignes": [
+        51,
+        61,
+        79,
+        83
+      ],
+      "role": "parametrage1.8 et delegation aux memes contours/pose du losange"
+    },
+    {
+      "chemin": "simulation/antennes/vivaldi_tomographie/geometrie.py",
+      "sha256": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+      "lignes": [
+        198,
+        209,
+        213,
+        222,
+        233,
+        282,
+        316,
+        320,
+        324,
+        325,
+        326
+      ],
+      "role": "deux sommets de bord remplaces ; meme cuivre export/simulation ; port largeur SMA"
+    }
+  ],
+  "contrelecture_FDTD": {
+    "attribution": "Retour de contrelecture FDTD transmis par le coordinateur ; lecture XML et code des sondes non executee par Fabrication.",
+    "profils": "Deux profils clos uniquement : grandN30_12ns et Vivaldi tres_fin_16ns.",
+    "fichiers_XML": [
+      {
+        "chemin": "simulation/resultats/pcbway_r1/diamant_uwb_x18/n30_12ns/entree_openems.xml",
+        "sha256": "d1abc76b452b1f7625e2d34d9c3f4ffbb49d5538288457b9506b74eb5447cce7",
+        "lecture_par_fabrication_pour_cette_note": "octets pour SHA uniquement ; interpretation attribuee a FDTD"
+      },
+      {
+        "chemin": "simulation/resultats/pcbway_r1/vivaldi_tomographie/tres_fin_16ns/entree_openems.xml",
+        "sha256": "ac405ab2978d9cb1207391ed9fb5a34ad34b8246e37a5275ae6b14e1b24fbf42",
+        "lecture_par_fabrication_pour_cette_note": "octets pour SHA uniquement ; interpretation attribuee a FDTD"
+      }
+    ],
+    "grand_N30": {
+      "resistance_et_source": {
+        "x_mm": [
+          -1.143,
+          1.143
+        ],
+        "y_mm": -36.0,
+        "z_mm": [
+          0.0,
+          1.6
+        ]
+      },
+      "sonde_U": {
+        "x_mm": 0.0,
+        "y_mm": -36.0,
+        "axe_integration": "z",
+        "z_mm": [
+          0.0,
+          1.6
+        ]
+      },
+      "sonde_I": {
+        "x_mm": [
+          -1.143,
+          1.143
+        ],
+        "y_mm": -36.0,
+        "z_mm": 0.8,
+        "normale": "z"
+      }
+    },
+    "V_tres_fin": {
+      "resistance_et_source": {
+        "x_mm": [
+          -1.143,
+          1.143
+        ],
+        "y_mm": [
+          0.0,
+          1.6
+        ],
+        "z_mm": 0.0
+      },
+      "sonde_U": {
+        "x_mm": 0.0,
+        "z_mm": 0.0,
+        "axe_integration": "y",
+        "y_mm": [
+          0.0,
+          1.6
+        ]
+      },
+      "sonde_I": {
+        "x_mm": [
+          -1.143,
+          1.143
+        ],
+        "y_mm": 0.8,
+        "z_mm": 0.0,
+        "normale": "y"
+      }
+    },
+    "constat": "Les sondes U/I sont au plan longitudinal de l excitation ; aucune distance de ligne distincte ou extension de port ne ressort de cette contrelecture.",
+    "references_code_installe_rapporte": [
+      "LumpedPort : ports.py186-309",
+      "AddLumpedPort : openEMS.pyx335"
+    ],
+    "decomposition_rapporte": {
+      "Z_ref_ohms": 50,
+      "Uinc": "(U+50I)/2",
+      "Uref": "(U-50I)/2"
+    }
+  },
+  "limites": [
+    "Cette couverture geometrique ne demontre pas la convergence ou la validite physique du port.",
+    "Le port ideal50ohms est au bord du PCB ; le plan coaxial de mesure est distinct.",
+    "Boitier SMA, PTFE, broche et soudure non modelises en3D ; aucune validation de connecteur reel ajoutee.",
+    "La largeur3.1mm des losanges ou3.0mm de la Vivaldi est celle de la ligne apres taper, pas celle du cuivre au bord.",
+    "Aucun verdict, seuil, choix de reference ou resultat de qualification ne change."
+  ],
+  "controles": {
+    "sources_17_inchangees": true,
+    "sources_17_sha256": {
+      "donnees.py": "4164aa6d4c0cba4f88592c776592dff79ec5bceeac65f6b65d1a9043a3114237",
+      "export_gerber.py": "a47f47e0da716ca343e90a57f1884fab678285f1242202ca399a003310f4237f",
+      "fenetre_sondes.py": "67447305b669e1ef312215a781a1c9bb4d93a03bb2a6068098abd608566e9483",
+      "poursuit_campagne_pcbway.py": "4e0ccfb5b361ee2b66283ebb0bcfe4f079bc598c21ac52275e8870de081dba02",
+      "qualifie_pcbway.py": "2e6b6f7f07b8903acfa6a51eb40bab6f3961dd1af1a95e7b76d9661f0af70ac4",
+      "traitement.py": "7ef3c39456c514c5552f56899ea57de015746d5ddf3eb9ded6a94f858db41b15",
+      "antennes/diamant_uwb/geometrie.py": "c669627a58b0e4db45a187958263a029eb7a97a040f2e95476b97d66d22fb1a8",
+      "antennes/diamant_uwb_x18/geometrie.py": "4ec90c44ec621865164aaaf5b19d94b9d70795cd0148aa53ed6c1651b2e95e71",
+      "antennes/dipole_reference/geometrie.py": "01450e7b5baf7bb65fd531e7574f83e44eee5b970d7f93f766ae2acb9ab2e8b9",
+      "antennes/uwb_surveyor/geometrie.py": "1b02ff6f810a82eaafd647493c709eed6bd64f97bfff06ea09a84610a0df7037",
+      "antennes/vivaldi_tomographie/geometrie.py": "d4d2d8a8af46b100866ee6b4b76b3ae7b71f1651220474549673eb97f07b628c",
+      "banc.py": "12b3dd994c2a67ef5609870ea7e9811629789cef344db9e6b2511bbd5ba2c5a9",
+      "connectique.py": "d544935b5522479f20eb3b22342eac6ba04f8a2e9326b82d27098b29b2e4c998",
+      "fdtd.py": "3ef9e608e993e4adf3ca735e0f533c4e6927c30b57ba388bf639bb5b65e2ac34",
+      "materiaux.py": "bf5fa06bb8e2be89420470105796c19c6a043f1ce494a99bd029330b2f2e39f3",
+      "raffine_qualification_pcbway.py": "533c2678aba6219073601fc0101682bc82ae52c5b221ce66bfecfac323f859fb",
+      "raffine_qualification_plus_pcbway.py": "15fe2ef41de4c4c3c4da0954dc2396fa652f3b75ba18d0f373824a4aab39d3c3"
+    },
+    "aucun_profil_actif_ouvert": true,
+    "aucune_reanalyse": true,
+    "aucun_test_solveur_export": true,
+    "aucun_autre_fichier_ecrit": true
+  }
+}

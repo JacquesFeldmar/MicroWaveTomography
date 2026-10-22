@@ -1,0 +1,307 @@
+{
+  "audit_date": "2026-10-18",
+  "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:16:45) [MSC v.1942 64 bit (AMD64)]",
+  "versions": {
+    "numpy": "2.4.4",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.1",
+    "gerbonara": "1.6.3",
+    "pypdf": "6.11.0",
+    "PyMuPDF": "1.27.2.3"
+  },
+  "syntax": [
+    "antennes/diamant_uwb/geometrie.py",
+    "antennes/diamant_uwb_x18/geometrie.py",
+    "antennes/dipole_reference/geometrie.py",
+    "antennes/dipole_reference/verifier.py",
+    "antennes/uwb_surveyor/geometrie.py",
+    "antennes/vivaldi_tomographie/bilan_reglage.py",
+    "antennes/vivaldi_tomographie/geometrie.py",
+    "antennes/vivaldi_tomographie/regle.py",
+    "apercu.py",
+    "banc.py",
+    "donnees.py",
+    "export_dxf.py",
+    "export_gerber.py",
+    "fdtd.py",
+    "figures.py",
+    "modele.py",
+    "run.py",
+    "test_traitement.py",
+    "traitement.py",
+    "verifie_gerber.py"
+  ],
+  "s11": [
+    {
+      "path": "resultats/diamant_uwb/antenne_seule.s1p",
+      "points": 261,
+      "band_GHz": [
+        1.0,
+        14.0
+      ],
+      "evaluation_band_GHz": null,
+      "sampled_intervals_below_minus10_GHz": [
+        [
+          2.3,
+          5.8
+        ],
+        [
+          6.6,
+          9.5
+        ],
+        [
+          10.55,
+          13.6
+        ]
+      ],
+      "sampled_intervals_at_or_above_minus10_inside_envelope_GHz": [
+        [
+          5.85,
+          6.55
+        ],
+        [
+          9.55,
+          10.5
+        ]
+      ],
+      "sampled_intervals_above_minus6_GHz": [
+        [
+          1.0,
+          2.1
+        ]
+      ],
+      "coverage_minus10_percent_selected": 73.5632183908046,
+      "coverage_minus10_percent_envelope": 84.58149779735683,
+      "coverage_minus6_percent_selected": 91.18773946360153,
+      "mean_reflected_power_db_selected": -9.810156685163866,
+      "worst_db_selected": -1.4201092875830754
+    },
+    {
+      "path": "resultats/diamant_uwb_x18/antenne_seule.s1p",
+      "points": 201,
+      "band_GHz": [
+        1.0,
+        6.0
+      ],
+      "evaluation_band_GHz": null,
+      "sampled_intervals_below_minus10_GHz": [
+        [
+          1.275,
+          1.6
+        ],
+        [
+          2.225,
+          6.0
+        ]
+      ],
+      "sampled_intervals_at_or_above_minus10_inside_envelope_GHz": [
+        [
+          1.625,
+          2.2
+        ]
+      ],
+      "sampled_intervals_above_minus6_GHz": [
+        [
+          1.0,
+          1.175
+        ]
+      ],
+      "coverage_minus10_percent_selected": 82.58706467661692,
+      "coverage_minus10_percent_envelope": 87.36842105263159,
+      "coverage_minus6_percent_selected": 96.01990049751244,
+      "mean_reflected_power_db_selected": -11.040539901711714,
+      "worst_db_selected": -1.766222461428764
+    },
+    {
+      "path": "resultats/vivaldi_tomographie/antenne_seule.s1p",
+      "points": 201,
+      "band_GHz": [
+        1.0,
+        6.0
+      ],
+      "evaluation_band_GHz": [
+        1.4,
+        6.0
+      ],
+      "sampled_intervals_below_minus10_GHz": [
+        [
+          1.4,
+          1.75
+        ],
+        [
+          1.9,
+          2.7
+        ],
+        [
+          2.925,
+          3.95
+        ],
+        [
+          4.1,
+          4.75
+        ],
+        [
+          4.95,
+          5.175
+        ],
+        [
+          5.7,
+          5.75
+        ],
+        [
+          5.925,
+          5.95
+        ]
+      ],
+      "sampled_intervals_at_or_above_minus10_inside_envelope_GHz": [
+        [
+          1.05,
+          1.275
+        ],
+        [
+          1.775,
+          1.875
+        ],
+        [
+          2.725,
+          2.9
+        ],
+        [
+          3.975,
+          4.075
+        ],
+        [
+          4.775,
+          4.925
+        ],
+        [
+          5.2,
+          5.675
+        ],
+        [
+          5.775,
+          5.9
+        ]
+      ],
+      "sampled_intervals_above_minus6_GHz": [
+        [
+          5.45,
+          5.65
+        ],
+        [
+          5.825,
+          5.85
+        ]
+      ],
+      "coverage_minus10_percent_selected": 71.35135135135135,
+      "coverage_minus10_percent_envelope": 69.34673366834171,
+      "coverage_minus6_percent_selected": 94.05405405405406,
+      "mean_reflected_power_db_selected": -10.592863726342808,
+      "worst_db_selected": -2.898246059995836
+    }
+  ],
+  "zip": [
+    {
+      "path": "fabrication/panneau_losanges/panneau_losanges_pcbway.zip",
+      "crc_error": null,
+      "members": [
+        {
+          "name": "panneau_losanges.GTL",
+          "size": 774,
+          "matches_neighbor": true
+        },
+        {
+          "name": "panneau_losanges.GBL",
+          "size": 2410,
+          "matches_neighbor": true
+        },
+        {
+          "name": "panneau_losanges.GTS",
+          "size": 802,
+          "matches_neighbor": true
+        },
+        {
+          "name": "panneau_losanges.GBS",
+          "size": 2438,
+          "matches_neighbor": true
+        },
+        {
+          "name": "panneau_losanges.GKO",
+          "size": 558,
+          "matches_neighbor": true
+        },
+        {
+          "name": "panneau_losanges-NPTH.DRL",
+          "size": 375,
+          "matches_neighbor": true
+        },
+        {
+          "name": "panneau_losanges_lisez_moi.txt",
+          "size": 3734,
+          "matches_neighbor": true
+        }
+      ]
+    },
+    {
+      "path": "fabrication/vivaldi_tomographie/vivaldi_tomographie_pcbway.zip",
+      "crc_error": null,
+      "members": [
+        {
+          "name": "vivaldi_tomographie.GTL",
+          "size": 14193,
+          "matches_neighbor": true
+        },
+        {
+          "name": "vivaldi_tomographie.GBL",
+          "size": 14878,
+          "matches_neighbor": true
+        },
+        {
+          "name": "vivaldi_tomographie.GTS",
+          "size": 14221,
+          "matches_neighbor": true
+        },
+        {
+          "name": "vivaldi_tomographie.GBS",
+          "size": 14906,
+          "matches_neighbor": true
+        },
+        {
+          "name": "vivaldi_tomographie.GKO",
+          "size": 300,
+          "matches_neighbor": true
+        },
+        {
+          "name": "vivaldi_tomographie-NPTH.DRL",
+          "size": 167,
+          "matches_neighbor": true
+        },
+        {
+          "name": "vivaldi_tomographie_lisez_moi.txt",
+          "size": 3525,
+          "matches_neighbor": true
+        }
+      ]
+    }
+  ],
+  "svg": [
+    {
+      "path": "fabrication/panneau_losanges/panneau_losanges_rendu.svg",
+      "child_elements": 0,
+      "bytes": 244
+    },
+    {
+      "path": "fabrication/vivaldi_tomographie/vivaldi_tomographie_rendu.svg",
+      "child_elements": 0,
+      "bytes": 247
+    }
+  ],
+  "integrity": {
+    "before_file_count": 266,
+    "after_file_count": 266,
+    "removed": [],
+    "added_outside_review": [],
+    "content_changed": [],
+    "mtime_changed": []
+  }
+}

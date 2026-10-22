@@ -1,0 +1,597 @@
+{
+  "schema": "bilan_intermediaire_grand_n34_v1",
+  "antenne": "diamant_uwb_x18",
+  "date_utc": "2026-10-19T13:52:55.807711+00:00",
+  "qualification_officielle": false,
+  "qualification_globale": false,
+  "reussi": false,
+  "etat": "refuse_convergence_spatiale",
+  "reference_provisoire": "n34_12ns",
+  "nombre_profils": 13,
+  "profils": [
+    "base_8ns",
+    "fin_8ns",
+    "fin_12ns",
+    "tres_fin_8ns",
+    "tres_fin_12ns",
+    "ultra_fin_8ns",
+    "ultra_fin_12ns",
+    "extreme_fin_8ns",
+    "extreme_fin_12ns",
+    "n30_8ns",
+    "n30_12ns",
+    "n34_8ns",
+    "n34_12ns"
+  ],
+  "nombre_preliminaires": 10,
+  "essais_preliminaires": [
+    {
+      "type": "spatial",
+      "calculs": [
+        "base_8ns",
+        "fin_8ns"
+      ],
+      "motif": "Premiere comparaison spatiale conservee",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.05552114963379815,
+          "rms_complexe": 0.03841345122106409,
+          "percentile95_db": 2.1966692131087693,
+          "percentile95_phase_deg": 14.13593231660474
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    },
+    {
+      "type": "temporel",
+      "calculs": [
+        "fin_8ns",
+        "fin_12ns"
+      ],
+      "motif": "Premiere comparaison temporelle conservee",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.008496470016750227,
+          "rms_complexe": 0.002183364812180756,
+          "percentile95_db": 0.10134219573909098,
+          "percentile95_phase_deg": 0.675284163986687
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    },
+    {
+      "type": "spatial",
+      "calculs": [
+        "fin_12ns",
+        "tres_fin_12ns"
+      ],
+      "motif": "Palier spatial precedent conserve ; ses seuils ont ete depasses",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.046315801872948766,
+          "rms_complexe": 0.02581609659508265,
+          "percentile95_db": 1.1857510512923997,
+          "percentile95_phase_deg": 8.169708636642792
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    },
+    {
+      "type": "temporel",
+      "calculs": [
+        "tres_fin_8ns",
+        "tres_fin_12ns"
+      ],
+      "motif": "Controle temporel du palier precedent conserve",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.009480593878002637,
+          "rms_complexe": 0.0024318478513623964,
+          "percentile95_db": 0.10680040108128488,
+          "percentile95_phase_deg": 0.7217625272858248
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    },
+    {
+      "type": "spatial",
+      "calculs": [
+        "tres_fin_12ns",
+        "ultra_fin_12ns"
+      ],
+      "motif": "Palier spatial precedent conserve ; ses seuils ont ete depasses",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.03880048309488374,
+          "rms_complexe": 0.02162359892061181,
+          "percentile95_db": 0.9309011367933158,
+          "percentile95_phase_deg": 10.112864982098229
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    },
+    {
+      "type": "temporel",
+      "calculs": [
+        "ultra_fin_8ns",
+        "ultra_fin_12ns"
+      ],
+      "motif": "Controle temporel du palier precedent conserve",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.009980515944572232,
+          "rms_complexe": 0.0025637281276574392,
+          "percentile95_db": 0.1272080120325696,
+          "percentile95_phase_deg": 0.837558593538725
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    },
+    {
+      "type": "spatial",
+      "calculs": [
+        "ultra_fin_12ns",
+        "extreme_fin_12ns"
+      ],
+      "motif": "Palier spatial precedent conserve ; ses seuils ont ete depasses",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.02499124575279103,
+          "rms_complexe": 0.017769583831423758,
+          "percentile95_db": 1.1252310353778219,
+          "percentile95_phase_deg": 6.812018793594152
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    },
+    {
+      "type": "temporel",
+      "calculs": [
+        "extreme_fin_8ns",
+        "extreme_fin_12ns"
+      ],
+      "motif": "Controle temporel du palier precedent conserve",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.009746129948395214,
+          "rms_complexe": 0.0025004367800776565,
+          "percentile95_db": 0.11208639250998279,
+          "percentile95_phase_deg": 0.7930751614435406
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    },
+    {
+      "type": "spatial",
+      "calculs": [
+        "extreme_fin_12ns",
+        "n30_12ns"
+      ],
+      "motif": "Palier spatial precedent conserve ; ses seuils ont ete depasses",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.03174809310318816,
+          "rms_complexe": 0.021298828096835233,
+          "percentile95_db": 1.4211171777497076,
+          "percentile95_phase_deg": 6.421662024517233
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.05,
+          "rms_complexe": 0.02,
+          "percentile95_db": 1.0
+        },
+        "reussi": false,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    },
+    {
+      "type": "temporel",
+      "calculs": [
+        "n30_8ns",
+        "n30_12ns"
+      ],
+      "motif": "Controle temporel du palier precedent conserve",
+      "ecarts": {
+        "valeurs": {
+          "maximum_complexe": 0.00971553795113394,
+          "rms_complexe": 0.0024884228172199407,
+          "percentile95_db": 0.1284848879049815,
+          "percentile95_phase_deg": 0.8932960181750875
+        },
+        "seuils_acceptation": {
+          "maximum_complexe": 0.015,
+          "rms_complexe": 0.005,
+          "percentile95_db": 0.5
+        },
+        "reussi": true,
+        "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+      }
+    }
+  ],
+  "paires": {
+    "spatial": [
+      "n30_12ns",
+      "n34_12ns"
+    ],
+    "temporel": [
+      "n34_8ns",
+      "n34_12ns"
+    ]
+  },
+  "spatial": {
+    "valeurs": {
+      "maximum_complexe": 0.06942640758606854,
+      "rms_complexe": 0.017957379205070467,
+      "percentile95_db": 1.0765187141648775,
+      "percentile95_phase_deg": 6.359740580970284
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.05,
+      "rms_complexe": 0.02,
+      "percentile95_db": 1.0
+    },
+    "reussi": false,
+    "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+  },
+  "temporel": {
+    "valeurs": {
+      "maximum_complexe": 0.009388069406383197,
+      "rms_complexe": 0.0024065894392813793,
+      "percentile95_db": 0.1182479382824203,
+      "percentile95_phase_deg": 0.7253529972911177
+    },
+    "seuils_acceptation": {
+      "maximum_complexe": 0.015,
+      "rms_complexe": 0.005,
+      "percentile95_db": 0.5
+    },
+    "reussi": true,
+    "masque_db": "percentile95 lorsque les deux |S11| sont >= -20 dB; tous points pour delta complexe"
+  },
+  "indicateurs_reference": {
+    "bande_hz": [
+      1000000000.0,
+      6300000000.0
+    ],
+    "points": 213,
+    "maximum_module": 0.8326043131903936,
+    "passivite_numerique": true,
+    "moins_10_db": {
+      "seuil_db": -10.0,
+      "segments_hz": [
+        [
+          1400000000.0,
+          1900000000.0
+        ],
+        [
+          2600000000.0,
+          3825000000.0
+        ],
+        [
+          4450000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.6854460093896714,
+      "points_sous_seuil": 146,
+      "points_total": 213
+    },
+    "moins_6_db": {
+      "seuil_db": -6.0,
+      "segments_hz": [
+        [
+          1275000000.0,
+          6300000000.0
+        ]
+      ],
+      "couverture": 0.9483568075117371,
+      "points_sous_seuil": 202,
+      "points_total": 213
+    },
+    "bande_1p4_6": {
+      "moins_10_db": {
+        "seuil_db": -10.0,
+        "segments_hz": [
+          [
+            1400000000.0,
+            1900000000.0
+          ],
+          [
+            2600000000.0,
+            3825000000.0
+          ],
+          [
+            4450000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 0.7243243243243244,
+        "points_sous_seuil": 134,
+        "points_total": 185
+      },
+      "moins_6_db": {
+        "seuil_db": -6.0,
+        "segments_hz": [
+          [
+            1400000000.0,
+            6000000000.0
+          ]
+        ],
+        "couverture": 1.0,
+        "points_sous_seuil": 185,
+        "points_total": 185
+      },
+      "moyenne_puissance_reflechie_db": -11.701123152802268,
+      "pire_db": -6.852040496091963
+    }
+  },
+  "passivite_tous_profils": true,
+  "coherence_temporelle": {
+    "maillage_manifeste_identique": true,
+    "dt_binaire_identique": true,
+    "dt_hex": "0x1.5c5a9c3923a2ap-44",
+    "axes": {
+      "x": {
+        "forme": [
+          252
+        ],
+        "dtype": "float64",
+        "identique_binaire": true,
+        "sha256": "15c7d020ae25eed5ada0da9969bf1d9ba6676012172b14aec3b3e4e8b72a3548"
+      },
+      "y": {
+        "forme": [
+          244
+        ],
+        "dtype": "float64",
+        "identique_binaire": true,
+        "sha256": "8e5058ada5622e5322143534fad7d5e7de93bf9791cfb67254caa3372df1b0f0"
+      },
+      "z": {
+        "forme": [
+          141
+        ],
+        "dtype": "float64",
+        "identique_binaire": true,
+        "sha256": "d21ac9b4ca8726ef15b8343c54d06c05c5852e775bc1470d6bff8c4345aea5ad"
+      }
+    }
+  },
+  "points_masque": {
+    "spatial": 185,
+    "temporel": 188
+  },
+  "plus_grands_ecarts": {
+    "spatial": [
+      {
+        "frequence_hz": 4250000000.0,
+        "ecart_complexe": 0.06942640758606854,
+        "module_a_db": -6.950760317851513,
+        "module_b_db": -6.852040496091963,
+        "phase_diff_deg": 8.78925729043215
+      },
+      {
+        "frequence_hz": 4225000000.0,
+        "ecart_complexe": 0.06844692500067981,
+        "module_a_db": -6.774357665398776,
+        "module_b_db": -7.380382028693574,
+        "phase_diff_deg": 7.910732274245932
+      },
+      {
+        "frequence_hz": 4275000000.0,
+        "ecart_complexe": 0.05682622032442672,
+        "module_a_db": -7.571591814873495,
+        "module_b_db": -6.969934823957019,
+        "phase_diff_deg": 6.390072010392153
+      },
+      {
+        "frequence_hz": 4200000000.0,
+        "ecart_complexe": 0.05419433120216286,
+        "module_a_db": -7.26422521647536,
+        "module_b_db": -8.274395420905332,
+        "phase_diff_deg": 3.638661076221564
+      },
+      {
+        "frequence_hz": 4300000000.0,
+        "ecart_complexe": 0.03763602542733141,
+        "module_a_db": -8.179773089943398,
+        "module_b_db": -7.552482823282326,
+        "phase_diff_deg": 3.36492883250862
+      },
+      {
+        "frequence_hz": 4175000000.0,
+        "ecart_complexe": 0.03278366097629632,
+        "module_a_db": -8.176811947829535,
+        "module_b_db": -8.929463373845362,
+        "phase_diff_deg": -0.787991432718661
+      },
+      {
+        "frequence_hz": 4925000000.0,
+        "ecart_complexe": 0.029513471229212655,
+        "module_a_db": -17.388256595930773,
+        "module_b_db": -18.646133391095386,
+        "phase_diff_deg": 10.606056301210891
+      },
+      {
+        "frequence_hz": 4900000000.0,
+        "ecart_complexe": 0.029095069297860286,
+        "module_a_db": -18.489982539404764,
+        "module_b_db": -19.783001840191307,
+        "phase_diff_deg": 12.47072099938741
+      },
+      {
+        "frequence_hz": 5000000000.0,
+        "ecart_complexe": 0.029069037112500407,
+        "module_a_db": -14.651681825077304,
+        "module_b_db": -15.702366703981381,
+        "phase_diff_deg": 6.582152429657619
+      },
+      {
+        "frequence_hz": 4825000000.0,
+        "ecart_complexe": 0.028855313704129398,
+        "module_a_db": -21.41570359655125,
+        "module_b_db": -21.559164298481353,
+        "phase_diff_deg": 19.694939987162854
+      },
+      {
+        "frequence_hz": 5025000000.0,
+        "ecart_complexe": 0.02869353372329022,
+        "module_a_db": -13.94024625477746,
+        "module_b_db": -14.8714405992432,
+        "phase_diff_deg": 6.067020604199286
+      },
+      {
+        "frequence_hz": 4950000000.0,
+        "ecart_complexe": 0.028561898549554772,
+        "module_a_db": -16.412336659166648,
+        "module_b_db": -17.568267415902667,
+        "phase_diff_deg": 8.708651904421
+      }
+    ],
+    "temporel": [
+      {
+        "frequence_hz": 4250000000.0,
+        "ecart_complexe": 0.009388069406383197,
+        "module_a_db": -7.033033300238978,
+        "module_b_db": -6.852040496091963,
+        "phase_diff_deg": 0.07469536873170238
+      },
+      {
+        "frequence_hz": 4225000000.0,
+        "ecart_complexe": 0.009260252092723032,
+        "module_a_db": -7.42355028906956,
+        "module_b_db": -7.380382028693574,
+        "phase_diff_deg": 1.211061938744284
+      },
+      {
+        "frequence_hz": 4275000000.0,
+        "ecart_complexe": 0.009235910519171685,
+        "module_a_db": -7.034798504207716,
+        "module_b_db": -6.969934823957019,
+        "phase_diff_deg": -1.1050818850359245
+      },
+      {
+        "frequence_hz": 4200000000.0,
+        "ecart_complexe": 0.008873078578527684,
+        "module_a_db": -8.09837045206712,
+        "module_b_db": -8.274395420905332,
+        "phase_diff_deg": 0.5949857403346017
+      },
+      {
+        "frequence_hz": 4300000000.0,
+        "ecart_complexe": 0.00880034236388584,
+        "module_a_db": -7.408994860111075,
+        "module_b_db": -7.552482823282326,
+        "phase_diff_deg": -0.7262801742929385
+      },
+      {
+        "frequence_hz": 4175000000.0,
+        "ecart_complexe": 0.008250331224289054,
+        "module_a_db": -8.807546713823259,
+        "module_b_db": -8.929463373845362,
+        "phase_diff_deg": -1.036957417694368
+      },
+      {
+        "frequence_hz": 4325000000.0,
+        "ecart_complexe": 0.008107497955340454,
+        "module_a_db": -8.021865844697697,
+        "module_b_db": -8.16271947257896,
+        "phase_diff_deg": 0.7262598483581391
+      },
+      {
+        "frequence_hz": 4150000000.0,
+        "ecart_complexe": 0.007422934372138221,
+        "module_a_db": -9.25123919884063,
+        "module_b_db": -9.125790140385433,
+        "phase_diff_deg": -0.9031975065618798
+      },
+      {
+        "frequence_hz": 4350000000.0,
+        "ecart_complexe": 0.007206505326718563,
+        "module_a_db": -8.656194088353066,
+        "module_b_db": -8.586757329702586,
+        "phase_diff_deg": 1.0155944588849104
+      },
+      {
+        "frequence_hz": 4125000000.0,
+        "ecart_complexe": 0.0064387641372335835,
+        "module_a_db": -9.334088065938152,
+        "module_b_db": -9.195620632443795,
+        "phase_diff_deg": 0.5610224553027814
+      },
+      {
+        "frequence_hz": 4375000000.0,
+        "ecart_complexe": 0.0061586471790226055,
+        "module_a_db": -9.128547180489699,
+        "module_b_db": -8.979091567767941,
+        "phase_diff_deg": -0.17149312527972946
+      },
+      {
+        "frequence_hz": 4100000000.0,
+        "ecart_complexe": 0.005361644549964053,
+        "module_a_db": -9.244669158965038,
+        "module_b_db": -9.288080495265357,
+        "phase_diff_deg": 0.8456054900061831
+      }
+    ]
+  },
+  "figures_sha256": {
+    "chatGPT_critical_review\\controle_extreme_fin\\comparaison_n34\\comparaison_spatial.png": "a1028a72e559da7621cf1df327d54704db5334116971dfa916514e97b1873ec4",
+    "chatGPT_critical_review\\controle_extreme_fin\\comparaison_n34\\comparaison_temporel.png": "43ce25d22730de8db5ebf51f0cf7ca79ae5ac165b2d1e3de33babb2726531847"
+  },
+  "preuves_sha256": {
+    "chatGPT_critical_review\\controle_extreme_fin\\revue_croisee_n34\\rapport_croise.json": "7fe3166dfd4b8d3966efdacd0fd81c286f4ab9cc87f25853af871bfd11dac89e",
+    "chatGPT_critical_review\\controle_extreme_fin\\controle_final_n34\\rapport.json": "c24d0df881d62922bbf0d53c8da06770efe7b6239b0e500df305e55775cd169c",
+    "resultats\\pcbway_r1\\journaux\\fin_queue_n34_observee_automatiquement.json": "ae343e84c86f215431c39f1fb260e480344ef2bfa33f82b6b97c3a632cae9ab7",
+    "resultats\\pcbway_r1\\journaux\\fin_analyse_n34_automatique.json": "bd75e79a73b7a023ce8d49bfa468db31917571ae08eecd873fc209f159c9f8bf"
+  },
+  "note": "Contrôle temporel et passivité passent ; maximum complexe spatial et p95 dB échouent. RMS spatial passe. La référence reste provisoire. Aucun seuil ni source gelée modifié."
+}

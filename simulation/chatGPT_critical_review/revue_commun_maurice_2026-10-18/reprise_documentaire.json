@@ -1,0 +1,30 @@
+{
+  "schema": "reprise_documentaire_commun_maurice_v1",
+  "date_utc": "2026-10-18T14:56:26.364953+00:00",
+  "modifications": [
+    {
+      "chemin": "commun/README.md",
+      "avant_sha256": "a0c63252a3ce6a89adacabba9fb6723fd5c571d3335f26af5453ba626afccf32",
+      "apres_sha256": "75d162352524c426718dda6d910ec25311095868da19b464a5b36dc6ba296cf4",
+      "archive": "README.md.orig",
+      "fins_de_ligne": "'\\n'"
+    },
+    {
+      "chemin": "commun/instrument.py",
+      "avant_sha256": "97b543f4aa445e2f9206f3ac588a0bee67839ed311f9045bae9f34c293297646",
+      "apres_sha256": "bb30ffeec918f0f0b7e593264de603df5a13fd64330e0cc967f6b52c627bc015",
+      "archive": "instrument.py.orig",
+      "fins_de_ligne": "'\\r\\n'"
+    },
+    {
+      "chemin": "simulation/PROTOCOLE_MESURE_PCBWAY.md",
+      "avant_sha256": "1de3b07a55007450d317e31eeb123e1caf03896558b14b01ed65bf7cfb3c7dc1",
+      "apres_sha256": "cb6b246bbb75f9cc7731fc62c25ed0ee6764ebf479d71afadadf58fc3cc6fe40",
+      "archive": "PROTOCOLE_MESURE_PCBWAY.md.orig",
+      "fins_de_ligne": "'\\n'"
+    }
+  ],
+  "instrument_AST_executable_inchange": true,
+  "aucun_acces_materiel": true,
+  "aucune_source_FDTD_modifiee": true
+}

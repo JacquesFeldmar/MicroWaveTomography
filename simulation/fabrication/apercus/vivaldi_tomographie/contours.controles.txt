@@ -1,0 +1,28 @@
+OK  contour ferme et simple
+OK  F_Cu : polygones simples et non degeneres
+OK  F_Cu : 0 mm2 hors contour (calcul exact)
+OK  F_Cu : marge hors bord SMA 0.300 mm (minimum 0.25)
+OK  F_Cu : 3 ilots conducteurs (signal + deux masses SMA attendus)
+OK  B_Cu : polygones simples et non degeneres
+OK  B_Cu : 0 mm2 hors contour (calcul exact)
+OK  B_Cu : marge hors bord SMA 0.300 mm (minimum 0.25)
+OK  NPTH 1 : dans le substrat
+OK  NPTH 1/F_Cu : cuivre a 58.575 mm (minimum 0.25)
+OK  NPTH 1/B_Cu : cuivre a 44.034 mm (minimum 0.25)
+OK  NPTH 2 : dans le substrat
+OK  NPTH 2/F_Cu : cuivre a 58.575 mm (minimum 0.25)
+OK  NPTH 2/B_Cu : cuivre a 44.034 mm (minimum 0.25)
+OK  PTH 1 : dans le substrat
+OK  PTH 1/F_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 1/B_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 2 : dans le substrat
+OK  PTH 2/F_Cu : anneau cuivre >= 0.15 mm
+OK  PTH 2/B_Cu : anneau cuivre >= 0.15 mm
+OK  carte : 143.67 x 280.90 mm, surface 403.6 cm2
+OK  F_Cu : 70.1 cm2 de cuivre, 0.00 mm2 hors de la carte
+OK  F_Cu : tranche la plus pauvre 3.00 mm de cuivre, a y = 6.6 mm
+OK  B_Cu : 134.5 cm2 de cuivre, 0.00 mm2 hors de la carte
+OK  B_Cu : tranche la plus pauvre 18.00 mm de cuivre, a y = 280.6 mm
+OK  recouvrement des deux cuivres : au plus 3.00 mm par tranche (limite 3.60 mm, hors les 6.5 mm d'implantation SMA)
+OK  percage 1 : diam 3.00 mm en (-65.5, 9.0)
+OK  percage 2 : diam 3.00 mm en (65.5, 9.0)

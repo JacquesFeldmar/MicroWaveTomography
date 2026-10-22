@@ -1,0 +1,22 @@
+{
+  "schema": "inspection_visuelle_builder_pdf_F1_F2_v1",
+  "utc": "2026-10-19T17:27:24.473457+00:00",
+  "builder_sha256": "d567a97344969fec0f98a98d2c1bd691573405351c4f816734713beac257bb48",
+  "rapport_QA_final_sha256": "2416889c15db1fdb7d5e1f0e3e51dbc368a8982d3f684f34847d2af94d4cafbf",
+  "rendu_toutes_pages": true,
+  "pages_F1": 7,
+  "pages_F2": 9,
+  "inspection_visuelle_root_reussie": true,
+  "pages_F1_2_a_7_octets_PNG_identiques_et_deja_inspectees": true,
+  "correction": "Tableau grilles et explication maintenus ensemble ; aucune page ne porte seulement le paragraphe de continuation",
+  "controles_logiciels": 12,
+  "aucun_PDF_final_reel": true,
+  "aucun_Run": true,
+  "notes": "Fixtures SYNTHETIQUES explicites sur chaque page ; nouvel examen complet requis pour le vrai rapport de qualification.",
+  "environnement": {
+    "Pillow": "11.3.0",
+    "pdfplumber": "0.11.8",
+    "reportlab": "5.0.1",
+    "pypdf": "6.11.0"
+  }
+}

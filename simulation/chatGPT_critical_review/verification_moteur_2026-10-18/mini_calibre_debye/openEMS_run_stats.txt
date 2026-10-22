@@ -1,0 +1,2 @@
+%time	timestep	speed	energy
+4.01281	178	5.74519e+07	4.50495e-22

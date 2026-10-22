@@ -11,6 +11,11 @@ Il sert a trois choses :
 Le modele n'est pas une simulation electromagnetique : il compose des echos.
 C'est volontaire. Chaque terme y porte un nom physique et une valeur reglable.
 
+Les amplitudes ne sont pas normalisees comme celles d'un reseau passif. Le
+facteur 1/(2*x), avec x conventionnellement en metres, omet une longueur de
+reference physique : aucune amplitude absolue de ce generateur ne doit etre
+comparee a une mesure S11 ou a la qualification FDTD des PCB.
+
     S11_fond(f)    = Gamma_connecteur(f) + echos internes de l'antenne
     S11_plaque(f)  = S11_fond(f) + H(f)^2 . Gamma_plaque(f, x) . e^(-j.4.pi.f.x/c)
 
